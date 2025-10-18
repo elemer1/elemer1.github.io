@@ -1,3 +1,5 @@
+---
+---
 # My Simple Notes
 
 This is a Markdown file without any front matter.
