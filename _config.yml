@@ -10,6 +10,19 @@ url: "https://elemer1.github.io"
 markdown: kramdown
 permalink: /:title/
 
+# Collections
+collections:
+  writings:
+    output: true
+    permalink: /:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "writings"
+    values:
+      layout: "post"
+
 # Exclude from processing
 exclude:
   - Gemfile

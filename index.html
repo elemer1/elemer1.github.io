@@ -6,10 +6,12 @@ layout: default
 
 <h2>Writing</h2>
 <ul class="post-list">
-  {% for post in site.posts %}
+  {% for writing in site.writings %}
     <li>
-      <time>{{ post.date | date: "%Y-%m-%d" }}</time>
-      <a href="{{ post.url }}">{{ post.title }}</a>
+      {% if writing.date %}
+        <time>{{ writing.date | date: "%Y-%m-%d" }}</time>
+      {% endif %}
+      <a href="{{ writing.url }}">{{ writing.title }}</a>
     </li>
   {% endfor %}
 </ul>
