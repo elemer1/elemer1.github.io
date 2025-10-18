@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+<p>Hello, I'm [Your Name]. I work on [what you do].</p>
+
+<h2>Writing</h2>
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li>
+      <time>{{ post.date | date: "%Y-%m-%d" }}</time>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
