@@ -11,7 +11,11 @@ layout: default
       {% if writing.date %}
         <time>{{ writing.date | date: "%Y-%m-%d" }}</time>
       {% endif %}
-      <a href="{{ writing.url }}">{{ writing.title }}</a>
+      {% assign title = writing.title %}
+      {% if title == "" or title == nil %}
+        {% assign title = writing.content | strip_html | truncatewords: 10, "" %}
+      {% endif %}
+      <a href="{{ writing.url }}">{{ title }}</a>
     </li>
   {% endfor %}
 </ul>
