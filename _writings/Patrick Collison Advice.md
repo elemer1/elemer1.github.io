@@ -1,3 +1,8 @@
+---
+title: Patrick Collison Advice
+date: 2025-01-18
+---
+
 - If you think something is important but people older than you don't hold it in high regard, there's a reasonable chance that you're right and they're wrong. What society considers prestigious/important changes slowly—often taking 10-20 years to catch up. Status lags by a generation or more.
 - Don't make the mistake of judging your success based on your current peer group. They're not the benchmark for your life trajectory
 - Having good social skills confers lifelong benefits. Get good at making a good first impression as you get only one shot at most opportunities, being funny, and speaking publicly.
