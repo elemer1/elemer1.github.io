@@ -10,6 +10,19 @@ url: "https://elemer1.github.io"
 markdown: kramdown
 permalink: /:title/
 
+# Performance optimizations
+sass:
+  style: compressed
+
+# Enable compression
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false
+
 # Collections
 collections:
   writings:

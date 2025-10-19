@@ -10,6 +10,9 @@ body {
   line-height: 1.6;
   color: #333;
   background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .container {
@@ -64,6 +67,7 @@ main li {
 main a {
   color: #0066cc;
   text-decoration: none;
+  transition: color 0.15s ease-in-out;
 }
 
 main a:hover {
@@ -95,6 +99,8 @@ article time {
 .post-list a {
   color: #333;
   text-decoration: none;
+  transition: color 0.2s ease;
+  will-change: color;
 }
 
 .post-list a:hover {
