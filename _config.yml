@@ -10,6 +10,12 @@ url: "https://elemer1.github.io"
 markdown: kramdown
 permalink: /:title/
 
+# Kramdown settings for math
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter_opts:
+    disable: true
+
 # Performance optimizations
 sass:
   style: compressed
