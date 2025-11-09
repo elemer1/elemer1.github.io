@@ -9,6 +9,7 @@ url: "https://elemer1.github.io"
 # Build settings
 markdown: kramdown
 permalink: /:title/
+future: true
 
 # Kramdown settings for math
 kramdown:
