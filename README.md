@@ -7,14 +7,19 @@
 ### 1. 本地预览
 
 ```bash
-# 安装依赖
+# 安装依赖（首次运行或更新 Gemfile 后需要执行）
 bundle install
 
 # 运行本地服务器
 bundle exec jekyll serve
 
 # 访问 http://localhost:4000
+# 在浏览器中查看网站，确认新文章是否正确显示
 ```
+
+**故障排除：**
+- 如果构建失败，检查 `_writings` 文件夹中的 Markdown 文件是否都有正确的 front matter（包含 `title` 和 `date`）
+- 确保所有依赖都已安装：`bundle install`
 
 ### 2. 部署到 GitHub Pages
 
@@ -59,20 +64,25 @@ git push -u origin main
 
 ### 4. 添加文章
 
-在 `_posts` 文件夹中创建新的 Markdown 文件：
+在 `_writings` 文件夹中创建新的 Markdown 文件：
 
-- 文件名格式：`YYYY-MM-DD-title.md`
-- 文件开头添加 front matter：
+- 文件名可以是任何格式（例如：`my-article.md` 或 `我的文章.md`）
+- 文件开头必须添加 front matter：
 
 ```yaml
 ---
-layout: post
-title: "文章标题"
+title: 文章标题
 date: YYYY-MM-DD
 ---
 ```
 
 然后用 Markdown 格式写作。提交到 GitHub 后会自动发布。
+
+**自动发布流程：**
+1. 将新的 Markdown 文件添加到 `_writings` 文件夹
+2. 运行 `./publish.sh` 或手动执行 `git add . && git commit -m "Add new article" && git push`
+3. GitHub Actions 会自动构建并部署网站
+4. 几分钟后，新文章会出现在 https://elemer1.github.io
 
 ## 目录结构
 
@@ -82,7 +92,7 @@ date: YYYY-MM-DD
 ├── _layouts/            # 页面布局
 │   ├── default.html     # 默认布局
 │   └── post.html        # 文章布局
-├── _posts/              # 博客文章（Markdown 文件）
+├── _writings/           # 文章集合（Markdown 文件）
 ├── assets/
 │   └── css/
 │       └── style.css    # 样式文件
