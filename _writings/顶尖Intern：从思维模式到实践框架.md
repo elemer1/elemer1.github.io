@@ -1,7 +1,8 @@
 ---
 title: 顶尖Intern：从思维模式到实践框架
-date: 2025-11-06
+date: 2025-01-18
 ---
+
 # 顶尖Intern：从思维模式到实践框架
 
 在 OpenAI、Anthropic 的前沿AI研究，或是 Jane Street、Renaissance 的高频量化交易中，存在一种共同的精英特质。成功不仅取决于你掌握了多少知识，更取决于你如何思考、如何学习以及如何执行。通往这条道路的核心，是一种极端的“智力严谨性”（Intellectual Rigor）与“实用主义”（Pragmatism）相结合的元思维模式。
