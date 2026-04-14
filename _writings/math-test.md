@@ -1,5 +1,6 @@
 ---
 title: 数学公式测试
+math: true
 date: 2025-01-18
 ---
 
