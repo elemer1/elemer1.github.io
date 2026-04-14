@@ -109,7 +109,6 @@ def 打开套娃(娃娃):
     "张三": "123-4567",
     "李四": "890-1234"
 }
-# 用姓名查电话，超快！
 ```
 
 ### Testing, Debugging, Exceptions, Assertions
