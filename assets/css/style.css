@@ -65,8 +65,8 @@ main li {
 }
 
 main a {
-  color: #0066cc;
-  text-decoration: none;
+  color: #000;
+  text-decoration: underline;
   transition: color 0.15s ease-in-out;
 }
 
@@ -97,12 +97,12 @@ article time {
 }
 
 .post-list a {
-  color: #333;
-  text-decoration: none;
+  color: #000;
+  text-decoration: underline;
   transition: color 0.2s ease;
   will-change: color;
 }
 
 .post-list a:hover {
-  color: #0066cc;
+  color: #000;
 }
