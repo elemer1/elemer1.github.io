@@ -8,9 +8,6 @@ layout: default
 <ul class="post-list">
   {% for writing in site.writings %}
     <li>
-      {% if writing.date %}
-        <time>{{ writing.date | date: "%Y-%m-%d" }}</time>
-      {% endif %}
       {% assign title = writing.title %}
       {% if title == "" or title == nil %}
         {% assign title = writing.content | strip_html | truncatewords: 10, "" %}
