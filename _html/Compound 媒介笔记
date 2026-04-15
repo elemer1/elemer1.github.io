@@ -1714,5 +1714,233 @@ document.querySelectorAll('.phase-tab').forEach(btn => {
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- MOBILE OPTIMIZATION LAYER                                     -->
+<!-- Desktop layout is NOT touched. Rules only activate ≤ 860 px.   -->
+<!-- Philosophy: compress padding + type scale, degrade clever      -->
+<!-- absolute positioning to normal flow, drop expensive effects.   -->
+<!-- ============================================================ -->
+<style>
+@media (max-width: 860px) {
+  :root { --gutter: clamp(16px, 4vw, 28px); }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-size: 16px; line-height: 1.62; }
+
+  /* -- kill expensive paint layers (noise + gradient wash) -- */
+  body::before, body::after { display: none; }
+
+  /* -- top nav: trim, drop backdrop-filter (mobile GPU cost) -- */
+  .top { padding: 10px 16px; background: rgba(242,237,227,0.94); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .top .brand { font-size: 13px; gap: 8px; max-width: 62%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .top .brand .dot { width: 6px; height: 6px; flex: 0 0 auto; }
+  .top .meta { gap: 10px; font-size: 10px; letter-spacing: 0.08em; }
+  .top .meta > span { display: none; }
+  .top .meta a { font-size: 10px; }
+
+  /* -- hero -- */
+  .hero { padding: 88px var(--gutter) 56px; }
+  .hero-grid { gap: 28px; }
+  .hero h1 { font-size: clamp(34px, 9vw, 50px); line-height: 1.02; margin-top: 18px; letter-spacing: -0.02em; }
+  .hero .deck { margin-top: 22px; font-size: 15px; line-height: 1.6; }
+  .hero-side { border-left: none; border-top: 1px solid var(--rule); padding: 22px 0 0 0; gap: 16px; }
+  .hero-side .meta-row .value { font-size: 14px; }
+  .hero-side .meta-row .value strong { font-size: 15px; }
+
+  /* -- thesis -- */
+  .thesis { padding: 60px var(--gutter); }
+  .thesis h2 { font-size: clamp(24px, 6.2vw, 32px); line-height: 1.16; margin-top: 18px; }
+  .thesis-grid { margin-top: 40px; }
+  .thesis-card { padding: 24px 20px; gap: 10px; }
+  .thesis-card h3 { font-size: 18px; }
+  .thesis-card p { font-size: 13.5px; line-height: 1.55; }
+
+  /* -- generic sections -- */
+  section.s,
+  .layers-section,
+  .matrix-section,
+  .exec-section,
+  .faguet-section,
+  .roadmap-section,
+  .risks-section,
+  .brand-section { padding: 64px var(--gutter); }
+
+  .s-head { margin-bottom: 36px; gap: 10px; }
+  .s-num { font-size: 52px; line-height: 0.9; }
+  .s-num::after { width: 36px; margin-top: 10px; }
+  .s-head h2 { font-size: clamp(26px, 6vw, 34px); line-height: 1.12; }
+  .s-head .lede { font-size: 15px; margin-top: 16px; line-height: 1.6; }
+
+  /* -- pyramid (category): flatten the stepped widths, fix overflow label -- */
+  .pyramid-wrap { gap: 28px; margin-top: 16px; }
+  .pyramid-row { padding: 14px 16px; gap: 12px; }
+  .pyramid-row .layer-name { font-size: 15px; }
+  .pyramid-row .layer-name small { font-size: 12px; line-height: 1.4; }
+  .pyramid-row .pct { font-size: 12px; min-width: 86px; }
+  .pyramid-row[data-w="90"],
+  .pyramid-row[data-w="60"],
+  .pyramid-row[data-w="15"],
+  .pyramid-row[data-w="1"] { width: 100%; }
+  .pyramid-row.compound::before {
+    position: static; transform: none; display: block;
+    margin: 0 0 8px 0; white-space: normal;
+  }
+  .pyramid-row.compound { padding-top: 16px; }
+  .pyramid-key h3 { font-size: 20px; }
+  .pyramid-key p { font-size: 14.5px; }
+  .callout { font-size: 13.5px; padding: 12px 16px; }
+
+  /* -- platform cards -- */
+  .plat-card { padding: 26px 22px; }
+  .plat-card h3 { font-size: 24px; }
+  .plat-card .platform-cn { font-size: 13px; margin-bottom: 18px; }
+  .plat-card .rank { top: 18px; right: 18px; font-size: 9px; padding: 4px 9px; }
+  .stat-strip .num { font-size: 22px; }
+  .stat-strip .lbl { font-size: 9px; letter-spacing: .06em; }
+  .stat-strip .stat { padding: 14px 8px; }
+  .plat-card .why { padding-top: 18px; margin-top: 18px; }
+  .plat-card .why li { font-size: 13.5px; line-height: 1.5; }
+  .risk-row { font-size: 13px; padding: 14px 16px; }
+  .skip-grid { margin-top: 40px; }
+  .skip-card { padding: 20px 18px; }
+  .skip-card h4 { font-size: 17px; }
+  .skip-card .reason { font-size: 12.5px; line-height: 1.55; }
+
+  /* -- layers: tabs go horizontal-scrollable (native mobile pattern) -- */
+  .layer-tabs { margin-top: 36px; gap: 20px; }
+  .layer-list {
+    display: flex; flex-direction: row;
+    border-left: none; border-bottom: 1px solid var(--rule);
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .layer-list::-webkit-scrollbar { display: none; }
+  .layer-tab {
+    flex: 0 0 auto; min-width: 220px;
+    padding: 14px 18px 16px;
+    border-left: none; border-bottom: 2px solid transparent;
+    margin-left: 0; margin-bottom: -1px;
+    scroll-snap-align: start;
+  }
+  .layer-tab.active { border-left-color: transparent; border-bottom-color: var(--oxblood); background: transparent; }
+  .layer-tab .num { font-size: 10px; }
+  .layer-tab .q { font-size: 17px; line-height: 1.2; }
+  .layer-tab .role { display: none; }
+  .layer-panel { padding: 28px 22px; min-height: 0; }
+  .layer-panel h3 { font-size: 22px; }
+  .layer-panel .panel-deck { font-size: 14.5px; }
+  .translate-list { grid-template-columns: 1fr; gap: 10px; }
+  .translate-list li { font-size: 13.5px; padding: 12px 14px; }
+  .kanban { grid-template-columns: 1fr; }
+  .kanban-col { padding: 16px 16px 12px; }
+  .flow-line { font-size: 11.5px; padding: 12px 14px; gap: 6px; }
+  .diff-grid { grid-template-columns: 1fr; }
+  .diff-card { padding: 14px 16px; }
+
+  /* -- pillars -- */
+  .pillar-filter { margin-bottom: 22px; gap: 6px; }
+  .pf-btn { font-size: 10px; padding: 7px 12px; letter-spacing: .1em; }
+  .pillar { padding: 22px 20px; }
+  .pillar .num { font-size: 32px; }
+  .pillar h4 { font-size: 17px; }
+  .pillar .solves { font-size: 13px; }
+  .pillar .example { font-size: 12px; }
+  .pillar-mix { margin-top: 28px; }
+  .mix-cell { padding: 22px 20px; }
+  .mix-cell .pct { font-size: 36px; }
+  .mix-cell h5 { font-size: 16px; }
+  .mix-cell p { font-size: 13px; }
+
+  /* -- format table: stack rows cleanly -- */
+  .format-table { margin-top: 40px; }
+  .format-table .ft-row { padding: 14px 16px; gap: 2px; }
+  .format-table .ft-row > div { padding: 2px 0; }
+  .format-table .ft-row .form-name { font-size: 15px; margin-bottom: 4px; }
+  .format-table .ft-row .plat { font-size: 11.5px; color: var(--oxblood); text-transform: uppercase; letter-spacing: .08em; }
+  .format-table .ft-row .purpose { font-size: 13px; }
+  .format-table .ft-row .freq { font-size: 12px; color: var(--ink-muted); }
+
+  /* -- account matrix -- */
+  .org-root { padding: 24px 22px; gap: 10px; }
+  .org-root h3 { font-size: 21px; }
+  .org-root .persona { font-size: 13px; }
+  .org-root .duty { font-size: 13px; max-width: none; }
+  .org-branch { padding: 20px 22px; gap: 10px; }
+  .org-branch h4 { font-size: 18px; }
+  .org-branch .persona { font-size: 12.5px; }
+  .org-branch .duty { font-size: 12.5px; max-width: none; }
+  .org-branch.you::after { font-size: 8.5px; padding: 4px 9px; }
+  .principle-box { padding: 24px 22px; gap: 20px; }
+  .principle-box h4 { font-size: 16px; }
+  .principle-box p { font-size: 13.5px; }
+  .bootstrap-card { padding: 22px 20px; }
+  .bootstrap-card h5 { font-size: 16px; }
+  .bootstrap-card p { font-size: 12.5px; }
+
+  /* -- execution playbook modules -- */
+  .module { margin-top: 48px; padding-top: 40px; }
+  .module h3 { font-size: clamp(22px, 5.4vw, 28px); line-height: 1.15; }
+  .module-head { gap: 12px; margin-bottom: 24px; }
+  .module-head .meta-side { border-left: none; border-top: 1px solid var(--rule); padding: 12px 0 0 0; }
+  .obs-grid { margin-top: 28px; }
+  .obs-cell { padding: 18px 18px; }
+  .obs-cell h5 { font-size: 15px; }
+  .obs-cell p { font-size: 12.5px; }
+  .tpl-spec { gap: 16px; margin-top: 28px; }
+  .tpl-card { padding: 22px 20px; }
+  .tpl-card h4 { font-size: 18px; margin-bottom: 12px; }
+  .tpl-card .tpl-rows li { grid-template-columns: 1fr; gap: 4px; font-size: 13px; }
+  .tpl-card .tpl-rows .k { font-size: 10px; padding-top: 0; }
+  .tpl-card .tpl-rows .v { font-size: 13px; }
+  .wechat-ladder { margin-top: 28px; }
+  .ladder-step { padding: 18px 20px; grid-template-columns: 56px 1fr; gap: 14px; }
+  .ladder-step .step-mark { font-size: 22px; }
+  .ladder-step h5 { font-size: 15.5px; }
+  .ladder-step p { font-size: 12.5px; }
+  .fh-section { padding: 24px 22px; }
+  .fh-take h5 { font-size: 14.5px; }
+  .fh-take p { font-size: 12.5px; }
+  .fh-rule { font-size: 14.5px; padding: 14px 18px; }
+
+  /* -- section divider -- */
+  .section-divider::before { font-size: 15px; padding: 0 10px; }
+
+  /* -- dual image figures -- */
+  .dual-img { margin-top: 24px; gap: 12px; }
+  .dual-img figure { padding: 10px 10px 8px; }
+
+  /* -- page-edge deco lines (already hidden <880) but reinforce -- */
+  .page-edge { display: none; }
+}
+
+/* -- very small phones (iPhone SE / mini) -- */
+@media (max-width: 420px) {
+  :root { --gutter: 14px; }
+  .hero { padding-top: 82px; padding-bottom: 50px; }
+  .hero h1 { font-size: clamp(30px, 9vw, 42px); }
+  .s-num { font-size: 44px; }
+  .thesis h2 { font-size: clamp(22px, 6.4vw, 28px); }
+  .s-head h2 { font-size: clamp(22px, 6vw, 28px); }
+  .layer-tab { min-width: 180px; }
+  .top .brand { font-size: 12px; max-width: 62%; }
+  .top .meta { font-size: 9.5px; }
+  .stat-strip { grid-template-columns: 1fr; }
+  .stat-strip .stat { border-right: none; border-bottom: 1px solid var(--rule-soft); }
+  .stat-strip .stat:last-child { border-bottom: none; }
+}
+
+/* -- touch devices: kill hover-only affordances -- */
+@media (hover: none) {
+  .pyramid-row:hover,
+  .plat-card:hover,
+  .pillar:hover,
+  .thesis-card:hover,
+  .org-branch:hover,
+  .format-table .ft-row:hover,
+  .layer-tab:hover { transform: none; box-shadow: none; }
+  .top .meta a:hover { border-color: transparent; color: var(--ink-muted); }
+}
+</style>
+
 </body>
 </html>
