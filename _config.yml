@@ -26,6 +26,8 @@ collections:
   writings:
     output: true
     permalink: /:title/
+  html:
+    output: true
 
 defaults:
   - scope:
