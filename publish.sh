@@ -10,6 +10,22 @@ echo "  Publishing to GitHub Pages"
 echo "======================================"
 echo ""
 
+# Auto-format Chinese typography (spacing, punctuation) in markdown and homepage.
+# Front matter and HTML files in _html/ are not touched.
+if command -v node >/dev/null 2>&1; then
+    if [ ! -d node_modules ]; then
+        echo "Installing formatter dependencies (one-time)..."
+        npm install --silent
+    fi
+    echo "Formatting Chinese typography..."
+    node scripts/format.mjs _markdown/*.md index.html
+    echo ""
+else
+    echo "Warning: node is not installed; skipping auto-formatting."
+    echo "Install Node.js to enable Chinese typography auto-formatting."
+    echo ""
+fi
+
 # Bail out if there is nothing to publish
 if [[ -z $(git status -s) ]]; then
     echo "No changes to publish."
