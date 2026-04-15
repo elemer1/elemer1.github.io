@@ -6,18 +6,10 @@ layout: default
 
 <h2>Writing</h2>
 <ul class="post-list">
-  {% for writing in site.writings %}
-    <li>
-      {% assign title = writing.title %}
-      {% if title == "" or title == nil %}
-        {% assign title = writing.content | strip_html | truncatewords: 10, "" %}
-      {% endif %}
-      <a href="{{ writing.url }}">{{ title }}</a>
-    </li>
-  {% endfor %}
-  {% for page in site.pages %}
-    {% if page.listed %}
-      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+  {% assign items = site.writings | concat: site.html | sort: "title" %}
+  {% for item in items %}
+    {% if item.listed %}
+      <li><a href="{{ item.url }}">{{ item.title }}</a></li>
     {% endif %}
   {% endfor %}
 </ul>

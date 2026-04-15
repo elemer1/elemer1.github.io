@@ -1,6 +1,7 @@
 ---
 title: Patrick Collison Advice
-date: 2025-01-18
+permalink: /patrick-collison-advice/
+listed: true
 ---
 
 - If you think something is important but people older than you don't hold it in high regard, there's a reasonable chance that you're right and they're wrong. What society considers prestigious/important changes slowly—often taking 10-20 years to catch up. Status lags by a generation or more.
