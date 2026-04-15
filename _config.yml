@@ -1,8 +1,6 @@
 # Site settings
 title: Elemer
-email: your-email@example.com
-description: >-
-  Personal website
+description: Elemer's Personal Website
 baseurl: ""
 url: "https://elemer.net"
 
