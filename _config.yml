@@ -23,7 +23,7 @@ sass:
 
 # Collections
 collections:
-  writings:
+  markdown:
     output: true
     permalink: /:title/
   html:
@@ -32,7 +32,7 @@ collections:
 defaults:
   - scope:
       path: ""
-      type: "writings"
+      type: "markdown"
     values:
       layout: "post"
 

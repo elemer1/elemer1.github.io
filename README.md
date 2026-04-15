@@ -21,7 +21,7 @@ Live at **[elemer.net](https://elemer.net)**.
 ├── _layouts/
 │   ├── default.html     # Site shell (inlined CSS, MathJax, fonts)
 │   └── post.html        # Wrapper for markdown posts
-├── _writings/           # Markdown posts
+├── _markdown/           # Markdown posts
 ├── _html/               # Standalone HTML pages
 ├── assets/
 │   └── favicon.svg
@@ -36,7 +36,7 @@ Live at **[elemer.net](https://elemer.net)**.
 
 ### Markdown post
 
-1. Create a file in `_writings/`, e.g. `_writings/my-essay.md`
+1. Create a file in `_markdown/`, e.g. `_markdown/my-essay.md`
 2. Add this front matter at the top:
 
    ```yaml
