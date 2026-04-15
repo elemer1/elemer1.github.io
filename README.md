@@ -28,6 +28,9 @@ Live at **[elemer.net](https://elemer.net)**.
 ├── index.html           # Homepage (lists everything with `listed: true`)
 ├── CNAME                # Custom domain (elemer.net)
 ├── publish.sh           # One-command publish script
+├── package.json         # Node deps (autocorrect formatter)
+├── scripts/
+│   └── format.mjs       # Chinese typography formatter
 └── .github/workflows/
     └── jekyll.yml       # GitHub Pages build action
 ```
@@ -111,6 +114,41 @@ To preview locally before publishing:
 bundle install            # first time only
 bundle exec jekyll serve  # then open http://localhost:4000
 ```
+
+## Chinese typography auto-formatting
+
+Every time you run `./publish.sh`, Markdown files in `_markdown/` and
+`index.html` are automatically rewritten to follow the
+[Chinese Copywriting Guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines):
+
+- A space is inserted between Chinese and Latin / digits
+  (`100USD` → `100 USD`, `Hello世界` → `Hello 世界`)
+- Half-width punctuation next to Chinese is converted to full-width
+  (`你好,世界` → `你好，世界`)
+
+What is **not** automated (still up to you):
+
+- Proper-noun capitalization (`iPhone`, `GitHub`, `JavaScript`, `macOS`)
+- Choosing between `「」` and `""` for quotation marks
+- Avoiding repeated punctuation like `！！！`
+
+This runs through [`@huacnlee/autocorrect`](https://github.com/huacnlee/autocorrect),
+which is markdown-aware: front matter keys, code blocks' fences, and URLs are
+left alone. Files in `_html/` are **never** touched.
+
+To format manually without publishing:
+
+```bash
+npm run format
+```
+
+The first run installs the formatter (one-time `npm install`); subsequent runs
+are instant. If Node.js is not installed, `publish.sh` warns and skips this
+step instead of failing.
+
+> **Note:** Front matter `title` values are formatted (so `酒精的安全剂量为0`
+> becomes `酒精的安全剂量为 0` on the homepage), but `permalink` values are
+> not modified — keep permalinks ASCII-safe to be safe.
 
 ## Typography
 
