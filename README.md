@@ -12,6 +12,7 @@ Live at **[elemer.net](https://elemer.net)**.
 4. **LaTeX support.** MathJax loads by default on every page so any post can use `$...$` and `$$...$$`.
 5. **Drop-in publishing.** Drop a file into the right folder, add three lines of front matter, run `./publish.sh`. That's it.
 6. **Mobile and desktop friendly.** Responsive by default; nothing breaks at small widths.
+7. **Private by default.** No analytics, no RSS feed, no search-engine indexing, no opt-in for AI training crawlers. Sharing is for humans you send the link to.
 
 ## Folder layout
 
@@ -26,6 +27,8 @@ Live at **[elemer.net](https://elemer.net)**.
 ├── assets/
 │   └── favicon.svg
 ├── index.html           # Homepage (lists everything with `listed: true`)
+├── 404.html             # Custom not-found page
+├── robots.txt           # Crawler / AI-bot deny list
 ├── CNAME                # Custom domain (elemer.net)
 ├── publish.sh           # One-command publish script
 ├── package.json         # Node deps (autocorrect formatter)
@@ -165,6 +168,63 @@ font-family:
 ```
 
 Browsers fall back per glyph, so Latin and Chinese characters in the same paragraph each render in their best available font. Zero web fonts are downloaded.
+
+## Privacy
+
+This site is built to be **shared by hand**, not crawled or indexed. The
+philosophy is: if you want someone to read a piece, you send them the link.
+
+### No RSS / no newsletter
+
+The `jekyll-feed` plugin has been removed from the `Gemfile`. There is no
+`feed.xml`, no Atom feed, and no newsletter signup. There is intentionally no
+way to subscribe — readers come back when they choose to.
+
+### No search-engine indexing
+
+Two layers of protection, so compliant crawlers stay out:
+
+1. **`robots.txt`** disallows `/` for `User-agent: *` (every crawler that
+   honors the standard, including Googlebot, Bingbot, Baiduspider, etc.).
+2. **`<meta name="robots" content="noindex, nofollow">`** is injected into
+   every page that uses the default layout (homepage, 404, all markdown
+   posts), as a second layer in case `robots.txt` is missed.
+
+> Already-indexed pages take 1–2 weeks to drop from Google after this lands.
+> If you need them gone faster, submit a removal request in Google Search
+> Console.
+
+### No AI training crawlers
+
+`robots.txt` also lists every known AI training / scraping bot by name, so
+that bots which only honor a record matching their own `User-agent` (instead
+of the wildcard) are also blocked. The list is sourced from the
+community-maintained [ai.robots.txt](https://github.com/ai-robots-txt/ai.robots.txt)
+project and currently covers, among others:
+
+- **OpenAI** — `GPTBot`, `ChatGPT-User`, `OAI-SearchBot`
+- **Anthropic** — `ClaudeBot`, `Claude-Web`, `anthropic-ai`
+- **Google** — `Google-Extended`
+- **Perplexity** — `PerplexityBot`, `Perplexity-User`
+- **Common Crawl** — `CCBot`
+- **ByteDance** — `Bytespider`
+- **Meta** — `FacebookBot`, `Meta-ExternalAgent`, `Meta-ExternalFetcher`
+- **Amazon** — `Amazonbot`
+- **Apple** — `Applebot-Extended`
+- **Cohere** — `cohere-ai`
+- Other research / scraping bots: `Diffbot`, `AI2Bot`, `DuckAssistBot`,
+  `ImagesiftBot`, `YouBot`, `Timpibot`, `omgili`, `omgilibot`
+
+When new bots show up, copy them from
+[ai.robots.txt](https://github.com/ai-robots-txt/ai.robots.txt) into
+`robots.txt` and re-publish.
+
+### Limits
+
+`robots.txt` only blocks bots that **respect** it. Bad-faith scrapers ignore
+it. Real protection from those would need server-side rate limiting or
+authentication, which GitHub Pages does not offer. The trade-off is accepted:
+this site lives at the edge with zero infrastructure.
 
 ## Custom domain
 
