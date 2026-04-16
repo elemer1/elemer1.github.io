@@ -43,3 +43,4 @@ exclude:
   - package-lock.json
   - node_modules
   - scripts
+  - publish.sh
