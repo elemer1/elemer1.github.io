@@ -29,6 +29,13 @@ jobs:
           bundler-cache: true
       - name: Setup Pages
         uses: actions/configure-pages@v4
+      - name: Cache external images
+        uses: actions/cache@v4
+        with:
+          path: assets/images
+          key: external-images-${{ hashFiles('scripts/fetch-images.sh') }}
+      - name: Fetch external images
+        run: ./scripts/fetch-images.sh
       - name: Build with Jekyll
         run: bundle exec jekyll build
         env:
