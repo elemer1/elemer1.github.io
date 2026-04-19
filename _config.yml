@@ -33,6 +33,11 @@ defaults:
       type: "markdown"
     values:
       layout: "post"
+  - scope:
+      path: ""
+      type: "html"
+    values:
+      render_with_liquid: false
 
 # Exclude from processing
 exclude:
