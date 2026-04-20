@@ -10,17 +10,21 @@ layout: default
 
   <aside id="toc" hidden>
     <details>
-      <summary>目录</summary>
+      <summary>TOC</summary>
       <nav id="toc-nav" aria-label="Table of contents"></nav>
     </details>
   </aside>
 </article>
 
 <style>
+  article {
+    position: relative;
+  }
+
   #toc {
-    position: fixed;
-    top: 60px;
-    right: max(16px, calc((100vw - 650px) / 2 - 120px));
+    position: absolute;
+    top: 0;
+    left: calc(100% + 24px);
     width: 88px;
     font-size: 13px;
     line-height: 1.5;
