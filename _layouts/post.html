@@ -4,16 +4,16 @@ layout: default
 <article>
   <h1 class="post-title">{{ page.title }}</h1>
 
-  <div id="post-content">
-    {{ content }}
-  </div>
-
   <aside id="toc" hidden>
     <details>
       <summary>TOC</summary>
       <nav id="toc-nav" aria-label="Table of contents"></nav>
     </details>
   </aside>
+
+  <div id="post-content">
+    {{ content }}
+  </div>
 </article>
 
 <style>
