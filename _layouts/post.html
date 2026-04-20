@@ -59,6 +59,14 @@ layout: default
     margin: 4px 0;
   }
 
+  #toc li.toc-h3 {
+    padding-left: 8px;
+  }
+
+  #toc li.toc-h4 {
+    padding-left: 16px;
+  }
+
   #toc a {
     color: #0000ee;
     text-decoration: none;
@@ -85,7 +93,7 @@ layout: default
     const nav = document.getElementById('toc-nav');
     if (!content || !toc || !nav) return;
 
-    const headings = content.querySelectorAll('h2');
+    const headings = content.querySelectorAll('h2, h3, h4');
     if (!headings.length) return;
 
     function slugify(text) {
@@ -104,6 +112,8 @@ layout: default
       }
 
       const li = document.createElement('li');
+      li.className = `toc-${h.tagName.toLowerCase()}`;
+
       const a = document.createElement('a');
       a.href = `#${h.id}`;
       a.textContent = h.textContent;
