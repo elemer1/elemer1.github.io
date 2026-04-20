@@ -1,5 +1,5 @@
 ---
-title: Tool use 如何改写"智能"的定义
+title: Tool Use 如何改写"智能"的定义
 permalink: /tool-use-redefines-intelligence/
 listed: true
 ---
