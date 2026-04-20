@@ -3,5 +3,111 @@ layout: default
 ---
 <article>
   <h1 class="post-title">{{ page.title }}</h1>
-  {{ content }}
+
+  <div id="post-content">
+    {{ content }}
+  </div>
+
+  <aside id="toc" hidden>
+    <details>
+      <summary>目录</summary>
+      <nav id="toc-nav" aria-label="Table of contents"></nav>
+    </details>
+  </aside>
 </article>
+
+<style>
+  #toc {
+    position: fixed;
+    top: 60px;
+    right: max(16px, calc((100vw - 650px) / 2 - 120px));
+    width: 88px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  #toc details {
+    display: block;
+  }
+
+  #toc summary {
+    cursor: pointer;
+    list-style: none;
+    color: #0000ee;
+    user-select: none;
+  }
+
+  #toc summary::-webkit-details-marker {
+    display: none;
+  }
+
+  #toc nav {
+    margin-top: 8px;
+  }
+
+  #toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #toc li {
+    margin: 4px 0;
+  }
+
+  #toc a {
+    color: #0000ee;
+    text-decoration: none;
+    word-break: break-word;
+  }
+
+  #toc a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px) {
+    #toc {
+      position: static;
+      width: auto;
+      margin: 0 0 20px 0;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    const content = document.getElementById('post-content');
+    const toc = document.getElementById('toc');
+    const nav = document.getElementById('toc-nav');
+    if (!content || !toc || !nav) return;
+
+    const headings = content.querySelectorAll('h2');
+    if (!headings.length) return;
+
+    function slugify(text) {
+      return text
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\u4e00-\u9fff\- ]+/g, '')
+        .replace(/\s+/g, '-');
+    }
+
+    const ul = document.createElement('ul');
+
+    headings.forEach((h, i) => {
+      if (!h.id) {
+        h.id = slugify(h.textContent) || `section-${i + 1}`;
+      }
+
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = `#${h.id}`;
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+
+    nav.appendChild(ul);
+    toc.hidden = false;
+  })();
+</script>
