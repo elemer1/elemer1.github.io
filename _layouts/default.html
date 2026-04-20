@@ -31,7 +31,8 @@
   <!-- Inlined CSS -->
   <style>
     *{margin:0;padding:0;box-sizing:border-box;color:#000}
-    body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",微软雅黑,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+    body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",微软雅黑,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
     .container{max-width:650px;margin:0 auto;padding:60px 20px}
     header{margin-bottom:60px}
     header h1{font-size:20px;font-weight:600}
@@ -51,7 +52,7 @@
     .post-list a:hover{text-decoration:underline}
     main img{max-width:100%;height:auto;display:block}
     main pre{overflow-x:auto}
-    main code,main a{word-wrap:break-word;overflow-wrap:break-word}
+    main code,main a{word-wrap:break-word;overflow-wrap:anywhere;word-break:break-word}
     @media (max-width:480px){.container{padding:40px 16px}}
   </style>
 
