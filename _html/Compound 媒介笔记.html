@@ -152,12 +152,15 @@ section.s { padding: 110px var(--gutter); max-width: var(--max); margin: 0 auto;
   <nav class="meta">
     <span>Memo · Internal</span>
     <span>2026·04</span>
-    <a href="#exec">执行摘要</a>
   </nav>
+  <button class="m-nav-trigger" id="mNavFab" type="button" aria-label="打开章节导航" aria-expanded="false" aria-controls="mNavPanel">
+    <span class="m-nav-fab-bar"></span>
+    <span class="m-nav-fab-bar"></span>
+    <span class="m-nav-fab-bar"></span>
+  </button>
 </header>
 
 <aside class="toc-side" id="tocSide">
-  <a href="#exec"      data-id="exec"><span class="lbl">执行摘要</span><span class="bar"></span></a>
   <a href="#category"  data-id="category"><span class="lbl">品类创造</span><span class="bar"></span></a>
   <a href="#platform"  data-id="platform"><span class="lbl">平台抉择</span><span class="bar"></span></a>
   <a href="#layers"    data-id="layers"><span class="lbl">四层框架</span><span class="bar"></span></a>
@@ -1942,32 +1945,30 @@ document.querySelectorAll('.phase-tab').forEach(btn => {
 }
 
 /* ============================================================
-   MOBILE CHAPTER NAV (FAB + slide-up panel)
-   Hidden on desktop; the right-side .toc-side handles desktop.
+   MOBILE CHAPTER NAV (top-nav trigger + slide-up panel)
+   Hidden on desktop; the left-side .toc-side handles desktop.
    ============================================================ */
-.m-nav-fab, .m-nav-panel, .m-nav-backdrop { display: none; }
+.m-nav-trigger, .m-nav-panel, .m-nav-backdrop { display: none; }
 
 @media (max-width: 1180px) {
-  .m-nav-fab {
+  .m-nav-trigger {
     display: flex; flex-direction: column; justify-content: center; align-items: center;
-    position: fixed; right: 20px; z-index: 90;
-    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-    width: 52px; height: 52px; border-radius: 50%;
-    background: var(--ink); border: none; cursor: pointer;
-    gap: 5px; padding: 0;
-    box-shadow: 0 4px 16px rgba(14,20,25,.22), 0 1px 3px rgba(14,20,25,.14);
-    transition: background .25s, transform .25s;
+    width: 34px; height: 34px; border-radius: 8px;
+    background: transparent; border: 1px solid var(--rule); cursor: pointer;
+    gap: 4px; padding: 0; margin-left: 10px;
+    transition: background .2s, border-color .2s;
     -webkit-tap-highlight-color: transparent;
   }
-  .m-nav-fab:active { transform: scale(0.94); }
+  .m-nav-trigger:active { transform: scale(0.96); }
   .m-nav-fab-bar {
-    width: 20px; height: 1.5px; background: var(--bone);
-    transition: transform .3s cubic-bezier(.2,.8,.2,1), opacity .2s;
+    width: 16px; height: 1.5px; background: var(--ink);
+    transition: transform .3s cubic-bezier(.2,.8,.2,1), opacity .2s, background .2s;
   }
-  .m-nav-fab.open { background: var(--oxblood); }
-  .m-nav-fab.open .m-nav-fab-bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .m-nav-fab.open .m-nav-fab-bar:nth-child(2) { opacity: 0; }
-  .m-nav-fab.open .m-nav-fab-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .m-nav-trigger.open { background: var(--oxblood); border-color: var(--oxblood); }
+  .m-nav-trigger.open .m-nav-fab-bar { background: var(--bone); }
+  .m-nav-trigger.open .m-nav-fab-bar:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .m-nav-trigger.open .m-nav-fab-bar:nth-child(2) { opacity: 0; }
+  .m-nav-trigger.open .m-nav-fab-bar:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
 
   .m-nav-backdrop {
     display: block; position: fixed; inset: 0; z-index: 80;
@@ -2048,18 +2049,12 @@ body.m-nav-locked { overflow: hidden; }
 </style>
 
 <!-- Mobile chapter navigation -->
-<button class="m-nav-fab" id="mNavFab" type="button" aria-label="打开章节导航" aria-expanded="false" aria-controls="mNavPanel">
-  <span class="m-nav-fab-bar"></span>
-  <span class="m-nav-fab-bar"></span>
-  <span class="m-nav-fab-bar"></span>
-</button>
 <div class="m-nav-backdrop" id="mNavBackdrop" aria-hidden="true"></div>
 <nav class="m-nav-panel" id="mNavPanel" aria-label="章节导航" aria-hidden="true">
   <div class="m-nav-head">
     <span class="m-nav-title">Compound · <strong>媒介笔记</strong></span>
     <button class="m-nav-close" type="button" aria-label="关闭导航">×</button>
   </div>
-  <a class="m-nav-link" href="#exec"><span class="n">§</span><span class="t">执行摘要<small>Executive Thesis</small></span><span class="m-nav-dot"></span></a>
   <a class="m-nav-link" href="#category"><span class="n">i.</span><span class="t">品类创造<small>Category Creation</small></span><span class="m-nav-dot"></span></a>
   <a class="m-nav-link" href="#platform"><span class="n">ii.</span><span class="t">平台抉择<small>Platform Pick</small></span><span class="m-nav-dot"></span></a>
   <a class="m-nav-link" href="#layers"><span class="n">iii.</span><span class="t">四层框架<small>Content Architecture</small></span><span class="m-nav-dot"></span></a>
