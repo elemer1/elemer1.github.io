@@ -10,8 +10,6 @@ listed: true
 
 为了深入理解这个概念，我们可以将其拆解为系统构成、演进历程以及它在当下面临的结构性危机。
 
-------
-
 ### 一、 Source of Truth 的系统构成
 
 一个成熟的现代设计体系中，Source of Truth 通常由以下几个层级堆叠而成（这在本质上是一种系统工程 Systems Engineering 的降维应用）：
@@ -21,8 +19,6 @@ listed: true
 3. **模式与规范 (Patterns & Guidelines)：** 规定组件如何组合使用的宏观逻辑，例如“在破坏性操作的弹窗中，主要按钮必须放置在右侧且显示为红色”。
 4. **交互文档 (Interaction/Behavioral Specs)：** 定义动效时长、缓动曲线 (Easing curves) 以及状态切换的逻辑。
 
-------
-
 ### 二、 范式的演进：谁掌握了 SoT，谁就掌握了话语权
 
 设计工具的更迭史，本质上就是对 Source of Truth 解释权的争夺史。
@@ -31,8 +27,6 @@ listed: true
 - **第一代 SoT（矢量与符号）：** Sketch 引入了 Symbols（符号），将 UI 元素模块化，确立了“设计文件”本身可以作为视觉的规范来源。
 - **第二代 SoT（云端与全链路系统化）：** Figma 的崛起在于它建立了一套极其庞大且严密的私有原语（Variables, Variants, Auto-layout）。它让设计文件不仅仅是视觉稿，而是变成了一个**具有伪代码逻辑的关系型数据库**。Figma 成功说服了行业：**Figma 文件就是 Source of Truth**。工程师必须查阅 Figma 来编写代码。
 
-------
-
 ### 三、 核心冲突：意图的近似值 vs. 物理现实
 
 在实际运作中，将 Figma 等设计工具作为 Source of Truth 存在一个根本性的哲学悖论：**设计工具描绘的是“意图 (Intent)”，而代码才是产品最终存在的“物理现实 (Reality)”。**
@@ -40,9 +34,7 @@ listed: true
 - **The Translation Penalty（翻译惩罚）：** 当 Figma 宣称自己是 SoT 时，工程师每天的工作就是将 Figma 的专有原语（如嵌套了 8 层的 Variant）“翻译”成 React 或 Vue 的组件。这种翻译永远是有损的。
 - **State Desynchronization（状态脱节）：** 如果工程师在代码库中为了修复一个 Bug 而微调了组件的 padding，但没有同步回 Figma（所谓的 Back-porting），Figma 作为 SoT 的权威性就瞬间瓦解了。久而久之，Figma 变成了“我们希望它是怎样的”，而 GitHub 代码库才是“它实际上是怎样的”。
 
----
-
-### 四、Figma 的结构性劣势 (Figma's Structural Disadvantage in the Agentic Era)
+### 四、Figma 的结构性劣势
 
 - **训练数据的错位**：Figma 的胜利建立在其封闭、缺乏文档化且难以通过编程直接操作的专有格式上。这一护城河在 Agentic Era 变成了致命弱点——LLM 是基于海量代码（HTML/CSS/JS）训练的，而不是 Figma 的私有原语。
 - **巴洛克式的系统冗余 (Baroque Infrastructure)**：Figma 为适配工程化需求，堆砌了极其复杂的系统（如 900+ 个颜色变量嵌套、无尽的组件变体和 Prop 属性）。当 AI 代理能够直接生成和修改高质量的底层代码时，这种在“有损近似媒介”中进行的手动系统化维护显得荒谬且低效。
