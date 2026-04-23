@@ -32,8 +32,10 @@ Live at **[elemer.net](https://elemer.net)**.
 ├── CNAME                # Custom domain (elemer.net)
 ├── publish.sh           # One-command publish script
 ├── package.json         # Node deps (autocorrect formatter)
+├── _private/            # Plaintext sources for password-locked pages (gitignored)
 ├── scripts/
-│   └── format.mjs       # Chinese typography formatter
+│   ├── format.mjs       # Chinese typography formatter
+│   └── encrypt.mjs      # Builds password-locked pages from _private/ into _html/
 └── .github/workflows/
     └── jekyll.yml       # GitHub Pages build action
 ```
@@ -145,6 +147,63 @@ at the end of the article, preceded by a `---` divider.
 
 - Anthropic. (2024, November 25). Introducing the Model Context Protocol. [原文](https://www.anthropic.com/news/model-context-protocol)
 ```
+
+## Password-locked articles
+
+Any article — Markdown or HTML — can be served behind a password prompt. The
+plaintext source never leaves your machine; only a ciphertext blob is pushed to
+GitHub. Wrong password = page cannot be decrypted.
+
+### How it works
+
+- **Source** lives in `_private/` (gitignored).
+- **`./publish.sh`** runs `scripts/encrypt.mjs` before committing. For each file
+  with `encrypted: true`, it derives a key from the password
+  (PBKDF2, 200 000 iterations, SHA-256), encrypts the body with AES-GCM, and
+  writes a self-contained page into `_html/` that contains a password prompt +
+  the ciphertext. The password is stripped — it is never committed.
+- **In the browser**, Web Crypto decrypts client-side on submit. AES-GCM has a
+  built-in auth tag, so a wrong password fails loudly (and the plaintext stays
+  unreachable).
+
+### Writing a locked article
+
+1. Create `_private/My Secret Post.html` (or `.md`):
+
+   ```yaml
+   ---
+   title: "My Secret Post"
+   permalink: /my-secret-post/
+   listed: true
+   encrypted: true
+   password: "correct-horse-battery-staple"
+   ---
+   <!DOCTYPE html>
+   ...
+   ```
+
+   Use `.html` for a full standalone HTML document (its content is served
+   as-is after decryption). Use `.md` for Markdown — a small client-side
+   renderer handles headings, paragraphs, lists, code blocks, blockquotes,
+   bold/italic, and links. For anything fancier (footnotes, tables, math),
+   render to HTML first and save as `.html`.
+
+2. Set `listed: true` if you want the title to appear on the homepage (the
+   link still works; visitors are prompted for the password when they click).
+   Set `listed: false` to keep it unlisted — only shareable by direct URL.
+
+3. Run `./publish.sh`. The encrypted page lands in `_html/` and gets pushed.
+
+### Security notes
+
+- AES-GCM + PBKDF2 is the same construction used by WebCrypto across
+  browsers. A brute-force attacker needs ~2²⁰⁰ᵏ hash operations per password
+  guess, so pick a strong password (passphrase of 4+ random words is fine).
+- The lock protects against drive-by readers and search engines. It does
+  **not** protect against someone you gave the password to — once they have
+  it, they can save the decrypted page.
+- If you rotate a password, re-run `./publish.sh`; the script detects source
+  changes and rewrites the encrypted page.
 
 ## Publishing
 

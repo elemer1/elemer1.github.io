@@ -17,11 +17,16 @@ if command -v node >/dev/null 2>&1; then
         echo "Installing formatter dependencies (one-time)..."
         npm install --silent
     fi
+    if [ -d _private ]; then
+        echo "Encrypting private articles..."
+        node scripts/encrypt.mjs
+        echo ""
+    fi
     echo "Formatting Chinese typography..."
     node scripts/format.mjs _markdown/*.md index.html
     echo ""
 else
-    echo "Warning: node is not installed; skipping auto-formatting."
+    echo "Warning: node is not installed; skipping auto-formatting and encryption."
     echo "Install Node.js to enable Chinese typography auto-formatting."
     echo ""
 fi
