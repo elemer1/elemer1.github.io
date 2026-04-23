@@ -103,6 +103,49 @@ Optional:
 
 There are deliberately no `date` fields. This site only publishes long-half-life writing.
 
+## Bibliography format
+
+Posts that cite sources use a single unified format. The section always appears
+at the end of the article, preceded by a `---` divider.
+
+### Rules
+
+1. **Header.** `## 参考文献` (H2). Do not use `# 参考文献` (H1) or bold text
+   (`**参考文献**`).
+2. **Grouping.** For long bibliographies, group entries under `### subsection`
+   headers (e.g. `### 哲学与认知科学`, `### 评测基准`). Short ones can skip
+   subsections.
+3. **Entries.** APA-style on a single bullet line starting with `- `:
+   - `Author, A. B., & Author, C. D. (Year). Article title. *Journal*, Volume(Issue), pages.`
+   - Italicize book / journal titles with `*...*`.
+   - Do **not** bold author names.
+4. **Links.** Use Markdown syntax `[label](url)`. Preferred labels:
+   - `[DOI](https://doi.org/...)` for journal articles
+   - `[arXiv:2005.14165](https://arxiv.org/abs/2005.14165)` for arXiv preprints
+   - `[JSTOR]`, `[PDF]`, `[IEEE]`, `[OUP]`, etc. for known platforms
+   - `[原文](...)` for primary-source URLs without a better label
+   - a domain label (e.g. `[swebench.com](...)`) for sites / leaderboards
+   - Join multiple links with ` ｜ ` (full-width pipe with spaces).
+5. **No footnote-style references.** Do not use `[^N]: ...`; use the bulleted
+   list instead.
+
+### Template
+
+```markdown
+---
+
+## 参考文献
+
+### 语言模型
+
+- Brown, T. B., Mann, B., Ryder, N., et al. (2020). Language models are few-shot learners. *Advances in Neural Information Processing Systems*, 33. [arXiv:2005.14165](https://arxiv.org/abs/2005.14165)
+- Clark, A., & Chalmers, D. (1998). The extended mind. *Analysis*, 58(1), 7–19. [DOI](https://doi.org/10.1093/analys/58.1.7) ｜ [JSTOR](http://www.jstor.org/stable/3328150)
+
+### 官方文档
+
+- Anthropic. (2024, November 25). Introducing the Model Context Protocol. [原文](https://www.anthropic.com/news/model-context-protocol)
+```
+
 ## Publishing
 
 ```bash
