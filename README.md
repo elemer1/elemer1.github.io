@@ -161,24 +161,30 @@ Wrong password = page cannot be decrypted (AES-GCM auth tag fails).
 
 - You write a normal article in `_html/` or `_markdown/` and add two fields
   to its front matter: `encrypted: true` and `password: "..."`.
-- On every push, GitHub Actions runs `scripts/encrypt.mjs` before
-  `jekyll build`. It derives a key (PBKDF2, 200 000 iterations, SHA-256),
-  encrypts the body with AES-GCM, and emits a self-contained page with a
-  password prompt + the ciphertext. `encrypted` and `password` are stripped
-  from the output. Encrypted `.html` sources are overwritten in place;
-  encrypted `.md` sources are emitted to `_html/<slug>.html` and the
-  original `.md` is deleted so Jekyll doesn't also render the plaintext.
-- Jekyll builds the encrypted page. The deployed `.html` contains only
-  ciphertext and the decryptor — no plaintext, no password.
+- On every push, GitHub Actions runs a three-step pipeline:
+  1. **`jekyll build` (plaintext pass).** Encrypted articles are rendered
+     normally into `_site/`, through the full Jekyll stack — kramdown,
+     `_layouts/post.html`, `_layouts/default.html`, MathJax, TOC, the works.
+     This is the "original" rendering that the decrypted view must match.
+  2. **`node scripts/encrypt.mjs`.** For each file with `encrypted: true`
+     the script reads the rendered HTML from `_site/<permalink>/index.html`,
+     derives a key (PBKDF2, 200 000 iterations, SHA-256), encrypts the whole
+     document with AES-GCM, and overwrites the source with a self-contained
+     password-lock page (prompt + ciphertext). `encrypted` and `password`
+     are stripped. Encrypted `.html` sources are overwritten in place;
+     encrypted `.md` sources are emitted to `_html/<slug>.html` and the
+     original `.md` is deleted so Jekyll doesn't re-render the plaintext.
+  3. **`jekyll build` (final pass).** `_site/` is wiped and rebuilt with
+     the password-lock pages in place of the plaintext. The deployed
+     `.html` contains only ciphertext and the decryptor — no plaintext,
+     no password.
 - In the browser, Web Crypto decrypts client-side when the visitor submits
-  the password. `.html` articles replace the whole document via
-  `document.write` (they ship their own `<head>`/CSS). `.md` articles are
-  rendered in place: only `document.body` is swapped for the rendered
-  article, so the page's original `<style>` block (with both `.lock` and
-  `.md-post` rules) stays applied. Do not regress this to a full-document
-  rewrite — an inlined `<style>` re-serialized via `outerHTML` and written
-  with `document.open/write/close` does not reliably re-apply, and the
-  decrypted page loses all CSS.
+  the password. The decryptor calls
+  `document.open(); document.write(plaintext); document.close();` — the
+  plaintext is the full rendered HTML document captured in step 1, so the
+  decrypted page is byte-identical to what Jekyll produced for the
+  non-encrypted article. Both `.md` and `.html` sources take the same
+  decryption code path; there is no client-side markdown renderer.
 
 Nothing to run locally. `git push` is all it takes.
 
@@ -199,10 +205,10 @@ Nothing to run locally. `git push` is all it takes.
    ...
    ```
 
-   `.html` files are served as-is after decryption. `.md` files go through a
-   small client-side renderer that handles headings, paragraphs, lists, code
-   blocks, blockquotes, bold/italic, and links. For fancier kramdown features
-   (footnotes, tables, math), write the article as `.html` instead.
+   Both `.html` and `.md` files are captured by Jekyll during the plaintext
+   pass before encryption, so everything that works on a regular post also
+   works here: kramdown's full syntax, footnotes, tables, MathJax, the TOC,
+   the inlined CSS in `_layouts/default.html`, etc.
 
 2. `listed: true` puts it on the homepage — clicking prompts for the
    password. `listed: false` (or omitted) hides it; the URL still works if
@@ -216,9 +222,15 @@ Nothing to run locally. `git push` is all it takes.
 runs in CI, not locally). That's intentional — you're previewing the
 plaintext you wrote. The deployed site is the encrypted version.
 
-If you want to see the encrypted page locally, run
-`node scripts/encrypt.mjs` before `jekyll serve`. This rewrites the source
-files in place, so commit or stash first.
+If you want to reproduce the CI pipeline locally:
+
+```bash
+bundle exec jekyll build     # plaintext pass, fills _site/
+node scripts/encrypt.mjs     # reads _site/, rewrites sources to lock pages
+rm -rf _site && bundle exec jekyll build   # final pass with encrypted pages
+```
+
+Step 2 rewrites source files in place, so commit or stash first.
 
 ### Security notes
 

@@ -1,26 +1,28 @@
 #!/usr/bin/env node
-// Encrypts articles with `encrypted: true` in their front matter, in place.
-// Designed to run in GitHub Actions before `jekyll build`, so the deployed
-// site serves a password prompt + ciphertext instead of the plaintext source.
+// Encrypts articles with `encrypted: true` in their front matter.
 //
-// Source layout (plaintext + password live in the repo — keep the repo
-// private):
-//   _html/<name>.html      full standalone HTML doc after front matter
-//   _markdown/<name>.md    markdown body after front matter
+// Pipeline (runs in GitHub Actions):
+//   1. `jekyll build`            First pass renders every article — including
+//                                encrypted ones — to _site/ through the full
+//                                Jekyll stack: kramdown, _layouts/post.html,
+//                                _layouts/default.html, MathJax, TOC, etc.
+//                                The plaintext we capture here is exactly
+//                                what a non-encrypted post would look like.
+//   2. `node scripts/encrypt.mjs` For each file with `encrypted: true`, read
+//                                the rendered HTML from _site/, encrypt it
+//                                with AES-GCM, and overwrite the source with
+//                                a password-lock page containing the
+//                                ciphertext. .md sources are converted to
+//                                .html and the original .md is deleted so
+//                                Jekyll doesn't re-render the plaintext.
+//   3. `jekyll build`            Second pass rebuilds _site/ with the
+//                                password-lock pages replacing the originals.
 //
-// Front matter:
-//   ---
-//   title: "..."
-//   permalink: /slug/
-//   listed: true
-//   encrypted: true
-//   password: "your-password"
-//   ---
-//
-// Output: self-contained HTML at _html/<name>.html with a password prompt,
-// the ciphertext, and a Web Crypto decryptor. The `encrypted` and `password`
-// fields are stripped from the output front matter. When the source is .md,
-// the original .md is removed and the output is written as .html.
+// After the visitor enters the correct password the decryptor calls
+// `document.open(); document.write(plaintext); document.close();` so the
+// decrypted document is byte-identical to what Jekyll produced in step 1.
+// There is no client-side markdown rendering: .md and .html articles take
+// the same code path after decryption.
 
 import {
   readFileSync,
@@ -30,7 +32,7 @@ import {
   statSync,
   unlinkSync,
 } from "node:fs";
-import { createHash, webcrypto as crypto } from "node:crypto";
+import { webcrypto as crypto } from "node:crypto";
 import { join, dirname, extname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -38,8 +40,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const HTML_DIR = join(ROOT, "_html");
 const MD_DIR = join(ROOT, "_markdown");
+const SITE_DIR = join(ROOT, "_site");
 const PBKDF2_ITERATIONS = 200000;
-const HASH_MARKER = "<!-- elemer-encrypt source-hash:";
 
 function parseFrontMatter(text) {
   if (!text.startsWith("---")) return null;
@@ -101,36 +103,17 @@ async function encryptBody(plaintext, password) {
   };
 }
 
-function sourceHash({ fm, body, password, type }) {
-  return createHash("sha256")
-    .update(
-      JSON.stringify({
-        v: 1,
-        type,
-        password,
-        title: fm.title ?? "",
-        permalink: fm.permalink ?? "",
-        listed: !!fm.listed,
-        body,
-      }),
-    )
-    .digest("hex");
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[c]);
 }
 
-function readExistingHash(path) {
-  if (!existsSync(path)) return null;
-  try {
-    const head = readFileSync(path, "utf8").slice(0, 4096);
-    const m = head.match(
-      /<!-- elemer-encrypt source-hash: ([0-9a-f]{64}) -->/,
-    );
-    return m ? m[1] : null;
-  } catch {
-    return null;
-  }
-}
-
-function renderPage({ title, permalink, listed, type, payload, hash }) {
+function renderPage({ title, permalink, listed, payload }) {
   const fmLines = ["---"];
   fmLines.push(`title: ${JSON.stringify(title)}`);
   fmLines.push(`permalink: ${JSON.stringify(permalink)}`);
@@ -138,7 +121,7 @@ function renderPage({ title, permalink, listed, type, payload, hash }) {
   fmLines.push("---");
   const fm = fmLines.join("\n");
 
-  const payloadJson = JSON.stringify({ type, ...payload });
+  const payloadJson = JSON.stringify(payload).replace(/</g, "\\u003c");
 
   return String.raw`${fm}
 <!DOCTYPE html>
@@ -149,7 +132,6 @@ function renderPage({ title, permalink, listed, type, payload, hash }) {
 <title>${escapeHtml(title)} - Elemer</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-${HASH_MARKER} ${hash} -->
 <style>
 *{margin:0;padding:0;box-sizing:border-box;color:#000}
 html,body{height:100%;background:#fff}
@@ -165,34 +147,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue"
 .lock button:hover{background:#0000ee;border-color:#0000ee}
 .lock button:disabled{opacity:.5;cursor:wait}
 .lock .err{margin-top:12px;font-size:14px;color:#b00020}
-.md-post{max-width:650px;margin:0 auto;padding:60px 20px}
-.md-post header{margin-bottom:60px}
-.md-post header h1{font-size:20px;font-weight:600}
-.md-post header h1 a{color:#000;text-decoration:none}
-.md-post header h1 a:hover{text-decoration:underline}
-.md-post .post-title{font-size:32px;font-weight:700;margin:0 0 30px 0;line-height:1.25}
-.md-post main h1{font-size:28px;font-weight:700;margin:50px 0 25px 0;line-height:1.25}
-.md-post main h2{font-size:22px;font-weight:700;margin:40px 0 20px 0;line-height:1.3}
-.md-post main h3{font-size:19px;font-weight:600;margin:30px 0 15px 0;line-height:1.35}
-.md-post main h4{font-size:17px;font-weight:600;margin:25px 0 12px 0;line-height:1.4}
-.md-post main p{margin:15px 0}
-.md-post main ul,.md-post main ol{margin:15px 0;padding-left:30px}
-.md-post main li{margin:5px 0}
-.md-post main a{color:#0000ee;text-decoration:none}
-.md-post main a:hover{text-decoration:underline}
-.md-post main blockquote{margin:20px 0;padding:10px 16px;border-left:4px solid #d0d7de;background:#f6f8fa;color:#57606a}
-.md-post main img{max-width:100%;height:auto;display:block}
-.md-post main hr{border:0;border-top:1px solid #000;margin:40px 0}
-.md-post main pre{overflow-x:auto;max-width:100%;background:#f6f8fa;padding:14px 16px;border-radius:6px;font-size:14px;line-height:1.5;margin:20px 0}
-.md-post main code{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;font-size:.9em;padding:2px 5px;background:#f6f8fa;border-radius:4px}
-.md-post main pre code{padding:0;background:transparent;font-size:inherit;border-radius:0}
-.md-post main table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;margin:20px 0;font-size:15px}
-.md-post main th,.md-post main td{padding:8px 12px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;line-height:1.5}
-.md-post main th{background:#f6f8fa;font-weight:600}
 </style>
 </head>
 <body>
-<div class="lock" id="lock">
+<div class="lock">
   <h1><a href="/">Elemer</a></h1>
   <form id="lock-form" autocomplete="off">
     <input id="pw" type="password" placeholder="Password" autofocus autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
@@ -200,7 +158,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue"
   </form>
   <div id="err" class="err" hidden>Wrong password.</div>
 </div>
-<script id="payload" type="application/json">${payloadJson.replace(/</g, "\\u003c")}</script>
+<script id="payload" type="application/json">${payloadJson}</script>
 <script>
 (function(){
   var PAYLOAD = JSON.parse(document.getElementById('payload').textContent);
@@ -236,96 +194,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue"
     return new TextDecoder().decode(pt);
   }
 
-  function renderMarkdownInPlace(md, title){
-    document.title = title + ' - Elemer';
-    document.body.innerHTML =
-      '<article class="md-post">'
-      + '<header><h1><a href="/">Elemer</a></h1></header>'
-      + '<h1 class="post-title">' + escapeHtml(title) + '</h1>'
-      + '<main>' + mdToHtml(md) + '</main>'
-      + '</article>';
-  }
-
-  function escapeHtml(s){
-    return s.replace(/[&<>"']/g, function(c){
-      return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
-    });
-  }
-
-  // Minimal markdown → HTML (headings, paragraphs, lists, code, bold/italic, links, hr, blockquote).
-  function mdToHtml(src){
-    var lines = src.replace(/\r\n?/g, '\n').split('\n');
-    var html = '', i = 0;
-    function inline(t){
-      t = t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      t = t.replace(/\`([^\`]+)\`/g, '<code>$1</code>');
-      t = t.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-      t = t.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-      t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-      return t;
-    }
-    while (i < lines.length){
-      var line = lines[i];
-      if (/^\s*$/.test(line)) { i++; continue; }
-      var h = line.match(/^(#{1,6})\s+(.*)$/);
-      if (h) { html += '<h' + h[1].length + '>' + inline(h[2]) + '</h' + h[1].length + '>'; i++; continue; }
-      if (/^\s*---\s*$/.test(line)) { html += '<hr>'; i++; continue; }
-      if (/^\`\`\`/.test(line)) {
-        i++;
-        var code = '';
-        while (i < lines.length && !/^\`\`\`/.test(lines[i])) { code += lines[i] + '\n'; i++; }
-        i++;
-        html += '<pre><code>' + code.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</code></pre>';
-        continue;
-      }
-      if (/^\s*>\s?/.test(line)) {
-        var bq = '';
-        while (i < lines.length && /^\s*>\s?/.test(lines[i])) { bq += lines[i].replace(/^\s*>\s?/, '') + '\n'; i++; }
-        html += '<blockquote>' + mdToHtml(bq) + '</blockquote>';
-        continue;
-      }
-      if (/^\s*[-*]\s+/.test(line)) {
-        var items = [];
-        while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) {
-          items.push(lines[i].replace(/^\s*[-*]\s+/, ''));
-          i++;
-        }
-        html += '<ul>' + items.map(function(x){ return '<li>' + inline(x) + '</li>'; }).join('') + '</ul>';
-        continue;
-      }
-      if (/^\s*\d+\.\s+/.test(line)) {
-        var oitems = [];
-        while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) {
-          oitems.push(lines[i].replace(/^\s*\d+\.\s+/, ''));
-          i++;
-        }
-        html += '<ol>' + oitems.map(function(x){ return '<li>' + inline(x) + '</li>'; }).join('') + '</ol>';
-        continue;
-      }
-      var para = line;
-      i++;
-      while (i < lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,6}\s|>\s|[-*]\s|\d+\.\s|\`\`\`|---\s*$)/.test(lines[i])) {
-        para += ' ' + lines[i];
-        i++;
-      }
-      html += '<p>' + inline(para) + '</p>';
-    }
-    return html;
-  }
-
   form.addEventListener('submit', async function(e){
     e.preventDefault();
     err.hidden = true;
     btn.disabled = true;
     try {
       var plaintext = await decrypt(pw.value);
-      if (PAYLOAD.type === 'markdown') {
-        renderMarkdownInPlace(plaintext, ${JSON.stringify(title)});
-      } else {
-        document.open();
-        document.write(plaintext);
-        document.close();
-      }
+      document.open();
+      document.write(plaintext);
+      document.close();
     } catch (e2) {
       err.hidden = false;
       btn.disabled = false;
@@ -339,14 +216,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue"
 `;
 }
 
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, (c) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-  })[c]);
+function renderedPathForPermalink(permalink) {
+  const clean = permalink.replace(/^\/+|\/+$/g, "");
+  if (!clean) return join(SITE_DIR, "index.html");
+  return join(SITE_DIR, clean, "index.html");
 }
 
 async function processFile(srcPath) {
@@ -354,39 +227,42 @@ async function processFile(srcPath) {
   const raw = readFileSync(srcPath, "utf8");
   const parsed = parseFrontMatter(raw);
   if (!parsed) return false;
-  const { fm, body } = parsed;
+  const { fm } = parsed;
   if (fm.encrypted !== true) return false;
   if (!fm.password || typeof fm.password !== "string") {
-    throw new Error(`${filename}: encrypted: true but no password in front matter`);
+    throw new Error(
+      `${filename}: encrypted: true but no password in front matter`,
+    );
   }
   if (!fm.title || !fm.permalink) {
     throw new Error(`${filename}: title and permalink are required`);
   }
 
+  const renderedPath = renderedPathForPermalink(fm.permalink);
+  if (!existsSync(renderedPath)) {
+    throw new Error(
+      `${filename}: rendered file not found at ${renderedPath}. ` +
+        `Run \`bundle exec jekyll build\` before \`node scripts/encrypt.mjs\` ` +
+        `so the encryptor can capture the fully rendered plaintext.`,
+    );
+  }
+  const renderedHtml = readFileSync(renderedPath, "utf8");
+
   const ext = extname(filename).toLowerCase();
-  const type = ext === ".md" ? "markdown" : "html";
   const outName = basename(filename, ext) + ".html";
   const outPath = join(HTML_DIR, outName);
 
-  const hash = sourceHash({ fm, body, password: fm.password, type });
-  const existingHash = readExistingHash(outPath);
-  if (existingHash === hash && outPath === srcPath) {
-    console.log(`  unchanged: ${outName}`);
-    return true;
-  }
-
-  const payload = await encryptBody(body, fm.password);
+  const payload = await encryptBody(renderedHtml, fm.password);
   const page = renderPage({
     title: fm.title,
     permalink: fm.permalink,
     listed: !!fm.listed,
-    type,
     payload,
-    hash,
   });
   writeFileSync(outPath, page);
 
-  // Source was .md: remove the original so Jekyll doesn't also render it.
+  // Source was .md: remove the original so Jekyll doesn't also render it on
+  // the second pass.
   if (srcPath !== outPath && existsSync(srcPath)) {
     unlinkSync(srcPath);
   }

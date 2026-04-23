@@ -40,10 +40,16 @@ jobs:
           key: external-images-${{ hashFiles('scripts/fetch-images.sh') }}
       - name: Fetch external images
         run: ./scripts/fetch-images.sh
+      - name: Build with Jekyll (plaintext pass for encryptor)
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
       - name: Encrypt password-locked articles
         run: node scripts/encrypt.mjs
-      - name: Build with Jekyll
-        run: bundle exec jekyll build
+      - name: Build with Jekyll (final pass with encrypted pages)
+        run: |
+          rm -rf _site
+          bundle exec jekyll build
         env:
           JEKYLL_ENV: production
       - name: Upload artifact
