@@ -1,9 +1,12 @@
 #!/usr/bin/env node
-// Encrypts files from _private/ into _html/ using AES-GCM + PBKDF2.
+// Encrypts articles with `encrypted: true` in their front matter, in place.
+// Designed to run in GitHub Actions before `jekyll build`, so the deployed
+// site serves a password prompt + ciphertext instead of the plaintext source.
 //
-// Source layout in _private/ (gitignored, local only):
-//   _private/<name>.html         full standalone HTML doc after front matter
-//   _private/<name>.md           markdown body after front matter
+// Source layout (plaintext + password live in the repo — keep the repo
+// private):
+//   _html/<name>.html      full standalone HTML doc after front matter
+//   _markdown/<name>.md    markdown body after front matter
 //
 // Front matter:
 //   ---
@@ -14,9 +17,10 @@
 //   password: "your-password"
 //   ---
 //
-// Output: _html/<name>.html — a self-contained page that shows a password
-// prompt, decrypts in the browser with Web Crypto, and replaces itself with
-// the plaintext article. Passwords never leave _private/.
+// Output: self-contained HTML at _html/<name>.html with a password prompt,
+// the ciphertext, and a Web Crypto decryptor. The `encrypted` and `password`
+// fields are stripped from the output front matter. When the source is .md,
+// the original .md is removed and the output is written as .html.
 
 import {
   readFileSync,
@@ -24,6 +28,7 @@ import {
   readdirSync,
   existsSync,
   statSync,
+  unlinkSync,
 } from "node:fs";
 import { createHash, webcrypto as crypto } from "node:crypto";
 import { join, dirname, extname, basename } from "node:path";
@@ -31,8 +36,8 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
-const PRIVATE_DIR = join(ROOT, "_private");
 const HTML_DIR = join(ROOT, "_html");
+const MD_DIR = join(ROOT, "_markdown");
 const PBKDF2_ITERATIONS = 200000;
 const HASH_MARKER = "<!-- elemer-encrypt source-hash:";
 
@@ -347,19 +352,13 @@ function escapeHtml(s) {
   })[c]);
 }
 
-async function processFile(filename) {
-  const srcPath = join(PRIVATE_DIR, filename);
+async function processFile(srcPath) {
+  const filename = basename(srcPath);
   const raw = readFileSync(srcPath, "utf8");
   const parsed = parseFrontMatter(raw);
-  if (!parsed) {
-    console.warn(`  skip: ${filename} (no front matter)`);
-    return;
-  }
+  if (!parsed) return false;
   const { fm, body } = parsed;
-  if (fm.encrypted !== true) {
-    console.warn(`  skip: ${filename} (encrypted != true)`);
-    return;
-  }
+  if (fm.encrypted !== true) return false;
   if (!fm.password || typeof fm.password !== "string") {
     throw new Error(`${filename}: encrypted: true but no password in front matter`);
   }
@@ -374,9 +373,9 @@ async function processFile(filename) {
 
   const hash = sourceHash({ fm, body, password: fm.password, type });
   const existingHash = readExistingHash(outPath);
-  if (existingHash === hash) {
+  if (existingHash === hash && outPath === srcPath) {
     console.log(`  unchanged: ${outName}`);
-    return;
+    return true;
   }
 
   const payload = await encryptBody(body, fm.password);
@@ -389,23 +388,32 @@ async function processFile(filename) {
     hash,
   });
   writeFileSync(outPath, page);
-  console.log(`  wrote:     ${outName}`);
+
+  // Source was .md: remove the original so Jekyll doesn't also render it.
+  if (srcPath !== outPath && existsSync(srcPath)) {
+    unlinkSync(srcPath);
+  }
+  console.log(`  encrypted: ${outName}`);
+  return true;
 }
 
 async function main() {
-  if (!existsSync(PRIVATE_DIR) || !statSync(PRIVATE_DIR).isDirectory()) {
-    console.log("No _private/ directory; nothing to encrypt.");
-    return;
+  const sources = [];
+  for (const dir of [HTML_DIR, MD_DIR]) {
+    if (!existsSync(dir) || !statSync(dir).isDirectory()) continue;
+    for (const f of readdirSync(dir)) {
+      if (/\.(html|md)$/i.test(f)) sources.push(join(dir, f));
+    }
   }
-  const files = readdirSync(PRIVATE_DIR).filter((f) =>
-    /\.(html|md)$/i.test(f),
-  );
-  if (files.length === 0) {
-    console.log("_private/ is empty; nothing to encrypt.");
-    return;
+  let processed = 0;
+  for (const src of sources) {
+    if (await processFile(src)) processed++;
   }
-  console.log(`Encrypting ${files.length} file(s) from _private/...`);
-  for (const f of files) await processFile(f);
+  if (processed === 0) {
+    console.log("No files with `encrypted: true`; nothing to do.");
+  } else {
+    console.log(`Done. ${processed} file(s) encrypted.`);
+  }
 }
 
 main().catch((e) => {

@@ -32,10 +32,9 @@ Live at **[elemer.net](https://elemer.net)**.
 ├── CNAME                # Custom domain (elemer.net)
 ├── publish.sh           # One-command publish script
 ├── package.json         # Node deps (autocorrect formatter)
-├── _private/            # Plaintext sources for password-locked pages (gitignored)
 ├── scripts/
 │   ├── format.mjs       # Chinese typography formatter
-│   └── encrypt.mjs      # Builds password-locked pages from _private/ into _html/
+│   └── encrypt.mjs      # Encrypts articles with `encrypted: true` (runs in CI)
 └── .github/workflows/
     └── jekyll.yml       # GitHub Pages build action
 ```
@@ -150,25 +149,34 @@ at the end of the article, preceded by a `---` divider.
 
 ## Password-locked articles
 
-Any article — Markdown or HTML — can be served behind a password prompt. The
-plaintext source never leaves your machine; only a ciphertext blob is pushed to
-GitHub. Wrong password = page cannot be decrypted.
+Any article — Markdown or HTML — can be served behind a password prompt.
+Wrong password = page cannot be decrypted (AES-GCM auth tag fails).
+
+> **Repo must be private.** This feature stores plaintext and passwords in
+> the repo source. The deployed site at elemer.net stays public — the lock
+> protects the URL, not the source. If the repo flips to public, the
+> passwords leak.
 
 ### How it works
 
-- **Source** lives in `_private/` (gitignored).
-- **`./publish.sh`** runs `scripts/encrypt.mjs` before committing. For each file
-  with `encrypted: true`, it derives a key from the password
-  (PBKDF2, 200 000 iterations, SHA-256), encrypts the body with AES-GCM, and
-  writes a self-contained page into `_html/` that contains a password prompt +
-  the ciphertext. The password is stripped — it is never committed.
-- **In the browser**, Web Crypto decrypts client-side on submit. AES-GCM has a
-  built-in auth tag, so a wrong password fails loudly (and the plaintext stays
-  unreachable).
+- You write a normal article in `_html/` or `_markdown/` and add two fields
+  to its front matter: `encrypted: true` and `password: "..."`.
+- On every push, GitHub Actions runs `scripts/encrypt.mjs` before
+  `jekyll build`. It derives a key (PBKDF2, 200 000 iterations, SHA-256),
+  encrypts the body with AES-GCM, and replaces the file with a self-contained
+  page containing a password prompt + the ciphertext. `encrypted` and
+  `password` are stripped from the output.
+- Jekyll builds the encrypted page. The deployed `.html` contains only
+  ciphertext and the decryptor — no plaintext, no password.
+- In the browser, Web Crypto decrypts client-side when the visitor submits
+  the password.
+
+Nothing to run locally. `git push` is all it takes.
 
 ### Writing a locked article
 
-1. Create `_private/My Secret Post.html` (or `.md`):
+1. Create `_html/My Secret Post.html` (full standalone HTML) or
+   `_markdown/my-secret-post.md` (Markdown):
 
    ```yaml
    ---
@@ -182,28 +190,37 @@ GitHub. Wrong password = page cannot be decrypted.
    ...
    ```
 
-   Use `.html` for a full standalone HTML document (its content is served
-   as-is after decryption). Use `.md` for Markdown — a small client-side
-   renderer handles headings, paragraphs, lists, code blocks, blockquotes,
-   bold/italic, and links. For anything fancier (footnotes, tables, math),
-   render to HTML first and save as `.html`.
+   `.html` files are served as-is after decryption. `.md` files go through a
+   small client-side renderer that handles headings, paragraphs, lists, code
+   blocks, blockquotes, bold/italic, and links. For fancier kramdown features
+   (footnotes, tables, math), write the article as `.html` instead.
 
-2. Set `listed: true` if you want the title to appear on the homepage (the
-   link still works; visitors are prompted for the password when they click).
-   Set `listed: false` to keep it unlisted — only shareable by direct URL.
+2. `listed: true` puts it on the homepage — clicking prompts for the
+   password. `listed: false` (or omitted) hides it; the URL still works if
+   shared directly.
 
-3. Run `./publish.sh`. The encrypted page lands in `_html/` and gets pushed.
+3. `git push`. CI encrypts, Jekyll builds, the site deploys.
+
+### Local preview
+
+`bundle exec jekyll serve` shows articles **unencrypted** (the encrypt step
+runs in CI, not locally). That's intentional — you're previewing the
+plaintext you wrote. The deployed site is the encrypted version.
+
+If you want to see the encrypted page locally, run
+`node scripts/encrypt.mjs` before `jekyll serve`. This rewrites the source
+files in place, so commit or stash first.
 
 ### Security notes
 
-- AES-GCM + PBKDF2 is the same construction used by WebCrypto across
-  browsers. A brute-force attacker needs ~2²⁰⁰ᵏ hash operations per password
-  guess, so pick a strong password (passphrase of 4+ random words is fine).
+- PBKDF2 with 200 000 iterations makes each password guess cost a non-trivial
+  amount of hashing; use a passphrase (4+ random words) rather than a short
+  password.
 - The lock protects against drive-by readers and search engines. It does
-  **not** protect against someone you gave the password to — once they have
-  it, they can save the decrypted page.
-- If you rotate a password, re-run `./publish.sh`; the script detects source
-  changes and rewrites the encrypted page.
+  **not** protect against someone you shared the password with — once they
+  decrypt, they can save the page.
+- Rotating a password: edit the `password:` field and push. CI re-encrypts
+  on the next build.
 
 ## Publishing
 

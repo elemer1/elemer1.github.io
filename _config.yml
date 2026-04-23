@@ -49,4 +49,3 @@ exclude:
   - node_modules
   - scripts
   - publish.sh
-  - _private

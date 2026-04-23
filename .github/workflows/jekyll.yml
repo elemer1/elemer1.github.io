@@ -27,6 +27,10 @@ jobs:
         with:
           ruby-version: '3.1'
           bundler-cache: true
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Cache external images
@@ -36,6 +40,8 @@ jobs:
           key: external-images-${{ hashFiles('scripts/fetch-images.sh') }}
       - name: Fetch external images
         run: ./scripts/fetch-images.sh
+      - name: Encrypt password-locked articles
+        run: node scripts/encrypt.mjs
       - name: Build with Jekyll
         run: bundle exec jekyll build
         env:
