@@ -235,19 +235,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue"
     return new TextDecoder().decode(pt);
   }
 
-  function renderMarkdown(md, title){
-    var body = '<main>' + mdToHtml(md) + '</main>';
-    return '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">'
-      + '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
-      + '<title>' + escapeHtml(title) + ' - Elemer</title>'
-      + '<meta name="robots" content="noindex, nofollow">'
-      + '<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">'
-      + document.querySelector('style').outerHTML
-      + '</head><body><article class="md-post">'
+  function renderMarkdownInPlace(md, title){
+    document.title = title + ' - Elemer';
+    document.body.innerHTML =
+      '<article class="md-post">'
       + '<header><h1><a href="/">Elemer</a></h1></header>'
       + '<h1 class="post-title">' + escapeHtml(title) + '</h1>'
-      + body
-      + '</article></body></html>';
+      + '<main>' + mdToHtml(md) + '</main>'
+      + '</article>';
   }
 
   function escapeHtml(s){
@@ -323,12 +318,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue"
     btn.disabled = true;
     try {
       var plaintext = await decrypt(pw.value);
-      var doc = PAYLOAD.type === 'markdown'
-        ? renderMarkdown(plaintext, ${JSON.stringify(title)})
-        : plaintext;
-      document.open();
-      document.write(doc);
-      document.close();
+      if (PAYLOAD.type === 'markdown') {
+        renderMarkdownInPlace(plaintext, ${JSON.stringify(title)});
+      } else {
+        document.open();
+        document.write(plaintext);
+        document.close();
+      }
     } catch (e2) {
       err.hidden = false;
       btn.disabled = false;
