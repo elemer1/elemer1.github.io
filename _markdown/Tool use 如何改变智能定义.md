@@ -130,58 +130,58 @@ Clark 和 Chalmers 1998 年写下 *The Extended Mind* 时，他们面对的是�
 
 ### 哲学与认知科学
 
-- Adams, F., & Aizawa, K. (2008). *The Bounds of Cognition*. Wiley-Blackwell. ISBN: 978-1405157858.
-- Brooks, R. A. (1991). Intelligence without representation. *Artificial Intelligence*, 47(1–3), 139–159. DOI: https://doi.org/10.1016/0004-3702(91)90053-M
-- Clark, A. (2003). *Natural-Born Cyborgs: Minds, Technologies, and the Future of Human Intelligence*. Oxford University Press. ISBN: 978-0195177510.
-- Clark, A. (2008). *Supersizing the Mind: Embodiment, Action, and Cognitive Extension*. Oxford University Press. ISBN: 978-0195333213.
-- Clark, A., & Chalmers, D. (1998). The extended mind. *Analysis*, 58(1), 7–19. DOI: https://doi.org/10.1093/analys/58.1.7 ｜ JSTOR: http://www.jstor.org/stable/3328150
-- Hutchins, E. (1995). *Cognition in the Wild*. MIT Press. ISBN: 978-0262581462.
-- Newell, A., & Simon, H. A. (1976). Computer science as empirical inquiry: Symbols and search. *Communications of the ACM*, 19(3), 113–126. DOI: https://doi.org/10.1145/360018.360022
-- Norman, D. A. (1993). *Things That Make Us Smart: Defending Human Attributes in the Age of the Machine*. Addison-Wesley / Basic Books. ISBN: 978-0201626957.
-- Turing, A. M. (1950). Computing machinery and intelligence. *Mind*, LIX(236), 433–460. DOI: https://doi.org/10.1093/mind/LIX.236.433 ｜ OUP: https://academic.oup.com/mind/article/LIX/236/433/986238
-- Weizenbaum, J. (1966). ELIZA — A computer program for the study of natural language communication between man and machine. *Communications of the ACM*, 9(1), 36–45. DOI: https://doi.org/10.1145/365153.365168
+- Adams, F., & Aizawa, K. (2008). *The Bounds of Cognition*. Wiley-Blackwell.
+- Brooks, R. A. (1991). Intelligence without representation. *Artificial Intelligence*, 47(1–3), 139–159. [DOI](https://doi.org/10.1016/0004-3702(91)90053-M)
+- Clark, A. (2003). *Natural-Born Cyborgs: Minds, Technologies, and the Future of Human Intelligence*. Oxford University Press.
+- Clark, A. (2008). *Supersizing the Mind: Embodiment, Action, and Cognitive Extension*. Oxford University Press.
+- Clark, A., & Chalmers, D. (1998). The extended mind. *Analysis*, 58(1), 7–19. [DOI](https://doi.org/10.1093/analys/58.1.7) ｜ [JSTOR](http://www.jstor.org/stable/3328150)
+- Hutchins, E. (1995). *Cognition in the Wild*. MIT Press.
+- Newell, A., & Simon, H. A. (1976). Computer science as empirical inquiry: Symbols and search. *Communications of the ACM*, 19(3), 113–126. [DOI](https://doi.org/10.1145/360018.360022)
+- Norman, D. A. (1993). *Things That Make Us Smart: Defending Human Attributes in the Age of the Machine*. Addison-Wesley.
+- Turing, A. M. (1950). Computing machinery and intelligence. *Mind*, LIX(236), 433–460. [DOI](https://doi.org/10.1093/mind/LIX.236.433) ｜ [OUP](https://academic.oup.com/mind/article/LIX/236/433/986238)
+- Weizenbaum, J. (1966). ELIZA — A computer program for the study of natural language communication between man and machine. *Communications of the ACM*, 9(1), 36–45. [DOI](https://doi.org/10.1145/365153.365168)
 
 ### 语言模型与 scaling
 
-- Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., et al. (2020). Language models are few-shot learners. *Advances in Neural Information Processing Systems*, 33. arXiv:2005.14165. https://arxiv.org/abs/2005.14165
-- Hoffmann, J., Borgeaud, S., Mensch, A., Buchatskaya, E., Cai, T., Rutherford, E., et al. (2022). Training compute-optimal large language models (Chinchilla). arXiv:2203.15556. https://arxiv.org/abs/2203.15556
-- Kaplan, J., McCandlish, S., Henighan, T., Brown, T. B., Chess, B., Child, R., et al. (2020). Scaling laws for neural language models. arXiv:2001.08361. https://arxiv.org/abs/2001.08361
-- Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., & Zhou, D. (2022). Chain-of-thought prompting elicits reasoning in large language models. *NeurIPS 2022*. arXiv:2201.11903. https://arxiv.org/abs/2201.11903
+- Brown, T. B., Mann, B., Ryder, N., Subbiah, M., Kaplan, J., Dhariwal, P., et al. (2020). Language models are few-shot learners. *Advances in Neural Information Processing Systems*, 33. [arXiv:2005.14165](https://arxiv.org/abs/2005.14165)
+- Hoffmann, J., Borgeaud, S., Mensch, A., Buchatskaya, E., Cai, T., Rutherford, E., et al. (2022). Training compute-optimal large language models (Chinchilla). [arXiv:2203.15556](https://arxiv.org/abs/2203.15556)
+- Kaplan, J., McCandlish, S., Henighan, T., Brown, T. B., Chess, B., Child, R., et al. (2020). Scaling laws for neural language models. [arXiv:2001.08361](https://arxiv.org/abs/2001.08361)
+- Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., & Zhou, D. (2022). Chain-of-thought prompting elicits reasoning in large language models. *NeurIPS 2022*. [arXiv:2201.11903](https://arxiv.org/abs/2201.11903)
 
 ### Tool use 与 Agent 论文
 
-- Nakano, R., Hilton, J., Balaji, S., Wu, J., Ouyang, L., Kim, C., et al. (2021). WebGPT: Browser-assisted question-answering with human feedback. arXiv:2112.09332. https://arxiv.org/abs/2112.09332
-- Schick, T., Dwivedi-Yu, J., Dessì, R., Raileanu, R., Lomeli, M., Zettlemoyer, L., Cancedda, N., & Scialom, T. (2023). Toolformer: Language models can teach themselves to use tools. arXiv:2302.04761. https://arxiv.org/abs/2302.04761
-- Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2022). ReAct: Synergizing reasoning and acting in language models. *ICLR 2023*. arXiv:2210.03629. https://arxiv.org/abs/2210.03629
+- Nakano, R., Hilton, J., Balaji, S., Wu, J., Ouyang, L., Kim, C., et al. (2021). WebGPT: Browser-assisted question-answering with human feedback. [arXiv:2112.09332](https://arxiv.org/abs/2112.09332)
+- Schick, T., Dwivedi-Yu, J., Dessì, R., Raileanu, R., Lomeli, M., Zettlemoyer, L., Cancedda, N., & Scialom, T. (2023). Toolformer: Language models can teach themselves to use tools. [arXiv:2302.04761](https://arxiv.org/abs/2302.04761)
+- Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2022). ReAct: Synergizing reasoning and acting in language models. *ICLR 2023*. [arXiv:2210.03629](https://arxiv.org/abs/2210.03629)
 
 ### 评测基准
 
-- Cobbe, K., Kosaraju, V., Bavarian, M., Chen, M., Jun, H., Kaiser, L., et al. (2021). Training verifiers to solve math word problems (GSM8K). arXiv:2110.14168. https://arxiv.org/abs/2110.14168
-- Hendrycks, D., Burns, C., Basart, S., Zou, A., Mazeika, M., Song, D., & Steinhardt, J. (2021). Measuring massive multitask language understanding (MMLU). *ICLR 2021*. arXiv:2009.03300. https://arxiv.org/abs/2009.03300
-- Jimenez, C., Yang, J., Wettig, A., Yao, S., Pei, K., Press, O., & Narasimhan, K. (2023). SWE-bench: Can language models resolve real-world GitHub issues? arXiv:2310.06770. https://arxiv.org/abs/2310.06770
-- Miserendino, S., Wang, M., Patwardhan, T., & Heidecke, J. (2025). SWE-Lancer: Can frontier LLMs earn \$1 million from real-world freelance software engineering? arXiv:2502.12115. https://arxiv.org/abs/2502.12115 ｜ OpenAI 公告：https://openai.com/index/swe-lancer/
-- SWE-bench Leaderboard. (持续更新). https://www.swebench.com
-- Yao, S., Shinn, N., Razavi, P., & Narasimhan, K. (2024). τ-bench: A benchmark for tool-agent-user interaction in real-world domains. arXiv:2406.12045. https://arxiv.org/abs/2406.12045 ｜ Sierra Research 介绍：https://sierra.ai/blog/benchmarking-ai-agents
-- Zan, D., Huang, Z., Liu, A., Lin, H., Liu, Y., Chen, B., et al. (2025). SWE-bench-Live: Towards contamination-free evaluation of large language models on real-world software engineering tasks. arXiv:2505.23419. https://arxiv.org/abs/2505.23419
-- Zhou, S., Xu, F. F., Zhu, H., Zhou, X., Lo, R., Sridhar, A., et al. (2023). WebArena: A realistic web environment for building autonomous agents. arXiv:2307.13854. https://arxiv.org/abs/2307.13854
+- Cobbe, K., Kosaraju, V., Bavarian, M., Chen, M., Jun, H., Kaiser, L., et al. (2021). Training verifiers to solve math word problems (GSM8K). [arXiv:2110.14168](https://arxiv.org/abs/2110.14168)
+- Hendrycks, D., Burns, C., Basart, S., Zou, A., Mazeika, M., Song, D., & Steinhardt, J. (2021). Measuring massive multitask language understanding (MMLU). *ICLR 2021*. [arXiv:2009.03300](https://arxiv.org/abs/2009.03300)
+- Jimenez, C., Yang, J., Wettig, A., Yao, S., Pei, K., Press, O., & Narasimhan, K. (2023). SWE-bench: Can language models resolve real-world GitHub issues? [arXiv:2310.06770](https://arxiv.org/abs/2310.06770)
+- Miserendino, S., Wang, M., Patwardhan, T., & Heidecke, J. (2025). SWE-Lancer: Can frontier LLMs earn \$1 million from real-world freelance software engineering? [arXiv:2502.12115](https://arxiv.org/abs/2502.12115) ｜ [OpenAI 公告](https://openai.com/index/swe-lancer/)
+- SWE-bench Leaderboard. (持续更新). [swebench.com](https://www.swebench.com)
+- Yao, S., Shinn, N., Razavi, P., & Narasimhan, K. (2024). τ-bench: A benchmark for tool-agent-user interaction in real-world domains. [arXiv:2406.12045](https://arxiv.org/abs/2406.12045) ｜ [Sierra Research 介绍](https://sierra.ai/blog/benchmarking-ai-agents)
+- Zan, D., Huang, Z., Liu, A., Lin, H., Liu, Y., Chen, B., et al. (2025). SWE-bench-Live: Towards contamination-free evaluation of large language models on real-world software engineering tasks. [arXiv:2505.23419](https://arxiv.org/abs/2505.23419)
+- Zhou, S., Xu, F. F., Zhu, H., Zhou, X., Lo, R., Sridhar, A., et al. (2023). WebArena: A realistic web environment for building autonomous agents. [arXiv:2307.13854](https://arxiv.org/abs/2307.13854)
 
 ### Anthropic 官方公告与工程文档
 
-- Anthropic. (2024, October 22). Introducing computer use, a new Claude 3.5 Sonnet, and Claude 3.5 Haiku. https://www.anthropic.com/news/3-5-models-and-computer-use
-- Anthropic. (2024, November 25). Introducing the Model Context Protocol. https://www.anthropic.com/news/model-context-protocol
-- Anthropic (Schluntz, E., & Zhang, B.). (2024, December 19). Building effective agents. https://www.anthropic.com/research/building-effective-agents
-- Anthropic. (2025, September 29). Introducing Claude Sonnet 4.5. https://www.anthropic.com/news/claude-sonnet-4-5
-- Anthropic. (2025, September). Effective context engineering for AI agents. https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
-- Anthropic. (2025, October). Equipping agents for the real world with Agent Skills. https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills
-- Anthropic. (2025, November 24). Introducing Claude Opus 4.5. https://www.anthropic.com/news/claude-opus-4-5
+- Anthropic. (2024, October 22). Introducing computer use, a new Claude 3.5 Sonnet, and Claude 3.5 Haiku. [原文](https://www.anthropic.com/news/3-5-models-and-computer-use)
+- Anthropic. (2024, November 25). Introducing the Model Context Protocol. [原文](https://www.anthropic.com/news/model-context-protocol)
+- Anthropic (Schluntz, E., & Zhang, B.). (2024, December 19). Building effective agents. [原文](https://www.anthropic.com/research/building-effective-agents)
+- Anthropic. (2025, September 29). Introducing Claude Sonnet 4.5. [原文](https://www.anthropic.com/news/claude-sonnet-4-5)
+- Anthropic. (2025, September). Effective context engineering for AI agents. [原文](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+- Anthropic. (2025, October). Equipping agents for the real world with Agent Skills. [原文](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
+- Anthropic. (2025, November 24). Introducing Claude Opus 4.5. [原文](https://www.anthropic.com/news/claude-opus-4-5)
 
 ### OpenAI 官方公告
 
-- OpenAI. (2023, June 13). Function calling and other API updates. https://openai.com/index/function-calling-and-other-api-updates/
-- OpenAI. (2025, February 18). Introducing the SWE-Lancer benchmark. https://openai.com/index/swe-lancer/
+- OpenAI. (2023, June 13). Function calling and other API updates. [原文](https://openai.com/index/function-calling-and-other-api-updates/)
+- OpenAI. (2025, February 18). Introducing the SWE-Lancer benchmark. [原文](https://openai.com/index/swe-lancer/)
 
 ### 其他引用
 
-- The New Stack. (2025, December 18). Why the Model Context Protocol won. https://thenewstack.io/why-the-model-context-protocol-won/
-- Willison, S. (2023, June 13). OpenAI: Function calling and other API updates [评论：function calling 在技术上对应于 ReAct pattern]. https://simonwillison.net/2023/Jun/13/function-calling/
-- Willison, S. (2024, December 20). Building effective agents [对 Anthropic 该文的评论]. https://simonwillison.net/2024/Dec/20/building-effective-agents/
+- The New Stack. (2025, December 18). Why the Model Context Protocol won. [原文](https://thenewstack.io/why-the-model-context-protocol-won/)
+- Willison, S. (2023, June 13). OpenAI: Function calling and other API updates [评论：function calling 在技术上对应于 ReAct pattern]. [原文](https://simonwillison.net/2023/Jun/13/function-calling/)
+- Willison, S. (2024, December 20). Building effective agents [对 Anthropic 该文的评论]. [原文](https://simonwillison.net/2024/Dec/20/building-effective-agents/)
