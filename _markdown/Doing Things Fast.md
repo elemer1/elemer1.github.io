@@ -2,6 +2,8 @@
 title: Doing Things Fast
 permalink: /doing-things-fast/
 listed: true
+encrypted: true
+password: "1234"
 ---
 It's important to do things fast.
 
