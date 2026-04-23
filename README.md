@@ -163,13 +163,22 @@ Wrong password = page cannot be decrypted (AES-GCM auth tag fails).
   to its front matter: `encrypted: true` and `password: "..."`.
 - On every push, GitHub Actions runs `scripts/encrypt.mjs` before
   `jekyll build`. It derives a key (PBKDF2, 200 000 iterations, SHA-256),
-  encrypts the body with AES-GCM, and replaces the file with a self-contained
-  page containing a password prompt + the ciphertext. `encrypted` and
-  `password` are stripped from the output.
+  encrypts the body with AES-GCM, and emits a self-contained page with a
+  password prompt + the ciphertext. `encrypted` and `password` are stripped
+  from the output. Encrypted `.html` sources are overwritten in place;
+  encrypted `.md` sources are emitted to `_html/<slug>.html` and the
+  original `.md` is deleted so Jekyll doesn't also render the plaintext.
 - Jekyll builds the encrypted page. The deployed `.html` contains only
   ciphertext and the decryptor — no plaintext, no password.
 - In the browser, Web Crypto decrypts client-side when the visitor submits
-  the password.
+  the password. `.html` articles replace the whole document via
+  `document.write` (they ship their own `<head>`/CSS). `.md` articles are
+  rendered in place: only `document.body` is swapped for the rendered
+  article, so the page's original `<style>` block (with both `.lock` and
+  `.md-post` rules) stays applied. Do not regress this to a full-document
+  rewrite — an inlined `<style>` re-serialized via `outerHTML` and written
+  with `document.open/write/close` does not reliably re-apply, and the
+  decrypted page loses all CSS.
 
 Nothing to run locally. `git push` is all it takes.
 
@@ -221,6 +230,12 @@ files in place, so commit or stash first.
   decrypt, they can save the page.
 - Rotating a password: edit the `password:` field and push. CI re-encrypts
   on the next build.
+- **Keep passwords ASCII.** `publish.sh` runs `scripts/format.mjs`
+  (autocorrect) over every file in `_markdown/`, including encrypted
+  sources. Front-matter `title` values are rewritten by Chinese
+  typography rules; a non-ASCII `password:` can be silently reformatted
+  the same way, which shifts the derived key and locks you out of your
+  own article. Use an ASCII passphrase.
 
 ## Publishing
 
