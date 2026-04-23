@@ -169,6 +169,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue"
 .md-post header{margin-bottom:60px}
 .md-post header h1{font-size:20px;font-weight:600}
 .md-post header h1 a{color:#000;text-decoration:none}
+.md-post header h1 a:hover{text-decoration:underline}
 .md-post .post-title{font-size:32px;font-weight:700;margin:0 0 30px 0;line-height:1.25}
 .md-post main h1{font-size:28px;font-weight:700;margin:50px 0 25px 0;line-height:1.25}
 .md-post main h2{font-size:22px;font-weight:700;margin:40px 0 20px 0;line-height:1.3}
