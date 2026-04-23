@@ -10,7 +10,7 @@ listed: true
 
 为了深入理解这个概念，我们可以将其拆解为系统构成、演进历程以及它在当下面临的结构性危机。
 
-### 一、 Source of Truth 的系统构成
+### 一、Source of Truth 的系统构成
 
 一个成熟的现代设计体系中，Source of Truth 通常由以下几个层级堆叠而成（这在本质上是一种系统工程 Systems Engineering 的降维应用）：
 
@@ -19,7 +19,7 @@ listed: true
 3. **模式与规范 (Patterns & Guidelines)：** 规定组件如何组合使用的宏观逻辑，例如“在破坏性操作的弹窗中，主要按钮必须放置在右侧且显示为红色”。
 4. **交互文档 (Interaction/Behavioral Specs)：** 定义动效时长、缓动曲线 (Easing curves) 以及状态切换的逻辑。
 
-### 二、 范式的演进：谁掌握了 SoT，谁就掌握了话语权
+### 二、范式的演进：谁掌握了 SoT，谁就掌握了话语权
 
 设计工具的更迭史，本质上就是对 Source of Truth 解释权的争夺史。
 
@@ -27,7 +27,7 @@ listed: true
 - **第一代 SoT（矢量与符号）：** Sketch 引入了 Symbols（符号），将 UI 元素模块化，确立了“设计文件”本身可以作为视觉的规范来源。
 - **第二代 SoT（云端与全链路系统化）：** Figma 的崛起在于它建立了一套极其庞大且严密的私有原语（Variables, Variants, Auto-layout）。它让设计文件不仅仅是视觉稿，而是变成了一个**具有伪代码逻辑的关系型数据库**。Figma 成功说服了行业：**Figma 文件就是 Source of Truth**。工程师必须查阅 Figma 来编写代码。
 
-### 三、 核心冲突：意图的近似值 vs. 物理现实
+### 三、核心冲突：意图的近似值 vs. 物理现实
 
 在实际运作中，将 Figma 等设计工具作为 Source of Truth 存在一个根本性的哲学悖论：**设计工具描绘的是“意图 (Intent)”，而代码才是产品最终存在的“物理现实 (Reality)”。**
 
@@ -40,7 +40,7 @@ listed: true
 - **巴洛克式的系统冗余 (Baroque Infrastructure)**：Figma 为适配工程化需求，堆砌了极其复杂的系统（如 900+ 个颜色变量嵌套、无尽的组件变体和 Prop 属性）。当 AI 代理能够直接生成和修改高质量的底层代码时，这种在“有损近似媒介”中进行的手动系统化维护显得荒谬且低效。
 - **Figma Make 的局限**：作者认为 Figma 推出的 AI 工具（Figma Make）仅仅是在现有的封闭系统中打补丁，它依然错误地假定“设计文件是权威的”，服务于那些被锁定在 Figma 生态内的用户。
 
-### 五、 代理时代 (Agentic Era) 的回归：代码即 SoT
+### 五、代理时代 (Agentic Era) 的回归：代码即 SoT
 
 正如关于 Claude Design 的批判所指出的，大语言模型 (LLM) 和 Agentic Workflow 的爆发，正在强行将 Source of Truth 从专有的设计工具拉回到**代码库 (Codebase)** 本身。
 
