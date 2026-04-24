@@ -1,6 +1,6 @@
 ---
-title: 人性的生成器
-permalink: /the-generator-of-human-nature/
+title: 生成器 vs 被生成物
+permalink: /the-generator-vs-the-generated/
 listed: true
 ---
 
