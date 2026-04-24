@@ -115,6 +115,13 @@ layout: default
             md = md.replace(/\|/g, '\\|').replace(/\r?\n+/g, ' <br> ');
             return md || ' ';
           }
+          function alignSep(cell) {
+            const a = (cell && ((cell.style && cell.style.textAlign) || cell.getAttribute('align'))) || '';
+            if (a === 'left') return ':---';
+            if (a === 'right') return '---:';
+            if (a === 'center') return ':---:';
+            return '---';
+          }
 
           const thead = node.querySelector('thead');
           let headerCells, bodyRows;
@@ -129,7 +136,7 @@ layout: default
 
           const cols = headerCells.length;
           const header = '| ' + headerCells.map(cellMd).join(' | ') + ' |';
-          const sep = '| ' + Array(cols).fill('---').join(' | ') + ' |';
+          const sep = '| ' + headerCells.map(alignSep).join(' | ') + ' |';
           const body = bodyRows.map(r => {
             const cells = Array.from(r.children);
             const out = [];
@@ -137,6 +144,30 @@ layout: default
             return '| ' + out.join(' | ') + ' |';
           });
           return '\n\n' + [header, sep, ...body].join('\n') + '\n\n';
+        }
+      });
+      td.addRule('footnoteRef', {
+        filter: function (node) {
+          return node.nodeName === 'SUP' && /^fnref:/.test(node.id || '');
+        },
+        replacement: function (_c, node) {
+          return '[^' + node.id.slice(6) + ']';
+        }
+      });
+      td.addRule('footnotesBlock', {
+        filter: function (node) {
+          return node.nodeName === 'DIV' && node.className && /\bfootnotes\b/.test(node.className);
+        },
+        replacement: function (_c, node) {
+          const defs = Array.from(node.querySelectorAll('li')).map(li => {
+            const m = /^fn:(.+)$/.exec(li.id || '');
+            if (!m) return '';
+            const clone = li.cloneNode(true);
+            clone.querySelectorAll('a.reversefootnote').forEach(a => a.remove());
+            const body = td.turndown(clone.innerHTML).trim().replace(/\n+/g, ' ');
+            return '[^' + m[1] + ']: ' + body;
+          }).filter(Boolean);
+          return defs.length ? '\n\n' + defs.join('\n\n') + '\n\n' : '';
         }
       });
       return td;
