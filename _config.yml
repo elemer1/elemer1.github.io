@@ -26,9 +26,6 @@ collections:
     permalink: /:title/
   html:
     output: true
-  pdf:
-    output: true
-    permalink: /:title/
 
 defaults:
   - scope:
@@ -41,11 +38,6 @@ defaults:
       type: "html"
     values:
       render_with_liquid: false
-  - scope:
-      path: ""
-      type: "pdf"
-    values:
-      layout: "pdf"
 
 # Exclude from processing
 exclude:
