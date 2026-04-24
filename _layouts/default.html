@@ -92,6 +92,20 @@
       },
       options: {
         skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      startup: {
+        pageReady: function () {
+          return MathJax.startup.defaultPageReady().then(function () {
+            try {
+              for (const m of MathJax.startup.document.math) {
+                if (m.typesetRoot) {
+                  m.typesetRoot.setAttribute('data-tex', m.math);
+                  if (m.display) m.typesetRoot.setAttribute('data-display', '');
+                }
+              }
+            } catch (e) { /* non-fatal */ }
+          });
+        }
       }
     };
   </script>

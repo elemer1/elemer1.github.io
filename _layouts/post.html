@@ -71,6 +71,78 @@ layout: default
   }
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/turndown@7.2.0/dist/turndown.min.js" defer></script>
+<script>
+  // Copy selection as Markdown, reinjecting LaTeX source for any MathJax-rendered formula.
+  (function () {
+    const article = document.querySelector('article');
+    if (!article) return;
+
+    function buildTurndown() {
+      if (!window.TurndownService) return null;
+      const td = new TurndownService({
+        headingStyle: 'atx',
+        bulletListMarker: '-',
+        codeBlockStyle: 'fenced',
+        emDelimiter: '*',
+        strongDelimiter: '**',
+        hr: '---',
+        linkStyle: 'inlined'
+      });
+      td.addRule('mathjax', {
+        filter: function (node) {
+          return node.nodeName && node.nodeName.toLowerCase() === 'mjx-container';
+        },
+        replacement: function (_c, node) {
+          const tex = node.getAttribute('data-tex') || '';
+          if (!tex) return '';
+          const display = node.hasAttribute('data-display') || node.getAttribute('display') === 'true';
+          return display ? '\n\n$$' + tex + '$$\n\n' : '$' + tex + '$';
+        }
+      });
+      td.addRule('dropAssistiveMml', {
+        filter: ['mjx-assistive-mml'],
+        replacement: function () { return ''; }
+      });
+      return td;
+    }
+
+    document.addEventListener('copy', function (e) {
+      const sel = window.getSelection && window.getSelection();
+      if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return;
+
+      let touches = false;
+      for (let i = 0; i < sel.rangeCount; i++) {
+        if (sel.getRangeAt(i).intersectsNode(article)) { touches = true; break; }
+      }
+      if (!touches) return;
+
+      const td = buildTurndown();
+      if (!td) return; // Turndown not loaded yet — fall through to native copy.
+
+      const wrapper = document.createElement('div');
+      for (let i = 0; i < sel.rangeCount; i++) {
+        wrapper.appendChild(sel.getRangeAt(i).cloneContents());
+      }
+
+      // If the selection starts mid-list, cloneContents yields bare <li>s;
+      // wrap them so Turndown renders list markers.
+      const orphanLis = Array.from(wrapper.childNodes).filter(n => n.nodeName === 'LI');
+      if (orphanLis.length) {
+        const ul = document.createElement('ul');
+        orphanLis.forEach(li => ul.appendChild(li));
+        wrapper.insertBefore(ul, wrapper.firstChild);
+      }
+
+      try {
+        const md = td.turndown(wrapper.innerHTML).trim();
+        if (!md) return;
+        e.clipboardData.setData('text/plain', md);
+        e.preventDefault();
+      } catch (err) { /* fall back to native */ }
+    });
+  })();
+</script>
 <script>
   (function () {
     const content = document.getElementById('post-content');
