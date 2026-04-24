@@ -104,6 +104,41 @@ layout: default
         filter: ['mjx-assistive-mml'],
         replacement: function () { return ''; }
       });
+      td.addRule('table', {
+        filter: 'table',
+        replacement: function (_c, node) {
+          const rows = Array.from(node.querySelectorAll('tr'));
+          if (!rows.length) return '';
+
+          function cellMd(cell) {
+            let md = td.turndown(cell.innerHTML).trim();
+            md = md.replace(/\|/g, '\\|').replace(/\r?\n+/g, ' <br> ');
+            return md || ' ';
+          }
+
+          const thead = node.querySelector('thead');
+          let headerCells, bodyRows;
+          if (thead && thead.querySelector('tr')) {
+            headerCells = Array.from(thead.querySelector('tr').children);
+            bodyRows = rows.filter(r => !thead.contains(r));
+          } else {
+            headerCells = Array.from(rows[0].children);
+            bodyRows = rows.slice(1);
+          }
+          if (!headerCells.length) return '';
+
+          const cols = headerCells.length;
+          const header = '| ' + headerCells.map(cellMd).join(' | ') + ' |';
+          const sep = '| ' + Array(cols).fill('---').join(' | ') + ' |';
+          const body = bodyRows.map(r => {
+            const cells = Array.from(r.children);
+            const out = [];
+            for (let i = 0; i < cols; i++) out.push(cells[i] ? cellMd(cells[i]) : ' ');
+            return '| ' + out.join(' | ') + ' |';
+          });
+          return '\n\n' + [header, sep, ...body].join('\n') + '\n\n';
+        }
+      });
       return td;
     }
 
