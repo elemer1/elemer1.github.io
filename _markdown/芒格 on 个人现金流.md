@@ -4,7 +4,7 @@ permalink: /munger-on-personal-cf/
 listed: true
 ---
 
-## 一、芒格如何理解个人的现金流概念
+## 一、芒格个人现金流概念澄清
 
 ### 1. "EBITDA 扯淡" → 你以为的"收入"不是你的收入
 
