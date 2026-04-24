@@ -16,4 +16,14 @@ layout: default
   {% for pdf in pdfs %}
     <li><a href="{{ pdf.path }}">{{ pdf.basename }}</a></li>
   {% endfor %}
+  {% assign docx = site.static_files | where: "extname", ".docx" %}
+  {% assign doc = site.static_files | where: "extname", ".doc" %}
+  {% assign pptx = site.static_files | where: "extname", ".pptx" %}
+  {% assign ppt = site.static_files | where: "extname", ".ppt" %}
+  {% assign xlsx = site.static_files | where: "extname", ".xlsx" %}
+  {% assign xls = site.static_files | where: "extname", ".xls" %}
+  {% assign office_files = docx | concat: doc | concat: pptx | concat: ppt | concat: xlsx | concat: xls | sort: "name" %}
+  {% for f in office_files %}
+    <li><a href="{{ f.path }}" download>{{ f.name }}</a></li>
+  {% endfor %}
 </ul>
