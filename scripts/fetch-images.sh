@@ -24,9 +24,6 @@ fetch() {
 fetch "https://commons.wikimedia.org/wiki/Special:FilePath/NCSA_Mosaic_Browser_Screenshot.png?width=1000" \
       "assets/images/mosaic-1993.png"
 
-fetch "https://commons.wikimedia.org/wiki/Special:FilePath/Looshaus_Michaelerplatz.JPG?width=1000" \
-      "assets/images/looshaus.jpg"
-
 fetch "https://commons.wikimedia.org/wiki/Special:FilePath/First_Web_Server.jpg?width=1000" \
       "assets/images/first-web-server.jpg"
 
