@@ -1,6 +1,6 @@
 ---
-title: 人生的元理论
-permalink: /meta-theory-of-life/
+title: 人生的元理论：上游的 bit
+permalink: /meta-theory-of-life-upsteam-bit/
 listed: true
 ---
 
