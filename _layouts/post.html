@@ -108,6 +108,7 @@ layout: default
     }
 
     document.addEventListener('copy', function (e) {
+      if (!e.clipboardData) return;
       const sel = window.getSelection && window.getSelection();
       if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return;
 
