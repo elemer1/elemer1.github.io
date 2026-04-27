@@ -1,5 +1,5 @@
 ---
-title: First Solo Trip
+title: 第一次的 Solo Trip
 permalink: /first-solo-trip/
 listed: true
 ---

@@ -1,5 +1,5 @@
 ---
-title: Patrick Collison's Thoughts
+title: Patrick Collison 的一些好想法
 permalink: /patrick-collison-thoughts/
 listed: true
 ---
