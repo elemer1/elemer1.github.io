@@ -1,0 +1,10 @@
+{% assign video_title = include.title | default: 'YouTube video player' %}
+<div class="video-embed">
+  <iframe
+    src="https://www.youtube.com/embed/{{ include.id }}"
+    title="{{ video_title | escape }}"
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>
