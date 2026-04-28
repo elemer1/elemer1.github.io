@@ -1,8 +1,10 @@
 ---
-title: YouTube Embed Test
+layout: post
+title: YouTube 视频嵌入测试
+permalink: /youtube-embed-test/
+listed: false
+math: false
 ---
-
-# YouTube 视频嵌入测试
 
 这个页面用于测试在 GitHub Pages 的 Markdown 页面里嵌入 YouTube 视频，并让视频可以直接在网页中播放，而不是显示成普通链接。
 
@@ -14,12 +16,11 @@ title: YouTube Embed Test
 https://www.youtube.com/embed/EN7frwQIbKc
 ```
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0;">
   <iframe
     src="https://www.youtube.com/embed/EN7frwQIbKc"
     title="YouTube video player"
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-    frameborder="0"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen>
   </iframe>
