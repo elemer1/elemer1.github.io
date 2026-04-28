@@ -1,8 +1,7 @@
 ---
 title: Mermaid 流程图测试
 permalink: /mermaid-test/
-listed: false
-math: false
+listed: true
 mermaid: true
 ---
 
