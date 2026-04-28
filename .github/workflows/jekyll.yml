@@ -33,6 +33,13 @@ jobs:
           node-version: '20'
       - name: Setup Pages
         uses: actions/configure-pages@v4
+      - name: Run content checks
+        run: node scripts/check.mjs
+        env:
+          ELEMER_REPO_VISIBILITY: ${{ github.event.repository.visibility }}
+      - name: Detect encrypted articles
+        id: encrypted
+        run: node scripts/has-encrypted.mjs
       - name: Cache external images
         uses: actions/cache@v4
         with:
@@ -40,13 +47,21 @@ jobs:
           key: external-images-${{ hashFiles('scripts/fetch-images.sh') }}
       - name: Fetch external images
         run: ./scripts/fetch-images.sh
+      - name: Build with Jekyll
+        if: steps.encrypted.outputs.encrypted != 'true'
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
       - name: Build with Jekyll (plaintext pass for encryptor)
+        if: steps.encrypted.outputs.encrypted == 'true'
         run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
       - name: Encrypt password-locked articles
+        if: steps.encrypted.outputs.encrypted == 'true'
         run: node scripts/encrypt.mjs
       - name: Build with Jekyll (final pass with encrypted pages)
+        if: steps.encrypted.outputs.encrypted == 'true'
         run: |
           rm -rf _site
           bundle exec jekyll build
