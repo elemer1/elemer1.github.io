@@ -20,9 +20,25 @@ if command -v node >/dev/null 2>&1; then
     echo "Formatting Chinese typography..."
     node scripts/format.mjs _markdown/*.md index.html
     echo ""
+
+    echo "Running content checks..."
+    node scripts/check.mjs
+    if [ $? -ne 0 ]; then
+        echo ""
+        echo "======================================"
+        echo "  Publish blocked by content checks"
+        echo "======================================"
+        echo ""
+        echo "Fix the errors above, then run ./publish.sh again."
+        echo ""
+        echo "Press any key to exit..."
+        read -n 1
+        exit 1
+    fi
+    echo ""
 else
-    echo "Warning: node is not installed; skipping auto-formatting."
-    echo "Install Node.js to enable Chinese typography auto-formatting."
+    echo "Warning: node is not installed; skipping auto-formatting and content checks."
+    echo "Install Node.js to enable Chinese typography auto-formatting and safety checks."
     echo ""
 fi
 
