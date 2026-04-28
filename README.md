@@ -9,7 +9,7 @@ Live at **[elemer.net](https://elemer.net)**.
 1. **Speed.** Static HTML, served from GitHub Pages' global CDN. CSS is inlined; no web fonts; no JavaScript framework.
 2. **Minimal.** A 650px column, system fonts, pure black on white. The content is the design.
 3. **Markdown-first.** Normal writing lives in `_markdown/`. Raw HTML is reserved for standalone interactive pages in `_html/`.
-4. **Reusable article components.** Common objects such as YouTube videos, figures, callouts, file cards, tables, blockquotes, and footnotes have stable site-level styling.
+4. **Reusable article components.** Common objects such as YouTube videos, Mermaid diagrams, figures, callouts, file cards, tables, blockquotes, and footnotes have stable site-level styling.
 5. **LaTeX support.** MathJax loads by default on every page so any post can use `$...$` and `$$...$$`.
 6. **Drop-in publishing.** Drop a file into the right folder, add front matter, run `./publish.sh`.
 7. **Safety checks.** Local publishing and CI check front matter, permalink shape, duplicate permalinks, root-level Markdown mistakes, YouTube embed mistakes, and unsafe encrypted posts in public repos.
@@ -23,7 +23,7 @@ Live at **[elemer.net](https://elemer.net)**.
 ├── _includes/
 │   └── youtube.html         # Reusable responsive YouTube embed
 ├── _layouts/
-│   ├── default.html         # Site shell, inlined CSS, MathJax, article components
+│   ├── default.html         # Site shell, inlined CSS, MathJax, Mermaid, article components
 │   └── post.html            # Wrapper for markdown posts and TOC
 ├── _markdown/               # Markdown posts; all normal writing goes here
 ├── _html/                   # Standalone HTML pages
@@ -62,7 +62,7 @@ All normal writing lives in `_markdown/`. Do not place essay Markdown files in t
    ---
    ```
 
-3. Write the body in Markdown. Files in `_markdown/` automatically use the site post template, so they keep the normal Elemer layout, article width, title styling, TOC behavior, typography, component styling, and MathJax support.
+3. Write the body in Markdown. Files in `_markdown/` automatically use the site post template, so they keep the normal Elemer layout, article width, title styling, TOC behavior, typography, component styling, MathJax support, and opt-in Mermaid support.
 
 4. Run `./publish.sh`.
 
@@ -81,6 +81,7 @@ Optional:
 | Field       | Purpose                                                                            |
 | ----------- | ---------------------------------------------------------------------------------- |
 | `math`      | Set `false` to skip MathJax on a page (useful if `$...$` is used for prices, etc.) |
+| `mermaid`   | Set `true` to render Mermaid fenced code blocks on this page.                      |
 | `lang`      | Page language. Defaults to `zh-CN`; use `en` for English pages.                   |
 | `encrypted` | Set `true` for password-locked articles. Only safe if the repo is private.        |
 | `password`  | Password for encrypted articles. Keep ASCII.                                      |
@@ -105,6 +106,32 @@ MathJax can be disabled per page with:
 ```yaml
 math: false
 ```
+
+### Mermaid diagrams
+
+Mermaid is opt-in per page. Add this to front matter when a Markdown post needs diagrams:
+
+```yaml
+mermaid: true
+```
+
+Then use a standard Markdown fenced code block with `mermaid` as the language:
+
+````markdown
+```mermaid
+flowchart TD
+  A[Write Markdown] --> B[Jekyll / kramdown]
+  B --> C[default layout loads Mermaid]
+  C --> D[Browser renders SVG diagram]
+```
+````
+
+Rules:
+
+- Put `mermaid: true` in the page front matter before using Mermaid code blocks.
+- Use fenced code blocks: ```` ```mermaid ````.
+- Keep Mermaid in Markdown posts under `_markdown/`; standalone HTML pages can load their own scripts if needed.
+- The site converts `pre > code.language-mermaid` blocks into Mermaid diagrams in `_layouts/default.html`.
 
 ### YouTube videos
 
