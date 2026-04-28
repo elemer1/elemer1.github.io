@@ -1,28 +1,21 @@
 ---
 title: YouTube 视频嵌入测试
 permalink: /youtube-embed-test/
-listed: true
+listed: false
+math: false
 ---
 
 这个页面用于测试在 GitHub Pages 的 Markdown 页面里嵌入 YouTube 视频，并让视频可以直接在网页中播放，而不是显示成普通链接。
 
 ## 测试视频
 
-下面使用的是 YouTube 的 `embed` 地址：
+下面使用的是可复用的 YouTube include：
 
-```text
-https://www.youtube.com/embed/EN7frwQIbKc
+```liquid
+{% include youtube.html id="EN7frwQIbKc" title="How To Build A Company With AI From The Ground Up" %}
 ```
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0;">
-  <iframe
-    src="https://www.youtube.com/embed/EN7frwQIbKc"
-    title="YouTube video player"
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-  </iframe>
-</div>
+{% include youtube.html id="EN7frwQIbKc" title="How To Build A Company With AI From The Ground Up" %}
 
 ## 原始视频链接
 
@@ -35,5 +28,5 @@ https://www.youtube.com/embed/EN7frwQIbKc
 - 所有正式文章都放在 `_markdown/` 文件夹里。
 - `_markdown/` 里的 Markdown 文件会自动套用网站文章模板。
 - Markdown 普通链接只能跳转，不能直接播放。
-- 要在网页中直接播放 YouTube 视频，需要使用 `<iframe>`。
-- `youtu.be/...` 链接需要转换成 `youtube.com/embed/...` 格式。
+- 要在网页中直接播放 YouTube 视频，优先使用 `{% include youtube.html id="VIDEO_ID" %}`。
+- `youtu.be/...` 链接需要转换成 `youtube.com/embed/...` 格式；include 会自动生成正确的 iframe。
