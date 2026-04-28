@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{% if page.lang %}{{ page.lang }}{% else %}zh-CN{% endif %}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,11 +56,25 @@
     .post-list li{margin:20px 0}
     .post-list a{color:#0000ee;text-decoration:none}
     .post-list a:hover{text-decoration:underline}
-    main blockquote{margin:20px 0;padding:10px 16px;border-left:4px solid #d0d7de;background:#f6f8fa;color:#57606a}
+    main blockquote{margin:22px 0;padding:12px 16px;border-left:4px solid #d0d7de;background:#f6f8fa;color:#57606a}
     main blockquote p{margin:8px 0;color:inherit}
     main blockquote p:first-child{margin-top:0}
     main blockquote p:last-child{margin-bottom:0}
     main img{max-width:100%;height:auto;display:block}
+    main figure{margin:24px 0}
+    main figure img{max-width:100%;height:auto;display:block}
+    main figcaption{margin-top:8px;font-size:14px;line-height:1.5;color:#57606a}
+    main .video-embed{position:relative;height:0;overflow:hidden;max-width:100%;margin:24px 0;padding-bottom:56.25%;background:#f6f8fa}
+    main .video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+    main iframe{max-width:100%}
+    main .callout{margin:22px 0;padding:12px 16px;border:1px solid #e5e5e5;border-left:4px solid #000;background:#f6f8fa}
+    main .callout p{margin:8px 0}
+    main .callout p:first-child{margin-top:0}
+    main .callout p:last-child{margin-bottom:0}
+    main .file-card{display:block;margin:22px 0;padding:14px 16px;border:1px solid #e5e5e5;text-decoration:none;background:#fff}
+    main .file-card:hover{text-decoration:none;border-color:#0000ee}
+    main .file-card-title{font-weight:600}
+    main .file-card-desc{margin-top:4px;font-size:14px;line-height:1.5;color:#57606a}
     main hr{border:0;border-top:1px solid #000;margin:40px 0}
     main pre{overflow-x:auto;max-width:100%;background:#f6f8fa;padding:14px 16px;border-radius:6px;font-size:14px;line-height:1.5;margin:20px 0}
     main code,main a{overflow-wrap:anywhere;word-break:break-word}
@@ -68,12 +82,14 @@
     main pre code{padding:0;background:transparent;font-size:inherit;border-radius:0}
     main .footnotes{margin-top:60px;padding-top:20px;border-top:1px solid #e5e5e5;font-size:14px;color:#57606a}
     main .footnotes p{color:inherit;margin:8px 0}
+    main .table-wrap{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0}
+    main .table-wrap table{margin:0}
     main table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-collapse:collapse;margin:20px 0;font-size:15px}
     main th,main td{padding:8px 12px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;line-height:1.5}
     main th{background:#f6f8fa;font-weight:600}
     mjx-container[display="true"]{max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;padding:2px 0}
     @media (max-width:480px){main table{font-size:14px}main th,main td{padding:6px 8px}}
-    @media (max-width:480px){.container{padding:40px 16px}}
+    @media (max-width:480px){.container{padding:40px 16px}.post-title{font-size:30px}main .video-embed{margin:20px 0}}
   </style>
 
   {% if page.math != false %}
