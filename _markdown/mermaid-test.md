@@ -35,7 +35,7 @@ sequenceDiagram
   participant Writer as Writer
   participant Jekyll as Jekyll
   participant Browser as Browser
-  Writer->>Jekyll: 提交包含 ```mermaid 的 Markdown
+  Writer->>Jekyll: 提交包含 Mermaid code block 的 Markdown
   Jekyll->>Browser: 输出 code.language-mermaid
   Browser->>Browser: Mermaid 转换并渲染 SVG
 ```
