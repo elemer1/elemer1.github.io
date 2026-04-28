@@ -1,9 +1,11 @@
 {
   "name": "elemer-net",
   "private": true,
-  "description": "Tooling for elemer.net (Chinese typography auto-formatter).",
+  "description": "Tooling for elemer.net (Chinese typography auto-formatter and publishing checks).",
   "scripts": {
-    "format": "node scripts/format.mjs _markdown/*.md index.html"
+    "format": "node scripts/format.mjs _markdown/*.md index.html",
+    "check": "node scripts/check.mjs",
+    "has-encrypted": "node scripts/has-encrypted.mjs"
   },
   "devDependencies": {
     "@huacnlee/autocorrect": "^2.16.2"
