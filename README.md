@@ -8,35 +8,41 @@ Live at **[elemer.net](https://elemer.net)**.
 
 1. **Speed.** Static HTML, served from GitHub Pages' global CDN. CSS is inlined; no web fonts; no JavaScript framework.
 2. **Minimal.** A 650px column, system fonts, pure black on white. The content is the design.
-3. **Two file types only.** Markdown for prose, raw HTML for interactive pieces. Nothing else.
-4. **LaTeX support.** MathJax loads by default on every page so any post can use `$...$` and `$$...$$`.
-5. **Drop-in publishing.** Drop a file into the right folder, add three lines of front matter, run `./publish.sh`. That's it.
-6. **Mobile and desktop friendly.** Responsive by default; nothing breaks at small widths.
-7. **Private by default.** No analytics, no RSS feed, no search-engine indexing, no opt-in for AI training crawlers. Sharing is for humans you send the link to.
+3. **Markdown-first.** Normal writing lives in `_markdown/`. Raw HTML is reserved for standalone interactive pages in `_html/`.
+4. **Reusable article components.** Common objects such as YouTube videos, figures, callouts, file cards, tables, blockquotes, and footnotes have stable site-level styling.
+5. **LaTeX support.** MathJax loads by default on every page so any post can use `$...$` and `$$...$$`.
+6. **Drop-in publishing.** Drop a file into the right folder, add front matter, run `./publish.sh`.
+7. **Safety checks.** Local publishing and CI check front matter, permalink shape, duplicate permalinks, root-level Markdown mistakes, YouTube embed mistakes, and unsafe encrypted posts in public repos.
+8. **Private by default.** No analytics, no RSS feed, no search-engine indexing, no opt-in for AI training crawlers. Sharing is for humans you send the link to.
 
 ## Folder layout
 
 ```
 .
-├── _config.yml          # Jekyll config
+├── _config.yml              # Jekyll config
+├── _includes/
+│   └── youtube.html         # Reusable responsive YouTube embed
 ├── _layouts/
-│   ├── default.html     # Site shell (inlined CSS, MathJax, fonts)
-│   └── post.html        # Wrapper for markdown posts
-├── _markdown/           # Markdown posts
-├── _html/               # Standalone HTML pages
+│   ├── default.html         # Site shell, inlined CSS, MathJax, article components
+│   └── post.html            # Wrapper for markdown posts and TOC
+├── _markdown/               # Markdown posts; all normal writing goes here
+├── _html/                   # Standalone HTML pages
 ├── assets/
 │   └── favicon.svg
-├── index.html           # Homepage (lists everything with `listed: true`)
-├── 404.html             # Custom not-found page
-├── robots.txt           # Crawler / AI-bot deny list
-├── CNAME                # Custom domain (elemer.net)
-├── publish.sh           # One-command publish script
-├── package.json         # Node deps (autocorrect formatter)
+├── index.html               # Homepage; lists items with `listed: true`
+├── 404.html                 # Custom not-found page
+├── robots.txt               # Crawler / AI-bot deny list
+├── CNAME                    # Custom domain (elemer.net)
+├── publish.sh               # One-command publish script
+├── package.json             # Node scripts and formatter dependency
 ├── scripts/
-│   ├── format.mjs       # Chinese typography formatter
-│   └── encrypt.mjs      # Encrypts articles with `encrypted: true` (runs in CI)
+│   ├── check.mjs            # Publishing safety checks
+│   ├── encrypt.mjs          # Encrypts articles with `encrypted: true`
+│   ├── fetch-images.sh      # Caches selected external images
+│   ├── format.mjs           # Chinese typography formatter
+│   └── has-encrypted.mjs    # Lets CI skip double-builds when no encrypted posts exist
 └── .github/workflows/
-    └── jekyll.yml       # GitHub Pages build action
+    └── jekyll.yml           # GitHub Pages build action
 ```
 
 ## Writing a new post
@@ -45,8 +51,8 @@ Live at **[elemer.net](https://elemer.net)**.
 
 All normal writing lives in `_markdown/`. Do not place essay Markdown files in the repository root.
 
-1. Create a file in `_markdown/`, e.g. `_markdown/my-essay.md`
-2. Add this front matter at the top:
+1. Create a file in `_markdown/`, e.g. `_markdown/my-essay.md`.
+2. Add front matter at the top:
 
    ```yaml
    ---
@@ -56,59 +62,150 @@ All normal writing lives in `_markdown/`. Do not place essay Markdown files in t
    ---
    ```
 
-3. Write the body in Markdown. Files in `_markdown/` automatically use the site post template, so they keep the normal Elemer layout, article width, title styling, TOC behavior, typography, and MathJax support. LaTeX works out of the box:
-
-   ```markdown
-   Inline math: $E = mc^2$
-
-   Display math:
-   $$\int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}$$
-   ```
+3. Write the body in Markdown. Files in `_markdown/` automatically use the site post template, so they keep the normal Elemer layout, article width, title styling, TOC behavior, typography, component styling, and MathJax support.
 
 4. Run `./publish.sh`.
 
-### Embedding YouTube videos in Markdown posts
+### Front matter reference
 
-YouTube videos can be embedded directly inside any article in `_markdown/` with an HTML `<iframe>`. Use the YouTube `embed` URL, not the normal watch URL or short `youtu.be` URL.
+Every Markdown post should use this schema:
 
-Convert this:
+| Field       | Required | Purpose                                                                  |
+| ----------- | -------- | ------------------------------------------------------------------------ |
+| `title`     | yes      | Shown on the homepage list and in the browser tab                        |
+| `permalink` | yes      | The URL the file is served at, e.g. `/my-essay/`; must start/end with `/` |
+| `listed`    | yes      | `true` to appear on the homepage; `false` to hide                        |
+
+Optional:
+
+| Field       | Purpose                                                                            |
+| ----------- | ---------------------------------------------------------------------------------- |
+| `math`      | Set `false` to skip MathJax on a page (useful if `$...$` is used for prices, etc.) |
+| `lang`      | Page language. Defaults to `zh-CN`; use `en` for English pages.                   |
+| `encrypted` | Set `true` for password-locked articles. Only safe if the repo is private.        |
+| `password`  | Password for encrypted articles. Keep ASCII.                                      |
+
+There are deliberately no `date` fields. This site publishes long-half-life writing, not a reverse-chronological feed.
+
+## Article components
+
+### LaTeX
+
+LaTeX works out of the box in Markdown posts:
+
+```markdown
+Inline math: $E = mc^2$
+
+Display math:
+$$\int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}$$
+```
+
+MathJax can be disabled per page with:
+
+```yaml
+math: false
+```
+
+### YouTube videos
+
+Use the reusable include, not hand-written iframe markup:
+
+```liquid
+{% include youtube.html id="EN7frwQIbKc" title="How To Build A Company With AI From The Ground Up" %}
+```
+
+The `title` field is optional:
+
+```liquid
+{% include youtube.html id="EN7frwQIbKc" %}
+```
+
+Convert normal YouTube links into video IDs:
 
 ```text
 https://youtu.be/EN7frwQIbKc?si=D_1rJ6gba2Wj9Z8M
 ```
 
-To this:
+The video ID is:
+
+```text
+EN7frwQIbKc
+```
+
+The include automatically renders the responsive embed URL:
 
 ```text
 https://www.youtube.com/embed/EN7frwQIbKc
 ```
 
-Recommended responsive snippet:
+Rules:
+
+- Put the include directly in the Markdown body where the video should appear.
+- Prefer `{% include youtube.html id="VIDEO_ID" %}` over hand-written iframe markup.
+- Do not use `youtu.be` or `youtube.com/watch` inside an iframe.
+- When showing Liquid include syntax inside a code block, wrap the example in `{% raw %}...{% endraw %}` so Jekyll does not execute it.
+
+### Figures and captions
+
+Use `<figure>` when an image needs a caption:
 
 ```html
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0;">
-  <iframe
-    src="https://www.youtube.com/embed/EN7frwQIbKc"
-    title="YouTube video player"
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-  </iframe>
+<figure>
+  <img src="/assets/images/example.png" alt="Example image">
+  <figcaption>Figure 1: Short caption.</figcaption>
+</figure>
+```
+
+Images and captions are responsive by default.
+
+### Callouts
+
+Use `.callout` for short emphasis blocks:
+
+```html
+<div class="callout">
+  <p><strong>Note:</strong> This is a compact callout.</p>
 </div>
 ```
 
-Rules:
+### File cards
 
-- Put the snippet directly in the Markdown body where the video should appear.
-- Do not indent the snippet by four spaces; Markdown may treat it as a code block.
-- Do not wrap the snippet in triple backticks; that displays the code instead of rendering the player.
-- Keep article Markdown files in `_markdown/`; that folder automatically applies the normal post layout.
-- For videos, use `https://www.youtube.com/embed/<VIDEO_ID>`, not `https://youtu.be/<VIDEO_ID>`.
+Use `.file-card` for download or reference links that should stand apart from normal inline links:
 
-### Standalone HTML page
+```html
+<a class="file-card" href="/files/example.pdf">
+  <div class="file-card-title">Example PDF</div>
+  <div class="file-card-desc">A short description of what this file contains.</div>
+</a>
+```
 
-1. Create a file in `_html/`, e.g. `_html/compound.html`
-2. Add this front matter at the very top of the file (above `<!DOCTYPE html>`):
+### Tables
+
+Regular Markdown tables are horizontally scrollable on mobile:
+
+```markdown
+| Metric | Meaning |
+| ------ | ------- |
+| MI     | Mutual information |
+```
+
+For complex raw HTML tables, wrap them manually:
+
+```html
+<div class="table-wrap">
+  <table>
+    <tr><th>Metric</th><th>Meaning</th></tr>
+    <tr><td>MI</td><td>Mutual information</td></tr>
+  </table>
+</div>
+```
+
+## Standalone HTML page
+
+Standalone HTML is for full custom pages, animations, or interactive pieces that should not inherit the normal post layout.
+
+1. Create a file in `_html/`, e.g. `_html/compound.html`.
+2. Add front matter at the very top of the file, above `<!DOCTYPE html>`:
 
    ```yaml
    ---
@@ -126,36 +223,61 @@ Rules:
 
 The HTML file is served as-is, with no layout wrapping. It can include its own CSS, JS, fonts, animations — anything.
 
-## Front matter reference
+## Publishing checks
 
-Every published file uses the same three-field schema:
+`./publish.sh` runs two steps before committing:
 
-| Field       | Required | Purpose                                                                |
-| ----------- | -------- | ---------------------------------------------------------------------- |
-| `title`     | yes      | Shown on the homepage list and in the browser tab                      |
-| `permalink` | yes      | The URL the file is served at, e.g. `/compound/`                       |
-| `listed`    | yes      | `true` to appear on the homepage; omit or set `false` to hide          |
+```bash
+node scripts/format.mjs _markdown/*.md index.html
+node scripts/check.mjs
+```
 
-Optional:
+The check script blocks publishing when it finds hard errors:
 
-| Field   | Purpose                                                                            |
-| ------- | ---------------------------------------------------------------------------------- |
-| `math`  | Set `false` to skip MathJax on a page (useful if `$...$` is used for prices, etc.) |
+- essay Markdown files outside `_markdown/`
+- missing front matter in `_markdown/*.md`
+- missing `title`, `permalink`, or explicit `listed`
+- permalinks that do not start and end with `/`
+- duplicate permalinks
+- YouTube iframes that use `youtu.be` or `youtube.com/watch`
+- `encrypted: true` in a public repo, when CI reports the repo visibility as public
 
-There are deliberately no `date` fields. This site only publishes long-half-life writing.
+It also prints warnings for softer issues, such as hand-written YouTube iframe markup when the reusable include would be cleaner.
+
+Run checks manually with:
+
+```bash
+npm run check
+```
+
+## CI build behavior
+
+The GitHub Pages workflow runs `scripts/check.mjs` first. It then runs `scripts/has-encrypted.mjs` to decide whether password-locked articles exist.
+
+If there are no encrypted articles, CI builds once:
+
+```bash
+bundle exec jekyll build
+```
+
+If at least one article has `encrypted: true`, CI uses the full encryption pipeline:
+
+```bash
+bundle exec jekyll build     # plaintext pass
+node scripts/encrypt.mjs     # encrypt rendered articles
+rm -rf _site && bundle exec jekyll build   # final pass
+```
+
+This keeps normal publishing fast while preserving the encrypted-article path when needed.
 
 ## Bibliography format
 
-Posts that cite sources use a single unified format. The section always appears
-at the end of the article, preceded by a `---` divider.
+Posts that cite sources use a single unified format. The section always appears at the end of the article, preceded by a `---` divider.
 
 ### Rules
 
-1. **Header.** `## 参考文献` (H2). Do not use `# 参考文献` (H1) or bold text
-   (`**参考文献**`).
-2. **Grouping.** For long bibliographies, group entries under `### subsection`
-   headers (e.g. `### 哲学与认知科学`, `### 评测基准`). Short ones can skip
-   subsections.
+1. **Header.** `## 参考文献` (H2). Do not use `# 参考文献` (H1) or bold text (`**参考文献**`).
+2. **Grouping.** For long bibliographies, group entries under `### subsection` headers, e.g. `### 哲学与认知科学`, `### 评测基准`. Short ones can skip subsections.
 3. **Entries.** APA-style on a single bullet line starting with `- `:
    - `Author, A. B., & Author, C. D. (Year). Article title. *Journal*, Volume(Issue), pages.`
    - Italicize book / journal titles with `*...*`.
@@ -165,10 +287,9 @@ at the end of the article, preceded by a `---` divider.
    - `[arXiv:2005.14165](https://arxiv.org/abs/2005.14165)` for arXiv preprints
    - `[JSTOR]`, `[PDF]`, `[IEEE]`, `[OUP]`, etc. for known platforms
    - `[原文](...)` for primary-source URLs without a better label
-   - a domain label (e.g. `[swebench.com](...)`) for sites / leaderboards
+   - a domain label, e.g. `[swebench.com](...)`, for sites / leaderboards
    - Join multiple links with ` ｜ ` (full-width pipe with spaces).
-5. **No footnote-style references.** Do not use `[^N]: ...`; use the bulleted
-   list instead.
+5. **No footnote-style references.** Do not use `[^N]: ...`; use the bulleted list instead.
 
 ### Template
 
@@ -181,113 +302,37 @@ at the end of the article, preceded by a `---` divider.
 
 - Brown, T. B., Mann, B., Ryder, N., et al. (2020). Language models are few-shot learners. *Advances in Neural Information Processing Systems*, 33. [arXiv:2005.14165](https://arxiv.org/abs/2005.14165)
 - Clark, A., & Chalmers, D. (1998). The extended mind. *Analysis*, 58(1), 7–19. [DOI](https://doi.org/10.1093/analys/58.1.7) ｜ [JSTOR](http://www.jstor.org/stable/3328150)
-
-### 官方文档
-
-- Anthropic. (2024, November 25). Introducing the Model Context Protocol. [原文](https://www.anthropic.com/news/model-context-protocol)
 ```
 
 ## Password-locked articles
 
-Any article — Markdown or HTML — can be served behind a password prompt.
-Wrong password = page cannot be decrypted (AES-GCM auth tag fails).
+Any article — Markdown or HTML — can be served behind a password prompt. Wrong password = page cannot be decrypted because the AES-GCM auth tag fails.
 
-> **Repo must be private.** This feature stores plaintext and passwords in
-> the repo source. The deployed site at elemer.net stays public — the lock
-> protects the URL, not the source. If the repo flips to public, the
-> passwords leak.
+> **Repo must be private.** This feature stores plaintext and passwords in the repo source before CI encrypts the deployed page. The deployed site at elemer.net can stay public, but the source repo must be private. If the repo is public, plaintext and passwords can leak through source files or commit history.
 
 ### How it works
 
-- You write a normal article in `_html/` or `_markdown/` and add two fields
-  to its front matter: `encrypted: true` and `password: "..."`.
-- On every push, GitHub Actions runs a three-step pipeline:
-  1. **`jekyll build` (plaintext pass).** Encrypted articles are rendered
-     normally into `_site/`, through the full Jekyll stack — kramdown,
-     `_layouts/post.html`, `_layouts/default.html`, MathJax, TOC, the works.
-     This is the "original" rendering that the decrypted view must match.
-  2. **`node scripts/encrypt.mjs`.** For each file with `encrypted: true`
-     the script reads the rendered HTML from `_site/<permalink>/index.html`,
-     derives a key (PBKDF2, 200 000 iterations, SHA-256), encrypts the whole
-     document with AES-GCM, and overwrites the source with a self-contained
-     password-lock page (prompt + ciphertext). `encrypted` and `password`
-     are stripped. Encrypted `.html` sources are overwritten in place;
-     encrypted `.md` sources are emitted to `_html/<slug>.html` and the
-     original `.md` is deleted so Jekyll doesn't re-render the plaintext.
-  3. **`jekyll build` (final pass).** `_site/` is wiped and rebuilt with
-     the password-lock pages in place of the plaintext. The deployed
-     `.html` contains only ciphertext and the decryptor — no plaintext,
-     no password.
-- In the browser, Web Crypto decrypts client-side when the visitor submits
-  the password. The decryptor calls
-  `document.open(); document.write(plaintext); document.close();` — the
-  plaintext is the full rendered HTML document captured in step 1, so the
-  decrypted page is byte-identical to what Jekyll produced for the
-  non-encrypted article. Both `.md` and `.html` sources take the same
-  decryption code path; there is no client-side markdown renderer.
-
-Nothing to run locally. `git push` is all it takes.
+- You write a normal article in `_html/` or `_markdown/` and add `encrypted: true` plus `password: "..."` to its front matter.
+- On push, CI detects whether encrypted articles exist. If none exist, CI skips the encryption pipeline and builds once.
+- If encrypted articles exist, CI runs:
+  1. **`jekyll build` plaintext pass.** Encrypted articles are rendered normally into `_site/`, through the full Jekyll stack — kramdown, `_layouts/post.html`, `_layouts/default.html`, MathJax, TOC, component CSS, and all includes.
+  2. **`node scripts/encrypt.mjs`.** For each file with `encrypted: true`, the script reads the rendered HTML from `_site/<permalink>/index.html`, derives a key with PBKDF2, encrypts the whole document with AES-GCM, and overwrites the source with a self-contained password-lock page containing ciphertext.
+  3. **Final `jekyll build`.** `_site/` is wiped and rebuilt with the password-lock pages in place of plaintext.
+- In the browser, Web Crypto decrypts client-side when the visitor submits the password. The decrypted document is the full rendered HTML captured during the plaintext pass.
 
 ### Writing a locked article
 
-1. Create `_html/My Secret Post.html` (full standalone HTML) or
-   `_markdown/my-secret-post.md` (Markdown):
-
-   ```yaml
-   ---
-   title: "My Secret Post"
-   permalink: /my-secret-post/
-   listed: true
-   encrypted: true
-   password: "correct-horse-battery-staple"
-   ---
-   <!DOCTYPE html>
-   ...
-   ```
-
-   Both `.html` and `.md` files are captured by Jekyll during the plaintext
-   pass before encryption, so everything that works on a regular post also
-   works here: kramdown's full syntax, footnotes, tables, MathJax, the TOC,
-   the inlined CSS in `_layouts/default.html`, etc.
-
-2. `listed: true` puts it on the homepage — clicking prompts for the
-   password. `listed: false` (or omitted) hides it; the URL still works if
-   shared directly.
-
-3. `git push`. CI encrypts, Jekyll builds, the site deploys.
-
-### Local preview
-
-`bundle exec jekyll serve` shows articles **unencrypted** (the encrypt step
-runs in CI, not locally). That's intentional — you're previewing the
-plaintext you wrote. The deployed site is the encrypted version.
-
-If you want to reproduce the CI pipeline locally:
-
-```bash
-bundle exec jekyll build     # plaintext pass, fills _site/
-node scripts/encrypt.mjs     # reads _site/, rewrites sources to lock pages
-rm -rf _site && bundle exec jekyll build   # final pass with encrypted pages
+```yaml
+---
+title: "My Secret Post"
+permalink: /my-secret-post/
+listed: false
+encrypted: true
+password: "correct-horse-battery-staple"
+---
 ```
 
-Step 2 rewrites source files in place, so commit or stash first.
-
-### Security notes
-
-- PBKDF2 with 200 000 iterations makes each password guess cost a non-trivial
-  amount of hashing; use a passphrase (4+ random words) rather than a short
-  password.
-- The lock protects against drive-by readers and search engines. It does
-  **not** protect against someone you shared the password with — once they
-  decrypt, they can save the page.
-- Rotating a password: edit the `password:` field and push. CI re-encrypts
-  on the next build.
-- **Keep passwords ASCII.** `publish.sh` runs `scripts/format.mjs`
-  (autocorrect) over every file in `_markdown/`, including encrypted
-  sources. Front-matter `title` values are rewritten by Chinese
-  typography rules; a non-ASCII `password:` can be silently reformatted
-  the same way, which shifts the derived key and locks you out of your
-  own article. Use an ASCII passphrase.
+Use an ASCII passphrase. Non-ASCII passwords can be affected by typography tooling or input normalization.
 
 ## Publishing
 
@@ -295,7 +340,7 @@ Step 2 rewrites source files in place, so commit or stash first.
 ./publish.sh
 ```
 
-The script stages all changes, commits with a timestamped message, and pushes to GitHub. GitHub Pages rebuilds and the site is live in 1–2 minutes.
+The script formats Chinese typography, runs content checks, stages all changes, commits with a timestamped message, and pushes to GitHub. GitHub Pages rebuilds and the site is usually live in 1–2 minutes.
 
 To preview locally before publishing:
 
@@ -306,24 +351,18 @@ bundle exec jekyll serve  # then open http://localhost:4000
 
 ## Chinese typography auto-formatting
 
-Every time you run `./publish.sh`, Markdown files in `_markdown/` and
-`index.html` are automatically rewritten to follow the
-[Chinese Copywriting Guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines):
+Every time you run `./publish.sh`, Markdown files in `_markdown/` and `index.html` are automatically rewritten to follow the [Chinese Copywriting Guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines):
 
-- A space is inserted between Chinese and Latin / digits
-  (`100USD` → `100 USD`, `Hello世界` → `Hello 世界`)
-- Half-width punctuation next to Chinese is converted to full-width
-  (`你好,世界` → `你好，世界`)
+- A space is inserted between Chinese and Latin / digits (`100USD` → `100 USD`, `Hello世界` → `Hello 世界`)
+- Half-width punctuation next to Chinese is converted to full-width (`你好,世界` → `你好，世界`)
 
-What is **not** automated (still up to you):
+What is **not** automated:
 
-- Proper-noun capitalization (`iPhone`, `GitHub`, `JavaScript`, `macOS`)
+- Proper-noun capitalization, e.g. `iPhone`, `GitHub`, `JavaScript`, `macOS`
 - Choosing between `「」` and `""` for quotation marks
 - Avoiding repeated punctuation like `！！！`
 
-This runs through [`@huacnlee/autocorrect`](https://github.com/huacnlee/autocorrect),
-which is markdown-aware: front matter keys, code blocks' fences, and URLs are
-left alone. Files in `_html/` are **never** touched.
+This runs through [`@huacnlee/autocorrect`](https://github.com/huacnlee/autocorrect), which is markdown-aware. Files in `_html/` are never touched.
 
 To format manually without publishing:
 
@@ -331,25 +370,17 @@ To format manually without publishing:
 npm run format
 ```
 
-The first run installs the formatter (one-time `npm install`); subsequent runs
-are instant. If Node.js is not installed, `publish.sh` warns and skips this
-step instead of failing.
-
-> **Note:** Front matter `title` values are formatted (so `酒精的安全剂量为0`
-> becomes `酒精的安全剂量为 0` on the homepage), but `permalink` values are
-> not modified — keep permalinks ASCII-safe to be safe.
-
 ## Typography
 
 The font stack is bilingual and uses Apple's system fonts where available:
 
 ```css
 font-family:
-  -apple-system, BlinkMacSystemFont, "SF Pro Text",  /* Latin: SF Pro on Apple */
-  "Helvetica Neue", Helvetica,                        /* Latin fallback */
-  "PingFang SC",                                      /* Chinese: PingFang on Apple */
-  "Hiragino Sans GB",                                 /* Chinese fallback */
-  "Microsoft YaHei", 微软雅黑,                         /* Chinese on Windows */
+  -apple-system, BlinkMacSystemFont, "SF Pro Text",
+  "Helvetica Neue", Helvetica,
+  "PingFang SC",
+  "Hiragino Sans GB",
+  "Microsoft YaHei", 微软雅黑,
   Arial, sans-serif;
 ```
 
@@ -357,60 +388,30 @@ Browsers fall back per glyph, so Latin and Chinese characters in the same paragr
 
 ## Privacy
 
-This site is built to be **shared by hand**, not crawled or indexed. The
-philosophy is: if you want someone to read a piece, you send them the link.
+This site is built to be **shared by hand**, not crawled or indexed. The philosophy is: if you want someone to read a piece, you send them the link.
 
 ### No RSS / no newsletter
 
-The `jekyll-feed` plugin has been removed from the `Gemfile`. There is no
-`feed.xml`, no Atom feed, and no newsletter signup. There is intentionally no
-way to subscribe — readers come back when they choose to.
+The `jekyll-feed` plugin has been removed from the `Gemfile`. There is no `feed.xml`, no Atom feed, and no newsletter signup. There is intentionally no way to subscribe — readers come back when they choose to.
 
 ### No search-engine indexing
 
 Two layers of protection, so compliant crawlers stay out:
 
-1. **`robots.txt`** disallows `/` for `User-agent: *` (every crawler that
-   honors the standard, including Googlebot, Bingbot, Baiduspider, etc.).
-2. **`<meta name="robots" content="noindex, nofollow">`** is injected into
-   every page that uses the default layout (homepage, 404, all markdown
-   posts), as a second layer in case `robots.txt` is missed.
+1. **`robots.txt`** disallows `/` for `User-agent: *`.
+2. **`<meta name="robots" content="noindex, nofollow">`** is injected into every page that uses the default layout.
 
-> Already-indexed pages take 1–2 weeks to drop from Google after this lands.
-> If you need them gone faster, submit a removal request in Google Search
-> Console.
+Already-indexed pages can take time to drop from Google after this lands.
 
 ### No AI training crawlers
 
-`robots.txt` also lists every known AI training / scraping bot by name, so
-that bots which only honor a record matching their own `User-agent` (instead
-of the wildcard) are also blocked. The list is sourced from the
-community-maintained [ai.robots.txt](https://github.com/ai-robots-txt/ai.robots.txt)
-project and currently covers, among others:
+`robots.txt` also lists known AI training / scraping bots by name, so bots that honor a record matching their own `User-agent` are also blocked. The list is sourced from the community-maintained [ai.robots.txt](https://github.com/ai-robots-txt/ai.robots.txt) project and includes OpenAI, Anthropic, Google-Extended, Perplexity, Common Crawl, ByteDance, Meta, Amazon, Apple, Cohere, and other research / scraping bots.
 
-- **OpenAI** — `GPTBot`, `ChatGPT-User`, `OAI-SearchBot`
-- **Anthropic** — `ClaudeBot`, `Claude-Web`, `anthropic-ai`
-- **Google** — `Google-Extended`
-- **Perplexity** — `PerplexityBot`, `Perplexity-User`
-- **Common Crawl** — `CCBot`
-- **ByteDance** — `Bytespider`
-- **Meta** — `FacebookBot`, `Meta-ExternalAgent`, `Meta-ExternalFetcher`
-- **Amazon** — `Amazonbot`
-- **Apple** — `Applebot-Extended`
-- **Cohere** — `cohere-ai`
-- Other research / scraping bots: `Diffbot`, `AI2Bot`, `DuckAssistBot`,
-  `ImagesiftBot`, `YouBot`, `Timpibot`, `omgili`, `omgilibot`
-
-When new bots show up, copy them from
-[ai.robots.txt](https://github.com/ai-robots-txt/ai.robots.txt) into
-`robots.txt` and re-publish.
+When new bots show up, copy them from [ai.robots.txt](https://github.com/ai-robots-txt/ai.robots.txt) into `robots.txt` and re-publish.
 
 ### Limits
 
-`robots.txt` only blocks bots that **respect** it. Bad-faith scrapers ignore
-it. Real protection from those would need server-side rate limiting or
-authentication, which GitHub Pages does not offer. The trade-off is accepted:
-this site lives at the edge with zero infrastructure.
+`robots.txt` only blocks bots that respect it. Bad-faith scrapers ignore it. Real protection from those would need server-side rate limiting or authentication, which GitHub Pages does not offer. The trade-off is accepted: this site lives at the edge with zero infrastructure.
 
 ## Custom domain
 
