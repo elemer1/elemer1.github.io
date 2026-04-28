@@ -43,6 +43,8 @@ Live at **[elemer.net](https://elemer.net)**.
 
 ### Markdown post
 
+All normal writing lives in `_markdown/`. Do not place essay Markdown files in the repository root.
+
 1. Create a file in `_markdown/`, e.g. `_markdown/my-essay.md`
 2. Add this front matter at the top:
 
@@ -54,7 +56,7 @@ Live at **[elemer.net](https://elemer.net)**.
    ---
    ```
 
-3. Write the body in Markdown. LaTeX works out of the box:
+3. Write the body in Markdown. Files in `_markdown/` automatically use the site post template, so they keep the normal Elemer layout, article width, title styling, TOC behavior, typography, and MathJax support. LaTeX works out of the box:
 
    ```markdown
    Inline math: $E = mc^2$
@@ -64,6 +66,44 @@ Live at **[elemer.net](https://elemer.net)**.
    ```
 
 4. Run `./publish.sh`.
+
+### Embedding YouTube videos in Markdown posts
+
+YouTube videos can be embedded directly inside any article in `_markdown/` with an HTML `<iframe>`. Use the YouTube `embed` URL, not the normal watch URL or short `youtu.be` URL.
+
+Convert this:
+
+```text
+https://youtu.be/EN7frwQIbKc?si=D_1rJ6gba2Wj9Z8M
+```
+
+To this:
+
+```text
+https://www.youtube.com/embed/EN7frwQIbKc
+```
+
+Recommended responsive snippet:
+
+```html
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0;">
+  <iframe
+    src="https://www.youtube.com/embed/EN7frwQIbKc"
+    title="YouTube video player"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>
+```
+
+Rules:
+
+- Put the snippet directly in the Markdown body where the video should appear.
+- Do not indent the snippet by four spaces; Markdown may treat it as a code block.
+- Do not wrap the snippet in triple backticks; that displays the code instead of rendering the player.
+- Keep article Markdown files in `_markdown/`; that folder automatically applies the normal post layout.
+- For videos, use `https://www.youtube.com/embed/<VIDEO_ID>`, not `https://youtu.be/<VIDEO_ID>`.
 
 ### Standalone HTML page
 
