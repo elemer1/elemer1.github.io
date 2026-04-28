@@ -12,7 +12,7 @@ math: false
 下面使用的是可复用的 YouTube include：
 
 ```liquid
-{% include youtube.html id="EN7frwQIbKc" title="How To Build A Company With AI From The Ground Up" %}
+{% raw %}{% include youtube.html id="EN7frwQIbKc" title="How To Build A Company With AI From The Ground Up" %}{% endraw %}
 ```
 
 {% include youtube.html id="EN7frwQIbKc" title="How To Build A Company With AI From The Ground Up" %}
@@ -28,5 +28,5 @@ math: false
 - 所有正式文章都放在 `_markdown/` 文件夹里。
 - `_markdown/` 里的 Markdown 文件会自动套用网站文章模板。
 - Markdown 普通链接只能跳转，不能直接播放。
-- 要在网页中直接播放 YouTube 视频，优先使用 `{% include youtube.html id="VIDEO_ID" %}`。
+- 要在网页中直接播放 YouTube 视频，优先使用 `{% raw %}{% include youtube.html id="VIDEO_ID" %}{% endraw %}`。
 - `youtu.be/...` 链接需要转换成 `youtube.com/embed/...` 格式；include 会自动生成正确的 iframe。
