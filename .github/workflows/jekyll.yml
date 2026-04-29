@@ -21,7 +21,7 @@ jobs:
       BUNDLE_FORCE_RUBY_PLATFORM: "true"
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: '20'
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
       - name: Run content checks
         run: node scripts/check.mjs
         env:
@@ -46,7 +46,8 @@ jobs:
           path: assets/images
           key: external-images-${{ hashFiles('scripts/fetch-images.sh') }}
       - name: Fetch external images
-        run: ./scripts/fetch-images.sh
+        run: |
+          ./scripts/fetch-images.sh || echo "warning: external image fetch failed; continuing with existing assets"
       - name: Build with Jekyll
         if: steps.encrypted.outputs.encrypted != 'true'
         run: bundle exec jekyll build
@@ -68,9 +69,14 @@ jobs:
         env:
           JEKYLL_ENV: production
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./_site
 
   deploy:
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -79,4 +85,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
