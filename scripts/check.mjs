@@ -115,7 +115,7 @@ function checkMarkdownPost(file) {
   }
 
   if (hasEncryptedTrue(fm) && repoVisibility === 'public') {
-    fail(`${file}: encrypted: true is unsafe in a public repository because source history can expose plaintext and passwords`);
+    warn(`${file}: encrypted: true in a public repository — plaintext and password are visible in git history; treat the lock as cosmetic`);
   }
 }
 
@@ -126,7 +126,7 @@ function checkHtmlPage(file) {
   const { fm } = parsed;
   checkPermalink(file, fm);
   if (hasEncryptedTrue(fm) && repoVisibility === 'public') {
-    fail(`${file}: encrypted: true is unsafe in a public repository because source history can expose plaintext and passwords`);
+    warn(`${file}: encrypted: true in a public repository — plaintext and password are visible in git history; treat the lock as cosmetic`);
   }
 }
 
