@@ -38,26 +38,59 @@ function listFiles(dir, exts) {
     .map((name) => join(dir, name));
 }
 
-function parseFrontMatter(text) {
+// Strict, line-based front matter parser. Catches the YAML pitfalls that
+// have silently dropped pages from past Jekyll builds:
+//   1. Unquoted values containing ": " (Ruby YAML reads them as a nested
+//      mapping and then aborts), e.g. `title: Cat Wu: AI PM应该干什么`.
+//   2. Tabs or indented lines (we expect a flat top-level map).
+//   3. Lines that aren't a "key: value" pair at all.
+function parseFrontMatter(text, file) {
   if (!text.startsWith('---')) return null;
   const end = text.indexOf('\n---', 3);
-  if (end === -1) return null;
+  if (end === -1) {
+    fail(`${file}: front matter is not closed (missing trailing ---)`);
+    return null;
+  }
   const fmText = text.slice(4, end);
   const body = text.slice(end + 4).replace(/^\r?\n/, '');
   const fm = {};
-  for (const line of fmText.split(/\r?\n/)) {
-    if (!line.trim() || line.trim().startsWith('#')) continue;
-    const m = line.match(/^([A-Za-z_][A-Za-z0-9_-]*):\s*(.*)$/);
-    if (!m) continue;
-    let [, key, val] = m;
-    val = val.trim();
-    if (
-      (val.startsWith('"') && val.endsWith('"')) ||
-      (val.startsWith("'") && val.endsWith("'"))
-    ) {
+  const lines = fmText.split(/\r?\n/);
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const lineNum = i + 2; // +1 for 0-index, +1 for the opening ---
+    if (line.includes('\t')) {
+      fail(`${file}: front matter line ${lineNum} contains a tab; YAML uses spaces`);
+      continue;
+    }
+    if (/^\s/.test(line)) {
+      fail(`${file}: front matter line ${lineNum} is indented; only flat top-level "key: value" pairs are allowed`);
+      continue;
+    }
+    const m = line.match(/^([A-Za-z_][A-Za-z0-9_-]*):(?:\s+(.*))?$/);
+    if (!m) {
+      fail(`${file}: front matter line ${lineNum} is not a "key: value" pair: ${JSON.stringify(line)}`);
+      continue;
+    }
+    let [, key, rawVal] = m;
+    let val = (rawVal ?? '').trim();
+    const quoted =
+      val.length >= 2 &&
+      ((val.startsWith('"') && val.endsWith('"')) ||
+        (val.startsWith("'") && val.endsWith("'")));
+    if (quoted) {
       val = val.slice(1, -1);
-    } else if (val === 'true') val = true;
-    else if (val === 'false') val = false;
+    } else {
+      if (/:\s/.test(val)) {
+        fail(
+          `${file}: front matter "${key}" contains an unquoted ": " — Ruby YAML reads this as a nested mapping and Jekyll will silently drop the file. Wrap the value in quotes (e.g. ${key}: "${val}")`,
+        );
+        continue;
+      }
+      if (val === 'true') val = true;
+      else if (val === 'false') val = false;
+    }
     fm[key] = val;
   }
   return { fm, body };
@@ -86,7 +119,7 @@ function checkPermalink(file, fm) {
 
 function checkMarkdownPost(file) {
   const raw = readFileSync(file, 'utf8');
-  const parsed = parseFrontMatter(raw);
+  const parsed = parseFrontMatter(raw, file);
   if (!parsed) {
     fail(`${file}: missing YAML front matter`);
     return;
@@ -121,9 +154,19 @@ function checkMarkdownPost(file) {
 
 function checkHtmlPage(file) {
   const raw = readFileSync(file, 'utf8');
-  const parsed = parseFrontMatter(raw);
-  if (!parsed) return;
+  const parsed = parseFrontMatter(raw, file);
+  if (!parsed) {
+    fail(
+      `${file}: missing YAML front matter — _html/ entries must declare title, permalink, and listed, otherwise Jekyll treats the file as a raw asset and the homepage skips it`,
+    );
+    return;
+  }
   const { fm } = parsed;
+  if (!fm.title) fail(`${file}: missing required front matter field: title`);
+  if (!fm.permalink) fail(`${file}: missing required front matter field: permalink`);
+  if (fm.listed !== true && fm.listed !== false) {
+    fail(`${file}: listed must be explicitly true or false`);
+  }
   checkPermalink(file, fm);
   if (hasEncryptedTrue(fm) && repoVisibility === 'public') {
     warn(`${file}: encrypted: true in a public repository — plaintext and password are visible in git history; treat the lock as cosmetic`);

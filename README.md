@@ -262,8 +262,10 @@ node scripts/check.mjs
 The check script blocks publishing when it finds hard errors:
 
 - essay Markdown files outside `_markdown/`
-- missing front matter in `_markdown/*.md`
-- missing `title`, `permalink`, or explicit `listed`
+- missing front matter in `_markdown/*.md` or `_html/*.html`
+- missing `title`, `permalink`, or explicit `listed` (in either collection)
+- front matter values that would silently break Ruby YAML, e.g. an unquoted `title: Foo: bar` (the `: ` makes Ruby parse it as a nested mapping and Jekyll drops the file). Wrap such values in quotes: `title: "Foo: bar"`
+- front matter lines that aren't a flat `key: value` pair, contain tabs, or are indented
 - permalinks that do not start and end with `/`
 - duplicate permalinks
 - YouTube iframes that use `youtu.be` or `youtube.com/watch`
