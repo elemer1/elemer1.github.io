@@ -1,5 +1,5 @@
 ---
-title: Cat Wu: AI PM应该干什么
+title: "Cat Wu: AI PM应该干什么"
 permalink: /cat-wu-ai-pm/
 listed: true
 
