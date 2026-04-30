@@ -1,6 +1,6 @@
 ---
 title: Cat Wu: AI PM应该干什么
-permalink: /meta-theory-of-life-upsteam-bit/
+permalink: /cat-wu-ai-pm/
 listed: true
 
 ---
