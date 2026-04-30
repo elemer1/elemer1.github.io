@@ -64,4 +64,4 @@ listed: true
 
 
 
-https://www.youtube.com/watch?v=PplmzlgE0kg
+{% include youtube.html id="PplmzlgE0kg" %}
