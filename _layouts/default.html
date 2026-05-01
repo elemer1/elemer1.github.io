@@ -72,7 +72,7 @@
     main .mermaid{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0;padding:16px;background:#f6f8fa;border-radius:6px;text-align:center}
     main .mermaid svg{max-width:100%;height:auto}
     main .twitter-embed{margin:24px 0}
-    main .twitter-embed .twitter-tweet{margin-left:auto!important;margin-right:auto!important}
+    main .twitter-embed .twitter-tweet-iframe{display:inline-block;border:0;width:550px;max-width:100%;height:0;vertical-align:top}
     main iframe{max-width:100%}
     main .callout{margin:22px 0;padding:12px 16px;border:1px solid #e5e5e5;border-left:4px solid #000;background:#f6f8fa}
     main .callout p{margin:8px 0}
@@ -137,7 +137,34 @@
 
   {% if page.twitter %}
   <!-- Twitter / X embeds: opt in with `twitter: true` in front matter -->
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <link rel="dns-prefetch" href="https://platform.twitter.com">
+  <link rel="preconnect" href="https://platform.twitter.com" crossorigin>
+  <link rel="dns-prefetch" href="https://syndication.twitter.com">
+  <link rel="dns-prefetch" href="https://pbs.twimg.com">
+  <link rel="dns-prefetch" href="https://abs.twimg.com">
+  <script>
+    // The embed iframe at platform.twitter.com/embed/Tweet.html posts its
+    // rendered height back via postMessage; resize the iframe to match.
+    window.addEventListener('message', function (e) {
+      if (e.origin !== 'https://platform.twitter.com') return;
+      var data = e.data;
+      if (typeof data === 'string') {
+        try { data = JSON.parse(data); } catch (err) { return; }
+      }
+      if (!data) return;
+      var payload = data['twttr.embed'] || data;
+      var params = payload && payload.params;
+      var height = params && params[0] && params[0].height;
+      if (!height) return;
+      var iframes = document.querySelectorAll('iframe[data-tweet-iframe]');
+      for (var i = 0; i < iframes.length; i++) {
+        if (iframes[i].contentWindow === e.source) {
+          iframes[i].style.height = height + 'px';
+          break;
+        }
+      }
+    });
+  </script>
   {% endif %}
 
   {% if page.mermaid %}

@@ -1,18 +1,27 @@
 {% assign tweet_url_no_query = include.url | split: "?" | first %}
 {% assign tweet_url = tweet_url_no_query | replace: "://x.com/", "://twitter.com/" | replace: "://www.x.com/", "://twitter.com/" %}
+{% assign tweet_path = tweet_url | split: "/status/" %}
+{% assign tweet_id_raw = tweet_path[1] | default: "" %}
+{% assign tweet_id = tweet_id_raw | split: "/" | first | split: "?" | first %}
 {% assign tweet_theme = include.theme | default: 'light' %}
 {% assign tweet_conversation = include.conversation | default: 'all' %}
 {% assign tweet_align = include.align | default: 'center' %}
 {% assign tweet_cards = include.cards | default: 'visible' %}
 {% assign tweet_lang = include.lang | default: 'en' %}
-<div class="twitter-embed">
-  <blockquote class="twitter-tweet"
-    data-theme="{{ tweet_theme }}"
-    data-conversation="{{ tweet_conversation }}"
-    data-align="{{ tweet_align }}"
-    data-cards="{{ tweet_cards }}"
-    data-lang="{{ tweet_lang }}"
-    data-dnt="true">
-    <a href="{{ tweet_url }}">{{ tweet_url }}</a>
-  </blockquote>
+{% if tweet_cards == 'hidden' %}{% assign tweet_hide_card = 'true' %}{% else %}{% assign tweet_hide_card = 'false' %}{% endif %}
+{% if tweet_conversation == 'none' %}{% assign tweet_hide_thread = 'true' %}{% else %}{% assign tweet_hide_thread = 'false' %}{% endif %}
+<div class="twitter-embed" style="text-align:{{ tweet_align }}">
+  {% if tweet_id != "" %}
+  <iframe class="twitter-tweet-iframe"
+    src="https://platform.twitter.com/embed/Tweet.html?id={{ tweet_id }}&theme={{ tweet_theme }}&hideCard={{ tweet_hide_card }}&hideThread={{ tweet_hide_thread }}&lang={{ tweet_lang }}&dnt=true&frame=false"
+    title="X / Twitter 推文"
+    loading="lazy"
+    scrolling="no"
+    allowtransparency="true"
+    allowfullscreen="true"
+    referrerpolicy="strict-origin-when-cross-origin"
+    data-tweet-iframe
+    data-tweet-url="{{ tweet_url }}"></iframe>
+  {% endif %}
+  <noscript><a href="{{ tweet_url }}">{{ tweet_url }}</a></noscript>
 </div>
