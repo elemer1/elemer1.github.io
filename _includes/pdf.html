@@ -1,13 +1,4 @@
 {% assign pdf_title = include.title | default: 'PDF preview' %}
-{% assign pdf_height = include.height | default: '800' %}
-<div class="pdf-embed" style="height:{{ pdf_height }}px">
-  <iframe
-    src="{{ include.src }}#view=FitH"
-    title="{{ pdf_title | escape }}"
-    loading="lazy"
-    allowfullscreen>
-  </iframe>
-  <p class="pdf-fallback">
-    无法直接预览？<a href="{{ include.src }}" target="_blank" rel="noopener">在新标签页打开 PDF</a>。
-  </p>
+<div class="pdf-embed" data-pdf-src="{{ include.src }}" data-pdf-title="{{ pdf_title | escape }}" role="document" aria-label="{{ pdf_title | escape }}">
+  <div class="pdf-status">加载中…</div>
 </div>

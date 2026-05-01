@@ -66,11 +66,11 @@
     main figcaption{margin-top:8px;font-size:14px;line-height:1.5;color:#57606a}
     main .video-embed{position:relative;height:0;overflow:hidden;max-width:100%;margin:24px 0;padding-bottom:56.25%;background:#f6f8fa}
     main .video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-    main .pdf-embed{max-width:100%;margin:24px 0;background:#f6f8fa;border:1px solid #e5e5e5;display:flex;flex-direction:column}
-    main .pdf-embed iframe{display:block;width:100%;flex:1 1 auto;border:0;background:#fff}
-    main .pdf-fallback{margin:0;padding:8px 12px;font-size:13px;line-height:1.5;color:#57606a;border-top:1px solid #e5e5e5;text-align:center}
-    main .pdf-fallback a{color:#0000ee}
-    @media (max-width:480px){main .pdf-embed{height:480px!important}}
+    main .pdf-embed{margin:24px 0;background:#525659;padding:16px 8px;font-size:13px;line-height:1.5;color:#cfd2d4}
+    main .pdf-embed .pdf-page{margin:0 auto 12px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.5);max-width:100%}
+    main .pdf-embed .pdf-page:last-child{margin-bottom:0}
+    main .pdf-embed .pdf-page canvas{display:block;width:100%;height:100%}
+    main .pdf-embed .pdf-status{text-align:center;padding:24px 8px;color:#cfd2d4}
     main .mermaid{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0;padding:16px;background:#f6f8fa;border-radius:6px;text-align:center}
     main .mermaid svg{max-width:100%;height:auto}
     main iframe{max-width:100%}
@@ -169,6 +169,87 @@
       } catch (err) {
         console.error('Mermaid render failed:', err);
       }
+    });
+  </script>
+  {% endif %}
+
+  {% if page.pdf %}
+  <!-- PDF.js: opt in with `pdf: true` in front matter -->
+  <script type="module">
+    import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
+
+    const DPR_CAP = 2;
+
+    async function renderPdfEmbed(container) {
+      const rawSrc = container.dataset.pdfSrc;
+      if (!rawSrc) return;
+      const src = encodeURI(rawSrc);
+      const status = container.querySelector('.pdf-status');
+      const dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
+
+      let pdf;
+      try {
+        pdf = await pdfjsLib.getDocument({ url: src }).promise;
+      } catch (err) {
+        console.error('PDF load failed:', err);
+        if (status) status.textContent = 'PDF 加载失败';
+        return;
+      }
+
+      if (status) status.remove();
+
+      const cssWidth = Math.max(0, container.clientWidth - 16);
+
+      const observer = new IntersectionObserver(function (entries) {
+        for (const entry of entries) {
+          if (entry.isIntersecting && !entry.target.dataset.rendered) {
+            entry.target.dataset.rendered = '1';
+            observer.unobserve(entry.target);
+            renderPage(entry.target, pdf, +entry.target.dataset.pageNum, cssWidth, dpr);
+          }
+        }
+      }, { rootMargin: '600px 0px' });
+
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const baseViewport = page.getViewport({ scale: 1 });
+        const cssScale = cssWidth / baseViewport.width;
+        const cssViewport = page.getViewport({ scale: cssScale });
+
+        const wrap = document.createElement('div');
+        wrap.className = 'pdf-page';
+        wrap.dataset.pageNum = i;
+        wrap.style.width = cssViewport.width + 'px';
+        wrap.style.height = cssViewport.height + 'px';
+        container.appendChild(wrap);
+        observer.observe(wrap);
+      }
+    }
+
+    async function renderPage(wrap, pdf, pageNum, cssWidth, dpr) {
+      try {
+        const page = await pdf.getPage(pageNum);
+        const baseViewport = page.getViewport({ scale: 1 });
+        const cssScale = cssWidth / baseViewport.width;
+        const renderViewport = page.getViewport({ scale: cssScale * dpr });
+
+        const canvas = document.createElement('canvas');
+        canvas.width = renderViewport.width;
+        canvas.height = renderViewport.height;
+        wrap.appendChild(canvas);
+
+        await page.render({
+          canvasContext: canvas.getContext('2d'),
+          viewport: renderViewport
+        }).promise;
+      } catch (err) {
+        console.error('PDF page render failed:', err);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.pdf-embed[data-pdf-src]').forEach(renderPdfEmbed);
     });
   </script>
   {% endif %}
