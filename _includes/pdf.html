@@ -1,4 +1,9 @@
 {% assign pdf_title = include.title | default: 'PDF preview' %}
-<div class="pdf-embed" data-pdf-src="{{ include.src }}" data-pdf-title="{{ pdf_title | escape }}" role="document" aria-label="{{ pdf_title | escape }}">
-  <div class="pdf-status">加载中…</div>
+{% assign pdf_height = include.height | default: '780' %}
+<div class="pdf-embed" style="height:{{ pdf_height }}px">
+  <iframe
+    src="/assets/pdfjs/web/viewer.html?file={{ include.src | url_encode }}"
+    title="{{ pdf_title | escape }}"
+    loading="lazy"
+    allowfullscreen></iframe>
 </div>
