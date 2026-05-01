@@ -12,40 +12,22 @@ twitter: true
 下面使用的是可复用的 Twitter include：
 
 ```liquid
-{% raw %}{% include twitter.html url="https://twitter.com/jack/status/20" %}{% endraw %}
+{% raw %}{% include twitter.html url="https://x.com/berbarianwizard/status/2049865813486698906" %}{% endraw %}
 ```
 
-{% include twitter.html url="https://twitter.com/jack/status/20" %}
-
-## 暗色主题
-
-```liquid
-{% raw %}{% include twitter.html url="https://twitter.com/Twitter/status/1445078208190291973" theme="dark" %}{% endraw %}
-```
-
-{% include twitter.html url="https://twitter.com/Twitter/status/1445078208190291973" theme="dark" %}
-
-## 隐藏会话上下文
-
-`conversation="none"` 会隐藏被回复的上文，只显示当前推文：
-
-```liquid
-{% raw %}{% include twitter.html url="https://twitter.com/elonmusk/status/1507041396242407424" conversation="none" %}{% endraw %}
-```
-
-{% include twitter.html url="https://twitter.com/elonmusk/status/1507041396242407424" conversation="none" %}
+{% include twitter.html url="https://x.com/berbarianwizard/status/2049865813486698906" %}
 
 ## 原始推文链接
 
 如果上面的卡片没有渲染，可以点击下面的原始链接确认推文是否可访问：
 
-[https://twitter.com/jack/status/20](https://twitter.com/jack/status/20)
+[https://x.com/berbarianwizard/status/2049865813486698906?s=46](https://x.com/berbarianwizard/status/2049865813486698906?s=46)
 
 ## 说明
 
 - 在 front matter 中加上 `twitter: true`，页面才会加载 Twitter `widgets.js` 渲染脚本。普通文章不会额外加载这个脚本。
 - 使用 `{% raw %}{% include twitter.html url="..." %}{% endraw %}` 在文中内嵌推文卡片。
-  - `url`：推文链接，必填。`twitter.com` 或 `x.com` 都可以。
+  - `url`：推文链接，必填。`twitter.com` 或 `x.com` 都可以；`?s=...` 之类的分享参数会被 Twitter 的渲染器忽略。
   - `theme`：可选，`light`（默认）或 `dark`。
   - `conversation`：可选，`all`（默认）显示完整上下文，`none` 只显示这一条。
   - `align`：可选，`center`（默认）/`left`/`right`，控制卡片在容器中的对齐方式。
