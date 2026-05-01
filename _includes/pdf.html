@@ -2,7 +2,7 @@
 {% assign pdf_height = include.height | default: '780' %}
 <div class="pdf-embed" style="height:{{ pdf_height }}px">
   <iframe
-    src="/assets/pdfjs/web/viewer.html?v=2&file={{ include.src | url_encode }}"
+    src="/assets/pdfjs/web/viewer.html?v=3&file={{ include.src | url_encode }}"
     title="{{ pdf_title | escape }}"
     loading="lazy"
     allowfullscreen></iframe>
