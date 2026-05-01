@@ -1,4 +1,5 @@
-{% assign tweet_url = include.url %}
+{% assign tweet_url_no_query = include.url | split: "?" | first %}
+{% assign tweet_url = tweet_url_no_query | replace: "://x.com/", "://twitter.com/" | replace: "://www.x.com/", "://twitter.com/" %}
 {% assign tweet_theme = include.theme | default: 'light' %}
 {% assign tweet_conversation = include.conversation | default: 'all' %}
 {% assign tweet_align = include.align | default: 'center' %}
