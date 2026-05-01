@@ -9,7 +9,7 @@ Live at **[elemer.net](https://elemer.net)**.
 1. **Speed.** Static HTML, served from GitHub Pages' global CDN. CSS is inlined; no web fonts; no JavaScript framework.
 2. **Minimal.** A 650px column, system fonts, pure black on white. The content is the design.
 3. **Markdown-first.** Normal writing lives in `_markdown/`. Raw HTML is reserved for standalone interactive pages in `_html/`.
-4. **Reusable article components.** Common objects such as YouTube videos, Mermaid diagrams, figures, callouts, file cards, tables, blockquotes, and footnotes have stable site-level styling.
+4. **Reusable article components.** Common objects such as YouTube videos, PDF previews, Twitter / X tweet cards, Mermaid diagrams, figures, callouts, file cards, tables, blockquotes, and footnotes have stable site-level styling.
 5. **LaTeX support.** MathJax loads by default on every page so any post can use `$...$` and `$$...$$`.
 6. **Drop-in publishing.** Drop a file into the right folder, add front matter, run `./publish.sh`.
 7. **Safety checks.** Local publishing and CI check front matter, permalink shape, duplicate permalinks, root-level Markdown mistakes, YouTube embed mistakes, and unsafe encrypted posts in public repos.
@@ -21,6 +21,8 @@ Live at **[elemer.net](https://elemer.net)**.
 .
 ├── _config.yml              # Jekyll config
 ├── _includes/
+│   ├── pdf.html             # Reusable PDF.js embed
+│   ├── twitter.html         # Reusable Twitter / X tweet card
 │   └── youtube.html         # Reusable responsive YouTube embed
 ├── _layouts/
 │   ├── default.html         # Site shell, inlined CSS, MathJax, Mermaid, article components
@@ -82,6 +84,7 @@ Optional:
 | ----------- | ---------------------------------------------------------------------------------- |
 | `math`      | Set `false` to skip MathJax on a page (useful if `$...$` is used for prices, etc.) |
 | `mermaid`   | Set `true` to render Mermaid fenced code blocks on this page.                      |
+| `twitter`   | Set `true` to render Twitter / X tweet cards on this page.                         |
 | `lang`      | Page language. Defaults to `zh-CN`; use `en` for English pages.                   |
 | `encrypted` | Set `true` for password-locked articles. Only safe if the repo is private.        |
 | `password`  | Password for encrypted articles. Keep ASCII.                                      |
@@ -171,6 +174,39 @@ Rules:
 - Prefer `{% include youtube.html id="VIDEO_ID" %}` over hand-written iframe markup.
 - Do not use `youtu.be` or `youtube.com/watch` inside an iframe.
 - When showing Liquid include syntax inside a code block, wrap the example in `{% raw %}...{% endraw %}` so Jekyll does not execute it.
+
+### Twitter / X tweet cards
+
+Twitter is opt-in per page. Add this to front matter when a Markdown post needs tweet embeds:
+
+```yaml
+twitter: true
+```
+
+Then use the reusable include where the tweet should appear:
+
+```liquid
+{% include twitter.html url="https://twitter.com/jack/status/20" %}
+```
+
+The include renders Twitter's official tweet card (avatar, author, body, attached media, timestamp) instead of a plain link. Both `twitter.com/...` and `x.com/...` URLs work.
+
+Optional parameters:
+
+| Field          | Purpose                                                                 |
+| -------------- | ----------------------------------------------------------------------- |
+| `theme`        | `light` (default) or `dark`                                             |
+| `conversation` | `all` (default) shows replied-to context; `none` shows only this tweet  |
+| `align`        | `center` (default) / `left` / `right`                                   |
+| `cards`        | `visible` (default) or `hidden` to hide link preview cards inside tweet |
+| `lang`         | UI language inside the card; defaults to `en`                           |
+
+Rules:
+
+- Put `twitter: true` in the page front matter before using the include.
+- Use the `url` parameter; copy the full tweet URL from the address bar.
+- The card is set with `data-dnt="true"`, telling Twitter not to personalize tracking for this embed.
+- Pages without `twitter: true` do not load Twitter's `widgets.js`, so normal posts stay script-free.
 
 ### Figures and captions
 

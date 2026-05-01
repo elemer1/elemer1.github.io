@@ -1,0 +1,17 @@
+{% assign tweet_url = include.url %}
+{% assign tweet_theme = include.theme | default: 'light' %}
+{% assign tweet_conversation = include.conversation | default: 'all' %}
+{% assign tweet_align = include.align | default: 'center' %}
+{% assign tweet_cards = include.cards | default: 'visible' %}
+{% assign tweet_lang = include.lang | default: 'en' %}
+<div class="twitter-embed">
+  <blockquote class="twitter-tweet"
+    data-theme="{{ tweet_theme }}"
+    data-conversation="{{ tweet_conversation }}"
+    data-align="{{ tweet_align }}"
+    data-cards="{{ tweet_cards }}"
+    data-lang="{{ tweet_lang }}"
+    data-dnt="true">
+    <a href="{{ tweet_url }}">{{ tweet_url }}</a>
+  </blockquote>
+</div>
