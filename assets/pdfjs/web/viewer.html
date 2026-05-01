@@ -34,6 +34,29 @@ See https://github.com/adobe-type-tools/cmap-resources
 
     <link rel="stylesheet" href="viewer.css">
 
+    <style>
+      /* Force the classic dark chrome regardless of OS color scheme.
+         Some mobile browsers (notably iOS Safari) re-tint icon masks
+         when the parent page is auto-darkened, leaving toolbar icons
+         barely visible — these !important overrides keep them bright. */
+      :root, html.is-dark {
+        --main-color: rgb(249 249 250) !important;
+        --body-bg-color: rgb(42 42 46) !important;
+        --toolbar-bg-color: rgb(56 56 61) !important;
+        --toolbar-border-color: rgb(12 12 13) !important;
+        --toolbar-icon-bg-color: rgb(255 255 255) !important;
+        --toolbar-icon-hover-bg-color: rgb(255 255 255) !important;
+        --toolbar-icon-opacity: 0.9 !important;
+        --doorhanger-icon-opacity: 1 !important;
+        --field-color: rgb(250 250 250) !important;
+        --field-bg-color: rgb(64 64 68) !important;
+        --field-border-color: rgb(115 115 115) !important;
+        --button-hover-color: rgb(102 102 103) !important;
+        --separator-color: rgb(0 0 0 / 0.3) !important;
+        --doorhanger-bg-color: rgb(74 74 79) !important;
+      }
+    </style>
+
   <script src="viewer.mjs" type="module"></script>
   </head>
 
