@@ -596,18 +596,22 @@ listed: true
                 background: transparent;
                 border: 1px solid #c4b9a6;
                 color: #3a3a3a;
-                padding: 6px 12px;
+                padding: 0 8px;
                 border-radius: 6px;
                 cursor: pointer;
                 font-size: 13px;
-                display: flex;
+                display: inline-flex;
                 align-items: center;
-                gap: 6px;
+                gap: 4px;
+                height: 30px;
                 transition: all 0.15s;
             }
             .toc-toggle:hover {
                 background: #f7f3e8;
                 border-color: var(--accent);
+            }
+            .toc-toggle .toc-icon {
+                display: block;
             }
             .toc-toggle .caret {
                 display: inline-block;
@@ -616,7 +620,6 @@ listed: true
                 border-left: 4px solid transparent;
                 border-right: 4px solid transparent;
                 border-top: 5px solid currentColor;
-                margin-left: 4px;
                 transition: transform 0.2s;
             }
             .toc-toggle.open .caret {
@@ -714,8 +717,7 @@ listed: true
                     font-size: 13px;
                 }
                 .toc-toggle {
-                    padding: 6px 10px;
-                    font-size: 12.5px;
+                    padding: 0 6px;
                 }
                 .toc-panel .toc-inner {
                     padding: 14px 18px 18px;
@@ -733,22 +735,40 @@ listed: true
     <body>
         <nav class="site-nav" id="siteNav">
             <div class="nav-left">
-                <button
-                    aria-controls="tocPanel"
-                    aria-expanded="false"
-                    class="toc-toggle"
-                    id="tocToggle"
-                >
-                    <span class="toc-toggle-label" data-i18n="ui.toc"
-                        >目录</span
-                    >
-                    <span class="caret"></span>
-                </button>
                 <span class="nav-brand" data-i18n="ui.brand"
                     >自行车的工作原理</span
                 >
             </div>
             <div class="nav-right">
+                <button
+                    aria-controls="tocPanel"
+                    aria-expanded="false"
+                    aria-label="目录"
+                    data-i18n-aria-label="ui.toc"
+                    class="toc-toggle"
+                    id="tocToggle"
+                >
+                    <svg
+                        aria-hidden="true"
+                        class="toc-icon"
+                        fill="none"
+                        height="16"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="16"
+                    >
+                        <line x1="8" x2="21" y1="6" y2="6"></line>
+                        <line x1="8" x2="21" y1="12" y2="12"></line>
+                        <line x1="8" x2="21" y1="18" y2="18"></line>
+                        <line x1="3" x2="3.01" y1="6" y2="6"></line>
+                        <line x1="3" x2="3.01" y1="12" y2="12"></line>
+                        <line x1="3" x2="3.01" y1="18" y2="18"></line>
+                    </svg>
+                    <span class="caret"></span>
+                </button>
                 <div
                     aria-label="Language toggle"
                     class="lang-toggle"
@@ -8501,6 +8521,17 @@ listed: true
                         n.setAttribute("data-i18n-zh", n.innerHTML);
                     }
                 });
+                var ariaNodes = document.querySelectorAll(
+                    "[data-i18n-aria-label]",
+                );
+                ariaNodes.forEach(function (n) {
+                    if (!n.hasAttribute("data-i18n-aria-label-zh")) {
+                        n.setAttribute(
+                            "data-i18n-aria-label-zh",
+                            n.getAttribute("aria-label") || "",
+                        );
+                    }
+                });
 
                 function setLang(lang) {
                     document.documentElement.lang =
@@ -8516,6 +8547,17 @@ listed: true
                             }
                         } else {
                             n.innerHTML = n.getAttribute("data-i18n-zh");
+                        }
+                    });
+                    ariaNodes.forEach(function (n) {
+                        var key = n.getAttribute("data-i18n-aria-label");
+                        if (lang === "en" && translations[key]) {
+                            n.setAttribute("aria-label", translations[key]);
+                        } else {
+                            n.setAttribute(
+                                "aria-label",
+                                n.getAttribute("data-i18n-aria-label-zh"),
+                            );
                         }
                     });
                     // Update <title> too
