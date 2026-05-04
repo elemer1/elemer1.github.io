@@ -741,18 +741,6 @@ listed: true
             .toc-toggle .toc-icon {
                 display: block;
             }
-            .toc-toggle .caret {
-                display: inline-block;
-                width: 0;
-                height: 0;
-                border-left: 4px solid transparent;
-                border-right: 4px solid transparent;
-                border-top: 5px solid currentColor;
-                transition: transform 0.2s;
-            }
-            .toc-toggle.open .caret {
-                transform: rotate(180deg);
-            }
             .lang-toggle {
                 background: transparent;
                 border: 1px solid #c4b9a6;
@@ -912,11 +900,6 @@ listed: true
     <body>
         <nav class="site-nav" id="siteNav">
             <div class="nav-left">
-                <span class="nav-brand" data-i18n="ui.brand"
-                    >自行车的工作原理</span
-                >
-            </div>
-            <div class="nav-right">
                 <button
                     aria-controls="tocPanel"
                     aria-expanded="false"
@@ -944,8 +927,12 @@ listed: true
                         <line x1="3" x2="3.01" y1="12" y2="12"></line>
                         <line x1="3" x2="3.01" y1="18" y2="18"></line>
                     </svg>
-                    <span class="caret"></span>
                 </button>
+                <span class="nav-brand" data-i18n="ui.brand"
+                    >自行车的工作原理</span
+                >
+            </div>
+            <div class="nav-right">
                 <div
                     aria-label="Language toggle"
                     class="lang-toggle"
