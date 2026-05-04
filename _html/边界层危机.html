@@ -746,7 +746,7 @@ listed: true
                 </p>
             </div>
             <figure>
-                <svg viewbox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" aria-label="钝体与流线体的阻力组成对比">
+                <svg viewbox="0 0 720 340" xmlns="http://www.w3.org/2000/svg" aria-label="钝体与流线体的阻力组成对比">
                     <text x="360" y="22" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a1a" data-i18n="svg7">两种阻力组成：钝体 vs 流线体</text>
 
                     <!-- Bluff body (sphere) -->
@@ -784,8 +784,8 @@ listed: true
                         <text x="130" y="196" text-anchor="middle" font-size="12" fill="#fff" font-weight="600" data-i18n="svg18">摩擦阻力 ~95%</text>
                     </g>
 
-                    <line x1="40" y1="245" x2="680" y2="245" stroke="#ddd" stroke-width="1"/>
-                    <text x="360" y="265" text-anchor="middle" font-size="11.5" fill="#666" font-style="italic" data-i18n="svg19">
+                    <line x1="40" y1="298" x2="680" y2="298" stroke="#ddd" stroke-width="1"/>
+                    <text x="360" y="320" text-anchor="middle" font-size="11.5" fill="#666" font-style="italic" data-i18n="svg19">
                         对球这种钝体，压差阻力是绝对主角；对机翼这种流线体，摩擦阻力反而是主角
                     </text>
                 </svg>
@@ -920,9 +920,11 @@ listed: true
 
                     <!-- Sphere -->
                     <circle cx="280" cy="170" r="65" fill="#fff" stroke="#1a1a1a" stroke-width="2"/>
+                    <!-- High-pressure region in front of sphere -->
+                    <ellipse cx="215" cy="170" rx="9" ry="22" fill="#f7d6c0" stroke="#c97a30" stroke-width="1" stroke-dasharray="3 2" opacity="0.85"/>
                     <!-- Stagnation point -->
                     <circle cx="215" cy="170" r="3" fill="#c97a30"/>
-                    <text x="195" y="172" font-size="11" fill="#7a4715" text-anchor="end" data-i18n="svg21">驻点</text>
+                    <text x="195" y="158" font-size="11" fill="#7a4715" text-anchor="end" data-i18n="svg21">驻点</text>
 
                     <!-- Streamlines approaching -->
                     <path d="M40 110 Q 150 110 200 130" fill="none" stroke="#888" stroke-width="1.2"/>
@@ -973,7 +975,7 @@ listed: true
                     <text x="98" y="285" text-anchor="middle" font-size="11" fill="#1a1a1a" data-i18n="svg27">来流 U</text>
 
                     <!-- Pressure label -->
-                    <text x="285" y="173" font-size="11" fill="#c97a30" text-anchor="middle" data-i18n="svg28">高压</text>
+                    <text x="195" y="195" font-size="11" fill="#7a4715" text-anchor="end" data-i18n="svg28">高压</text>
                 </svg>
                 <figcaption data-i18n="m43">
                     层流边界层在球面上从前驻点出发，绕过赤道后开始爬"逆压坡"。但层流贴近表面的部分动能不足，只爬到 <strong>~82°</strong>（约绕过球面 <em>不到一半</em> 的距离）就被 "顶离" 表面。从这一点开始，球的整个背面都被一个巨大的、缓慢回流的低压区覆盖。这个低压区像吸尘器一样把球向后拽——这就是<strong>压差阻力的物理来源</strong>。
@@ -1186,22 +1188,22 @@ listed: true
                     <!-- Supercritical recovery -->
                     <path d="M465 295 Q 480 290 500 280 Q 530 265 570 255 Q 620 245 680 240" fill="none" stroke="#5f5e5a" stroke-width="2.5"/>
 
+                    <!-- Drop indicator (dashed line spanning the full Cd drop, drawn before markers so they sit on top) -->
+                    <path d="M450 88 L 450 295" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="4 3"/>
+                    <text x="450" y="68" text-anchor="middle" font-size="11" fill="#c0392b" font-style="italic" data-i18n="svg42">阻力突然下降 5 倍</text>
+
                     <!-- Markers -->
                     <circle cx="280" cy="220" r="4" fill="#c97a30"/>
                     <text x="280" y="200" font-size="11" text-anchor="middle" fill="#7a4715">Cd ≈ 0.47</text>
                     <text x="280" y="186" font-size="10" text-anchor="middle" fill="#7a4715" data-i18n="svg39">亚临界（层流分离）</text>
 
-                    <circle cx="450" cy="280" r="4" fill="#c0392b"/>
-                    <text x="450" y="260" font-size="11" text-anchor="middle" fill="#c0392b" font-weight="600" data-i18n="svg40">阻力危机</text>
-                    <text x="450" y="246" font-size="10" text-anchor="middle" fill="#c0392b">Re ≈ 3 × 10⁵</text>
+                    <circle cx="450" cy="280" r="4.5" fill="#c0392b" stroke="#fdfcf8" stroke-width="2"/>
+                    <text x="425" y="263" font-size="11" text-anchor="end" fill="#c0392b" font-weight="600" data-i18n="svg40">阻力危机</text>
+                    <text x="425" y="248" font-size="10" text-anchor="end" fill="#c0392b">Re ≈ 3 × 10⁵</text>
 
                     <circle cx="490" cy="285" r="4" fill="#1d5a4f"/>
-                    <text x="490" y="305" font-size="11" text-anchor="middle" fill="#1d5a4f">Cd ≈ 0.10</text>
-                    <text x="540" y="270" font-size="10" fill="#1d5a4f" data-i18n="svg41">超临界（湍流分离）</text>
-
-                    <!-- Arrows pointing to crisis -->
-                    <path d="M450 80 L 450 215" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="4 3"/>
-                    <text x="450" y="68" text-anchor="middle" font-size="11" fill="#c0392b" font-style="italic" data-i18n="svg42">阻力突然下降 5 倍</text>
+                    <text x="490" y="268" font-size="11" text-anchor="middle" fill="#1d5a4f">Cd ≈ 0.10</text>
+                    <text x="610" y="230" font-size="10" text-anchor="middle" fill="#1d5a4f" data-i18n="svg41">超临界（湍流分离）</text>
                 </svg>
                 <figcaption data-i18n="m74">
                     Achenbach 1972 测得的光滑球阻力系数曲线<sup class="ref"><a href="#r1">[1]</a></sup>。在亚临界区（\(10^3 &lt; Re &lt; 2 \times 10^5\)），\(C_D\) 几乎是常数 0.47——这是中学物理书里的"球的阻力系数"。但在 \(Re \approx 3 \times 10^5\) 处，\(C_D\) <strong>突然</strong>从 0.47 暴跌到 0.10。这是一个真实的、可重复的、用今天最先进的 CFD 软件也能复现的物理现象。
