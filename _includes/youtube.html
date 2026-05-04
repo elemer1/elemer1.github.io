@@ -1,5 +1,6 @@
 {% assign video_title = include.title | default: 'YouTube video player' %}
-<div class="video-embed">
+{% assign is_short = include.short %}
+<div class="video-embed{% if is_short %} is-short{% endif %}">
   <iframe
     src="https://www.youtube.com/embed/{{ include.id }}"
     title="{{ video_title | escape }}"
