@@ -392,6 +392,11 @@ listed: true
                     min-width: auto;
                     width: 100%;
                 }
+                /* Override per-image inline max-width that would overflow narrow viewports */
+                figure img {
+                    max-width: 100% !important;
+                    height: auto;
+                }
             }
 
             /* Video embed responsive 16:9 */
