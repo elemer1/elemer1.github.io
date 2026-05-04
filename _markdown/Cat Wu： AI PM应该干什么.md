@@ -5,11 +5,11 @@ listed: true
 
 ---
 
-- Cat Wu 是 Anthropic Claude Code 和 Cowork 的产品负责人，和 Boris Cherny 搭档，带着团队**把产品功能的交付周期从半年压到了一天**。在 Lenny's Podcast 最新一期中，Cat 聊了 Anthropic 内部的速度文化、PM 角色的剧变、源代码泄露的善后，以及那个让开源社区炸锅的 OpenClaw 封堵决定。
+- Cat Wu 是 Anthropic Claude Code 和 Cowork 的产品负责人，和 Boris Cherny 搭档，带着团队**把产品功能的交付周期从半年压到了一天**。
 
-- 大多数 PM 候选人仍然在用 **6-12 个月路线图**的思维找工作，Anthropic 的节奏是**一周甚至一天**发布一个功能
+- 大多数 PM 候选人仍然在用 **6-12 个月路线图**的思维找工作，Anthropic 的节奏是**一周甚至一天**发布一个功能。
 
-- Claude Code 团队几乎所有 PM 都有工程背景或直接写代码，设计师也曾是前端工程师
+- Claude Code 团队几乎所有 PM 都有工程背景或直接写代码，设计师也曾是前端工程师。
 
 - Anthropic 用 **research preview 机制**降低发布承诺，让工程师可以端到端完成从想法到发布的全流程
 
@@ -53,15 +53,6 @@ listed: true
 
   - **《How Asia Works》**：讲的是什么样的政策和政府能造就持久成功的经济体。
   - **《The Technology Trap》**：讲的是过去几次技术革命（工业革命、计算机革命）对工人的影响。
-
-  两本都和她正在经历的 AI 变革直接相关。
-
-  最喜欢的产品是 Waymo，每天坐两次通勤。最喜欢的影视是 F1 纪录片《Drive to Survive》和攀岩纪录片《Free Solo》。Cat 说她喜欢看人极度专注于一个纯粹的工程目标，这个偏好多少解释了她为什么会在 Anthropic。
-
-  
-
-  
-
 
 
 {% include youtube.html id="PplmzlgE0kg" %}
