@@ -774,7 +774,56 @@ listed: true
             }
 
             /* SVG text remains rendered via JS swap; no extra CSS needed */
+
+            /* MathJax: keep equations from breaking out of narrow viewports */
+            mjx-container[display="true"] {
+                max-width: 100%;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                padding: 2px 0;
+            }
+            mjx-container {
+                font-size: 1em;
+            }
         </style>
+
+        <!-- MathJax 3 (TeX → SVG) for LaTeX-quality math -->
+        <script>
+            window.MathJax = {
+                tex: {
+                    inlineMath: [["\\(", "\\)"]],
+                    displayMath: [
+                        ["$$", "$$"],
+                        ["\\[", "\\]"],
+                    ],
+                    processEscapes: true,
+                    tags: "none",
+                },
+                svg: {
+                    fontCache: "global",
+                    scale: 1.05,
+                },
+                options: {
+                    skipHtmlTags: [
+                        "script",
+                        "noscript",
+                        "style",
+                        "textarea",
+                        "pre",
+                        "code",
+                    ],
+                    renderActions: {
+                        addMenu: [],
+                    },
+                },
+            };
+        </script>
+        <script
+            id="MathJax-script"
+            async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+        ></script>
     </head>
     <body>
         <nav class="site-nav" id="siteNav">
@@ -2298,7 +2347,9 @@ listed: true
                     ><a href="#r2">[2]</a></sup
                 >中给出的精确数学语言。线性化的简单二阶模型是：
             </p>
-            <div class="eq">J·φ̈ − mgh·φ = (DV/b)·δ̇ + (mV²h/b)·δ</div>
+            <div class="eq">
+                $$J\ddot{\phi} - mgh\,\phi \;=\; \frac{DV}{b}\,\dot{\delta} + \frac{mV^{2}h}{b}\,\delta$$
+            </div>
             <p data-i18n="m72">
                 这里 <span class="math">φ</span> 是车体倾斜角（lean
                 angle），<span class="math">δ</span> 是车把转向角（steer
@@ -2317,11 +2368,13 @@ listed: true
             <p data-i18n="m74">
                 如果我们用一个<strong>比例反馈控制律</strong>：
             </p>
-            <div class="eq">δ = −k₂·φ</div>
+            <div class="eq">$$\delta \;=\; -k_{2}\,\phi$$</div>
             <p data-i18n="m75">
                 ——也就是<strong>车把转向角与车体倾斜角成负比例</strong>——闭环系统就变成：
             </p>
-            <div class="eq">J·φ̈ + (DV·k₂/b)·φ̇ + (mV²h·k₂/b − mgh)·φ = 0</div>
+            <div class="eq">
+                $$J\ddot{\phi} + \frac{DV\,k_{2}}{b}\,\dot{\phi} + \left(\frac{mV^{2}h\,k_{2}}{b} - mgh\right)\phi \;=\; 0$$
+            </div>
             <p data-i18n="m76">
                 这是一个<strong>带阻尼的二阶系统</strong>。当
                 <span class="math">k₂ &gt; bg/V²</span>
@@ -3611,7 +3664,7 @@ listed: true
                 的附录），<strong>线性化</strong>后得到一个紧凑的二阶矩阵微分方程：
             </p>
             <div class="eq" style="font-size: 21px">
-                M·q̈ + (vC₁)·q̇ + (gK₀ + v²K₂)·q = f
+                $$M\ddot{q} + (vC_{1})\,\dot{q} + (gK_{0} + v^{2}K_{2})\,q \;=\; f$$
             </div>
             <p data-i18n="m99">
                 其中 <span class="math">q = [φ, δ]ᵀ</span> 是广义坐标，<span
@@ -3627,89 +3680,26 @@ listed: true
                     M — 质量惯量矩阵（对称、与速度无关）
                 </div>
                 <div class="eq">
-                    M =
-                    <span class="matrix-bracket"
-                        ><table>
-                            <tr>
-                                <td>M<sub>φφ</sub></td>
-                                <td>M<sub>φδ</sub></td>
-                            </tr>
-                            <tr>
-                                <td>M<sub>δφ</sub></td>
-                                <td>M<sub>δδ</sub></td>
-                            </tr>
-                        </table></span
-                    >
-                    =
-                    <span class="matrix-bracket"
-                        ><table>
-                            <tr>
-                                <td>80.82</td>
-                                <td>2.32</td>
-                            </tr>
-                            <tr>
-                                <td>2.32</td>
-                                <td>0.298</td>
-                            </tr>
-                        </table></span
-                    >
-                    kg·m²
+                    $$M = \begin{bmatrix} M_{\phi\phi} & M_{\phi\delta} \\ M_{\delta\phi} & M_{\delta\delta} \end{bmatrix} = \begin{bmatrix} 80.82 & 2.32 \\ 2.32 & 0.298 \end{bmatrix}\ \text{kg·m}^{2}$$
                 </div>
                 <div class="label" data-i18n="tag18">
                     K₀ —
                     重力刚度矩阵（注意主对角元为<em>负</em>——这就是倒立摆不稳定性）
                 </div>
                 <div class="eq">
-                    gK₀ =
-                    <span class="matrix-bracket"
-                        ><table>
-                            <tr>
-                                <td>−794.1</td>
-                                <td>−25.5</td>
-                            </tr>
-                            <tr>
-                                <td>−25.5</td>
-                                <td>−7.88</td>
-                            </tr>
-                        </table></span
-                    >
-                    N·m/rad
+                    $$gK_{0} = \begin{bmatrix} -794.1 & -25.5 \\ -25.5 & -7.88 \end{bmatrix}\ \text{N·m/rad}$$
                 </div>
                 <div class="label" data-i18n="tag19">
                     K₂ — 离心刚度矩阵（速度平方项；高速下"反"重力）
                 </div>
                 <div class="eq">
-                    v²K₂ = v²·<span class="matrix-bracket"
-                        ><table>
-                            <tr>
-                                <td>0</td>
-                                <td>76.6</td>
-                            </tr>
-                            <tr>
-                                <td>0</td>
-                                <td>2.65</td>
-                            </tr>
-                        </table></span
-                    >
-                    N·m/rad
+                    $$v^{2}K_{2} = v^{2}\!\cdot\!\begin{bmatrix} 0 & 76.6 \\ 0 & 2.65 \end{bmatrix}\ \text{N·m/rad}$$
                 </div>
                 <div class="label" data-i18n="tag20">
                     C₁ — 速度耦合矩阵（陀螺效应 + 倾斜诱导转向，与 v 成正比）
                 </div>
                 <div class="eq">
-                    vC₁ = v·<span class="matrix-bracket"
-                        ><table>
-                            <tr>
-                                <td>0</td>
-                                <td>33.87</td>
-                            </tr>
-                            <tr>
-                                <td>−0.85</td>
-                                <td>1.69</td>
-                            </tr>
-                        </table></span
-                    >
-                    N·m·s/rad
+                    $$vC_{1} = v\!\cdot\!\begin{bmatrix} 0 & 33.87 \\ -0.85 & 1.69 \end{bmatrix}\ \text{N·m·s/rad}$$
                 </div>
             </div>
             <p data-i18n="m100">
@@ -3743,19 +3733,7 @@ listed: true
                     状态空间方程：ẋ = A(v)·x + B·u
                 </div>
                 <div class="eq">
-                    A(v) =
-                    <span class="matrix-bracket"
-                        ><table>
-                            <tr>
-                                <td>0</td>
-                                <td>I<sub>2×2</sub></td>
-                            </tr>
-                            <tr>
-                                <td>−M⁻¹(gK₀+v²K₂)</td>
-                                <td>−M⁻¹(vC₁)</td>
-                            </tr>
-                        </table></span
-                    >
+                    $$A(v) = \begin{bmatrix} 0 & I_{2\times 2} \\ -M^{-1}(gK_{0} + v^{2}K_{2}) & -M^{-1}(vC_{1}) \end{bmatrix}$$
                 </div>
             </div>
             <p data-i18n="m105">
@@ -3770,7 +3748,7 @@ listed: true
                 系统稳定 ⇔ 所有特征值的<strong>实部为负</strong>：
             </p>
             <div class="eq" style="font-size: 20px">
-                Re(λᵢ) &lt; 0, ∀ i = 1, 2, 3, 4
+                $$\operatorname{Re}(\lambda_{i}) \lt 0,\quad \forall\, i = 1, 2, 3, 4$$
             </div>
             <p data-i18n="m108">
                 判别这一点不需要每次都数值求解。Routh-Hurwitz 准则告诉我们：4
@@ -4377,7 +4355,7 @@ listed: true
             <div class="deriv">
                 <span class="deriv-tag" data-i18n="tag16">关键传递函数</span>
                 <div class="eq" data-i18n="eq.tf1" style="font-size: 21px">
-                    G_η(s) = (V·δ̃) / s² · 一个稳定的低阶子系统
+                    $$G_{\eta}(s) \;=\; \frac{V \cdot \tilde{\delta}}{s^{2}} \cdot (\text{一个稳定的低阶子系统})$$
                 </div>
                 <p
                     data-i18n="m143"
@@ -4389,7 +4367,7 @@ listed: true
                     含有一个<strong>右半平面零点</strong>：
                 </p>
                 <div class="eq" data-i18n="eq.tf2" style="font-size: 20px">
-                    N(s) ∝ (s² − mgh/J)·(其他左半平面项)
+                    $$N(s) \;\propto\; (s^{2} - mgh/J)\cdot(\text{其他左半平面项})$$
                 </div>
                 <p data-i18n="m144" style="font-size: 14.5px; margin: 14px 0 0">
                     分子的因子 <span class="math">(s² − mgh/J)</span> 把零点放在
@@ -8636,9 +8614,9 @@ listed: true
                     vc1: "<strong>Arend Schwab's talk at TEDxDelft (2012): \"Why bicycles do not fall.\"</strong> This is the public lecture by one of the lead authors of the 2011 <em>Science</em> paper, in which he uses physical models live on stage to demonstrate why both the gyroscopic theory and the trail theory are incomplete, and explains the TMS bicycle's design philosophy. <strong>If you only watch one video, watch this one</strong>.",
                     vc2: '<strong>MinutePhysics: "The Counterintuitive Physics of Turning a Bike."</strong> Henry Reich uses an animated physics derivation, layer by layer, to explain why "to turn right, push the handlebar left." A 5-minute high-density introduction — the most accessible visual companion to §8 of this article.',
                     "eq.tf1":
-                        "G_η(s) = (V·δ̃) / s² · (a stable low-order subsystem)",
+                        "$$G_{\\eta}(s) \\;=\\; \\frac{V \\cdot \\tilde{\\delta}}{s^{2}} \\cdot (\\text{a stable low-order subsystem})$$",
                     "eq.tf2":
-                        "N(s) ∝ (s² − mgh/J) · (other left-half-plane terms)",
+                        "$$N(s) \\;\\propto\\; (s^{2} - mgh/J)\\cdot(\\text{other left-half-plane terms})$$",
                     "m.curLean": "Lean φ: ",
                     "m.curSteer": "Steer δ: ",
                     "tbl.h1": "System",
@@ -8766,6 +8744,10 @@ listed: true
                             detail: { lang: lang },
                         }),
                     );
+                    // Re-typeset MathJax after innerHTML swaps
+                    if (window.MathJax && window.MathJax.typesetPromise) {
+                        window.MathJax.typesetPromise().catch(function () {});
+                    }
                 }
 
                 // Wire up toggle buttons
