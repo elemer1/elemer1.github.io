@@ -1390,11 +1390,11 @@ listed: true
                     <figcaption data-i18n="m40">
                         大学物理课经典演示：手持旋转的自行车轮，沿轴向施加力
                         F，车轮不会朝 F 方向倒，而是<strong
-                            >朝垂直方向进动（precession ω<sub>p</sub>）</strong
+                            >朝垂直方向进动（precession \(\omega_{p}\)）</strong
                         >。这就是"陀螺效应"在物理上确实存在的证据——角动量
-                        <span class="math">L</span>、扭矩
-                        <span class="math">τ</span>、进动角速度
-                        <span class="math">ω<sub>p</sub></span>
+                        \(L\)、扭矩
+                        \(\tau\)、进动角速度
+                        \(\omega_{p}\)
                         的几何关系一目了然。<br />来源：OpenStax University
                         Physics（CC BY 4.0）
                     </figcaption>
@@ -1456,9 +1456,8 @@ listed: true
             <p data-i18n="m49">
                 什么是拖距？看自行车的前叉——你会发现它不是垂直的，而是向后倾斜一个角度（"头管角"，head
                 angle，记为
-                <span class="math">λ</span
-                >）。同时，前轮的<strong>接地点</strong>比转向轴与地面的交点<strong>靠后一些</strong>。这个水平距离
-                <span class="math">c</span> 就叫做"拖距"或"caster trail"。
+                \(\lambda\)）。同时，前轮的<strong>接地点</strong>比转向轴与地面的交点<strong>靠后一些</strong>。这个水平距离
+                \(c\) 就叫做"拖距"或"caster trail"。
             </p>
             <figure>
                 <svg
@@ -1659,9 +1658,9 @@ listed: true
                     </text>
                 </svg>
                 <figcaption data-i18n="m50">
-                    自行车的关键几何参数：头管角 <span class="math">λ</span>（约
-                    70°），轴距 <span class="math">b</span>（典型值 1.0
-                    米），拖距 <span class="math">c</span>（典型值 2–8
+                    自行车的关键几何参数：头管角 \(\lambda\)（约
+                    70°），轴距 \(b\)（典型值 1.0
+                    米），拖距 \(c\)（典型值 2–8
                     厘米）。这套几何让前叉具有了一个"自动调向倾斜方向"的特性。
                 </figcaption>
             </figure>
@@ -2351,19 +2350,19 @@ listed: true
                 $$J\ddot{\phi} - mgh\,\phi \;=\; \frac{DV}{b}\,\dot{\delta} + \frac{mV^{2}h}{b}\,\delta$$
             </div>
             <p data-i18n="m72">
-                这里 <span class="math">φ</span> 是车体倾斜角（lean
-                angle），<span class="math">δ</span> 是车把转向角（steer
-                angle），<span class="math">V</span>
+                这里 \(\phi\) 是车体倾斜角（lean
+                angle），\(\delta\) 是车把转向角（steer
+                angle），\(V\)
                 是速度，其余是几何与质量参数。这个方程左边
-                <span class="math">J·φ̈ − mgh·φ</span>
+                \(J \cdot \ddot{\phi} - mgh \cdot \phi\)
                 就是一个<strong>倒立摆方程</strong>——指数发散，本身不稳定。
             </p>
             <p data-i18n="m73">
                 但右边告诉我们：<strong
-                    >转向角 δ 通过两种途径给倾斜运动施加力矩</strong
+                    >转向角 \(\delta\) 通过两种途径给倾斜运动施加力矩</strong
                 >——一个 inertial term（与
-                <span class="math">δ̇</span> 成正比），一个 centrifugal term（与
-                <span class="math">δ</span> 成正比）。
+                \(\dot{\delta}\) 成正比），一个 centrifugal term（与
+                \(\delta\) 成正比）。
             </p>
             <p data-i18n="m74">
                 如果我们用一个<strong>比例反馈控制律</strong>：
@@ -2377,7 +2376,7 @@ listed: true
             </div>
             <p data-i18n="m76">
                 这是一个<strong>带阻尼的二阶系统</strong>。当
-                <span class="math">k₂ &gt; bg/V²</span>
+                \(k_{2} > bg/V^{2}\)
                 时，系统<strong>渐进稳定</strong>。
             </p>
             <figure>
@@ -2939,7 +2938,7 @@ listed: true
                                 "
                             data-i18n="tbl.r8c2"
                             >
-                                直立 (φ = 0)
+                                直立 (\(\phi = 0\))
                             </td>
                             <td
                                 style="
@@ -3251,11 +3250,11 @@ listed: true
                 <figcaption data-i18n="m89">
                     Åström 论文<sup class="ref"><a href="#r2">[2]</a></sup
                     >给出的自行车系统框图。前叉模型把车体倾斜
-                    <span class="math">φ</span> 翻译成车把转向
-                    <span class="math">δ</span>；车架模型描述了
-                    <span class="math">δ</span> 如何反过来影响
-                    <span class="math">φ</span>。<strong
-                        >关键是 φ 反向回到输入端</strong
+                    \(\phi\) 翻译成车把转向
+                    \(\delta\)；车架模型描述了
+                    \(\delta\) 如何反过来影响
+                    \(\phi\)。<strong
+                        >关键是 \(\phi\) 反向回到输入端</strong
                     >——这个负号是整个系统稳定的根本原因。
                 </figcaption>
             </figure>
@@ -3271,13 +3270,12 @@ listed: true
             </blockquote>
             <p data-i18n="m90">
                 这才是真相的核心。<strong>前叉本身就是控制器</strong>——它把倾斜角
-                <span class="math">φ</span> 自动转换成转向角
-                <span class="math">δ</span
-                >，转换的方向使得整个闭环系统变成<strong>负反馈</strong>。
+                \(\phi\) 自动转换成转向角
+                \(\delta\)，转换的方向使得整个闭环系统变成<strong>负反馈</strong>。
             </p>
             <h3 data-i18n="m91">但 TMS 实验告诉我们什么新东西？</h3>
             <p data-i18n="m92">
-                Åström 论文里的传递函数中，<span class="math">k₂(V)</span>
+                Åström 论文里的传递函数中，\(k_{2}(V)\)
                 由若干项贡献。<strong>陀螺效应是一项贡献，正拖距是另一项贡献</strong>——但还有第三项，长久以来被忽视。这就是
                 2011 年 TMS 实验揭示的<sup class="ref"
                     ><a href="#r1">[1]</a></sup
@@ -3652,9 +3650,8 @@ listed: true
                     Whipple 模型把自行车理想化为四个刚体：后轮 R、后框架
                     B（含骑车人）、前组件 H（前叉+车把）、前轮
                     F。三个铰链分别在转向轴、前轮轴、后轮轴。两个广义坐标
-                    <span class="math">φ</span>（倾斜）和
-                    <span class="math">δ</span
-                    >（转向）足以描述<strong>横向</strong>动力学（前进运动 v
+                    \(\phi\)（倾斜）和
+                    \(\delta\)（转向）足以描述<strong>横向</strong>动力学（前进运动 v
                     是参数，不是变量）。
                 </figcaption>
             </figure>
@@ -3667,10 +3664,7 @@ listed: true
                 $$M\ddot{q} + (vC_{1})\,\dot{q} + (gK_{0} + v^{2}K_{2})\,q \;=\; f$$
             </div>
             <p data-i18n="m99">
-                其中 <span class="math">q = [φ, δ]ᵀ</span> 是广义坐标，<span
-                    class="math"
-                    >f = [Tφ, Tδ]ᵀ</span
-                >
+                其中 \(q = [\phi, \delta]^{T}\) 是广义坐标，\(f = [T_{\phi}, T_{\delta}]^{T}\)
                 是外加扭矩（前者作用在车体倾斜方向，后者作用在转向轴上）。<strong
                     >四个 2×2 矩阵分别有清晰的物理意义</strong
                 >：
@@ -3683,20 +3677,20 @@ listed: true
                     $$M = \begin{bmatrix} M_{\phi\phi} & M_{\phi\delta} \\ M_{\delta\phi} & M_{\delta\delta} \end{bmatrix} = \begin{bmatrix} 80.82 & 2.32 \\ 2.32 & 0.298 \end{bmatrix}\ \text{kg·m}^{2}$$
                 </div>
                 <div class="label" data-i18n="tag18">
-                    K₀ —
+                    \(K_{0}\) —
                     重力刚度矩阵（注意主对角元为<em>负</em>——这就是倒立摆不稳定性）
                 </div>
                 <div class="eq">
                     $$gK_{0} = \begin{bmatrix} -794.1 & -25.5 \\ -25.5 & -7.88 \end{bmatrix}\ \text{N·m/rad}$$
                 </div>
                 <div class="label" data-i18n="tag19">
-                    K₂ — 离心刚度矩阵（速度平方项；高速下"反"重力）
+                    \(K_{2}\) — 离心刚度矩阵（速度平方项；高速下"反"重力）
                 </div>
                 <div class="eq">
                     $$v^{2}K_{2} = v^{2}\!\cdot\!\begin{bmatrix} 0 & 76.6 \\ 0 & 2.65 \end{bmatrix}\ \text{N·m/rad}$$
                 </div>
                 <div class="label" data-i18n="tag20">
-                    C₁ — 速度耦合矩阵（陀螺效应 + 倾斜诱导转向，与 v 成正比）
+                    \(C_{1}\) — 速度耦合矩阵（陀螺效应 + 倾斜诱导转向，与 v 成正比）
                 </div>
                 <div class="eq">
                     $$vC_{1} = v\!\cdot\!\begin{bmatrix} 0 & 33.87 \\ -0.85 & 1.69 \end{bmatrix}\ \text{N·m·s/rad}$$
@@ -3705,8 +3699,8 @@ listed: true
             <p data-i18n="m100">
                 这些数值是 Whipple
                 模型的<strong>基准参数</strong>（benchmark），由 Meijaard et al.
-                2007 给出，对应一辆典型成人自行车（轴距 b=1.0 m，头管角
-                λ=π/10≈18° from vertical，等效骑车人质量 72
+                2007 给出，对应一辆典型成人自行车（轴距 \(b=1.0\) m，头管角
+                \(\lambda = \pi/10 \approx 18^{\circ}\) from vertical，等效骑车人质量 72
                 kg，等等）。整个领域的论文都用这套参数交叉对比，确保大家的数值结果可复现。
             </p>
             <div class="insight">
@@ -3714,9 +3708,9 @@ listed: true
                     >为什么这种结构里"藏着"自稳定？</span
                 >
                 <p data-i18n="m101" style="margin: 0">
-                    看 K = gK₀ + v²K₂。在<strong>低速</strong>时，gK₀
-                    的负号占主导，系统是不稳定的（倒立摆主导）。在<strong>高速</strong>时，v²K₂
-                    项变得足够大，能把矩阵 K 的"等效刚度"拉成正定——但前提是 K₂
+                    看 \(K = gK_{0} + v^{2}K_{2}\)。在<strong>低速</strong>时，\(gK_{0}\)
+                    的负号占主导，系统是不稳定的（倒立摆主导）。在<strong>高速</strong>时，\(v^{2}K_{2}\)
+                    项变得足够大，能把矩阵 \(K\) 的"等效刚度"拉成正定——但前提是 \(K_{2}\)
                     矩阵的<strong>非对角元不为零</strong>，也就是说必须有<strong>倾斜与转向的耦合</strong>。这个非零耦合，恰好就是几何反馈机制（无论它来自陀螺、拖距还是质量分布）的数学化身。
                 </p>
             </div>
@@ -3726,7 +3720,7 @@ listed: true
             <h3 data-i18n="m103">从二阶矩阵方程到状态空间</h3>
             <p data-i18n="m104">
                 上一节的二阶矩阵方程包含<em>加速度</em>，要用现代控制理论分析它，先转换成<strong>一阶状态空间形式</strong>。定义状态向量
-                <span class="math">x = [φ, δ, φ̇, δ̇]ᵀ</span>（4 维）：
+                \(x = [\phi, \delta, \dot{\phi}, \dot{\delta}]^{T}\)（4 维）：
             </p>
             <div class="matrix-block">
                 <div class="label" data-i18n="tag21">
@@ -3738,14 +3732,14 @@ listed: true
             </div>
             <p data-i18n="m105">
                 这个 4×4 矩阵
-                <strong>A(v)</strong>
+                <strong>\(A(v)\)</strong>
                 完全编码了自行车的横向动力学。它的<strong>特征值</strong>（eigenvalues）就是系统的"自然频率"——给系统一个小扰动，它会按照
-                e<sup>λᵢt</sup> 的方式演化，<span class="math">λᵢ</span> 就是 A
+                \(e^{\lambda_{i} t}\) 的方式演化，\(\lambda_{i}\) 就是 \(A\)
                 的特征值。
             </p>
             <h3 data-i18n="m106">稳定性的判据</h3>
             <p data-i18n="m107">
-                系统稳定 ⇔ 所有特征值的<strong>实部为负</strong>：
+                系统稳定 \(\iff\) 所有特征值的<strong>实部为负</strong>：
             </p>
             <div class="eq" style="font-size: 20px">
                 $$\operatorname{Re}(\lambda_{i}) \lt 0,\quad \forall\, i = 1, 2, 3, 4$$
@@ -3753,13 +3747,13 @@ listed: true
             <p data-i18n="m108">
                 判别这一点不需要每次都数值求解。Routh-Hurwitz 准则告诉我们：4
                 阶特征多项式
-                <span class="math">a₀λ⁴ + a₁λ³ + a₂λ² + a₃λ + a₄ = 0</span>
-                的根全在左半平面 ⇔ 所有 <span class="math">aᵢ &gt; 0</span> 且
+                \(a_{0}\lambda^{4} + a_{1}\lambda^{3} + a_{2}\lambda^{2} + a_{3}\lambda + a_{4} = 0\)
+                的根全在左半平面 ⇔ 所有 \(a_{i} > 0\) 且
                 Hurwitz 行列式
-                <span class="math">H₃ = a₁a₂a₃ − a₀a₃² − a₁²a₄ &gt; 0</span>。
+                \(H_{3} = a_{1}a_{2}a_{3} - a_{0}a_{3}^{2} - a_{1}^{2}a_{4} > 0\)。
             </p>
             <p data-i18n="m109">
-                对自行车，这些 <span class="math">aᵢ(v)</span> 都是速度 v
+                对自行车，这些 \(a_{i}(v)\) 都是速度 v
                 的多项式。所以"自行车在哪个速度区间稳定"这个问题，等价于：<strong
                     >找出 v 使所有 Routh-Hurwitz 条件同时成立</strong
                 >。下图就是数值求解的结果（直接对每个 v 计算 A(v)
@@ -3828,7 +3822,7 @@ listed: true
                     模式特征值实部为正——任何小扰动都会被放大成增长的振荡。
                 </li>
                 <li data-i18n="m114">
-                    <strong>v ≈ 4.29 m/s</strong>：weave
+                    <strong>\(v \approx 4.29\) m/s</strong>：weave
                     模式的特征值穿过零线，变为负——系统<strong>自发</strong>变稳定！
                 </li>
                 <li data-i18n="m115">
@@ -3847,8 +3841,8 @@ listed: true
             <p data-i18n="m118">
                 四个特征值不只是数字。每一个都对应自行车的一种<strong>振动模态</strong>（mode
                 shape），由对应的特征向量
-                <span class="math">vᵢ</span> 决定——它告诉我们当系统按
-                <span class="math">λᵢ</span>
+                \(v_{i}\) 决定——它告诉我们当系统按
+                \(\lambda_{i}\)
                 演化时，倾斜与转向是<strong>怎样耦合在一起运动的</strong>。两个主导模态：
             </p>
             <figure>
@@ -4281,7 +4275,7 @@ listed: true
                     "
                 >
                     <span
-                        ><span data-i18n="m.curLean">当前倾斜角 φ：</span
+                        ><span data-i18n="m.curLean">当前倾斜角 \(\phi\)：</span
                         ><span
                             id="cur-phi"
                             style="color: #993556; font-weight: 600"
@@ -4289,7 +4283,7 @@ listed: true
                         ></span
                     >
                     <span
-                        ><span data-i18n="m.curSteer">当前转向角 δ：</span
+                        ><span data-i18n="m.curSteer">当前转向角 \(\delta\)：</span
                         ><span
                             id="cur-delta"
                             style="color: #185fa5; font-weight: 600"
@@ -4339,12 +4333,11 @@ listed: true
             </p>
             <h3 data-i18n="m140">从舵力矩到路径偏移：非最小相位的根源</h3>
             <p data-i18n="m141">
-                定义新输出 <span class="math">η(t)</span> =
-                自行车质心相对原直行路径的<strong>横向偏移</strong>（如果车一直直走，η
-                ≡ 0；车体偏转，η 变化）。我们想求传递函数
-                <span class="math">G_η(s) = η(s)/T_δ(s)</span>——把舵力矩
-                <span class="math">T_δ</span> 当作输入、横向偏移
-                <span class="math">η</span> 当作输出。
+                定义新输出 \(\eta(t)\) =
+                自行车质心相对原直行路径的<strong>横向偏移</strong>（如果车一直直走，\(\eta \equiv 0\)；车体偏转，\(\eta\) 变化）。我们想求传递函数
+                \(G_\eta(s) = \eta(s)/T_\delta(s)\)——把舵力矩
+                \(T_\delta\) 当作输入、横向偏移
+                \(\eta\) 当作输出。
             </p>
             <p data-i18n="m142">
                 对 Whipple 模型代数化简后（Åström et al. 2005 给出完整推导<sup
@@ -4355,36 +4348,28 @@ listed: true
             <div class="deriv">
                 <span class="deriv-tag" data-i18n="tag16">关键传递函数</span>
                 <div class="eq" data-i18n="eq.tf1" style="font-size: 21px">
-                    $$G_{\eta}(s) \;=\; \frac{V \cdot \tilde{\delta}}{s^{2}} \cdot (\text{一个稳定的低阶子系统})$$
+                    $$G_{\eta}(s) \;=\; \frac{V \cdot \tilde{\delta}}{s^{2}} \cdot(\text{一个稳定的低阶子系统})$$
                 </div>
                 <p
                     data-i18n="m143"
                     style="font-size: 14.5px; margin: 8px 0 14px"
                 >
                     其中
-                    <span class="math">δ̃(s)/T_δ(s) = N(s)/D(s)</span
-                    >，关键之处在于分子 N(s)
+                    \(\tilde{\delta}(s)/T_\delta(s) = N(s)/D(s)\)，关键之处在于分子 N(s)
                     含有一个<strong>右半平面零点</strong>：
                 </p>
                 <div class="eq" data-i18n="eq.tf2" style="font-size: 20px">
                     $$N(s) \;\propto\; (s^{2} - mgh/J)\cdot(\text{其他左半平面项})$$
                 </div>
                 <p data-i18n="m144" style="font-size: 14.5px; margin: 14px 0 0">
-                    分子的因子 <span class="math">(s² − mgh/J)</span> 把零点放在
-                    <span class="math">s = ±√(mgh/J)</span>。<strong
-                        >正根 s = +√(mgh/J)</strong
-                    >
-                    是右半平面零点。对自行车 + 骑车人系统，<span class="math"
-                        >m</span
-                    >
-                    是总质量、<span class="math">g</span> 是重力加速度、<span
-                        class="math"
-                        >h</span
-                    >
-                    是质心高度、<span class="math">J</span>
+                    分子的因子 \((s^{2} - mgh/J)\) 把零点放在
+                    \(s = \pm \sqrt{mgh/J}\)。<strong>正根 \(s = +\sqrt{mgh/J}\)</strong>
+                    是右半平面零点。对自行车 + 骑车人系统，\(m\)
+                    是总质量、\(g\) 是重力加速度、\(h\)
+                    是质心高度、\(J\)
                     是绕地面接触线的转动惯量。代入典型值 (m=80 kg, h=1 m, J=80
-                    kg·m²) 得
-                    <span class="math">s_RHP ≈ +√9.81 ≈ +3.13 s⁻¹</span>。
+                    kg·\(m^{2}\)) 得
+                    \(s_{\text{RHP}} \approx +\sqrt{9.81} \approx +3.13\,\text{s}^{-1}\)。
                 </p>
             </div>
             <h3 data-i18n="m145">右半平面零点意味着什么？</h3>
@@ -4775,10 +4760,7 @@ listed: true
                 </svg>
                 <figcaption data-i18n="m149">
                     极点-零点图。所有 4
-                    个极点（×）在左半平面——系统稳定。但传递函数有一个零点（○）在右半平面，<span
-                        class="math"
-                        >s ≈ +3.13 s⁻¹</span
-                    >——这就是<strong>反向转向</strong>的数学根源。粗略地说，这个
+                    个极点（×）在左半平面——系统稳定。但传递函数有一个零点（○）在右半平面，\(s \approx +3.13\,\text{s}^{-1}\)——这就是<strong>反向转向</strong>的数学根源。粗略地说，这个
                     RHP
                     零点对应一个<em>"做对的事，结果先看起来像在做错事"</em>的特征时间常数
                     ≈ 1/3.13 ≈ 0.32 秒。所以你向左推车把后大约 0.3
@@ -4792,7 +4774,7 @@ listed: true
             </p>
             <p data-i18n="m151">
                 这就是为什么<strong>反向转向是真实存在</strong>的，不是我在编故事。它是
-                Whipple 方程组分子多项式中那个 (s² − mgh/J) 项的直接结论。
+                Whipple 方程组分子多项式中那个 \((s^{2} - mgh/J)\) 项的直接结论。
             </p>
             <figure>
                 <svg
@@ -5209,11 +5191,10 @@ listed: true
             </p>
             <p data-i18n="m162">
                 自行车的"传感器"是什么？是车体本身——倾斜角
-                <span class="math">φ</span>
+                \(\phi\)
                 由万有引力直接决定，不需要任何测量装置。"比较器"是什么？是前叉几何，它把
-                <span class="math">φ</span> 物理性地翻译成
-                <span class="math">δ</span
-                >。"执行器"是什么？是前轮的转向。"受控量"是什么？是车体相对垂直方向的角度。
+                \(\phi\) 物理性地翻译成
+                \(\delta\)。"执行器"是什么？是前轮的转向。"受控量"是什么？是车体相对垂直方向的角度。
             </p>
             <p data-i18n="m163">
                 整个回路是用<strong>几何与力学</strong>实现的，不需要任何电子学、不需要任何"信号处理"——这就是它的优雅所在。
@@ -8322,7 +8303,7 @@ listed: true
                     m37: "Answer A: the gyroscopic effect",
                     m38: "Open most pre-1970s popular-science books and the answer they give is: a bicycle doesn't fall because the front wheel acts like a gyroscope — the spinning wheel has angular momentum, changing its direction requires a torque, so the wheel resists tipping over.",
                     m39: "This answer makes <strong>physical sense</strong>: a spinning wheel really does have angular momentum; when the body leans, gyroscopic precession will indeed produce a torque that automatically steers the handlebar toward the lean.",
-                    m40: 'Classic university-physics demonstration: hold a spinning bicycle wheel and apply a force F along its axis; the wheel does not fall in the direction of F but instead <strong>precesses perpendicular to it (precession ω<sub>p</sub>)</strong>. This is real evidence that the gyroscopic effect physically exists — the geometric relationship of angular momentum <span class="math">L</span>, torque <span class="math">τ</span>, and precession rate <span class="math">ω<sub>p</sub></span> is plain to see.<br/>Source: OpenStax University Physics (CC BY 4.0)',
+                    m40: 'Classic university-physics demonstration: hold a spinning bicycle wheel and apply a force F along its axis; the wheel does not fall in the direction of F but instead <strong>precesses perpendicular to it (precession \\(\\omega_{p}\\))</strong>. This is real evidence that the gyroscopic effect physically exists — the geometric relationship of angular momentum \\(L\\), torque \\(\\tau\\), and precession rate \\(\\omega_{p}\\) is plain to see.<br/>Source: OpenStax University Physics (CC BY 4.0)',
                     m41: 'A purer version: a spinning gyroscope does not get pulled down by gravity but instead <strong>precesses</strong> about a vertical axis. This is the very physical basis on which Klein-Sommerfeld in 1910 inferred &quot;gyroscopic balance for the bicycle" — if the wheel is heavy enough and spins fast enough, precession can produce a stabilizing restoring torque.<br/>Source: OpenStax University Physics (CC BY 4.0)',
                     m42: "The problem is: although the above effect is real, <strong>as a complete explanation of bicycle self-stability it is wrong</strong>.",
                     m43: "A simple 1970 experiment falsified it. The physicist David Jones did something extraordinarily clever: he built an &quot;Unrideable Bicycle MK1\", attaching to the front-wheel axle a <strong>counter-rotating extra wheel</strong> whose angular momentum exactly cancelled the main wheel's, <strong>making the entire bike's net gyroscopic effect zero</strong>. If the &quot;gyroscope theory\" were right, this bike should be entirely unrideable.",
@@ -8331,8 +8312,8 @@ listed: true
                     m46: "The gyroscopic effect does have important engineering applications — e.g. the <strong>gyrocompass</strong> invented in 1908 (still a core ship-navigation device today). When the Earth's rotation drags the hull, a freely-mounted gyroscope automatically adjusts its axis to point at true north. That is a <em>real engineering use</em> of gyroscopic precession.<br/>But a bicycle is not such a system: it has no freely-gimballed high-speed rotating mass, no friction-compensating mechanism. So even if you remove the gyroscopic effect (as in Jones's MK1), riding still works fine.<br/>Source: © 2011 Encyclopædia Britannica, Inc.",
                     m47: "Answer B: trail / caster effect",
                     m48: "Jones himself proposed a second explanation: <strong>trail</strong>.",
-                    m49: 'What is trail? Look at a bicycle\'s fork — it is not vertical but tilted backward at some angle (the &quot;head-tube angle&quot; <span class="math">λ</span>). At the same time the front wheel\'s <strong>contact patch</strong> is <strong>behind</strong> the intersection of the steering axis with the ground. That horizontal distance <span class="math">c</span> is called the &quot;trail" or &quot;caster trail".',
-                    m50: 'Key bicycle geometric parameters: head-tube angle <span class="math">λ</span> (about 70°), wheelbase <span class="math">b</span> (typically 1.0 m), trail <span class="math">c</span> (typically 2–8 cm). This geometry endows the fork with the property of &quot;automatically steering toward the lean direction".',
+                    m49: 'What is trail? Look at a bicycle\'s fork — it is not vertical but tilted backward at some angle (the &quot;head-tube angle&quot; \\(\\lambda\\)). At the same time the front wheel\'s <strong>contact patch</strong> is <strong>behind</strong> the intersection of the steering axis with the ground. That horizontal distance \\(c\\) is called the &quot;trail" or &quot;caster trail".',
+                    m50: 'Key bicycle geometric parameters: head-tube angle \\(\\lambda\\) (about 70°), wheelbase \\(b\\) (typically 1.0 m), trail \\(c\\) (typically 2–8 cm). This geometry endows the fork with the property of &quot;automatically steering toward the lean direction".',
                     m51: 'Bicycle geometry engineering drawing (Calfee Design): fully labelled steering axis, rake/offset, head-tube angle, trail, wheelbase, tire patch, bottom-bracket drop, front center, etc. — all the parameters frame designers deal with daily as &quot;industrial language&quot;. <strong>Their concrete values determine whether the bicycle falls inside the stable region of the Whipple equations</strong>.<br/>Source: <a href="https://calfeedesign.com" rel="noopener" target="_blank">calfeedesign.com</a>',
                     m52: "This geometric design is similar in principle to the <strong>caster wheel of a shopping cart</strong> — push a cart and the front little wheel automatically swivels in the direction it's being &quot;dragged&quot;. Jones argued: when the bike leans, because of the trail, the front-wheel contact patch experiences a torque that turns the handlebar <strong>toward the lean direction</strong>. That automatic steering is the key to self-stability.",
                     m53: "From 1970 to 2011, this was the relatively mainstream explanation in physics. <strong>But it isn't entirely correct either.</strong>",
@@ -8354,11 +8335,11 @@ listed: true
                     m69: "That is the core mechanism. <strong>The body leans, the handlebar steers in the lean direction</strong> — exactly a <strong>negative feedback</strong>.",
                     m70: "In a control engineer's language: closed-loop transfer function",
                     m71: 'Use the precise mathematical language Åström gives in his IEEE paper<sup class="ref"><a href="#r2">[2]</a></sup>. The linearised simple second-order model is:',
-                    m72: 'Here <span class="math">φ</span> is the body lean angle, <span class="math">δ</span> is the handlebar steer angle, <span class="math">V</span> is speed, and the rest are geometric and mass parameters. The left side <span class="math">J·φ̈ − mgh·φ</span> is exactly an <strong>inverted-pendulum equation</strong> — exponentially divergent, intrinsically unstable.',
-                    m73: 'But the right side tells us: <strong>the steer angle δ exerts a torque on the lean motion through two paths</strong> — an inertial term (proportional to <span class="math">δ̇</span>) and a centrifugal term (proportional to <span class="math">δ</span>).',
+                    m72: 'Here \\(\\phi\\) is the body lean angle, \\(\\delta\\) is the handlebar steer angle, \\(V\\) is speed, and the rest are geometric and mass parameters. The left side \\(J \\cdot \\ddot{\\phi} - mgh \\cdot \\phi\\) is exactly an <strong>inverted-pendulum equation</strong> — exponentially divergent, intrinsically unstable.',
+                    m73: 'But the right side tells us: <strong>the steer angle \\(\\delta\\) exerts a torque on the lean motion through two paths</strong> — an inertial term (proportional to \\(\\dot{\\delta}\\)) and a centrifugal term (proportional to \\(\\delta\\)).',
                     m74: "If we apply a <strong>proportional feedback control law</strong>:",
                     m75: "— that is, <strong>the steer angle is in negative proportion to the lean angle</strong> — the closed-loop system becomes:",
-                    m76: 'This is a <strong>damped second-order system</strong>. When <span class="math">k₂ &gt; bg/V²</span>, the system is <strong>asymptotically stable</strong>.',
+                    m76: 'This is a <strong>damped second-order system</strong>. When \\(k_{2} > bg/V^{2}\\), the system is <strong>asymptotically stable</strong>.',
                     m77: 'The two most classic examples of negative-feedback control: <strong>(a) thermostat / boiler</strong> — temperature below setpoint → boiler on → temperature rises → boiler off → temperature falls → boiler on … steady state oscillating around the setpoint. <strong>(b) human thermoregulation</strong> — setpoint 37 °C; if too hot, sweat + vasodilation cool the body; if too cold, shivering + vasoconstriction conserve heat.<br/><strong>The lateral stability of a bicycle is the same kind of system</strong> — except its &quot;sensor" is the direction of gravity, the &quot;actuator" is wheel steering, and the &quot;feedback path" is geometric rather than electronic.<br/>Source: pedagogical schematic (typical Wiley/Pearson textbook structure)',
                     m78: "Negative feedback: a universal pattern across physics, biology, engineering, economics",
                     m79: "A thermostat and human thermoregulation appear to have nothing in common — one is metal and current, the other flesh and nerves — but their <strong>abstract structure</strong> is identical. Once you see this abstraction, you realise it's everywhere. The next five examples look completely unrelated, yet <strong>each is the same machine</strong>:",
@@ -8371,36 +8352,36 @@ listed: true
                     m86: "One machine, seven faces",
                     m87: 'Lay these systems side by side and their <strong>structural isomorphism</strong> is plain — each is the same &quot;sensor → comparator → actuator → controlled variable → back to sensor" loop:',
                     m88: "These systems differ enormously in their <strong>implementation medium</strong> — metal, neurons, mechanical linkages, electronics, social behavior, geometry — but their <strong>structure</strong> is identical. Cybernetics became a distinct discipline (W. Ross Ashby, Norbert Wiener, 1940s–50s) precisely because of this discovery: <em>the mathematics of stability does not depend on what the system is built from</em>.<br/>So when we say &quot;the bicycle is a negative-feedback control system,\" it isn't a metaphor — it's a <strong>literal</strong> isomorphism. It and the thermostat you turn on in the morning, the pupillary reflex when you brush your teeth, the Watt governor of 1788, and the market under Adam Smith, are the same kind of thing.",
-                    m89: 'The bicycle system block diagram from Åström\'s paper<sup class="ref"><a href="#r2">[2]</a></sup>. The fork model translates body lean <span class="math">φ</span> into handlebar steer <span class="math">δ</span>; the frame model describes how <span class="math">δ</span> in turn affects <span class="math">φ</span>. <strong>The key is that φ feeds back, with a sign flip, into the input</strong> — that minus sign is the fundamental reason the whole system is stable.',
-                    m90: 'Here is the heart of the truth. <strong>The fork itself is the controller</strong> — it automatically converts lean angle <span class="math">φ</span> into steer angle <span class="math">δ</span>, in such a direction that the closed-loop system becomes <strong>negative feedback</strong>.',
+                    m89: 'The bicycle system block diagram from Åström\'s paper<sup class="ref"><a href="#r2">[2]</a></sup>. The fork model translates body lean \\(\\phi\\) into handlebar steer \\(\\delta\\); the frame model describes how \\(\\delta\\) in turn affects \\(\\phi\\). <strong>The key is that \\(\\phi\\) feeds back, with a sign flip, into the input</strong> — that minus sign is the fundamental reason the whole system is stable.',
+                    m90: 'Here is the heart of the truth. <strong>The fork itself is the controller</strong> — it automatically converts lean angle \\(\\phi\\) into steer angle \\(\\delta\\), in such a direction that the closed-loop system becomes <strong>negative feedback</strong>.',
                     m91: "But what new thing did the TMS experiment teach us?",
-                    m92: 'In Åström\'s transfer function, <span class="math">k₂(V)</span> is contributed by several terms. <strong>The gyroscopic effect is one contribution; positive trail is another</strong> — but there is also a third term, long overlooked. That is what the 2011 TMS experiment revealed<sup class="ref"><a href="#r1">[1]</a></sup>:',
+                    m92: 'In Åström\'s transfer function, \\(k_{2}(V)\\) is contributed by several terms. <strong>The gyroscopic effect is one contribution; positive trail is another</strong> — but there is also a third term, long overlooked. That is what the 2011 TMS experiment revealed<sup class="ref"><a href="#r1">[1]</a></sup>:',
                     m93: 'In other words: <strong>the mass distribution alone is enough to construct a coupling from lean to steer</strong>. With mass in front of the fork and the front lower than the rear (a shorter &quot;pendulum length"), this asymmetry causes the fork to fall preferentially in the lean direction. This is a coupling mechanism completely independent of gyroscope and trail.',
                     m94: "A bicycle's stability does not arise from a single &quot;magic&quot;; it arises from a <strong>structural negative-feedback loop</strong>. That loop can be driven by various physical mechanisms (gyroscope, trail, mass distribution, head-tube tilt), but at the core is <strong>the same abstraction</strong>: the closed loop must form negative feedback.",
                     m95: "The Whipple model: 4 rigid bodies, 25 parameters, 4th-order dynamics",
                     m96: 'To make this intuition precise, the <strong>linearised model</strong> first given by Francis Whipple in 1899<sup class="ref"><a href="#r6">[6]</a></sup>, recast in modern standard form by Meijaard, Papadopoulos, Ruina, and Schwab in 2007<sup class="ref"><a href="#r3">[3]</a></sup>, abstracts the bicycle into <strong>four rigid bodies</strong> connected by ideal hinges:',
-                    m97: 'The Whipple model idealises a bicycle as four rigid bodies: rear wheel R, rear frame B (including the rider), front assembly H (fork + handlebar), front wheel F. The three hinges are at the steering axis, the front-wheel axle, and the rear-wheel axle. The two generalised coordinates <span class="math">φ</span> (lean) and <span class="math">δ</span> (steer) suffice to describe the <strong>lateral</strong> dynamics (forward speed v is a parameter, not a variable).',
+                    m97: 'The Whipple model idealises a bicycle as four rigid bodies: rear wheel R, rear frame B (including the rider), front assembly H (fork + handlebar), front wheel F. The three hinges are at the steering axis, the front-wheel axle, and the rear-wheel axle. The two generalised coordinates \\(\\phi\\) (lean) and \\(\\delta\\) (steer) suffice to describe the <strong>lateral</strong> dynamics (forward speed v is a parameter, not a variable).',
                     m98: "Applying Lagrange's equations or the Newton-Euler method (derivation details in the appendix of Meijaard et al. 2007), <strong>linearisation</strong> yields a compact second-order matrix differential equation:",
-                    m99: 'Where <span class="math">q = [φ, δ]ᵀ</span> is the generalised coordinate, <span class="math">f = [Tφ, Tδ]ᵀ</span> are the applied torques (the former on the body lean axis, the latter on the steering axis). <strong>The four 2×2 matrices each have a clear physical meaning</strong>:',
-                    m100: "These numerical values are the <strong>benchmark parameters</strong> of the Whipple model, given by Meijaard et al. 2007, corresponding to a typical adult bicycle (wheelbase b=1.0 m, head-tube angle λ=π/10≈18° from vertical, equivalent rider mass 72 kg, etc.). The whole field uses these parameters for cross-comparison so that everyone's numerical results are reproducible.",
-                    m101: "Look at K = gK₀ + v²K₂. At <strong>low speed</strong>, the negative sign of gK₀ dominates and the system is unstable (inverted-pendulum dominated). At <strong>high speed</strong>, the v²K₂ term grows large enough to pull the &quot;effective stiffness\" of K into being positive-definite — but only if K₂'s <strong>off-diagonal entries are non-zero</strong>, i.e., there must be <strong>coupling between lean and steer</strong>. That non-zero coupling is exactly the mathematical incarnation of the geometric feedback mechanism (whether it stems from gyroscope, trail, or mass distribution).",
+                    m99: 'Where \\(q = [\\phi, \\delta]^{T}\\) is the generalised coordinate, \\(f = [T_{\\phi}, T_{\\delta}]^{T}\\) are the applied torques (the former on the body lean axis, the latter on the steering axis). <strong>The four 2×2 matrices each have a clear physical meaning</strong>:',
+                    m100: "These numerical values are the <strong>benchmark parameters</strong> of the Whipple model, given by Meijaard et al. 2007, corresponding to a typical adult bicycle (wheelbase \\(b=1.0\\) m, head-tube angle \\(\\lambda = \\pi/10 \\approx 18^{\\circ}\\) from vertical, equivalent rider mass 72 kg, etc.). The whole field uses these parameters for cross-comparison so that everyone's numerical results are reproducible.",
+                    m101: "Look at \\(K = gK_{0} + v^{2}K_{2}\\). At <strong>low speed</strong>, the negative sign of \\(gK_{0}\\) dominates and the system is unstable (inverted-pendulum dominated). At <strong>high speed</strong>, the \\(v^{2}K_{2}\\) term grows large enough to pull the &quot;effective stiffness\" of \\(K\\) into being positive-definite — but only if \\(K_{2}\\)'s <strong>off-diagonal entries are non-zero</strong>, i.e., there must be <strong>coupling between lean and steer</strong>. That non-zero coupling is exactly the mathematical incarnation of the geometric feedback mechanism (whether it stems from gyroscope, trail, or mass distribution).",
                     m102: '<span class="num">VI</span>Mathematical verification: critical speed and stable interval',
                     m103: "From a second-order matrix equation to state space",
-                    m104: 'The previous section\'s second-order matrix equation contains <em>acceleration</em>; to analyse it with modern control theory, first convert it to <strong>first-order state-space form</strong>. Define the state vector <span class="math">x = [φ, δ, φ̇, δ̇]ᵀ</span> (4-dimensional):',
-                    m105: "This 4×4 matrix <strong>A(v)</strong> fully encodes the bicycle's lateral dynamics. Its <strong>eigenvalues</strong> are the system's &quot;natural frequencies\" — give it a small disturbance and it evolves like e<sup>λᵢt</sup>, where <span class=\"math\">λᵢ</span> are A's eigenvalues.",
+                    m104: 'The previous section\'s second-order matrix equation contains <em>acceleration</em>; to analyse it with modern control theory, first convert it to <strong>first-order state-space form</strong>. Define the state vector \\(x = [\\phi, \\delta, \\dot{\\phi}, \\dot{\\delta}]^{T}\\) (4-dimensional):',
+                    m105: "This 4×4 matrix <strong>\\(A(v)\\)</strong> fully encodes the bicycle's lateral dynamics. Its <strong>eigenvalues</strong> are the system's &quot;natural frequencies\" — give it a small disturbance and it evolves like \\(e^{\\lambda_{i} t}\\), where \\(\\lambda_{i}\\) are \\(A\\)'s eigenvalues.",
                     m106: "Stability criterion",
-                    m107: "System stable ⇔ all eigenvalues have <strong>negative real parts</strong>:",
-                    m108: 'We don\'t need to solve numerically every time to check this. Routh-Hurwitz tells us: the roots of the 4th-order characteristic polynomial <span class="math">a₀λ⁴ + a₁λ³ + a₂λ² + a₃λ + a₄ = 0</span> all lie in the left half-plane ⇔ all <span class="math">aᵢ &gt; 0</span> and the Hurwitz determinant <span class="math">H₃ = a₁a₂a₃ − a₀a₃² − a₁²a₄ &gt; 0</span>.',
-                    m109: 'For the bicycle, these <span class="math">aᵢ(v)</span> are all polynomials in v. So the question of &quot;in what speed range is the bike stable?" is equivalent to <strong>finding v that satisfies all the Routh-Hurwitz conditions simultaneously</strong>. Below is the numerical solution (computing A(v)\'s eigenvalues directly for each v). Drag the slider to see for yourself:',
+                    m107: "System stable \\(\\iff\\) all eigenvalues have <strong>negative real parts</strong>:",
+                    m108: 'We don\'t need to solve numerically every time to check this. Routh-Hurwitz tells us: the roots of the 4th-order characteristic polynomial \\(a_{0}\\lambda^{4} + a_{1}\\lambda^{3} + a_{2}\\lambda^{2} + a_{3}\\lambda + a_{4} = 0\\) all lie in the left half-plane \\(\\iff\\) all \\(a_{i} > 0\\) and the Hurwitz determinant \\(H_{3} = a_{1}a_{2}a_{3} - a_{0}a_{3}^{2} - a_{1}^{2}a_{4} > 0\\).',
+                    m109: 'For the bicycle, these \\(a_{i}(v)\\) are all polynomials in v. So the question of &quot;in what speed range is the bike stable?" is equivalent to <strong>finding v that satisfies all the Routh-Hurwitz conditions simultaneously</strong>. Below is the numerical solution (computing A(v)\'s eigenvalues directly for each v). Drag the slider to see for yourself:',
                     m110: "Interactive: eigenvalue evolution with speed",
                     m111: "Speed v",
                     m112: "Reading this chart shows the whole story:",
                     m113: "<strong>0–4.3 m/s</strong>: the green weave-mode eigenvalue has positive real part — any small disturbance is amplified into growing oscillation.",
-                    m114: "<strong>v ≈ 4.29 m/s</strong>: the weave-mode eigenvalue crosses zero and turns negative — the system <strong>spontaneously</strong> becomes stable!",
+                    m114: "<strong>\\(v \\approx 4.29\\) m/s</strong>: the weave-mode eigenvalue crosses zero and turns negative — the system <strong>spontaneously</strong> becomes stable!",
                     m115: "<strong>4.29–6.02 m/s</strong> (green-shaded region): all four eigenvalue real parts are negative — the <strong>true self-stable interval</strong>. In this speed range (about 15.5–21.7 km/h, exactly normal cycling speed), the bicycle balances <strong>itself</strong>.",
                     m116: "<strong>Above 6.02 m/s</strong>: the purple capsize-mode eigenvalue turns positive — but grows extremely slowly (real part about +0.1), so light human input suppresses it.",
                     m117: "Two dominant unstable modes: weave and capsize",
-                    m118: 'The four eigenvalues are not just numbers. Each corresponds to a <strong>vibration mode shape</strong> of the bicycle, determined by its eigenvector <span class="math">vᵢ</span> — telling us, when the system evolves at <span class="math">λᵢ</span>, <strong>how lean and steer are coupled in motion</strong>. The two dominant modes:',
+                    m118: 'The four eigenvalues are not just numbers. Each corresponds to a <strong>vibration mode shape</strong> of the bicycle, determined by its eigenvector \\(v_{i}\\) — telling us, when the system evolves at \\(\\lambda_{i}\\), <strong>how lean and steer are coupled in motion</strong>. The two dominant modes:',
                     m119: "Weave mode and capsize mode. The former is under-damped oscillation, dominant cause of low-speed instability — once the body leans, it sways back and forth with growing amplitude. The latter is monotonic divergence, dominant cause of high-speed instability — the body slowly tips to one side. Both modes coexist, but each dominates a different speed range.",
                     m120: "Ordinary cycling speed coincides with the bicycle's self-stable speed range. This is no coincidence — it is the product of 200 years of bicycle-design evolution; the geometric parameters (trail, head-tube angle, wheelbase) have been continuously tuned to be self-stable around this speed range.",
                     m121: "Advertising poster of Victor Bicycles (Overman Wheel Co., 1890s). From the 1860s velocipede (equally-sized wheels, upright frame) to the 1890s &quot;safety bicycle\" (diamond frame, chain-driven rear wheel, sensible head-tube tilt), <strong>design parameters were tuned to today's form by engineers and manufacturers through pure trial and error</strong> — design searched the stable region of the Whipple equations, designers did not solve the Whipple equations.<br/>Image: Library of Congress, Public Domain via Prints &amp; Photographs Division",
@@ -8423,17 +8404,17 @@ listed: true
                     m138: "By now you may be convinced: a bicycle really is a negative-feedback system. But there's a much deeper counterintuitive fact — <strong>when you want to turn right, you must first steer the handlebar to the left</strong>.",
                     m139: "It sounds absurd. But it is a physical necessity. Let's derive it in the language of control theory.",
                     m140: "From rudder torque to lateral path offset: the root of non-minimum phase",
-                    m141: 'Define a new output <span class="math">η(t)</span> = the <strong>lateral offset</strong> of the bicycle\'s center of mass from the original straight path (if the bike goes straight, η ≡ 0; if the body deviates, η changes). We want the transfer function <span class="math">G_η(s) = η(s)/T_δ(s)</span> — taking the rudder torque <span class="math">T_δ</span> as input and lateral offset <span class="math">η</span> as output.',
+                    m141: 'Define a new output \\(\\eta(t)\\) = the <strong>lateral offset</strong> of the bicycle\'s center of mass from the original straight path (if the bike goes straight, \\(\\eta \\equiv 0\\); if the body deviates, \\(\\eta\\) changes). We want the transfer function \\(G_{\\eta}(s) = \\eta(s)/T_{\\delta}(s)\\) — taking the rudder torque \\(T_{\\delta}\\) as input and lateral offset \\(\\eta\\) as output.',
                     m142: 'After algebraic simplification of the Whipple model (full derivation given by Åström et al. 2005<sup class="ref"><a href="#r2">[2]</a></sup>), this transfer function has the following structure:',
-                    m143: 'Where <span class="math">δ̃(s)/T_δ(s) = N(s)/D(s)</span>, and the key point is that the numerator N(s) contains a <strong>right-half-plane zero</strong>:',
-                    m144: 'The numerator\'s factor <span class="math">(s² − mgh/J)</span> places zeros at <span class="math">s = ±√(mgh/J)</span>. <strong>The positive root s = +√(mgh/J)</strong> is a right-half-plane zero. For the bicycle + rider system, <span class="math">m</span> is total mass, <span class="math">g</span> gravity, <span class="math">h</span> CoM height, <span class="math">J</span> the moment of inertia about the ground-contact line. Plugging in typical values (m=80 kg, h=1 m, J=80 kg·m²) gives <span class="math">s_RHP ≈ +√9.81 ≈ +3.13 s⁻¹</span>.',
+                    m143: 'Where \\(\\tilde{\\delta}(s)/T_\\delta(s) = N(s)/D(s)\\), and the key point is that the numerator N(s) contains a <strong>right-half-plane zero</strong>:',
+                    m144: 'The numerator\'s factor \\((s^{2} - mgh/J)\\) places zeros at \\(s = \\pm \\sqrt{mgh/J}\\). <strong>The positive root \\(s = +\\sqrt{mgh/J}\\)</strong> is a right-half-plane zero. For the bicycle + rider system, \\(m\\) is total mass, \\(g\\) gravity, \\(h\\) CoM height, \\(J\\) the moment of inertia about the ground-contact line. Plugging in typical values (m=80 kg, h=1 m, J=80 kg·m²) gives \\(s_{\\text{RHP}} \\approx +\\sqrt{9.81} \\approx +3.13\\,\\text{s}^{-1}\\).',
                     m145: "What does a right-half-plane zero mean?",
                     m146: "In control theory, a right-half-plane zero (RHP zero) makes the system <strong>non-minimum phase</strong>. Its physical signature is highly characteristic:",
                     m147: "Apply a <strong>step input</strong> to the system (e.g. at t=0 suddenly start applying a constant rudder torque) and the output, in the first few hundred milliseconds, moves <strong>in the opposite direction</strong>; only afterwards does it reverse and settle in the correct direction. This is not a bug — it is a mathematical consequence of the RHP zero.",
                     m148: "The figure below plots the computed <strong>poles</strong> and <strong>zeros</strong> on the complex plane (v=5 m/s):",
-                    m149: 'Pole-zero plot. All four poles (×) lie in the left half-plane — the system is stable. But the transfer function has a zero (○) in the right half-plane, <span class="math">s ≈ +3.13 s⁻¹</span> — that is the mathematical root of <strong>counter-steering</strong>. Roughly, this RHP zero corresponds to a characteristic time constant ≈ 1/3.13 ≈ 0.32 s of <em>&quot;doing the right thing first looks like doing the wrong thing&quot;</em>. So about 0.3 s after you push the handlebar left, the bicycle starts moving right — for the first 0.3 s it deflects left, intuitively but contrary to your goal.',
+                    m149: 'Pole-zero plot. All four poles (×) lie in the left half-plane — the system is stable. But the transfer function has a zero (○) in the right half-plane, \\(s \\approx +3.13\\,\\text{s}^{-1}\\) — that is the mathematical root of <strong>counter-steering</strong>. Roughly, this RHP zero corresponds to a characteristic time constant ≈ 1/3.13 ≈ 0.32 s of <em>&quot;doing the right thing first looks like doing the wrong thing&quot;</em>. So about 0.3 s after you push the handlebar left, the bicycle starts moving right — for the first 0.3 s it deflects left, intuitively but contrary to your goal.',
                     m150: "In control-engineer-speak: &quot;the numerator's RHP zero imposes an upper bound on the closed-loop bandwidth.\" In plain language: &quot;you cannot complete a steering intent faster than 0.3 s — physics doesn't allow it.\"",
-                    m151: "This is why <strong>counter-steering really exists</strong>; I'm not making it up. It is a direct consequence of the (s² − mgh/J) factor in the numerator polynomial of the Whipple equations.",
+                    m151: "This is why <strong>counter-steering really exists</strong>; I'm not making it up. It is a direct consequence of the \\((s^{2} - mgh/J)\\) factor in the numerator polynomial of the Whipple equations.",
                     m152: "The six-step causal chain of counter-steering: to turn right, first push the handlebar left. This is not an illusion — it is a physical necessity.",
                     m153: 'The standard textbook diagram of counter-steering (general motorcycle-safety-training figure): <strong>1.</strong> Rider counter-steers (steers <em>right</em> to turn <em>left</em>) → <strong>2.</strong> The front wheel &quot;out-tracks" — leaving the steering direction → <strong>3.</strong> The motorcycle starts to lean left, the front wheel re-centers → <strong>4.</strong> The motorcycle stabilises in the leaned state with the front wheel pointing in the turning direction, completing the left turn.<br/>Note the <strong>opposite sign</strong> of step 1 vs. the final direction — that is the signature fingerprint of an RHP zero &quot;starting in the wrong direction&quot;. The motorcycle-safety-course mantra: <em>&quot;press right, lean right, go right.&quot;</em><br/>Source: general motorcycle-safety-training material',
                     m154: 'An important cause of motorcycle accidents is novice riders failing to counter-steer in an emergency. When a vehicle suddenly appears from the right and the rider instinctively yanks the handlebar to the left — but their motorcycle ends up colliding with that vehicle, because per physics the ultimate effect of pushing the handlebar left is to lean the motorcycle right and travel right. This &quot;non-minimum-phase response" can cost lives at decisive moments.',
@@ -8444,7 +8425,7 @@ listed: true
                     m159: "W. Ross Ashby's &quot;law of requisite variety\" states: <strong>only when the controller's variety is at least as great as the disturbance variety of the controlled system can control be achieved</strong>. A direct corollary is — to stabilise an unstable system, you must inject disturbance-response capacity from outside. That is to say:",
                     m160: 'A &quot;self-stabilising" system <strong>cannot be inert</strong>. It must contain a sub-system that measures its own state and feeds it back to its input.',
                     m161: "This is why a bicycle's stability <strong>cannot</strong> be explained by the &quot;gyroscopic effect\" alone (a passive physical phenomenon). The gyroscopic effect merely supplies the system with some stiffness; it is not a <strong>response mechanism</strong>. A response mechanism must be a loop — sensor → comparator → actuator → controlled variable → sensor — a <strong>closed loop</strong>.",
-                    m162: 'What is the bicycle\'s &quot;sensor&quot;? It is the body itself — the lean angle <span class="math">φ</span> is determined directly by gravity, no measurement device required. The &quot;comparator&quot;? The fork geometry, which physically translates <span class="math">φ</span> into <span class="math">δ</span>. The &quot;actuator&quot;? The front wheel\'s steering. The &quot;controlled variable&quot;? The body\'s angle relative to vertical.',
+                    m162: 'What is the bicycle\'s &quot;sensor&quot;? It is the body itself — the lean angle \\(\\phi\\) is determined directly by gravity, no measurement device required. The &quot;comparator&quot;? The fork geometry, which physically translates \\(\\phi\\) into \\(\\delta\\). The &quot;actuator&quot;? The front wheel\'s steering. The &quot;controlled variable&quot;? The body\'s angle relative to vertical.',
                     m163: 'The whole loop is implemented in <strong>geometry and mechanics</strong> — no electronics required, no &quot;signal processing" needed. Therein lies its elegance.',
                     m164: "Orville Wright (right) and his childhood friend Edwin H. Sines filing a frame at the back of the Wright bicycle shop, 1897. The core principle the Wright brothers distilled from bicycle design — <em>&quot;the central importance of balance and control&quot;</em> — was the very theoretical starting point for their later airplane control system. A self-stabilising bicycle is the first physical artefact of cybernetics.<br/>Image: Library of Congress, Wright Brothers Negatives Collection (LC-DIG-ppprs-00541) · Public Domain",
                     m165: "Where the truly profound part lies",
@@ -8614,11 +8595,11 @@ listed: true
                     vc1: "<strong>Arend Schwab's talk at TEDxDelft (2012): \"Why bicycles do not fall.\"</strong> This is the public lecture by one of the lead authors of the 2011 <em>Science</em> paper, in which he uses physical models live on stage to demonstrate why both the gyroscopic theory and the trail theory are incomplete, and explains the TMS bicycle's design philosophy. <strong>If you only watch one video, watch this one</strong>.",
                     vc2: '<strong>MinutePhysics: "The Counterintuitive Physics of Turning a Bike."</strong> Henry Reich uses an animated physics derivation, layer by layer, to explain why "to turn right, push the handlebar left." A 5-minute high-density introduction — the most accessible visual companion to §8 of this article.',
                     "eq.tf1":
-                        "$$G_{\\eta}(s) \\;=\\; \\frac{V \\cdot \\tilde{\\delta}}{s^{2}} \\cdot (\\text{a stable low-order subsystem})$$",
+                        "$$G_{\\eta}(s) \\;=\\; \\frac{V \\cdot \\tilde{\\delta}}{s^{2}} \\cdot(\\text{a stable low-order subsystem})$$",
                     "eq.tf2":
                         "$$N(s) \\;\\propto\\; (s^{2} - mgh/J)\\cdot(\\text{other left-half-plane terms})$$",
-                    "m.curLean": "Lean φ: ",
-                    "m.curSteer": "Steer δ: ",
+                    "m.curLean": "Lean \\(\\phi\\): ",
+                    "m.curSteer": "Steer \\(\\delta\\): ",
                     "tbl.h1": "System",
                     "tbl.h2": "Setpoint",
                     "tbl.h3": "Sensor",
@@ -8660,7 +8641,7 @@ listed: true
                     "tbl.r7c4": "Marginal-utility computation",
                     "tbl.r7c5": "Buy/sell decisions",
                     "tbl.r8c1": "⭐ Bicycle (lateral)",
-                    "tbl.r8c2": "Upright (φ = 0)",
+                    "tbl.r8c2": "Upright (\\(\\phi = 0\\))",
                     "tbl.r8c3": "Bike body itself (gravity)",
                     "tbl.r8c4": "<strong>Fork geometry</strong>",
                     "tbl.r8c5": "Front-wheel steering",
