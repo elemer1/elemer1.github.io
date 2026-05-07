@@ -1,0 +1,2396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12 个杠杆点 · 唐娜·梅多斯的系统干预框架</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0e12;
+    --bg-soft: #14161c;
+    --bg-card: #1a1d26;
+    --bg-elevated: #232732;
+    --ink: #e8e4d8;
+    --ink-soft: #b8b3a6;
+    --ink-muted: #7a7668;
+    --ink-quiet: #4a4738;
+    --gold: #d4a548;
+    --gold-soft: #b8893d;
+    --gold-bright: #f0c267;
+    --rust: #c9573b;
+    --teal: #4a8f8a;
+    --plum: #8b5e8c;
+    --moss: #6b7d4f;
+    --line: rgba(232, 228, 216, 0.08);
+    --line-strong: rgba(232, 228, 216, 0.16);
+    --shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+
+    --serif: 'Cormorant Garamond', 'Noto Serif SC', Georgia, 'Songti SC', serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--gold); color: var(--bg); }
+
+  /* Background grain texture */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(at 20% 0%, rgba(212,165,72,0.05) 0%, transparent 50%),
+      radial-gradient(at 80% 100%, rgba(74,143,138,0.04) 0%, transparent 50%);
+    z-index: 0;
+  }
+
+  main { position: relative; z-index: 1; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .narrow { max-width: 720px; }
+  .wide { max-width: 1280px; }
+
+  /* Typography */
+  h1, h2, h3, h4 {
+    font-family: var(--serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .display {
+    font-family: var(--serif);
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .display em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+  h2 {
+    font-size: clamp(32px, 4.5vw, 52px);
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+  h3 {
+    font-size: 28px;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+  h4 {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  p { margin-bottom: 1.2em; color: var(--ink-soft); }
+  p strong { color: var(--ink); font-weight: 500; }
+  p em { color: var(--gold); font-style: italic; font-family: var(--serif); font-size: 1.05em; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .lead {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height: 1.5;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .lead em { color: var(--gold); font-style: italic; }
+
+  blockquote {
+    font-family: var(--serif);
+    font-size: 26px;
+    line-height: 1.5;
+    color: var(--ink);
+    padding: 32px 0 32px 32px;
+    border-left: 2px solid var(--gold);
+    margin: 40px 0;
+    font-style: italic;
+  }
+  blockquote cite {
+    display: block;
+    margin-top: 16px;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-style: normal;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* Section */
+  section {
+    padding: 120px 0;
+    position: relative;
+  }
+  section + section {
+    border-top: 1px solid var(--line);
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 0 120px;
+    position: relative;
+    overflow: hidden;
+  }
+  #hero .container { position: relative; z-index: 2; }
+  .hero-stamp {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  .hero-stamp .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-right: 8px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+    color: var(--ink-muted);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  .hero-meta div { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta strong { color: var(--ink); font-weight: 500; font-family: var(--sans); font-size: 14px; }
+
+  .hero-art {
+    position: absolute;
+    top: 0;
+    right: -10%;
+    width: 60%;
+    height: 100%;
+    opacity: 0.4;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .scroll-cue::after {
+    content: "";
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollDown 2s ease-in-out infinite;
+  }
+  @keyframes scrollDown {
+    0%, 100% { transform: scaleY(0.6); transform-origin: top; }
+    50% { transform: scaleY(1); }
+  }
+
+  /* Provocation grid */
+  .provocation {
+    background: var(--bg-soft);
+    padding: 100px 0;
+  }
+  .provocation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  @media (max-width: 880px) {
+    .provocation-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+  .pull-quote {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.4vw, 40px);
+    line-height: 1.35;
+    font-style: italic;
+    color: var(--ink);
+  }
+  .pull-quote .accent { color: var(--gold); font-style: normal; font-weight: 600; }
+
+  .stat-block {
+    border-left: 1px solid var(--line-strong);
+    padding-left: 32px;
+  }
+  .stat-block .number {
+    font-family: var(--serif);
+    font-size: 80px;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .stat-block .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-top: 12px;
+    margin-bottom: 16px;
+  }
+  .stat-block .desc {
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* The wrong-direction visual */
+  .wrong-direction-vis {
+    margin: 48px 0;
+    padding: 40px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    position: relative;
+  }
+  .arrows-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin: 32px 0;
+  }
+  .arrow-side {
+    text-align: center;
+  }
+  .arrow-side svg {
+    margin-bottom: 12px;
+  }
+  .arrow-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .arrow-side.wrong .arrow-label { color: var(--rust); }
+  .arrow-side.right .arrow-label { color: var(--gold); }
+
+  /* Cards */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 32px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .card:hover {
+    border-color: var(--line-strong);
+  }
+
+  /* Bathtub interactive */
+  #bathtub-section {
+    background: var(--bg-soft);
+  }
+  .bathtub-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 60px;
+  }
+  @media (max-width: 880px) {
+    .bathtub-wrap { grid-template-columns: 1fr; }
+  }
+  .bathtub-svg {
+    width: 100%;
+    height: auto;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 32px;
+  }
+  .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .control {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .control-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .control-label .name {
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 15px;
+  }
+  .control-label .value {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--gold);
+  }
+  .control-desc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--bg-elevated);
+    border-radius: 2px;
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--gold);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid var(--bg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: var(--gold);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid var(--bg);
+  }
+
+  .bathtub-readout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    margin-top: 16px;
+  }
+  .readout-cell {
+    text-align: center;
+  }
+  .readout-cell .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 6px;
+  }
+  .readout-cell .num {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--ink);
+  }
+
+  /* Pyramid */
+  #pyramid-section {
+    padding: 140px 0;
+  }
+  .pyramid-intro {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    margin-bottom: 80px;
+  }
+  @media (max-width: 880px) {
+    .pyramid-intro { grid-template-columns: 1fr; }
+  }
+  .pyramid-vis {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 60px 0;
+    position: relative;
+  }
+  .level-bar {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 18px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .level-bar:hover {
+    border-color: var(--gold);
+    transform: translateX(4px);
+  }
+  .level-bar.active {
+    background: var(--bg-elevated);
+    border-color: var(--gold);
+  }
+  .level-bar::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: var(--gold);
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    width: var(--leverage-width, 8%);
+    opacity: 0.08;
+  }
+  .level-bar:hover::before {
+    opacity: 0.15;
+  }
+  .level-num {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--gold);
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .level-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--ink);
+    line-height: 1.3;
+    position: relative;
+    z-index: 1;
+  }
+  .level-zh {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-top: 2px;
+    font-family: var(--sans);
+    font-style: normal;
+  }
+  .level-power {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    text-align: right;
+  }
+  .level-power-bar {
+    width: 60px;
+    height: 3px;
+    background: var(--bg-elevated);
+    margin-top: 6px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .level-power-bar div {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-soft), var(--gold-bright));
+    border-radius: 2px;
+  }
+
+  .level-detail-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    margin-top: 16px;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1), padding 0.6s ease;
+  }
+  .level-detail-panel.open {
+    max-height: 2000px;
+    padding: 32px;
+  }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 24px;
+  }
+  @media (max-width: 740px) {
+    .detail-grid { grid-template-columns: 1fr; }
+  }
+  .detail-block h5 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .detail-block p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .detail-block ul {
+    list-style: none;
+    padding: 0;
+  }
+  .detail-block li {
+    padding: 8px 0 8px 20px;
+    position: relative;
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--line);
+  }
+  .detail-block li:last-child { border-bottom: none; }
+  .detail-block li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  /* The leverage divider */
+  .leverage-divider {
+    position: relative;
+    margin: 16px 0 16px 60px;
+    padding: 12px 24px;
+    border-top: 1px dashed var(--line-strong);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .leverage-divider .label {
+    background: var(--bg);
+    padding: 0 12px;
+    display: inline-block;
+    margin-top: -22px;
+    margin-left: -12px;
+  }
+
+  /* Examples Section */
+  #examples-section {
+    background: var(--bg-soft);
+  }
+  .example-tabs {
+    display: flex;
+    gap: 4px;
+    margin: 48px 0 32px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .tab {
+    padding: 16px 24px;
+    background: transparent;
+    border: none;
+    color: var(--ink-muted);
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .tab:hover { color: var(--ink); }
+  .tab.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .tab-icon {
+    font-size: 20px;
+    filter: grayscale(0.3);
+  }
+
+  .example-content {
+    display: none;
+    padding: 32px 0;
+  }
+  .example-content.active { display: block; }
+
+  .example-header {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 48px;
+    margin-bottom: 48px;
+    align-items: center;
+  }
+  @media (max-width: 880px) {
+    .example-header { grid-template-columns: 1fr; }
+  }
+  .example-visual {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1.2;
+  }
+
+  .example-mapping {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .mapping-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+  .mapping-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .mapping-card .level-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    background: rgba(212, 165, 72, 0.1);
+    padding: 4px 8px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .mapping-card h6 {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .mapping-card p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* Personal section */
+  #personal-section {
+    padding: 140px 0;
+  }
+  .personal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 60px;
+  }
+  @media (max-width: 880px) {
+    .personal-grid { grid-template-columns: 1fr; }
+  }
+  .personal-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 40px;
+    position: relative;
+  }
+  .personal-card.bullshit {
+    border-left: 3px solid var(--rust);
+  }
+  .personal-card.real {
+    border-left: 3px solid var(--gold);
+  }
+  .personal-card h4 {
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .personal-card .badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .personal-card.bullshit .badge { color: var(--rust); }
+  .personal-card.real .badge { color: var(--gold); }
+  .personal-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .personal-card li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
+  .personal-card li:last-child { border-bottom: none; }
+  .personal-card li small {
+    display: block;
+    color: var(--ink-muted);
+    font-size: 12px;
+    margin-top: 4px;
+    font-family: var(--mono);
+  }
+
+  /* Diagnostic */
+  .diagnostic {
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-elevated));
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    padding: 48px;
+    margin-top: 60px;
+  }
+  .diagnostic-q {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .diagnostic-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .diag-option {
+    padding: 16px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--ink-soft);
+    font-size: 14px;
+    text-align: center;
+  }
+  .diag-option:hover {
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+  .diag-option.selected {
+    background: var(--gold);
+    color: var(--bg);
+    border-color: var(--gold);
+    font-weight: 500;
+  }
+  .diag-result {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: none;
+  }
+  .diag-result.show { display: block; }
+  .diag-result h5 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .diag-result p {
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  /* Transcend section */
+  #transcend-section {
+    padding: 160px 0;
+    background: linear-gradient(180deg, var(--bg) 0%, #050608 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  #transcend-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(212,165,72,0.08), transparent 60%);
+    pointer-events: none;
+  }
+  #transcend-section .container { position: relative; z-index: 1; }
+  .transcend-symbol {
+    font-family: var(--serif);
+    font-size: 120px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 32px;
+    opacity: 0.85;
+  }
+
+  /* Footer */
+  footer {
+    padding: 80px 0 60px;
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 740px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+  footer p, footer li {
+    color: var(--ink-muted);
+    font-size: 14px;
+  }
+  footer h6 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  footer li { padding: 6px 0; }
+
+  /* Reveal — disabled; content is always visible. (Animation removed for reliability) */
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Mini callout */
+  .callout {
+    background: rgba(212, 165, 72, 0.06);
+    border-left: 3px solid var(--gold);
+    padding: 24px 28px;
+    margin: 32px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout p { margin-bottom: 0; color: var(--ink); font-style: italic; font-family: var(--serif); font-size: 19px; line-height: 1.5; }
+
+  .warning-callout {
+    background: rgba(201, 87, 59, 0.05);
+    border-left: 3px solid var(--rust);
+    padding: 24px 28px;
+    margin: 32px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .warning-callout p { margin-bottom: 0; color: var(--ink); }
+  .warning-callout strong { color: var(--rust); }
+
+  /* Toggle for view modes */
+  .view-toggle {
+    display: inline-flex;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 4px;
+    margin-bottom: 32px;
+  }
+  .view-toggle button {
+    padding: 10px 18px;
+    background: transparent;
+    border: none;
+    color: var(--ink-muted);
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 13px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+  .view-toggle button.active {
+    background: var(--gold);
+    color: var(--bg);
+    font-weight: 500;
+  }
+
+  /* ROI explainer */
+  .roi-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0;
+  }
+  .roi-table th {
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    color: var(--gold);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-bottom: 1px solid var(--line);
+  }
+  .roi-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 15px;
+    vertical-align: top;
+  }
+  .roi-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .roi-table .num-cell {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--gold);
+    text-align: center;
+    width: 60px;
+  }
+
+  /* Section divider */
+  .section-num {
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  /* Wisdom box */
+  .wisdom {
+    text-align: center;
+    max-width: 700px;
+    margin: 80px auto;
+  }
+  .wisdom .glyph {
+    font-family: var(--serif);
+    font-size: 48px;
+    color: var(--gold);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .wisdom p {
+    font-family: var(--serif);
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--ink);
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero-stamp">
+  <span class="dot"></span>
+  Donella H. Meadows · Sustainability Institute · 1999
+</div>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- HERO -->
+<!-- ============================================================ -->
+<section id="hero">
+  <svg class="hero-art" viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#d4a548" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#d4a548" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <!-- Concentric circles representing leverage layers -->
+    <g stroke="url(#g1)" fill="none" stroke-width="0.5">
+      <circle cx="300" cy="400" r="60"/>
+      <circle cx="300" cy="400" r="100"/>
+      <circle cx="300" cy="400" r="150"/>
+      <circle cx="300" cy="400" r="210"/>
+      <circle cx="300" cy="400" r="280"/>
+      <circle cx="300" cy="400" r="360"/>
+    </g>
+    <!-- Radial lines -->
+    <g stroke="#d4a548" stroke-opacity="0.25" stroke-width="0.5">
+      <line x1="300" y1="40" x2="300" y2="760"/>
+      <line x1="-60" y1="400" x2="660" y2="400"/>
+      <line x1="40" y1="140" x2="560" y2="660" transform="rotate(15 300 400)"/>
+      <line x1="40" y1="140" x2="560" y2="660" transform="rotate(60 300 400)"/>
+      <line x1="40" y1="140" x2="560" y2="660" transform="rotate(105 300 400)"/>
+      <line x1="40" y1="140" x2="560" y2="660" transform="rotate(150 300 400)"/>
+    </g>
+    <!-- Numbers -->
+    <g font-family="Cormorant Garamond" fill="#d4a548" font-size="14" font-style="italic">
+      <text x="300" y="50" text-anchor="middle" opacity="0.9">1</text>
+      <text x="300" y="135" text-anchor="middle" opacity="0.7">2</text>
+      <text x="300" y="195" text-anchor="middle" opacity="0.6">3</text>
+      <text x="300" y="245" text-anchor="middle" opacity="0.5">4</text>
+      <text x="300" y="295" text-anchor="middle" opacity="0.4">5</text>
+      <text x="300" y="345" text-anchor="middle" opacity="0.3">6</text>
+    </g>
+    <!-- Center -->
+    <circle cx="300" cy="400" r="6" fill="#d4a548"/>
+  </svg>
+
+  <div class="container narrow">
+    <div class="eyebrow">A field guide to where change actually comes from</div>
+    <h1 class="display">
+      你 95% 的努力<br>
+      正在<em>错误的</em>地方<br>
+      使劲。
+    </h1>
+    <p class="lead" style="margin-top: 40px; max-width: 580px;">
+      唐娜·梅多斯是 MIT 系统动力学派的传人。她花了一辈子研究复杂系统——经济、生态、城市、人体、组织。她得出一个让人寒毛直立的结论：
+    </p>
+    <blockquote style="margin-top: 32px; padding-left: 24px; font-size: 22px;">
+      "人们直觉地知道杠杆点在哪里——但他们直觉地把它推向<em>错误的方向</em>。"
+      <cite>— Jay Forrester (梅多斯的导师)</cite>
+    </blockquote>
+    <div class="hero-meta">
+      <div><span>READING TIME</span><strong>25–35 min</strong></div>
+      <div><span>FRAMEWORK</span><strong>12 levels of intervention</strong></div>
+      <div><span>SOURCE</span><strong>Meadows, "Leverage Points" (1999)</strong></div>
+      <div><span>YOUR LIFE AFTER</span><strong>Probably different</strong></div>
+    </div>
+  </div>
+  <div class="scroll-cue">SCROLL</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHY THIS MATTERS -->
+<!-- ============================================================ -->
+<section class="provocation">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-num">PART I · 为什么这件事重要到不能不知道</div>
+      <h2>在你了解这个框架之前，先理解<br><em style="font-family: var(--serif); color: var(--gold)">它解决的痛苦是什么</em>。</h2>
+    </div>
+
+    <div class="provocation-grid" style="margin-top: 80px;">
+      <div class="reveal">
+        <p class="lead">
+          想象你正在浴缸里调温度。水太冷，你拧开热水。十秒后还是冷的——因为热水器在四楼之下的地下室。你又拧大一点。再过十秒，水突然滚烫。你慌忙关掉热水开足冷水。然后又冷得发抖。
+        </p>
+        <p style="margin-top: 24px;">
+          这不是你笨。这是<strong>系统的延迟</strong>在惩罚你。你以为问题是"水龙头不够开"——参数。真正的问题是<strong>你不理解这个浴缸</strong>。
+        </p>
+        <p>
+          你的人生、你的公司、你的国家、地球的气候——都是这种"四楼浴缸"。每一次你用直觉去拧水龙头，你都在让系统更剧烈地震荡。
+        </p>
+      </div>
+      <div class="reveal">
+        <div class="stat-block" style="margin-bottom: 48px;">
+          <div class="number">95%</div>
+          <div class="label">梅多斯的估计</div>
+          <div class="desc">人类把 95% 的注意力放在杠杆最弱的层级（参数：补贴、税率、标准、KPI、卡路里、薪水）。这一层<em style="color: var(--gold); font-style: italic; font-family: var(--serif)">几乎不改变系统行为</em>。</div>
+        </div>
+        <div class="stat-block">
+          <div class="number">12</div>
+          <div class="label">梅多斯的回答</div>
+          <div class="desc">系统中存在 <em style="color: var(--gold); font-style: italic; font-family: var(--serif)">12 个杠杆点</em>——12 种干预层级。它们的杠杆从最弱到最强排列。<strong>越往上越反直觉，越往上系统越拼死抵抗你改它。</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top: 100px;">
+      <h3 style="margin-bottom: 32px;">这个框架最让人震撼的地方：</h3>
+      <p class="lead" style="max-width: 800px;">
+        它不是哲学，不是管理学的"洞见"，不是 self-help 鸡汤。<strong>它是数学。</strong>它从控制论 (cybernetics) 和系统动力学 (system dynamics) 里来——和飞机的姿态控制、桥梁的反馈共振、原子弹的临界质量、生态系统的崩溃，<em>用的是同一套方程</em>。
+      </p>
+      <div class="callout">
+        <p>这意味着：你的人生、你的公司、你的关系、你早晨醒来怎么过、你怎么减肥、你怎么戒手机——如果你只在低杠杆层努力，你失败不是因为意志力差。你失败是因为<strong>物理定律在阻挡你</strong>。</p>
+      </div>
+    </div>
+
+    <!-- Wrong direction visualization -->
+    <div class="wrong-direction-vis reveal" style="margin-top: 60px;">
+      <h4 style="margin-bottom: 8px;">"反直觉"的真正含义</h4>
+      <p style="margin-bottom: 0;">梅多斯有一句让她从此被很多 NGO 推崇的话：</p>
+      <div class="arrows-row">
+        <div class="arrow-side wrong">
+          <svg width="80" height="80" viewBox="0 0 80 80">
+            <path d="M 20 40 L 60 40 M 60 40 L 50 30 M 60 40 L 50 50" stroke="#c9573b" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <text x="40" y="20" text-anchor="middle" fill="#c9573b" font-size="11" font-family="JetBrains Mono">大家都在推这个方向</text>
+          </svg>
+          <div class="arrow-label">→ "经济增长解决贫困"</div>
+        </div>
+        <div style="font-family: var(--serif); font-size: 32px; color: var(--ink-muted); font-style: italic;">vs.</div>
+        <div class="arrow-side right">
+          <svg width="80" height="80" viewBox="0 0 80 80">
+            <path d="M 60 40 L 20 40 M 20 40 L 30 30 M 20 40 L 30 50" stroke="#d4a548" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <text x="40" y="20" text-anchor="middle" fill="#d4a548" font-size="11" font-family="JetBrains Mono">实际上应该推这个</text>
+          </svg>
+          <div class="arrow-label">← "放慢增长才能脱贫"</div>
+        </div>
+      </div>
+      <p>梅多斯在 1972 年帮罗马俱乐部建模：增长本身造成了贫困、环境破坏、不平等。<strong>大家拼命推的"增长"，正是这些问题的成因。</strong>她被嘲笑了 30 年。今天每一份气候报告都印证她对的。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- WHAT IS A SYSTEM (BATHTUB) -->
+<!-- ============================================================ -->
+<section id="bathtub-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-num">PART II · 在我们爬 12 级之前，先学会看"系统"</div>
+      <h2>整个世界都是<em style="color: var(--gold); font-family: var(--serif); font-style: italic">浴缸</em>。</h2>
+      <p class="lead" style="max-width: 720px; margin-top: 24px;">
+        梅多斯说：要看懂复杂系统，先用浴缸思维。<strong>水位 = 当前状态 (stock)。水龙头 = 流入 (inflow)。下水道 = 流出 (outflow)。</strong>这就是系统的最小骨架。
+      </p>
+    </div>
+
+    <div class="reveal" style="margin-top: 32px;">
+      <p>世界上几乎所有"问题"都是浴缸问题。<strong>体重</strong>是一个浴缸（卡路里入 vs. 卡路里出）。<strong>银行账户</strong>是浴缸（收入入 vs. 支出出）。<strong>感情</strong>是浴缸（共度的时光入 vs. 失望和疏离出）。<strong>气候里的二氧化碳</strong>是浴缸（排放入 vs. 海洋森林吸收出）。<strong>你大脑里的注意力</strong>是浴缸（专注流入 vs. 干扰流出）。</p>
+      <p>当你不区分"水位"和"水流"的时候，你就会做出蠢事。比如："我今天少吃了一顿饭——为什么没瘦？" 因为水位有惯性。而且你早上多吃了。但这种区分大多数人不会做。</p>
+    </div>
+
+    <h3 class="reveal" style="margin-top: 80px;">交互演示：调你自己的浴缸</h3>
+    <p class="reveal" style="margin-bottom: 0;">把它当成你的银行账户、你的体重、你的睡眠债——任何一个"水位 + 流"的系统。注意：当你改变"流"时，"水位"<em>不会立刻</em>反应。这就是为什么减肥/储蓄/学习一个新技能初期感觉"白费"——浴缸有惯性。</p>
+
+    <div class="bathtub-wrap reveal">
+      <svg class="bathtub-svg" viewBox="0 0 400 360" id="bathtubSvg">
+        <defs>
+          <linearGradient id="waterGrad" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#4a8f8a" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#2d5a55" stop-opacity="0.95"/>
+          </linearGradient>
+          <pattern id="ripple" width="40" height="6" patternUnits="userSpaceOnUse">
+            <path d="M 0 3 Q 10 0 20 3 T 40 3" fill="none" stroke="#7ab9b3" stroke-width="0.5" opacity="0.4"/>
+          </pattern>
+        </defs>
+
+        <!-- Inflow pipe -->
+        <line x1="60" y1="40" x2="60" y2="100" stroke="#5a5e6a" stroke-width="6"/>
+        <text x="60" y="32" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#b8b3a6">INFLOW</text>
+
+        <!-- Inflow drops animated -->
+        <g id="inflowDrops"></g>
+
+        <!-- Bathtub -->
+        <path d="M 50 100 L 50 280 Q 50 310 80 310 L 320 310 Q 350 310 350 280 L 350 100"
+              fill="none" stroke="#a8a293" stroke-width="2"/>
+
+        <!-- Water -->
+        <rect id="waterRect" x="52" y="200" width="296" height="108"
+              fill="url(#waterGrad)" rx="0"/>
+        <rect id="waterRipple" x="52" y="200" width="296" height="6"
+              fill="url(#ripple)" opacity="0.7"/>
+
+        <!-- Goal line -->
+        <line id="goalLine" x1="40" y1="180" x2="360" y2="180"
+              stroke="#d4a548" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <text id="goalLabel" x="365" y="183" font-family="JetBrains Mono" font-size="10" fill="#d4a548">GOAL</text>
+
+        <!-- Outflow pipe -->
+        <line x1="340" y1="310" x2="340" y2="340" stroke="#5a5e6a" stroke-width="6"/>
+        <text x="340" y="356" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#b8b3a6">OUTFLOW</text>
+
+        <!-- Stock label -->
+        <text x="200" y="260" text-anchor="middle" font-family="Cormorant Garamond" font-size="14" fill="#e8e4d8" font-style="italic">STOCK · 当前水位</text>
+        <text id="stockLevelText" x="200" y="280" text-anchor="middle" font-family="JetBrains Mono" font-size="14" fill="#d4a548">50%</text>
+      </svg>
+
+      <div class="controls">
+        <div class="control">
+          <div class="control-label">
+            <span class="name">流入速度 Inflow rate</span>
+            <span class="value" id="inflowVal">5.0/s</span>
+          </div>
+          <input type="range" id="inflow" min="0" max="20" step="0.5" value="5">
+          <div class="control-desc">参数 (Lv. 12)。最容易调，但其实改变不了多少行为。试试拉满——再观察延迟。</div>
+        </div>
+
+        <div class="control">
+          <div class="control-label">
+            <span class="name">流出速度 Outflow rate</span>
+            <span class="value" id="outflowVal">5.0/s</span>
+          </div>
+          <input type="range" id="outflow" min="0" max="20" step="0.5" value="5">
+          <div class="control-desc">同样是参数。如果流入 = 流出，水位永远不变（即使两者都很大）。这是动态平衡 (equilibrium)。</div>
+        </div>
+
+        <div class="control">
+          <div class="control-label">
+            <span class="name">目标水位 Goal</span>
+            <span class="value" id="goalVal">60%</span>
+          </div>
+          <input type="range" id="goal" min="0" max="100" step="5" value="60">
+          <div class="control-desc">这是 Lv. 3 — 系统的目标。即使你不动其他任何东西，<em>只移动这条金线</em>，整个系统的行为都重新组织。这就是高杠杆。</div>
+        </div>
+
+        <div class="bathtub-readout">
+          <div class="readout-cell">
+            <div class="label">当前水位</div>
+            <div class="num" id="currentStock">50</div>
+          </div>
+          <div class="readout-cell">
+            <div class="label">差距 (DISCREPANCY)</div>
+            <div class="num" id="discrepancy">+10</div>
+          </div>
+          <div class="readout-cell">
+            <div class="label">趋势</div>
+            <div class="num" id="trend">→</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout reveal" style="margin-top: 60px;">
+      <p>当你看懂这个浴缸，你就看懂了世界。<strong>每一个让你焦虑、纠结、看不清的复杂局面，本质上都是一个浴缸（或多个浴缸的串联）。</strong>问问自己：什么是 stock？什么是 inflow？什么是 outflow？延迟多长？目标谁定的？</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- THE PYRAMID -->
+<!-- ============================================================ -->
+<section id="pyramid-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-num">PART III · 12 个杠杆点 · 从最弱到最强</div>
+      <h2>这是地图。<br>从底层 (物理) 到顶层 (心智)。</h2>
+    </div>
+
+    <div class="pyramid-intro reveal">
+      <div>
+        <h4 style="font-family: var(--mono); font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);">阅读地图的三个原则</h4>
+      </div>
+      <div>
+        <p><strong>1. 越往下，杠杆越弱。越往上，杠杆越强。</strong>但每往上一级，操作难度也呈指数级上升。Lv. 12 的"调税率"任何人都能讨论；Lv. 1 的"超越自己的世界观"<em>只有极少数人在一辈子做到了一次</em>。</p>
+        <p><strong>2. 顺序不是绝对的。</strong>梅多斯自己说："列表是 tentative 的"。但相对位置很稳。把它当作一个粗略的引力梯度。</p>
+        <p><strong>3. 高层级会"<em>挟持</em>"低层级。</strong>如果一家公司的目标 (Lv. 3) 是"股东价值最大化"——那么所有信息流、规则、KPI、参数都会被扭曲去服务它。改一千个 KPI 不如改一次目标。</p>
+      </div>
+    </div>
+
+    <div class="view-toggle reveal">
+      <button class="active" data-view="all">全部展示</button>
+      <button data-view="physical">物理层 (Lv. 9-12)</button>
+      <button data-view="info">反馈与信息层 (Lv. 5-8)</button>
+      <button data-view="design">设计与意图层 (Lv. 1-4)</button>
+    </div>
+
+    <div class="pyramid-vis reveal">
+      <!-- Tier 1: Mind -->
+      <div class="leverage-divider"><span class="label">⬆ 最高杠杆 · 心智层 · Lv. 1-2</span></div>
+
+      <div class="level-bar" data-level="1" data-tier="design" style="--leverage-width: 100%">
+        <div class="level-num">1</div>
+        <div>
+          <div class="level-title">Power to transcend paradigms</div>
+          <div class="level-zh">超越范式的能力 — 不执着于任何一个世界观</div>
+        </div>
+        <div class="level-power">LEGEND<div class="level-power-bar"><div style="width: 100%"></div></div></div>
+      </div>
+
+      <div class="level-bar" data-level="2" data-tier="design" style="--leverage-width: 92%">
+        <div class="level-num">2</div>
+        <div>
+          <div class="level-title">The mindset/paradigm of the system</div>
+          <div class="level-zh">系统所基于的范式 — "增长是好的""时间是金钱""自然属于人类"</div>
+        </div>
+        <div class="level-power">PARADIGM<div class="level-power-bar"><div style="width: 92%"></div></div></div>
+      </div>
+
+      <!-- Tier 2: Design -->
+      <div class="leverage-divider"><span class="label">⬆ 设计层 · 意图与结构 · Lv. 3-5</span></div>
+
+      <div class="level-bar" data-level="3" data-tier="design" style="--leverage-width: 84%">
+        <div class="level-num">3</div>
+        <div>
+          <div class="level-title">The goals of the system</div>
+          <div class="level-zh">系统的目标 — 你到底想要什么？这决定了所有其他东西</div>
+        </div>
+        <div class="level-power">GOAL<div class="level-power-bar"><div style="width: 84%"></div></div></div>
+      </div>
+
+      <div class="level-bar" data-level="4" data-tier="design" style="--leverage-width: 76%">
+        <div class="level-num">4</div>
+        <div>
+          <div class="level-title">Power to self-organize</div>
+          <div class="level-zh">自组织能力 — 系统能否自己长出新结构？</div>
+        </div>
+        <div class="level-power">EVOLVE<div class="level-power-bar"><div style="width: 76%"></div></div></div>
+      </div>
+
+      <div class="level-bar" data-level="5" data-tier="info" style="--leverage-width: 68%">
+        <div class="level-num">5</div>
+        <div>
+          <div class="level-title">The rules of the system</div>
+          <div class="level-zh">系统的规则 — 激励、惩罚、约束。法律、合同、底线</div>
+        </div>
+        <div class="level-power">RULES<div class="level-power-bar"><div style="width: 68%"></div></div></div>
+      </div>
+
+      <!-- Tier 3: Info & Feedback -->
+      <div class="leverage-divider"><span class="label">⬆ 信息与反馈层 · Lv. 6-8</span></div>
+
+      <div class="level-bar" data-level="6" data-tier="info" style="--leverage-width: 60%">
+        <div class="level-num">6</div>
+        <div>
+          <div class="level-title">The structure of information flows</div>
+          <div class="level-zh">信息流结构 — 谁能看到什么数据？什么是被隐藏的？</div>
+        </div>
+        <div class="level-power">SIGNAL<div class="level-power-bar"><div style="width: 60%"></div></div></div>
+      </div>
+
+      <div class="level-bar" data-level="7" data-tier="info" style="--leverage-width: 52%">
+        <div class="level-num">7</div>
+        <div>
+          <div class="level-title">The gain around positive feedback loops</div>
+          <div class="level-zh">正反馈环的增益 — 滚雪球的速度。"赢家通吃"的强度</div>
+        </div>
+        <div class="level-power">AMPLIFY<div class="level-power-bar"><div style="width: 52%"></div></div></div>
+      </div>
+
+      <div class="level-bar" data-level="8" data-tier="info" style="--leverage-width: 44%">
+        <div class="level-num">8</div>
+        <div>
+          <div class="level-title">The strength of negative feedback loops</div>
+          <div class="level-zh">负反馈环的强度 — 自我纠错机制。恒温器、免疫系统、批评</div>
+        </div>
+        <div class="level-power">CORRECT<div class="level-power-bar"><div style="width: 44%"></div></div></div>
+      </div>
+
+      <!-- Tier 4: Physical -->
+      <div class="leverage-divider"><span class="label">⬆ 物理层 · 流、缓冲、参数 · Lv. 9-12</span></div>
+
+      <div class="level-bar" data-level="9" data-tier="physical" style="--leverage-width: 36%">
+        <div class="level-num">9</div>
+        <div>
+          <div class="level-title">The lengths of delays</div>
+          <div class="level-zh">延迟长度 — 决定到行动到看到结果之间隔多久</div>
+        </div>
+        <div class="level-power">LATENCY<div class="level-power-bar"><div style="width: 36%"></div></div></div>
+      </div>
+
+      <div class="level-bar" data-level="10" data-tier="physical" style="--leverage-width: 28%">
+        <div class="level-num">10</div>
+        <div>
+          <div class="level-title">Structure of material stocks & flows</div>
+          <div class="level-zh">物质流的结构 — 路网、管线、组织架构</div>
+        </div>
+        <div class="level-power">PLUMBING<div class="level-power-bar"><div style="width: 28%"></div></div></div>
+      </div>
+
+      <div class="level-bar" data-level="11" data-tier="physical" style="--leverage-width: 20%">
+        <div class="level-num">11</div>
+        <div>
+          <div class="level-title">Sizes of buffers & stabilizing stocks</div>
+          <div class="level-zh">缓冲大小 — 库存、储备、应急金、心理缓冲</div>
+        </div>
+        <div class="level-power">BUFFER<div class="level-power-bar"><div style="width: 20%"></div></div></div>
+      </div>
+
+      <div class="level-bar" data-level="12" data-tier="physical" style="--leverage-width: 12%">
+        <div class="level-num">12</div>
+        <div>
+          <div class="level-title">Constants, parameters, numbers</div>
+          <div class="level-zh">参数 — 税率、补贴、KPI、卡路里、薪水（你 95% 的精力都在这里）</div>
+        </div>
+        <div class="level-power">PARAM<div class="level-power-bar"><div style="width: 12%"></div></div></div>
+      </div>
+
+      <div class="leverage-divider" style="border-top: 1px dashed var(--rust);">
+        <span class="label" style="color: var(--rust);">⬇ 最低杠杆 · 大多数人在这里</span>
+      </div>
+    </div>
+
+    <!-- Detail panels for each level -->
+    <div id="levelDetailContainer"></div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CONCRETE EXAMPLES -->
+<!-- ============================================================ -->
+<section id="examples-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-num">PART IV · 抽象到具象 · 同一个框架，无穷多个应用</div>
+      <h2>从自行车到高尔夫——<br><em>都是同一组方程</em>。</h2>
+      <p class="lead" style="max-width: 720px; margin-top: 24px;">
+        费曼说：如果你不能用最简单的东西解释一个想法，你就没真的懂。这套框架最强大的证据是：它对一辆自行车、一架飞机、一块橡皮、一场高尔夫——同样有效。因为它说的是物理。
+      </p>
+    </div>
+
+    <div class="example-tabs reveal">
+      <button class="tab active" data-ex="bike"><span class="tab-icon">🚲</span>自行车</button>
+      <button class="tab" data-ex="plane"><span class="tab-icon">✈️</span>飞机</button>
+      <button class="tab" data-ex="eraser"><span class="tab-icon">✏️</span>橡皮擦</button>
+      <button class="tab" data-ex="golf"><span class="tab-icon">⛳</span>高尔夫</button>
+      <button class="tab" data-ex="morning"><span class="tab-icon">☀️</span>你的早晨</button>
+    </div>
+
+    <!-- BIKE -->
+    <div class="example-content active" id="ex-bike">
+      <div class="example-header">
+        <div class="example-visual">
+          <svg viewBox="0 0 200 160" width="100%">
+            <circle cx="50" cy="120" r="32" fill="none" stroke="#d4a548" stroke-width="2"/>
+            <circle cx="150" cy="120" r="32" fill="none" stroke="#d4a548" stroke-width="2"/>
+            <circle cx="50" cy="120" r="2" fill="#d4a548"/>
+            <circle cx="150" cy="120" r="2" fill="#d4a548"/>
+            <line x1="50" y1="120" x2="100" y2="80" stroke="#e8e4d8" stroke-width="2"/>
+            <line x1="100" y1="80" x2="150" y2="120" stroke="#e8e4d8" stroke-width="2"/>
+            <line x1="100" y1="80" x2="100" y2="120" stroke="#e8e4d8" stroke-width="2"/>
+            <line x1="100" y1="120" x2="50" y2="120" stroke="#e8e4d8" stroke-width="2"/>
+            <line x1="80" y1="60" x2="120" y2="60" stroke="#e8e4d8" stroke-width="2"/>
+            <line x1="100" y1="60" x2="100" y2="80" stroke="#e8e4d8" stroke-width="2"/>
+            <circle cx="100" cy="120" r="6" fill="none" stroke="#d4a548" stroke-width="1"/>
+            <text x="100" y="155" text-anchor="middle" fill="#7a7668" font-size="8" font-family="JetBrains Mono">SYSTEM: BICYCLE</text>
+          </svg>
+        </div>
+        <div>
+          <h3>骑车从来不是"踩快一点"那么简单</h3>
+          <p>大多数人买电动车、买公路车、换轮胎、追配件——都在 <strong>Lv. 12 (参数) 和 Lv. 11 (缓冲)</strong>。但骑车这件事的真正快慢，藏在更高层。</p>
+          <p>看看一个成熟的骑车通勤者和一个新手的差别：新手在调节链条、研究胎压；老手知道哪条路有红绿灯延迟陷阱 (Lv. 9)、知道自己什么时候会因为亢奋而冒险 (Lv. 7)、最重要的——他重新定义了"骑车"是什么 (Lv. 2)。</p>
+        </div>
+      </div>
+      <div class="example-mapping" id="bikeMapping"></div>
+    </div>
+
+    <!-- PLANE -->
+    <div class="example-content" id="ex-plane">
+      <div class="example-header">
+        <div class="example-visual">
+          <svg viewBox="0 0 200 160" width="100%">
+            <path d="M 30 90 L 100 80 L 165 75 L 175 85 L 165 95 L 100 90 Z" fill="none" stroke="#d4a548" stroke-width="1.5"/>
+            <path d="M 80 80 L 60 60 L 110 65 L 95 80" fill="none" stroke="#e8e4d8" stroke-width="1.5"/>
+            <path d="M 80 90 L 60 110 L 110 105 L 95 90" fill="none" stroke="#e8e4d8" stroke-width="1.5"/>
+            <path d="M 155 78 L 145 65 L 165 65 L 162 78" fill="none" stroke="#e8e4d8" stroke-width="1.5"/>
+            <circle cx="160" cy="83" r="2" fill="#d4a548"/>
+            <text x="100" y="140" text-anchor="middle" fill="#7a7668" font-size="8" font-family="JetBrains Mono">SYSTEM: AIRCRAFT</text>
+          </svg>
+        </div>
+        <div>
+          <h3>为什么飞机几乎从不掉</h3>
+          <p>因为航空业把<strong>负反馈环 (Lv. 8)</strong>做到了变态级别。飞行员训练 → 副驾驶交叉检查 → 空管 → 自动驾驶 → 黑匣子 → 事故调查 → 程序更新——这是七层负反馈。</p>
+          <p>同时它在 <strong>Lv. 6 (信息流)</strong> 上极致透明：每次坠机数据全行业共享。每次崩溃都让整个系统进化。<em>这就是为什么坐飞机比走楼梯还安全。</em></p>
+        </div>
+      </div>
+      <div class="example-mapping" id="planeMapping"></div>
+    </div>
+
+    <!-- ERASER -->
+    <div class="example-content" id="ex-eraser">
+      <div class="example-header">
+        <div class="example-visual">
+          <svg viewBox="0 0 200 160" width="100%">
+            <rect x="60" y="50" width="80" height="60" rx="4" fill="none" stroke="#d4a548" stroke-width="2"/>
+            <rect x="60" y="50" width="80" height="20" rx="4" fill="#c9573b" opacity="0.7"/>
+            <line x1="60" y1="70" x2="140" y2="70" stroke="#a8a293" stroke-width="0.5"/>
+            <text x="100" y="90" text-anchor="middle" fill="#e8e4d8" font-size="10" font-family="JetBrains Mono">PENCIL</text>
+            <text x="100" y="62" text-anchor="middle" fill="#fff" font-size="8" font-family="JetBrains Mono">ERASER</text>
+            <text x="100" y="140" text-anchor="middle" fill="#7a7668" font-size="8" font-family="JetBrains Mono">SYSTEM: WRITING</text>
+          </svg>
+        </div>
+        <div>
+          <h3>为什么铅笔的另一头是橡皮</h3>
+          <p>看似平凡的设计——<strong>它编码了一个深刻的范式 (Lv. 2)</strong>：错误是过程的一部分。一支没有橡皮的笔在告诉你"别犯错"。一支带橡皮的笔在告诉你"错了再来"。</p>
+          <p>这就是为什么这个框架既能用在机器上，也能用在你的工作伦理上。<em>你给自己留了多少"橡皮"？</em>没有橡皮的人生在 Lv. 2 上是完美主义；有橡皮的是迭代主义。</p>
+        </div>
+      </div>
+      <div class="example-mapping" id="eraserMapping"></div>
+    </div>
+
+    <!-- GOLF -->
+    <div class="example-content" id="ex-golf">
+      <div class="example-header">
+        <div class="example-visual">
+          <svg viewBox="0 0 200 160" width="100%">
+            <path d="M 20 130 Q 100 80 180 130" fill="none" stroke="#6b7d4f" stroke-width="2"/>
+            <circle cx="160" cy="100" r="3" fill="#fff"/>
+            <line x1="160" y1="100" x2="160" y2="60" stroke="#e8e4d8" stroke-width="1"/>
+            <path d="M 160 60 L 175 65 L 160 70 Z" fill="#c9573b"/>
+            <circle cx="50" cy="125" r="2" fill="#fff"/>
+            <text x="100" y="148" text-anchor="middle" fill="#7a7668" font-size="8" font-family="JetBrains Mono">SYSTEM: GOLF</text>
+          </svg>
+        </div>
+        <div>
+          <h3>为什么 80 岁的人能赢 30 岁的人</h3>
+          <p>因为高尔夫是一场负反馈 (Lv. 8) 和心智范式 (Lv. 2) 的战争，不是体能的战争。年轻人在 Lv. 12 (参数) 努力——找力量更大的杆、改握法。</p>
+          <p>老手在 Lv. 8 上经营：每一杆错了立刻读懂为什么 (信息流 Lv. 6)，立刻调整。最重要的，他在 Lv. 2 改写了游戏的意义——不是"打赢"，而是"打稳"。这套心智完全套用到工作和投资上。</p>
+        </div>
+      </div>
+      <div class="example-mapping" id="golfMapping"></div>
+    </div>
+
+    <!-- MORNING -->
+    <div class="example-content" id="ex-morning">
+      <div class="example-header">
+        <div class="example-visual">
+          <svg viewBox="0 0 200 160" width="100%">
+            <circle cx="100" cy="80" r="20" fill="#d4a548" opacity="0.8"/>
+            <g stroke="#d4a548" stroke-width="1.5" stroke-linecap="round">
+              <line x1="100" y1="50" x2="100" y2="42"/>
+              <line x1="100" y1="118" x2="100" y2="110"/>
+              <line x1="70" y1="80" x2="62" y2="80"/>
+              <line x1="138" y1="80" x2="130" y2="80"/>
+              <line x1="78" y1="58" x2="72" y2="52"/>
+              <line x1="128" y1="108" x2="122" y2="102"/>
+              <line x1="78" y1="102" x2="72" y2="108"/>
+              <line x1="128" y1="52" x2="122" y2="58"/>
+            </g>
+            <text x="100" y="148" text-anchor="middle" fill="#7a7668" font-size="8" font-family="JetBrains Mono">SYSTEM: YOUR MORNING</text>
+          </svg>
+        </div>
+        <div>
+          <h3>你的早晨：12 个杠杆都在你身上</h3>
+          <p>大多数 self-help 教你的都是 Lv. 12 (5AM 起床、冷水澡、写感恩日记)。这些有用，但杠杆很弱。同样的早晨，三个不同的人会有完全不同的命运——区别不在他们做什么，而在他们<em>为什么</em>而做、<em>从何种世界观</em>开始。</p>
+          <p>下面是同一个早晨在 12 个杠杆点上的展开。看看你自己在哪一层努力。</p>
+        </div>
+      </div>
+      <div class="example-mapping" id="morningMapping"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PERSONAL APPLICATIONS -->
+<!-- ============================================================ -->
+<section id="personal-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-num">PART V · 个人层面 · 这才是这个框架最锋利的地方</div>
+      <h2>什么是<em>真的</em>，<br>什么是<em>bullshit</em>？</h2>
+      <p class="lead" style="max-width: 720px; margin-top: 24px;">
+        这套框架最让人不舒服的是：它一刀划开了"自我提升"行业的肚子。99% 的鸡汤、习惯打卡、效率工具——都在 Lv. 12。它们让你感觉良好，却很少改变你的人生。
+      </p>
+    </div>
+
+    <h3 class="reveal" style="margin-top: 80px; font-family: var(--serif); font-size: 32px;">"我想变得更健康"——12 层展开</h3>
+    <p class="reveal">这是一个完整的诊断练习。同样的目标，看看每一层意味着什么。</p>
+
+    <table class="roi-table reveal">
+      <thead>
+        <tr>
+          <th>Lv.</th>
+          <th>Layer</th>
+          <th>"变得更健康" 在这一层意味着什么</th>
+          <th>诚实的 ROI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num-cell">12</td>
+          <td>参数</td>
+          <td>每天 8 杯水、10000 步、卡路里计算、咖啡因 ≤ 200mg</td>
+          <td>低。可量化但不可持续</td>
+        </tr>
+        <tr>
+          <td class="num-cell">11</td>
+          <td>缓冲</td>
+          <td>家里只放健康食物。准备应急健康零食。</td>
+          <td>中。让好选择更省力</td>
+        </tr>
+        <tr>
+          <td class="num-cell">10</td>
+          <td>结构</td>
+          <td>搬到走得动到健身房的地方。换站立办公桌。</td>
+          <td>中高。一次设置，长期受益</td>
+        </tr>
+        <tr>
+          <td class="num-cell">9</td>
+          <td>延迟</td>
+          <td>买体重秤每天称（缩短延迟）。不是月初再后悔。</td>
+          <td>中高。延迟越短反应越准</td>
+        </tr>
+        <tr>
+          <td class="num-cell">8</td>
+          <td>负反馈</td>
+          <td>找一个会直接告诉你"你又胖了"的朋友。教练。年度体检。</td>
+          <td>高。<em style="color: var(--gold)">没有真实反馈，前面所有都白费</em></td>
+        </tr>
+        <tr>
+          <td class="num-cell">7</td>
+          <td>正反馈</td>
+          <td>识别那些"越练越想练"的活动 (运动多巴胺循环)。也识别"越宅越想宅"的负向螺旋——切断它。</td>
+          <td>高。一旦正向滚雪球，省心</td>
+        </tr>
+        <tr>
+          <td class="num-cell">6</td>
+          <td>信息流</td>
+          <td>取关让你焦虑的健身网红。订阅营养医学的论文。换信息源。</td>
+          <td>很高。你的大脑被你的输入决定</td>
+        </tr>
+        <tr>
+          <td class="num-cell">5</td>
+          <td>规则</td>
+          <td>给自己定不可破的底线 (例：22:00 后不进食)。规则不是 KPI——规则有牙齿。</td>
+          <td>很高。规则减少决策疲劳</td>
+        </tr>
+        <tr>
+          <td class="num-cell">4</td>
+          <td>自组织</td>
+          <td>培养"我能学习并改变"的元能力。不是学一个套路，是学如何学。</td>
+          <td>极高</td>
+        </tr>
+        <tr>
+          <td class="num-cell">3</td>
+          <td>目标</td>
+          <td><strong>"健康" 到底意味着什么？</strong>"瘦"？"长寿"？"精力旺盛"？"皮肤好看"？目标决定一切。</td>
+          <td>致命级高</td>
+        </tr>
+        <tr>
+          <td class="num-cell">2</td>
+          <td>范式</td>
+          <td>"我的身体是被使用的工具" vs. "我的身体是我自己"。前者通向折磨，后者通向爱护。</td>
+          <td>颠覆性</td>
+        </tr>
+        <tr>
+          <td class="num-cell">1</td>
+          <td>超越</td>
+          <td>放下"健康/不健康"的二元执念。看到它本身也只是一个故事。健康本身不能让你免于无聊和死亡。</td>
+          <td>觉醒级</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout reveal">
+      <p>看出来了吗？你过去十年所有的健身 App、计步器、保健品——99% 在 Lv. 12 或 Lv. 11。它们没用<em>不是因为产品差，是因为整个层级就没杠杆</em>。</p>
+    </div>
+
+    <h3 class="reveal" style="margin-top: 100px;">"什么是真的，什么是 bullshit" — 一刀切的判断</h3>
+    <div class="personal-grid">
+      <div class="personal-card bullshit reveal">
+        <div class="badge">▼ 大概率是 BULLSHIT</div>
+        <h4>低杠杆活动 (你做了感觉良好但不改变命运的事)</h4>
+        <ul>
+          <li>买新的笔记本/规划本，期待这次会不一样
+            <small>LV 11 / 12 — 缓冲与参数。除非你改了 Lv. 3 的目标</small>
+          </li>
+          <li>下载第 17 个生产力 App
+            <small>LV 12 — 工具不是问题</small>
+          </li>
+          <li>在朋友圈发"打卡 Day 1"
+            <small>LV 12 — 信号大于改变</small>
+          </li>
+          <li>看一个新的 self-help 视频，但不应用
+            <small>LV 6 信息流但只是消费</small>
+          </li>
+          <li>读《原子习惯》第 5 次
+            <small>LV 6 但已饱和。问题不在缺信息</small>
+          </li>
+          <li>调薪 / 调奖金 KPI 来"激励"团队
+            <small>LV 12 — 几乎从不解决文化问题</small>
+          </li>
+        </ul>
+      </div>
+      <div class="personal-card real reveal">
+        <div class="badge">▲ 大概率是 REAL</div>
+        <h4>高杠杆活动 (做一次会重组你的人生)</h4>
+        <ul>
+          <li>主动找会指出你盲点的朋友/教练
+            <small>LV 8 — 安装真实的负反馈</small>
+          </li>
+          <li>把信息源换掉 (取关、订阅、读不同的书)
+            <small>LV 6 — 重新接线你的大脑</small>
+          </li>
+          <li>给自己立不可破的规则 (硬底线)
+            <small>LV 5 — 削减决策疲劳</small>
+          </li>
+          <li>问自己："我到底在追求什么？"——并诚实回答
+            <small>LV 3 — 大多数人这辈子没问过</small>
+          </li>
+          <li>意识到一个底层信念是错的 (例："努力 = 价值")
+            <small>LV 2 — 范式断裂</small>
+          </li>
+          <li>独处、冥想、面对死亡——直到看清"自我"也是个故事
+            <small>LV 1 — 极少数人</small>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top: 100px;">
+      <h3>诊断工具：你最近三个月的精力，主要花在哪一层？</h3>
+      <p>这不是道德评判。低杠杆事情有时必须做。但<em>持续</em>只在低杠杆做，是一种结构性的浪费。</p>
+
+      <div class="diagnostic">
+        <div class="diagnostic-q">"我希望明年我的_______ 改变。" 选一个：</div>
+        <div class="diagnostic-options" id="topicOptions">
+          <div class="diag-option" data-topic="health">健康</div>
+          <div class="diag-option" data-topic="career">职业</div>
+          <div class="diag-option" data-topic="relationship">关系</div>
+          <div class="diag-option" data-topic="finance">财务</div>
+          <div class="diag-option" data-topic="meaning">人生意义</div>
+        </div>
+
+        <div id="actionPrompt" style="display:none; margin-top: 24px;">
+          <div class="diagnostic-q">最近一个月你为这件事做的<em style="color: var(--gold)">最具体</em>的事情，最像哪一类？</div>
+          <div class="diagnostic-options" id="actionOptions">
+            <div class="diag-option" data-action="param">买/下载/订阅了某个工具</div>
+            <div class="diag-option" data-action="buffer">囤积/储备/准备了某种资源</div>
+            <div class="diag-option" data-action="info">换了我接收的信息源</div>
+            <div class="diag-option" data-action="rule">立了一条不可破的规则</div>
+            <div class="diag-option" data-action="goal">重新问"我到底要什么"</div>
+            <div class="diag-option" data-action="paradigm">动摇了一个底层信念</div>
+          </div>
+        </div>
+
+        <div class="diag-result" id="diagResult">
+          <h5>诊断结果</h5>
+          <p id="diagResultText"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TRANSCEND -->
+<!-- ============================================================ -->
+<section id="transcend-section">
+  <div class="container narrow">
+    <div class="reveal">
+      <div class="section-num" style="text-align: left;">PART VI · 最后的话</div>
+      <div class="transcend-symbol">∞</div>
+      <h2 style="margin-bottom: 32px;">梅多斯把 Lv. 1 留作<em style="color: var(--gold); font-family: var(--serif);">"超越范式"</em>。</h2>
+      <p class="lead">
+        她说，最高的杠杆不是<em>找到正确的世界观</em>。最高的杠杆是<em>看到所有世界观都是建构</em>，然后<strong>放下抓握</strong>。
+      </p>
+      <blockquote style="border-left: none; text-align: center; padding: 60px 0; margin: 60px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+        "It is in this space of mastery over paradigms that people throw off addictions, live in constant joy, bring down empires, found religions, get locked up or 'disappeared' or shot, and have impacts that last for millennia."
+        <cite>— Donella H. Meadows, 1999</cite>
+      </blockquote>
+      <p>这是一个奇特的结尾。一个从 MIT 控制论训练出来的科学家，一个用计算机模型为联合国推演气候未来的人——她在最后一页告诉你：所有的杠杆点都次要，<em>真正的力量在于撒手</em>。</p>
+      <p>但仔细想，这就是物理。当你死死抓住一个范式，整个系统都被你限制。当你放手，系统才能自己进化。<strong>"佛"在系统动力学语言里，就是在 Lv. 1 上的人。</strong></p>
+    </div>
+
+    <div class="wisdom reveal">
+      <div class="glyph">"</div>
+      <p>
+        权力，归根到底，不是你推杠杆点的能力——而是你<em>策略性、深刻、疯狂地放手</em>的能力。
+      </p>
+      <div style="margin-top: 16px; font-family: var(--mono); font-size: 12px; color: var(--ink-muted); letter-spacing: 0.1em;">— DONELLA H. MEADOWS</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container wide">
+    <div class="footer-grid">
+      <div>
+        <h6>关于这份指南</h6>
+        <p>这是基于 Donella H. Meadows 1999 年发表的论文 <em>"Leverage Points: Places to Intervene in a System"</em> 制作的交互式视觉化解读。原文由 The Sustainability Institute 出版。</p>
+        <p>梅多斯 (1941-2001) 是环境科学家、《增长的极限》合著者、系统动力学先驱 Jay Forrester 的学生。这篇论文被许多学者认为是 20 世纪最重要的非学术论文之一。</p>
+      </div>
+      <div>
+        <h6>原始 12 个层级</h6>
+        <ul>
+          <li>1. Transcend Paradigms</li>
+          <li>2. Paradigms</li>
+          <li>3. Goals</li>
+          <li>4. Self-organization</li>
+          <li>5. Rules</li>
+          <li>6. Information Flows</li>
+          <li>7. Positive Feedback</li>
+          <li>8. Negative Feedback</li>
+          <li>9. Delays</li>
+          <li>10. Stock-Flow Structure</li>
+          <li>11. Buffers</li>
+          <li>12. Parameters</li>
+        </ul>
+      </div>
+      <div>
+        <h6>延伸阅读</h6>
+        <ul>
+          <li>Meadows, <em>Thinking in Systems</em></li>
+          <li>Forrester, <em>World Dynamics</em></li>
+          <li>Senge, <em>The Fifth Discipline</em></li>
+          <li>Wiener, <em>Cybernetics</em></li>
+          <li>Kuhn, <em>Structure of Scientific Revolutions</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<script>
+// =================================================================
+// LEVEL DATA
+// =================================================================
+const levels = {
+  12: {
+    title: `Constants, Parameters, Numbers`,
+    titleZh: `参数、常数、数字`,
+    tier: `physical`,
+    why: `参数是你拧的水龙头——补贴、税率、KPI、薪水、卡路里、利率、限速。它们决定流量大小，但<strong>很少改变系统行为</strong>。`,
+    examples: [
+      `调最低工资 / 调税率 / 调利率`,
+      `公司里调员工 KPI 的具体指标 / 调奖金比例`,
+      `你给自己定每天写多少字 / 跑多少步`,
+      `更换政客（同一系统下，新人和旧人差别有限）`
+    ],
+    metaphor: `<strong>浴缸比喻：</strong>调水龙头开多大。水龙头是 5 还是 10，远远没有"水龙头通什么管道"和"水龙头有没有反馈"重要。`,
+    gotcha: `梅多斯估计 90-99% 的人类政治和管理精力都消耗在这一层。这不是说参数不重要——参数对短期内卡在水流中的人非常重要——但它们<em>很少改变行为</em>。`,
+    personal: `你的"我每天 5 点起床""我每天读 30 分钟书"——都是 Lv. 12。它们有用，但杠杆很弱。如果你的目标 (Lv. 3) 错了，所有这些参数都在错的方向上加速。`
+  },
+  11: {
+    title: `Sizes of Buffers and Stabilizing Stocks`,
+    titleZh: `缓冲与稳定库存的大小`,
+    tier: `physical`,
+    why: `缓冲是抗波动的能力。<strong>大缓冲 = 稳定但僵化。小缓冲 = 灵活但脆弱。</strong>河流比湖泊更容易暴洪——因为没缓冲。`,
+    examples: [
+      `公司库存 (Just-in-time vs. 大库存)`,
+      `你的紧急储备金 (3 个月 vs. 12 个月)`,
+      `情感缓冲：你能承受多少坏消息后崩溃`,
+      `免疫力 / 心肺储备 / 睡眠债`
+    ],
+    metaphor: `<strong>湖 vs. 河：</strong>你听过河流暴洪，很少听过湖泊暴洪。因为湖（大 stock）相对它的流是稳定的。`,
+    gotcha: `缓冲是物理结构，难以改变（建一个水库要几年）。但理解你<em>有多少缓冲</em>能解释你为什么对某些波动敏感、对某些不敏感。`,
+    personal: `你身边有多少"应急储备金"——金钱、时间、人脉、健康。决定了你在生活给你出难题时是优雅应对还是崩溃。`
+  },
+  10: {
+    title: `Structure of Material Stocks and Flows`,
+    titleZh: `物质流的结构 (节点与连接)`,
+    tier: `physical`,
+    why: `物理结构决定流量怎么走。<strong>布达佩斯所有车流都得穿过城中心——不是因为政策，是因为路网</strong>。改变不了城中心拥堵，除非重建。`,
+    examples: [
+      `城市的路网 / 管线 / 电网设计`,
+      `组织架构图—— who reports to whom`,
+      `你家的物理布局—— 你的书桌离床多远？`,
+      `供应链拓扑（中心化 vs. 分布式）`
+    ],
+    metaphor: `<strong>水管比喻：</strong>水的流向不是水的选择，是水管的形状决定的。`,
+    gotcha: `改变结构是<em>慢且贵</em>的。梅多斯说："杠杆点在<em>一开始就把它设计对</em>"。已经建好了？很少能改。`,
+    personal: `你家里的物理空间是你行为的剧本。书放卧室 vs. 客厅，决定你是不是会读它。手机充电在卧室 vs. 厨房，决定你早上看不看它。这是 Lv. 10。`
+  },
+  9: {
+    title: `Lengths of Delays`,
+    titleZh: `延迟的长度`,
+    tier: `physical`,
+    why: `延迟造成<strong>过冲与共振</strong>。地下室的热水器让你浴缸忽冷忽热。过短的延迟 → 反应过激；过长的延迟 → 错过窗口；混乱的延迟 → 系统失控。`,
+    examples: [
+      `央行调利率——经济需要 6-18 个月才会反应`,
+      `你吃的食物——它的影响 6 小时后才显现`,
+      `AI 训练——你今天的反馈，模型几周后才学会`,
+      `感情中的不满——憋三年后突然爆发`
+    ],
+    metaphor: `<strong>四楼浴缸：</strong>水龙头反应慢 → 你拧过头 → 滚烫 → 你又拧反 → 冰冷 → 振荡。系统的延迟决定了你能多准地控制它。`,
+    gotcha: `延迟通常无法改变（建一个发电厂就是要 5 年）。但当它<em>能</em>改变，杠杆很大。注意：缩短延迟比延长更难、更危险——金融市场延迟过短就成了高频崩盘。`,
+    personal: `你写日记 vs. 不写。差别在反馈延迟。日记 = 24 小时反馈。不写 = 6 个月才发现自己走偏。`
+  },
+  8: {
+    title: `Strength of Negative Feedback Loops`,
+    titleZh: `负反馈环的强度`,
+    tier: `info`,
+    why: `负反馈 = 自我纠错。<strong>恒温器、免疫系统、批评、失败的痛感。</strong>它们让系统稳定。它们的强度，要相对于扰动的强度足够大。`,
+    examples: [
+      `恒温器 / 自动驾驶 / 抗生素 / 民主选举`,
+      `你身边愿意指出你盲点的人`,
+      `公司里"一线员工能不能向上说真话"的文化`,
+      `市场——价格机制是负反馈 (供大于求 → 价跌 → 减产)`
+    ],
+    metaphor: `<strong>免疫系统：</strong>它平时看不见。你以为它没用。直到你生病——它的<em>不够强</em>就要你的命。`,
+    gotcha: `我们常常因为"看似没用"而拆掉负反馈机制——比如砍掉合规部门、忽略警告、淘汰带刺的批评者。<em>结果是系统在你看不见时崩坏</em>。`,
+    personal: `你最讨厌的那个朋友（直接告诉你"你最近在自我感动"的那个）——是你最重要的负反馈。<strong>"是非分明的损友"比"温柔的应声虫"价值高一个数量级。</strong>`
+  },
+  7: {
+    title: `Gain Around Driving Positive Feedback Loops`,
+    titleZh: `正反馈环的增益`,
+    tier: `info`,
+    why: `正反馈 = 自我放大。<strong>越多越多，越少越少。</strong>富者愈富。流感传播。复利。技术债。土壤侵蚀。<em>无控制的正反馈最终会摧毁系统</em>。`,
+    examples: [
+      `复利 (好的正反馈)`,
+      `成功带来更多成功 (Success to the Successful)`,
+      `贫困陷阱：穷 → 没机会 → 更穷`,
+      `信息茧房：只看自己同温层的内容 → 越来越极端`
+    ],
+    metaphor: `<strong>滚雪球：</strong>开始时一个雪球。十秒后一个雪人。一分钟后一场雪崩。<em>关键是减弱增益，不是停止滚动</em>。`,
+    gotcha: `<strong>削弱正反馈比强化负反馈更高杠杆。</strong>累进所得税不是"惩罚富人"——是削弱"成功通吃"的正反馈，避免系统失衡。`,
+    personal: `找到你生命中的"成功通吃"环——某种习惯越做越想做、某种关系越深越深。如果是好的，加杠杆。如果是坏的（刷手机、吃糖、抱怨），<em>切断它的根，比咬牙坚持节制更有效</em>。`
+  },
+  6: {
+    title: `Structure of Information Flows`,
+    titleZh: `信息流的结构`,
+    tier: `info`,
+    why: `<strong>谁能看到什么信息？</strong>很多系统失灵不是因为缺东西，是因为缺信息。把缺失的反馈装回去，常常不需要花钱。`,
+    examples: [
+      `电表装在前厅 → 居民耗电下降 30%`,
+      `美国 Toxic Release Inventory：要求工厂公开排污 → 排污 4 年内下降 40%`,
+      `餐厅必须公示卫生评级 → 食品安全提高`,
+      `Sleep tracker、跑步 GPS、记账 App——给自己装信息流`
+    ],
+    metaphor: `<strong>仪表盘：</strong>飞机为什么不掉？因为飞行员有 200 个仪表。你为什么过不好？大概率你只有 3 个。`,
+    gotcha: `<strong>"信息缺失"是系统失灵最常见的原因，且修复它通常最便宜。</strong>大多数权力者不喜欢这个杠杆——因为透明会撕掉他们的优势。`,
+    personal: `你给自己装了什么仪表盘？有人每周和教练复盘 (信息流密度高)。有人五年后才发现自己事业走错路 (信息流稀疏)。<em>这是你最容易、最便宜的高杠杆</em>。`
+  },
+  5: {
+    title: `Rules of the System`,
+    titleZh: `系统的规则`,
+    tier: `info`,
+    why: `规则定义了系统的边界、自由度、可能性。<strong>宪法、合同、法律、组织章程、你的不可破底线。</strong>权力就是改规则的能力。`,
+    examples: [
+      `戈尔巴乔夫改了苏联的经济规则 (perestroika)——苏联解体`,
+      `美国宪法——它是"写规则的规则"`,
+      `公司的"我们怎么开会""我们怎么决策"`,
+      `你和自己的契约："周日不工作""不和这个人吵架""每年读 12 本书"`
+    ],
+    metaphor: `<strong>下棋的规则：</strong>不是棋子的颜色决定结果，是规则。把象棋的规则换成围棋的规则——同一拨人下出完全不同的局。`,
+    gotcha: `为什么游说集团围着国会转？因为他们知道<em>规则的杠杆比参数大太多</em>。改一条法律，比争一年的预算重要十倍。`,
+    personal: `你的"个人规则"是你最强的杠杆之一。规则不是 KPI——规则有牙齿。"我每天健身 30 分钟"是 KPI；"<strong>不健身就不能看手机</strong>"是规则。规则减少决策疲劳。`
+  },
+  4: {
+    title: `Power to Add, Change, Evolve, Self-Organize`,
+    titleZh: `自组织的能力`,
+    tier: `design`,
+    why: `<strong>系统能不能自己长出新东西？</strong>能进化的系统几乎可以应对任何挑战——靠改变自己。生命就是这样存活的。`,
+    examples: [
+      `进化 / 免疫系统 / 大脑学习`,
+      `市场经济 vs. 计划经济（市场能自组织出新行业）`,
+      `开源软件——任何人都可以提议改进`,
+      `你的"持续学习"能力——不是知识量，是更新能力`
+    ],
+    metaphor: `<strong>DNA 库 vs. 完美个体：</strong>生物学家比经济学家更敬畏多样性。一万只多样的物种，能扛过你想象不到的灾难。一个完美的物种，环境一变就完蛋。`,
+    gotcha: `经济学家盲目崇拜"技术"。生物学家敬畏"多样性"。<em>多样性 = 自组织的原料库</em>。一个文化、组织、人，最大的危险就是变得"完美而单一"。`,
+    personal: `你身上的"自组织能力"——你能不能持续学新东西、改变信念、长出新自我。<strong>这才是真正的"复利"。</strong>不是钱的复利——是你这台机器的可塑性的复利。`
+  },
+  3: {
+    title: `Goals of the System`,
+    titleZh: `系统的目标`,
+    tier: `design`,
+    why: `<strong>你到底要什么？</strong>系统的所有其他东西——结构、参数、信息流——都被目标"挟持"，朝那个方向走。<em>目标错了，整个系统在错的方向上越来越精致</em>。`,
+    examples: [
+      `公司的目标真的是"为客户创造价值"还是"做大股价"？看它的实际行为`,
+      `教育系统的目标是"培养人"还是"分类筛选"？决定一切`,
+      `你的目标是"成功"还是"被爱"还是"不死"？看你怎么花时间`,
+      `里根改了美国政府的目标——从"帮助人民"到"<em>给人民腾出空间</em>"。整个国家的政策、文化、税制重组`
+    ],
+    metaphor: `<strong>北极星：</strong>给你最强的船、最好的水手、最准的地图——如果北极星错了，你越跑越偏。`,
+    gotcha: `<strong>大多数人这辈子没诚实问过自己"我到底要什么"。</strong>他们运行的是父母的目标、社会的目标、广告塞给他们的目标。从未自己设定过。`,
+    personal: `做这个练习：问自己 "如果我现在拥有这一切，我会怎么过？"——你的诚实回答，比你做的所有时间管理都更重要。<em>这是个人命运的金线。</em>`
+  },
+  2: {
+    title: `Mindset/Paradigm Out of Which the System Arises`,
+    titleZh: `系统所基于的范式 (世界观)`,
+    tier: `design`,
+    why: `<strong>范式是"不需要被说出口"的假设</strong>。"金钱衡量价值""增长是好的""自然属于人类""时间是线性的""我是一个独立的我"——这些塑造一切。`,
+    examples: [
+      `哥白尼推翻"地球是宇宙中心"—— 整个西方知识体系重组`,
+      `爱因斯坦说能量和物质可换——核武器、核电、宇宙学全部诞生`,
+      `亚当·斯密说"个人自利可加总成共同善"—— 资本主义`,
+      `你内心的"我必须证明自己" vs. "我本来就值得被爱"——<em>整个人生的发动机不一样</em>`
+    ],
+    metaphor: `<strong>水里的鱼：</strong>鱼不知道水是什么，因为它一直在水里。范式是你的水。看见自己的水，是最难的事。`,
+    gotcha: `范式可以在<em>一刹那</em>改变 (顿悟)。也可以一辈子不变 (社会层面，往往要"砍头烧死"才推翻一个范式)。`,
+    personal: `<strong>找到一个你当作"理所当然"的信念，然后认真问"它真的对吗"</strong>——这是这个框架在个人层面最猛的招。例："努力 = 应得"。问到底，你会震惊。`
+  },
+  1: {
+    title: `Power to Transcend Paradigms`,
+    titleZh: `超越范式的能力`,
+    tier: `design`,
+    why: `<strong>看到所有范式都是建构。</strong>包括你刚刚换上的新范式。<em>没有一个范式是"真"的——每一个都是对一个无限宇宙的有限切片</em>。`,
+    examples: [
+      `佛教的"空" / 道家的"无名"`,
+      `苏格拉底的"我只知道我什么都不知道"`,
+      `Kuhn《科学革命的结构》：科学也只是一连串范式更替`,
+      `梅多斯本人——一个 MIT 的科学家，最后说"放下"才是终极杠杆`
+    ],
+    metaphor: `<strong>不抓任何范式：</strong>像一个能流入任何形状容器的水。当形势变了，你不需要"换信念"——你从未抓住过任何信念。`,
+    gotcha: `极少数人到达。但梅多斯说："这不需要昂贵或漫长——可以在一刹那发生。"挑战在于<em>社会会反扑</em>——历史上活在 Lv. 1 的人经常被处死。`,
+    personal: `<strong>这个层级你不能"努力"达到，因为"努力"本身也是一个范式</strong>。它通过冥想、面对死亡、深度对话、艺术、放下控制——以"不期而至"的方式。这是为什么宗教在系统语言里也是高杠杆。`
+  }
+};
+
+// =================================================================
+// EXAMPLE MAPPINGS
+// =================================================================
+const exampleData = {
+  bike: {
+    12: { title: `胎压、链条、座椅高度`, desc: `你换 100 次胎也不会让你"爱上骑车"` },
+    11: { title: `水壶大小、随车工具`, desc: `缓冲——长途骑车的稳定性` },
+    10: { title: `车架几何 / 城市自行车道布局`, desc: `结构——决定可能性。荷兰为什么那么多人骑车？因为路网` },
+    9: { title: `刹车响应 / 红绿灯延迟感知`, desc: `延迟——熟练骑手"提前刹车"靠的是这个` },
+    8: { title: `你的平衡系统 / 转向反馈`, desc: `这就是为什么"忘了怎么骑车"几乎不可能。负反馈写进肌肉` },
+    7: { title: `动力 / 信心的累积`, desc: `越骑越享受 → 越想骑。或者一次摔车 → 怕骑 → 不练 → 更怕` },
+    6: { title: `速度表、心率表、地图 App`, desc: `信息流。看不到速度的骑手永远开不快` },
+    5: { title: `交规、骑手伦理、是否戴头盔`, desc: `规则——决定整个骑车文化` },
+    4: { title: `你能学新动作的能力`, desc: `比如学单手骑、学公路车、学山地——这是元能力` },
+    3: { title: `"我为什么骑车？"——通勤？运动？玩？冥想？`, desc: `完全不同的骑车人生` },
+    2: { title: `"自行车是穷人的" vs. "自行车是哲学"`, desc: `范式决定一切。荷兰人和美国人对车的态度根本不是同一件事` },
+    1: { title: `看到"骑车"本身只是个故事`, desc: `你不是骑车人，也不是"行人"。这些都是标签` }
+  },
+  plane: {
+    12: { title: `燃油载重 / 飞行高度 / 速度`, desc: `参数——任何 commercial pilot 都在精调` },
+    11: { title: `燃油储备 / 备降机场距离`, desc: `缓冲——决定遇到风暴时你能否活下来` },
+    10: { title: `机翼形状 / 控制面布局`, desc: `结构——决定飞机能不能飞` },
+    9: { title: `油门到推力变化 / 控制延迟`, desc: `战斗机延迟 0.5s 是优秀。商用机延迟 3s。延迟决定操控感` },
+    8: { title: `自动驾驶 / 副驾驶交叉检查 / 空管 / 黑匣子`, desc: `<strong>多层负反馈</strong>。这是为什么坐飞机比走楼梯还安全` },
+    7: { title: `高空气流加速效率 / 失控的螺旋`, desc: `正反馈环——好的高效，坏的致命` },
+    6: { title: `FAA 公开事故数据 / 全球共享`, desc: `<strong>每次坠机让整个行业进化</strong>——这是 Lv. 6 的极致应用` },
+    5: { title: `ATC 标准、机长权威、IATA 公约`, desc: `规则——一架飞机能飞，靠的是几十国共同遵守的规则` },
+    4: { title: `事故后程序的更新机制`, desc: `自组织——让系统活的、能进化的` },
+    3: { title: `目标是"安全"还是"准点"？`, desc: `如果目标是后者，安全数据会被扭曲。波音 737 MAX 就是这样栽的` },
+    2: { title: `"人类应该飞""速度等于进步"`, desc: `100 年前没有飞机的世界里，这两条都不"显然"` },
+    1: { title: `看到"飞行"也只是一种我们当下的存在方式`, desc: `未必是对的，未必是好的` }
+  },
+  eraser: {
+    12: { title: `橡皮的硬度、形状、颜色`, desc: `参数。无关紧要` },
+    11: { title: `橡皮的大小（用多久）`, desc: `缓冲。容错的物理量` },
+    10: { title: `橡皮装在笔的另一头 vs. 单独一块`, desc: `结构。前者随时可用——决定行为` },
+    9: { title: `你画错到注意到的延迟`, desc: `越短越好。这就是为什么有些人画铅笔不戴帽` },
+    8: { title: `橡皮本身就是负反馈装置`, desc: `<strong>它的存在等于在说"你被允许犯错"</strong>` },
+    7: { title: `完美主义的滚雪球：擦了又擦，越擦越糟`, desc: `正反馈失控` },
+    6: { title: `你看到自己的画的清晰度`, desc: `信息流。光线、距离、视角` },
+    5: { title: `"可以擦改" vs "钢笔签字不能改"`, desc: `规则——决定铅笔和钢笔承担不同任务` },
+    4: { title: `你能学会"画错也没关系"的能力`, desc: `自组织——这是创作者的元技能` },
+    3: { title: `你画画的目标——完美 vs. 表达 vs. 学习`, desc: `决定你怎么用橡皮` },
+    2: { title: `<strong>"错误是过程的一部分"——铅笔背后的范式</strong>`, desc: `这是文艺复兴后欧洲的发明。东亚水墨画没有橡皮，背后是不同的世界观` },
+    1: { title: `看到"对/错""完美/不完美"也只是建构`, desc: `线条没有对错。是你的心给它判了死刑` }
+  },
+  golf: {
+    12: { title: `杆头型号、握把、球种类`, desc: `新手最爱的层级。换 10 年杆也不进步` },
+    11: { title: `差点制度 (handicap)`, desc: `缓冲。让弱者也能玩，但削弱激烈竞争` },
+    10: { title: `球场布局——洞距、沙坑、果岭`, desc: `结构。同一个杆，不同球场结果天差地别` },
+    9: { title: `挥杆到看到结果`, desc: `几乎实时——这就是为什么高尔夫教练有效` },
+    8: { title: `每一杆错了立刻读懂为什么`, desc: `顶级选手的核心能力。负反馈环极强` },
+    7: { title: `信心的累积 / 心理崩盘的螺旋`, desc: `前 9 洞打好 → 后 9 洞越打越好。或者反之` },
+    6: { title: `课堂前你看到自己挥杆视频`, desc: `信息流。"我以为我做对了"——录像告诉你你没有` },
+    5: { title: `高尔夫的规则和礼仪`, desc: `规则——是这项运动的灵魂。Cheating 一次毁一辈子声誉` },
+    4: { title: `你能不能学新挥杆`, desc: `老一代教的人很多无法学新风格。年轻人能` },
+    3: { title: `<strong>你打高尔夫到底为什么</strong>`, desc: `赢？社交？冥想？认识老板？决定你的整个体验` },
+    2: { title: `"高尔夫是高智力的体力游戏"`, desc: `vs. "是一场和自己的对话"。范式不同，结果完全不同` },
+    1: { title: `看到"赢""输"也只是计分板上的数字`, desc: `球本身没有意义。意义都是你给的` }
+  },
+  morning: {
+    12: { title: `几点起床、喝多少水、做几个俯卧撑`, desc: `<strong>你 95% 的"早晨建议"在这一层</strong>` },
+    11: { title: `前一晚备好衣服、准备好早餐`, desc: `缓冲——降低早上的决策疲劳` },
+    10: { title: `卧室布局——闹钟在哪？手机在哪？`, desc: `结构。手机充电在客厅 vs 床头，是两种命运` },
+    9: { title: `"醒来到清醒"的延迟`, desc: `短 → 你能立刻开始工作。长 → 你浪费 1 小时` },
+    8: { title: `你的"今天我废了吗"的觉察`, desc: `<strong>没有觉察 = 没有反馈 = 一周后才发现自己每天都废</strong>` },
+    7: { title: `好早晨 → 好心情 → 好工作 → 好睡眠 → 好早晨`, desc: `或者反向滚雪球。早晨是整个反馈环的起点` },
+    6: { title: `起床第一件事看什么——新闻？冥想？日记？`, desc: `决定你的输入。塑造你接下来 16 小时` },
+    5: { title: `"醒来后 30 分钟不碰手机"——硬规则`, desc: `规则有牙齿。这条比任何 KPI 都强` },
+    4: { title: `你愿不愿意持续调整你的早晨`, desc: `自组织。今天的最优不是永远的最优` },
+    3: { title: `<strong>"我希望今天结束时是什么样的人"</strong>`, desc: `这比"我今天要做什么"重要十倍。Goal 决定一切` },
+    2: { title: `"时间是稀缺的" vs "时间是充足的"`, desc: `范式不同 → 早晨的味道完全不同` },
+    1: { title: `看到"早晨"本身也是建构`, desc: `凌晨 4 点和上午 10 点没本质差别——是文化和昼夜节律给它们意义` }
+  }
+};
+
+// =================================================================
+// PYRAMID — render detail panels lazily
+// =================================================================
+const pyramidBars = document.querySelectorAll('.level-bar');
+const detailContainer = document.getElementById('levelDetailContainer');
+
+pyramidBars.forEach(bar => {
+  bar.addEventListener('click', () => {
+    const level = bar.dataset.level;
+    const data = levels[level];
+    const isOpen = bar.classList.contains('active');
+
+    // close all
+    document.querySelectorAll('.level-bar').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.level-detail-panel').forEach(p => p.remove());
+
+    if (isOpen) return;
+
+    bar.classList.add('active');
+
+    const panel = document.createElement('div');
+    panel.className = 'level-detail-panel';
+    panel.innerHTML = `
+      <h3 style="margin-bottom: 8px;">Lv. ${level} — ${data.title}</h3>
+      <p style="font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px;">${data.titleZh}</p>
+      <p style="font-size: 17px; line-height: 1.7;">${data.why}</p>
+      <div class="callout" style="margin: 24px 0;">
+        <p>${data.metaphor}</p>
+      </div>
+      <div class="detail-grid">
+        <div class="detail-block">
+          <h5>具体例子 / 现实表现</h5>
+          <ul>
+            ${data.examples.map(e => `<li>${e}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="detail-block">
+          <h5>为什么大多数人在这里栽跟头</h5>
+          <p>${data.gotcha}</p>
+          <h5 style="margin-top: 24px;">个人层面应用</h5>
+          <p>${data.personal}</p>
+        </div>
+      </div>
+    `;
+
+    bar.parentNode.insertBefore(panel, bar.nextSibling);
+    setTimeout(() => panel.classList.add('open'), 10);
+
+    panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+});
+
+// View toggle
+document.querySelectorAll('.view-toggle button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.view-toggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const view = btn.dataset.view;
+    document.querySelectorAll('.level-bar').forEach(bar => {
+      if (view === 'all' || bar.dataset.tier === view) {
+        bar.style.display = 'grid';
+        bar.style.opacity = '1';
+      } else {
+        bar.style.opacity = '0.18';
+      }
+    });
+  });
+});
+
+// =================================================================
+// BATHTUB SIMULATION
+// =================================================================
+let stock = 50;
+let inflowRate = 5;
+let outflowRate = 5;
+let goal = 60;
+let lastStock = 50;
+
+const inflowEl = document.getElementById('inflow');
+const outflowEl = document.getElementById('outflow');
+const goalEl = document.getElementById('goal');
+const inflowVal = document.getElementById('inflowVal');
+const outflowVal = document.getElementById('outflowVal');
+const goalVal = document.getElementById('goalVal');
+const waterRect = document.getElementById('waterRect');
+const waterRipple = document.getElementById('waterRipple');
+const goalLine = document.getElementById('goalLine');
+const stockLevelText = document.getElementById('stockLevelText');
+const currentStockEl = document.getElementById('currentStock');
+const discrepancyEl = document.getElementById('discrepancy');
+const trendEl = document.getElementById('trend');
+
+inflowEl.addEventListener('input', () => {
+  inflowRate = parseFloat(inflowEl.value);
+  inflowVal.textContent = inflowRate.toFixed(1) + '/s';
+});
+outflowEl.addEventListener('input', () => {
+  outflowRate = parseFloat(outflowEl.value);
+  outflowVal.textContent = outflowRate.toFixed(1) + '/s';
+});
+goalEl.addEventListener('input', () => {
+  goal = parseFloat(goalEl.value);
+  goalVal.textContent = goal + '%';
+  // Move goal line: 0% = y=308, 100% = y=100, range = 208
+  const y = 308 - (goal / 100) * 208;
+  goalLine.setAttribute('y1', y);
+  goalLine.setAttribute('y2', y);
+});
+
+function tick() {
+  const dt = 0.05;
+  stock += (inflowRate - outflowRate) * dt;
+  stock = Math.max(0, Math.min(100, stock));
+
+  // Water rect
+  const waterHeight = (stock / 100) * 208;
+  const waterY = 308 - waterHeight;
+  waterRect.setAttribute('y', waterY);
+  waterRect.setAttribute('height', waterHeight);
+  waterRipple.setAttribute('y', waterY);
+
+  // Readouts
+  stockLevelText.textContent = Math.round(stock) + '%';
+  currentStockEl.textContent = Math.round(stock);
+  const diff = goal - stock;
+  discrepancyEl.textContent = (diff > 0 ? '+' : '') + Math.round(diff);
+
+  // Trend
+  const delta = stock - lastStock;
+  if (Math.abs(delta) < 0.05) trendEl.textContent = '→';
+  else if (delta > 0) trendEl.textContent = '↑';
+  else trendEl.textContent = '↓';
+  lastStock = stock;
+
+  requestAnimationFrame(tick);
+}
+tick();
+
+// =================================================================
+// EXAMPLE TABS
+// =================================================================
+function renderMapping(tabKey) {
+  const data = exampleData[tabKey];
+  const target = document.getElementById(tabKey + 'Mapping');
+  if (target.children.length > 0) return; // already rendered
+
+  for (let i = 1; i <= 12; i++) {
+    const item = data[i];
+    if (!item) continue;
+    const card = document.createElement('div');
+    card.className = 'mapping-card';
+    card.innerHTML = `
+      <div class="level-tag">LV. ${i}</div>
+      <h6>${item.title}</h6>
+      <p>${item.desc}</p>
+    `;
+    target.appendChild(card);
+  }
+}
+
+// initial render for visible tab
+renderMapping('bike');
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('.example-content').forEach(c => c.classList.remove('active'));
+    const ex = tab.dataset.ex;
+    document.getElementById('ex-' + ex).classList.add('active');
+    renderMapping(ex);
+  });
+});
+
+// =================================================================
+// DIAGNOSTIC TOOL
+// =================================================================
+const topicResults = {
+  health: "健康",
+  career: "职业",
+  relationship: "关系",
+  finance: "财务",
+  meaning: "人生意义"
+};
+
+const actionToLevel = {
+  param: { lv: 12, label: "参数 (Parameter)" },
+  buffer: { lv: 11, label: "缓冲 (Buffer)" },
+  info: { lv: 6, label: "信息流 (Information Flow)" },
+  rule: { lv: 5, label: "规则 (Rules)" },
+  goal: { lv: 3, label: "目标 (Goals)" },
+  paradigm: { lv: 2, label: "范式 (Paradigm)" }
+};
+
+const diagMessages = {
+  param: (topic) => `你在 <strong>Lv. 12 (参数)</strong> 努力。这是 95% 的人在做的事——下载 App、买产品、调指标。<em>这是低杠杆层</em>。它有用，但鲜少改变 ${topic} 的根本走向。<br><br><strong>建议：</strong>问自己——"我这个月在 ${topic} 上有没有动过 Lv. 5 (规则) 或 Lv. 3 (目标) 的东西？" 如果没有，你不是在改善 ${topic}——你是在感觉良好。`,
+  buffer: (topic) => `你在 <strong>Lv. 11 (缓冲)</strong> 努力。比纯参数好——你在为 ${topic} 储备资源。<br><br><strong>但要小心：</strong>缓冲让坏选择更省力 (好)，但也让坏系统更难崩 (坏)。如果你的 ${topic} 系统底层就有问题，更大的缓冲只是让你拖更久才发现。`,
+  info: (topic) => `你在 <strong>Lv. 6 (信息流)</strong> 努力——非常好的杠杆。换信息源、装新仪表盘，是个人层面最便宜的高杠杆动作之一。<br><br><strong>下一步：</strong>如果你已经接收了新信息却没行动——那么瓶颈不在 Lv. 6，在 Lv. 3 或 Lv. 2 (你不是缺信息，是不愿改变 ${topic} 上的目标或信念)。`,
+  rule: (topic) => `你在 <strong>Lv. 5 (规则)</strong> 努力——这是高杠杆。规则比 KPI 强一个数量级，因为它们减少决策疲劳。<br><br><strong>检查：</strong>这条规则有牙齿吗？破坏它有真实代价吗？还是它本质上是个"目标"伪装成规则？真规则应该让你<em>讨厌它但仍遵守它</em>。`,
+  goal: (topic) => `你在 <strong>Lv. 3 (目标)</strong> 工作——这是很少人愿意做的工作。<br><br>大多数人这辈子从没诚实问过"我到底要什么"。他们运行的是父母、社会、广告塞给他们的目标。<strong>你正在做的事，可能是你 ${topic} 这个系统里前 5% 重要的事。</strong><br><br><strong>警告：</strong>诚实回答这个问题往往伴随哀悼——你会发现你过去为错误的目标花了多年。这个痛苦是真实的，也是必经的。`,
+  paradigm: (topic) => `你在 <strong>Lv. 2 (范式)</strong> 工作——这是个人层面最深的杠杆之一。动摇一个底层信念，整个 ${topic} 的系统会被重组。<br><br><strong>极少数人到这里。</strong>梅多斯说，这个层级的转变可以在一刹那发生 (顿悟)，但社会会反扑——准备好周围的人不理解你。<br><br><strong>问题：</strong>你确定动摇的是范式而不是把一个范式换成了另一个？真正的 Lv. 2 工作是<em>看见水</em>，不是从水换到油。`
+};
+
+let selectedTopic = null;
+
+document.querySelectorAll('#topicOptions .diag-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('#topicOptions .diag-option').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    selectedTopic = opt.dataset.topic;
+    document.getElementById('actionPrompt').style.display = 'block';
+    document.getElementById('diagResult').classList.remove('show');
+    document.querySelectorAll('#actionOptions .diag-option').forEach(o => o.classList.remove('selected'));
+  });
+});
+
+document.querySelectorAll('#actionOptions .diag-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('#actionOptions .diag-option').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    const action = opt.dataset.action;
+    const topic = topicResults[selectedTopic] || '这件事';
+    document.getElementById('diagResultText').innerHTML = diagMessages[action](topic);
+    document.getElementById('diagResult').classList.add('show');
+  });
+});
+
+// =================================================================
+// REVEAL ON SCROLL — only activate if IntersectionObserver works
+// =================================================================
+function initReveal() {
+  if (!('IntersectionObserver' in window)) return; // skip animation, content already visible
+  document.body.classList.add('js-ready');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -5% 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Failsafe: any reveal in viewport on load gets marked visible immediately
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');
+      }
+    });
+  });
+
+  // Ultimate failsafe: after 4s, force visibility on everything
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight + 200) {
+        el.classList.add('visible');
+      }
+    });
+  }, 4000);
+}
+
+initReveal();
+</script>
+
+</body>
+</html>
