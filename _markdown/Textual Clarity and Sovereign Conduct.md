@@ -1,5 +1,5 @@
 ---
-title: "Textual Clarity and Sovereign Conduct: A Two-Step Framework for Umbrella Clause Interpretation After *SGS v. Pakistan* and *SGS v. Philippines*"
+title: "Textual Clarity and Sovereign Conduct: A Two-Step Framework for Umbrella Clause Interpretation After SGS v. Pakistan and SGS v. Philippines"
 permalink: /textual-clarity-and-sovereign-conduct/
 listed: true
 ---
