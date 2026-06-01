@@ -1,7 +1,7 @@
 ---
 title: 第一次的 Solo Trip
 permalink: /first-solo-trip/
-listed: true
+listed: false
 ---
 
 2026 年的春假，我人生的第一次 solo trip，献给了哥伦比亚的麦德林。<br>

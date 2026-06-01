@@ -1,7 +1,7 @@
 ---
 title: Tool Use 如何改写"智能"的定义
 permalink: /tool-use-redefines-intelligence/
-listed: true
+listed: false
 ---
 
 ## 一个被默认了七十五年的结构性前提

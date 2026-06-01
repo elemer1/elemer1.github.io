@@ -1,7 +1,7 @@
 ---
 title: "Paul Graham 的 How to Lose Time and Money 笔记"
 permalink: /note-on-how-to-lose-time-and-money/
-listed: true
+listed: false
 ---
 
 原文：https://paulgraham.com/selfindulgence.html

@@ -1,7 +1,7 @@
 ---
 title: 人生元理论：上游的 bit
 permalink: /meta-theory-of-life-upsteam-bit/
-listed: true
+listed: false
 ---
 
 ## 核心定义：人生是 bit 的获取、校准与兑现

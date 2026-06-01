@@ -1,7 +1,7 @@
 ---
 title: "7 Powers"
 permalink: /7-powers/
-listed: true
+listed: false
 ---
 
 > 作者：**Hamilton Helmer**（前 Bain & Company 战略顾问、Strategy Capital 创始人、斯坦福大学经济系战略学讲师，奈飞 Reed Hastings 的战略顾问）

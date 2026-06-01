@@ -1,7 +1,7 @@
 ---
 title: "大多数人也没准备好用 AI"
 permalink: /most-people-are-not-ready-for-ai/
-listed: true
+listed: false
 ---
 
 > 不是大家不会用 AI，而是大家不知道要让 AI 做什么。

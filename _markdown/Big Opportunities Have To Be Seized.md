@@ -1,7 +1,7 @@
 ---
 title: "Big Opportunities Have To Be Seized"
 permalink: /big-opportunities-have-to-be-seized/
-listed: true
+listed: false
 ---
 
 ### Cleaned Transcript (Warren Buffett's "20-Punch Card" Rule)

@@ -1,7 +1,7 @@
 ---
 title: My Protocol
 permalink: /my-protocol/
-listed: true
+listed: false
 ---
 
 我的循证 daily protocol。

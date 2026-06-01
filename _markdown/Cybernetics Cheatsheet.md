@@ -1,7 +1,7 @@
 ---
 title: "Cybernetics Cheatsheet"
 permalink: /cybernetics-cheatsheet/
-listed: true
+listed: false
 ---
 
 > *"Cybernetics is the science of effective organization."* — Stafford Beer

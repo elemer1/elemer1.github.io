@@ -1,7 +1,7 @@
 ---
 title: Patrick Collison 的一些好想法
 permalink: /patrick-collison-thoughts/
-listed: true
+listed: false
 ---
 - Don't make the mistake of judging your success based on your current peer group. They're not the benchmark for your life trajectory.
 - Nobody is going to teach you to think for yourself. 

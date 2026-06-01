@@ -1,7 +1,7 @@
 ---
 title: "量化鼻祖 Thorp 的健康智慧"
 permalink: /quantitative-pioneer-thorp-health-wisdom/
-listed: true
+listed: false
 ---
 
 原文：https://www.bloomberg.com/news/features/2024-04-10/anti-aging-tips-from-blackjack-and-finance-guru-ed-thorp

@@ -1,7 +1,7 @@
 ---
 title: "Tokenmaxxing"
 permalink: /tokenmaxxing/
-listed: true
+listed: false
 ---
 
 > 个体和组织，如今都应该 tokenmaxxing。

@@ -1,7 +1,7 @@
 ---
 title: "芒格 on 个人现金流"
 permalink: /munger-on-personal-cf/
-listed: true
+listed: false
 ---
 
 > 小红书评论区：查理芒格有几篇关于现金流的文章和几次演讲，真的让我醍醐灌顶。如果十多年前我看到这文章，或许不至于走到今天的困境。现在只能从头开始。唉。

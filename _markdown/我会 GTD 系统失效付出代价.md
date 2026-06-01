@@ -1,7 +1,7 @@
 ---
 title: 我会 GTD 系统失效付出代价
 permalink: /the-price-for-gtd-system-failure/
-listed: true
+listed: false
 ---
 
 我们建立 Getting Things Done (GTD) 系统的初衷，是为了将大脑从繁杂的记忆和调度任务中解放出来，达到“心如止水”（Mind Like Water）的认知境界。然而，当系统由于维护不善或过度复杂而走向失效时，它不仅无法提供秩序，反而会成为巨大的认知负荷来源。一个崩溃的 GTD 系统会让人陷入持续的焦虑与“提前后悔”的泥沼中。

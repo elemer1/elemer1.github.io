@@ -1,7 +1,7 @@
 ---
 title: Twitter / X Cards 嵌入测试
 permalink: /twitter-embed-test/
-listed: true
+listed: false
 twitter: true
 ---
 

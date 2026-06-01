@@ -1,7 +1,7 @@
 ---
 title: YouTube 视频嵌入测试
 permalink: /youtube-embed-test/
-listed: true
+listed: false
 ---
 
 这个页面用于测试在 GitHub Pages 的 Markdown 页面里嵌入 YouTube 视频，并让视频可以直接在网页中播放，而不是显示成普通链接。

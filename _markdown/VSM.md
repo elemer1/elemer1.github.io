@@ -1,7 +1,7 @@
 ---
 title: Stafoord Beer's VSM
 permalink: /stafoord-beer-vsm/
-listed: true
+listed: false
 ---
 
 

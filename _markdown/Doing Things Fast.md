@@ -1,7 +1,7 @@
 ---
 title: Doing Things Fast
 permalink: /doing-things-fast/
-listed: true
+listed: false
 ---
 It's important to do things fast.
 

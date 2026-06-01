@@ -1,7 +1,7 @@
 ---
 title: PDF 嵌入预览测试
 permalink: /pdf-embed-test/
-listed: true
+listed: false
 math: false
 ---
 
