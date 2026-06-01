@@ -2,32 +2,31 @@
 layout: default
 ---
 
-<p>Hi I'm Elemer. I went to UPenn and HKUST. I'm interested in and work on economics, finance, biology, physics, probability & statistics, electrical engineering, causal inference, design, and law.</p>
+<p>
+    Hi I'm Elemer. I went to HKUST and UPenn. I'm interested in and work on
+    economics, finance, biology, physics, probability & statistics, electrical
+    engineering, design, and law.
+</p>
 
 <h2>Work</h2>
 <ul class="post-list">
-  {% assign items = site.markdown | concat: site.html | sort: "title" %}
-  {% for item in items %}
-    {% if item.listed %}
-      <li><a href="{{ item.url }}">{{ item.title }}</a></li>
-    {% endif %}
-  {% endfor %}
-  {% comment %} Static downloads (PDF / Office files) hidden from the homepage listing.
-     The files still exist and remain reachable by direct URL; remove this comment
-     wrapper to list them again.
-  {% assign pdfs = site.static_files | where: "extname", ".pdf" | sort: "name" %}
-  {% for pdf in pdfs %}
+    {% assign items = site.markdown | concat: site.html | sort: "title" %} {%
+    for item in items %} {% if item.listed %}
+    <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+    {% endif %} {% endfor %} {% comment %} Static downloads (PDF / Office files)
+    hidden from the homepage listing. The files still exist and remain reachable
+    by direct URL; remove this comment wrapper to list them again. {% assign
+    pdfs = site.static_files | where: "extname", ".pdf" | sort: "name" %} {% for
+    pdf in pdfs %}
     <li><a href="{{ pdf.path }}">{{ pdf.name }}</a></li>
-  {% endfor %}
-  {% assign docx = site.static_files | where: "extname", ".docx" %}
-  {% assign doc = site.static_files | where: "extname", ".doc" %}
-  {% assign pptx = site.static_files | where: "extname", ".pptx" %}
-  {% assign ppt = site.static_files | where: "extname", ".ppt" %}
-  {% assign xlsx = site.static_files | where: "extname", ".xlsx" %}
-  {% assign xls = site.static_files | where: "extname", ".xls" %}
-  {% assign office_files = docx | concat: doc | concat: pptx | concat: ppt | concat: xlsx | concat: xls | sort: "name" %}
-  {% for f in office_files %}
+    {% endfor %} {% assign docx = site.static_files | where: "extname", ".docx"
+    %} {% assign doc = site.static_files | where: "extname", ".doc" %} {% assign
+    pptx = site.static_files | where: "extname", ".pptx" %} {% assign ppt =
+    site.static_files | where: "extname", ".ppt" %} {% assign xlsx =
+    site.static_files | where: "extname", ".xlsx" %} {% assign xls =
+    site.static_files | where: "extname", ".xls" %} {% assign office_files =
+    docx | concat: doc | concat: pptx | concat: ppt | concat: xlsx | concat: xls
+    | sort: "name" %} {% for f in office_files %}
     <li><a href="{{ f.path }}" download>{{ f.name }}</a></li>
-  {% endfor %}
-  {% endcomment %}
+    {% endfor %} {% endcomment %}
 </ul>
