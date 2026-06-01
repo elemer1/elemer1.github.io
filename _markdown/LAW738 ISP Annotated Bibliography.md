@@ -1,5 +1,5 @@
 ---
-title: "The Mechanics and Vulnerabilities of Bankruptcy Remoteness in Whole Business Securitization"
+title: "The Mechanics and Vulnerabilities of Bankruptcy Remoteness in WBS"
 permalink: /mechanics-and-vulnerabilities-of-bankruptcy-remoteness-in-WBS/
 listed: true
 ---

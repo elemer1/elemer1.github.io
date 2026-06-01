@@ -4,6 +4,8 @@ permalink: /pleading-the-algorithmic-cartel-after-gibson/
 listed: true
 ---
 
+# Pleading the Algorithmic Cartel After Gibson: A Cartel-Manager Plausibility Framework
+
 ## Abstract
 
 Algorithmic-pricing cases expose a mismatch between Sherman Act § 1 pleading doctrine and a form of coordination that is computational rather than conversational. After *Gibson v. Cendyn Group*, a complaint alleging that horizontal rivals adopted the same pricing intermediary can fail unless plaintiffs plead facts about data flows, objective functions, override rates, and monitoring architecture that are knowable only after discovery. This Note calls that mismatch the pleading-stage deadlock. It argues that the answer is not a new substantive rule of liability, a *per se* rule for pricing software, or artificial legal personhood for algorithms. The answer is a procedural calibration of plausibility doctrine: a Cartel-Manager Plausibility Framework, grounded in Hovenkamp and Leslie's cartel-manager account, under which a complaint should survive Rule 12(b)(6) when it plausibly alleges (1) competitively significant common adoption of a pricing intermediary by horizontal rivals, (2) nonpublic, forward-looking, competitively sensitive data inflow from those rivals into the intermediary's runtime operation, and (3) at least one alignment-predisposing design or use feature. Defendants may rebut at the pleading stage with specific factual showings, while *per se*, quick-look, and rule-of-reason analysis remain for the merits. The framework preserves *Twombly*'s screening function without converting technological opacity into § 1 immunity.
