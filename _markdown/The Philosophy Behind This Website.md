@@ -71,7 +71,7 @@ This extreme minimalism brings a brutal side effect: if the writing is poor, the
 
 Marshall McLuhan's famous aphorism, *The medium is the message*, reveals another facet of its meaning here. When the thickness of the medium is compressed down to near zero, the message must carry its entire gravitational weight alone. When you strip away elegant typography, sophisticated gradient color schemes, and silky smooth transitions, the page is reduced strictly to the text itself. The writer is left with no visual magic tricks to conceal mediocre ideas. For the reader, this offers a highly efficient information-gathering experience; for the writer, it serves as a rigorous discipline of cognitive rigor and honesty. Design steps completely out of the way; now, it is entirely about what you have actually written.
 
-## Conclusion
+## Closing
 
 In his 1880 lecture *The Beauty of Life*, William Morris left behind a highly critical maxim:
 
