@@ -5,7 +5,7 @@ listed: true
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -27,7 +27,7 @@ listed: true
                     sans-serif;
                 line-height: 1.78;
                 color: #1c1c1c;
-                background: #f6f4ee;
+                background: #f5f6f8;
                 font-size: 17px;
                 padding-top: 60px;
             }
@@ -35,11 +35,11 @@ listed: true
                 max-width: 780px;
                 margin: 0 auto;
                 padding: 56px 28px 100px;
-                background: #fdfcf8;
+                background: #ffffff;
                 box-shadow: 0 0 40px rgba(0, 0, 0, 0.04);
             }
             header.title {
-                border-bottom: 1px solid #e6e1d6;
+                border-bottom: 1px solid #ececef;
                 padding-bottom: 24px;
                 margin-bottom: 36px;
             }
@@ -267,7 +267,7 @@ listed: true
             canvas {
                 display: block;
                 margin: 0 auto;
-                background: #fcfcf9;
+                background: #fafafa;
                 border-radius: 6px;
                 border: 1px solid #d6e6e0;
             }
@@ -309,7 +309,7 @@ listed: true
             .refs {
                 margin-top: 64px;
                 padding-top: 32px;
-                border-top: 2px solid #e6e1d6;
+                border-top: 2px solid #ececef;
             }
             .refs h2 {
                 margin-top: 0;
@@ -324,7 +324,7 @@ listed: true
                 color: #3a3a3a;
             }
             .refs li:target {
-                background: #fff8d8;
+                background: #eef3fb;
                 padding: 8px;
                 border-radius: 4px;
             }
@@ -340,7 +340,7 @@ listed: true
             }
             .data-card {
                 padding: 14px 16px;
-                background: #f7f3ea;
+                background: #f4f5f7;
                 border-radius: 8px;
                 font-size: 14px;
             }
@@ -348,7 +348,7 @@ listed: true
                 font-size: 11.5px;
                 text-transform: uppercase;
                 letter-spacing: 0.07em;
-                color: #7a6840;
+                color: #6b7280;
                 font-weight: 600;
                 margin-bottom: 4px;
             }
@@ -400,7 +400,7 @@ listed: true
                 width: 100%;
                 max-width: 100% !important;
                 height: auto !important;
-                border: 1px solid #d6d2c5;
+                border: 1px solid #e3e4e6;
                 border-radius: 4px;
                 box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
                 background: #fff;
@@ -464,14 +464,14 @@ listed: true
             .analogy {
                 margin: 22px 0;
                 padding: 16px 22px;
-                background: #fbf6e8;
-                border-left: 4px solid #b08c4d;
+                background: #eef5f3;
+                border-left: 4px solid #2c7a6c;
                 border-radius: 0 6px 6px 0;
             }
             .analogy-tag {
                 font-size: 12px;
                 font-weight: 700;
-                color: #7a5a20;
+                color: #1d5a4f;
                 text-transform: uppercase;
                 letter-spacing: 0.06em;
                 display: block;
@@ -512,9 +512,9 @@ listed: true
 
             /* Sticky nav */
             :root {
-                --nav-bg: rgba(253, 252, 248, 0.92);
-                --nav-bg-blur: rgba(253, 252, 248, 0.75);
-                --nav-border: #e6e1d6;
+                --nav-bg: rgba(255, 255, 255, 0.92);
+                --nav-bg-blur: rgba(255, 255, 255, 0.75);
+                --nav-border: #ececef;
                 --accent: #2c7a6c;
             }
             .site-nav {
@@ -719,10 +719,10 @@ listed: true
                     role="group"
                     aria-label="Language toggle"
                 >
-                    <button class="active" id="langZh" aria-pressed="true">
-                        中
+                    <button class="active" id="langEn" aria-pressed="true">
+                        EN
                     </button>
-                    <button id="langEn" aria-pressed="false">EN</button>
+                    <button id="langZh" aria-pressed="false">中</button>
                 </div>
                 <button
                     class="toc-toggle toc-icon-only"
@@ -2386,7 +2386,7 @@ listed: true
                         cy="270"
                         r="4.5"
                         fill="#c0392b"
-                        stroke="#fdfcf8"
+                        stroke="#ffffff"
                         stroke-width="2"
                     />
                     <text
@@ -4221,7 +4221,7 @@ listed: true
                     .addEventListener("click", function () {
                         setLang("en");
                     });
-                let initial = "zh";
+                let initial = "en";
                 try {
                     const s = localStorage.getItem("blc_lang");
                     if (s === "en" || s === "zh") initial = s;
