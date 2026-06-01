@@ -1655,6 +1655,7 @@ listed: true
                         转向轴
                     </text>
                     <text
+                        data-i18n="svg10b"
                         fill="#7a6840"
                         font-size="13"
                         font-style="italic"
@@ -1749,7 +1750,8 @@ listed: true
                         data-i18n="svg14"
                         fill="#666"
                         font-size="12"
-                        x="610"
+                        text-anchor="end"
+                        x="676"
                         y="184"
                     >
                         前轮接地点
@@ -1758,7 +1760,8 @@ listed: true
                         data-i18n="svg15"
                         fill="#888"
                         font-size="11"
-                        x="610"
+                        text-anchor="end"
+                        x="676"
                         y="198"
                     >
                         在转向轴后方
@@ -2166,9 +2169,9 @@ listed: true
                         fill="#7a6840"
                         font-size="12"
                         font-style="italic"
-                        text-anchor="end"
-                        x="408"
-                        y="180"
+                        text-anchor="middle"
+                        x="430"
+                        y="170"
                     >
                         转向轴 / 转向铰链
                     </text>
@@ -2176,10 +2179,10 @@ listed: true
                         fill="none"
                         stroke="#7a6840"
                         stroke-width="0.6"
-                        x1="408"
-                        x2="425"
-                        y1="183"
-                        y2="220"
+                        x1="430"
+                        x2="430"
+                        y1="176"
+                        y2="221"
                     ></line>
                     <circle
                         cx="265"
@@ -2252,7 +2255,7 @@ listed: true
                         font-size="12"
                         font-weight="600"
                         text-anchor="start"
-                        x="612"
+                        x="576"
                         y="335"
                     >
                         前组件质点 H
@@ -2262,7 +2265,7 @@ listed: true
                         fill="#534ab7"
                         font-size="10"
                         text-anchor="start"
-                        x="612"
+                        x="576"
                         y="351"
                     >
                         （较低、且前置）
@@ -2270,7 +2273,7 @@ listed: true
                     <line
                         stroke="#534ab7"
                         stroke-width="0.6"
-                        x1="608"
+                        x1="574"
                         x2="535"
                         y1="346"
                         y2="350"
@@ -2342,7 +2345,7 @@ listed: true
                         fill="#666"
                         font-size="10"
                         text-anchor="start"
-                        x="620"
+                        x="568"
                         y="440"
                     >
                         转向轴落地
@@ -2374,8 +2377,7 @@ listed: true
                         x="557"
                         y="481"
                     >
-                        接地点在转向轴
-                        <em>前方</em>
+                        接地点在转向轴前方
                     </text>
                 </svg>
                 <figcaption data-i18n="m59">
@@ -3332,7 +3334,7 @@ listed: true
                         x="200"
                         y="155"
                     >
-                        ＋
+                        +
                     </text>
                     <text
                         fill="#993556"
@@ -4267,9 +4269,7 @@ listed: true
                             x="185"
                             y="270"
                         >
-                            车体左右
-                            <strong>振荡</strong>
-                            ，频率约 0.7 Hz
+                            车体左右振荡，频率约 0.7 Hz
                         </text>
                         <text
                             data-i18n="svg68"
@@ -4431,9 +4431,7 @@ listed: true
                             x="535"
                             y="270"
                         >
-                            车体
-                            <strong>缓慢单向倾倒</strong>
-                            （无振荡）
+                            车体缓慢单向倾倒（无振荡）
                         </text>
                         <text
                             data-i18n="svg74"
@@ -4817,7 +4815,7 @@ listed: true
                         font-size="13"
                         font-style="italic"
                         x="650"
-                        y="225"
+                        y="200"
                     >
                         Re(s)
                     </text>
@@ -8739,6 +8737,10 @@ listed: true
 
                 drawScene();
                 requestAnimationFrame(animate);
+                // Re-render the sim (canvas labels + status readout) when the language
+                // changes, and once __I18N__ becomes available (see langchange re-dispatch
+                // after the translations are wired up).
+                document.addEventListener("langchange", drawScene);
             })();
         </script>
         <script>
@@ -8747,7 +8749,7 @@ listed: true
                     title: "How a Bicycle Works: a negative-feedback system misunderstood for over a century",
                     "ui.brand": "How a Bicycle Works",
                     "ui.toc": "Contents",
-                    "ui.tocLabel": "Table of Contents · 目录",
+                    "ui.tocLabel": "Table of Contents",
                     "toc.s1": "The most familiar physics mystery",
                     "toc.s2": "First principles: what is balance?",
                     "toc.s3": "Two wrong (or incomplete) traditional answers",
@@ -9013,7 +9015,7 @@ listed: true
                     bq7: '"We have found that almost any self-stable bicycle can be made unstable by individually mistuning the trail, or individually mistuning the front-wheel gyroscope, or individually mistuning the front assembly\'s center-of-mass position."',
                     svg1: "Statically stable",
                     svg2: "(like an ordinary pendulum)",
-                    svg3: "Disturbance → returns to equilibrium automatically",
+                    svg3: "Disturbance → returns to equilibrium",
                     svg4: "Statically unstable",
                     svg5: "(like an inverted broom)",
                     svg6: "Disturbance → keeps growing, falls",
@@ -9021,6 +9023,7 @@ listed: true
                     svg8: "(like a moving bicycle)",
                     svg9: "Disturbance → system actively corrects",
                     svg10: "Steering axis",
+                    svg10b: "",
                     svg11: "Head-tube angle",
                     svg12: "Wheelbase b",
                     svg13: "Trail c",
@@ -9028,7 +9031,7 @@ listed: true
                     svg15: "Behind the steering axis",
                     svg16: "Three counterintuitive features of the TMS bicycle",
                     svg17: "① No gyroscopic effect",
-                    svg18: "Counter-rotating extra wheel cancels angular momentum",
+                    svg18: "Counter-rotating extra wheel",
                     svg19: "Net angular momentum = 0",
                     svg20: "Refutes Klein-Sommerfeld 1910",
                     svg21: "② Negative trail c = −4 mm",
@@ -9428,6 +9431,15 @@ listed: true
                         return s[lang] || s.zh;
                     },
                 };
+
+                // The interactive chart and bike sim run in an earlier <script> block, so
+                // they initialized their canvas labels and status readouts with Chinese
+                // fallback strings — before __I18N__ existed and before lang-en was set.
+                // Now that __I18N__ is defined and the language is applied, re-fire
+                // langchange so both panels re-render in the active language.
+                document.dispatchEvent(
+                    new CustomEvent("langchange", { detail: { lang: initial } }),
+                );
             })();
         </script>
         <script>
