@@ -6,15 +6,6 @@ listed: true
 
 ## An Annotated Bibliography and Statutory Application Log
 
----
-
-**Submitted in fulfillment of:** Independent Study Project (ISP) credit
-**Companion Course:** *Structured Finance and Securitization*, LAW 738-001-2026A (Prof. Jordan E. Yarett)
-**Institution:** University of Pennsylvania Carey Law School
-**Term:** Spring 2026
-
----
-
 ## Abstract
 
 This Log inventories, annotates, and operationalizes the primary statutory provisions, judicial decisions, and policy debates that govern the construction — and the failure — of bankruptcy-remote special-purpose entities ("SPEs") in U.S. structured finance. Its purpose is twofold. First, it serves as a verifiable independent-study product reflecting sustained engagement with the assigned course materials beyond classroom attendance. Second, it functions as a topic-indexed, exam-deployable companion to the four-hour, in-person, open-book final examination administered by Professor Yarett in this course. The Log departs from a conventional narrative paper in three respects: (i) every authority is annotated under a uniform heading template (Holding / Application Matrix / Policy); (ii) annotations are organized to mirror the doctrinal sequence in which an SPE-related fact pattern unfolds at trial — *first* property of the estate, *then* automatic stay, *then* substantive consolidation, *then* perfection; and (iii) a fourth, integrative section applies the three doctrinal clusters to the whole-business securitization ("WBS") asset classes Professor Yarett has flagged as central to the 2026 sitting (franchise royalties, fiber, drug royalties, intellectual property).
@@ -40,7 +31,7 @@ This Log assumes familiarity with the basic Honda-style two-tier deal structure 
 
 ---
 
-## Reader's Guide / How To Use This Log On The Exam
+## Reader's Guide
 
 The Log is designed to be searched, not read, on exam day. Three navigational devices support this.
 
@@ -736,7 +727,7 @@ A user of this Log should approach an unknown fact pattern by (i) identifying wh
 
 ---
 
-# Appendix C — Model Lines (Exam-Day Deployable)
+# Appendix C — Model Lines
 
 The following four model lines integrate the principal doctrines of §§ I–IV into ready-to-deploy paragraph templates for the most frequently-tested fact patterns. Each is calibrated to the IRAC structure Professor Yarett has indicated he expects.
 
@@ -757,15 +748,5 @@ The following four model lines integrate the principal doctrines of §§ I–IV 
 > *"Two layers of perfection are required. Layer 1: the SPE perfects its ownership of the [franchise royalties / fiber customer contracts / drug royalties], which are accounts under UCC § 9-102(a)(2) [or general intangibles under § 9-102(a)(42), as appropriate], by filing a UCC-1 financing statement against [Originator] in [Originator]'s state of formation under § 9-307(e), with collateral description satisfying § 9-108. Layer 2: the indenture trustee perfects its security interest by filing a UCC-1 against the SPE in Delaware [or the SPE's state of formation], plus executing a § 9-104 control agreement on the lockbox/collection account. Where the underlying contract restricts assignment, UCC § 9-406(d) [or § 9-408] renders the restriction ineffective for perfection purposes — the structural feature that makes WBS feasible in the U.S. but not in most civil-law jurisdictions. Where the collateral is chattel paper, the SPE will take possession through a custodian (or § 9-105 electronic control) for priority over earlier filers under § 9-330(a)–(b)."*
 
 ---
-
-# Notes on Authorship and Methodology
-
-This Log is the product of independent study undertaken in connection with LAW 738-001-2026A. Its preparation has consisted of (i) careful re-reading of the assigned Schwarcz, Markell, and Broome casebook chapters with attention to bankruptcy-remoteness mechanics; (ii) analysis of the assigned and supplementary cases distributed via the course Canvas portal; (iii) review of the offering memoranda for the Wendy's 2015-1, Driven Brands 2015, and Quiznos 2005-1 transactions, and of the materials presented in the April 14, 2026 fiber-securitization lecture; (iv) review of past examination questions for LAW 738 distributed by the law library; and (v) cross-reference to the post-2008 academic literature including Schwarcz, Levitin, Bratton, and Gorton.
-
-The annotation template has been adapted to the specific demands of an open-book in-person examination format: each entry is structured for searchability under time pressure rather than for sequential narrative reading. The Application Matrix and Model Lines components are designed to convert doctrinal knowledge into deployable answer-text.
-
-The author is solely responsible for any errors of statement, citation, or analysis. Where particular characterizations of doctrine reflect Professor Yarett's classroom emphasis (as recorded in the cleaned April 14 and April 21, 2026 lecture notes), this is noted in the relevant annotation. Where the Log departs from or expands upon classroom treatment — for example, in the treatment of the IP-collateral filing question (§ III.G) and in the integrative WBS application section (§ IV) — the author has drawn on the casebook, the offering memoranda, and standard secondary authorities.
-
-The Log is intended to supplement, not to replace, the student's primary preparation through reading and class engagement. It is best deployed as an indexed reference companion alongside the casebook on the day of the examination.
 
 — *End of Log* —
