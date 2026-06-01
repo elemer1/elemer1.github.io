@@ -12,6 +12,9 @@ layout: default
       <li><a href="{{ item.url }}">{{ item.title }}</a></li>
     {% endif %}
   {% endfor %}
+  {% comment %} Static downloads (PDF / Office files) hidden from the homepage listing.
+     The files still exist and remain reachable by direct URL; remove this comment
+     wrapper to list them again.
   {% assign pdfs = site.static_files | where: "extname", ".pdf" | sort: "name" %}
   {% for pdf in pdfs %}
     <li><a href="{{ pdf.path }}">{{ pdf.name }}</a></li>
@@ -26,4 +29,5 @@ layout: default
   {% for f in office_files %}
     <li><a href="{{ f.path }}" download>{{ f.name }}</a></li>
   {% endfor %}
+  {% endcomment %}
 </ul>
