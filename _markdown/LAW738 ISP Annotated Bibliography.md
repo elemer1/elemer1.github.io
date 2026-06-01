@@ -1,10 +1,8 @@
 ---
 title: "The Mechanics and Vulnerabilities of Bankruptcy Remoteness in Whole Business Securitization"
-permalink: /structured-finance-and-securitization/
+permalink: /mechanics-and-vulnerabilities-of-bankruptcy-remoteness-in-WBS/
 listed: true
 ---
-
-## An Annotated Bibliography and Statutory Application Log
 
 ## Abstract
 

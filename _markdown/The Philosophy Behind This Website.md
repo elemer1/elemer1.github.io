@@ -2,7 +2,6 @@
 title: The Philosophy Behind This Website
 permalink: /thoughts-behind-my-website/
 listed: true
-lang: en
 ---
 
 This webpage features no starry backgrounds from the Geocities era, nor does it indulge in the magical dynamic illusions of marquee tags. Its ambition is to regress directly to the primordial physical state of the World Wide Web at its inception—becoming a pure document embedded with hyperlinks. This deliberate rollback spans critical milestones in the evolution of the Web. Tim Berners-Lee submitted his proposal for the World Wide Web to CERN in 1989, and shortly after, in December 1990, he placed the world's first website onto the info.cern.ch server. By April 1993, with the release of NCSA Mosaic 1.0, humanity embedded images into body text for the very first time. Only after that, in 1994, was Cascading Style Sheets (CSS) proposed, while JavaScript—hastily whipped up by Brendan Eich in just ten days—had to wait until 1995. During this brief interregnum, webpages consisted of nothing but text, links, and minimal formatting. They were incredibly lightweight, and they were blazing fast.
