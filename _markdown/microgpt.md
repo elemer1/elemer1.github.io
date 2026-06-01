@@ -1,5 +1,5 @@
 ---
-title: "Reproducing Karpathy's microGPT: Embodied Observations on Algorithmic Invariants and Engineering Efficiency"
+title: "microGPT"
 permalink: /microgpt/
 listed: true
 ---
