@@ -6,7 +6,7 @@ listed: true
 
 ## Abstract
 
-This Log inventories, annotates, and operationalizes the primary statutory provisions, judicial decisions, and policy debates that govern the construction — and the failure — of bankruptcy-remote special-purpose entities ("SPEs") in U.S. structured finance. Its purpose is twofold. First, it serves as a verifiable independent-study product reflecting sustained engagement with the assigned course materials beyond classroom attendance. Second, it functions as a topic-indexed, exam-deployable companion to the four-hour, in-person, open-book final examination administered by Professor Yarett in this course. The Log departs from a conventional narrative paper in three respects: (i) every authority is annotated under a uniform heading template (Holding / Application Matrix / Policy); (ii) annotations are organized to mirror the doctrinal sequence in which an SPE-related fact pattern unfolds at trial — *first* property of the estate, *then* automatic stay, *then* substantive consolidation, *then* perfection; and (iii) a fourth, integrative section applies the three doctrinal clusters to the whole-business securitization ("WBS") asset classes Professor Yarett has flagged as central to the 2026 sitting (franchise royalties, fiber, drug royalties, intellectual property).
+This Log inventories, annotates, and operationalizes the primary statutory provisions, judicial decisions, and policy debates that govern the construction — and the failure — of bankruptcy-remote special-purpose entities ("SPEs") in U.S. structured finance. Its purpose is twofold. First, it serves as a verifiable independent-study product reflecting sustained engagement with the assigned course materials beyond attendance. Second, it functions as a topic-indexed, exam-deployable companion to the four-hour, in-person, open-book final examination administered by Professor Yarett in this course. The Log departs from a conventional narrative paper in three respects: (i) every authority is annotated under a uniform heading template (Holding / Application Matrix / Policy); (ii) annotations are organized to mirror the doctrinal sequence in which an SPE-related fact pattern unfolds at trial — *first* property of the estate, *then* automatic stay, *then* substantive consolidation, *then* perfection; and (iii) a fourth, integrative section applies the three doctrinal clusters to the whole-business securitization ("WBS") asset classes Professor Yarett has flagged as central to the 2026 sitting (franchise royalties, fiber, drug royalties, intellectual property).
 
 The Log treats four doctrinal clusters: **(I)** the *true sale* doctrine and its statutory anchors in Bankruptcy Code § 541 and UCC § 9-109(a)(3); **(II)** the equitable doctrine of *substantive consolidation* and the structural-contractual mechanisms designed to defeat it, including the post-*General Growth* "fix" and non-petition covenants; **(III)** *UCC Article 9 perfection* in WBS, with attention to the anti-assignment override (§§ 9-406(d), 9-408) that distinguishes U.S. WBS from civil-law analogues; and **(IV)** the integrative application of all three doctrines to representative WBS deals (Wendy's, Driven Brands, Quiznos, fiber, pharmaceutical royalties).
 
@@ -26,20 +26,6 @@ Each annotation entry follows a consistent template:
 Statutory entries follow the same template, substituting "Black-Letter Provision" for "Holding."
 
 This Log assumes familiarity with the basic Honda-style two-tier deal structure (originator → SPE-1 → SPE-2/Trust → noteholders), the four standard credit-enhancement mechanisms (subordination, excess spread, reserve account, overcollateralization), and the seven closing opinions ordinarily delivered in a U.S. ABS transaction. Where this Log refers to "WBS," it means a securitization in which a substantial portion of an operating company's revenue-generating asset base — typically including intellectual property, franchise rights, and operating contracts — is contributed to a bankruptcy-remote SPE as part of a financing in which the operating company continues to manage the assets in a servicer-like capacity.
-
----
-
-## Reader's Guide
-
-The Log is designed to be searched, not read, on exam day. Three navigational devices support this.
-
-First, the **Table of Authorities** below lists every primary source by short-form citation, with a single-sentence "trigger" describing the fact pattern that should prompt the user to consult that authority.
-
-Second, each annotation contains an **Application Matrix** — a tabular mapping of factual triggers to doctrinal consequences, designed to convert "I know this rule" into "I can apply this rule" without intermediate cognitive steps.
-
-Third, **Appendix A** maps every annotation entry to the past examination questions distributed by the law library (LAW 738-10A through 24A) and to the questions on the 2026 mock examination, so that the user can locate, for any historical exam fact pattern, the doctrinal apparatus this Log supplies as a response.
-
-The Log's organization tracks *the chronological logic of an SPE-related dispute*, not the conceptual order of the casebook. The first question a court asks when a securitization originator petitions for bankruptcy is whether the receivables remain with the SPE or have re-entered the originator's estate (Section I, true sale). Only if true sale fails — or if the SPE is itself drawn into the proceedings — does the consolidation question arise (Section II). Article 9 perfection (Section III) governs the residual contest among creditors *after* the property-of-the-estate question is resolved. Section IV places the three doctrines on representative WBS facts.
 
 ---
 
