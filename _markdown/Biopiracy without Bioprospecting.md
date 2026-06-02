@@ -34,7 +34,7 @@ A note on positioning. The trigger problem this Article diagnoses has, more than
 
 ### A. The Bonn-to-Nagoya Genealogy: The Origins of the Physical-Access Trigger
 
-![](./media/image1.png)
+![Figure 1: Regulatory Architecture vs. Technology Timeline](/assets/images/biopiracy/image1.png)
 
 *FIGURE 1. Regulatory Architecture vs. Technology Timeline (1992--2026). The regulatory track (top) lags the technological substrate (bottom) it is built to govern. By the period zoomed at right (2023--2026), the gap has fully opened: the GRATK Treaty (May 2024) and the Cali Fund (decision in Nov. 2024; formally launched at resumed COP16 in Feb. 2025) entered the world contemporaneously with AlphaFold-3 (May 2024), the Recursion--Exscientia merger (November 2024), and the Nature Medicine publication of Insilico Medicine's Rentosertib Phase IIa results (June 2025).*
 
@@ -151,7 +151,7 @@ The architectural inference. Read together, these documentary clusters establish
 
 ### H. The Single-System Reading
 
-![](./media/image2.png)
+![Figure 2: The Three-Trigger Attribution Gap](/assets/images/biopiracy/image2.png)
 
 FIGURE 2. The Three-Trigger Attribution Gap. The four-stage AI-mediated synthesis pipeline (top) can create value through open repositories, structural-prediction systems, and generative-chemistry platforms before the existing access-and-benefit-sharing architecture (bottom) generates attribution. The Nagoya trigger is weakened where no new physical access occurs; the GRATK trigger becomes contestable where chemical novelty and claim drafting obscure provenance; the Cali Fund formally includes AI-related DSI services but does not attribute value to the DSI, TK, source community, or provenance chain used in a specific workflow.
 
@@ -318,7 +318,7 @@ The DOJ--ASCAP--BMI history also supplies a precedent for one of the proposal's 
 
 ### C. The Five-Component Design
 
-![](./media/image3.png)
+![Figure 3: The Five-Component Performance Rights Organization Architecture](/assets/images/biopiracy/image3.png)
 
 *FIGURE 3. The Five-Component Performance Rights Organization Architecture. The proposal modifies the trigger and the distribution algorithm of the existing Cali Fund and embeds the registry function within existing regional architectures (TKDL, Pacific Community, Andean Community, African Union); it does not propose a new international institution. The five components---Registry (TKPR), Trigger (use-based), Distribution Algorithm (attribution-weighted), Audit Chain (four layers), and Dispute Resolution (tiered WIPO-style)---operate over the existing Cali Fund infrastructure (preserved). See Article §§ VI.C, VI.F.*
 
