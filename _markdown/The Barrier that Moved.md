@@ -6,9 +6,6 @@ listed: true
 
 # The Barrier That Moved: Ergodicity, Ruin, and the Recalibration of Risk in an Age of Abundance
 
-> *"Population, when unchecked, increases in a geometrical ratio. Subsistence increases only in an arithmetical ratio."*
-> — Thomas Malthus, *An Essay on the Principle of Population* (1798)
-
 ## The Core Wagers
 
 There is a single mathematical fact at the center of how we think about risk, and almost everyone gets the wrong lesson from it.
