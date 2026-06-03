@@ -30,18 +30,18 @@ The equations are right. The boundary conditions moved. What follows is the reca
 |---|---|
 | $$(\Omega,\mathcal F,\mu)$$ | probability space; $$\mu$$ a probability measure |
 | $$T,\;T^{-1}A$$ | a measure-preserving transformation; pre-image of a set |
-| $$\mathbb E[X],\ \langle X\rangle$$ | **ensemble average** (expectation over the population of paths) |
-| $$\overline{X}_T=\frac1T\sum_{t<T}X_t$$ | **time average** (average over one path through time) |
+| $$\mathbb E[X],\ \langle X\rangle$$ | ensemble average (expectation over the population of paths) |
+| $$\overline{X}_T=\frac1T\sum_{t<T}X_t$$ | time average (average over one path through time) |
 | $$X_t$$ | wealth (or population, or fitness) at time $$t$$ |
 | $$W_t$$ | standard Brownian motion |
 | $$\mu,\ \sigma$$ | drift and volatility of a multiplicative process (Ch. 3 onward) |
-| $$m=\mu-\tfrac{\sigma^2}{2}$$ | the **time-average (log) growth rate**; the "ergodic" drift |
+| $$m=\mu-\tfrac{\sigma^2}{2}$$ | the time-average (log) growth rate; the "ergodic" drift |
 | $$g(f)$$ | exponential growth rate as a function of bet fraction $$f$$ |
 | $$b,\ p,\ q=1-p$$ | net odds; win probability; loss probability |
 | $$\alpha,\ x_m$$ | tail index and scale of a Pareto distribution |
 | $$K,\ \kappa=K/W$$ | the survival floor (put strike); the floor as a fraction of wealth |
 | $$\lambda$$ | the loss-aversion coefficient ($$\approx 2.25$$) |
-| $$\varphi$$ | a payoff function; **convex** when downside is truncated |
+| $$\varphi$$ | a payoff function; convex when downside is truncated |
 | $$\bar F(x)=\mathbb P(X>x)$$ | the survival (complementary distribution) function |
 | $$M_n,\ S_n$$ | the maximum and the sum of $$n$$ samples |
 
