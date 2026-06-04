@@ -1,6 +1,6 @@
 ---
-title: The Philosophy Behind This Website
-permalink: /thoughts-behind-my-website/
+title: Thoughts Behind This Space
+permalink: /thoughts-behind-this-space/
 listed: true
 ---
 
