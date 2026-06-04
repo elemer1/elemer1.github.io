@@ -1,6 +1,6 @@
 ---
-title: Thoughts Behind This Space
-permalink: /thoughts-behind-this-space/
+title: On Building This Website
+permalink: /on-building-this-website/
 listed: true
 ---
 
