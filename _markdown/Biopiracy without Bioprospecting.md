@@ -151,10 +151,6 @@ The architectural inference. Read together, these documentary clusters establish
 
 ### H. The Single-System Reading
 
-![Figure 2: The Three-Trigger Attribution Gap](/assets/images/biopiracy/image2.png)
-
-FIGURE 2. The Three-Trigger Attribution Gap. The four-stage AI-mediated synthesis pipeline (top) can create value through open repositories, structural-prediction systems, and generative-chemistry platforms before the existing access-and-benefit-sharing architecture (bottom) generates attribution. The Nagoya trigger is weakened where no new physical access occurs; the GRATK trigger becomes contestable where chemical novelty and claim drafting obscure provenance; the Cali Fund formally includes AI-related DSI services but does not attribute value to the DSI, TK, source community, or provenance chain used in a specific workflow.
-
 Read together --- and the existing literature has not, until now, read them together as a single architecture --- Nagoya, GRATK, the Cali Fund, and their national-level implementations share a structural premise: the act that triggers benefit-sharing is a *transaction* (Nagoya: access agreement; GRATK: patent application) or a *threshold-crossing in a defined sector* (Cali Fund). Each instrument was designed for a world in which the value chain ran from physical access to laboratory characterization to patent prosecution to commercial deployment, in roughly that order, and in which the instrument's trigger captured a moment within that chain at which compelling disclosure or compelling payment was administratively feasible.
 
 The pipeline this Article documents --- open DSI repository to AlphaFold-3-class structural prediction to generative molecule design to synthetic functional analogue --- does not reliably pass through any of the three triggers in a form that produces attribution. The physical-access trigger is bypassed where the workflow uses pre-deposited sequence data without new access. The patent-disclosure trigger becomes contestable where trade-secret protection, chemical novelty, and the "based on" / "specific properties" nexus obscure provenance. The sectoral-revenue trigger has not yet produced publicly recorded contributions from clearly threshold-eligible firms, and even if it did, it would not attribute value to the specific DSI, TK, source community, or provenance chain used in a particular workflow.
@@ -317,10 +313,6 @@ The eighty-four-year arc of antitrust supervision is, on one reading, an indictm
 The DOJ--ASCAP--BMI history also supplies a precedent for one of the proposal's most contested design choices, addressed in subsection C below: the question of whether the Performance Rights Organization is itself an antitrust concern, and how the proposal should be structured to avoid recreating the concentration problem the Article diagnoses at the platform layer.
 
 ### C. The Five-Component Design
-
-![Figure 3: The Five-Component Performance Rights Organization Architecture](/assets/images/biopiracy/image3.png)
-
-*FIGURE 3. The Five-Component Performance Rights Organization Architecture. The proposal modifies the trigger and the distribution algorithm of the existing Cali Fund and embeds the registry function within existing regional architectures (TKDL, Pacific Community, Andean Community, African Union); it does not propose a new international institution. The five components---Registry (TKPR), Trigger (use-based), Distribution Algorithm (attribution-weighted), Audit Chain (four layers), and Dispute Resolution (tiered WIPO-style)---operate over the existing Cali Fund infrastructure (preserved). See Article §§ VI.C, VI.F.*
 
 #### 1. The Registry
 

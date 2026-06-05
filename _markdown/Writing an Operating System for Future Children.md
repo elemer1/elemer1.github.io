@@ -1,6 +1,6 @@
 ---
-title: Writing an Operating System for Future Children
-permalink: /os-demo-for-my-kids/
+title: Writing an OS for My Children
+permalink: /writing-an-os-for-my-children/
 listed: true
 ---
 
