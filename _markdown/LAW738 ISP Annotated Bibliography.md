@@ -1,6 +1,6 @@
 ---
-title: "The Mechanics and Vulnerabilities of Bankruptcy Remoteness in WBS"
-permalink: /mechanics-and-vulnerabilities-of-bankruptcy-remoteness-in-WBS/
+title: "A Doctrinal Attack Outline and Trial-Indexed Companion for WBS Bankruptcy Remoteness"
+permalink: /a-doctrinal-attack-outline-and-trial-indexed-companion-for-wbs-bankruptcy-remoteness/
 listed: true
 ---
 
