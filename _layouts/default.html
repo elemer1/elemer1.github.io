@@ -63,7 +63,11 @@
     main img{max-width:100%;height:auto;display:block}
     main figure{margin:24px 0}
     main figure img{max-width:100%;height:auto;display:block}
+    main figure svg{max-width:100%;height:auto;display:block}
+    main figure object[type="image/svg+xml"],main figure embed[type="image/svg+xml"]{display:block;max-width:100%;width:100%;height:auto}
     main figcaption{margin-top:8px;font-size:14px;line-height:1.5;color:#57606a}
+    main figure.wide-figure{width:min(1120px,calc(100vw - 40px));max-width:none;margin:32px 50% 28px;transform:translateX(-50%)}
+    main figure.wide-figure>img,main figure.wide-figure>svg,main figure.wide-figure>object[type="image/svg+xml"],main figure.wide-figure>embed[type="image/svg+xml"]{width:100%;height:auto}
     main .video-embed{position:relative;height:0;overflow:hidden;max-width:100%;margin:24px 0;padding-bottom:56.25%;background:#f6f8fa}
     main .video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
     main .video-embed.is-short{max-width:340px;margin-left:auto;margin-right:auto;padding-bottom:0;height:604px;background:#000}
@@ -99,6 +103,7 @@
     .smallcaps{font-variant:small-caps}
     mjx-container[display="true"]{max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;padding:2px 0}
     @media (max-width:480px){main table{font-size:14px}main th,main td{padding:6px 8px}}
+    @media (max-width:700px){main figure.wide-figure{width:100%;margin:24px 0;transform:none}}
     @media (max-width:480px){.container{padding:40px 16px}.post-title{font-size:30px}main .video-embed{margin:20px 0}main .mermaid{margin:20px 0;padding:12px}}
   </style>
 

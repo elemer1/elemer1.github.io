@@ -5,7 +5,7 @@
 // reusable include instead of ad-hoc iframe markup.
 
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
-import { join, extname, basename } from 'node:path';
+import { dirname, extname, join } from 'node:path';
 
 const ROOT = process.cwd();
 const MD_DIR = join(ROOT, '_markdown');
@@ -100,6 +100,36 @@ function stripFencedCode(text) {
   return text.replace(/(^|\n)(```|~~~)[\s\S]*?\n\2/g, '\n');
 }
 
+function resolveLocalAsset(file, url) {
+  const cleanUrl = url.split(/[?#]/)[0];
+  if (!cleanUrl || /^(?:https?:|mailto:|data:|#)/i.test(cleanUrl)) return null;
+  if (cleanUrl.startsWith('/')) return join(ROOT, cleanUrl.slice(1));
+  return join(dirname(file), cleanUrl);
+}
+
+function checkSvgAsset(file, url) {
+  const asset = resolveLocalAsset(file, url);
+  if (!asset) return;
+  if (!existsSync(asset)) {
+    fail(`${file}: SVG asset does not exist: ${url}`);
+    return;
+  }
+  const svg = readFileSync(asset, 'utf8');
+  if (!/<svg(?:\s|>)/i.test(svg)) {
+    fail(`${file}: SVG asset is not valid SVG markup: ${url}`);
+  }
+  if (!/\bviewBox\s*=/i.test(svg)) {
+    fail(`${file}: SVG asset must include a viewBox for responsive rendering: ${url}`);
+  }
+}
+
+function checkSvgReferences(file, text) {
+  const attrRe = /\b(?:src|href|data)=["']([^"']+\.svg(?:[?#][^"']*)?)["']/gi;
+  const markdownImageRe = /!\[[^\]]*]\(([^)\s]+\.svg(?:[?#][^)\s]*)?)\)/gi;
+  for (const match of text.matchAll(attrRe)) checkSvgAsset(file, match[1]);
+  for (const match of text.matchAll(markdownImageRe)) checkSvgAsset(file, match[1]);
+}
+
 function hasEncryptedTrue(fm) {
   return fm.encrypted === true || fm.encrypted === 'true';
 }
@@ -147,6 +177,8 @@ function checkMarkdownPost(file) {
     warn(`${file}: iframe appears inside a fenced code block; it will display as code, not render`);
   }
 
+  checkSvgReferences(file, renderableBody);
+
   if (hasEncryptedTrue(fm) && repoVisibility === 'public') {
     warn(`${file}: encrypted: true in a public repository — plaintext and password are visible in git history; treat the lock as cosmetic`);
   }
@@ -168,6 +200,7 @@ function checkHtmlPage(file) {
     fail(`${file}: listed must be explicitly true or false`);
   }
   checkPermalink(file, fm);
+  checkSvgReferences(file, parsed.body);
   if (hasEncryptedTrue(fm) && repoVisibility === 'public') {
     warn(`${file}: encrypted: true in a public repository — plaintext and password are visible in git history; treat the lock as cosmetic`);
   }

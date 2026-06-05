@@ -263,6 +263,11 @@ so the geometric mean factor is $$e^{-0.0527} = \sqrt{1.5 \times 0.6} = \sqrt{0.
 
 I want to close this chapter on the simulation from Chapter 1, because it does something the formulas alone cannot: it catches the ensemble average in the act of being a fiction. I generated two hundred thousand independent hundred-round trajectories of the coin (the code is in Appendix H). The median final wealth was $$0.0051$$ times the stake — matching the predicted $$0.9487^{100} = 0.0051$$ to the digit, the individual's grim reality confirmed. But here is the telling part. The *true* ensemble-average final wealth is $$1.05^{100} \approx 131.5$$. The average over my two hundred thousand actual simulated players was only $$78.3$$ — it fell *forty percent short of its own theoretical value*. Two hundred thousand trajectories were not nearly enough to sample the ensemble mean, because that mean is held up by paths so rare and so extreme that even a vast simulation usually fails to contain one. The single luckiest of my two hundred thousand players finished with $$1.17$$ million times their stake; pull him and a few like him out, and the "average" collapses. The ensemble mean is real as a mathematical limit and almost unreachable as an experience — a number that requires near-infinitely many lives to even *measure*, describing a fortune that essentially no one holds. If you have ever wondered what it means to call a quantity "true but fictional," this is it: $$\mathbb E[X_n]$$ is the wealth of a person assembled from lottery winners, and there are not enough lottery winners in two hundred thousand lifetimes to add him up.
 
+<figure class="wide-figure">
+  <img src="/assets/images/the-barrier-that-moved/figure-1-the-lie-of-the-ensemble.svg" alt="Semi-log chart of multiplicative wealth paths. A gray density cloud from 200,000 simulated lives slopes downward while a red ensemble-mean line rises and a blue typical time-average line falls.">
+  <figcaption><strong>Figure 1. The lie of the ensemble.</strong> Density cloud generated from two hundred thousand independent 100-round paths of the multiplicative coin from Chapters 1 and 3 (heads ×1.5, tails ×0.6, each with probability one-half), shown on a log wealth axis. The red ensemble mean, E[X<sub>n</sub>] = 1.05<sup>n</sup>, rises to 131.5 while the blue typical time-average trajectory, exp(n E[ln m]) = (√0.9)<sup>n</sup>, falls to 0.0051. The widening separation is the ergodicity gap: the average wealth belongs to a crowd, not to a representative life.</figcaption>
+</figure>
+
 So the expectation is the wrong objective for multiplicative wealth. What is the right one? Result 5 already told us, if we listen: the quantity that governs the individual's fate, the thing a single life actually maximizes, is not $$\mathbb E[X]$$ but $$\mathbb E[\ln X]$$ — the expected logarithm. The logarithm is not an aesthetic choice or a psychological flourish. It is forced on us, the unique transformation that turns multiplicative compounding back into the additive form the law of large numbers can speak to. And that fact — that the logarithm is *dynamics, not taste* — is the key that unlocks a two-hundred-year-old confusion about utility, risk, and what Daniel Bernoulli was really doing in 1738. That is the next chapter.
 
 
@@ -377,6 +382,11 @@ Gregory Clark, in *A Farewell to Alms*, states the flat line in a sentence that 
 | 2000 AD | ≈ 6,539 |
 
 Stare at that column. Across the *million years* from the emergence of the genus to the birth of Christ, estimated income per person rises from about \$92 to about \$109 — a total gain of perhaps eighteen percent, spread over ten thousand centuries, statistically indistinguishable from flat. From the year 1 to 1800 — eighteen more centuries, including the entire classical world, the medieval economy, the Renaissance, the Scientific Revolution — it not quite doubles, to \$195. And then, in the *two centuries* after 1800, it multiplies by more than thirty-three. The line is flat, flat, flat, for the entire span over which natural selection shaped the human animal and over which every human culture and instinct about risk was formed — and then it goes nearly vertical, in a window so recent that it is a rounding error in the lifespan of the species.
+
+<figure class="wide-figure">
+  <img src="/assets/images/the-barrier-that-moved/figure-2-the-malthusian-break.svg" alt="Long-run chart of reconstructed world GDP per person from 10,000 BCE to 2000 CE. Values remain near a subsistence benchmark for millennia before rising almost vertically after 1800.">
+  <figcaption><strong>Figure 2. The Malthusian break.</strong> DeLong's preferred reconstruction of average world GDP per person, 10,000 BCE–2000 CE, in 1990 international dollars. The upper panel preserves the full historical scale: the pre-industrial record is compressed into the subsistence band, then rises almost vertically after 1800. The lower zoom panel exposes the earlier variation around a schematic subsistence benchmark s ≈ 115 and the mean-reverting logic of |ρ| &lt; 1. The axis extends to 2026 only to show how recent the break remains; no post-2000 observation is imputed.</figcaption>
+</figure>
 
 ### The break, and the constant that moved
 
@@ -744,6 +754,11 @@ and, expanding to second order, the size of the gap is the convexity premium we 
 $$\mathbb E[\varphi(X)] \;\approx\; \varphi(\mathbb E[X]) + \tfrac12\varphi''(\mathbb E[X])\operatorname{Var}(X).$$
 
 For a convex payoff the gap is positive and *grows with the variance*. More uncertainty makes a convex position worth more — strictly, monotonically more. This is the mathematical content of what options traders call positive **vega** (option value rises with volatility) and what Taleb calls **antifragility**, which he defines, in as many words, as a *convex response to a stressor* (Taleb 2012). An antifragile thing is simply a thing with $$\varphi'' > 0$$ with respect to disorder: it gains from volatility because its losses are capped and its gains are not, so that every increase in the spread of outcomes lengthens the unbounded upside more than the bounded downside. Antifragility is not a mystical property of certain systems. It is a sign condition on a second derivative.
+
+<figure class="wide-figure">
+  <img src="/assets/images/the-barrier-that-moved/figure-3-the-curvature-switch.svg" alt="Dual-panel comparison of a concave logarithmic payoff with an absorbing barrier and a convex floored payoff with a kink at the strike K.">
+  <figcaption><strong>Figure 3. The curvature switch.</strong> Left: with an absorbing barrier at L = 0, log wealth is concave; the Jensen gap is negative and volatility subtracts. Right: a genuinely floored payoff max(X, K) is convex; the Jensen gap is positive and volatility adds value. For max(X, K), convexity is not a smooth bend but a kink: in the Itô–Tanaka formulation its curvature is localized at K through the local-time term ½ dL<sub>t</sub><sup>K</sup>. The switch licenses Regime B boldness only for the bounded payoff deliberately held, not for total wealth or for risks whose floor can fail.</figcaption>
+</figure>
 
 ### What is convex — and what stays concave
 
@@ -1366,4 +1381,3 @@ B_geom  = math.exp(0.5*math.log(2.5) + 0.5*math.log(0.5))# = 1.1180
 ---
 
 *The "free put option" framing of modern abundance, the boundary-condition reading of the ergodicity problem, the curvature-switch unification of the volatility drag and the optionality premium (Result 17), the floor/Kelly inversion (Result 16), and the resource-and-barrier taxonomy (Result 19) are the author's own. They are built on the established results above but are not claimed to be found in those sources.*
-
