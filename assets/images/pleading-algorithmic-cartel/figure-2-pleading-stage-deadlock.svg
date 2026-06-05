@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" role="img" aria-labelledby="title desc">
+  <title id="title">The pleading-stage deadlock</title>
+  <desc id="desc">A clean one-way flowchart showing that plaintiffs observe market facts, face a Rule 12(b)(6) demand for internal plus factors, cannot access the proprietary system before discovery, and are dismissed before discovery begins.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
+    </marker>
+    <style>
+      .box{fill:#fff;stroke:#111;stroke-width:1.35}
+      .soft{fill:#f7f7f7;stroke:#111;stroke-width:1.2}
+      .dark{fill:#111;stroke:#111;stroke-width:1.2}
+      .line{fill:none;stroke:#111;stroke-width:1.55;marker-end:url(#arrow)}
+      .label{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;fill:#111}
+      .white{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;fill:#fff}
+      .title{font-size:20px;font-weight:700}
+      .body{font-size:15px}
+      .small{font-size:13px}
+      .note{font-size:14px;font-style:italic}
+    </style>
+  </defs>
+
+  <rect width="1120" height="560" fill="#fff"/>
+  <text x="52" y="58" class="label title">The architecture of the pleading-stage deadlock</text>
+  <text x="52" y="84" class="label body">The facts needed for plausibility are the facts plaintiffs cannot see before discovery.</text>
+
+  <rect x="52" y="144" width="188" height="74" rx="4" class="box"/>
+  <text x="146" y="174" text-anchor="middle" class="label body">Observed market fact</text>
+  <text x="146" y="196" text-anchor="middle" class="label small">parallel pricing / price rise</text>
+
+  <rect x="300" y="144" width="188" height="74" rx="4" class="box"/>
+  <text x="394" y="174" text-anchor="middle" class="label body">Complaint filed</text>
+  <text x="394" y="196" text-anchor="middle" class="label small">Sherman Act Section 1</text>
+
+  <rect x="540" y="140" width="204" height="82" rx="4" class="box"/>
+  <text x="642" y="168" text-anchor="middle" class="label body">Rule 12(b)(6)</text>
+  <text x="642" y="190" text-anchor="middle" class="label small">Twombly/Iqbal screen</text>
+  <text x="642" y="208" text-anchor="middle" class="label small">asks for plus factors</text>
+
+  <rect x="826" y="132" width="236" height="98" rx="4" class="soft"/>
+  <text x="944" y="162" text-anchor="middle" class="label body">Plus-factor demand</text>
+  <text x="944" y="187" text-anchor="middle" class="label small">objective function</text>
+  <text x="944" y="205" text-anchor="middle" class="label small">data flows / override rate</text>
+  <text x="944" y="223" text-anchor="middle" class="label small">monitoring architecture</text>
+
+  <rect x="826" y="310" width="236" height="104" rx="4" class="dark"/>
+  <text x="944" y="343" text-anchor="middle" class="white body">Proprietary system</text>
+  <text x="944" y="369" text-anchor="middle" class="white small">vendor code</text>
+  <text x="944" y="389" text-anchor="middle" class="white small">runtime data</text>
+  <text x="944" y="409" text-anchor="middle" class="white small">acceptance metrics</text>
+
+  <rect x="504" y="324" width="238" height="76" rx="4" class="soft"/>
+  <text x="623" y="355" text-anchor="middle" class="label body">No pre-discovery access</text>
+  <text x="623" y="377" text-anchor="middle" class="label small">the facts are system-internal</text>
+
+  <rect x="206" y="324" width="216" height="76" rx="4" class="box"/>
+  <text x="314" y="355" text-anchor="middle" class="label body">Dismissal</text>
+  <text x="314" y="377" text-anchor="middle" class="label small">insufficient specific facts</text>
+
+  <rect x="74" y="470" width="972" height="50" rx="4" class="soft"/>
+  <text x="560" y="501" text-anchor="middle" class="label note">Discovery would reveal the internal architecture, but dismissal occurs before discovery begins.</text>
+
+  <path d="M240 181 H292" class="line"/>
+  <path d="M488 181 H532" class="line"/>
+  <path d="M744 181 H818" class="line"/>
+  <path d="M944 230 V302" class="line"/>
+  <path d="M826 362 H750" class="line"/>
+  <path d="M504 362 H430" class="line"/>
+  <path d="M314 400 V462" class="line"/>
+</svg>

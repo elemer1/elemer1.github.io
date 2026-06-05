@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 540" role="img" aria-labelledby="title desc">
+  <title id="title">Analog and algorithmic hub-and-spoke structures</title>
+  <desc id="desc">Two restrained black-and-white panels comparing the visible rim in analog hub-and-spoke doctrine with the system-internal rim in algorithmic intermediation.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
+    </marker>
+    <style>
+      .panel{fill:#fff;stroke:#111;stroke-width:1.3}
+      .node{fill:#fff;stroke:#111;stroke-width:1.5}
+      .hub{fill:#eee;stroke:#111;stroke-width:1.5}
+      .rim{fill:none;stroke:#111;stroke-width:2.2}
+      .ghost{fill:none;stroke:#777;stroke-width:1.3;stroke-dasharray:6 7}
+      .link{fill:none;stroke:#777;stroke-width:1.2}
+      .data{fill:none;stroke:#111;stroke-width:1.35;marker-end:url(#arrow)}
+      .legend{fill:#f7f7f7;stroke:#111;stroke-width:1}
+      .label{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;fill:#111}
+      .title{font-size:20px;font-weight:700}
+      .body{font-size:15px}
+      .small{font-size:13px}
+      .note{font-size:14px;font-style:italic}
+    </style>
+  </defs>
+
+  <rect width="1120" height="540" fill="#fff"/>
+  <rect x="34" y="44" width="506" height="424" rx="4" class="panel"/>
+  <rect x="580" y="44" width="506" height="424" rx="4" class="panel"/>
+  <line x1="560" y1="70" x2="560" y2="468" stroke="#111" stroke-width="1"/>
+
+  <text x="60" y="80" class="label title">Analog hub-and-spoke</text>
+  <text x="60" y="104" class="label body">The rim is externally visible.</text>
+  <text x="606" y="80" class="label title">Algorithmic intermediation</text>
+  <text x="606" y="104" class="label body">The rim is system-internal.</text>
+
+  <!-- Analog panel -->
+  <g transform="translate(34 44)">
+    <circle cx="253" cy="216" r="48" class="hub"/>
+    <text x="253" y="222" text-anchor="middle" class="label body">Hub</text>
+
+    <path d="M253 120 L253 168" class="link"/>
+    <path d="M341 174 L295 198" class="link"/>
+    <path d="M308 291 L283 254" class="link"/>
+    <path d="M198 291 L223 254" class="link"/>
+    <path d="M165 174 L211 198" class="link"/>
+
+    <path d="M253 120 L366 186 L323 316 L183 316 L140 186 Z" class="rim"/>
+
+    <circle cx="253" cy="120" r="43" class="node"/>
+    <circle cx="366" cy="186" r="43" class="node"/>
+    <circle cx="323" cy="316" r="43" class="node"/>
+    <circle cx="183" cy="316" r="43" class="node"/>
+    <circle cx="140" cy="186" r="43" class="node"/>
+    <text x="253" y="125" text-anchor="middle" class="label small">Spoke A</text>
+    <text x="366" y="191" text-anchor="middle" class="label small">Spoke B</text>
+    <text x="323" y="321" text-anchor="middle" class="label small">Spoke C</text>
+    <text x="183" y="321" text-anchor="middle" class="label small">Spoke D</text>
+    <text x="140" y="191" text-anchor="middle" class="label small">Spoke E</text>
+
+    <rect x="86" y="364" width="334" height="40" rx="2" class="legend"/>
+    <text x="253" y="381" text-anchor="middle" class="label body">Visible rim</text>
+    <text x="253" y="399" text-anchor="middle" class="label small">meetings, calls, letters, direct assurances</text>
+  </g>
+
+  <!-- Algorithmic panel -->
+  <g transform="translate(580 44)">
+    <rect x="190" y="172" width="126" height="94" rx="4" class="hub"/>
+    <text x="253" y="201" text-anchor="middle" class="label body">Pricing</text>
+    <text x="253" y="221" text-anchor="middle" class="label body">intermediary</text>
+    <line x1="205" y1="233" x2="301" y2="233" stroke="#111" stroke-width="1"/>
+    <text x="253" y="253" text-anchor="middle" class="label small">objective function</text>
+
+    <path d="M253 120 L382 190 L326 322 L180 322 L124 190 Z" class="ghost"/>
+    <path d="M253 163 V172" class="data"/>
+    <path d="M342 197 L316 208" class="data"/>
+    <path d="M304 286 L292 266" class="data"/>
+    <path d="M202 286 L216 266" class="data"/>
+    <path d="M166 197 L190 208" class="data"/>
+
+    <circle cx="253" cy="120" r="43" class="node"/>
+    <circle cx="382" cy="190" r="43" class="node"/>
+    <circle cx="326" cy="322" r="43" class="node"/>
+    <circle cx="180" cy="322" r="43" class="node"/>
+    <circle cx="124" cy="190" r="43" class="node"/>
+    <text x="253" y="125" text-anchor="middle" class="label small">Firm A</text>
+    <text x="382" y="195" text-anchor="middle" class="label small">Firm B</text>
+    <text x="326" y="327" text-anchor="middle" class="label small">Firm C</text>
+    <text x="180" y="327" text-anchor="middle" class="label small">Firm D</text>
+    <text x="124" y="195" text-anchor="middle" class="label small">Firm E</text>
+
+    <text x="253" y="374" text-anchor="middle" class="label body">No direct inter-firm line is required</text>
+    <text x="253" y="397" text-anchor="middle" class="label small">data flows into a single runtime system</text>
+  </g>
+
+  <text x="560" y="512" text-anchor="middle" class="label note">The rim has not disappeared; it has moved from communication among firms to code inside the intermediary.</text>
+</svg>

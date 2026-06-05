@@ -6,6 +6,25 @@ listed: true
 
 # Pleading the Algorithmic Cartel After Gibson: A Cartel-Manager Plausibility Framework
 
+<style>
+  @media (max-width: 700px) {
+    main figure.cartel-figure {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+    }
+
+    main figure.cartel-figure > img {
+      width: 760px;
+      max-width: none;
+    }
+
+    main figure.cartel-figure > figcaption {
+      width: 100%;
+    }
+  }
+</style>
+
 ## Abstract
 
 Algorithmic-pricing cases expose a mismatch between Sherman Act § 1 pleading doctrine and a form of coordination that is computational rather than conversational. After *Gibson v. Cendyn Group*, a complaint alleging that horizontal rivals adopted the same pricing intermediary can fail unless plaintiffs plead facts about data flows, objective functions, override rates, and monitoring architecture that are knowable only after discovery. This Note calls that mismatch the pleading-stage deadlock. It argues that the answer is not a new substantive rule of liability, a *per se* rule for pricing software, or artificial legal personhood for algorithms. The answer is a procedural calibration of plausibility doctrine: a Cartel-Manager Plausibility Framework, grounded in Hovenkamp and Leslie's cartel-manager account, under which a complaint should survive Rule 12(b)(6) when it plausibly alleges (1) competitively significant common adoption of a pricing intermediary by horizontal rivals, (2) nonpublic, forward-looking, competitively sensitive data inflow from those rivals into the intermediary's runtime operation, and (3) at least one alignment-predisposing design or use feature. Defendants may rebut at the pleading stage with specific factual showings, while *per se*, quick-look, and rule-of-reason analysis remain for the merits. The framework preserves *Twombly*'s screening function without converting technological opacity into § 1 immunity.
@@ -75,6 +94,11 @@ The pattern across these cases is a "hub" actor (the exhibitor; Toys "R" Us; App
 The rim is the question algorithmic-intermediation cases turn on. *Gibson*'s holding is fundamentally a rim-pessimism holding: the Ninth Circuit treated the absence of allegations that confidential information was *shared among hotel licensees* as dispositive of the rim question.[^35] The framing is that each hotel had its own bilateral licensing agreement with Cendyn; the algorithm processed each hotel's data; and absent an allegation that hotel A could see hotel B's data flowing into the system, the case was a series of parallel verticals, not a horizontal hub-and-spoke.
 
 This Note's quarrel with *Gibson* is not that it misunderstood hub-and-spoke doctrine. It is that *Gibson* asked the rim question at the wrong level of abstraction. The rim in algorithmic intermediation does not run between user firms directly; it runs through the algorithm's objective function. If the algorithm optimizes for market-wide yield given knowledge of all users' nonpublic data — that is, if the algorithm internalizes the coordination function — then the rim is realized computationally rather than communicatively. The rim is "made of code." Conventional hub-and-spoke doctrine has no language for this, because the analog cases that built the doctrine had no such object to point to. The Note's framework is, in part, an effort to provide that language without rewriting hub-and-spoke doctrine substantively.
+
+<figure class="wide-figure cartel-figure">
+  <img src="/assets/images/pleading-algorithmic-cartel/figure-1-hub-and-spoke-rim.svg" alt="A structural comparison between analog hub-and-spoke conspiracy and algorithmic intermediation.">
+  <figcaption><strong>Figure 1.</strong> The structural evolution of hub-and-spoke. Traditional doctrine looks for a visible rim among spokes; algorithmic intermediation can relocate the rim into the intermediary's objective function and runtime code.</figcaption>
+</figure>
 
 ### II.D. The Hovenkamp–Leslie Cartel-Manager Account (Doctrinal Setting Only)
 
@@ -183,6 +207,11 @@ The deadlock has four moving parts.
 *Third*, algorithmic intermediation produces precisely that environment. The objective function the algorithm optimizes is proprietary. The data that flow into the algorithm at runtime are the user firm's own private inputs and (depending on architecture) the vendor's accumulated cross-user data. The vendor's monitoring of user implementation occurs through internal vendor systems. The acceptance rate is a vendor metric. Each of these facts is dispositive of whether the cartel-manager account fits. None is observable to a plaintiff before discovery. The structural information asymmetry is not occasional but pervasive.
 
 *Fourth*, the post-*Gibson* case law has, in effect, deemed the unavailable facts essential to plausibility. *Gibson*'s requirement that plaintiffs allege either inter-licensee data sharing or some equivalent rim is a requirement that plaintiffs allege facts they cannot observe. The court did not say that explicitly; it said only that the absence of such allegations doomed the complaint. But the operational consequence is that the unobservability of the dispositive facts has been promoted to dispositive in itself. This is the deadlock.
+
+<figure class="wide-figure cartel-figure">
+  <img src="/assets/images/pleading-algorithmic-cartel/figure-2-pleading-stage-deadlock.svg" alt="A flowchart showing the pleading-stage deadlock created when plaintiffs must plead internal algorithmic plus factors before discovery.">
+  <figcaption><strong>Figure 2.</strong> The pleading-stage deadlock. Plaintiffs can observe parallel pricing and common adoption, but the plus factors most probative of agreement are locked inside the vendor's proprietary system before discovery opens.</figcaption>
+</figure>
 
 The deadlock does not occur in every § 1 case. In a traditional horizontal price-fixing case — agents from competing firms meeting at a hotel and agreeing on prices — the dispositive facts are, in principle, available pre-discovery from email records, witness reports, and the kind of circumstantial evidence that survived *Twombly* in conventional conspiracies. The deadlock is specific to algorithmic intermediation because the locus of coordination has been moved out of the firm boundary into a third-party computational system whose internal architecture is, by design, opaque to outsiders.
 
@@ -351,6 +380,11 @@ Triggering all three elements creates a structured inference that the complaint 
 (c) *Market mis-pleading.* Defendants may show that the relevant market alleged in the complaint is not properly pleaded, or that the user firms named in the complaint do not in fact account for a competitively significant share of that market. This is the conventional market-definition challenge, imported from merger and joint-venture review.
 
 The rebuttal mechanism is doctrinally important because it preserves *Twombly*'s defendant-protective architecture. Plausibility doctrine demands that defendants not be subjected to the discovery cost of cases that fail on the pleadings. The Cartel-Manager Plausibility Framework does not relax this protection; it specifies how the protection operates in a setting where the decisive facts are internal to the vendor. Defendants whose conduct does not in fact involve cartel-manager features can defeat the structured inference at the motion-to-dismiss stage through targeted factual rebuttal. Defendants whose conduct does involve cartel-manager features must answer the complaint and bear the discovery cost — but this is the cost the substantive antitrust law has always assigned to defendants whose conduct gives rise to plausible claims of horizontal coordination. The framework does not change the underlying allocation; it operationalizes it for the algorithmic-intermediation context.
+
+<figure class="wide-figure cartel-figure">
+  <img src="/assets/images/pleading-algorithmic-cartel/figure-3-plausibility-framework.svg" alt="A decision path for the Cartel-Manager Plausibility Framework showing three triggers, structured inference, rebuttal, discovery, and merits standards.">
+  <figcaption><strong>Figure 3.</strong> The Cartel-Manager Plausibility Framework as a judicial decision path. The framework creates a pleading-stage inference only when all three triggers are alleged, preserves targeted rebuttal at Rule 12(b)(6), and leaves merits characterization for later stages.</figcaption>
+</figure>
 
 ### V.D. Substantive Agnosticism
 
@@ -841,4 +875,3 @@ The substantive antitrust law has not asked, and need not now answer, whether al
 [^doj-info1]: See Statement of Interest of the United States at 2, 10–16, *In re RealPage, Inc., Rental Software Antitrust Litig.* (No. II), MDL No. 3071 (M.D. Tenn. Nov. 15, 2023), ECF No. 628 (articulating information-exchange theory in algorithmic-pricing context).
 
 [^calibration1]: See Section III.C (*In re RealPage* MDL); Section III.D (*Duffy v. Yardi*).
-

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
+  <title id="title">Cartel-Manager Plausibility Framework decision path</title>
+  <desc id="desc">A clean decision path showing three conjunctive triggers, a pleading-stage inference, targeted rebuttal, dismissal if rebuttal succeeds, discovery if it fails, and preservation of merits-stage standards.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
+    </marker>
+    <style>
+      .box{fill:#fff;stroke:#111;stroke-width:1.35}
+      .soft{fill:#f7f7f7;stroke:#111;stroke-width:1.2}
+      .emph{fill:#eee;stroke:#111;stroke-width:1.7}
+      .line{fill:none;stroke:#111;stroke-width:1.55;marker-end:url(#arrow)}
+      .plainline{fill:none;stroke:#111;stroke-width:1.35}
+      .label{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;fill:#111}
+      .title{font-size:20px;font-weight:700}
+      .body{font-size:15px}
+      .small{font-size:13px}
+      .note{font-size:14px;font-style:italic}
+    </style>
+  </defs>
+
+  <rect width="1120" height="620" fill="#fff"/>
+  <text x="52" y="58" class="label title">Cartel-Manager Plausibility Framework</text>
+  <text x="52" y="84" class="label body">A bounded path from pleadable facts to targeted discovery, not a merits rule of liability.</text>
+
+  <rect x="70" y="130" width="250" height="86" rx="4" class="box"/>
+  <text x="195" y="160" text-anchor="middle" class="label body">Trigger A</text>
+  <text x="195" y="184" text-anchor="middle" class="label small">competitively significant</text>
+  <text x="195" y="202" text-anchor="middle" class="label small">common adoption by rivals</text>
+
+  <rect x="70" y="258" width="250" height="86" rx="4" class="box"/>
+  <text x="195" y="288" text-anchor="middle" class="label body">Trigger B</text>
+  <text x="195" y="312" text-anchor="middle" class="label small">nonpublic forward-looking</text>
+  <text x="195" y="330" text-anchor="middle" class="label small">competitive data inflow</text>
+
+  <rect x="70" y="386" width="250" height="86" rx="4" class="box"/>
+  <text x="195" y="416" text-anchor="middle" class="label body">Trigger C</text>
+  <text x="195" y="440" text-anchor="middle" class="label small">at least one alignment-</text>
+  <text x="195" y="458" text-anchor="middle" class="label small">predisposing feature</text>
+
+  <path d="M320 173 H368 V429 H320" class="plainline"/>
+  <path d="M320 301 H368" class="plainline"/>
+  <circle cx="394" cy="301" r="25" class="soft"/>
+  <text x="394" y="306" text-anchor="middle" class="label body">AND</text>
+  <path d="M368 301 H369" class="line"/>
+
+  <rect x="450" y="238" width="238" height="126" rx="4" class="emph"/>
+  <text x="569" y="276" text-anchor="middle" class="label body">Structured inference</text>
+  <text x="569" y="305" text-anchor="middle" class="label small">plausibly alleged</text>
+  <text x="569" y="324" text-anchor="middle" class="label small">Section 1 agreement</text>
+  <text x="569" y="343" text-anchor="middle" class="label small">at the pleading stage</text>
+
+  <path d="M419 301 H450" class="line"/>
+
+  <rect x="760" y="144" width="296" height="136" rx="4" class="soft"/>
+  <text x="908" y="174" text-anchor="middle" class="label body">Targeted rebuttal</text>
+  <text x="908" y="204" text-anchor="middle" class="label small">(a) data inflow disqualification</text>
+  <text x="908" y="226" text-anchor="middle" class="label small">(b) pro-competitive feature showing</text>
+  <text x="908" y="248" text-anchor="middle" class="label small">(c) market mis-pleading</text>
+  <text x="908" y="270" text-anchor="middle" class="label small">specific facts, not generic efficiency claims</text>
+
+  <path d="M688 301 H724 V212 H760" class="line"/>
+
+  <rect x="534" y="424" width="222" height="76" rx="4" class="box"/>
+  <text x="645" y="456" text-anchor="middle" class="label body">If rebuttal succeeds</text>
+  <text x="645" y="479" text-anchor="middle" class="label small">dismissal remains available</text>
+
+  <rect x="814" y="424" width="242" height="76" rx="4" class="box"/>
+  <text x="935" y="456" text-anchor="middle" class="label body">If rebuttal fails</text>
+  <text x="935" y="479" text-anchor="middle" class="label small">targeted discovery opens</text>
+
+  <path d="M908 280 V392 H645 V424" class="line"/>
+  <path d="M908 392 H935 V424" class="line"/>
+
+  <rect x="814" y="536" width="242" height="58" rx="4" class="soft"/>
+  <text x="935" y="560" text-anchor="middle" class="label body">Merits standards preserved</text>
+  <text x="935" y="581" text-anchor="middle" class="label small">per se / quick-look / rule of reason</text>
+  <path d="M935 500 V536" class="line"/>
+
+  <line x1="86" y1="540" x2="690" y2="540" stroke="#777" stroke-width="1.2"/>
+  <text x="388" y="568" text-anchor="middle" class="label note">The framework answers the procedural question: what must be pleaded to find out what the system does?</text>
+</svg>
