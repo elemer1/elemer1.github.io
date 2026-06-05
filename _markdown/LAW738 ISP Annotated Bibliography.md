@@ -1,6 +1,6 @@
 ---
-title: "A Doctrinal Attack Outline and Trial-Indexed Companion for WBS Bankruptcy Remoteness"
-permalink: /a-doctrinal-attack-outline-and-trial-indexed-companion-for-wbs-bankruptcy-remoteness/
+title: "A Doctrinal Attack Outline for WBS Bankruptcy Remoteness"
+permalink: /a-doctrinal-attack-outline-for-wbs-bankruptcy-remoteness/
 listed: true
 ---
 
