@@ -2,6 +2,12 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "brainage-preview",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8137", "--directory", "/tmp/brainage_preview"],
+      "port": 8137
+    },
+    {
       "name": "bicycle-preview",
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8766", "--directory", "_html"],
