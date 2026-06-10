@@ -139,17 +139,17 @@ The five axes are these. *Axis 1, the identity of the risk-shedder* — claimant
 
 | # | Instrument | A1 Shedder | A2 Payoff | A3 Timing | A4 Granularity | A5 Counterparty | **REGIME** |
 |---|---|---|---|---|---|---|---|
-| 1 | Commercial single-case TPLF | claimant/firm | non-recourse advance (a) | during litigation | single | corporate/SME | **near-unregulated (champerty residue + emergent disclosure)** |
-| 2 | Portfolio / firm-portfolio TPLF | firm | non-recourse advance (a) | during litigation | portfolio (funder-side pooled) | law firm | **near-unregulated; brushes Rule 5.4 (lawyer-directed)** |
-| 3 | Consumer pre-settlement funding | individual plaintiff | non-recourse advance (a) | during litigation | single (factored on back end) | consumer (vulnerable) | **state consumer statutes w/ price + term caps; held NOT a loan (*Ruth*)** |
-| 4 | Post-settlement funding | plaintiff/judgment-holder | low-risk advance on near-certain receivable (a) | post-settlement | single/factored | consumer | **thin; consumer-credit-adjacent** |
-| 5 | ATE insurance | claimant | indemnity (b) — adverse costs + disbursements | ex ante / during | single (carrier pools its book) | claimant (SME/consumer UK; commercial US) | **INSURANCE (regulated)** |
-| 6 | JPI / contingent-legal-risk | judgment-holder / insured corporate | indemnity (b) — shortfall below floor on reversal | post-judgment | single judgment, syndicated tower (pooled) | large corporate | **INSURANCE (capital/solvency)** |
-| 7 | Contingency fee | claimant (risk shed *to* lawyer) | fee-share (c) | during litigation | lawyer's implicit book | individual/SME | **professional responsibility (Rules 1.5, 1.8(e))** |
-| 8 | Law-firm financing (recourse) — CONTROL CASE | firm | recourse debt (NOT a/b/c) | ongoing | firm balance sheet | law firm | **ordinary commercial lending (boundary marker — excluded)** |
-| 9 | Claim / appellate monetization | judgment-holder | non-recourse advance on judgment value (a) | post-judgment | single | corporate | **near-unregulated — the substitution destination when JPI retreats** |
-| 10 | Securitization / continuation fund | funder (selling its book) | sale of pooled contingent assets | any stage | securitized/pooled | institutional (Ares) | **near-unregulated; capital-markets-adjacent, no solvency overlay** |
-| 11 | Hybrid wrappers (funding + ATE; JPI + monetization) — ARBITRAGE-LITERAL | mixed | (a)+(b) stacked on one claim | any | single/pooled | corporate | **REGIME-SPLIT within one transaction (*Appian*: $500M JPI + monetization; ~19% of 2024 commitments insurance-wrapped)** |
+| 1 | Commercial single-case TPLF | claimant/firm | non-recourse advance (a) | during litigation | single | corporate/SME | near-unregulated (champerty residue + emergent disclosure) |
+| 2 | Portfolio / firm-portfolio TPLF | firm | non-recourse advance (a) | during litigation | portfolio (funder-side pooled) | law firm | near-unregulated; brushes Rule 5.4 (lawyer-directed) |
+| 3 | Consumer pre-settlement funding | individual plaintiff | non-recourse advance (a) | during litigation | single (factored on back end) | consumer (vulnerable) | state consumer statutes w/ price + term caps; held NOT a loan (*Ruth*) |
+| 4 | Post-settlement funding | plaintiff/judgment-holder | low-risk advance on near-certain receivable (a) | post-settlement | single/factored | consumer | thin; consumer-credit-adjacent |
+| 5 | ATE insurance | claimant | indemnity (b) — adverse costs + disbursements | ex ante / during | single (carrier pools its book) | claimant (SME/consumer UK; commercial US) | INSURANCE (regulated) |
+| 6 | JPI / contingent-legal-risk | judgment-holder / insured corporate | indemnity (b) — shortfall below floor on reversal | post-judgment | single judgment, syndicated tower (pooled) | large corporate | INSURANCE (capital/solvency) |
+| 7 | Contingency fee | claimant (risk shed *to* lawyer) | fee-share (c) | during litigation | lawyer's implicit book | individual/SME | professional responsibility (Rules 1.5, 1.8(e)) |
+| 8 | Law-firm financing (recourse) — CONTROL CASE | firm | recourse debt (NOT a/b/c) | ongoing | firm balance sheet | law firm | ordinary commercial lending (boundary marker — excluded) |
+| 9 | Claim / appellate monetization | judgment-holder | non-recourse advance on judgment value (a) | post-judgment | single | corporate | near-unregulated — the substitution destination when JPI retreats |
+| 10 | Securitization / continuation fund | funder (selling its book) | sale of pooled contingent assets | any stage | securitized/pooled | institutional (Ares) | near-unregulated; capital-markets-adjacent, no solvency overlay |
+| 11 | Hybrid wrappers (funding + ATE; JPI + monetization) — ARBITRAGE-LITERAL | mixed | (a)+(b) stacked on one claim | any | single/pooled | corporate | REGIME-SPLIT within one transaction (*Appian*: $500M JPI + monetization; ~19% of 2024 commitments insurance-wrapped) |
 
 The matrix is analytically motivated, not exhaustive, and its placements are idealized — real deals blend forms, and two rows are included precisely to mark the category's boundaries and pre-empt the charge that the taxonomy defines its own conclusion. Row 8, the recourse law-firm loan, is the negative control: it shares the lending *form* with non-recourse funding but lacks the contingent-on-outcome risk transfer, and so is excluded, demonstrating that the category is not drawn to swallow everything. Row 11, the hybrid wrapper, is the boundary on the other side: it is the arbitrage made literal, a single transaction split across regimes, exemplified by *Appian*'s simultaneous JPI policy and monetization strategy and by the roughly 19% of 2024 commitments now insurance-wrapped.[^78]
 
