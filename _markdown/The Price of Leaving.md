@@ -1,6 +1,6 @@
 ---
-title: "Litigation Finance as Shadow Insurance"
-permalink: /litigation-finance-as-shadow-insurance/
+title: "The Price of Leaving"
+permalink: /the-price-of-leaving/
 listed: true
 math: false
 ---
