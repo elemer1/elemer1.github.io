@@ -7,17 +7,9 @@ math: false
 
 # The Price of Leaving: Exit, Breach, and the Legal Architecture of Commitment
 
-*An essay on contract, history, and the right to walk away*
-
----
-
 > "The duty to keep a contract at common law means a prediction that you must pay damages if you do not keep it,—and nothing else."
 > — Oliver Wendell Holmes, Jr., "The Path of the Law" (1897)
 
-> "Stadtluft macht frei nach Jahr und Tag." ("City air makes you free after a year and a day.")
-> — Medieval German legal maxim
-
----
 
 ## I. Portbou, 1940
 
