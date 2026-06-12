@@ -14,9 +14,6 @@ math: false
 > "The duty to keep a contract at common law means a prediction that you must pay damages if you do not keep it,—and nothing else."
 > — Oliver Wendell Holmes, Jr., "The Path of the Law" (1897)
 
-> 「人而无信，不知其可也。」 ("If a man is without trustworthiness, I do not know how he can get on.")
-> — *Analects* 2.22
-
 > "Stadtluft macht frei nach Jahr und Tag." ("City air makes you free after a year and a day.")
 > — Medieval German legal maxim
 
