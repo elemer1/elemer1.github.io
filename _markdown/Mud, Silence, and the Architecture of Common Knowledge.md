@@ -307,7 +307,6 @@ Every checkable claim in this essay is exercised by the companion script `muddy_
 | V12 | Radical and conservative upgrades coincide along the muddy run | Proposition 4 |
 | V13 | Iterated $$\Uparrow$$ of a doxastic Moore formula cycles with period two | Section 7.1 |
 
-The engine is small enough to read in one sitting; its three load-bearing definitions, lightly condensed here, are the ones this essay is about:
 
 ```
 """
