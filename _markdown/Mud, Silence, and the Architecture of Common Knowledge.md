@@ -309,18 +309,415 @@ Every checkable claim in this essay is exercised by the companion script `muddy_
 
 The engine is small enough to read in one sitting; its three load-bearing definitions, lightly condensed here, are the ones this essay is about:
 
-```python
-def announce(prop, worlds):          # hard: eliminate
+```
+"""
+muddy_del_verify.py — Machine verification for
+"Mud, Silence, and the Architecture of Common Knowledge"
+
+Implements:
+  * S5 epistemic models over the muddy-children hypercube {0,1}^n
+  * Public Announcement Logic (PAL) update (world elimination)
+  * E^k / common-knowledge checking (reachability fixed point)
+  * Epistemic plausibility models with joint radical (⇑) and
+    conservative (↑) upgrades; belief = truth in the most plausible
+    worlds of the agent's information cell
+Every numbered check V1..V13 corresponds to a claim made in the essay.
+Exit code 0 iff all checks pass.
+"""
+
+from itertools import product
+
+# ----------------------------------------------------------------------
+# Hard-information layer: S5 models and PAL
+# ----------------------------------------------------------------------
+
+def all_worlds(n):
+    return [tuple(bits) for bits in product((0, 1), repeat=n)]
+
+def weight(w):
+    return sum(w)
+
+def cell(i, w, worlds):
+    """Agent i's information cell at w within the current model:
+    worlds agreeing with w on every coordinate except possibly i."""
+    return [v for v in worlds
+            if all(v[j] == w[j] for j in range(len(w)) if j != i)]
+
+def K(i, prop, w, worlds):
+    """K_i prop at w: prop holds throughout i's cell."""
+    return all(prop(v, worlds) for v in cell(i, w, worlds))
+
+def knows_muddy(i):
+    return lambda w, ws: K(i, lambda v, _: v[i] == 1, w, ws)
+
+def knows_clean(i):
+    return lambda w, ws: K(i, lambda v, _: v[i] == 0, w, ws)
+
+def knows_own(i):
+    return lambda w, ws: knows_muddy(i)(w, ws) or knows_clean(i)(w, ws)
+
+def father(w, worlds):              # "at least one of you is muddy"
+    return weight(w) >= 1
+
+def theta(w, worlds):               # "nobody knows whether they are muddy"
+    n = len(w)
+    return all(not knows_own(i)(w, worlds) for i in range(n))
+
+def theta_simple(w, worlds):        # "nobody knows that they are muddy"
+    n = len(w)
+    return all(not knows_muddy(i)(w, worlds) for i in range(n))
+
+def announce(prop, worlds):
+    """PAL update: restrict the model to the worlds where prop holds."""
     return [w for w in worlds if prop(w, worlds)]
 
-def radical(prop, ranks):            # soft: reorder
+def E(prop, w, worlds):
+    n = len(w)
+    return all(K(i, prop, w, worlds) for i in range(n))
+
+def E_iter(prop, j, w, worlds):
+    """E^j prop, with E^0 prop := prop."""
+    f = prop
+    for _ in range(j):
+        g = f
+        f = (lambda gg: lambda v, ws: E(gg, v, ws))(g)
+    return f(w, worlds)
+
+def common_knowledge(prop, w, worlds):
+    """C prop at w: prop holds at every world reachable from w via the
+    union of the agents' relations (reflexive-transitive closure)."""
+    n = len(w)
+    seen, frontier = {w}, [w]
+    while frontier:
+        u = frontier.pop()
+        for i in range(n):
+            for v in cell(i, u, worlds):
+                if v not in seen:
+                    seen.add(v)
+                    frontier.append(v)
+    return all(prop(v, worlds) for v in seen)
+
+def hard_run(n, actual):
+    """Father's announcement, then ignorance announcements while truthful.
+    Returns the list of models [M0, M1, ..., M_k]."""
+    models = [all_worlds(n)]
+    models.append(announce(father, models[-1]))          # M1
+    while theta(actual, models[-1]):                     # truthful only
+        models.append(announce(theta, models[-1]))
+    return models
+
+# ----------------------------------------------------------------------
+# Soft-information layer: plausibility models and upgrades
+# ----------------------------------------------------------------------
+
+def uniform_ranks(n):
+    return {w: 0 for w in all_worlds(n)}
+
+def dense(ranks_sorted_keys, key):
+    """Re-rank densely according to a sort key."""
+    ordered = sorted(ranks_sorted_keys, key=key)
+    out, r, prev = {}, -1, None
+    for w in ordered:
+        if prev is None or key(w) != prev:
+            r += 1
+            prev = key(w)
+        out[w] = r
+    return out
+
+def radical(prop, ranks):
+    """Joint radical upgrade ⇑φ: all φ-worlds become strictly more
+    plausible than all ¬φ-worlds; within zones the old order is kept."""
     ext = {w for w in ranks if prop(w, ranks)}
     return dense(ranks.keys(), lambda w: (w not in ext, ranks[w]))
 
-def B(i, prop, w, ranks):            # belief: best of the cell
-    c = cell(i, w, list(ranks.keys()))
+def conservative(prop, ranks):
+    """Joint conservative upgrade ↑φ: only the *best* φ-worlds become
+    most plausible; everything else keeps its relative order."""
+    ext = [w for w in ranks if prop(w, ranks)]
+    if not ext:
+        return dict(ranks)
+    m = min(ranks[w] for w in ext)
+    promoted = {w for w in ext if ranks[w] == m}
+    return dense(ranks.keys(), lambda w: (w not in promoted, ranks[w]))
+
+def B(i, prop, w, ranks):
+    """B_i prop at w: prop holds at all most-plausible worlds of i's cell.
+    Cells are computed over the full world set (soft info deletes nothing)."""
+    ws = list(ranks.keys())
+    c = cell(i, w, ws)
     m = min(ranks[v] for v in c)
-    return all(prop(v, ranks) for v in c if ranks[v] == m)
+    best = [v for v in c if ranks[v] == m]
+    return all(prop(v, ranks) for v in best)
+
+def believes_muddy(i):
+    return lambda w, rk: B(i, lambda v, _: v[i] == 1, w, rk)
+
+def believes_clean(i):
+    return lambda w, rk: B(i, lambda v, _: v[i] == 0, w, rk)
+
+def believes_own(i):
+    return lambda w, rk: believes_muddy(i)(w, rk) or believes_clean(i)(w, rk)
+
+def father_soft(w, ranks):
+    return weight(w) >= 1
+
+def theta_soft(w, ranks):           # "nobody has an opinion on their status"
+    n = len(w)
+    return all(not believes_own(i)(w, ranks) for i in range(n))
+
+def soft_run(n, actual, upgrade=radical):
+    """⇑father, then ⇑(doxastic ignorance) while truthful at the actual world."""
+    rks = [uniform_ranks(n)]
+    rks.append(upgrade(father_soft, rks[-1]))
+    while theta_soft(actual, rks[-1]):
+        rks.append(upgrade(theta_soft, rks[-1]))
+    return rks
+
+# ----------------------------------------------------------------------
+# Checks
+# ----------------------------------------------------------------------
+
+RESULTS = []
+
+def check(name, ok, detail=""):
+    RESULTS.append((name, ok))
+    print(f"[{'PASS' if ok else 'FAIL'}] {name}" + (f"  ({detail})" if detail else ""))
+
+def actual_world(n, k):
+    return tuple([1] * k + [0] * (n - k))
+
+# ---- V1: layer theorem + round counting (hard) ----
+ok = True
+for n in (3, 4, 5):
+    for k in range(1, n + 1):
+        a = actual_world(n, k)
+        ms = hard_run(n, a)
+        # number of ignorance announcements actually made = k-1
+        ok &= (len(ms) == k + 1)               # M0, M1, ..., M_k
+        for j, M in enumerate(ms[1:], start=1):
+            ok &= (set(M) == {w for w in all_worlds(n) if weight(w) >= j})
+        # nobody knows-own before M_k; all muddy know (positively) at M_k
+        for j in range(1, k):
+            ok &= all(not knows_own(i)(a, ms[j]) for i in range(n))
+        ok &= all(knows_muddy(i)(a, ms[k]) for i in range(k))
+        ok &= all(not knows_own(i)(a, ms[k]) for i in range(k, n))
+check("V1 hard run: M_j = {weight >= j}; muddy first know (K_i m_i) at stage k", ok)
+
+# ---- V2: E^j hierarchy and common knowledge ----
+ok = True
+for n in (3, 4):
+    for k in range(1, n + 1):
+        a = actual_world(n, k)
+        M0 = all_worlds(n)
+        for j in range(0, n + 1):
+            ok &= (E_iter(father, j, a, M0) == (j <= k - 1))
+        ok &= (not common_knowledge(father, a, M0))
+        M1 = announce(father, M0)
+        ok &= common_knowledge(father, a, M1)
+check("V2 in M0: E^j(father) iff j <= k-1; C fails; C holds in M1", ok)
+
+# ---- V3: for k>=2 the father's content is already known by everyone ----
+ok = all(E_iter(father, 1, actual_world(n, k), all_worlds(n)) == (k >= 2)
+         for n in (3, 4) for k in range(1, n + 1))
+check("V3 E(father) in M0 iff k >= 2 (announcement first-order uninformative)", ok)
+
+# ---- V4: without the father, ignorance announcements are vacuous ----
+ok = True
+for n in (3, 4):
+    M0 = all_worlds(n)
+    ok &= all(theta(w, M0) for w in M0)        # true everywhere
+    ok &= (announce(theta, M0) == M0)          # update removes nothing
+check("V4 no seed, no progress: M0 | theta = M0", ok)
+
+# ---- V5: K_i(clean) never holds along the run; both ignorance readings agree ----
+ok = True
+for n in (3, 4):
+    for k in range(1, n + 1):
+        a = actual_world(n, k)
+        ms = hard_run(n, a)
+        for M in ms:
+            ok &= all(not knows_clean(i)(w, M) for w in M for i in range(n))
+        # rerun with the weaker formula; same models stage by stage
+        alt = [all_worlds(n), announce(father, all_worlds(n))]
+        while theta_simple(a, alt[-1]):
+            alt.append(announce(theta_simple, alt[-1]))
+        ok &= all(set(x) == set(y) for x, y in zip(ms, alt)) and len(ms) == len(alt)
+check("V5 'knows clean' never true; know-that vs know-whether runs coincide", ok)
+
+# ---- V6: the last ignorance announcement refutes itself; father's is successful ----
+ok = True
+for n in (3, 4):
+    for k in range(2, n + 1):
+        a = actual_world(n, k)
+        ms = hard_run(n, a)
+        ok &= theta(a, ms[k - 1])                      # true when announced
+        ok &= (not theta(a, ms[k]))                    # false afterwards
+        M1 = ms[1]
+        ok &= all(father(w, M1) for w in M1)           # father's formula survives
+check("V6 [!theta]~theta at the last round; [!father]father (and C father)", ok)
+
+# ---- V7: the 'I know' round teaches the clean children ----
+ok = True
+for n in (3, 4):
+    for k in range(1, n):
+        a = actual_world(n, k)
+        Mk = hard_run(n, a)[-1]
+        def reports(w, ws, k=k, n=n):
+            r = all(knows_muddy(i)(w, ws) for i in range(k))
+            r &= all(not knows_own(i)(w, ws) for i in range(k, n))
+            return r
+        Mfin = announce(reports, Mk)
+        ok &= all(knows_clean(j)(a, Mfin) for j in range(k, n))
+check("V7 after the muddy children's 'I know', clean children know they are clean", ok)
+
+# ---- V8: hard update with a false announcement deletes reality ----
+n = 3
+a0 = (0, 0, 0)
+M1_bad = announce(father, all_worlds(n))
+check("V8 false hard announcement: the actual world is eliminated",
+      a0 not in M1_bad, "PAL precondition fails; reality leaves the model")
+
+# ---- V9: soft mirror — rank(w) = max(0, stage - weight(w)); same round count ----
+ok = True
+for n in (3, 4):
+    for k in range(1, n + 1):
+        a = actual_world(n, k)
+        rks = soft_run(n, a)
+        ok &= (len(rks) == k + 1)
+        for s, rk in enumerate(rks):
+            ok &= all(rk[w] == max(0, s - weight(w)) for w in rk)
+        final = rks[-1]
+        ok &= all(believes_muddy(i)(a, final) for i in range(k))      # true belief
+        ok &= all(not knows_muddy(i)(a, list(final.keys())) if False else
+                  not K(i, lambda v, _: v[i] == 1, a, list(final.keys()))
+                  for i in range(k))                                   # ...not knowledge
+        for rk in rks:                                                 # clean kids:
+            ok &= all(not believes_muddy(j)(a, rk) for j in range(k, n))
+check("V9 soft run mirrors hard run: rank = max(0, stage - weight); "
+      "muddy get B_i m_i (not K_i m_i) at stage k; clean never believe muddy", ok)
+
+# ---- V9b: at stage k the muddy children's belief is STRONG and SAFE, not K ----
+def strong_belief(i, prop, w, ranks):
+    """All prop-worlds in i's cell strictly more plausible than all others,
+    and prop holds somewhere in the cell (Baltag–Smets strong belief)."""
+    ws = list(ranks.keys())
+    c = cell(i, w, ws)
+    pos = [v for v in c if prop(v, ranks)]
+    neg = [v for v in c if not prop(v, ranks)]
+    return bool(pos) and all(ranks[u] < ranks[v] for u in pos for v in neg)
+
+def safe_belief(i, prop, w, ranks):
+    """prop holds at every cell world at least as plausible as w (Stalnaker)."""
+    ws = list(ranks.keys())
+    return all(prop(v, ranks) for v in cell(i, w, ws) if ranks[v] <= ranks[w])
+
+ok = True
+for n in (3, 4):
+    for k in range(1, n + 1):
+        a = actual_world(n, k)
+        final = soft_run(n, a)[-1]
+        muddy_prop = lambda i: (lambda v, _ : v[i] == 1)
+        for i in range(k):
+            ok &= strong_belief(i, muddy_prop(i), a, final)
+            ok &= safe_belief(i, muddy_prop(i), a, final)
+            ok &= not K(i, lambda v, _: v[i] == 1, a, list(final.keys()))
+check("V9b muddy children end with strong AND safe belief in m_i, still without K_i m_i", ok)
+
+# ---- V10: soft report round teaches the clean children (in belief) ----
+ok = True
+for n in (3, 4):
+    for k in range(1, n):
+        a = actual_world(n, k)
+        final = soft_run(n, a)[-1]
+        def reports_soft(w, rk, k=k, n=n):
+            r = all(believes_muddy(i)(w, rk) for i in range(k))
+            r &= all(not believes_own(i)(w, rk) for i in range(k, n))
+            return r
+        after = radical(reports_soft, final)
+        ok &= all(believes_clean(j)(a, after) for j in range(k, n))
+check("V10 soft 'I believe I'm muddy' round gives clean children B_j(clean)", ok)
+
+# ---- V11: wrong father — soft degrades gracefully and is reversible ----
+n = 3
+a0 = (0, 0, 0)
+rk1 = radical(father_soft, uniform_ranks(n))
+all_wrong = all(believes_muddy(i)(a0, rk1) for i in range(n))
+rk2 = radical(lambda w, r: weight(w) == 0, rk1)        # truthful correction
+recovered = all(believes_clean(i)(a0, rk2) for i in range(n))
+M_after_two_hard = announce(lambda w, ws: weight(w) == 0,
+                            announce(father, all_worlds(n)))
+check("V11 soft: false father => all wrongly believe muddy, yet correction restores "
+      "true beliefs; hard: the same two announcements empty the model",
+      all_wrong and recovered and len(M_after_two_hard) == 0)
+
+# ---- V12: radical and conservative upgrades coincide on this protocol ----
+ok = True
+for n in (3, 4):
+    for k in range(1, n + 1):
+        a = actual_world(n, k)
+        r1 = soft_run(n, a, upgrade=radical)
+        r2 = soft_run(n, a, upgrade=conservative)
+        ok &= (len(r1) == len(r2)) and all(x == y for x, y in zip(r1, r2))
+check("V12 radical (⇑) and conservative (↑) upgrades coincide along the muddy run", ok)
+
+# ---- V13: iterated radical upgrade can oscillate (doxastic Moore input) ----
+wp, wq = ("p",), ("q",)             # one agent, two indistinguishable worlds
+ranks = {wp: 0, wq: 0}
+def chi(w, rk):                     # "I am wrong about p"
+    ws = list(rk.keys())
+    m = min(rk[v] for v in ws)
+    best = [v for v in ws if rk[v] == m]
+    bp = all(v == wp for v in best)
+    return (w == wp and not bp) or (w == wq and bp)
+seq, truth_at_wp = [], []
+r = dict(ranks)
+for _ in range(6):
+    truth_at_wp.append(chi(wp, r))
+    r = dense(r.keys(), lambda w: (not chi(w, r), r[w]))   # unconditional ⇑χ
+    seq.append((r[wp], r[wq]))
+osc = (seq[0] != seq[1] and seq[0] == seq[2] and seq[1] == seq[3]
+       and seq[2] == seq[4] and seq[3] == seq[5])
+check("V13 iterated ⇑ of a doxastic-Moore formula cycles with period 2",
+      osc, f"rank trajectory {seq}; truth of input at actual {truth_at_wp}")
+
+# ----------------------------------------------------------------------
+# Tables for the essay
+# ----------------------------------------------------------------------
+
+def fmt(w):
+    return "".join(map(str, w))
+
+print("\n--- Table A: hard run, n = 3, k = 2, actual world 110 ---")
+a = (1, 1, 0)
+for j, M in enumerate(hard_run(3, a)):
+    kn = [i + 1 for i in range(3) if knows_own(i)(a, M)]
+    print(f"M{j}: worlds = {sorted(map(fmt, M))}; "
+          f"theta@actual = {theta(a, M)}; children who know: {kn or '-'}")
+
+print("\n--- Table B: soft run (radical), n = 3, k = 3, actual world 111 ---")
+a = (1, 1, 1)
+for s, rk in enumerate(soft_run(3, a)):
+    by_rank = {}
+    for w, r0 in rk.items():
+        by_rank.setdefault(r0, []).append(fmt(w))
+    desc = " | ".join(f"rank {r0}: {sorted(ws)}" for r0, ws in sorted(by_rank.items()))
+    bel = [i + 1 for i in range(3) if believes_own(i)(a, rk)]
+    print(f"stage {s}: {desc}; believers: {bel or '-'}")
+
+print("\n--- Table C: wrong father, n = 3, actual 000 (soft) ---")
+r0 = uniform_ranks(3)
+r1 = radical(father_soft, r0)
+r2 = radical(lambda w, r: weight(w) == 0, r1)
+for tag, rk in (("start", r0), ("after ⇑father", r1), ("after ⇑'nobody muddy'", r2)):
+    bels = ["B%d(muddy)" % (i + 1) for i in range(3) if believes_muddy(i)((0, 0, 0), rk)]
+    bels += ["B%d(clean)" % (i + 1) for i in range(3) if believes_clean(i)((0, 0, 0), rk)]
+    print(f"{tag}: beliefs at 000 = {bels or 'none'}")
+
+# ----------------------------------------------------------------------
+failed = [name for name, ok in RESULTS if not ok]
+print(f"\n{'ALL ' + str(len(RESULTS)) + ' CHECKS PASSED' if not failed else 'FAILED: ' + str(failed)}")
+raise SystemExit(0 if not failed else 1)
+
 ```
 
 One line each for hard update, soft upgrade, and belief, and the entire essay is a commentary on the difference between the first two.
