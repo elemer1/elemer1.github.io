@@ -304,6 +304,13 @@ listed: false
                 font-size: 19px;
                 letter-spacing: -0.01em;
                 color: var(--ink);
+                display: inline-flex;
+                align-items: center;
+            }
+            .brand img {
+                height: 22px;
+                width: auto;
+                display: block;
             }
             .nav-links {
                 display: none;
@@ -1348,6 +1355,11 @@ listed: false
             .foot-brand .brand {
                 font-size: 22px;
             }
+            .foot-brand .brand img {
+                height: 26px;
+                width: auto;
+                display: block;
+            }
             .foot-brand p {
                 margin: 14px 0 0;
                 color: var(--muted);
@@ -1432,7 +1444,11 @@ listed: false
         <!-- ============================ NAV ============================ -->
         <header class="nav">
             <div class="wrap nav-in">
-                <div class="brand">Compound</div>
+                <a class="brand" href="#hero" aria-label="Compound 首页"
+                    ><img
+                        src="/assets/compound/compound-logo-dark.svg"
+                        alt="Compound"
+                /></a>
                 <nav class="nav-links">
                     <a href="#how">系统</a>
                     <a href="#trajectory">科学依据</a>
@@ -1460,14 +1476,14 @@ listed: false
                 loop
                 playsinline
                 preload="auto"
-                poster="file:///Users/elemer/Documents/GitHub/compound/public/data/hero-poster.png"
+                poster="/assets/compound/hero-poster.png"
             >
                 <source
-                    src="file:///Users/elemer/Documents/GitHub/compound/public/data/vid-veo3-hero-opt.webm"
+                    src="/assets/compound/vid-veo3-hero-opt.webm"
                     type="video/webm"
                 />
                 <source
-                    src="file:///Users/elemer/Documents/GitHub/compound/public/data/vid-veo3-hero-opt.mp4"
+                    src="/assets/compound/vid-veo3-hero-opt.mp4"
                     type="video/mp4"
                 />
             </video>
@@ -2172,7 +2188,12 @@ listed: false
             <div class="wrap">
                 <div class="foot-grid">
                     <div class="foot-brand">
-                        <div class="brand">Compound</div>
+                        <div class="brand">
+                            <img
+                                src="/assets/compound/compound-logo-dark.svg"
+                                alt="Compound"
+                            />
+                        </div>
                         <p>
                             专为亚洲打造的长寿健康智能系统。临床级检测 · AI
                             轨迹分析 · 专属顾问。
@@ -2259,6 +2280,22 @@ listed: false
                 }
 
                 /* hero content fade on scroll */
+                /* belt-and-suspenders autoplay for the hero video (some browsers
+                   need an explicit muted play() call alongside the attribute) */
+                var heroVid = document.querySelector("video.hero-bg");
+                if (heroVid) {
+                    heroVid.muted = true;
+                    var attempt = function () {
+                        var pr = heroVid.play();
+                        if (pr && pr.catch) pr.catch(function () {});
+                    };
+                    attempt();
+                    window.addEventListener("pointerdown", attempt, {
+                        once: true,
+                        passive: true,
+                    });
+                }
+
                 var hc = document.getElementById("heroContent");
                 var hs = document.getElementById("heroStrip");
                 if (hc && !reduce) {
