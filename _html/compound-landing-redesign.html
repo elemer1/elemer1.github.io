@@ -1,0 +1,2432 @@
+---
+title: "Compound Landing Page"
+permalink: /compound-landing-page/
+listed: false
+---
+
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Compound · 落地页重构原型 — The Lab Notebook</title>
+        <!--
+  COMPOUND landing redesign prototype — "The Lab Notebook"
+  Direction A (editorial left-rail spine) + Direction B (borderless restraint).
+  100% within DESIGN.md tokens. One canonical biomarker dataset threaded as
+  mono data across hero → trajectory → membership dashboard → cta coda.
+  Font substitutes per DESIGN.md: Neue Haas Unica→Inter Tight, PP Neue
+  Montreal→Inter, Mono→IBM Plex Mono; CJK falls through to PingFang SC.
+-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            /* ============================================================ TOKENS */
+            :root {
+                /* surface */
+                --canvas: #eff5f9;
+                --canvas-soft: #f6f9fc;
+                --card: #ffffff;
+                --navy: #010116;
+                --navy-soft: #0b1322;
+                --surface-strong: #d6dfe8;
+                --mist: #e1ebff;
+                /* atmosphere (cool family — washes only) */
+                --spectral: #adc9f0;
+                --wash: #a5bbef;
+                --sterile: #d6dfe8;
+                /* hairlines */
+                --hair: #e1e8f0;
+                --hair-soft: #edf2f8;
+                --hair-strong: #c9d4e2;
+                /* ink / text */
+                --ink: #010116;
+                --body: #424c5c;
+                --body-strong: #1a2230;
+                --muted: #6b7585;
+                --muted-soft: #97a1b0;
+                /* on dark */
+                --on-dark: #eff5f9;
+                --on-dark-strong: #ffffff;
+                --on-dark-soft: #8a94a6;
+                /* data semantic */
+                --data-optimal: #2e6b55;
+                --data-monitor: #4fa47c;
+                --data-alert: #a24741;
+                --data-optimal-dark: #69be97; /* lighter optimal for navy contexts */
+                --data-alert-dark: #e08079;
+                /* radius / shadow */
+                --r-sm: 6px;
+                --r-md: 8px;
+                --r-lg: 12px;
+                --r-xl: 16px;
+                --r-xxl: 24px;
+                --r-pill: 9999px;
+                --shadow-soft: 0 4px 16px rgba(1, 1, 22, 0.06);
+                --shadow-strong: 0 8px 28px rgba(1, 1, 22, 0.08);
+                /* fonts */
+                --font-display:
+                    "Inter Tight", "PingFang SC", "Hiragino Sans GB",
+                    "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+                --font-sans:
+                    "Inter", "PingFang SC", "Hiragino Sans GB",
+                    "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+                --font-mono:
+                    "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo,
+                    Consolas, monospace;
+                --ease: cubic-bezier(0.22, 1, 0.36, 1);
+                --wrap: 1200px;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            html {
+                -webkit-text-size-adjust: 100%;
+            }
+            body {
+                margin: 0;
+                background: var(--canvas);
+                color: var(--ink);
+                font-family: var(--font-sans);
+                -webkit-font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+                overflow-x: hidden;
+            }
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+            img {
+                max-width: 100%;
+                display: block;
+            }
+
+            /* ============================================================ TYPE */
+            .t-mega {
+                font-family: var(--font-display);
+                font-weight: 400;
+                font-size: clamp(40px, 7vw, 68px);
+                line-height: 1.05;
+                letter-spacing: -0.03em;
+            }
+            .t-xl {
+                font-family: var(--font-display);
+                font-weight: 400;
+                font-size: clamp(32px, 4.6vw, 48px);
+                line-height: 1.08;
+                letter-spacing: -0.022px;
+                letter-spacing: -0.02em;
+            }
+            .t-lg {
+                font-family: var(--font-display);
+                font-weight: 400;
+                font-size: clamp(27px, 3.4vw, 36px);
+                line-height: 1.16;
+                letter-spacing: -0.018em;
+            }
+            .t-md {
+                font-family: var(--font-display);
+                font-weight: 500;
+                font-size: clamp(22px, 2.6vw, 30px);
+                line-height: 1.18;
+                letter-spacing: -0.01em;
+            }
+            .t-title {
+                font-family: var(--font-display);
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 1.35;
+            }
+            .t-body {
+                font-family: var(--font-sans);
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 1.6;
+                color: var(--body);
+            }
+            .t-body-lg {
+                font-family: var(--font-sans);
+                font-weight: 400;
+                font-size: clamp(16px, 1.5vw, 18px);
+                line-height: 1.62;
+                color: var(--body);
+            }
+            .t-caption {
+                font-family: var(--font-sans);
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 1.5;
+                color: var(--muted);
+            }
+            .eyebrow {
+                font-family: var(--font-display);
+                font-weight: 600;
+                font-size: 12px;
+                line-height: 1.4;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: var(--muted);
+            }
+            .mono {
+                font-family: var(--font-mono);
+                font-weight: 500;
+                font-feature-settings: "tnum";
+                font-variant-numeric: tabular-nums;
+                letter-spacing: 0.01em;
+            }
+
+            /* ============================================================ LAYOUT */
+            .wrap {
+                max-width: var(--wrap);
+                margin: 0 auto;
+                padding: 0 24px;
+            }
+            @media (min-width: 768px) {
+                .wrap {
+                    padding: 0 40px;
+                }
+            }
+            .band {
+                padding: 72px 0;
+            }
+            @media (min-width: 768px) {
+                .band {
+                    padding: 96px 0;
+                }
+            }
+            .split {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            @media (min-width: 980px) {
+                .split-4-8 {
+                    grid-template-columns: 4fr 8fr;
+                    gap: 64px;
+                }
+                .split-5-7 {
+                    grid-template-columns: 5fr 7fr;
+                    gap: 56px;
+                }
+            }
+            .sticky-head {
+                align-self: start;
+            }
+            @media (min-width: 980px) {
+                .sticky-head {
+                    position: sticky;
+                    top: 104px;
+                }
+            }
+
+            /* ============================================================ BUTTONS */
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                height: 46px;
+                padding: 0 22px;
+                border-radius: var(--r-pill);
+                font-family: var(--font-display);
+                font-weight: 500;
+                font-size: 15px;
+                letter-spacing: 0.01em;
+                border: 1px solid transparent;
+                cursor: pointer;
+                transition:
+                    transform 0.15s var(--ease),
+                    filter 0.15s var(--ease),
+                    background 0.15s var(--ease),
+                    border-color 0.15s var(--ease);
+            }
+            .btn:hover {
+                transform: translateY(-1px);
+            }
+            .btn-primary {
+                background: var(--navy);
+                color: #fff;
+                border-color: var(--navy);
+            }
+            .btn-primary:hover {
+                filter: brightness(1.22);
+            }
+            .btn-outline {
+                background: transparent;
+                color: var(--ink);
+                border-color: var(--hair-strong);
+            }
+            .btn-outline:hover {
+                background: var(--canvas-soft);
+            }
+            .btn-white {
+                background: #fff;
+                color: var(--navy);
+            }
+            .btn-ghost-dark {
+                background: transparent;
+                color: var(--on-dark);
+                border-color: rgba(255, 255, 255, 0.25);
+            }
+            .btn-ghost-dark:hover {
+                border-color: rgba(255, 255, 255, 0.45);
+                background: rgba(255, 255, 255, 0.06);
+            }
+            .btn-lg {
+                height: 52px;
+                padding: 0 28px;
+                font-size: 16px;
+            }
+
+            /* ============================================================ NAV */
+            .nav {
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                background: rgba(239, 245, 249, 0.82);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid var(--hair);
+            }
+            .nav-in {
+                height: 64px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .brand {
+                font-family: var(--font-display);
+                font-weight: 500;
+                font-size: 19px;
+                letter-spacing: -0.01em;
+                color: var(--ink);
+            }
+            .nav-links {
+                display: none;
+                gap: 28px;
+            }
+            @media (min-width: 980px) {
+                .nav-links {
+                    display: flex;
+                }
+            }
+            .nav-links a {
+                font-size: 15px;
+                font-weight: 500;
+                color: var(--body);
+                transition: color 0.15s var(--ease);
+            }
+            .nav-links a:hover {
+                color: var(--ink);
+            }
+            .nav-right {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+            }
+            .nav-signin {
+                font-size: 15px;
+                font-weight: 500;
+                color: var(--body);
+                display: none;
+            }
+            @media (min-width: 560px) {
+                .nav-signin {
+                    display: inline;
+                }
+            }
+
+            /* ============================================================ HERO */
+            .hero {
+                position: relative;
+                height: calc(100vh - 64px);
+                min-height: 600px;
+                max-height: 920px;
+                overflow: hidden;
+                background: var(--navy);
+            }
+            .hero-bg {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: 50% 38%;
+                transform: scale(1.04);
+            }
+            .hero-tint {
+                position: absolute;
+                inset: 0;
+                background: rgba(1, 1, 22, 0.42);
+            }
+            .hero-grad {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    to bottom,
+                    rgba(1, 1, 22, 0.1) 0%,
+                    rgba(1, 1, 22, 0.05) 42%,
+                    rgba(1, 1, 22, 0.82) 100%
+                );
+            }
+            .hero-ushadow {
+                position: absolute;
+                inset: 0;
+                pointer-events: none;
+                background:
+                    radial-gradient(
+                        130% 16% at 50% 100%,
+                        rgba(0, 0, 0, 0.85) 0%,
+                        rgba(0, 0, 0, 0.5) 38%,
+                        rgba(0, 0, 0, 0) 100%
+                    ),
+                    linear-gradient(
+                        to top,
+                        rgba(0, 0, 0, 0.34) 0%,
+                        rgba(0, 0, 0, 0.12) 6%,
+                        rgba(0, 0, 0, 0) 12%
+                    );
+            }
+            .hero-inner {
+                position: relative;
+                z-index: 3;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .hero-content {
+                max-width: 780px;
+                will-change: opacity, transform;
+            }
+            .hero h1 {
+                color: #fff;
+                margin: 0;
+            }
+            .hero h1 .emph {
+                font-style: italic;
+                background-image: linear-gradient(90deg, var(--spectral), #fff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                color: transparent;
+                padding-right: 0.12em;
+                display: inline-block;
+            }
+            .hero-sub {
+                margin-top: 26px;
+                max-width: 540px;
+                color: rgba(255, 255, 255, 0.78);
+                font-size: clamp(15px, 1.6vw, 19px);
+                line-height: 1.62;
+                font-weight: 400;
+            }
+            .hero-cta {
+                margin-top: 34px;
+                display: flex;
+                align-items: center;
+                gap: 22px;
+                flex-wrap: wrap;
+            }
+            .hero-cta .lnk {
+                color: rgba(255, 255, 255, 0.82);
+                font-weight: 500;
+                font-size: 16px;
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
+                transition:
+                    color 0.15s var(--ease),
+                    gap 0.15s var(--ease);
+            }
+            .hero-cta .lnk:hover {
+                color: #fff;
+                gap: 11px;
+            }
+            .hipaa {
+                margin-top: 22px;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                color: rgba(255, 255, 255, 0.62);
+            }
+            .hipaa .eyebrow {
+                color: rgba(255, 255, 255, 0.7);
+                letter-spacing: 0.12em;
+            }
+            /* hero data strip — the data signature, lower-left, fades with content */
+            .hero-strip {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 34px;
+                z-index: 3;
+                will-change: opacity;
+            }
+            .hero-strip-in {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                border-top: 1px solid rgba(255, 255, 255, 0.12);
+                padding-top: 16px;
+            }
+            .hero-chip {
+                display: inline-flex;
+                align-items: baseline;
+                gap: 8px;
+                background: rgba(11, 19, 34, 0.55);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: var(--r-pill);
+                padding: 7px 14px;
+            }
+            .hero-chip .k {
+                font-size: 11px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--on-dark-soft);
+                font-family: var(--font-mono);
+            }
+            .hero-chip .v {
+                font-size: 13px;
+                color: var(--on-dark);
+                font-family: var(--font-mono);
+                font-weight: 500;
+            }
+            .hero-chip .v.opt {
+                color: var(--data-optimal-dark);
+            }
+
+            /* ============================================================ SECTION HEAD */
+            .sec-eyebrow {
+                color: var(--muted);
+            }
+            .sec-title {
+                color: var(--ink);
+                margin: 14px 0 0;
+            }
+            .sec-sub {
+                margin-top: 18px;
+                max-width: 420px;
+            }
+            .head-mono {
+                margin-top: 22px;
+                font-family: var(--font-mono);
+                font-size: 12.5px;
+                letter-spacing: 0.06em;
+                color: var(--muted);
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .head-mono .dot {
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: var(--spectral);
+            }
+
+            /* ============================================================ RAIL (how it works) */
+            .rail {
+                position: relative;
+            }
+            .rail::before {
+                content: "";
+                position: absolute;
+                left: 15px;
+                top: 10px;
+                bottom: 46px;
+                width: 2px;
+                background: linear-gradient(var(--hair-strong), var(--hair));
+            }
+            .rail-row {
+                position: relative;
+                display: grid;
+                grid-template-columns: 32px 1fr;
+                gap: 22px;
+                padding: 30px 0;
+                border-bottom: 1px solid var(--hair-soft);
+                align-items: start;
+            }
+            @media (min-width: 620px) {
+                .rail-row {
+                    grid-template-columns: 32px 1fr auto;
+                    gap: 28px;
+                }
+            }
+            .rail-plate {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                background: var(--surface-strong);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: var(--font-mono);
+                font-size: 12px;
+                font-weight: 500;
+                color: var(--ink);
+            }
+            .rail-body h3 {
+                margin: 2px 0 0;
+                color: var(--ink);
+            }
+            .rail-body p {
+                margin: 8px 0 0;
+                max-width: 440px;
+            }
+            .rail-spec {
+                font-family: var(--font-mono);
+                font-size: 12.5px;
+                letter-spacing: 0.02em;
+                color: var(--muted);
+                padding-top: 5px;
+            }
+            @media (min-width: 620px) {
+                .rail-spec {
+                    justify-self: end;
+                    text-align: right;
+                    white-space: nowrap;
+                }
+            }
+            .rail-loop {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 22px 0 0 4px;
+            }
+            .rail-loop svg {
+                flex: none;
+            }
+            .rail-loop .mono {
+                font-size: 12px;
+                letter-spacing: 0.08em;
+                color: var(--muted);
+            }
+
+            /* ============================================================ TRAJECTORY (early signals) */
+            .es-wash {
+                position: absolute;
+                inset: 0;
+                pointer-events: none;
+                overflow: hidden;
+            }
+            .es-wash::before {
+                content: "";
+                position: absolute;
+                left: -8%;
+                top: 8%;
+                width: 60%;
+                height: 70%;
+                background: radial-gradient(
+                    circle at 35% 35%,
+                    color-mix(in srgb, var(--spectral) 22%, transparent),
+                    transparent 62%
+                );
+            }
+            .es-left {
+                position: relative;
+                z-index: 2;
+            }
+            .benefit-list {
+                margin-top: 26px;
+                border-top: 1px solid var(--hair);
+            }
+            .benefit-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+                padding: 15px 0;
+                border-bottom: 1px solid var(--hair);
+            }
+            .benefit-row .lbl {
+                color: var(--body-strong);
+                font-size: 15.5px;
+            }
+            .benefit-row .tag {
+                font-family: var(--font-mono);
+                font-size: 11.5px;
+                letter-spacing: 0.04em;
+                color: var(--muted);
+                white-space: nowrap;
+            }
+            .age-block {
+                margin-top: 30px;
+                display: flex;
+                align-items: flex-end;
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+            .age-cell .k {
+                font-size: 12px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--muted);
+                font-family: var(--font-display);
+                font-weight: 600;
+            }
+            .age-cell .n {
+                font-family: var(--font-mono);
+                font-weight: 500;
+                line-height: 1;
+                margin-top: 8px;
+            }
+            .age-cell .n.big {
+                font-size: 54px;
+                color: var(--ink);
+            }
+            .age-cell .n.mid {
+                font-size: 30px;
+                color: var(--muted-soft);
+            }
+            .age-delta {
+                font-family: var(--font-mono);
+                font-size: 14px;
+                color: var(--data-optimal);
+                background: color-mix(
+                    in srgb,
+                    var(--data-optimal) 12%,
+                    transparent
+                );
+                padding: 4px 11px;
+                border-radius: var(--r-pill);
+            }
+
+            .fig {
+                background: var(--card);
+                border: 1px solid var(--hair);
+                border-radius: var(--r-xl);
+                box-shadow: var(--shadow-soft);
+                padding: 24px 22px 18px;
+            }
+            .fig-head {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 16px;
+                margin-bottom: 6px;
+            }
+            .fig-head .name {
+                font-family: var(--font-display);
+                font-weight: 500;
+                font-size: 15px;
+                color: var(--ink);
+            }
+            .fig-head .name span {
+                color: var(--muted);
+                font-weight: 400;
+                font-size: 13px;
+            }
+            .fig-head .ref {
+                font-family: var(--font-mono);
+                font-size: 11.5px;
+                color: var(--muted);
+                margin-top: 4px;
+                letter-spacing: 0.02em;
+            }
+            .fig-val {
+                text-align: right;
+            }
+            .fig-val .v {
+                font-family: var(--font-mono);
+                font-weight: 500;
+                font-size: 26px;
+                color: var(--data-optimal);
+                line-height: 1;
+            }
+            .fig-val .pill {
+                display: inline-block;
+                margin-top: 6px;
+                font-family: var(--font-mono);
+                font-size: 10.5px;
+                letter-spacing: 0.06em;
+                color: var(--data-optimal);
+                background: color-mix(
+                    in srgb,
+                    var(--data-optimal) 12%,
+                    transparent
+                );
+                padding: 3px 9px;
+                border-radius: var(--r-pill);
+            }
+            .fig svg.plot {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+            .fig-foot {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 14px;
+                flex-wrap: wrap;
+                margin-top: 10px;
+                padding-top: 14px;
+                border-top: 1px solid var(--hair-soft);
+            }
+            .fig-delta {
+                font-family: var(--font-mono);
+                font-size: 12.5px;
+                color: var(--data-optimal);
+            }
+            .fig-chips {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+            .chip-read {
+                display: inline-flex;
+                align-items: baseline;
+                gap: 7px;
+                background: var(--canvas-soft);
+                border: 1px solid var(--hair);
+                border-radius: var(--r-pill);
+                padding: 5px 11px;
+                font-family: var(--font-mono);
+                font-size: 11.5px;
+            }
+            .chip-read .ck {
+                color: var(--muted);
+            }
+            .chip-read .cv {
+                color: var(--body-strong);
+                font-weight: 500;
+            }
+            .chip-read .cd {
+                color: var(--data-optimal);
+            }
+            .caught {
+                margin-top: 22px;
+                border-top: 1px solid var(--hair);
+                padding-top: 18px;
+            }
+            .caught .hd {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 14px;
+            }
+            .caught .hd .eyebrow {
+                color: var(--data-alert);
+            }
+            .caught .hd .ln {
+                height: 1px;
+                flex: 1;
+                background: var(--hair);
+            }
+            .cond-field {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .cond {
+                font-family: var(--font-sans);
+                font-size: 13px;
+                color: var(--body);
+                background: #fff;
+                border: 1px solid var(--hair);
+                border-radius: var(--r-pill);
+                padding: 6px 13px;
+            }
+            .illus {
+                margin-top: 14px;
+                font-family: var(--font-display);
+                font-size: 11px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--muted-soft);
+            }
+            /* drifting condition/symptom marquee — STANDALONE full-width band between sections (restored from prior site) */
+            .mq-band {
+                position: relative;
+                overflow: hidden;
+                background: var(--canvas-soft);
+                border-top: 1px solid var(--hair);
+                border-bottom: 1px solid var(--hair);
+                padding: 54px 0 60px;
+            }
+            /* tags align to the centered content column (same invisible vertical guides as the rest of the page), not edge-to-edge */
+            .mq-wrap {
+                max-width: var(--wrap);
+                margin: 0 auto;
+                padding: 0 24px;
+                overflow: hidden;
+                -webkit-mask-image: linear-gradient(
+                    90deg,
+                    transparent,
+                    #000 4%,
+                    #000 96%,
+                    transparent
+                );
+                mask-image: linear-gradient(
+                    90deg,
+                    transparent,
+                    #000 4%,
+                    #000 96%,
+                    transparent
+                );
+            }
+            @media (min-width: 768px) {
+                .mq-wrap {
+                    padding: 0 40px;
+                }
+            }
+            .mq-track {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                pointer-events: none;
+            }
+            .es-mq-row {
+                display: flex;
+                width: max-content;
+                gap: 30px;
+                will-change: transform;
+            }
+            .es-mq-row[data-dir="left"] {
+                animation: es-mq-left var(--mq-dur, 76s) linear infinite;
+            }
+            .es-mq-row[data-dir="right"] {
+                animation: es-mq-right var(--mq-dur, 84s) linear infinite;
+            }
+            .mq-track[data-paused="true"] .es-mq-row {
+                animation-play-state: paused;
+            }
+            .es-mq-copy {
+                display: flex;
+                gap: 30px;
+                flex: none;
+                padding-right: 30px;
+            }
+            .es-tag {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                white-space: nowrap;
+                font-size: 15px;
+                font-weight: 500;
+                letter-spacing: -0.01em;
+                color: color-mix(in srgb, var(--muted) 62%, transparent);
+            }
+            .es-tag .d {
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+                background: color-mix(
+                    in srgb,
+                    var(--spectral) 80%,
+                    transparent
+                );
+            }
+            @keyframes es-mq-left {
+                from {
+                    transform: translate3d(0, 0, 0);
+                }
+                to {
+                    transform: translate3d(-50%, 0, 0);
+                }
+            }
+            @keyframes es-mq-right {
+                from {
+                    transform: translate3d(-50%, 0, 0);
+                }
+                to {
+                    transform: translate3d(0, 0, 0);
+                }
+            }
+            .mq-pause {
+                position: absolute;
+                left: 24px;
+                bottom: 16px;
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
+                background: #fff;
+                border: 1px solid var(--hair);
+                border-radius: var(--r-pill);
+                padding: 6px 13px;
+                font-family: var(--font-mono);
+                font-size: 11px;
+                letter-spacing: 0.04em;
+                color: var(--muted);
+                cursor: pointer;
+                box-shadow: var(--shadow-soft);
+                transition:
+                    color 0.15s var(--ease),
+                    border-color 0.15s var(--ease);
+            }
+            @media (min-width: 768px) {
+                .mq-pause {
+                    left: max(40px, calc((100% - var(--wrap)) / 2 + 40px));
+                }
+            }
+            .mq-pause:hover {
+                color: var(--ink);
+                border-color: var(--hair-strong);
+            }
+            .mq-pause svg {
+                color: var(--muted);
+                flex: none;
+            }
+
+            /* ============================================================ MEMBERSHIP */
+            .badge-pill {
+                display: inline-flex;
+                align-items: center;
+                font-family: var(--font-display);
+                font-weight: 600;
+                font-size: 12px;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--ink);
+                background: var(--surface-strong);
+                border-radius: var(--r-pill);
+                padding: 6px 14px;
+            }
+            .fact-strip {
+                margin-top: 24px;
+                font-family: var(--font-mono);
+                font-size: 13px;
+                letter-spacing: 0.02em;
+                color: var(--body-strong);
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px 14px;
+            }
+            .fact-strip .sep {
+                color: var(--hair-strong);
+            }
+            .mem-eyebrow {
+                color: var(--muted);
+                margin-bottom: 20px;
+            }
+            .dash-head {
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                gap: 16px;
+            }
+            .dash-head h3 {
+                margin: 0;
+                color: var(--ink);
+            }
+            .dash-head p {
+                margin: 8px 0 0;
+                max-width: 420px;
+            }
+            .dash {
+                margin-top: 20px;
+                background: var(--card);
+                border: 1px solid var(--hair);
+                border-radius: var(--r-xl);
+                box-shadow: var(--shadow-soft);
+                overflow: hidden;
+            }
+            .dash-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 13px 18px;
+                border-bottom: 1px solid var(--hair-soft);
+                background: var(--canvas-soft);
+            }
+            .dash-bar .l {
+                display: flex;
+                align-items: center;
+                gap: 9px;
+                font-family: var(--font-display);
+                font-weight: 500;
+                font-size: 13px;
+                color: var(--ink);
+            }
+            .dash-bar .dotg {
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: var(--data-optimal);
+            }
+            .dash-bar .r {
+                font-family: var(--font-mono);
+                font-size: 11px;
+                color: var(--muted);
+            }
+            .dash-age {
+                display: flex;
+                align-items: flex-end;
+                gap: 14px;
+                padding: 18px;
+                border-bottom: 1px solid var(--hair-soft);
+            }
+            .dash-age .big {
+                font-family: var(--font-mono);
+                font-weight: 500;
+                font-size: 44px;
+                line-height: 0.95;
+                color: var(--ink);
+            }
+            .dash-age .meta {
+                padding-bottom: 5px;
+            }
+            .dash-age .meta .k {
+                font-size: 12px;
+                color: var(--muted);
+            }
+            .dash-age .meta .d {
+                font-family: var(--font-mono);
+                font-size: 13px;
+                color: var(--data-optimal);
+                margin-top: 3px;
+            }
+            .mrow {
+                display: grid;
+                grid-template-columns: 1fr auto auto;
+                align-items: center;
+                gap: 14px;
+                padding: 13px 18px;
+                border-bottom: 1px solid var(--hair-soft);
+            }
+            .mrow:last-child {
+                border-bottom: none;
+            }
+            .mrow .mn {
+                font-family: var(--font-sans);
+                font-size: 14px;
+                color: var(--body-strong);
+            }
+            .mrow .mn small {
+                display: block;
+                color: var(--muted);
+                font-size: 11.5px;
+                margin-top: 2px;
+            }
+            .mrow .mv {
+                font-family: var(--font-mono);
+                font-size: 14px;
+                color: var(--ink);
+                font-weight: 500;
+                text-align: right;
+            }
+            .mrow .mv .d {
+                display: block;
+                font-size: 11px;
+                color: var(--data-optimal);
+                margin-top: 2px;
+            }
+            .spark {
+                width: 64px;
+                height: 24px;
+            }
+            .supp {
+                margin-top: 8px;
+            }
+            .supp-row {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                gap: 18px;
+                align-items: center;
+                padding: 22px 0;
+                border-bottom: 1px solid var(--hair);
+            }
+            .supp-row:first-child {
+                border-top: 1px solid var(--hair);
+            }
+            .supp-row h4 {
+                margin: 0;
+                font-family: var(--font-display);
+                font-weight: 500;
+                font-size: 18px;
+                color: var(--ink);
+            }
+            .supp-row p {
+                margin: 7px 0 0;
+                color: var(--muted);
+                font-size: 14px;
+                max-width: 430px;
+            }
+            .supp-row .tag {
+                font-family: var(--font-mono);
+                font-size: 12px;
+                color: var(--muted);
+                white-space: nowrap;
+                text-align: right;
+            }
+
+            /* navy commitment band */
+            .navy-band {
+                position: relative;
+                overflow: hidden;
+                background: var(--navy);
+                color: var(--on-dark);
+                border-radius: var(--r-xxl);
+                padding: 40px 28px;
+                box-shadow: var(--shadow-strong);
+                margin-top: 56px;
+            }
+            @media (min-width: 768px) {
+                .navy-band {
+                    padding: 56px;
+                }
+            }
+            .navy-band .glow {
+                position: absolute;
+                right: -6%;
+                top: -30%;
+                width: 50%;
+                height: 120%;
+                pointer-events: none;
+                background: radial-gradient(
+                    circle at 60% 40%,
+                    color-mix(in srgb, var(--spectral) 16%, transparent),
+                    transparent 60%
+                );
+            }
+            .navy-top {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+            }
+            @media (min-width: 980px) {
+                .navy-top {
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 48px;
+                }
+            }
+            .navy-top .promise {
+                color: var(--on-dark-strong);
+                max-width: 600px;
+            }
+            .navy-check {
+                margin-top: 18px;
+                font-family: var(--font-mono);
+                font-size: 13px;
+                color: var(--on-dark-soft);
+                display: inline-flex;
+                align-items: center;
+                gap: 9px;
+            }
+            .navy-check .ck {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--spectral);
+                flex: none;
+            }
+            .navy-cta {
+                display: flex;
+                flex-direction: column;
+                gap: 13px;
+                flex: none;
+            }
+            @media (min-width: 560px) {
+                .navy-cta {
+                    flex-direction: row;
+                }
+            }
+            @media (min-width: 980px) {
+                .navy-cta {
+                    flex-direction: column;
+                }
+            }
+            .navy-foot {
+                position: relative;
+                margin-top: 34px;
+                padding-top: 28px;
+                border-top: 1px solid rgba(255, 255, 255, 0.15);
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+            }
+            @media (min-width: 560px) {
+                .navy-foot {
+                    flex-direction: row;
+                    gap: 48px;
+                }
+            }
+            .navy-foot .col {
+                flex: 1;
+            }
+            .navy-foot h5 {
+                margin: 0;
+                font-family: var(--font-display);
+                font-weight: 500;
+                font-size: 16px;
+                color: var(--on-dark-strong);
+            }
+            .navy-foot p {
+                margin: 9px 0 0;
+                font-size: 13.5px;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.55);
+            }
+            .navy-foot .vline {
+                width: 1px;
+                background: rgba(255, 255, 255, 0.15);
+                align-self: stretch;
+                display: none;
+            }
+            @media (min-width: 560px) {
+                .navy-foot .vline {
+                    display: block;
+                }
+            }
+
+            /* ============================================================ CTA BAND (navy bookend) */
+            .cta-band {
+                position: relative;
+                overflow: hidden;
+                background: var(--navy);
+                color: var(--on-dark);
+            }
+            .cta-band .glow {
+                position: absolute;
+                left: 8%;
+                top: -20%;
+                width: 48%;
+                height: 140%;
+                pointer-events: none;
+                background: radial-gradient(
+                    circle at 40% 50%,
+                    color-mix(in srgb, var(--spectral) 14%, transparent),
+                    transparent 60%
+                );
+            }
+            .cta-in {
+                position: relative;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 34px;
+                align-items: center;
+            }
+            @media (min-width: 980px) {
+                .cta-in {
+                    grid-template-columns: 7fr 5fr;
+                    gap: 48px;
+                }
+            }
+            .cta-coda {
+                font-family: var(--font-mono);
+                font-size: 13px;
+                letter-spacing: 0.03em;
+                color: var(--on-dark-soft);
+                padding-bottom: 16px;
+                margin-bottom: 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+                display: inline-block;
+            }
+            .cta-coda b {
+                color: var(--data-optimal-dark);
+                font-weight: 500;
+            }
+            .cta-band h2 {
+                margin: 0;
+                color: var(--on-dark-strong);
+            }
+            .cta-actions {
+                display: flex;
+                gap: 14px;
+                flex-wrap: wrap;
+            }
+            @media (min-width: 980px) {
+                .cta-actions {
+                    justify-content: flex-end;
+                }
+            }
+
+            /* ============================================================ FOOTER */
+            .footer {
+                background: var(--canvas);
+                border-top: 1px solid var(--hair);
+                padding: 56px 0 40px;
+            }
+            .foot-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+            @media (min-width: 768px) {
+                .foot-grid {
+                    grid-template-columns: 2fr 1fr 1fr 1fr;
+                    gap: 40px;
+                }
+            }
+            .foot-grid h6 {
+                margin: 0 0 14px;
+                font-family: var(--font-display);
+                font-weight: 600;
+                font-size: 12px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--muted);
+            }
+            .foot-grid a {
+                display: block;
+                color: var(--body);
+                font-size: 14px;
+                padding: 5px 0;
+                transition: color 0.15s var(--ease);
+            }
+            .foot-grid a:hover {
+                color: var(--ink);
+            }
+            .foot-brand .brand {
+                font-size: 22px;
+            }
+            .foot-brand p {
+                margin: 14px 0 0;
+                color: var(--muted);
+                font-size: 13.5px;
+                max-width: 280px;
+                line-height: 1.6;
+            }
+            .foot-fine {
+                margin-top: 44px;
+                padding-top: 24px;
+                border-top: 1px solid var(--hair);
+                display: flex;
+                justify-content: space-between;
+                gap: 16px;
+                flex-wrap: wrap;
+                color: var(--muted-soft);
+                font-size: 12.5px;
+                font-family: var(--font-mono);
+            }
+
+            /* ============================================================ MOTION */
+            .reveal {
+                opacity: 0;
+                transform: translateY(18px);
+                transition:
+                    opacity 0.7s var(--ease),
+                    transform 0.7s var(--ease);
+            }
+            .reveal.in {
+                opacity: 1;
+                transform: none;
+            }
+            #apob-line {
+                transition: stroke-dashoffset 1.5s var(--ease);
+            }
+            .pulse {
+                transform-origin: center;
+                animation: pulse 2.4s var(--ease) infinite;
+            }
+            .pulse2 {
+                transform-origin: center;
+                animation: pulse 2.4s var(--ease) 0.8s infinite;
+            }
+            @keyframes pulse {
+                0% {
+                    opacity: 0.38;
+                    r: 14px;
+                }
+                70% {
+                    opacity: 0;
+                    r: 34px;
+                }
+                100% {
+                    opacity: 0;
+                    r: 34px;
+                }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                .reveal {
+                    opacity: 1;
+                    transform: none;
+                    transition: none;
+                }
+                #apob-line {
+                    transition: none !important;
+                }
+                .pulse,
+                .pulse2 {
+                    animation: none;
+                }
+                .es-mq-row {
+                    animation: none !important;
+                }
+                .btn:hover,
+                .hero-cta .lnk:hover {
+                    transform: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ============================ NAV ============================ -->
+        <header class="nav">
+            <div class="wrap nav-in">
+                <div class="brand">Compound</div>
+                <nav class="nav-links">
+                    <a href="#how">系统</a>
+                    <a href="#trajectory">科学依据</a>
+                    <a href="#membership">会员</a>
+                    <a href="#membership">检测项目</a>
+                </nav>
+                <div class="nav-right">
+                    <a class="nav-signin" href="#">登录</a>
+                    <a
+                        class="btn btn-primary"
+                        href="#"
+                        style="height: 40px; padding: 0 18px; font-size: 14px"
+                        >免费体验</a
+                    >
+                </div>
+            </div>
+        </header>
+
+        <!-- ============================ HERO ============================ -->
+        <section class="hero" id="hero">
+            <video
+                class="hero-bg"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+                poster="file:///Users/elemer/Documents/GitHub/compound/public/data/hero-poster.png"
+            >
+                <source
+                    src="file:///Users/elemer/Documents/GitHub/compound/public/data/vid-veo3-hero-opt.webm"
+                    type="video/webm"
+                />
+                <source
+                    src="file:///Users/elemer/Documents/GitHub/compound/public/data/vid-veo3-hero-opt.mp4"
+                    type="video/mp4"
+                />
+            </video>
+            <div class="hero-tint"></div>
+            <div class="hero-grad"></div>
+            <div class="hero-ushadow"></div>
+
+            <div class="wrap hero-inner">
+                <div class="hero-content" id="heroContent">
+                    <h1 class="t-mega">
+                        真正读懂你的身体。<br /><span class="emph"
+                            >开启生物智能</span
+                        >
+                    </h1>
+                    <p class="hero-sub">
+                        临床级生物标志物 · AI 驱动的轨迹分析 ·
+                        基于全球最前沿衰老科学的个性化长寿方案——专为亚洲打造。
+                    </p>
+                    <div class="hero-cta">
+                        <a class="btn btn-white btn-lg" href="#"
+                            >优先体验长寿优化</a
+                        >
+                        <a class="lnk" href="#trajectory"
+                            >探索科学依据 <span aria-hidden="true">→</span></a
+                        >
+                    </div>
+                    <div class="hipaa">
+                        <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="rgba(255,255,255,.7)"
+                            stroke-width="2"
+                        >
+                            <path
+                                d="M12 2l8 3v6c0 5-3.5 8-8 11-4.5-3-8-6-8-11V5l8-3z"
+                            />
+                            <path d="M9 12l2 2 4-4" />
+                        </svg>
+                        <span class="eyebrow">医疗级数据加密保护</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap hero-strip" id="heroStrip">
+                <div class="hero-strip-in">
+                    <span class="hero-chip"
+                        ><span class="k">ApoB</span
+                        ><span class="v">0.74 g/L</span></span
+                    >
+                    <span class="hero-chip"
+                        ><span class="k">hs-CRP</span
+                        ><span class="v">0.4 mg/L</span></span
+                    >
+                    <span class="hero-chip"
+                        ><span class="k">生物年龄</span
+                        ><span class="v opt">−3.1 yr</span></span
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ HOW IT WORKS — Lab Notebook rail ============================ -->
+        <section class="band" id="how">
+            <div class="wrap split split-4-8">
+                <div class="sticky-head reveal">
+                    <div class="eyebrow sec-eyebrow">
+                        Intelligence for Longevity
+                    </div>
+                    <h2 class="t-lg sec-title">开启你的健康智能</h2>
+                    <p class="t-body sec-sub">
+                        持续循环、不断进化的智能系统。使用越久，轨迹越清晰，方案越精准。
+                    </p>
+                    <div class="head-mono">
+                        <span class="dot"></span>CYCLE · 持续迭代
+                    </div>
+                </div>
+
+                <div class="rail reveal">
+                    <div class="rail-row">
+                        <div class="rail-plate mono">01</div>
+                        <div class="rail-body">
+                            <h3 class="t-title">深度检测，建立基线</h3>
+                            <p class="t-body">一次采血，深度指标全部覆盖。</p>
+                        </div>
+                        <div class="rail-spec">700+ 标志物 / 1 次采血</div>
+                    </div>
+                    <div class="rail-row">
+                        <div class="rail-plate mono">02</div>
+                        <div class="rail-body">
+                            <h3 class="t-title">清晰解读，长寿洞见</h3>
+                            <p class="t-body">
+                                对标最优值，不止于“疾病 vs. 正常”。
+                            </p>
+                        </div>
+                        <div class="rail-spec">vs. 最优值</div>
+                    </div>
+                    <div class="rail-row">
+                        <div class="rail-plate mono">03</div>
+                        <div class="rail-body">
+                            <h3 class="t-title">专属于你的精准健康方案</h3>
+                            <p class="t-body">
+                                定制化生活方式、营养、运动、补剂等行动指南，为你量身定制、排序。
+                            </p>
+                        </div>
+                        <div class="rail-spec">营养·运动·补剂 · 排序</div>
+                    </div>
+                    <div class="rail-row">
+                        <div class="rail-plate mono">04</div>
+                        <div class="rail-body">
+                            <h3 class="t-title">复测迭代</h3>
+                            <p class="t-body">
+                                复测追踪变化，验证优化成果，每一轮更精准一分。
+                            </p>
+                        </div>
+                        <div class="rail-spec">Δ 每轮校准</div>
+                    </div>
+                    <div class="rail-loop">
+                        <svg
+                            width="34"
+                            height="40"
+                            viewBox="0 0 34 40"
+                            fill="none"
+                        >
+                            <path
+                                d="M16 2 V30 a1 1 0 0 1 -1 1 H6"
+                                stroke="var(--spectral)"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-dasharray="2 5"
+                            />
+                            <path
+                                d="M10 26 L5 31 L10 36"
+                                stroke="var(--spectral)"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                        <span class="mono">↻ 持续循环 · CONTINUOUS LOOP</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ DRIFTING CONDITION FIELD — standalone band ============================ -->
+        <section class="mq-band" aria-label="数据先于体感发现的指标信号">
+            <div class="mq-wrap">
+                <div class="mq-track" id="mqTrack" aria-hidden="true"></div>
+            </div>
+            <button
+                class="mq-pause"
+                id="mqPause"
+                type="button"
+                aria-pressed="false"
+            >
+                <svg
+                    class="ic-pause"
+                    width="9"
+                    height="9"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                >
+                    <rect x="6" y="4" width="4" height="16" rx="1" />
+                    <rect x="14" y="4" width="4" height="16" rx="1" />
+                </svg>
+                <svg
+                    class="ic-play"
+                    width="9"
+                    height="9"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    style="display: none"
+                >
+                    <path d="M7 4l12 8-12 8z" />
+                </svg>
+                <span class="lbl">暂停动态效果</span>
+            </button>
+        </section>
+
+        <!-- ============================ EARLY SIGNALS — promoted trajectory ============================ -->
+        <section
+            class="band"
+            id="trajectory"
+            style="position: relative; background: var(--canvas-soft)"
+        >
+            <div class="es-wash"></div>
+            <div
+                class="wrap split split-5-7"
+                style="position: relative; z-index: 1"
+            >
+                <div class="es-left reveal">
+                    <div class="eyebrow sec-eyebrow">Longitudinal Tracking</div>
+                    <h2 class="t-xl sec-title">
+                        建立长期轨迹。<br />监测身体如何变化。
+                    </h2>
+
+                    <div class="benefit-list">
+                        <div class="benefit-row">
+                            <span class="lbl">建立属于你的长期基线</span
+                            ><span class="tag">BASELINE</span>
+                        </div>
+                        <div class="benefit-row">
+                            <span class="lbl">每次复测都被持续记录</span
+                            ><span class="tag">n 次复测</span>
+                        </div>
+                        <div class="benefit-row">
+                            <span class="lbl">把体感变化和真实指标对应起来</span
+                            ><span class="tag">体感 ↔ 指标</span>
+                        </div>
+                    </div>
+
+                    <div class="age-block">
+                        <div class="age-cell">
+                            <div class="k">生物年龄</div>
+                            <div class="n big mono">36</div>
+                        </div>
+                        <div class="age-cell">
+                            <div class="k">实际年龄</div>
+                            <div class="n mid mono">39</div>
+                        </div>
+                        <div class="age-delta mono">Δ −3.1 yr</div>
+                    </div>
+                </div>
+
+                <div class="es-fig reveal">
+                    <div class="fig">
+                        <div class="fig-head">
+                            <div>
+                                <div class="name">
+                                    ApoB <span>· 载脂蛋白 B</span>
+                                </div>
+                                <div class="ref">
+                                    参考 &lt; 0.80 g/L · 越低越优
+                                </div>
+                            </div>
+                            <div class="fig-val">
+                                <div class="v mono">
+                                    0.74<span
+                                        style="
+                                            font-size: 13px;
+                                            color: var(--muted);
+                                        "
+                                    >
+                                        g/L</span
+                                    >
+                                </div>
+                                <div class="pill mono">▼ 最优区间</div>
+                            </div>
+                        </div>
+
+                        <svg
+                            class="plot"
+                            viewBox="0 0 760 470"
+                            role="img"
+                            aria-label="ApoB 12 个月轨迹：从 1.12 降至 0.74 g/L，进入最优区间"
+                        >
+                            <!-- optimal band -->
+                            <rect
+                                x="92"
+                                y="84"
+                                width="612"
+                                height="118"
+                                rx="20"
+                                fill="color-mix(in srgb,var(--data-optimal) 9%,transparent)"
+                            />
+                            <text
+                                x="108"
+                                y="118"
+                                font-family="var(--font-display)"
+                                font-size="17"
+                                font-weight="600"
+                                letter-spacing="2"
+                                fill="var(--data-optimal)"
+                            >
+                                正常范围内
+                            </text>
+                            <text
+                                x="108"
+                                y="142"
+                                font-family="var(--font-mono)"
+                                font-size="14"
+                                fill="color-mix(in srgb,var(--data-optimal) 80%,transparent)"
+                            >
+                                &lt; 0.80 g/L
+                            </text>
+                            <!-- threshold -->
+                            <line
+                                x1="92"
+                                y1="202"
+                                x2="704"
+                                y2="202"
+                                stroke="color-mix(in srgb,var(--muted) 34%,transparent)"
+                                stroke-width="2"
+                                stroke-dasharray="7 9"
+                            />
+                            <text
+                                x="640"
+                                y="350"
+                                font-family="var(--font-display)"
+                                font-size="15"
+                                font-weight="600"
+                                letter-spacing="2"
+                                fill="var(--data-alert)"
+                                text-anchor="end"
+                            >
+                                偏高
+                            </text>
+                            <!-- guide verticals -->
+                            <line
+                                x1="180"
+                                y1="150"
+                                x2="180"
+                                y2="408"
+                                stroke="color-mix(in srgb,var(--muted) 18%,transparent)"
+                                stroke-width="1.5"
+                            />
+                            <line
+                                x1="400"
+                                y1="150"
+                                x2="400"
+                                y2="408"
+                                stroke="color-mix(in srgb,var(--muted) 18%,transparent)"
+                                stroke-width="1.5"
+                            />
+                            <line
+                                x1="620"
+                                y1="150"
+                                x2="620"
+                                y2="408"
+                                stroke="color-mix(in srgb,var(--muted) 18%,transparent)"
+                                stroke-width="1.5"
+                            />
+                            <defs>
+                                <linearGradient
+                                    id="traj"
+                                    x1="180"
+                                    y1="338"
+                                    x2="620"
+                                    y2="150"
+                                    gradientUnits="userSpaceOnUse"
+                                >
+                                    <stop stop-color="var(--data-alert)" />
+                                    <stop
+                                        offset="1"
+                                        stop-color="var(--data-optimal)"
+                                    />
+                                </linearGradient>
+                            </defs>
+                            <!-- the climbing line (animated draw) -->
+                            <path
+                                id="apob-line"
+                                d="M180 338 L400 252 L620 150"
+                                fill="none"
+                                stroke="url(#traj)"
+                                stroke-width="4.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <!-- nodes -->
+                            <circle
+                                cx="180"
+                                cy="338"
+                                r="13"
+                                fill="color-mix(in srgb,var(--data-alert) 78%,white)"
+                                stroke="var(--data-alert)"
+                                stroke-width="3"
+                            />
+                            <circle
+                                cx="400"
+                                cy="252"
+                                r="13"
+                                fill="color-mix(in srgb,var(--data-monitor) 78%,white)"
+                                stroke="var(--data-monitor)"
+                                stroke-width="3"
+                            />
+                            <circle
+                                class="pulse"
+                                cx="620"
+                                cy="150"
+                                r="14"
+                                fill="color-mix(in srgb,var(--spectral) 30%,transparent)"
+                            />
+                            <circle
+                                class="pulse2"
+                                cx="620"
+                                cy="150"
+                                r="14"
+                                fill="color-mix(in srgb,var(--spectral) 22%,transparent)"
+                            />
+                            <circle
+                                cx="620"
+                                cy="150"
+                                r="14"
+                                fill="#fff"
+                                stroke="var(--data-optimal)"
+                                stroke-width="4"
+                            />
+                            <circle
+                                cx="620"
+                                cy="150"
+                                r="5.5"
+                                fill="var(--data-optimal)"
+                            />
+                            <!-- node value labels -->
+                            <text
+                                x="180"
+                                y="372"
+                                font-family="var(--font-mono)"
+                                font-size="15"
+                                fill="var(--data-alert)"
+                                text-anchor="middle"
+                            >
+                                1.12
+                            </text>
+                            <text
+                                x="400"
+                                y="232"
+                                font-family="var(--font-mono)"
+                                font-size="15"
+                                fill="var(--data-monitor)"
+                                text-anchor="middle"
+                            >
+                                0.92
+                            </text>
+                            <text
+                                x="620"
+                                y="128"
+                                font-family="var(--font-mono)"
+                                font-size="16"
+                                font-weight="500"
+                                fill="var(--data-optimal)"
+                                text-anchor="middle"
+                            >
+                                0.74
+                            </text>
+                            <!-- date axis -->
+                            <text
+                                x="180"
+                                y="438"
+                                font-family="var(--font-mono)"
+                                font-size="13"
+                                fill="var(--muted)"
+                                text-anchor="middle"
+                            >
+                                2025年5月
+                            </text>
+                            <text
+                                x="400"
+                                y="438"
+                                font-family="var(--font-mono)"
+                                font-size="13"
+                                fill="var(--muted)"
+                                text-anchor="middle"
+                            >
+                                2025年10月
+                            </text>
+                            <text
+                                x="620"
+                                y="438"
+                                font-family="var(--font-mono)"
+                                font-size="13"
+                                fill="var(--muted)"
+                                text-anchor="middle"
+                            >
+                                2026年5月
+                            </text>
+                        </svg>
+
+                        <div class="fig-foot">
+                            <div class="fig-delta mono">
+                                Δ −0.38 g/L · 12 个月
+                            </div>
+                            <div class="fig-chips">
+                                <span class="chip-read"
+                                    ><span class="ck">hs-CRP</span
+                                    ><span class="cv">0.4 mg/L</span
+                                    ><span class="cd">▼0.9</span></span
+                                >
+                                <span class="chip-read"
+                                    ><span class="ck">HbA1c</span
+                                    ><span class="cv">5.2 %</span
+                                    ><span class="cd">▼0.4</span></span
+                                >
+                                <span class="chip-read"
+                                    ><span class="ck">Lp(a)</span
+                                    ><span class="cv">18 nmol/L</span></span
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="caught">
+                        <div class="hd">
+                            <span class="eyebrow"
+                                >早于体感被发现 · Caught Early</span
+                            ><span class="ln"></span>
+                        </div>
+                        <div class="cond-field">
+                            <span class="cond">胰岛素抵抗</span
+                            ><span class="cond">甲状腺功能减退</span
+                            ><span class="cond">PCOS</span>
+                            <span class="cond">脂肪肝</span
+                            ><span class="cond">糖尿病前期</span
+                            ><span class="cond">冠心病风险</span>
+                            <span class="cond">慢性肾损伤</span
+                            ><span class="cond">睡眠呼吸暂停风险</span>
+                        </div>
+                        <div class="illus">示意数据 · Illustrative</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ MEMBERSHIP ============================ -->
+        <section class="band" id="membership">
+            <div class="wrap">
+                <div class="split split-4-8">
+                    <div class="sticky-head reveal">
+                        <span class="badge-pill">Compound 年度会员</span>
+                        <h2 class="t-xl sec-title" style="margin-top: 20px">
+                            不止于检测。<br />私享长寿智能系统。
+                        </h2>
+                        <p class="t-body sec-sub" style="max-width: 380px">
+                            Compound
+                            不止于检测，是一套由顶级长寿科学专家设计，围绕你构建的专属健康智能系统。
+                        </p>
+                        <div class="fact-strip">
+                            <span>8 大系统</span><span class="sep">·</span
+                            ><span>5× 深度</span><span class="sep">·</span
+                            ><span>700+ 标志物</span>
+                        </div>
+                    </div>
+
+                    <div class="reveal">
+                        <div class="eyebrow mem-eyebrow">你的会员专属权益</div>
+
+                        <div class="dash-head">
+                            <h3 class="t-md">一屏掌握健康数据</h3>
+                        </div>
+                        <p
+                            class="t-body"
+                            style="margin-top: 8px; max-width: 480px"
+                        >
+                            深度指标 · 生物年龄 · 个人健康报告 ·
+                            纵向趋势。导入历史检测数据，看见你的健康趋势线。
+                        </p>
+
+                        <div class="dash">
+                            <div class="dash-bar">
+                                <div class="l">
+                                    <span class="dotg"></span>Compound ·
+                                    健康总览
+                                </div>
+                                <div class="r">更新于 2026年5月</div>
+                            </div>
+                            <div class="dash-age">
+                                <div class="big mono">36</div>
+                                <div class="meta">
+                                    <div class="k">生物年龄</div>
+                                    <div class="d mono">实际 39 · −3.1 yr</div>
+                                </div>
+                            </div>
+                            <div class="mrow">
+                                <div class="mn">
+                                    ApoB<small>载脂蛋白 B</small>
+                                </div>
+                                <svg class="spark" viewBox="0 0 64 24">
+                                    <polyline
+                                        points="2,20 22,16 42,9 62,4"
+                                        fill="none"
+                                        stroke="var(--spectral)"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <circle
+                                        cx="62"
+                                        cy="4"
+                                        r="2.6"
+                                        fill="var(--data-optimal)"
+                                    />
+                                </svg>
+                                <div class="mv">
+                                    0.74 g/L<span class="d">▼ 最优</span>
+                                </div>
+                            </div>
+                            <div class="mrow">
+                                <div class="mn">
+                                    hs-CRP<small>高敏 C 反应蛋白</small>
+                                </div>
+                                <svg class="spark" viewBox="0 0 64 24">
+                                    <polyline
+                                        points="2,7 22,12 42,14 62,18"
+                                        fill="none"
+                                        stroke="var(--spectral)"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <circle
+                                        cx="62"
+                                        cy="18"
+                                        r="2.6"
+                                        fill="var(--data-optimal)"
+                                    />
+                                </svg>
+                                <div class="mv">
+                                    0.4 mg/L<span class="d">▼ 0.9</span>
+                                </div>
+                            </div>
+                            <div class="mrow">
+                                <div class="mn">
+                                    HbA1c<small>糖化血红蛋白</small>
+                                </div>
+                                <svg class="spark" viewBox="0 0 64 24">
+                                    <polyline
+                                        points="2,9 22,11 42,13 62,16"
+                                        fill="none"
+                                        stroke="var(--spectral)"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <circle
+                                        cx="62"
+                                        cy="16"
+                                        r="2.6"
+                                        fill="var(--data-optimal)"
+                                    />
+                                </svg>
+                                <div class="mv">
+                                    5.2 %<span class="d">▼ 0.4</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="supp">
+                            <div class="supp-row">
+                                <div>
+                                    <h4>AI 健康智能体——越用越懂你</h4>
+                                    <p>
+                                        纵向解读你的数据，捕捉模式与偏移，随身体变化持续优化建议。用得越久，越精准。
+                                    </p>
+                                </div>
+                                <div class="tag">Δ 模式 · 偏移 · 持续校准</div>
+                            </div>
+                            <div class="supp-row">
+                                <div>
+                                    <h4>专属顾问团</h4>
+                                    <p>
+                                        随时提问，无限次咨询，由全球顶尖的长寿科学家与临床专家组成。
+                                    </p>
+                                </div>
+                                <div class="tag">工作日 &lt; 24h 响应</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- navy commitment band -->
+                <div class="navy-band reveal">
+                    <div class="glow"></div>
+                    <div class="navy-top">
+                        <div>
+                            <p class="t-md promise">
+                                会员每年含一次全景深度采样，一次采血即覆盖全部指标。
+                            </p>
+                            <div class="navy-check">
+                                <span class="ck"
+                                    ><svg
+                                        width="11"
+                                        height="11"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="3"
+                                    >
+                                        <path d="M5 12l5 5L20 7" /></svg
+                                ></span>
+                                1 次采血 · 全部指标 · 全年覆盖
+                            </div>
+                        </div>
+                        <div class="navy-cta">
+                            <a class="btn btn-white" href="#">立即加入</a>
+                            <a class="btn btn-ghost-dark" href="#"
+                                >探索所有生物标记
+                                <span aria-hidden="true">→</span></a
+                            >
+                        </div>
+                    </div>
+                    <div class="navy-foot">
+                        <div class="col">
+                            <h5>由全球顶尖医学团队 构建</h5>
+                            <p>Compound 汇聚全球顶尖的长寿科学家与临床专家。</p>
+                        </div>
+                        <div class="vline"></div>
+                        <div class="col">
+                            <h5>定制化健康解决方案</h5>
+                            <p>经临床评估后，获取定制化健康解决方案。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ CTA BAND — navy bookend ============================ -->
+        <section class="cta-band band">
+            <div class="glow"></div>
+            <div class="wrap cta-in">
+                <div class="reveal">
+                    <span class="cta-coda"
+                        >生物年龄 39 → <b>36</b> · ApoB 1.12 → <b>0.74 g/L</b> ·
+                        12 个月</span
+                    >
+                    <h2 class="t-xl">
+                        健康是你最大的资产。<br />是时候让它复利增长了。
+                    </h2>
+                </div>
+                <div class="cta-actions reveal">
+                    <a class="btn btn-white btn-lg" href="#">免费体验</a>
+                    <a class="btn btn-ghost-dark btn-lg" href="#">检测项目</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ FOOTER ============================ -->
+        <footer class="footer">
+            <div class="wrap">
+                <div class="foot-grid">
+                    <div class="foot-brand">
+                        <div class="brand">Compound</div>
+                        <p>
+                            专为亚洲打造的长寿健康智能系统。临床级检测 · AI
+                            轨迹分析 · 专属顾问。
+                        </p>
+                    </div>
+                    <div>
+                        <h6>产品</h6>
+                        <a href="#">检测项目</a><a href="#">会员</a
+                        ><a href="#">生物标记库</a><a href="#">价格</a>
+                    </div>
+                    <div>
+                        <h6>科学</h6>
+                        <a href="#">科学依据</a><a href="#">团队</a
+                        ><a href="#">我们的使命</a>
+                    </div>
+                    <div>
+                        <h6>支持</h6>
+                        <a href="#">常见问题</a><a href="#">联系我们</a
+                        ><a href="#">隐私条款</a>
+                    </div>
+                </div>
+                <div class="foot-fine">
+                    <span>© 2026 Compound Life</span>
+                    <span>HIPAA · 医疗级数据加密</span>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            (function () {
+                var reduce = window.matchMedia(
+                    "(prefers-reduced-motion: reduce)",
+                ).matches;
+
+                /* reveal-on-scroll */
+                var reveals = document.querySelectorAll(".reveal");
+                if (reduce || !("IntersectionObserver" in window)) {
+                    reveals.forEach(function (el) {
+                        el.classList.add("in");
+                    });
+                } else {
+                    var io = new IntersectionObserver(
+                        function (entries) {
+                            entries.forEach(function (e) {
+                                if (e.isIntersecting) {
+                                    e.target.classList.add("in");
+                                    io.unobserve(e.target);
+                                }
+                            });
+                        },
+                        { threshold: 0.16, rootMargin: "0px 0px -8% 0px" },
+                    );
+                    reveals.forEach(function (el) {
+                        io.observe(el);
+                    });
+                }
+
+                /* trajectory one-shot draw */
+                var line = document.getElementById("apob-line");
+                if (line) {
+                    var len = line.getTotalLength();
+                    if (reduce) {
+                        line.style.strokeDasharray = "none";
+                    } else {
+                        line.style.strokeDasharray = len;
+                        line.style.strokeDashoffset = len;
+                        var seen = false;
+                        var lo = new IntersectionObserver(
+                            function (entries) {
+                                entries.forEach(function (e) {
+                                    if (e.isIntersecting && !seen) {
+                                        seen = true;
+                                        requestAnimationFrame(function () {
+                                            line.style.strokeDashoffset = "0";
+                                        });
+                                        lo.disconnect();
+                                    }
+                                });
+                            },
+                            { threshold: 0.4 },
+                        );
+                        lo.observe(line);
+                    }
+                }
+
+                /* hero content fade on scroll */
+                var hc = document.getElementById("heroContent");
+                var hs = document.getElementById("heroStrip");
+                if (hc && !reduce) {
+                    var hero = document.getElementById("hero");
+                    var onScroll = function () {
+                        var h = hero.offsetHeight || window.innerHeight;
+                        var p = Math.min(
+                            1,
+                            Math.max(0, window.scrollY / (h * 0.72)),
+                        );
+                        var o = 1 - p;
+                        hc.style.opacity = o;
+                        hc.style.transform = "translateY(" + p * -12 + "px)";
+                        if (hs) {
+                            hs.style.opacity = o;
+                        }
+                    };
+                    window.addEventListener("scroll", onScroll, {
+                        passive: true,
+                    });
+                    onScroll();
+                }
+
+                /* drifting condition/symptom marquee — standalone band (restored from prior site) */
+                var mq = document.getElementById("mqTrack");
+                if (mq) {
+                    var TERMS = [
+                        "疲劳",
+                        "脑雾",
+                        "睡眠紊乱",
+                        "情绪波动",
+                        "肌肉流失",
+                        "性欲下降",
+                        "经期紊乱",
+                        "恢复变慢",
+                        "焦虑",
+                        "午后崩盘",
+                        "怕冷",
+                        "水肿",
+                        "胰岛素抵抗",
+                        "甲状腺功能减退",
+                        "PCOS",
+                        "贫血",
+                        "脂肪肝",
+                        "冠心病风险",
+                        "慢性肾损伤",
+                        "自身免疫活跃",
+                        "卵巢癌风险",
+                        "红斑狼疮",
+                        "睡眠呼吸暂停风险",
+                        "糖尿病前期",
+                    ];
+                    var DURS = [76, 86, 80, 92],
+                        DIRS = ["left", "right", "left", "right"];
+                    var rot = function (a, n) {
+                        return a.slice(n).concat(a.slice(0, n));
+                    };
+                    var buildCopy = function (list) {
+                        var c = document.createElement("div");
+                        c.className = "es-mq-copy";
+                        list.forEach(function (t) {
+                            var s = document.createElement("span");
+                            s.className = "es-tag";
+                            s.innerHTML = '<span class="d"></span>' + t;
+                            c.appendChild(s);
+                        });
+                        return c;
+                    };
+                    for (var i = 0; i < 4; i++) {
+                        var row = document.createElement("div");
+                        row.className = "es-mq-row";
+                        row.setAttribute("data-dir", DIRS[i]);
+                        row.style.setProperty("--mq-dur", DURS[i] + "s");
+                        var list = rot(TERMS, (i * 7) % TERMS.length);
+                        row.appendChild(buildCopy(list));
+                        row.appendChild(buildCopy(list));
+                        mq.appendChild(row);
+                    }
+                    var pause = document.getElementById("mqPause");
+                    if (pause) {
+                        if (reduce) {
+                            pause.style.display = "none";
+                        }
+                        pause.addEventListener("click", function () {
+                            var now = mq.getAttribute("data-paused") !== "true";
+                            mq.setAttribute(
+                                "data-paused",
+                                now ? "true" : "false",
+                            );
+                            pause.setAttribute(
+                                "aria-pressed",
+                                now ? "true" : "false",
+                            );
+                            pause.querySelector(".ic-pause").style.display = now
+                                ? "none"
+                                : "";
+                            pause.querySelector(".ic-play").style.display = now
+                                ? ""
+                                : "none";
+                            pause.querySelector(".lbl").textContent = now
+                                ? "播放动态效果"
+                                : "暂停动态效果";
+                        });
+                    }
+                }
+            })();
+        </script>
+    </body>
+</html>
