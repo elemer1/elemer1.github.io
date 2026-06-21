@@ -1,10 +1,23 @@
 #!/usr/bin/env python3
 """Generate the figures for "The Blind Ledger".
 
-All figures share one fixed canvas size and are saved without a tight
-bounding box, so each SVG has identical intrinsic dimensions. That keeps
-them visually uniform and correctly scaled when displayed inside the
-650px reading column (no breakout).
+DESIGN LANGUAGE (one spec shared by all three figures)
+------------------------------------------------------
+Canvas      : every figure is one fixed size (FIGSIZE), saved without a
+              tight bounding box, so the SVGs have identical dimensions and
+              scale uniformly inside the 650px reading column.
+Semantics   : BLUE  = tangible / recorded / "what the ledger sees".
+              RED   = intangible / "dark matter" / the residual / work-around.
+              These hues mean the same thing in every figure.
+Saturation  : saturated tone = a measured quantity (data lines, the recorded
+              bar); pale tone = a share or residual region (area fills).
+Neutrals    : INK = primary text + the measured line; MUTED = secondary text,
+              ticks, annotations, sources; GRID = gridlines and light edges.
+Type scale  : title 13 bold caps; subtitle 10; axis 10.5; ticks 9.5;
+              annotation 9 (colored to its series); source 7.6 monospace.
+Layout      : heading block top-left at a fixed position; a monospace source
+              line in the bottom-left footer; annotations colored to match
+              the series they describe.
 """
 
 from __future__ import annotations
@@ -18,6 +31,7 @@ mpl.use("Agg")
 
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.patches import Patch
 from matplotlib.ticker import FuncFormatter
 
 
@@ -27,15 +41,18 @@ OUTPUT_DIR = ROOT / "assets" / "images" / "the-blind-ledger"
 # One canvas for every figure -> uniform scale in the reading column.
 FIGSIZE = (7.4, 4.6)
 
+# Shared palette (see DESIGN LANGUAGE above).
 INK = "#202124"
 MUTED = "#626A73"
 GRID = "#D9DEE3"
-LIGHT = "#EEF1F3"
-RESIDUAL = "#C9CED3"
-RED = "#B24A45"
-BLUE = "#2D6282"
+BLUE = "#2D6282"        # tangible / recorded / what the ledger sees
 BLUE_LIGHT = "#DCE8EF"
+RED = "#B24A45"         # intangible / dark matter / the residual
 RED_LIGHT = "#F1E2E0"
+
+# Consistent footer position for the monospace source line.
+SOURCE_X = 0.062
+SOURCE_Y = 0.038
 
 
 mpl.rcParams.update(
@@ -76,10 +93,14 @@ def _style_axis(ax: plt.Axes, *, grid: bool = True, axis: str = "y") -> None:
 
 
 def _figure_heading(fig: plt.Figure, title: str, subtitle: str) -> None:
-    fig.text(0.065, 0.955, title.upper(), ha="left", va="top",
+    fig.text(0.062, 0.955, title.upper(), ha="left", va="top",
              fontsize=13, fontweight="bold", color=INK)
-    fig.text(0.065, 0.905, subtitle, ha="left", va="top",
+    fig.text(0.062, 0.905, subtitle, ha="left", va="top",
              fontsize=10, color=MUTED)
+
+
+def _source(fig: plt.Figure, text: str) -> None:
+    fig.text(SOURCE_X, SOURCE_Y, text, fontsize=7.6, color=MUTED, family="monospace")
 
 
 def _save(fig: plt.Figure, name: str, preview_dir: Path | None) -> None:
@@ -104,57 +125,58 @@ def _pct(value: float, _: int | None = None) -> str:
     return f"{int(round(value))}%"
 
 
+def _callout(ax: plt.Axes, x: float, y: float, text: str, *, ha: str = "left") -> None:
+    ax.text(x, y, text, fontsize=8.4, color=INK, ha=ha, va="center",
+            bbox=dict(boxstyle="square,pad=0.32", facecolor="white",
+                      edgecolor=GRID, linewidth=0.8), zorder=8)
+
+
 def figure_1(preview_dir: Path | None) -> None:
-    """The Ocean Tomo IAMV inversion: tangible vs intangible share, 1975-2025."""
+    """The Ocean Tomo IAMV inversion: intangible share rises, 1975-2025."""
 
     # Ocean Tomo / J.S. Held IAMV study, S&P 500 constituents.
     # Anchors cited in the essay: 1975 = 17%, 1985 = 32%, 2005 = 79%, 2025 = 92%.
     years = np.array([1975, 1985, 1995, 2005, 2015, 2020, 2025], dtype=float)
     intangible = np.array([17, 32, 68, 79, 84, 90, 92], dtype=float)
-    tangible = 100 - intangible
 
     fig, ax = plt.subplots(figsize=FIGSIZE)
-    fig.subplots_adjust(left=0.135, right=0.95, top=0.79, bottom=0.13)
+    fig.subplots_adjust(left=0.135, right=0.95, top=0.79, bottom=0.155)
     _figure_heading(
         fig,
         "The fifty-year inversion",
-        "Intangibles' share of S&P 500 market value, 1975-2025 (Ocean Tomo IAMV).",
+        "Tangible vs intangible share of S&P 500 market value, 1975-2025.",
     )
 
-    ax.fill_between(years, 0, tangible, color=BLUE_LIGHT, zorder=1)
-    ax.fill_between(years, tangible, 100, color=RED_LIGHT, zorder=1)
-    ax.plot(years, tangible, color=INK, linewidth=2.0, zorder=4)
-    ax.scatter(years, tangible, s=22, color=INK, edgecolors="white",
+    # Intangible grows from the bottom (red); tangible is the shrinking top (blue).
+    ax.fill_between(years, 0, intangible, color=RED_LIGHT, zorder=1)
+    ax.fill_between(years, intangible, 100, color=BLUE_LIGHT, zorder=1)
+    ax.plot(years, intangible, color=INK, linewidth=2.0, zorder=4)
+    ax.scatter(years, intangible, s=22, color=INK, edgecolors="white",
                linewidths=0.9, zorder=5)
 
     # The steep stretch the essay singles out: 1985-2005, +47 pp.
-    ax.axvspan(1985, 2005, color=MUTED, alpha=0.07, zorder=0)
-    ax.annotate("", xy=(2005, 96), xytext=(1985, 96),
+    ax.axvspan(1985, 2005, color=MUTED, alpha=0.06, zorder=0)
+    ax.annotate("", xy=(2005, 94), xytext=(1985, 94),
                 arrowprops=dict(arrowstyle="<->", color=MUTED, linewidth=0.9))
-    ax.text(1995, 90, "+47 pp in 20 years", ha="center", va="center",
+    ax.text(1995, 88, "+47 pp in 20 years", ha="center", va="center",
             fontsize=9, color=MUTED)
 
-    # Crossover (intangible = tangible = 50%), interpolated near 1990.
-    ax.scatter([1990], [50], s=30, color=RED, edgecolors="white",
+    # Crossover (intangible overtakes tangible) near 1990.
+    ax.scatter([1990], [50], s=30, color=INK, edgecolors="white",
                linewidths=0.9, zorder=6)
-    ax.text(1991.5, 56, "~1990 crossover", fontsize=8.4, color=MUTED,
-            ha="left", va="center")
+    ax.annotate("~1990 crossover", xy=(1990, 50), xytext=(1996, 34),
+                fontsize=8.4, color=MUTED, ha="left", va="center",
+                arrowprops=dict(arrowstyle="-|>", color=MUTED, linewidth=0.8))
 
-    # Band labels.
-    ax.text(2011, 66, "intangible", color=RED, fontsize=12, fontweight="bold",
-            ha="center", va="center")
-    ax.text(1980, 9, "tangible", color=BLUE, fontsize=12, fontweight="bold",
+    # Band labels, colored to the semantics.
+    ax.text(1981, 73, "Tangible", color=BLUE, fontsize=12.5, fontweight="bold",
             ha="left", va="center")
+    ax.text(2012, 24, "Intangible", color=RED, fontsize=12.5, fontweight="bold",
+            ha="right", va="center")
 
-    # Endpoint callouts.
-    ax.text(1976, 77, "1975\n83% tangible", fontsize=8.4, color=INK,
-            ha="left", va="top",
-            bbox=dict(boxstyle="square,pad=0.3", facecolor="white",
-                      edgecolor=GRID, linewidth=0.8))
-    ax.text(2024.5, 64, "2025\n92% intangible", fontsize=8.4, color=INK,
-            ha="right", va="top",
-            bbox=dict(boxstyle="square,pad=0.3", facecolor="white",
-                      edgecolor=GRID, linewidth=0.8))
+    # Endpoint callouts in open space (no line overlap).
+    _callout(ax, 1976.5, 52, "1975\n17% intangible", ha="left")
+    _callout(ax, 2024, 62, "2025\n92% intangible", ha="right")
 
     ax.set_xlim(1975, 2025)
     ax.set_ylim(0, 100)
@@ -165,9 +187,7 @@ def figure_1(preview_dir: Path | None) -> None:
     ax.set_ylabel("Share of S&P 500 market value")
     _style_axis(ax)
 
-    ax.text(1975.4, 2.5,
-            "source: Ocean Tomo / J.S. Held IAMV study   |   share = residual of market cap",
-            fontsize=7.6, color=MUTED, family="monospace", zorder=7)
+    _source(fig, "source: Ocean Tomo / J.S. Held IAMV study  |  intangible share = residual of market cap")
 
     _save(fig, "figure-1-the-fifty-year-inversion", preview_dir)
 
@@ -176,7 +196,7 @@ def figure_2(preview_dir: Path | None) -> None:
     """Two readings of accounting's erosion (Lev & Gu)."""
 
     fig, axes = plt.subplots(1, 2, figsize=FIGSIZE)
-    fig.subplots_adjust(left=0.105, right=0.965, top=0.80, bottom=0.16, wspace=0.34)
+    fig.subplots_adjust(left=0.105, right=0.965, top=0.80, bottom=0.175, wspace=0.34)
     _figure_heading(
         fig,
         "The end of accounting",
@@ -187,11 +207,11 @@ def figure_2(preview_dir: Path | None) -> None:
     _style_axis(left)
     _style_axis(right)
 
-    # Panel A: explanatory power (R-squared) of earnings + book value vs market cap.
+    # Panel A (BLUE = the ledger's reach): R^2 of earnings + book value vs market cap.
     ya, yb = 1953, 2013
     decline_x = np.linspace(ya, yb, 200)
     decline_y = 0.86 - (0.86 - 0.50) * (decline_x - ya) / (yb - ya)
-    left.fill_between(decline_x, 0, decline_y, color=BLUE_LIGHT, alpha=0.7, zorder=1)
+    left.fill_between(decline_x, 0, decline_y, color=BLUE_LIGHT, alpha=0.8, zorder=1)
     left.plot(decline_x, decline_y, color=BLUE, linewidth=2.4, zorder=3)
     left.scatter([ya, yb], [0.86, 0.50], s=28, color=BLUE,
                  edgecolors="white", linewidths=0.9, zorder=5)
@@ -210,10 +230,10 @@ def figure_2(preview_dir: Path | None) -> None:
                   fontsize=8.6, color=BLUE, ha="left", va="center",
                   arrowprops=dict(arrowstyle="-|>", color=BLUE, linewidth=0.9))
 
-    # Panel B: share of listed firms reporting non-GAAP earnings, 2003 -> 2013.
+    # Panel B (RED = the work-around): firms reporting non-GAAP earnings, 2003->2013.
     yrs = np.array([2003, 2013], dtype=float)
     share = np.array([20, 40], dtype=float)
-    right.fill_between(yrs, 0, share, color=RED_LIGHT, alpha=0.7, zorder=1)
+    right.fill_between(yrs, 0, share, color=RED_LIGHT, alpha=0.8, zorder=1)
     right.plot(yrs, share, color=RED, linewidth=2.4, zorder=3,
                marker="o", markersize=6, markerfacecolor="white", markeredgewidth=1.4)
     right.set_xlim(2001, 2015)
@@ -232,8 +252,7 @@ def figure_2(preview_dir: Path | None) -> None:
     right.text(0.05, 0.90, "doubled in\na decade", transform=right.transAxes,
                fontsize=8.6, fontweight="bold", color=INK, ha="left", va="top")
 
-    fig.text(0.105, 0.045, "source: Lev & Gu, The End of Accounting (2016)  |  R² endpoints cited; path schematic",
-             fontsize=7.6, color=MUTED, family="monospace")
+    _source(fig, "source: Lev & Gu, The End of Accounting (2016)  |  R^2 endpoints cited; path schematic")
 
     _save(fig, "figure-2-the-end-of-accounting", preview_dir)
 
@@ -242,7 +261,7 @@ def figure_3(preview_dir: Path | None) -> None:
     """How much of market value the balance sheet records: NVIDIA vs Berkshire."""
 
     fig, ax = plt.subplots(figsize=FIGSIZE)
-    fig.subplots_adjust(left=0.06, right=0.95, top=0.82, bottom=0.20)
+    fig.subplots_adjust(left=0.06, right=0.95, top=0.82, bottom=0.225)
     _figure_heading(
         fig,
         "What the ledger sees",
@@ -257,26 +276,27 @@ def figure_3(preview_dir: Path | None) -> None:
     height = 0.34
 
     for yi, (name, period, visible, note) in zip(y, rows):
-        ax.barh(yi, visible, height=height, color=INK, zorder=3)
+        # recorded = BLUE (measured); dark matter = pale RED (residual).
+        ax.barh(yi, visible, height=height, color=BLUE, zorder=3)
         ax.barh(yi, 100 - visible, left=visible, height=height,
-                color=LIGHT, edgecolor=GRID, linewidth=0.8, zorder=2)
+                color=RED_LIGHT, edgecolor=RED, linewidth=0.9, zorder=2)
         # headline above the bar
         ax.text(0, yi + height / 2 + 0.13,
                 f"{name} ({period}) — {int(round(visible))}% on the books",
                 va="bottom", ha="left", fontsize=10, color=INK, fontweight="bold")
-        # value marker at the filled end
+        # value marker at the recorded (blue) end
         if visible >= 25:
-            ax.text(visible - 1.6, yi, f"{int(round(visible))}%", va="center",
+            ax.text(visible - 1.8, yi, f"{int(round(visible))}%", va="center",
                     ha="right", fontsize=9.5, color="white", fontweight="bold")
         else:
-            ax.text(visible + 1.6, yi, f"{int(round(visible))}%", va="center",
-                    ha="left", fontsize=9.5, color=INK, fontweight="bold")
+            ax.text(visible + 1.8, yi, f"{int(round(visible))}%", va="center",
+                    ha="left", fontsize=9.5, color=BLUE, fontweight="bold")
         # supporting figures below the bar (parse_math off so "$" stays literal)
         ax.text(0, yi - height / 2 - 0.12, note, va="top", ha="left",
                 fontsize=8.4, color=MUTED, parse_math=False)
 
     ax.set_xlim(0, 100)
-    ax.set_ylim(-0.9, 1.48)
+    ax.set_ylim(-0.95, 1.5)
     ax.set_yticks([])
     ax.set_xticks(np.arange(0, 101, 20))
     ax.xaxis.set_major_formatter(FuncFormatter(_pct))
@@ -289,15 +309,14 @@ def figure_3(preview_dir: Path | None) -> None:
     ax.grid(axis="x", color=GRID, linewidth=0.7, alpha=0.6)
     ax.set_axisbelow(True)
 
-    # Legend strip.
-    ax.text(0.0, -0.74, "■", color=INK, fontsize=11, va="center", ha="left",
-            transform=ax.get_yaxis_transform())
-    ax.text(0.025, -0.74, "recorded on the balance sheet", color=MUTED, fontsize=8.4,
-            va="center", ha="left", transform=ax.get_yaxis_transform())
-    ax.text(0.52, -0.74, "■", color=RESIDUAL, fontsize=11, va="center", ha="left",
-            transform=ax.get_yaxis_transform())
-    ax.text(0.545, -0.74, "intangible “dark matter”", color=MUTED, fontsize=8.4,
-            va="center", ha="left", transform=ax.get_yaxis_transform())
+    handles = [
+        Patch(facecolor=BLUE, label="recorded on the balance sheet"),
+        Patch(facecolor=RED_LIGHT, edgecolor=RED, linewidth=0.9,
+              label="intangible “dark matter” (residual)"),
+    ]
+    fig.legend(handles=handles, loc="lower left", bbox_to_anchor=(SOURCE_X, 0.028),
+               ncol=2, frameon=False, handlelength=1.2, handleheight=1.1,
+               columnspacing=1.8, fontsize=8.6)
 
     _save(fig, "figure-3-the-ledger-dark-matter", preview_dir)
 
