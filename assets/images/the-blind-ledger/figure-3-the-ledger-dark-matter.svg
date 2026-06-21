@@ -164,7 +164,7 @@ L 50.93568 113.506971
 L 50.93568 86.159314 
 L 31.968 86.159314 
 z
-" clip-path="url(#p92fed066d7)" style="fill: #2d6282"/>
+" clip-path="url(#p92fed066d7)" style="fill: #dce8ef; stroke: #2d6282; stroke-linejoin: miter"/>
    </g>
    <g id="text_8">
     <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #202124" x="31.968" y="73.300513" transform="rotate(-0 31.968 73.300513)">NVIDIA (Apr 2026) — 4% on the books</text>
@@ -181,13 +181,13 @@ L 359.16048 193.941257
 L 359.16048 166.5936 
 L 31.968 166.5936 
 z
-" clip-path="url(#p92fed066d7)" style="fill: #2d6282"/>
+" clip-path="url(#p92fed066d7)" style="fill: #dce8ef; stroke: #2d6282; stroke-linejoin: miter"/>
    </g>
    <g id="text_11">
     <text style="font-weight: 700; font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #202124" x="31.968" y="153.734799" transform="rotate(-0 31.968 153.734799)">Berkshire Hathaway (YE 2018) — 69% on the books</text>
    </g>
    <g id="text_12">
-    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #ffffff" x="350.625024" y="182.735202" transform="rotate(-0 350.625024 182.735202)">69%</text>
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #2d6282" x="367.695936" y="182.735202" transform="rotate(-0 367.695936 182.735202)">69%</text>
    </g>
    <g id="text_13">
     <text style="font-size: 8.4px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #626a73" x="31.968" y="209.976059" transform="rotate(-0 31.968 209.976059)">$212.5K book vs $306K price per share  ·  1.4×</text>
@@ -206,7 +206,7 @@ L 51.0936 313.324384
 L 51.0936 305.068384 
 L 40.7736 305.068384 
 z
-" style="fill: #2d6282"/>
+" style="fill: #dce8ef; stroke: #2d6282; stroke-linejoin: miter"/>
    </g>
    <g id="text_16">
     <text style="font-size: 8.6px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #202124" x="57.9736" y="312.120384" transform="rotate(-0 57.9736 312.120384)">recorded on the balance sheet</text>

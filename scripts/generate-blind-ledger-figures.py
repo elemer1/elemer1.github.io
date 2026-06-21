@@ -276,21 +276,19 @@ def figure_3(preview_dir: Path | None) -> None:
     height = 0.34
 
     for yi, (name, period, visible, note) in zip(y, rows):
-        # recorded = BLUE (measured); dark matter = pale RED (residual).
-        ax.barh(yi, visible, height=height, color=BLUE, zorder=3)
+        # Both segments are pale shares with a saturated edge -- same treatment
+        # as the bands in Fig 1. BLUE = recorded, RED = intangible dark matter.
+        ax.barh(yi, visible, height=height, color=BLUE_LIGHT,
+                edgecolor=BLUE, linewidth=1.0, zorder=3)
         ax.barh(yi, 100 - visible, left=visible, height=height,
                 color=RED_LIGHT, edgecolor=RED, linewidth=0.9, zorder=2)
         # headline above the bar
         ax.text(0, yi + height / 2 + 0.13,
                 f"{name} ({period}) — {int(round(visible))}% on the books",
                 va="bottom", ha="left", fontsize=10, color=INK, fontweight="bold")
-        # value marker at the recorded (blue) end
-        if visible >= 25:
-            ax.text(visible - 1.8, yi, f"{int(round(visible))}%", va="center",
-                    ha="right", fontsize=9.5, color="white", fontweight="bold")
-        else:
-            ax.text(visible + 1.8, yi, f"{int(round(visible))}%", va="center",
-                    ha="left", fontsize=9.5, color=BLUE, fontweight="bold")
+        # value marker just past the recorded (blue) end
+        ax.text(visible + 1.8, yi, f"{int(round(visible))}%", va="center",
+                ha="left", fontsize=9.5, color=BLUE, fontweight="bold")
         # supporting figures below the bar (parse_math off so "$" stays literal)
         ax.text(0, yi - height / 2 - 0.12, note, va="top", ha="left",
                 fontsize=8.4, color=MUTED, parse_math=False)
@@ -310,7 +308,8 @@ def figure_3(preview_dir: Path | None) -> None:
     ax.set_axisbelow(True)
 
     handles = [
-        Patch(facecolor=BLUE, label="recorded on the balance sheet"),
+        Patch(facecolor=BLUE_LIGHT, edgecolor=BLUE, linewidth=1.0,
+              label="recorded on the balance sheet"),
         Patch(facecolor=RED_LIGHT, edgecolor=RED, linewidth=0.9,
               label="intangible “dark matter” (residual)"),
     ]
