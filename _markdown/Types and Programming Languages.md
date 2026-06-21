@@ -1,5 +1,5 @@
 ---
-title: "Thoughts on Types and Programming Languages"
+title: "Thoughts on TAPL"
 permalink: /tapl/
 listed: true
 ---
