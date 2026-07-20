@@ -170,6 +170,11 @@ footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--line);
       document.querySelectorAll('.panel').forEach(function(p){
         p.hidden = (p.dataset.p !== tab.dataset.t);
       });
+      // Images that were lazy inside a previously-hidden panel don't reliably
+      // get picked up by the lazy loader once the panel is revealed — the
+      // frames just stay blank. Promote the now-visible ones to eager.
+      document.querySelectorAll('.panel:not([hidden]) img[loading="lazy"]')
+        .forEach(function(img){ img.loading = 'eager'; });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
