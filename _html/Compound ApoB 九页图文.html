@@ -1,5 +1,5 @@
 ---
-title: "Compound ApoB 九页图文 · 三版配色"
+title: "Compound ApoB 九页图文 · 四版配色"
 permalink: /compound-apob/
 listed: false
 ---
@@ -8,7 +8,7 @@ listed: false
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Compound · ApoB 九页图文 · 三版配色</title>
+<title>Compound · ApoB 九页图文 · 四版配色</title>
 <meta name="robots" content="noindex, nofollow">
 <style>
 :root{
@@ -74,12 +74,12 @@ footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--line);
 <div class="wrap">
 <header>
   <div class="kicker">Compound · Biomarkers Study Guide</div>
-  <h1>ApoB 九页图文 · 三版配色</h1>
-  <p class="sub">同一套内容与版式，三种配色方案。九页共用一个 shell（顶栏 / 页码 / 4 栏网格），
+  <h1>ApoB 九页图文 · 四版配色</h1>
+  <p class="sub">同一套内容与版式，四种配色方案。九页共用一个 shell（顶栏 / 页码 / 4 栏网格），
      由 <code>build.py</code> 生成，导出 1200×1600（小红书 3:4）。此处为 900px 预览。</p>
   <div class="meta">
     <span class="chip">9 Pages</span>
-    <span class="chip">3 Palettes</span>
+    <span class="chip">4 Palettes</span>
     <span class="chip">1200 × 1600</span>
     <span class="chip">PP Neue Montreal + PingFang</span>
   </div>
@@ -92,6 +92,8 @@ footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--line);
     <span class="dot" style="background:#4E9BC4"></span>B · Clinical</button>
   <button class="tab" role="tab" aria-selected="false" data-t="ember">
     <span class="dot" style="background:#FFBE74;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)"></span>C · Ember</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="spectral">
+    <span class="dot" style="background:#A5BBEF"></span>D · Spectral</button>
 </div>
 
 <section class="panel" data-p="solar">
@@ -125,6 +127,18 @@ footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--line);
   <div class="grid" id="g-ember"></div>
 </section>
 
+<section class="panel" data-p="spectral" hidden>
+  <div class="pnote">
+    <p><strong>D · Spectral</strong>——直接取自 <em>visual display.pdf</em>（Compound BrandingDesign_0203）
+       较新的一套品牌色：Ionic White <code>#EFF5F9</code> / Wash Blue <code>#A5BBEF</code> /
+       Abyssal Navy <code>#010116</code>。蓝偏青莲，比旧 kit 的 <code>#5EA7CC</code> 更冷更贵。
+       Abyssal Navy 与本系统一直在用的墨色完全相同，两套天然接得上。</p>
+    <div class="sw"><i style="background:#EFF5F9"></i><i style="background:#A5BBEF"></i>
+      <i style="background:#D6DFE8"></i><i style="background:#010116"></i></div>
+  </div>
+  <div class="grid" id="g-spectral"></div>
+</section>
+
 <footer>
   内部评审用页面，未公开索引。内容为健康科普，不构成医疗建议。<br>
   发布前待确认：P6 discordance 比例（文献约 15–25%，现取上沿 25%）· P7 参考区间（现按 ESC/EAS 2019）。
@@ -135,7 +149,7 @@ footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--line);
 
 <script>
 (function(){
-  var THEMES = ['solar','clinical','ember'];
+  var THEMES = ['solar','clinical','ember','spectral'];
   var TITLES = ['封面','血脂四项的缺口','ApoB 是什么','货 vs 车','斑块如何形成',
                 '25% 不一致','目标区间','怎么降下来','見知行復'];
 
