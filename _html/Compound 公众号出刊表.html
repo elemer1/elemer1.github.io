@@ -11,7 +11,7 @@ lang: zh-CN
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Compound · 公众号出刊表 2026.07–08</title>
-  <meta name="description" content="Compound 媒体部：2026 年 7–8 月微信公众号出刊表，含矩阵号内容迁移分诊、栏目设置与十七篇选题。" />
+  <meta name="description" content="Compound 媒体部：2026 年 7–8 月微信公众号出刊表，含矩阵号内容迁移分诊、栏目设置与十九篇选题。" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23ffffff%22/%3E%3Crect x=%2214%22 y=%2222%22 width=%2272%22 height=%226%22 fill=%22%231a1a1a%22/%3E%3Crect x=%2214%22 y=%2244%22 width=%2272%22 height=%223%22 fill=%22%232f6fdf%22/%3E%3Crect x=%2214%22 y=%2258%22 width=%2250%22 height=%223%22 fill=%22%23c9ced6%22/%3E%3Crect x=%2214%22 y=%2270%22 width=%2262%22 height=%223%22 fill=%22%23c9ced6%22/%3E%3C/svg%3E" />
   <style>
     *,*::before,*::after{ box-sizing:border-box; }
@@ -116,10 +116,10 @@ lang: zh-CN
   .cmp.accent li::marker{ color:var(--blue); }
 
   /* ---------- 栏目 ---------- */
-  .cols{ display:grid; grid-template-columns:repeat(5,1fr); gap:0; }
-  .col{ padding:0 18px; border-left:1px solid var(--line); }
-  .col:first-child{ padding-left:0; border-left:none; }
-  .col:last-child{ padding-right:0; }
+  .cols{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px 0; }
+  .col{ padding:0 22px; border-left:1px solid var(--line); }
+  .col:nth-child(3n+1){ padding-left:0; border-left:none; }
+  .col:nth-child(3n){ padding-right:0; }
   .col-code{
     font-family:var(--mono); font-size:13px; letter-spacing:.14em;
     color:var(--paper); background:var(--ink); display:inline-block;
@@ -250,7 +250,8 @@ lang: zh-CN
   @media (max-width:900px){
     .sheet{ padding:44px 32px 56px; }
     .cols{ grid-template-columns:1fr 1fr; gap:22px 0; }
-    .col{ padding:0 16px; }
+    .col{ padding:0 16px; border-left:1px solid var(--line); }
+    .col:nth-child(3n+1){ padding-left:16px; border-left:1px solid var(--line); }
     .col:nth-child(odd){ padding-left:0; border-left:none; }
     .two-up{ grid-template-columns:1fr; gap:40px; }
   }
@@ -260,8 +261,10 @@ lang: zh-CN
     .compare{ grid-template-columns:1fr; }
     .cmp{ padding:18px 0; border-right:none; border-bottom:1px solid var(--line); }
     .cmp.accent{ padding:18px 0 0; border-bottom:none; }
-    .cols{ grid-template-columns:1fr; }
-    .col{ padding:0 0 18px; border-left:none; border-bottom:1px solid var(--line); }
+    .cols{ grid-template-columns:1fr; gap:0; }
+    .col, .col:nth-child(3n+1), .col:nth-child(odd){
+      padding:0 0 18px; border-left:none; border-bottom:1px solid var(--line);
+    }
     .col:last-child{ border-bottom:none; padding-bottom:0; }
     .entry{ grid-template-columns:56px minmax(0,1fr); gap:0 16px; }
     .e-date .d{ font-size:22px; }
@@ -305,14 +308,14 @@ lang: zh-CN
     <span class="sep">·</span>
     <span>2026.07.21 — 08.28</span>
     <span class="sep">·</span>
-    <span>六周 17 篇</span>
+    <span>六周 19 篇</span>
     <span class="sep">·</span>
     <span>周二 · 周五 固定，周日加更</span>
   </p>
   <div class="mast-rule thin"></div>
 
   <p class="standfirst">
-    上周《十个最重要的 biomarker》已把总览铺完。接下来六周做两件事：<b>把总览拆成可深挖的系列</b>，同时<b>在一周内完成矩阵号内容迁移</b>——矩阵号停运后，公众号是唯一的长文阵地，也是唯一会被微信搜一搜长期索引的知识资产。
+    上周《十个最重要的 biomarker》已把总览铺完。接下来六周做两件事：<b>把总览拆成可深挖的系列</b>，同时<b>在一周内完成矩阵号内容迁移</b>——矩阵号停运后，公众号是唯一的长文阵地，也是唯一会被微信搜一搜长期索引的知识资产。开局用已定稿的《15 条前沿医学结论》立住证据标准，收在 Dana White 案例上验证同一套方法论：<b>结果可以认，解释要单独审。</b>
   </p>
 </header>
 
@@ -348,13 +351,13 @@ lang: zh-CN
 
 <!-- ============ 栏目 ============ -->
 <section class="block">
-  <h2 class="blockhead"><span class="bh-no">02</span>五个栏目</h2>
+  <h2 class="blockhead"><span class="bh-no">02</span>六个栏目</h2>
   <div class="cols">
     <div class="col">
       <div class="col-code">BM</div>
       <h3>指标深挖</h3>
-      <p class="col-n">6 篇 · 主线</p>
-      <p>承接《十个最重要的 biomarker》，每篇拆透一个：机制、怎么测、读数怎么看、证据到哪一步为止。系列本身就是可反复引用的资产。</p>
+      <p class="col-n">7 篇 · 主线</p>
+      <p>以《15 条前沿医学结论》为总纲，往下每篇拆透一个指标：机制、怎么测、读数怎么看、证据到哪一步为止。系列本身就是可反复引用的资产。</p>
     </div>
     <div class="col">
       <div class="col-code">MG</div>
@@ -373,6 +376,12 @@ lang: zh-CN
       <h3>活动与社区</h3>
       <p class="col-n">4 篇 · 含 Day 0</p>
       <p>7·25 Day 0 的会前、速记与全纪要。把一场三小时的线下活动，变成一篇能读三年的东西。</p>
+    </div>
+    <div class="col">
+      <div class="col-code">CS</div>
+      <h3>案例研究</h3>
+      <p class="col-n">1 篇 · 新栏目</p>
+      <p>真实个体的完整数据轨迹。我们的位置不是复述神话，而是把「结果」与「归因」分开——数据可以认，解释要单独审。</p>
     </div>
     <div class="col">
       <div class="col-code">MF</div>
@@ -439,15 +448,26 @@ lang: zh-CN
 
   <!-- W1 -->
   <div class="week">
-    <div class="week-head"><span class="wk">第 1 周</span><span class="wk-date">07.21 — 07.26</span><span class="wk-note">迁移周 + Day 0 活动周，全月最紧的一周</span></div>
+    <div class="week-head"><span class="wk">第 1 周</span><span class="wk-date">07.21 — 07.26</span><span class="wk-note">迁移周 + Day 0 活动周，全月最紧的一周——靠一篇已定稿的旗舰开局</span></div>
 
     <article class="entry">
       <div class="e-date"><span class="d">21</span><span class="m">07 / 周二</span></div>
       <div class="e-body">
-        <div class="e-top"><span class="pos main">主</span><span class="col-tag">MG · 迁移重编</span></div>
+        <div class="e-top"><span class="pos main">主</span><span class="col-tag">BM · 总纲</span><span class="flag-tag">已定稿 · 零写作成本</span></div>
+        <h3>15 条颠覆常识的前沿医学结论：多数人直到出事，才明白身体早就报过警</h3>
+        <p class="e-sum">稿件已完成，迁移周直接发——这一周产能最紧，手上有一篇不用写的旗舰应当优先用掉。15 条结论按同一格式拆解（<b>大白话 → 机制 → 证据 → 说准一点 → 能做的</b>），从「动脉粥样硬化其实从 15 岁就开始」到「酒精的安全剂量是 0」。<b>真正的价值在每条末尾的「说准一点」</b>：把「机制上说得通」和「人体上已证实」明确分开——牙周菌与阿尔茨海默是强关联但因果没坐实、senolytics 人体证据还很早期、CRHCP 降压防痴呆则是硬终点随机试验。这套标准正是我们希望整个知识库继承的东西，用它开篇比任何入门文都更能定调。</p>
+        <p class="e-note"><b>发布前三件必办的事：</b><br />① <b>图片必须转存</b>——原稿引用的 Wikimedia 图片是外链，公众号不渲染外链图，须全部下载后重新上传素材库，否则正文会开天窗。<br />② <b>署名与原创声明</b>——原稿署「米小姐生命研修室」。若该号在停运名单内，须先在原号取消原创、再于本号声明，顺序反了会冲突。<br />③ <b>行动清单里「体检加三项：ApoB、Lp(a)、UACR」触到了刚立的利益冲突红线</b>——但它出现在一份 15 条的综述里，且全篇反复劝人别买贵补剂、别信排毒产品，与「整篇论证某项检测被低估」不是一回事。<b>判断：可以保留，但文末补一句身份披露</b>（我们自己就做生物标志物检测），把话说在前面。</p>
+      </div>
+      <div class="e-stat"><span class="num">6,500</span><span class="lab">字 · 约 14 分钟</span></div>
+    </article>
+
+    <article class="entry sub-entry">
+      <div class="e-date"><span class="d">21</span><span class="m">同日搭发</span></div>
+      <div class="e-body">
+        <div class="e-top"><span class="pos sub">次</span><span class="col-tag">MG · 迁移重编</span></div>
         <h3>体检报告回答不了的那个问题：「我还能健康多少年」</h3>
-        <p class="e-sum">迁移首发，选最长青的入门文重编。定调整个知识库：常规体检的参考区间是为「排查疾病」设计的，不是为「优化健康」设计的——这是我们所有内容的共同前提。文末挂「检测常识」合集入口。</p>
-        <p class="e-note"><b>选它打头的理由：</b>入门文检索词最宽，能给新号最快积累搜一搜权重；且通篇讲的是体检逻辑而非具体数字，几乎没有需要回溯出处的引用，改写成本最低。</p>
+        <p class="e-sum">迁移首发，选最长青的入门文重编，放次条与主条互为补充：主条给 15 条硬结论，次条讲清楚为什么常规体检的参考区间是为「排查疾病」而非「优化健康」设计的。文末挂「检测常识」合集入口。</p>
+        <p class="e-note"><b>降为次条的理由：</b>本周产能要优先保 Day 0 与主条；这篇讲的是体检逻辑而非具体数字，几乎没有需要回溯出处的引用，改写成本最低，适合次条位。</p>
       </div>
       <div class="e-stat"><span class="num">3,200</span><span class="lab">字 · 约 7 分钟</span></div>
     </article>
@@ -503,9 +523,9 @@ lang: zh-CN
     <article class="entry">
       <div class="e-date"><span class="d">31</span><span class="m">07 / 周五</span></div>
       <div class="e-body">
-        <div class="e-top"><span class="pos main">主</span><span class="col-tag">BM · 指标深挖 ①</span><span class="flag-tag">系列旗舰 · 全月最长</span></div>
+        <div class="e-top"><span class="pos main">主</span><span class="col-tag">BM · 指标深挖 ①</span><span class="flag-tag">系列旗舰</span></div>
         <h3>Zone 2 不是「最大心率的 60%」：一个被公式讲坏了的训练区间</h3>
-        <p class="e-sum">系列开篇，也是全月最长的一篇。参照 Peter Attia 与 Iñigo San Millán 的对谈脉络，把 Zone 2 拆成五层：<b>① 定义之争</b>——真正的定义是乳酸生成与清除达到平衡的最高强度（乳酸稳态，约 1.7–2.0 mmol/L），不是心率公式算出来的百分比；<b>② 机制</b>——I 型肌纤维、线粒体脂肪氧化能力、以及乳酸穿梭（MCT1）；<b>③ 怎么测</b>——乳酸仪、说话测试、手表估算，三者的误差量级差多少；<b>④ 剂量</b>——「每周 3–4 小时」这个数字到底从哪来；<b>⑤ 灰色地带</b>——业余训练者最常掉进的「中等强度陷阱」，以及极化训练 80/20 的出处（Seiler）。</p>
+        <p class="e-sum">总纲之下的第一篇深挖，接住《15 条》里「体能是死亡率总开关」那一条往里走。参照 Peter Attia 与 Iñigo San Millán 的对谈脉络，把 Zone 2 拆成五层：<b>① 定义之争</b>——真正的定义是乳酸生成与清除达到平衡的最高强度（乳酸稳态，约 1.7–2.0 mmol/L），不是心率公式算出来的百分比；<b>② 机制</b>——I 型肌纤维、线粒体脂肪氧化能力、以及乳酸穿梭（MCT1）；<b>③ 怎么测</b>——乳酸仪、说话测试、手表估算，三者的误差量级差多少；<b>④ 剂量</b>——「每周 3–4 小时」这个数字到底从哪来；<b>⑤ 灰色地带</b>——业余训练者最常掉进的「中等强度陷阱」，以及极化训练 80/20 的出处（Seiler）。</p>
         <p class="e-note"><b>这篇最容易写飘的地方在证据层，必须分开讲：</b>心肺适能与全因死亡率的强关联是<b>观察性证据</b>；而「Zone 2 这个特定区间最优」主要来自<b>机制推理与精英运动员生理学</b>，缺少直接的大型 RCT。机制值得完整讲，但不能讲成已被证实的处方。<br />另两条：① <b>五区心率模型的 Zone 2 ≠ Seiler 三区模型的 Zone 2</b>，两者混用是中文内容里关于 Zone 2 最普遍的错误，本篇要专门拆开；② <b>不得写成乳酸检测的软广</b>——检测只作为「怎么测」里的一个选项出现，不给入口、不带转化。</p>
       </div>
       <div class="e-stat"><span class="num">5,200</span><span class="lab">字 · 约 11 分钟</span></div>
@@ -561,7 +581,7 @@ lang: zh-CN
 
   <!-- W4 -->
   <div class="week">
-    <div class="week-head"><span class="wk">第 4 周</span><span class="wk-date">08.11 — 08.14</span><span class="wk-note">回到主线，本周两篇</span></div>
+    <div class="week-head"><span class="wk">第 4 周</span><span class="wk-date">08.11 — 08.16</span><span class="wk-note">机制 → 案例：先讲清胰岛素抵抗，再看它在一个真人身上怎么翻转</span></div>
 
     <article class="entry">
       <div class="e-date"><span class="d">11</span><span class="m">08 / 周二</span></div>
@@ -582,6 +602,17 @@ lang: zh-CN
         <p class="e-note"><b>信任状口径：</b>可用《Nature Aging》2024.02 封面；<b>不得再出现《Science》</b>，也不要写与现有团队对不上的院校清单。检测由第三方医学实验室完成、数据按医疗级隐私处理——这条必须写。</p>
       </div>
       <div class="e-stat"><span class="num">3,000</span><span class="lab">字 · 约 7 分钟</span></div>
+    </article>
+
+    <article class="entry">
+      <div class="e-date"><span class="d">16</span><span class="m">08 / 周日</span></div>
+      <div class="e-body">
+        <div class="e-top"><span class="pos main">主</span><span class="col-tag">CS · 案例研究 ①</span><span class="flag-tag">最高传播预期</span></div>
+        <h3>UFC 总裁「死而复生」：数据是真的，那套解释未必</h3>
+        <p class="e-sum">白大拿（Dana White）留下了名人健康叙事里罕见的东西——<b>三年、可追溯、主动公开的化验单</b>：甘油三酯 764 → 79 mg/dL，HbA1c &gt;6.4% → 5.3%，血压 160/110 → 116/70 且停掉三种降压药，eGFR 40–50 → 90+，同型半胱氨酸 21.5 → 7 µmol/L。这些数字值得认真对待。但中文世界现有的转述几乎都在复述 Gary Brecka 那套「基因甲基化—原油精炼厂」的解释。<b>我们要写的不是复述，而是把「发生了什么」和「为什么发生」拆开。</b></p>
+        <p class="e-note"><b>这篇的全部价值在于拆开结果与归因，三条必须写：</b><br />① <b>他同时改变了太多变量。</b>彻底戒酒、生酮全食、减重逾 40 磅、重排训练、修正 TRT 给药方式、睡眠恢复——甘油三酯 764 → 130 这种幅度，<b>单靠戒酒 + 控碳水 + 减重就足以解释绝大部分</b>。把功劳记在甲基化补剂上是典型的事后归因。<br />② <b>同型半胱氨酸这条因果链，恰恰是被 RCT 否定过的那条。</b>TMG 能降同型半胱氨酸没有争议；但「降同型半胱氨酸 → 减少心血管事件」已被 HOPE-2、NORVIT、SEARCH 等大型随机试验反复证否。整套「原油—精炼厂」叙事的生化基石，是临床验证过、且没通过的假说。<b>这是全篇最重要的一句，绝不能省。</b><br />③ <b>利益披露要双向。</b>Brecka 非执业医师（生物学本科、20 年寿险死亡率建模背景），10X Health 卖 599 美元甲基化检测、营收三年从 400 万涨到 1.2 亿美元；<b>同时必须写明我们自己也在做生物标志物检测，是利益相关方</b>。只批评对方而不披露自己，会变成同业攻击。<br /><b>另有两处素材硬伤须改：</b>原始材料写「86 小时断水断食」，但后文明确全程饮水并补充电解质——<b>实为水断食，术语自相矛盾</b>；文中「44% 人群 MTHFR 突变、根本无法转化合成叶酸」说法过头（杂合子酶活性约降三成，并非归零），且 ACMG 等主流遗传学机构<b>不建议</b>常规做 MTHFR 检测，提及时须一并写出。</p>
+      </div>
+      <div class="e-stat"><span class="num">5,000</span><span class="lab">字 · 约 11 分钟</span></div>
     </article>
   </div>
 
