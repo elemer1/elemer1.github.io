@@ -1,0 +1,175 @@
+---
+title: "Compound ApoB 九页图文 · 三版配色"
+permalink: /compound-apob/
+listed: false
+---
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compound · ApoB 九页图文 · 三版配色</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --ink:#010116; --paper:#EFEEE8; --line:rgba(1,1,22,.14);
+  --solar:#FFBE74; --clinical:#4E9BC4; --ember:#FFBE74;
+  --cn:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --en:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#F4F3EF;color:var(--ink);font-family:var(--cn);-webkit-font-smoothing:antialiased;padding:0 0 90px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+
+header{padding:64px 0 34px;border-bottom:1px solid var(--line);margin-bottom:34px}
+.kicker{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;opacity:.45}
+h1{font-size:35px;font-weight:600;letter-spacing:.01em;line-height:1.28;margin:15px 0 0}
+.sub{font-size:16px;line-height:1.75;opacity:.66;margin-top:15px;max-width:660px}
+.meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.chip{font-family:var(--en);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  background:rgba(1,1,22,.06);border-radius:99px;padding:8px 14px 7px}
+
+/* version switcher */
+.tabs{display:flex;flex-wrap:wrap;gap:9px;position:sticky;top:0;z-index:20;
+  background:#F4F3EF;padding:16px 0 15px;border-bottom:1px solid var(--line);margin-bottom:30px}
+.tab{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:none;
+  border-radius:99px;padding:10px 17px 9px;cursor:pointer;font-family:inherit;font-size:14px;
+  color:var(--ink);transition:.15s}
+.tab:hover{border-color:rgba(1,1,22,.35)}
+.tab[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.dot{width:11px;height:11px;border-radius:99px;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+
+/* panel */
+.panel[hidden]{display:none}
+.pnote{display:flex;flex-wrap:wrap;gap:26px;align-items:flex-start;margin-bottom:26px}
+.pnote p{font-size:15px;line-height:1.75;opacity:.72;max-width:560px}
+.sw{display:flex;gap:0;border-radius:7px;overflow:hidden;flex:none;box-shadow:0 0 0 1px var(--line)}
+.sw i{width:56px;height:42px;display:block}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+figure{margin:0;background:#fff;border-radius:3px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(1,1,22,.10),0 8px 26px rgba(1,1,22,.07);cursor:zoom-in}
+figure img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(1,1,22,.93);z-index:100;display:none;
+  align-items:center;justify-content:center;cursor:zoom-out;padding:24px}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:3px}
+.lb .x{position:absolute;top:20px;right:26px;color:#fff;font-size:30px;opacity:.65;line-height:1}
+
+footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--line);
+  font-size:13px;line-height:1.8;opacity:.55}
+
+@media(max-width:860px){
+  .grid{grid-template-columns:repeat(2,1fr);gap:13px}
+  h1{font-size:27px} header{padding:42px 0 26px}
+  .wrap{padding:0 17px}
+}
+@media(max-width:520px){ .grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="kicker">Compound · Biomarkers Study Guide</div>
+  <h1>ApoB 九页图文 · 三版配色</h1>
+  <p class="sub">同一套内容与版式，三种配色方案。九页共用一个 shell（顶栏 / 页码 / 4 栏网格），
+     由 <code>build.py</code> 生成，导出 1200×1600（小红书 3:4）。此处为 900px 预览。</p>
+  <div class="meta">
+    <span class="chip">9 Pages</span>
+    <span class="chip">3 Palettes</span>
+    <span class="chip">1200 × 1600</span>
+    <span class="chip">PP Neue Montreal + PingFang</span>
+  </div>
+</header>
+
+<div class="tabs" role="tablist">
+  <button class="tab" role="tab" aria-selected="true" data-t="solar">
+    <span class="dot" style="background:#FFBE74"></span>A · Solar</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="clinical">
+    <span class="dot" style="background:#4E9BC4"></span>B · Clinical</button>
+  <button class="tab" role="tab" aria-selected="false" data-t="ember">
+    <span class="dot" style="background:#FFBE74;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)"></span>C · Ember</button>
+</div>
+
+<section class="panel" data-p="solar">
+  <div class="pnote">
+    <p><strong>A · Solar（现行）</strong>——两个色相：橙＝颗粒 / ApoB，蓝＝胆固醇货物，暖纸底。
+       语义分得最清楚，但暖纸 + 冷蓝 + 暖橙是三个色温家族，也是「不够和谐」的来源。</p>
+    <div class="sw"><i style="background:#EFEEE8"></i><i style="background:#FFBE74"></i>
+      <i style="background:#5EA7CC"></i><i style="background:#010116"></i></div>
+  </div>
+  <div class="grid" id="g-solar"></div>
+</section>
+
+<section class="panel" data-p="clinical" hidden>
+  <div class="pnote">
+    <p><strong>B · Clinical</strong>——只留蓝一个色相。货物退成去饱和的石板灰，
+       靠<strong>饱和度</strong>而不是色相来区分颗粒与货物。整套只有一个色相加中性色，
+       最接近实验室 / 临床的冷静气质。</p>
+    <div class="sw"><i style="background:#EFF5F9"></i><i style="background:#4E9BC4"></i>
+      <i style="background:#A9BAC6"></i><i style="background:#010116"></i></div>
+  </div>
+  <div class="grid" id="g-clinical"></div>
+</section>
+
+<section class="panel" data-p="ember" hidden>
+  <div class="pnote">
+    <p><strong>C · Ember</strong>——只留橙一个色相，等于 Solar 去掉蓝：货物变中性暖灰，
+       橙成为全套唯一的彩色。色温完全统一，最安静、最像杂志内页。</p>
+    <div class="sw"><i style="background:#F4F2EC"></i><i style="background:#FFBE74"></i>
+      <i style="background:#C7C2B6"></i><i style="background:#010116"></i></div>
+  </div>
+  <div class="grid" id="g-ember"></div>
+</section>
+
+<footer>
+  内部评审用页面，未公开索引。内容为健康科普，不构成医疗建议。<br>
+  发布前待确认：P6 discordance 比例（文献约 15–25%，现取上沿 25%）· P7 参考区间（现按 ESC/EAS 2019）。
+</footer>
+</div>
+
+<div class="lb" id="lb"><span class="x">&times;</span><img alt=""></div>
+
+<script>
+(function(){
+  var THEMES = ['solar','clinical','ember'];
+  var TITLES = ['封面','血脂四项的缺口','ApoB 是什么','货 vs 车','斑块如何形成',
+                '25% 不一致','目标区间','怎么降下来','見知行復'];
+
+  THEMES.forEach(function(t){
+    var g = document.getElementById('g-' + t), h = '';
+    for (var i = 1; i <= 9; i++){
+      var n = ('0' + i).slice(-2);
+      h += '<figure><img loading="lazy" src="/assets/compound/apob/' + t + '/' + n + '.jpg"' +
+           ' alt="' + t + ' 第' + i + '页 — ' + TITLES[i-1] + '"></figure>';
+    }
+    g.innerHTML = h;
+  });
+
+  var tabs = [].slice.call(document.querySelectorAll('.tab'));
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(x){ x.setAttribute('aria-selected', String(x === tab)); });
+      document.querySelectorAll('.panel').forEach(function(p){
+        p.hidden = (p.dataset.p !== tab.dataset.t);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  var lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
+  document.addEventListener('click', function(e){
+    var img = e.target.closest && e.target.closest('figure img');
+    if (img){ lbImg.src = img.src; lb.classList.add('on'); return; }
+    if (e.target.closest && e.target.closest('.lb')) lb.classList.remove('on');
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') lb.classList.remove('on');
+  });
+})();
+</script>
+</body>
+</html>
