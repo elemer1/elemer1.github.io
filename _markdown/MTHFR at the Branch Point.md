@@ -3,6 +3,7 @@ title: "MTHFR at the Branch Point"
 permalink: /mthfr-at-the-branch-point/
 listed: true
 lang: en
+math: true
 ---
 
 **MTHFR at the Branch Point: One-Carbon Flux, Conditional Genetic Risk, and the Limits of Genotype-First Longevity Medicine**
@@ -1071,14 +1072,14 @@ The global distribution is highly nonuniform: high frequencies occur in parts of
 
 ### 14.2 Hardy–Weinberg arithmetic explains the carrier headline
 
-Let the T-allele frequency be **q** and the C-allele frequency **p = 1 − q**. Under Hardy–Weinberg equilibrium:
+Let the T-allele frequency be $q$ and the C-allele frequency $p = 1 - q$. Under Hardy–Weinberg equilibrium:
 
-- **P(CC) = p²**
-- **P(CT) = 2pq**
-- **P(TT) = q²**
-- **P(any T carrier) = 1 − p² = 2q − q².**
+- $P(\text{CC}) = p^2$
+- $P(\text{CT}) = 2pq$
+- $P(\text{TT}) = q^2$
+- $P(\text{any T carrier}) = 1 - p^2 = 2q - q^2.$
 
-At **q = 0.30**, carrier prevalence is **0.51**. At **q = 0.40**, it is **0.64**. At **q = 0.53**, as estimated for northern China in one meta-analysis, it is **0.779** and TT prevalence is **0.281**. Thus, the “50–60%” statement can emerge automatically from a T-allele frequency around 0.30–0.37. It is a population-genetic transformation, not evidence that half the population has a disease.
+At $q = 0.30$, carrier prevalence is **0.51**. At $q = 0.40$, it is **0.64**. At $q = 0.53$, as estimated for northern China in one meta-analysis, it is **0.779** and TT prevalence is **0.281**. Thus, the “50–60%” statement can emerge automatically from a T-allele frequency around 0.30–0.37. It is a population-genetic transformation, not evidence that half the population has a disease.
 
 The phrase can be inflated further by counting either rs1801133 or rs1801131, heterozygotes and homozygotes, or any of several haplotypes. Because A1298C is itself common, the union of “at least one variant allele at either locus” can be very large. Without a numerator, denominator, ancestry, locus definition, and zygosity, the prevalence claim is scientifically incomplete.
 
@@ -1599,8 +1600,8 @@ The author’s exact WGS genotype, zygosity, genome build, read metrics, screens
 
 ### E.3 Quantitative checks
 
-- Carrier proportions were reconstructed from allele frequencies using **1 − (1 − q)²** and compared with reported genotype distributions.
-- The CSPPT absolute risk reduction was calculated as **3.4% − 2.7% = 0.7%**; approximate NNT **= 1/0.007 ≈ 143** over the median 4.5-year follow-up.
+- Carrier proportions were reconstructed from allele frequencies using $1 - (1-q)^2$ and compared with reported genotype distributions.
+- The CSPPT absolute risk reduction was calculated as $3.4\% - 2.7\% = 0.7\%$; approximate NNT $= 1/0.007 \approx 143$ over the median 4.5-year follow-up.
 - Large-trial effect estimates were separated by endpoint; a 25% homocysteine reduction was not described as a 25% cardiovascular-risk reduction.
 - Enzyme activity percentages were labeled assay-dependent and were not propagated arithmetically into whole-body methylation.
 - Folate-form pharmacokinetics were separated from congenital, vascular, psychiatric, and mortality outcomes.
