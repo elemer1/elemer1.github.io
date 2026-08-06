@@ -104,6 +104,19 @@ layout: default
         filter: ['mjx-assistive-mml'],
         replacement: function () { return ''; }
       });
+      // Numbered citations copy as plain [7]; their return arrows copy as nothing.
+      td.addRule('citationLink', {
+        filter: function (node) {
+          return node.nodeName === 'A' && /\bcite\b/.test(node.className || '');
+        },
+        replacement: function (content) { return content; }
+      });
+      td.addRule('reverseFootnoteLink', {
+        filter: function (node) {
+          return node.nodeName === 'A' && /\breversefootnote\b/.test(node.className || '');
+        },
+        replacement: function () { return ''; }
+      });
       td.addRule('table', {
         filter: 'table',
         replacement: function (_c, node) {

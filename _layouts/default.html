@@ -99,6 +99,12 @@
     main code,main a{overflow-wrap:anywhere;word-break:break-word}
     main code{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;font-size:.9em;padding:2px 5px;background:#f6f8fa;border-radius:4px}
     main pre code{padding:0;background:transparent;font-size:inherit;border-radius:0}
+    /* Numbered citations linked to a reference list, and back again. */
+    main a.cite{white-space:nowrap;scroll-margin-top:90px}
+    main a.reversefootnote{text-decoration:none}
+    main span[id^="ref-"],main span[id^="cite-"]{scroll-margin-top:90px}
+    main li>span[id^="ref-"]{scroll-margin-top:28px}
+    main a.cite:target,main li:has(>span[id^="ref-"]:target){background:#fff3bf}
     main .footnotes{margin-top:60px;padding-top:20px;border-top:1px solid #e5e5e5;font-size:14px;color:#57606a}
     main .footnotes p{color:inherit;margin:8px 0}
     main .table-wrap{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0}
