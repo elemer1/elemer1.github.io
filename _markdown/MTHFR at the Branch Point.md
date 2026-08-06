@@ -6,14 +6,7 @@ lang: en
 math: false
 ---
 
-**One-Carbon Flux, Conditional Genetic Risk, and the Limits of Genotype-First Longevity Medicine**
-
-*A mechanistic, population-genetic, and evidence-based monograph for molecular biologists, physicians, clinical geneticists, and longevity scientists*
-
-**Version:** August 2026<br>
-**Article type:** Critical mechanistic review and evidence synthesis<br>
-**Intended readership:** investigators and clinicians with advanced training in biochemistry, molecular genetics, nutritional science, internal medicine, neurology, hematology, obstetrics, or preventive medicine<br>
-**Illustrated edition:** seven publication-oriented figures; external source figures are limited to openly licensed primary papers and are identified by original figure number and DOI.
+**MTHFR at the Branch Point: One-Carbon Flux, Conditional Genetic Risk, and the Limits of Genotype-First Longevity Medicine**
 
 ---
 
