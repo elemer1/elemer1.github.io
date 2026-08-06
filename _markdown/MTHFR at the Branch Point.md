@@ -3,7 +3,6 @@ title: "MTHFR at the Branch Point"
 permalink: /mthfr-at-the-branch-point/
 listed: true
 lang: en
-math: false
 ---
 
 **MTHFR at the Branch Point: One-Carbon Flux, Conditional Genetic Risk, and the Limits of Genotype-First Longevity Medicine**
@@ -128,57 +127,83 @@ The relevant one-carbon oxidation states include methyl (most reduced), methylen
 
 The dominant serine-derived entry reaction is:
 
-**Serine + THF ⇌ glycine + 5,10-CH₂-THF + H₂O**<br>
+$$
+\text{Serine} + \text{THF} \rightleftharpoons \text{glycine} + \text{5,10-CH}_2\text{-THF} + \text{H}_2\text{O}
+$$
+
 Catalyst: serine hydroxymethyltransferase (SHMT1 in cytosol; SHMT2 in mitochondria)<br>
 Cofactor: pyridoxal 5′-phosphate (PLP)
 
 MTHFR catalyzes:
 
-**5,10-CH₂-THF + NADPH + H⁺ → 5-CH₃-THF + NADP⁺**<br>
+$$
+\text{5,10-CH}_2\text{-THF} + \text{NADPH} + \text{H}^+ \longrightarrow \text{5-CH}_3\text{-THF} + \text{NADP}^+
+$$
+
 Catalyst: MTHFR<br>
 Prosthetic cofactor: FAD
 
 Methionine synthase then transfers the methyl group:
 
-**5-CH₃-THF + L-homocysteine → THF + L-methionine**<br>
+$$
+\text{5-CH}_3\text{-THF} + \text{L-homocysteine} \longrightarrow \text{THF} + \text{L-methionine}
+$$
+
 Catalyst: methionine synthase (MTR)<br>
 Cofactor: cobalamin; reductive reactivation requires MTRR and reducing equivalents
 
 Methionine adenosyltransferase generates SAM:
 
-**L-methionine + ATP + H₂O → S-adenosyl-L-methionine + Pᵢ + PPᵢ**
+$$
+\text{L-methionine} + \text{ATP} + \text{H}_2\text{O} \longrightarrow \text{S-adenosyl-L-methionine} + \text{P}_\text{i} + \text{PP}_\text{i}
+$$
 
 A generic methyltransferase reaction is:
 
-**SAM + R–X → SAH + R–CH₃**
+$$
+\text{SAM} + \text{R–X} \longrightarrow \text{SAH} + \text{R–CH}_3
+$$
 
 SAH hydrolase catalyzes:
 
-**SAH + H₂O ⇌ adenosine + L-homocysteine**
+$$
+\text{SAH} + \text{H}_2\text{O} \rightleftharpoons \text{adenosine} + \text{L-homocysteine}
+$$
 
 The equilibrium of SAH hydrolase favors SAH synthesis; net hydrolysis in vivo depends on rapid removal of adenosine and homocysteine. This point is crucial because SAH is a potent product inhibitor of many methyltransferases. “Methylation potential” therefore depends not only on SAM availability but also on SAH clearance.
 
 Homocysteine has two major exits. It can be remethylated through MTR or, principally in liver and kidney, through betaine-homocysteine methyltransferase:
 
-**Betaine + L-homocysteine → dimethylglycine + L-methionine**
+$$
+\text{Betaine} + \text{L-homocysteine} \longrightarrow \text{dimethylglycine} + \text{L-methionine}
+$$
 
 Alternatively, it enters transsulfuration:
 
-**L-homocysteine + L-serine → cystathionine + H₂O**<br>
+$$
+\text{L-homocysteine} + \text{L-serine} \longrightarrow \text{cystathionine} + \text{H}_2\text{O}
+$$
+
 Catalyst: cystathionine β-synthase (CBS); cofactor PLP
 
-**Cystathionine + H₂O → L-cysteine + α-ketobutyrate + NH₃**<br>
+$$
+\text{Cystathionine} + \text{H}_2\text{O} \longrightarrow \text{L-cysteine} + \alpha\text{-ketobutyrate} + \text{NH}_3
+$$
+
 Catalyst: cystathionine γ-lyase/CTH; cofactor PLP
 
 The folate branch retained at 5,10-CH₂-THF supports thymidylate synthesis:
 
-**dUMP + 5,10-CH₂-THF → dTMP + DHF**<br>
+$$
+\text{dUMP} + \text{5,10-CH}_2\text{-THF} \longrightarrow \text{dTMP} + \text{DHF}
+$$
+
 Catalyst: thymidylate synthase (TYMS)
 
 Ten-formyl-THF donates carbon atoms in de novo purine synthesis at the GART and ATIC steps. Thus, MTHFR sits at a competition point: carbon committed to 5-CH₃-THF is less immediately available for nucleotide synthesis, while carbon retained in other folate forms is less available for MTR-dependent remethylation. Figure 1 summarizes this topology without implying a quantitative flux partition.
 
 <figure class="wide-figure">
-  <img src="/assets/images/mthfr-at-the-branch-point/fig-01-one-carbon-network.png" alt="One-carbon allocation at the MTHFR branch point" loading="lazy" decoding="async">
+  <img src="/assets/images/mthfr-at-the-branch-point/fig-01-one-carbon-network.png" alt="One-carbon allocation at the MTHFR branch point" width="2146" height="1471" loading="lazy" decoding="async">
   <figcaption><strong>Figure 1. One-carbon allocation at the MTHFR branch point.</strong> Author-generated, compartment-simplified schematic based on the reaction topology and regulatory relationships reviewed in [7–10]. The diagram distinguishes folate allocation, the methionine cycle, transsulfuration, FAD/NADPH dependence, and SAM-mediated feedback. Arrow placement is qualitative: this is neither an isotope-defined flux map nor a patient-calibrated kinetic model. <a href="/assets/images/mthfr-at-the-branch-point/fig-01-one-carbon-network.png">Open full-resolution figure</a>.</figcaption>
 </figure>
 
@@ -215,7 +240,7 @@ Electron transfer can be summarized as follows. NADPH reduces enzyme-bound FAD; 
 The p.Ala222Val substitution introduces a bulkier, β-branched side chain. Structural and biochemical studies indicate that its principal consequence is not the destruction of the active site but destabilization of the flavin-bound conformation. Thermal challenge accentuates the phenotype because the variant loses FAD more readily. This mechanistic detail explains two otherwise confusing observations: first, residual activity estimates depend on assay temperature, extraction, and cofactor conditions; second, riboflavin status can modulate the phenotype because dietary riboflavin supplies the precursor for FMN and FAD. Figure 2 provides the domain-level structural context for these regulatory claims.
 
 <figure class="wide-figure">
-  <img src="/assets/images/mthfr-at-the-branch-point/fig-02-mthfr-architecture.png" alt="Catalytic, linker, and regulatory architecture of human MTHFR" loading="lazy" decoding="async">
+  <img src="/assets/images/mthfr-at-the-branch-point/fig-02-mthfr-architecture.png" alt="Catalytic, linker, and regulatory architecture of human MTHFR" width="2069" height="568" loading="lazy" decoding="async">
   <figcaption><strong>Figure 2. Catalytic, linker, and regulatory architecture of human MTHFR.</strong> Reproduced without data alteration from original Figure 4 of <a href="https://doi.org/10.1038/s41467-018-04735-2">Froese et al.</a> [4] under CC BY 4.0. The catalytic domain is cyan, the linker red, and the regulatory domain yellow; bound FAD is green and SAH pink. This structure establishes domain organization and ligand placement. It does not, by itself, quantify the in-vivo effect of p.Ala222Val or convert an enzyme-assay result into whole-body methylation flux. <a href="/assets/images/mthfr-at-the-branch-point/fig-02-mthfr-architecture.png">Open full-resolution figure</a>.</figcaption>
 </figure>
 
@@ -225,13 +250,21 @@ The frequently repeated values—approximately 65% of reference activity in CT h
 
 Consider a simplified Michaelis–Menten expression:
 
-**v = Vmax[S] / (Km + [S])**
+$$
+v = \frac{V_{\max}[S]}{K_m + [S]}
+$$
 
 If a genotype reduces the concentration of FAD-bound active enzyme, Vmax falls. But if physiological substrate concentration exceeds Km, the relative flux reduction approaches the relative Vmax reduction only in an isolated unregulated step. In a network, substrate accumulation partially compensates. If [S] rises, the mutant enzyme can operate closer to saturation. Feedback inhibition may also be relieved. Conversely, if folate substrate is scarce, the same Vmax reduction can become more consequential. The phenotype is therefore a function of genotype and state:
 
-**vMTHFR = f(Etotal, fFAD, kcat, Km, [5,10-CH₂-THF], [NADPH], SAM, SAH, phosphorylation, pH, temperature, compartment)**
+$$
+\begin{aligned}
+v_\text{MTHFR} = f(\,& E_\text{total},\ f_\text{FAD},\ k_\text{cat},\ K_m,\ [\text{5,10-CH}_2\text{-THF}],\\
+& [\text{NADPH}],\ \text{SAM},\ \text{SAH},\ \text{phosphorylation},\\
+& \text{pH},\ \text{temperature},\ \text{compartment}\,)
+\end{aligned}
+$$
 
-where **fFAD** is the fraction of enzyme occupied by FAD. A single residual-activity percentage collapses this multidimensional function.
+where $f_\text{FAD}$ is the fraction of enzyme occupied by FAD. A single residual-activity percentage collapses this multidimensional function.
 
 ### 4.3 Allosteric control by SAM and SAH
 
@@ -255,17 +288,23 @@ A useful conceptual distinction is between an enzyme that is catalytically defec
 
 Classical metabolic-control analysis defines the flux-control coefficient of enzyme E over system flux J as:
 
-**Cᴱⱼ = ∂ln J / ∂ln E**
+$$
+C^J_E = \frac{\partial \ln J}{\partial \ln E}
+$$
 
-The summation theorem states that, under specified steady-state assumptions, the control coefficients of all enzymes influencing a flux sum to one. No single enzyme ordinarily has a coefficient of one across all conditions. If MTHFR abundance falls by a fractional amount δE/E, the local change in a specified flux is approximately:
+The summation theorem states that, under specified steady-state assumptions, the control coefficients of all enzymes influencing a flux sum to one. No single enzyme ordinarily has a coefficient of one across all conditions. If MTHFR abundance falls by a fractional amount $\delta E/E$, the local change in a specified flux is approximately:
 
-**δJ/J ≈ Cᴹᵀᴴᶠᴿⱼ · δE/E**
+$$
+\frac{\delta J}{J} \approx C^J_\text{MTHFR} \cdot \frac{\delta E}{E}
+$$
 
 for a sufficiently small perturbation. The coefficient is not fixed. It changes with nutrient supply, enzyme saturation, regulatory state, tissue, demand, and alternative pathways. MTHFR can have substantial control over remethylation under low-folate conditions and much less control when substrate, cofactor, or downstream MTR is limiting. It has no meaningful single coefficient over “all methylation.”
 
 The elasticity of an enzyme to substrate S is:
 
-**εˢᵥ = ∂ln v / ∂ln S**
+$$
+\varepsilon^v_S = \frac{\partial \ln v}{\partial \ln S}
+$$
 
 Substrate accumulation following reduced MTHFR activity increases v through positive substrate elasticity, buffering flux. Product depletion can relieve product inhibition. SAM decline can relieve allosteric inhibition. These compensations lower the effective flux-control coefficient relative to the loss of isolated enzyme activity. They are one reason why an assay reporting 30% residual activity does not imply a 70% fall in methionine synthesis.
 
@@ -277,17 +316,21 @@ This duality is visible in cancer epidemiology. Simplistic reasoning predicts th
 
 ### 5.3 Steady state versus capacity
 
-A reduced reserve capacity can be silent at baseline and evident under stress. Let MTHFR capacity be **Vmax** and required flux be **Jdemand**. The reserve ratio is:
+A reduced reserve capacity can be silent at baseline and evident under stress. Let MTHFR capacity be $V_{\max}$ and required flux be $J_\text{demand}$. The reserve ratio is:
 
-**R = Vmax / Jdemand**
+$$
+R = \frac{V_{\max}}{J_\text{demand}}
+$$
 
-If R is well above one, a substantial reduction in Vmax may leave steady-state output nearly unchanged. As demand rises or cofactor availability falls, R approaches one and the phenotype emerges. Pregnancy, rapid growth, low dietary folate, alcohol exposure, antifolate therapy, renal dysfunction, aging, and inflammation can change substrate supply or demand. This is the systems interpretation of incomplete penetrance: the allele reduces reserve, not necessarily current function.
+If $R$ is well above one, a substantial reduction in $V_{\max}$ may leave steady-state output nearly unchanged. As demand rises or cofactor availability falls, $R$ approaches one and the phenotype emerges. Pregnancy, rapid growth, low dietary folate, alcohol exposure, antifolate therapy, renal dysfunction, aging, and inflammation can change substrate supply or demand. This is the systems interpretation of incomplete penetrance: the allele reduces reserve, not necessarily current function.
 
 ### 5.4 Concentration is not flux
 
-A metabolite pool M at steady state obeys:
+A metabolite pool $M$ at steady state obeys:
 
-**dM/dt = ΣJin − ΣJout = 0**
+$$
+\frac{dM}{dt} = \sum J_\text{in} - \sum J_\text{out} = 0
+$$
 
 The concentration of M can rise because production increases, consumption falls, export decreases, or compartment volume changes. Total homocysteine can be elevated because remethylation is reduced, transsulfuration is reduced, renal clearance is impaired, methionine load is high, thyroid function is low, B12 is deficient, folate is deficient, or medications interfere. It is an integrated marker, not a direct flux meter.
 
@@ -301,26 +344,35 @@ First, the relevant variable for a given methyltransferase is the local free con
 
 One may write a simplified rate law for a methyltransferase with competitive SAH inhibition:
 
-**v = Vmax[SAM] / {Km,SAM(1 + [SAH]/Ki,SAH) + [SAM]}**
+$$
+v = \frac{V_{\max}[\text{SAM}]}{K_{m,\text{SAM}}\left(1 + \dfrac{[\text{SAH}]}{K_{i,\text{SAH}}}\right) + [\text{SAM}]}
+$$
 
 A 10% change in the ratio will not produce the same rate change for all enzymes. If [SAM] is saturating and [SAH] low relative to Ki, the effect may be negligible. If the enzyme operates near Km with substantial SAH inhibition, the effect may be larger. Global percentage statements are therefore untenable.
 
 ### 5.6 A formal genotype × environment model
 
-For a biochemical phenotype Y, a minimal model is:
+For a biochemical phenotype $Y$, a minimal model is:
 
-**Y = β₀ + βG·G + βF·F + βR·R + βB·B + βK·K + βGF(G×F) + βGR(G×R) + u ancestry + ε**
+$$
+\begin{aligned}
+Y = \beta_0 &+ \beta_G G + \beta_F F + \beta_R R + \beta_B B + \beta_K K\\
+&+ \beta_{GF}(G \times F) + \beta_{GR}(G \times R) + u_\text{ancestry} + \varepsilon
+\end{aligned}
+$$
 
-where G encodes genotype, F folate status, R riboflavin status, B B12 status, K kidney function, and u captures structured ancestry or site effects. A robust analysis also includes age, sex, smoking, alcohol, medication, inflammation, thyroid status, and batch. The interaction terms are not decorative. The effect of rs1801133 on homocysteine is demonstrably larger at low folate and can be modified by riboflavin.
+where $G$ encodes genotype, $F$ folate status, $R$ riboflavin status, $B$ B12 status, $K$ kidney function, and $u$ captures structured ancestry or site effects. A robust analysis also includes age, sex, smoking, alcohol, medication, inflammation, thyroid status, and batch. The interaction terms are not decorative. The effect of rs1801133 on homocysteine is demonstrably larger at low folate and can be modified by riboflavin.
 
 For clinical risk, the model becomes a time-to-event function:
 
-**h(t|X) = h₀(t) exp(βG G + βE E + βGE G·E + βC C)**
+$$
+h(t \mid X) = h_0(t)\exp\!\left(\beta_G G + \beta_E E + \beta_{GE}\, G E + \beta_C C\right)
+$$
 
-where C represents conventional risk factors. If βG is small relative to βC, genotype may be statistically associated yet clinically unimportant for individual decision-making. A common allele with an odds ratio of 1.1 can explain some population variance but have poor positive predictive value. High frequency is not synonymous with high individual actionability. Figure 3 visualizes the interaction logic while keeping the axes deliberately non-calibrated.
+where $C$ represents conventional risk factors. If $\beta_G$ is small relative to $\beta_C$, genotype may be statistically associated yet clinically unimportant for individual decision-making. A common allele with an odds ratio of 1.1 can explain some population variance but have poor positive predictive value. High frequency is not synonymous with high individual actionability. Figure 3 visualizes the interaction logic while keeping the axes deliberately non-calibrated.
 
 <figure class="wide-figure">
-  <img src="/assets/images/mthfr-at-the-branch-point/fig-03-genotype-environment-surface.png" alt="Conceptual genotype-by-nutrient response surface" loading="lazy" decoding="async">
+  <img src="/assets/images/mthfr-at-the-branch-point/fig-03-genotype-environment-surface.png" alt="Conceptual genotype-by-nutrient response surface" width="1993" height="1629" loading="lazy" decoding="async">
   <figcaption><strong>Figure 3. Conceptual genotype-by-nutrient response surface.</strong> Author-generated illustration of the interaction logic in the model above and Appendix A. Both axes are normalized latent variables, and the color scale is in arbitrary units. The surface is not fitted to participant-level data, is not a clinical risk calculator, and deliberately avoids mapping the frequently quoted 65%/30% activity estimates directly onto human outcomes. <a href="/assets/images/mthfr-at-the-branch-point/fig-03-genotype-environment-surface.png">Open full-resolution figure</a>.</figcaption>
 </figure>
 
@@ -328,13 +380,20 @@ where C represents conventional risk factors. If βG is small relative to βC, g
 
 The posterior probability of a clinically relevant phenotype after a positive genotype depends on prevalence and likelihood ratio:
 
-**Posterior odds = Prior odds × LRgenotype**
+$$
+\text{Posterior odds} = \text{Prior odds} \times \text{LR}_\text{genotype}
+$$
 
 Because rs1801133 CT and TT are common and most carriers do not have severe disease, the genotype has a low likelihood ratio for severe MTHFR deficiency. In contrast, a phenotype of very high homocysteine plus low methionine, developmental or neurologic abnormalities, and two rare pathogenic variants has a high likelihood ratio. This is why common-variant testing performs poorly as a stand-alone diagnostic test while sequencing can be decisive in a phenotype-selected metabolic case.
 
 The clinical value of a test is not its association P value. It is the expected improvement in decisions:
 
-**Expected utility = Σ P(state|test) × U(action,state) − cost(testing, anxiety, downstream care)**
+$$
+\begin{aligned}
+\text{Expected utility} = \sum_\text{states} &P(\text{state} \mid \text{test}) \times U(\text{action},\text{state})\\
+&- \text{cost}(\text{testing, anxiety, downstream care})
+\end{aligned}
+$$
 
 A test that does not change management has low utility even if analytically accurate. This is the basis of professional recommendations against routine MTHFR polymorphism testing in thrombophilia evaluations [29–33].
 
@@ -385,13 +444,17 @@ A series of studies associates the 677TT genotype with higher blood pressure and
 - carrying either common allele;
 - having TT homozygosity or a double-heterozygous genotype.
 
-These are not equivalent. If the T-allele frequency is p and Hardy–Weinberg equilibrium approximately holds, expected genotype frequencies are CC = (1−p)², CT = 2p(1−p), and TT = p². The carrier fraction is:
+These are not equivalent. If the T-allele frequency is $p$ and Hardy–Weinberg equilibrium approximately holds, expected genotype frequencies are $\text{CC} = (1-p)^2$, $\text{CT} = 2p(1-p)$, and $\text{TT} = p^2$. The carrier fraction is:
 
-**P(CT or TT) = 1 − (1−p)² = 2p − p²**
+$$
+P(\text{CT or TT}) = 1 - (1-p)^2 = 2p - p^2
+$$
 
-At p = 0.30, carriers are 51%; at p = 0.45, carriers are 70%; at p = 0.60, carriers are 84%. Thus, a modest change in allele frequency produces a large change in carrier prevalence. If observed TT prevalence deviates from p² because of sampling, substructure, or genotyping, carrier frequency can be reconstructed from p and TT:
+At $p = 0.30$, carriers are 51%; at $p = 0.45$, carriers are 70%; at $p = 0.60$, carriers are 84%. Thus, a modest change in allele frequency produces a large change in carrier prevalence. If observed TT prevalence deviates from $p^2$ because of sampling, substructure, or genotyping, carrier frequency can be reconstructed from $p$ and TT:
 
-**CT = 2(p − TT); carrier = CT + TT = 2p − TT**
+$$
+\text{CT} = 2(p - \text{TT}); \qquad \text{carrier} = \text{CT} + \text{TT} = 2p - \text{TT}
+$$
 
 These formulas show why a single global percentage is not defensible.
 
@@ -402,7 +465,7 @@ In 15,357 healthy Han Chinese adults recruited from ten regions, rs1801133 T-all
 A meta-analysis of Chinese populations estimated overall T-allele frequency at 42% and TT homozygosity at 20%, with substantial heterogeneity [19]. Regional pooled estimates showed TT prevalence of 7% in southern, 19% in central, and 28% in northern China; T-allele frequencies were 25%, 41%, and 53%, respectively. The same analysis found the opposite gradient for A1298C, whose C allele was more common in southern than northern China. “East Asian risk” therefore conceals two facts: within-China variation can exceed between-country averages, and the two common MTHFR variants need not share the same geography. Figure 4 shows both allele-frequency gradients in the original dataset.
 
 <figure class="wide-figure">
-  <img src="/assets/images/mthfr-at-the-branch-point/fig-04-china-rs1801133-frequency.png" alt="Geographic gradients of MTHFR 677T and 1298C alleles in sampled Han Chinese populations" loading="lazy" decoding="async">
+  <img src="/assets/images/mthfr-at-the-branch-point/fig-04-china-rs1801133-frequency.png" alt="Geographic gradients of MTHFR 677T and 1298C alleles in sampled Han Chinese populations" width="1413" height="1820" loading="lazy" decoding="async">
   <figcaption><strong>Figure 4. Opposing geographic gradients of the MTHFR 677T and 1298C alleles in sampled Han Chinese populations.</strong> Cropped to panels A and B from original Figure 1 of <a href="https://doi.org/10.1371/journal.pone.0057917">Yang et al.</a> [18], reproduced under CC BY. Dark sectors show the 677T allele in panel A (n=14,405) and the 1298C allele in panel B (n=13,473); they are allele frequencies, not homozygous-genotype or individual-risk probabilities. These are study-site estimates rather than provincial census values, and they demonstrate why a single “East Asian carrier rate” is biologically uninformative. <a href="/assets/images/mthfr-at-the-branch-point/fig-04-china-rs1801133-frequency.png">Open full-resolution figure</a>.</figcaption>
 </figure>
 
@@ -535,7 +598,7 @@ Randomized trials provide the more direct intervention test. HOPE-2, NORVIT, VIS
 This evidence does not mean folate is physiologically irrelevant. It means that in the studied, often secondary-prevention and folate-replete populations, lowering homocysteine with these regimens did not materially alter the dominant causal pathways of coronary events. A biomarker can be associated, partly causal, or biologically active without being a useful treatment target in a particular population. The trial-specific estimates and pooled coronary result are shown in Figure 5.
 
 <figure class="wide-figure">
-  <img src="/assets/images/mthfr-at-the-branch-point/fig-05-b-vitamin-coronary-trials.png" alt="Major coronary events in large randomized trials of homocysteine lowering" loading="lazy" decoding="async">
+  <img src="/assets/images/mthfr-at-the-branch-point/fig-05-b-vitamin-coronary-trials.png" alt="Major coronary events in large randomized trials of homocysteine lowering" width="3068" height="3234" loading="lazy" decoding="async">
   <figcaption><strong>Figure 5. Major coronary events in large randomized trials of homocysteine lowering.</strong> Reproduced without data alteration from original Figure 5 of <a href="https://doi.org/10.1371/journal.pmed.1001177">Clarke et al.</a> [42] under CC BY. Across 25,170 treated and 25,208 control participants, the pooled coronary-event rate ratio was 1.02 (95% CI 0.96–1.08). This figure supports a null general coronary-prevention effect in the included trials; it should not be generalized to erase the context-specific first-stroke result in CSPPT or to claim that folate biology is inert. <a href="/assets/images/mthfr-at-the-branch-point/fig-05-b-vitamin-coronary-trials.png">Open full-resolution figure</a>.</figcaption>
 </figure>
 
@@ -562,7 +625,7 @@ Three restrictions are essential. First, these trials selected by age, cognitive
 Severe MTHFR deficiency can cause neurologic disease through a much larger remethylation defect. Importing that phenotype into common SNP carriers is a category error. Figure 6 shows the VITACOG MRI subgroup result while preserving its surrogate-endpoint and non-genotype-selected boundaries.
 
 <figure class="wide-figure">
-  <img src="/assets/images/mthfr-at-the-branch-point/fig-06-vitacog-atrophy-by-homocysteine.png" alt="Baseline homocysteine and annual brain-atrophy rate in the VITACOG MRI subgroup" loading="lazy" decoding="async">
+  <img src="/assets/images/mthfr-at-the-branch-point/fig-06-vitacog-atrophy-by-homocysteine.png" alt="Baseline homocysteine and annual brain-atrophy rate in the VITACOG MRI subgroup" width="1949" height="1093" loading="lazy" decoding="async">
   <figcaption><strong>Figure 6. Baseline homocysteine and annual brain-atrophy rate in the VITACOG MRI subgroup.</strong> Reproduced without data alteration from original Figure 2 of <a href="https://doi.org/10.1371/journal.pone.0012244">Smith et al.</a> [48] under CC BY. Regression lines with 95% mean prediction intervals are shown for placebo (n=83) and active B-vitamin treatment (n=85). The endpoint is MRI-defined atrophy in selected participants with mild cognitive impairment, not dementia incidence or mortality; participants were not selected by MTHFR genotype. <a href="/assets/images/mthfr-at-the-branch-point/fig-06-vitacog-atrophy-by-homocysteine.png">Open full-resolution figure</a>.</figcaption>
 </figure>
 
@@ -645,15 +708,19 @@ The first sequence can falsify itself. The second is optimized to preserve belie
 
 A diet adequate in folate, riboflavin, vitamin B12, vitamin B6, choline, methionine, serine, glycine, and total protein supplies substrates and cofactors to several redundant one-carbon routes. Leafy vegetables, legumes, citrus, fortified grains, eggs, dairy, meat, fish, and other nutrient-dense foods contribute different components. Food-pattern adequacy also changes risk through pathways that are not reducible to MTHFR: blood pressure, adiposity, glycemic control, lipid exposure, kidney function, and alcohol intake.
 
-This matters because genotype effects are often largest in the lower tail of nutrient status. Raising a deficient or marginal state toward adequacy can produce a large nonlinear gain; pushing an already adequate state to supraphysiologic concentrations generally has lower expected benefit and a less favorable uncertainty profile. In mathematical terms, if outcome **Y** depends on nutrient status **N** through a saturable function such as
+This matters because genotype effects are often largest in the lower tail of nutrient status. Raising a deficient or marginal state toward adequacy can produce a large nonlinear gain; pushing an already adequate state to supraphysiologic concentrations generally has lower expected benefit and a less favorable uncertainty profile. In mathematical terms, if outcome $Y$ depends on nutrient status $N$ through a saturable function such as
 
-**Y(N) = Ymax · N / (K + N),**
+$$
+Y(N) = \frac{Y_{\max} N}{K + N},
+$$
 
 then the marginal derivative
 
-**dY/dN = Ymax · K / (K + N)²**
+$$
+\frac{dY}{dN} = \frac{Y_{\max} K}{(K + N)^2}
+$$
 
-is highest when **N** is low. Common MTHFR variants can shift the effective **K** or lower the attainable plateau for a specific metabolite, but they do not abolish saturation. This is the formal reason that “more methyl donors” is not indefinitely better.
+is highest when $N$ is low. Common MTHFR variants can shift the effective $K$ or lower the attainable plateau for a specific metabolite, but they do not abolish saturation. This is the formal reason that “more methyl donors” is not indefinitely better.
 
 Dietary assessment should be specific enough to identify the likely limiting input. “I eat clean” is not a folate measurement. A seven-day food record, supplement inventory, alcohol quantification, and review of fortified foods are more informative than labels such as paleo, ketogenic, plant-based, or carnivore. Restrictive diets can be entirely compatible with adequate one-carbon nutrition, but only if their actual micronutrient and protein composition supports that claim.
 
@@ -725,7 +792,9 @@ In a person without deficiency or a specific medical indication, chronic high-do
 
 Betaine—trimethylglycine—is a methyl donor for betaine-homocysteine methyltransferase:
 
-**betaine + homocysteine → dimethylglycine + methionine.**
+$$
+\text{betaine} + \text{homocysteine} \longrightarrow \text{dimethylglycine} + \text{methionine}.
+$$
 
 BHMT is expressed principally in liver and kidney. It bypasses folate and cobalamin for that remethylation event, which makes betaine indispensable in severe remethylation disorders. In rare MTHFR deficiency, early betaine treatment is associated with dramatically improved survival and neurodevelopment [54,55]. That fact is sometimes imported into the common-SNP literature as though the difference between severe enzyme deficiency and thermolabile polymorphism were quantitative only. It is not. The disease context, metabolite concentrations, treatment dose, and benefit–risk ratio are categorically different.
 
@@ -813,11 +882,13 @@ Homocysteine concentration also matters. A value near the laboratory upper refer
 
 No prospective human study demonstrates that untreated common C677T carriers undergo a uniform, progressive, whole-body methylation collapse leading to accelerated aging. DNA methylation is locus-, cell-, age-, and tissue-specific. Histone, RNA, phospholipid, neurotransmitter, and small-molecule methylation have different enzymes, Km values, compartmentation, and regulatory priorities. The phrase “low methylation” lacks a defined measurement unless the substrate, product, locus, tissue, and time scale are specified.
 
-Even when lower SAM:SAH is observed, the relationship to a particular methyltransferase can be nonlinear. For methyltransferase **i**, a simplified competitive-product model is
+Even when lower SAM:SAH is observed, the relationship to a particular methyltransferase can be nonlinear. For methyltransferase $i$, a simplified competitive-product model is
 
-**vᵢ = Vmax,ᵢ · [SAM] / {Km,SAM,ᵢ · (1 + [SAH]/Ki,SAH,ᵢ) + [SAM]}.**
+$$
+v_i = \frac{V_{\max,i}\,[\text{SAM}]}{K_{m,\text{SAM},i}\left(1 + \dfrac{[\text{SAH}]}{K_{i,\text{SAH},i}}\right) + [\text{SAM}]}.
+$$
 
-Different **Km** and **Ki** values mean the same plasma or tissue SAM:SAH shift has unequal effects across reactions. The global-methylation claim therefore does not follow from first principles.
+Different $K_m$ and $K_i$ values mean the same plasma or tissue SAM:SAH shift has unequal effects across reactions. The global-methylation claim therefore does not follow from first principles.
 
 ### 11.8 A conditional risk matrix
 
@@ -933,7 +1004,7 @@ Once deficiency is corrected, homocysteine is explained or normalized, and the c
 A common failure mode is to interpret the plateau as evidence that the “methylation block” is more severe and therefore requires more compounds. This converts falsification into dose escalation. Figure 7 condenses the phenotype-first sequence into a decision aid.
 
 <figure class="wide-figure">
-  <img src="/assets/images/mthfr-at-the-branch-point/fig-07-phenotype-first-algorithm.png" alt="Phenotype-first interpretation and management of MTHFR findings" loading="lazy" decoding="async">
+  <img src="/assets/images/mthfr-at-the-branch-point/fig-07-phenotype-first-algorithm.png" alt="Phenotype-first interpretation and management of MTHFR findings" width="2146" height="1707" loading="lazy" decoding="async">
   <figcaption><strong>Figure 7. Phenotype-first interpretation and management of MTHFR findings.</strong> Author-generated decision aid synthesizing the diagnostic boundaries and clinical recommendations discussed in [23,29–33,54,58–60,69]. Common rs1801133/rs1801131 results enter a phenotype-and-indication pathway; a severe biochemical or neurologic phenotype enters a metabolic-genetics pathway. This is a monograph-level synthesis, not a substitute for specialty guidelines or urgent metabolic consultation. <a href="/assets/images/mthfr-at-the-branch-point/fig-07-phenotype-first-algorithm.png">Open full-resolution figure</a>.</figcaption>
 </figure>
 
@@ -1041,9 +1112,11 @@ Fifth, the presumed intervention—B vitamins—is accessible and safe enough fo
 
 The same features generated false positives. Thousands of small studies tested C677T against dozens of outcomes, genetic models, ethnic subgroups, sexes, nutrient strata, and haplotypes. With insufficient correction for multiplicity, population stratification, outcome heterogeneity, and publication bias, nominally significant associations were inevitable. Positive results were more likely to be published and cited; null results disappeared.
 
-If 20 independent null hypotheses are tested at **α = 0.05**, the probability of at least one false positive is
+If 20 independent null hypotheses are tested at $\alpha = 0.05$, the probability of at least one false positive is
 
-**1 − (1 − 0.05)²⁰ ≈ 0.642.**
+$$
+1 - (1 - 0.05)^{20} \approx 0.642.
+$$
 
 With multiple outcomes, dominant/recessive/additive models, and subgroup analyses, the effective number of tests can be much larger. Small studies also produce winner’s-curse effect inflation. A discovery odds ratio of 1.5 can shrink toward 1.05 or null in larger, preregistered datasets.
 
@@ -1094,7 +1167,9 @@ This is not because molecular optimization is intrinsically unimportant. It is b
 
 Define an informal evidence-to-action ratio:
 
-**EAR = (magnitude × certainty × patient importance × applicability) / (harm + burden + opportunity cost).**
+$$
+\text{EAR} = \frac{\text{magnitude} \times \text{certainty} \times \text{patient importance} \times \text{applicability}}{\text{harm} + \text{burden} + \text{opportunity cost}}.
+$$
 
 Periconceptional folic acid has a high EAR: large consequence prevented, strong evidence, low cost, broad applicability. Treating B12 deficiency has a high EAR. Controlling hypertension has a high EAR. Genotype-targeted riboflavin in TT hypertension has a moderate, promising EAR: low burden and plausible benefit, but limited replication. High-dose multi-methyl-donor stacks in an asymptomatic carrier have a low EAR: uncertain outcome benefit, multiple compounds, and nontrivial opportunity cost.
 
@@ -1301,32 +1376,32 @@ The deeper lesson for longevity science is methodological. A molecular mechanism
 
 Let the principal cytosolic folate pools be:
 
-- **F₀ = [THF]**
-- **F₁ = [5,10-CH₂-THF]**
-- **F₂ = [5-CH₃-THF]**
-- **F₃ = [10-formyl-THF]**
-- **F₄ = [5-formyl-THF]**
+- $F_0 = [\text{THF}]$
+- $F_1 = [\text{5,10-CH}_2\text{-THF}]$
+- $F_2 = [\text{5-CH}_3\text{-THF}]$
+- $F_3 = [\text{10-formyl-THF}]$
+- $F_4 = [\text{5-formyl-THF}]$
 
 and methionine-cycle pools:
 
-- **H = [homocysteine]**
-- **M = [methionine]**
-- **A = [SAM]**
-- **S = [SAH]**.
+- $H = [\text{homocysteine}]$
+- $M = [\text{methionine}]$
+- $A = [\text{SAM}]$
+- $S = [\text{SAH}]$.
 
 A reduced minimal model can be written:
 
-**dF₁/dt = vSHMT + vMTHFD,in − vMTHFR − vTYMS − vMTHFD,out**
-
-**dF₂/dt = vMTHFR − vMTR − vexport/import − vloss**
-
-**dH/dt = vSAHH + vprotein_turnover − vMTR − vBHMT − vCBS − vclearance**
-
-**dM/dt = vMTR + vBHMT + vdiet − vMAT − vprotein_synthesis + vprotein_turnover − vcatabolism**
-
-**dA/dt = vMAT − ΣvMT,i − vnonenzymatic**
-
-**dS/dt = ΣvMT,i − vSAHH.**
+$$
+\begin{aligned}
+\frac{dF_1}{dt} &= v_\text{SHMT} + v_\text{MTHFD,in} - v_\text{MTHFR} - v_\text{TYMS} - v_\text{MTHFD,out}\\[2pt]
+\frac{dF_2}{dt} &= v_\text{MTHFR} - v_\text{MTR} - v_\text{export/import} - v_\text{loss}\\[2pt]
+\frac{dH}{dt} &= v_\text{SAHH} + v_\text{protein turnover} - v_\text{MTR} - v_\text{BHMT} - v_\text{CBS} - v_\text{clearance}\\[2pt]
+\frac{dM}{dt} &= v_\text{MTR} + v_\text{BHMT} + v_\text{diet} - v_\text{MAT}\\
+&\quad - v_\text{protein synthesis} + v_\text{protein turnover} - v_\text{catabolism}\\[2pt]
+\frac{dA}{dt} &= v_\text{MAT} - \sum_i v_{\text{MT},i} - v_\text{nonenzymatic}\\[2pt]
+\frac{dS}{dt} &= \sum_i v_{\text{MT},i} - v_\text{SAHH}.
+\end{aligned}
+$$
 
 At steady state, each derivative approaches zero, but individual fluxes can be large. A normal pool concentration does not imply low turnover, and a changed pool does not specify which flux changed.
 
@@ -1334,51 +1409,73 @@ At steady state, each derivative approaches zero, but individual fluxes can be l
 
 A phenomenological rate expression is:
 
-**vMTHFR = Etotal · fFAD · kcat · [F₁]/(Km,F₁ + [F₁]) · [NADPH]/(Km,NADPH + [NADPH]) · g(SAM,SAH,P),**
+$$
+\begin{aligned}
+v_\text{MTHFR} = {}& E_\text{total} \cdot f_\text{FAD} \cdot k_\text{cat} \cdot
+\frac{[F_1]}{K_{m,F_1} + [F_1]} \cdot \frac{[\text{NADPH}]}{K_{m,\text{NADPH}} + [\text{NADPH}]}\\
+&\cdot\, g(\text{SAM},\text{SAH},P),
+\end{aligned}
+$$
 
-where **P** denotes phosphorylation state and
+where $P$ denotes phosphorylation state and
 
-**0 ≤ g ≤ 1**
+$$
+0 \le g \le 1
+$$
 
 captures allosteric inhibition. One possible inhibitory form is:
 
-**g = 1 / {1 + ([SAM]/Ki,SAM)ⁿ · h(P) / [1 + ([SAH]/Ka,SAH)ᵐ]}.**
+$$
+g = \frac{1}{1 + \left(\dfrac{[\text{SAM}]}{K_{i,\text{SAM}}}\right)^{\!n} \cdot \dfrac{h(P)}{1 + \left(\dfrac{[\text{SAH}]}{K_{a,\text{SAH}}}\right)^{\!m}}}.
+$$
 
-This is illustrative, not a fitted universal human rate law. p.Ala222Val can reduce **fFAD**, effective **Etotal**, or thermal stability. Riboflavin primarily changes cofactor availability and therefore **fFAD**. Folate intake changes **F₁** and total folate pool. SAM/SAH feedback changes **g**. The multiplicative structure explains genotype-by-nutrient interaction.
+This is illustrative, not a fitted universal human rate law. p.Ala222Val can reduce $f_\text{FAD},$ effective $E_\text{total},$ or thermal stability. Riboflavin primarily changes cofactor availability and therefore $f_\text{FAD}$. Folate intake changes $F_1$ and total folate pool. SAM/SAH feedback changes $g$. The multiplicative structure explains genotype-by-nutrient interaction.
 
 ### A.3 Flux-control coefficient
 
-For pathway flux **J**, the control exerted by MTHFR is:
+For pathway flux $J$, the control exerted by MTHFR is:
 
-**Cᴶ_MTHFR = (∂J/J)/(∂E_MTHFR/E_MTHFR).**
+$$
+C^J_\text{MTHFR} = \frac{\partial J / J}{\partial E_\text{MTHFR} / E_\text{MTHFR}}.
+$$
 
 The summation theorem of metabolic control analysis states, under standard assumptions:
 
-**Σᵢ Cᴶ_Ei = 1.**
+$$
+\sum_i C^J_{E_i} = 1.
+$$
 
-Therefore, no enzyme generally owns 100% of pathway control. If **Cᴶ_MTHFR = 0.2**, a 50% reduction in effective MTHFR activity produces approximately a 10% first-order reduction in **J**, before nonlinear adaptation. The coefficient itself changes with nutrient state and branch demand. Under low folate, MTHFR control may rise; under substrate saturation or strong alternative remethylation, it may fall.
+Therefore, no enzyme generally owns 100% of pathway control. If $C^J_\text{MTHFR} = 0.2$, a 50% reduction in effective MTHFR activity produces approximately a 10% first-order reduction in $J$, before nonlinear adaptation. The coefficient itself changes with nutrient state and branch demand. Under low folate, MTHFR control may rise; under substrate saturation or strong alternative remethylation, it may fall.
 
 ### A.4 Branch allocation
 
-Define folate one-carbon inflow **Jin** and competing outputs:
+Define folate one-carbon inflow $J_\text{in}$ and competing outputs:
 
-**Jin = JMTHFR + JTYMS + Jpurine + Jother + dFpool/dt.**
+$$
+J_\text{in} = J_\text{MTHFR} + J_\text{TYMS} + J_\text{purine} + J_\text{other} + \frac{dF_\text{pool}}{dt}.
+$$
 
 At steady state:
 
-**Jin = JMTHFR + JTYMS + Jpurine + Jother.**
+$$
+J_\text{in} = J_\text{MTHFR} + J_\text{TYMS} + J_\text{purine} + J_\text{other}.
+$$
 
-Reducing **JMTHFR** does not necessarily reduce **Jin**. Carbon can accumulate in **F₁**, be redirected to dTMP/purines, or reduce total inflow through feedback. This is why “one-carbon-cycle efficiency” is an imprecise scalar. Efficiency must specify desired output and opportunity cost.
+Reducing $J_\text{MTHFR}$ does not necessarily reduce $J_\text{in}$. Carbon can accumulate in $F_1$, be redirected to dTMP/purines, or reduce total inflow through feedback. This is why “one-carbon-cycle efficiency” is an imprecise scalar. Efficiency must specify desired output and opportunity cost.
 
 ### A.5 Methylation potential
 
 The common proxy is:
 
-**MP = [SAM]/[SAH].**
+$$
+\text{MP} = \frac{[\text{SAM}]}{[\text{SAH}]}.
+$$
 
-But for methyltransferase **i**:
+But for methyltransferase $i$:
 
-**vMT,i = Vmax,i · [SAM] / {Km,SAM,i(1 + [SAH]/Ki,SAH,i) + [SAM]}.**
+$$
+v_{\text{MT},i} = \frac{V_{\max,i}\,[\text{SAM}]}{K_{m,\text{SAM},i}\left(1 + \dfrac{[\text{SAH}]}{K_{i,\text{SAH},i}}\right) + [\text{SAM}]}.
+$$
 
 Two tissues with the same ratio but different absolute concentrations can have different rates. Two enzymes with different kinetic constants can respond differently within the same tissue. The ratio is therefore informative but not a universal measure of “percent methylation.”
 
@@ -1386,35 +1483,39 @@ Two tissues with the same ratio but different absolute concentrations can have d
 
 SAH hydrolase catalyzes a reversible reaction:
 
-**SAH + H₂O ⇌ adenosine + homocysteine.**
+$$
+\text{SAH} + \text{H}_2\text{O} \rightleftharpoons \text{adenosine} + \text{homocysteine}.
+$$
 
 In vitro, equilibrium favors SAH synthesis. In vivo, adenosine and homocysteine removal pulls hydrolysis forward. Renal dysfunction, adenosine metabolism, and homocysteine clearance can therefore raise SAH and inhibit methyltransferases even when SAM is adequate. This is another reason plasma homocysteine and MTHFR genotype cannot fully specify methylation potential.
 
 ### A.7 Hardy–Weinberg reconstruction examples
 
-For Hainan, **q ≈ 0.24**:
+For Hainan, $q \approx 0.24$:
 
-- TT **q² ≈ 0.058**;
-- CT **2q(1−q) ≈ 0.365**;
-- carriers **≈ 0.423**.
+- TT: $q^2 \approx 0.058$;
+- CT: $2q(1-q) \approx 0.365$;
+- carriers: $\approx 0.423$.
 
 The observed TT proportion of 6.4% and reconstructed carrier proportion near 41–42% are compatible with sampling and modest departures from the simple approximation [18].
 
-For Shandong, **q ≈ 0.631**:
+For Shandong, $q \approx 0.631$:
 
-- TT **q² ≈ 0.398**;
-- CT **2q(1−q) ≈ 0.466**;
-- carriers **≈ 0.864**.
+- TT: $q^2 \approx 0.398$;
+- CT: $2q(1-q) \approx 0.466$;
+- carriers: $\approx 0.864$.
 
 Observed TT was approximately 40.8%, and observed/reconstructed carriers approximately 85%. Thus, the same allele can move a population from minority-carrier to near-ubiquitous-carrier status without changing its molecular effect.
 
 ### A.8 Bayesian interpretation of a common genotype
 
-Let **D** be a clinically important remethylation disorder and **G** a common MTHFR genotype. Bayes’ theorem gives:
+Let $D$ be a clinically important remethylation disorder and $G$ a common MTHFR genotype. Bayes’ theorem gives:
 
-**P(D|G) = P(G|D)P(D) / P(G).**
+$$
+P(D \mid G) = \frac{P(G \mid D)\,P(D)}{P(G)}.
+$$
 
-Even if **G** is enriched among cases, a very low disease prior **P(D)** and high population frequency **P(G)** can keep **P(D|G)** low. By contrast, a rare pathogenic biallelic genotype with high likelihood ratio can shift the posterior substantially. This is the formal difference between susceptibility testing and diagnosis.
+Even if $G$ is enriched among cases, a very low disease prior $P(D)$ and high population frequency $P(G)$ can keep $P(D \mid G)$ low. By contrast, a rare pathogenic biallelic genotype with high likelihood ratio can shift the posterior substantially. This is the formal difference between susceptibility testing and diagnosis.
 
 ---
 
