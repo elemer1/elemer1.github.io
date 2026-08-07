@@ -203,7 +203,7 @@ Catalyst: thymidylate synthase (TYMS)
 
 Ten-formyl-THF donates carbon atoms in de novo purine synthesis at the GART and ATIC steps. Thus, MTHFR sits at a competition point: carbon committed to 5-CH₃-THF is less immediately available for nucleotide synthesis, while carbon retained in other folate forms is less available for MTR-dependent remethylation. Figure 1 summarizes this topology without implying a quantitative flux partition.
 
-<figure class="wide-figure">
+<figure class="column-figure">
   <img src="/assets/images/mthfr-at-the-branch-point/fig-01-one-carbon-network.png" alt="One-carbon allocation at the MTHFR branch point" width="2146" height="1471" loading="lazy" decoding="async">
   <figcaption><strong>Figure 1. One-carbon allocation at the MTHFR branch point.</strong> Author-generated, compartment-simplified schematic based on the reaction topology and regulatory relationships reviewed in <span id="cite-8-2"></span><span id="cite-9-2"></span>[<a href="#ref-7" id="cite-7-2" class="cite">7</a>–<a href="#ref-10" id="cite-10-1" class="cite">10</a>]. The diagram distinguishes folate allocation, the methionine cycle, transsulfuration, FAD/NADPH dependence, and SAM-mediated feedback. Arrow placement is qualitative: this is neither an isotope-defined flux map nor a patient-calibrated kinetic model. <a href="/assets/images/mthfr-at-the-branch-point/fig-01-one-carbon-network.png">Open full-resolution figure</a>.</figcaption>
 </figure>
@@ -240,7 +240,7 @@ Electron transfer can be summarized as follows. NADPH reduces enzyme-bound FAD; 
 
 The p.Ala222Val substitution introduces a bulkier, β-branched side chain. Structural and biochemical studies indicate that its principal consequence is not the destruction of the active site but destabilization of the flavin-bound conformation. Thermal challenge accentuates the phenotype because the variant loses FAD more readily. This mechanistic detail explains two otherwise confusing observations: first, residual activity estimates depend on assay temperature, extraction, and cofactor conditions; second, riboflavin status can modulate the phenotype because dietary riboflavin supplies the precursor for FMN and FAD. Figure 2 provides the domain-level structural context for these regulatory claims.
 
-<figure class="wide-figure">
+<figure class="column-figure">
   <img src="/assets/images/mthfr-at-the-branch-point/fig-02-mthfr-architecture.png" alt="Catalytic, linker, and regulatory architecture of human MTHFR" width="2069" height="568" loading="lazy" decoding="async">
   <figcaption><strong>Figure 2. Catalytic, linker, and regulatory architecture of human MTHFR.</strong> Reproduced without data alteration from original Figure 4 of <a href="https://doi.org/10.1038/s41467-018-04735-2">Froese et al.</a> [<a href="#ref-4" id="cite-4-4" class="cite">4</a>] under CC BY 4.0. The catalytic domain is cyan, the linker red, and the regulatory domain yellow; bound FAD is green and SAH pink. This structure establishes domain organization and ligand placement. It does not, by itself, quantify the in-vivo effect of p.Ala222Val or convert an enzyme-assay result into whole-body methylation flux. <a href="/assets/images/mthfr-at-the-branch-point/fig-02-mthfr-architecture.png">Open full-resolution figure</a>.</figcaption>
 </figure>
@@ -372,7 +372,7 @@ $$
 
 where $C$ represents conventional risk factors. If $\beta_G$ is small relative to $\beta_C$, genotype may be statistically associated yet clinically unimportant for individual decision-making. A common allele with an odds ratio of 1.1 can explain some population variance but have poor positive predictive value. High frequency is not synonymous with high individual actionability. Figure 3 visualizes the interaction logic while keeping the axes deliberately non-calibrated.
 
-<figure class="wide-figure">
+<figure class="column-figure">
   <img src="/assets/images/mthfr-at-the-branch-point/fig-03-genotype-environment-surface.png" alt="Conceptual genotype-by-nutrient response surface" width="1993" height="1629" loading="lazy" decoding="async">
   <figcaption><strong>Figure 3. Conceptual genotype-by-nutrient response surface.</strong> Author-generated illustration of the interaction logic in the model above and Appendix A. Both axes are normalized latent variables, and the color scale is in arbitrary units. The surface is not fitted to participant-level data, is not a clinical risk calculator, and deliberately avoids mapping the frequently quoted 65%/30% activity estimates directly onto human outcomes. <a href="/assets/images/mthfr-at-the-branch-point/fig-03-genotype-environment-surface.png">Open full-resolution figure</a>.</figcaption>
 </figure>
@@ -465,7 +465,7 @@ In 15,357 healthy Han Chinese adults recruited from ten regions, rs1801133 T-all
 
 A meta-analysis of Chinese populations estimated overall T-allele frequency at 42% and TT homozygosity at 20%, with substantial heterogeneity [<a href="#ref-19" id="cite-19-1" class="cite">19</a>]. Regional pooled estimates showed TT prevalence of 7% in southern, 19% in central, and 28% in northern China; T-allele frequencies were 25%, 41%, and 53%, respectively. The same analysis found the opposite gradient for A1298C, whose C allele was more common in southern than northern China. “East Asian risk” therefore conceals two facts: within-China variation can exceed between-country averages, and the two common MTHFR variants need not share the same geography. Figure 4 shows both allele-frequency gradients in the original dataset.
 
-<figure class="wide-figure">
+<figure class="column-figure">
   <img src="/assets/images/mthfr-at-the-branch-point/fig-04-china-rs1801133-frequency.png" alt="Geographic gradients of MTHFR 677T and 1298C alleles in sampled Han Chinese populations" width="1413" height="1820" loading="lazy" decoding="async">
   <figcaption><strong>Figure 4. Opposing geographic gradients of the MTHFR 677T and 1298C alleles in sampled Han Chinese populations.</strong> Cropped to panels A and B from original Figure 1 of <a href="https://doi.org/10.1371/journal.pone.0057917">Yang et al.</a> [<a href="#ref-18" id="cite-18-2" class="cite">18</a>], reproduced under CC BY. Dark sectors show the 677T allele in panel A (n=14,405) and the 1298C allele in panel B (n=13,473); they are allele frequencies, not homozygous-genotype or individual-risk probabilities. These are study-site estimates rather than provincial census values, and they demonstrate why a single “East Asian carrier rate” is biologically uninformative. <a href="/assets/images/mthfr-at-the-branch-point/fig-04-china-rs1801133-frequency.png">Open full-resolution figure</a>.</figcaption>
 </figure>
@@ -598,7 +598,7 @@ Randomized trials provide the more direct intervention test. HOPE-2, NORVIT, VIS
 
 This evidence does not mean folate is physiologically irrelevant. It means that in the studied, often secondary-prevention and folate-replete populations, lowering homocysteine with these regimens did not materially alter the dominant causal pathways of coronary events. A biomarker can be associated, partly causal, or biologically active without being a useful treatment target in a particular population. The trial-specific estimates and pooled coronary result are shown in Figure 5.
 
-<figure class="wide-figure">
+<figure class="column-figure">
   <img src="/assets/images/mthfr-at-the-branch-point/fig-05-b-vitamin-coronary-trials.png" alt="Major coronary events in large randomized trials of homocysteine lowering" width="3068" height="3234" loading="lazy" decoding="async">
   <figcaption><strong>Figure 5. Major coronary events in large randomized trials of homocysteine lowering.</strong> Reproduced without data alteration from original Figure 5 of <a href="https://doi.org/10.1371/journal.pmed.1001177">Clarke et al.</a> [<a href="#ref-42" id="cite-42-3" class="cite">42</a>] under CC BY. Across 25,170 treated and 25,208 control participants, the pooled coronary-event rate ratio was 1.02 (95% CI 0.96–1.08). This figure supports a null general coronary-prevention effect in the included trials; it should not be generalized to erase the context-specific first-stroke result in CSPPT or to claim that folate biology is inert. <a href="/assets/images/mthfr-at-the-branch-point/fig-05-b-vitamin-coronary-trials.png">Open full-resolution figure</a>.</figcaption>
 </figure>
@@ -625,7 +625,7 @@ Three restrictions are essential. First, these trials selected by age, cognitive
 
 Severe MTHFR deficiency can cause neurologic disease through a much larger remethylation defect. Importing that phenotype into common SNP carriers is a category error. Figure 6 shows the VITACOG MRI subgroup result while preserving its surrogate-endpoint and non-genotype-selected boundaries.
 
-<figure class="wide-figure">
+<figure class="column-figure">
   <img src="/assets/images/mthfr-at-the-branch-point/fig-06-vitacog-atrophy-by-homocysteine.png" alt="Baseline homocysteine and annual brain-atrophy rate in the VITACOG MRI subgroup" width="1949" height="1093" loading="lazy" decoding="async">
   <figcaption><strong>Figure 6. Baseline homocysteine and annual brain-atrophy rate in the VITACOG MRI subgroup.</strong> Reproduced without data alteration from original Figure 2 of <a href="https://doi.org/10.1371/journal.pone.0012244">Smith et al.</a> [<a href="#ref-48" id="cite-48-2" class="cite">48</a>] under CC BY. Regression lines with 95% mean prediction intervals are shown for placebo (n=83) and active B-vitamin treatment (n=85). The endpoint is MRI-defined atrophy in selected participants with mild cognitive impairment, not dementia incidence or mortality; participants were not selected by MTHFR genotype. <a href="/assets/images/mthfr-at-the-branch-point/fig-06-vitacog-atrophy-by-homocysteine.png">Open full-resolution figure</a>.</figcaption>
 </figure>
@@ -1004,7 +1004,7 @@ Once deficiency is corrected, homocysteine is explained or normalized, and the c
 
 A common failure mode is to interpret the plateau as evidence that the “methylation block” is more severe and therefore requires more compounds. This converts falsification into dose escalation. Figure 7 condenses the phenotype-first sequence into a decision aid.
 
-<figure class="wide-figure">
+<figure class="column-figure">
   <img src="/assets/images/mthfr-at-the-branch-point/fig-07-phenotype-first-algorithm.png" alt="Phenotype-first interpretation and management of MTHFR findings" width="2146" height="1707" loading="lazy" decoding="async">
   <figcaption><strong>Figure 7. Phenotype-first interpretation and management of MTHFR findings.</strong> Author-generated decision aid synthesizing the diagnostic boundaries and clinical recommendations discussed in <span id="cite-30-3"></span><span id="cite-31-5"></span><span id="cite-32-4"></span><span id="cite-59-3"></span>[<a href="#ref-23" id="cite-23-6" class="cite">23</a>,<a href="#ref-29" id="cite-29-2" class="cite">29</a>–<a href="#ref-33" id="cite-33-3" class="cite">33</a>,<a href="#ref-54" id="cite-54-3" class="cite">54</a>,<a href="#ref-58" id="cite-58-2" class="cite">58</a>–<a href="#ref-60" id="cite-60-2" class="cite">60</a>,<a href="#ref-69" id="cite-69-1" class="cite">69</a>]. Common rs1801133/rs1801131 results enter a phenotype-and-indication pathway; a severe biochemical or neurologic phenotype enters a metabolic-genetics pathway. This is a monograph-level synthesis, not a substitute for specialty guidelines or urgent metabolic consultation. <a href="/assets/images/mthfr-at-the-branch-point/fig-07-phenotype-first-algorithm.png">Open full-resolution figure</a>.</figcaption>
 </figure>

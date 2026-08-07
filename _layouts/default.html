@@ -66,6 +66,11 @@
     main figure svg{max-width:100%;height:auto;display:block}
     main figure object[type="image/svg+xml"],main figure embed[type="image/svg+xml"]{display:block;max-width:100%;width:100%;height:auto}
     main figcaption{margin-top:8px;font-size:14px;line-height:1.5;color:#57606a}
+    /* Figures that stay inside the text column: image, caption and prose share
+       one left and right edge, on any screen. Height is capped so a portrait
+       figure still fits the viewport; object-fit keeps the ratio and the
+       width/height attributes keep the box reserved before the image loads. */
+    main figure.column-figure>img,main figure.column-figure>svg{width:100%;height:auto;max-height:min(78vh,760px);object-fit:contain}
     main figure.wide-figure{width:min(1120px,calc(100vw - 40px));max-width:none;margin:32px 50% 28px;transform:translateX(-50%)}
     /* Cap by height as well as width: a portrait or square figure blown up to the
        full 1120px column is taller than a laptop viewport and can never be seen
