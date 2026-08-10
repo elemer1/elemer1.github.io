@@ -79,6 +79,8 @@ External artwork was taken only from papers whose article text states a Creative
 - **Boundary:** monograph synthesis only; it does not replace urgent metabolic-genetics evaluation or specialty guidelines.
 - **SHA-256:** `1fa7337bdcdc032251b4fa6fe7d4dab77a7f6f0d2ebd44991a707b4ffda45482`
 
-## Personal WGS figure
+## Personal WGS evidence
 
-No personal-genomics image was generated. The manuscript explicitly records that a redacted VCF record, validated report capture, or IGV pileup was not supplied. This prevents a generic or fabricated screenshot from being mistaken for verified evidence of the author’s genotype.
+No personal-genomics image was generated, and none is needed. Section 16 of the manuscript now reports the author’s primary variant call file directly: the rs1801133 record is reproduced verbatim as text, with genome build, coordinate, reference and alternate alleles, genotype, depth, allele depths, genotype quality, mapping quality, and filter status, and every other genotype in that section was read from the same file. Sample and accession identifiers are redacted; no other locus outside the declared one-carbon panel is disclosed.
+
+A text record is deliberately preferred to a screenshot here. A screenshot documents only that a vendor interface displayed a call; it carries no depth, no allele balance, no filter status, and no way for a reader to check the annotation independently. The reproduced VCF line and the aggregate file statistics in Table 8 are verifiable against the reader’s own copy of the reference genome and against public frequency and annotation resources. No pipeline screenshot or IGV pileup was supplied, and none has been fabricated.
