@@ -1,0 +1,1261 @@
+---
+title: "边际十年操作手册"
+permalink: /peter-attia/
+listed: false
+---
+
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>边际十年操作手册</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;700&display=swap">
+
+<style>
+:root{
+  --ground:#F1F3F1;
+  --surface:#FAFBFA;
+  --surface-2:#E8EDEA;
+  --ink:#16211F;
+  --ink-soft:#334340;
+  --muted:#5A6A66;
+  --rule:#D7DEDA;
+  --rule-soft:#E4E9E6;
+  --accent:#2E7D6B;
+  --accent-soft:#DCEBE6;
+  --ochre:#9E6716;
+  --ochre-soft:#F3E8D5;
+  --rust:#A6402F;
+  --rust-soft:#F4E0DC;
+  --shadow:0 1px 2px rgba(22,33,31,.05), 0 8px 24px -16px rgba(22,33,31,.28);
+
+  --f-display:"Fraunces","Noto Serif SC",Georgia,"Songti SC",serif;
+  --f-body:"Noto Serif SC",Georgia,"Songti SC","Source Han Serif SC",serif;
+  --f-ui:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --f-mono:"IBM Plex Mono","SF Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1513;
+    --surface:#161F1D;
+    --surface-2:#1E2926;
+    --ink:#E3EAE7;
+    --ink-soft:#C4D0CC;
+    --muted:#8FA09B;
+    --rule:#293633;
+    --rule-soft:#212C29;
+    --accent:#5CBBA1;
+    --accent-soft:#17322C;
+    --ochre:#D8A055;
+    --ochre-soft:#2E2418;
+    --rust:#D4735F;
+    --rust-soft:#31201C;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1513;
+  --surface:#161F1D;
+  --surface-2:#1E2926;
+  --ink:#E3EAE7;
+  --ink-soft:#C4D0CC;
+  --muted:#8FA09B;
+  --rule:#293633;
+  --rule-soft:#212C29;
+  --accent:#5CBBA1;
+  --accent-soft:#17322C;
+  --ochre:#D8A055;
+  --ochre-soft:#2E2418;
+  --rust:#D4735F;
+  --rust-soft:#31201C;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:17px;
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* ---------- layout ---------- */
+.shell{max-width:1240px;margin:0 auto;padding:0 24px 120px;}
+.masthead{padding:88px 0 40px;border-bottom:1px solid var(--rule);}
+.eyebrow{
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:0 0 26px;
+}
+.eyebrow::after{content:"";flex:1;min-width:40px;height:1px;background:var(--rule);}
+h1{
+  font-family:var(--f-display);font-weight:700;font-size:clamp(38px,6.4vw,72px);line-height:1.08;
+  letter-spacing:-.015em;margin:0 0 22px;text-wrap:balance;
+}
+.deck{font-size:clamp(17px,2.1vw,20px);color:var(--ink-soft);max-width:34em;margin:0 0 30px;line-height:1.8;}
+.byline{font-family:var(--f-ui);font-size:13.5px;color:var(--muted);line-height:1.9;max-width:38em;}
+.byline b{color:var(--ink-soft);font-weight:600;}
+
+.cols{display:block;padding-top:44px;}
+@media (min-width:1080px){
+  .cols{display:grid;grid-template-columns:236px minmax(0,1fr);gap:72px;align-items:start;}
+}
+nav.rail{display:none;}
+@media (min-width:1080px){
+  nav.rail{
+    display:block;position:sticky;top:28px;max-height:calc(100vh - 56px);overflow-y:auto;
+    font-family:var(--f-ui);font-size:13px;line-height:1.55;padding-right:8px;
+  }
+  nav.rail::-webkit-scrollbar{width:5px}
+  nav.rail::-webkit-scrollbar-thumb{background:var(--rule);border-radius:3px}
+}
+nav.rail .rail-title{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 14px;
+}
+nav.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px;}
+nav.rail .grp{
+  margin-top:18px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);padding-bottom:6px;border-bottom:1px solid var(--rule-soft);margin-bottom:6px;
+}
+nav.rail .grp:first-child{margin-top:0}
+nav.rail a{
+  color:var(--muted);text-decoration:none;display:block;padding:4px 0 4px 10px;
+  border-left:2px solid transparent;transition:color .15s,border-color .15s;
+}
+nav.rail a:hover,nav.rail a:focus-visible{color:var(--accent);border-left-color:var(--accent);}
+
+main{min-width:0;max-width:70ch;}
+
+/* ---------- typography ---------- */
+.part{
+  margin:96px 0 0;padding-top:34px;border-top:2px solid var(--ink);
+}
+.part:first-child{margin-top:0;border-top:none;padding-top:0;}
+.part-no{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 10px;
+}
+h2{
+  font-family:var(--f-display);font-weight:600;font-size:clamp(27px,3.6vw,36px);line-height:1.22;
+  letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance;
+}
+.part-note{color:var(--muted);font-size:15.5px;margin:0 0 8px;max-width:36em;}
+h3{
+  font-family:var(--f-display);font-weight:600;font-size:22px;line-height:1.35;
+  margin:54px 0 12px;text-wrap:balance;scroll-margin-top:24px;
+}
+h4{
+  font-family:var(--f-ui);font-weight:700;font-size:15px;letter-spacing:.01em;
+  margin:32px 0 8px;color:var(--ink);
+}
+p{margin:0 0 18px;}
+main a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;}
+strong{font-weight:700;color:var(--ink);}
+em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent-soft) 62%);padding:0 1px;}
+ul,ol{margin:0 0 20px;padding-left:1.3em;}
+li{margin:0 0 8px;}
+li::marker{color:var(--accent);}
+ul ul,ol ol,ul ol,ol ul{margin:8px 0 0;}
+hr{border:none;border-top:1px solid var(--rule);margin:40px 0;}
+code,.n{font-family:var(--f-mono);font-size:.88em;font-variant-numeric:tabular-nums;}
+.n{color:var(--ink);font-weight:500;}
+
+/* ---------- components ---------- */
+.lede{
+  font-size:19px;line-height:1.8;color:var(--ink-soft);border-left:3px solid var(--accent);
+  padding-left:22px;margin:0 0 34px;
+}
+
+.claim{
+  font-family:var(--f-display);font-size:21px;line-height:1.5;font-weight:600;
+  margin:34px 0;padding:24px 26px;background:var(--surface);border:1px solid var(--rule);
+  border-radius:2px;box-shadow:var(--shadow);text-wrap:balance;
+}
+.claim .src{
+  display:block;font-family:var(--f-mono);font-size:11px;font-weight:400;letter-spacing:.08em;
+  color:var(--muted);margin-top:14px;text-transform:uppercase;
+}
+
+.card{
+  background:var(--surface);border:1px solid var(--rule);border-radius:2px;
+  padding:24px 26px;margin:28px 0;box-shadow:var(--shadow);
+}
+.card > :last-child{margin-bottom:0}
+.card-h{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 14px;display:flex;gap:10px;align-items:baseline;
+}
+.card.warn{border-color:var(--ochre);background:var(--ochre-soft);}
+.card.warn .card-h{color:var(--ochre);}
+.card.flag{border-color:var(--rust);background:var(--rust-soft);}
+.card.flag .card-h{color:var(--rust);}
+
+.protocol{
+  border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:2px;
+  background:var(--surface);margin:28px 0;overflow:hidden;
+}
+.protocol > header{
+  padding:16px 22px 14px;border-bottom:1px solid var(--rule-soft);
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap;
+}
+.protocol > header b{font-family:var(--f-ui);font-size:15.5px;font-weight:700;}
+.protocol > header span{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+}
+.protocol .body{padding:18px 22px 20px;font-family:var(--f-ui);font-size:14.5px;line-height:1.75;}
+.protocol .body ul{padding-left:1.15em;margin-bottom:0;}
+.protocol .body li{margin-bottom:6px;}
+.protocol .body > :last-child{margin-bottom:0}
+
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--rule);border-radius:2px;background:var(--surface);}
+table{border-collapse:collapse;width:100%;min-width:520px;font-family:var(--f-ui);font-size:14px;line-height:1.6;}
+caption{
+  caption-side:top;text-align:left;padding:16px 20px 4px;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+}
+th,td{padding:11px 20px;text-align:left;border-bottom:1px solid var(--rule-soft);vertical-align:top;}
+thead th{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;border-bottom:1px solid var(--rule);background:var(--surface-2);
+  white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none;}
+td.num,th.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap;}
+td.good{color:var(--accent);font-weight:600;}
+td.norm{color:var(--muted);}
+td.bad{color:var(--rust);font-weight:600;}
+tbody th{font-weight:600;white-space:nowrap;}
+
+.rank{
+  display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+}
+.bars{display:inline-flex;gap:2px;}
+.bars i{width:5px;height:11px;background:var(--rule);border-radius:1px;display:block;}
+.bars i.on{background:var(--accent);}
+
+.grid2{display:grid;gap:16px;margin:26px 0;}
+@media (min-width:620px){.grid2{grid-template-columns:1fr 1fr;}}
+.tile{
+  background:var(--surface);border:1px solid var(--rule);border-radius:2px;padding:18px 20px;
+  font-family:var(--f-ui);font-size:14px;line-height:1.7;
+}
+.tile b{display:block;font-size:15px;margin-bottom:6px;}
+.tile .big{
+  font-family:var(--f-mono);font-size:26px;font-weight:600;color:var(--accent);
+  font-variant-numeric:tabular-nums;line-height:1.2;display:block;margin-bottom:4px;
+}
+
+.steps{list-style:none;padding:0;margin:26px 0;counter-reset:s;}
+.steps li{
+  counter-increment:s;position:relative;padding-left:46px;margin-bottom:22px;
+}
+.steps li::before{
+  content:counter(s);position:absolute;left:0;top:2px;width:30px;height:30px;
+  display:grid;place-items:center;border:1px solid var(--accent);color:var(--accent);
+  border-radius:50%;font-family:var(--f-mono);font-size:12px;font-weight:600;
+}
+.steps li b{display:block;font-family:var(--f-ui);font-size:16px;margin-bottom:4px;}
+
+footer.colophon{
+  margin-top:96px;padding-top:34px;border-top:2px solid var(--ink);
+  font-family:var(--f-ui);font-size:13.5px;color:var(--muted);line-height:1.85;
+}
+footer.colophon h3{font-family:var(--f-display);font-size:19px;color:var(--ink);margin:0 0 12px;}
+footer.colophon .disc{
+  margin-top:24px;padding:16px 20px;border:1px solid var(--rule);border-radius:2px;
+  background:var(--surface);font-size:13px;
+}
+
+:where(a,button,summary):focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+@media (max-width:520px){
+  body{font-size:16px;}
+  .shell{padding:0 18px 80px;}
+  .masthead{padding:56px 0 32px;}
+  th,td{padding:10px 14px;}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+<header class="masthead">
+  <p class="eyebrow">综合指南 · 基于 The Drive 全部 show notes</p>
+  <h1>边际十年<br>操作手册</h1>
+  <p class="deck">把 Peter Attia 三百八十多期节目里散落的证据、阈值和协议，收拢成一份可以照着做、也可以反复回来查的东西。</p>
+  <p class="byline">
+    <b>它想解决什么问题。</b>真正改变健康轨迹的，从来不是某一个神奇因素，而是一组行为在几十年里的复利。所以这份指南不给"十条秘诀"，它给的是一套顺序：先想清楚要什么，再量出自己在哪，然后按杠杆大小依次下手。<br>
+    <b>怎么读。</b>第一次从头读一遍，建立框架；之后当查询手册用——检测目标查第二部分，训练处方查第三部分，某个疾病的具体打法查第四部分。
+  </p>
+</header>
+
+<div class="cols">
+
+<nav class="rail" aria-label="目录">
+  <p class="rail-title">目录</p>
+  <ol>
+    <li class="grp">一 · 思维框架</li>
+    <li><a href="#f-longevity">寿命、健康期与边际十年</a></li>
+    <li><a href="#f-medicine3">Medicine 2.0 与 3.0</a></li>
+    <li><a href="#f-horsemen">四骑士</a></li>
+    <li><a href="#f-backcast">百岁十项全能与倒推</a></li>
+    <li><a href="#f-major">抓大放小</a></li>
+
+    <li class="grp">二 · 先量出你在哪</li>
+    <li><a href="#d-five">五项一生必测</a></li>
+    <li><a href="#d-lipid">脂质与心血管</a></li>
+    <li><a href="#d-metab">代谢与胰岛素</a></li>
+    <li><a href="#d-other">肝肾甲状腺激素炎症</a></li>
+    <li><a href="#d-body">体成分</a></li>
+    <li><a href="#d-fitness">体能基线</a></li>
+
+    <li class="grp">三 · 五大杠杆</li>
+    <li><a href="#l-exercise">运动</a></li>
+    <li><a href="#l-nutrition">营养</a></li>
+    <li><a href="#l-sleep">睡眠</a></li>
+    <li><a href="#l-emotion">情绪健康</a></li>
+    <li><a href="#l-drugs">药物与补剂</a></li>
+
+    <li class="grp">四 · 四骑士</li>
+    <li><a href="#h-ascvd">心血管疾病</a></li>
+    <li><a href="#h-cancer">癌症</a></li>
+    <li><a href="#h-brain">神经退行</a></li>
+    <li><a href="#h-metabolic">代谢功能障碍</a></li>
+
+    <li class="grp">五 · 便宜的补漏</li>
+    <li><a href="#x-list">血压 · 骨 · 口腔 · 皮肤 · 其他</a></li>
+
+    <li class="grp">六 · 怎么开始</li>
+    <li><a href="#s-start">第一个九十天</a></li>
+    <li><a href="#s-habit">习惯的建法</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ============ PART 1 ============ -->
+<section class="part">
+  <p class="part-no">第一部分</p>
+  <h2>思维框架：在做任何事之前</h2>
+  <p class="part-note">大多数人在健康上做的第一个错误决定，是直接跳到战术层——吃什么补剂、做哪个动作。Attia 的整套方法论里，框架先于动作。</p>
+
+  <h3 id="f-longevity">寿命、健康期，和那个叫"边际十年"的东西</h3>
+  <p>Attia 把"长寿"拆成两个向量。<strong>寿命（lifespan）</strong>是离散的、二元的、客观的——活着或者不活着。<strong>健康期（healthspan）</strong>是连续的、主观的，由三部分组成：身体、认知、情绪。</p>
+  <p>三个子维度里，身体和认知会随年龄下降，这是规律。<em>情绪健康是唯一一个不必随年龄变差的</em>——按 Attia 的说法，它甚至可能呈 U 型，在四十多岁触底后回升。这一条很重要，因为它意味着在衰老这件事上，你手里始终有一张可以变好的牌。</p>
+  <div class="claim">
+    "如果你完全不去想心脏病、癌症、阿尔茨海默病，只是死磕力量、耐力、平衡、协调、处理速度、工作记忆、情绪健康、人际关系——我仍然认为你能拿到延长寿命所需努力的四分之三。"
+    <span class="src">Peter Attia · #311 Longevity 101</span>
+  </div>
+  <p><strong>边际十年（marginal decade）</strong>指你生命的最后十年。每个人都会有，大多数人不知道自己什么时候进入。对多数人来说这是生活质量极差的一段：身体能力大幅衰退，可能伴随认知衰退，于是从生活中退场。</p>
+  <p>Attia 的关键洞察是：如果你打算拥有一个体面的边际十年，那么<em>按定义，此前的每一个十年也必须是体面的</em>。这不是一个可以临时抱佛脚的目标。</p>
+
+  <h3 id="f-medicine3">Medicine 2.0 与 Medicine 3.0</h3>
+  <p>Medicine 2.0 是十九世纪末至今的现代医学——科学方法、显微镜、细菌理论、抗生素、公共卫生。它在一百年内把人类寿命翻了一倍，并且在急症上依然无可替代：感染、心衰、肾衰、阑尾炎、复杂分娩。Attia 反复强调，他<em>不是</em>要取代 2.0。</p>
+  <p>问题在于，今天杀死人的疾病和一百五十年前完全不同。慢性病是几十年缓慢累积的结果，而 2.0 的工具箱是为急性事件设计的。Medicine 3.0 补的是这个缺口，有两个特征：</p>
+  <ol>
+    <li><strong>预防而非治疗</strong>——早行动、激进行动，并基于现有最好的证据（不一定来自随机对照试验）做个体化处理。</li>
+    <li><strong>健康期与寿命同等重要</strong>——2.0 对健康期投入的注意力接近于零。</li>
+  </ol>
+  <p>落到实处，3.0 最直接的体现是<strong>"正常"与"最优"的区别</strong>。实验室报告上的参考范围来自人群统计分布，而那个人群本身代谢紊乱率很高。第二部分那些表格里，你会一遍遍看到这两列的差距——那个差距就是 Medicine 3.0 的全部论点。</p>
+
+  <h3 id="f-horsemen">四骑士</h3>
+  <p>四类疾病吃掉了绝大部分非意外死亡。它们的可干预程度差别巨大，这决定了你该在哪里花力气。</p>
+  <div class="scroll">
+    <table>
+      <caption>四骑士：我们了解多少，能做多少</caption>
+      <thead><tr><th>疾病</th><th>机制清晰度</th><th>预防手段</th><th>晚期治疗</th></tr></thead>
+      <tbody>
+        <tr><th>动脉粥样硬化性心血管病<br><span style="font-weight:400;color:var(--muted);font-size:13px">ASCVD</span></th><td class="good">很清楚</td><td class="good">很强：ApoB、血压、不吸烟、代谢健康</td><td class="norm">中等偏好</td></tr>
+        <tr><th>癌症</th><td class="bad">很不清楚</td><td class="norm">有限：不吸烟、别肥胖、早筛</td><td class="bad">IV 期十年生存与五十年前相差不大</td></tr>
+        <tr><th>神经退行性疾病</th><td class="norm">居中</td><td class="norm">中等：与心血管高度重叠，运动权重更大</td><td class="bad">几乎没有可行方案</td></tr>
+        <tr><th>代谢功能障碍</th><td class="good">很清楚</td><td class="good">很强：能量平衡、运动、睡眠</td><td class="good">好</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>读这张表要读出两件事。第一，ASCVD 是头号杀手，同时也是最可预防的——不吸烟、血压压到 120/80 以下、ApoB 压到人群第 5 百分位以下，你基本可以把它从死因清单上划掉。第二，癌症和神经退行的治疗端都很糟，所以在这两项上，<em>预防和早期发现几乎是全部</em>。</p>
+  <p>代谢功能障碍单独造成的死亡不多，但它是另外三个的助燃剂——把它们的风险各推高 25% 到 50%。</p>
+
+  <h3 id="f-backcast">百岁十项全能：从终点倒推</h3>
+  <p>这个框架来自 Attia 2018 年在一场葬礼上的顿悟：死者活到 89 岁，但最后十年已经完全丧失了她在意的一切能力——打不了高尔夫、种不了花、抱不动孙辈。死亡只是形式上的收尾。</p>
+  <p>于是他把训练目标定义为：<strong>列出你希望在生命最后十年里仍然能做到的事，然后从那里往回推算今天该练什么。</strong>不必真是十项，也不必活到一百岁——它是一个心智模型。</p>
+  <p>他自己清单上的一些条目（可以直接借用，也可以照着这个颗粒度写你自己的）：</p>
+  <ul>
+    <li>从深蹲位或婴儿床里抱起一个 30 磅的孩子</li>
+    <li>用一个支撑点从地板上站起来；无支撑单腿起身</li>
+    <li>把 30 磅的行李箱举过头顶</li>
+    <li>悬垂 30 秒；单腿站立睁眼 30 秒、闭眼 15 秒</li>
+    <li>负重 25% 体重（每手）农夫行走 1 分钟</li>
+    <li>脚尖完全朝正前方上下楼梯（这检验的是踝关节活动度）</li>
+    <li>提 20 磅东西上四层楼；一小时走完三英里</li>
+    <li>踩水 10 分钟；从水面爬上 12 英寸高的泳池边</li>
+    <li>VO₂ max 保持在 <span class="n">30 mL/kg/min</span> 以上</li>
+  </ul>
+  <p>关键动作是<strong>倒推（backcasting）</strong>：把每一项拆成所需的力量、稳定性、活动度和生理参数，按已知的衰退速率往回算，看你今天的水平在四十年后够不够。答案通常是不够——所以现在的水平必须更高。</p>
+  <div class="card warn">
+    <p class="card-h">反直觉的一点</p>
+    <p style="margin:0">越年轻的人，相对而言标准反而越高。因为你要维持的年限更长，起点必须更高。三十岁的人如果只是"同龄人里还行"，四十年后大概率不达标。</p>
+  </div>
+
+  <h3 id="f-major">抓大放小</h3>
+  <p>Attia 有一个反复出现的抱怨：人们普遍<em>"在小事上下大功夫，在大事上下小功夫"</em>。原因不神秘——红光疗法、冷水浴、NAD 静脉滴注、各种补剂，买了就行，而且过程还挺舒服。真正难的是练到腿软、管住嘴、少喝酒、放下手机、按时上床。</p>
+  <p>与之配套的是<strong>"目标—战略—战术"</strong>三层框架。简单问题可以直接跳到战术（出门游泳怕晒伤，直接涂防晒）。复杂问题上，人们往往连目标都说不清楚就开始比较战术。每次准备做一件事之前，问自己两个问题：</p>
+  <ul>
+    <li>我做这件事是为了<strong>寿命</strong>还是<strong>健康期</strong>？</li>
+    <li>如果是寿命，它针对某个具体疾病，还是宣称广谱抗衰？</li>
+  </ul>
+  <p>回答不出来，就说明这件事还没想清楚，不该做。</p>
+</section>
+
+<!-- ============ PART 2 ============ -->
+<section class="part">
+  <p class="part-no">第二部分</p>
+  <h2>先量出你在哪</h2>
+  <p class="part-note">下面所有"最优目标"来自 Attia 在节目中反复给出的临床实践区间，与实验室参考范围并列呈现。它们不是诊断标准，是他在自己诊所里追求的靶点。</p>
+
+  <h3 id="d-five">五项一生必测</h3>
+  <p>Attia 认为这五项提供的信息价值远超常规体检。其中两项一生只需测一次。</p>
+  <div class="scroll">
+    <table>
+      <caption>优先级最高的五项检测</caption>
+      <thead><tr><th>检测</th><th>为什么</th><th>频率</th></tr></thead>
+      <tbody>
+        <tr><th>Lp(a)</th><td>基因决定的心血管风险，8–20% 人群偏高，绝大多数人一辈子没测过</td><td class="good">一生一次</td></tr>
+        <tr><th>APOE 基因型</th><td>阿尔茨海默风险的最强单基因信号，且可据此调整策略</td><td class="good">一生一次</td></tr>
+        <tr><th>ApoB</th><td>动脉粥样硬化的最佳预测指标，优于 LDL-C</td><td>每 6–12 个月</td></tr>
+        <tr><th>OGTT + 胰岛素</th><td>能比空腹血糖提前十到二十年发现胰岛素抵抗</td><td>基线一次，异常则 6–12 个月</td></tr>
+        <tr><th>ALT</th><td>脂肪肝最敏感的常规指标</td><td>每 6–12 个月</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>在另一次访谈里被逼着只选五个血液指标时，他给的是：<strong>ApoB、Lp(a)、APOE 基因型、OGTT（含胰岛素）、完整代谢panel + 胱抑素 C</strong>——最后一项他承认是"耍赖"，为的是同时拿到肝功能和肾功能。</p>
+
+  <h3 id="d-lipid">脂质与心血管</h3>
+  <div class="scroll">
+    <table>
+      <caption>脂质靶点</caption>
+      <thead><tr><th>指标</th><th class="num">最优</th><th class="num">高危人群</th><th class="num">实验室"正常"</th><th>单位</th></tr></thead>
+      <tbody>
+        <tr><th>ApoB</th><td class="num good">&lt; 60</td><td class="num good">&lt; 40</td><td class="num norm">&lt; 130</td><td>mg/dL</td></tr>
+        <tr><th>LDL-P</th><td class="num good">&lt; 700</td><td class="num good">&lt; 500</td><td class="num norm">&lt; 1000</td><td>nmol/L</td></tr>
+        <tr><th>LDL-C</th><td class="num good">&lt; 70</td><td class="num good">&lt; 50</td><td class="num norm">&lt; 100</td><td>mg/dL</td></tr>
+        <tr><th>非 HDL-C</th><td class="num good">&lt; 100</td><td class="num good">&lt; 80</td><td class="num norm">&lt; 130</td><td>mg/dL</td></tr>
+        <tr><th>甘油三酯</th><td class="num good">&lt; 100</td><td class="num good">&lt; 80</td><td class="num norm">&lt; 150</td><td>mg/dL</td></tr>
+        <tr><th>HDL-C</th><td class="num good">&gt; 50</td><td class="num">—</td><td class="num norm">&gt; 40</td><td>mg/dL</td></tr>
+        <tr><th>TG / HDL 比值</th><td class="num good">&lt; 1.0</td><td class="num good">&lt; 0.8</td><td class="num norm">—</td><td>—</td></tr>
+        <tr><th>Lp(a)</th><td class="num good">&lt; 30</td><td class="num">—</td><td class="num norm">&lt; 50 视为偏高</td><td>mg/dL</td></tr>
+        <tr><th>血压</th><td class="num good">&lt; 120/80</td><td class="num good">&lt; 110/70</td><td class="num norm">&lt; 130/85</td><td>mmHg</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>为什么是 ApoB 而不是 LDL-C。</strong>每一个致动脉粥样硬化的颗粒——LDL、VLDL、Lp(a)——表面都带且只带一个 ApoB 蛋白。所以 ApoB 直接数的是"颗粒数"，而驱动风险的正是颗粒数，不是颗粒里装了多少胆固醇。LDL-C 只是这个数的一个有噪声的代理。</p>
+  <p><strong>TG/HDL 是穷人的胰岛素敏感性测试。</strong>如果你的 HDL-C 数值高于甘油三酯数值，你大概率胰岛素敏感。这个比值几乎免费，任何一张常规血脂单上都能自己算。</p>
+  <div class="card flag">
+    <p class="card-h">高脂饮食后的常见陷阱</p>
+    <p>一个人转向生酮或肉食饮食，胰岛素降了、甘油三酯降了、HDL 升了、体重降了——但 ApoB 从 80 冲到 180。网上有大量声音说这没问题。</p>
+    <p style="margin-bottom:0">Attia 的立场很硬：甘油三酯在 400 以下时，它的全部风险已经被 ApoB 捕获；HDL-C 的意义在于功能而非浓度；胰岛素的影响大部分也走 ApoB 这条路。<em>不存在 ApoB 上升而风险下降的情形</em>——随机对照试验、前瞻队列、孟德尔随机化，三层证据指向同一个方向。此时只有两个选择：放弃这个饮食，或者留在这个饮食上同时用降脂药。</p>
+  </div>
+
+  <h3 id="d-metab">代谢与胰岛素敏感性</h3>
+  <div class="scroll">
+    <table>
+      <caption>代谢靶点</caption>
+      <thead><tr><th>指标</th><th class="num">最优</th><th class="num">警戒</th><th class="num">实验室"正常"</th><th>单位</th></tr></thead>
+      <tbody>
+        <tr><th>空腹血糖</th><td class="num good">&lt; 90</td><td class="num bad">&gt; 100</td><td class="num norm">70–100</td><td>mg/dL</td></tr>
+        <tr><th>空腹胰岛素</th><td class="num good">&lt; 6</td><td class="num bad">&gt; 10</td><td class="num norm">&lt; 25</td><td>μIU/mL</td></tr>
+        <tr><th>HbA1c</th><td class="num good">&lt; 5.3</td><td class="num bad">&gt; 5.7</td><td class="num norm">&lt; 5.7</td><td>%</td></tr>
+        <tr><th>HOMA-IR</th><td class="num good">&lt; 1.0</td><td class="num bad">&gt; 2.0</td><td class="num norm">&lt; 2.5</td><td>—</td></tr>
+        <tr><th>尿酸</th><td class="num good">&lt; 5.0</td><td class="num bad">&gt; 7.0</td><td class="num norm">&lt; 7.0 男 / &lt; 6.0 女</td><td>mg/dL</td></tr>
+        <tr><th>静息乳酸</th><td class="num good">≤ 0.5</td><td class="num bad">≥ 2.0</td><td class="num norm">—</td><td>mmol/L</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>OGTT：Attia 心目中评估糖代谢的金标准</h4>
+  <p>流程：空腹 8–12 小时 → 抽血测糖和胰岛素 → 喝 75 g 葡萄糖溶液 → 在 30、60、90（有时 120）分钟各抽一次，每次同时测糖和胰岛素。他给每一位新患者都做。</p>
+  <p>看的不只是数值，还有<strong>形状</strong>。胰岛素敏感的人峰值出现在 30 分钟；胰岛素抵抗的人峰值延迟到 60–90 分钟。</p>
+  <div class="scroll">
+    <table>
+      <caption>OGTT 胰岛素反应（75 g 负荷）</caption>
+      <thead><tr><th>时间点</th><th class="num">最优</th><th class="num">抵抗信号</th><th class="num">实验室"正常"</th></tr></thead>
+      <tbody>
+        <tr><th>空腹</th><td class="num good">&lt; 6</td><td class="num bad">&gt; 10</td><td class="num norm">&lt; 25</td></tr>
+        <tr><th>30 分钟</th><td class="num good">&lt; 30</td><td class="num bad">&gt; 60</td><td class="num norm">&lt; 120</td></tr>
+        <tr><th>60 分钟</th><td class="num good">&lt; 30</td><td class="num bad">&gt; 60</td><td class="num norm">&lt; 276</td></tr>
+        <tr><th>120 分钟</th><td class="num good">&lt; 20</td><td class="num bad">&gt; 40</td><td class="num norm">&lt; 60</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="claim">
+    "一个人空腹胰岛素 5、空腹血糖 90，看起来完全正常。但给他 75 克葡萄糖之后，60 分钟血糖 200、胰岛素 70——这就是胰岛素抵抗。肌肉没有正常摄取葡萄糖。"
+    <span class="src">Peter Attia · 实验室指标框架</span>
+  </div>
+  <p>做不了 OGTT 的时候，退而求其次的组合是：<strong>空腹胰岛素 + 空腹血糖 + TG/HDL + ALT + 尿酸 + 静息乳酸</strong>，再加上功能性指标——你在 Zone 2 强度下能输出多少功率（见下文）。单看 HbA1c 会漏掉早期问题。</p>
+
+  <h3 id="d-other">肝、肾、甲状腺、激素、炎症</h3>
+  <div class="scroll">
+    <table>
+      <caption>其余关键指标</caption>
+      <thead><tr><th>指标</th><th class="num">最优</th><th class="num">实验室"正常"</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><th>ALT</th><td class="num good">&lt; 20</td><td class="num norm">7–55 U/L</td><td>&gt; 20 就可能提示早期代谢相关脂肪肝</td></tr>
+        <tr><th>AST</th><td class="num good">&lt; 20</td><td class="num norm">10–40 U/L</td><td>—</td></tr>
+        <tr><th>GGT</th><td class="num good">&lt; 20</td><td class="num norm">9–48 U/L</td><td>对酒精敏感</td></tr>
+        <tr><th>hs-CRP</th><td class="num good">&lt; 0.5</td><td class="num norm">&lt; 3.0 mg/L</td><td>非特异，需结合临床</td></tr>
+        <tr><th>同型半胱氨酸</th><td class="num good">&lt; 8</td><td class="num norm">&lt; 15 μmol/L</td><td>与 B 族维生素状态相关</td></tr>
+        <tr><th>eGFR</th><td class="num good">&gt; 90</td><td class="num norm">&gt; 60</td><td>胱抑素 C 优于肌酐</td></tr>
+        <tr><th>TSH</th><td class="num good">1.0–2.0</td><td class="num norm">0.4–4.0 mIU/L</td><td>必须同时看 Free T3/T4、rT3</td></tr>
+        <tr><th>维生素 D</th><td class="num good">40–60</td><td class="num norm">&gt; 30 ng/mL</td><td>&gt; 80 视为过量</td></tr>
+        <tr><th>Omega-3 指数</th><td class="num good">8–12%</td><td class="num norm">&gt; 4% 算"正常"</td><td>&lt; 5.5% 不足，&gt; 14% 减量</td></tr>
+        <tr><th>铁蛋白</th><td class="num good">50–150 男 / 30–100 女</td><td class="num norm">范围很宽</td><td>过高提示炎症或铁过载</td></tr>
+        <tr><th>总睾酮（男）</th><td class="num good">600–900</td><td class="num norm">270–1070 ng/dL</td><td>必须结合 SHBG、游离睾酮和症状</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <p class="card-h">关于单一指标的一句提醒</p>
+    <p style="margin:0">ApoB 是个例外——它本身聚合了足够多的信息，可以单独解读。<strong>大多数指标不是这样。</strong>睾酮就是反例：两个总睾酮完全相同的人，因为 SHBG 不同，游离睾酮和主观感受可以天差地别。甲状腺同理。看到一个孤立数字就下结论，是最常见的解读错误。</p>
+  </div>
+
+  <h3 id="d-body">体成分</h3>
+  <p>Attia 的原话是"每个人都该做一次 DEXA，你必须知道这些数据"。它一次性回答三个问题：营养过剩还是不足？肌肉够不够？内脏脂肪多不多？</p>
+  <p>报告上通常不会直接给你最重要的那个数，需要自己算：</p>
+  <div class="grid2">
+    <div class="tile">
+      <b>ALMI（四肢瘦体重指数）</b>
+      左臂 + 右臂 + 左腿 + 右腿的瘦体重（kg）÷ 身高（m）²，再对照同龄同性别的百分位表。
+      <br><br><strong>目标：≥ 75 百分位</strong>
+    </div>
+    <div class="tile">
+      <b>FFMI（去脂体重指数）</b>
+      总体重减去脂肪量 ÷ 身高（m）²。比 ALMI 好算，通常与 ALMI 一致。
+      <br><br><strong>目标：≥ 75 百分位</strong>
+    </div>
+    <div class="tile">
+      <b>体脂率</b>
+      按年龄性别校正后，目标在 25 百分位以下。
+    </div>
+    <div class="tile">
+      <b>内脏脂肪</b>
+      需要仪器校准正确才准。总体脂正常但内脏脂肪很低，通常意味着代谢健康良好。
+    </div>
+  </div>
+  <p>但要记住 Attia 的但书：肌肉量本身不是目的。<em>重要的是为了拿到这些肌肉你必须做的那些事，以及这些肌肉带来的代谢功能。</em>而且直接对比时，<strong>力量比肌肉量更能预测寿命</strong>。骨架天生小的人可能永远到不了 75 百分位，那也没关系——把重心放在力量和进步速度上。</p>
+
+  <h3 id="d-fitness">体能基线：不用抽血的检测</h3>
+  <p>这些数字既是评估，也是目标。它们之所以是强预测因子，是因为它们无法速成——都是多年努力的积分器，跟 HbA1c 之于血糖是同一类东西。</p>
+
+  <h4>心肺：VO₂ max</h4>
+  <div class="grid2">
+    <div class="tile"><span class="big">4–5×</span>最低 25% 人群相比最高 2–3% 人群的全因死亡率倍数。这是所有常规指标里最强的预测因子，强过血压、胆固醇、BMI、吸烟状态，甚至强过年龄。</div>
+    <div class="tile"><span class="big">50–75%</span>仅仅从第二四分位挪到第三四分位，全因死亡风险的降幅。你不需要精英水平就能拿到大部分收益。</div>
+    <div class="tile"><span class="big">约 10%</span>每十年的自然衰退幅度。而日常活动的耗氧量不会随年龄下降——这就是功能丧失的交叉点从何而来。</div>
+    <div class="tile"><span class="big">30</span>Attia 给自己设的底线（mL/kg/min）。低于这个数，很多活动会开始变得不可能。</div>
+  </div>
+  <p><strong>目标设定：</strong>最低标准是同龄同性别的前 25%；理想目标是前 1–2%；对高度自律的人，目标是<em>比自己小二十岁那一代人的前 1–2%</em>。</p>
+  <p><strong>怎么测：</strong>实验室间接测热法是金标准（约 150–300 美元，大学、医院、运动医学诊所常有），需要充分热身和真正力竭的方案。没有条件时用 <strong>Cooper 测试</strong>：充分热身后全力跑 12 分钟，记距离。<br>
+  公里制 <code>VO₂max = 22.351 × 公里数 − 11.288</code>；英里制 <code>VO₂max = 35.97 × 英里数 − 11.29</code>。</p>
+  <div class="card warn">
+    <p class="card-h">别信手表上的 VO₂ max</p>
+    <p style="margin:0">可穿戴设备不测气体交换，它是算法估计。腕式光学心率本身噪声就大，而有意义的 VO₂ max 变化往往只有 5–10%。不同设备之间可以差 10–20 个点，而且频繁做 Zone 2 训练会让估计值被压低。<strong>它既不能用于绝对测量，也不适合看趋势。</strong></p>
+  </div>
+
+  <h4>力量：从握力开始</h4>
+  <p>握力被研究得最多，不是因为它本身神奇，而是因为它最容易标准化测量（Attia 称之为"路灯下找钥匙"）。但它确实有意义——没有人握力极强而前臂、三角肌、肩胛、肱三头全都很弱。它是整条上肢链条稳定控制能力的代理。</p>
+  <div class="grid2">
+    <div class="tile"><span class="big">16%</span>握力每下降 5 kg，全因死亡率的上升幅度。来自 PURE 研究，17 国约 14 万人。</div>
+    <div class="tile"><span class="big">2.3</span>肌肉量最低四分位 vs 中位的死亡风险比。</div>
+  </div>
+  <p>孟德尔随机化研究（芬兰生物库，约 30–35 万人）提示这不只是相关：握力多基因评分每高一个标准差，血管性痴呆风险 −7%、肥胖 −6%、2 型糖尿病 −5%、主要心血管事件 −4%、全因死亡 −3%。</p>
+
+  <div class="scroll">
+    <table>
+      <caption>功能基准（约 40 岁；每往后十年适度打折）</caption>
+      <thead><tr><th>测试</th><th>男性目标</th><th>女性目标</th></tr></thead>
+      <tbody>
+        <tr><th>农夫行走 1 分钟</th><td class="num">每手 50% 体重</td><td class="num">每手 37.5% 体重</td></tr>
+        <tr><th>悬垂</th><td class="num">2 分钟</td><td class="num">90 秒</td></tr>
+        <tr><th>靠墙静蹲（大腿平行地面）</th><td class="num">2 分钟</td><td class="num">2 分钟</td></tr>
+        <tr><th>引体向上（3 秒离心）</th><td class="num">5 次以上</td><td class="num">3 次以上</td></tr>
+        <tr><th>箱式上台阶（每手 25% 体重）</th><td class="num">每侧 5 次</td><td class="num">每侧 5 次</td></tr>
+        <tr><th>靠墙俯卧撑（严格标准）</th><td class="num">20 次</td><td class="num">10 次</td></tr>
+        <tr><th>立定跳远</th><td class="num">≥ 身高</td><td class="num">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:15px;color:var(--muted)">悬垂标准每往后一个十年扣 10–15 秒。Attia 本人已经十五年没做过 1RM 测试，也不打算再做——他用这些功能性指标追踪进展。重点不是命中某个具体数字，而是<strong>持续改善的速率</strong>。</p>
+</section>
+
+<!-- ============ PART 3 ============ -->
+<section class="part">
+  <p class="part-no">第三部分</p>
+  <h2>五大杠杆</h2>
+  <p class="part-note">运动、营养、睡眠、情绪健康、药物与补剂。它们不等权重，下面按 Attia 给出的实际权重排列。</p>
+
+  <h3 id="l-exercise">杠杆一 · 运动 <span class="rank" style="margin-left:10px">强度 <span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></span></h3>
+  <p>被问到"如果只能留一个干预"时，Attia 的答案不需要犹豫：运动。它在寿命和健康期两个维度上都胜过戒烟、控压、调脂、逆转糖尿病。</p>
+  <div class="claim">
+    "如果我知道这些训练会让我少活一年，我还是会照做，纯粹为了从现在到终点这段时间的生活质量。而事实上它大概会让我多活五到七年。"
+    <span class="src">Peter Attia · #261</span>
+  </div>
+
+  <h4>四根支柱</h4>
+  <ol>
+    <li><strong>稳定性（stability）</strong>——地基。力量、有氧、无氧全都通过它传导到外部世界。它管的是力的安全传递：让 60 磅的力从肌肉走到地面再走到物体，而不是从腰、膝、肩"漏"出去。这是很多慢性损伤的根源。</li>
+    <li><strong>力量（strength）</strong>——以及它的子项：爆发力（power = 力量 × 速度）。</li>
+    <li><strong>有氧效率（Zone 2）</strong>——三角形的底边，最大脂肪氧化区，你的"全天配速"。</li>
+    <li><strong>峰值有氧输出（VO₂ max / Zone 5）</strong>——三角形的顶点，发动机排量。</li>
+  </ol>
+  <p>心肺训练的目标是<em>最大化这个三角形的面积</em>——底要宽，尖要高。两者需要不同的训练方式，但边界没那么干净：Zone 2 也会抬高峰值，高强度也会拓宽底边，只是效率不同。</p>
+
+  <h4>稳定性：最难讲、最容易看出缺失</h4>
+  <p>Attia 说这是他转向长寿式训练后"最大的一次再教育"，而且"我们每个人都缺"。核心是四件事的组合能力：</p>
+  <ul>
+    <li>把空气完全吸进肺里</li>
+    <li>让膈肌下沉到腹腔深处</li>
+    <li>把骨盆底摊平</li>
+    <li>产生向心的、稳固的腹内压，从而稳住整个躯干</li>
+  </ul>
+  <p>DNS（动态神经肌肉稳定）、PRI（姿势恢复）、高水平的普拉提，都是通往同一组原理的不同路径。<strong>关键在教练而不在流派。</strong></p>
+  <p>训练方式上有一条重要提示：<em>每天 10 分钟、每周六天，胜过一次性做满一小时</em>。这里练的是神经模式，不是肌肉容量。</p>
+
+  <h4>力量训练的基本原则</h4>
+  <ul>
+    <li><strong>渐进超负荷</strong>是唯一必须遵守的原则。可以加重量、加次数、加组数、缩短组间休息，或者延长张力时间（Attia 本人最偏爱的一种——放慢离心，用更轻的重量拿到同样刺激，对关节更友好）。</li>
+    <li><strong>强度用 RIR（剩余次数）控制。</strong>大多数人应该常驻 <span class="n">1–2 RIR</span>——停在还能再做一两次的位置。新手从 <span class="n">3–4 RIR</span> 起步。真正力竭没有必要，而且提高受伤风险。</li>
+    <li><strong>容量：</strong>每个部位每周 <span class="n">10–20</span> 组，每个动作 <span class="n">3–4</span> 组，每组 <span class="n">6–15</span> 次（超过 15 次就滑向肌耐力而非力量或肥大）。</li>
+    <li><strong>频率：</strong>只要强度和容量到位，每个部位每周练一次就够。全身训练每周 2–3 次很适合新手；有经验的人可以分化。</li>
+    <li><strong>爆发力要单独练。</strong>它衰退得最早（Type IIa 纤维从三四十岁就开始萎缩），顺序是爆发力 → 力量 → 体积。练法是<em>向心阶段快速发力</em>，而不是单纯加重量。</li>
+  </ul>
+  <div class="card flag">
+    <p class="card-h">五十岁以后的第一条规则</p>
+    <p style="margin:0"><strong>别受伤。</strong>人群层面上肌肉和力量的衰退曲线看起来平滑，但个体的真实轨迹是"缓慢下降 + 因伤停训导致的断崖"。六七十岁时的一次伤病往往意味着数月中断，而这正是加速功能衰退的主要机制。Attia 自己因此彻底停掉了硬拉——每月总有一次腰不对劲，长期看风险回报不划算，改用负重深蹲、分腿蹲等减少脊柱轴向负荷的动作。</p>
+  </div>
+
+  <h4>Zone 2：怎么找到它</h4>
+  <p>技术定义是第一乳酸阈——乳酸开始进入血液但系统清除仍能跟上的强度，代谢健康的人大约在 <span class="n">2 mmol/L</span>。实操上用两个锚点：</p>
+  <ul>
+    <li><strong>心率（客观锚点）：</strong>Maffetone 公式 <code>180 − 年龄</code>，再调整：生病或严重失训 −10；训练不规律 −5；规律训练不调整；有成绩目标且训练稳定 +5；体能很好 +10。</li>
+    <li><strong>主观用力度 RPE（主要依据）：</strong>能说完整句子但不舒服。说不完整句子说明超了；能轻松聊天说明低了。对应 <span class="n">RPE 5</span>（RPE 4 是"能维持几小时"，RPE 6 是"只能撑 30–40 分钟"）。</li>
+  </ul>
+  <p><strong>进步的定义</strong>不是练得更累，而是在同样的心率和 RPE 下产生更多外部功率。自行车看瓦数；跑步机固定速度（多数人 <span class="n">3.3–3.6 mph</span>）然后逐步抬坡度。</p>
+  <div class="scroll">
+    <table>
+      <caption>Zone 2 功率参考（自行车，瓦/公斤）</caption>
+      <thead><tr><th>人群</th><th class="num">W/kg</th></tr></thead>
+      <tbody>
+        <tr><th>2 型糖尿病</th><td class="num bad">&lt; 1.0</td></tr>
+        <tr><th>业余爱好者</th><td class="num">≈ 2.5</td></tr>
+        <tr><th>很强的业余选手</th><td class="num">3.8–4.0</td></tr>
+        <tr><th>职业选手</th><td class="num good">≥ 5.0</td></tr>
+        <tr><th>Tadej Pogačar</th><td class="num good">5.5–5.7</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card warn">
+    <p class="card-h">手表告诉你"今天有 45 分钟在 Zone 2"，这不算数</p>
+    <p style="margin:0">两个问题。第一，设备用心率判断 Zone 2，而这是最差的近似。第二，即使那 45 分钟是准的，它多半是<em>穿过</em> Zone 2 累计出来的，不是稳态停留。Zone 2 训练要的是持续把氧化磷酸化推到极限、刚好不掉进糖酵解主导，来回进出没有这个效果。所以室内训练台通常优于户外骑行。</p>
+  </div>
+
+  <h4>VO₂ max 间歇：怎么做</h4>
+  <p>甜区是 <strong>3–8 分钟</strong>的间歇。短于 2 分钟很难让心率进入稳态；一份 53 项研究的荟萃分析显示，只有超过两分钟、每周总量超过 15 分钟、持续 4–12 周的间歇，才在心血管结局上优于持续训练。</p>
+  <div class="protocol">
+    <header><b>标准 VO₂ max 课</b><span>约 60 分钟</span></header>
+    <div class="body">
+      <ul>
+        <li><strong>热身</strong> 10–20 分钟 Zone 2</li>
+        <li><strong>主体</strong> 4 分钟全力 × 4 组，每组之间 4 分钟主动恢复（很轻但持续运动，不是完全停下）</li>
+        <li><strong>冷身</strong> 5–15 分钟递减，结束时心率降到 100–110 以下</li>
+      </ul>
+      <p style="margin:14px 0 0"><strong>配速：</strong>每一组内保持恒定输出。前一分钟应该感觉偏轻松——不轻松说明起得太猛；三分钟时非常难受；最后一分钟所剩无几。前半段做的功可以比后半段多，但不要超过 10%。</p>
+      <p style="margin:10px 0 0"><strong>进阶顺序：</strong>先加组数，再考虑每周加一次课。</p>
+    </div>
+  </div>
+  <div class="card">
+    <p class="card-h">不要用心率控制间歇强度</p>
+    <p style="margin:0">心率滞后于代谢强度，硬间歇中可以滞后两到三分钟。等心率爬到最大心率的 90–95%，你早就已经在 VO₂ max 状态里待了相当一段时间。<em>Zone 5 是心率分区，VO₂ max 是生理状态，两者重叠但不等价。</em>用功率、配速或阻力来控制，心率事后看就好。</p>
+  </div>
+
+  <h4>时间怎么分配</h4>
+  <p><strong>80/20 是原则不是铁律</strong>——80% 的心肺训练量在 Zone 2，20% 在高强度。精英运动员也是这个比例（甚至 90/10），因为他们每周训练 15–20 小时，只能靠低强度堆量。时间越少，比例越应该向强度倾斜：</p>
+  <div class="scroll">
+    <table>
+      <caption>按可用时间调整强度分布</caption>
+      <thead><tr><th>每周心肺训练时间</th><th>Zone 2 / 高强度</th></tr></thead>
+      <tbody>
+        <tr><th>约 3 小时</th><td>60/40 到 70/30</td></tr>
+        <tr><th>3–6 小时</th><td>70/30 到 80/20，随疲劳浮动</td></tr>
+        <tr><th>8 小时以上</th><td>80/20 越来越现实</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:15px;color:var(--muted)">还有一条独立于总量的原则：<strong>分散到多天优于集中在一天</strong>。每次有氧训练会让 PGC-1α（线粒体生成的主调控因子）的 mRNA 升高约 24 小时。同样的总量分成四天，就是四次信号事件。</p>
+
+  <h4>三份现成的处方</h4>
+  <div class="protocol">
+    <header><b>每周 3 小时</b><span>从零到有，收益最大的一档</span></header>
+    <div class="body">
+      <ul>
+        <li>1 小时 稳态有氧（Zone 2）</li>
+        <li>1 小时 力量训练</li>
+        <li>20–30 分钟 高强度有氧（1–2 次，不是 HIIT 循环，是更接近 VO₂ max 的长间歇）</li>
+        <li>30–40 分钟 稳定性训练——<strong>拆成每天 10 分钟</strong>，不要一次做完</li>
+      </ul>
+    </div>
+  </div>
+  <div class="protocol">
+    <header><b>每天 30 分钟</b><span>七天，总量约 3.5 小时</span></header>
+    <div class="body">
+      <ul>
+        <li><strong>2 天</strong> 力量：全身，上下肢分化，各 30 分钟</li>
+        <li><strong>3 天</strong> Zone 2：真的 Zone 2，别滑进 Zone 1</li>
+        <li><strong>2 天</strong> Zone 5：10 分钟 Zone 2 热身 → 4 分钟全力 / 4 分钟恢复，循环 → 2–4 分钟冷身</li>
+      </ul>
+    </div>
+  </div>
+  <div class="protocol">
+    <header><b>每周 3 次 × 30 分钟</b><span>久坐者的起点</span></header>
+    <div class="body">
+      <ul>
+        <li><strong>1 次</strong> 全身力量</li>
+        <li><strong>1 次</strong> Zone 2（时间太少时可以偏向 Zone 3 提高刺激）</li>
+        <li><strong>1 次</strong> Zone 5，结构同上</li>
+      </ul>
+      <p style="margin:14px 0 0">达到公共卫生指南的 150 分钟/周，与全因死亡率下降约 15% 相关。对一个完全不动的人来说，这是一次量级上的改变。</p>
+    </div>
+  </div>
+
+  <h4>如果你完全没有训练基础</h4>
+  <p>唯一的成功指标是<strong>明天你还愿意再来一次</strong>。不是强度，不是成绩，不是酸痛。</p>
+  <ul>
+    <li>从走路开始。典型起手式：每周 5 次、每次 30 分钟的专门散步。</li>
+    <li>刻意保持低强度。剧烈酸痛对新手是劝退因素，不是勋章。</li>
+    <li>先不引入 Zone 2 这类术语。等习惯稳定了再教感觉，再谈数字。</li>
+    <li>几个月后再加入第一次高强度课，用 Attia 的说法是"烧一两根火柴"。</li>
+    <li>五十岁以上引入高强度，优先选自行车间歇或泳池冲刺，不要选跑步冲刺——跟腱断裂的风险显著更高。</li>
+  </ul>
+
+  <h4>骨密度：一件专门需要提的事</h4>
+  <p>骨骼通过应变感受器响应张力，而这个机械信号转化成化学信号的通路由<strong>雌激素</strong>介导。男女都需要雌激素，区别在于女性在中年会断崖式失去它——所以女性骨质疏松风险显著更高。</p>
+  <p>过了二十出头的骨量峰值期，问题就变成"能把下降速率压多慢"。答案只有一个：<strong>负重</strong>。走路不算负重活动；跑步好过游泳和骑车；但没有任何东西比得上力量训练。</p>
+  <div class="protocol">
+    <header><b>LIFTMOR 方案</b><span>绝经后低骨量女性 · 8 个月 RCT</span></header>
+    <div class="body">
+      <ul>
+        <li>每周 <strong>2 次</strong>，每次 <strong>30 分钟</strong>，仅 <strong>4 个动作</strong></li>
+        <li>强度 <strong>85% 1RM</strong>——是真的重</li>
+        <li>自由重量的复合动作：深蹲、硬拉、推举，加冲击性动作</li>
+        <li>全程有专业人员监督</li>
+      </ul>
+      <p style="margin:14px 0 0">受试者平均年龄 60 多岁、此前从未接触过力量训练，结果在力量、骨密度和生活质量上都有改善。这条证据的意义在于：<em>连低骨量的老年女性都能安全地练重，"年纪大了不能练"这个前提是错的。</em>但 T 值低到 −4.0 这种程度，务必找人带。</p>
+    </div>
+  </div>
+
+  <h4>关于走路负重（rucking）</h4>
+  <p>Attia 把它单独归一类，甚至不算进每周训练时数里。做法极简：背包里放 <span class="n">10–20 磅</span>（一袋米、几瓶水都行），束紧，出门走。不健身的人可以从 20 磅走两英里开始。它同时给到心肺、力量、骨骼负荷和户外时间——而 Attia 自己做它主要是为了心理健康：这是他唯一不带手机、不听播客的运动。</p>
+
+  <h3 id="l-nutrition">杠杆二 · 营养 <span class="rank" style="margin-left:10px">强度 <span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></span></h3>
+  <div class="claim">
+    "没有哪个科学或工程学科，能像营养学这样——确信的程度如此之高，而数据质量如此之差。"
+    <span class="src">Peter Attia · #328 AMA 66</span>
+  </div>
+  <p>Attia 在这个话题上的立场是刻意保守的。营养研究做不了单分子的严格对照，人体对饮食输入有极强的<em>衰减</em>能力——很多人争得面红耳赤的东西，落到结局上其实是四阶、五阶小项。他只对两件事有高置信度。</p>
+
+  <h4>第一件确定的事：能量平衡</h4>
+  <p>总热量是营养对健康的一阶决定因素。这不是说一千卡的 Tic Tac 等于一千卡的西兰花——而是说，在你纠结宏量配比之前，先把总量放对。</p>
+  <p>把总量降下来只有三条路，可以单用也可以组合：</p>
+  <ol>
+    <li><strong>热量限制（CR）</strong>——不管吃什么、什么时候吃，就是吃少点。最直接。</li>
+    <li><strong>饮食限制（DR）</strong>——从饮食里剔除某类东西。剔得越狠，效果越强（只戒生菜没用；只吃土豆效果巨大）。</li>
+    <li><strong>时间限制（TR）</strong>——压缩进食窗口。窗口越窄，越可能造成热量赤字。</li>
+  </ol>
+  <p>关于第三条要说清楚：<em>在热量和蛋白质匹配的前提下，限时进食本身几乎没有额外收益。</em>它有效是因为被动减少了摄入，不是因为代谢魔法。也没有可信的人体证据表明典型时长的限时进食能明显提高自噬。如果要用，把进食窗口放在白天前段、运动放早上、晚上逐渐减量，符合昼夜节律；避免临睡前进食。</p>
+
+  <h4>第二件确定的事：蛋白质</h4>
+  <p>蛋白质是最不该妥协的宏量营养素——碳水和脂肪都是为了产生 ATP，可以互相替代，蛋白质不是。</p>
+  <div class="scroll">
+    <table>
+      <caption>蛋白质摄入</caption>
+      <thead><tr><th>情形</th><th class="num">g / kg 体重 / 天</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><th>RDA</th><td class="num norm">0.8</td><td class="norm">只用于防止营养不良，不是最优</td></tr>
+        <tr><th>通用基线</th><td class="num good">1.6</td><td>Attia 被逼给一个数字时给的数</td></tr>
+        <tr><th>增肌 / 保肌</th><td class="num good">1.6–2.4</td><td>约合每磅体重 0.8–1 g</td></tr>
+        <tr><th>老年 / 久坐</th><td class="num good">&gt; 2.2</td><td>合成代谢抵抗，需求上升</td></tr>
+        <tr><th>植物性饮食</th><td class="num good">2.6–3.3</td><td>补偿较低的 PDCAAS 和亮氨酸含量</td></tr>
+        <tr><th>明显不足</th><td class="num bad">&lt; 1.1</td><td>约合每磅 0.4–0.5 g，几乎肯定不够</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>分配：</strong>Attia 自己每天四餐、每餐 40–50 g，全部来自真实食物。他明确建议避免"每次只吃 10 g"这种低剂量分散。<strong>时机：</strong>他现在不再强调这件事——所谓的合成代谢窗口大概有 4–6 小时，不必训练完就冲去吃。</p>
+  <p><strong>质量：</strong>关键在必需氨基酸，尤其是触发肌肉蛋白合成的<em>亮氨酸</em>。乳制品、鸡蛋、乳清、酪蛋白 PDCAAS 为 1.0；牛肉 0.92，鸡肉 0.95。植物端：大豆浓缩蛋白 1.0（亮氨酸约 5 g/100 g），豌豆分离蛋白 0.85–0.9（5.7 g），豆腐 0.9 但亮氨酸只有 1.7 g。乳清分离蛋白最高，约 9 g。<br>
+  实用结论：<em>只要总量达标，质量就不太成问题</em>。完全植物性饮食则需要刻意规划。</p>
+
+  <h4>选哪种饮食</h4>
+  <p>现实世界里的答案是：<strong>你在绝大多数日子里能坚持、且能维持能量平衡和不营养不良的那一种。</strong>这个答案听起来平淡，但它反映了一个真相——依从性比理论最优重要得多。</p>
+  <p>对于自律程度足够、真能严格执行的人，Attia 会把票投给<strong>地中海饮食</strong>，但他明确说自己的置信度不高（不是因为它不好，而是因为个体差异太大）。它在研究里稳定优于低脂饮食：更多来自橄榄油的单不饱和脂肪、更少精制谷物、对绝大多数人更好吃因而更容易坚持。</p>
+  <p><strong>选择时问自己四个问题：</strong></p>
+  <ul>
+    <li>我营养过剩、不足，还是刚好？这决定总热量目标。</li>
+    <li>我的蛋白质主要来自哪里？大多数日子够不够？</li>
+    <li>我需要限制某种宏量营养素吗？（有胰岛素抵抗 → 限碳水；否则单纯限能量可能就够）</li>
+    <li>这个饮食会导致哪些可预见的缺乏？怎么补？（纯素 → B12、铁、锌、omega-3；肉食 → 纤维、维生素 C、叶酸）</li>
+  </ul>
+  <p style="font-size:15px;color:var(--muted)">一条边界：<strong>脂肪不要低于总热量的 20%</strong>，即使是为了控血脂也不值得。降 ApoB 有更好的工具。</p>
+
+  <h4>超加工食品</h4>
+  <p>一份覆盖 59 项荟萃分析、近千万人的伞状综述显示，超加工食品摄入增加与 2 型糖尿病风险 +12% 相关，且有剂量反应关系。但这些研究按"份数"而非总热量分层，很难分清是热量过量还是加工本身。</p>
+  <p>Attia 的处理方式是同时持有两个层次：</p>
+  <ul>
+    <li><strong>作为启发式：</strong>避开超加工食品是个好用的粗筛。汽水、薯片这类东西没有任何营养上行空间，能少则少。</li>
+    <li><strong>作为机制：</strong>问题主要不在化学成分，而在<em>行为</em>——这些食物热量密度高、营养密度低、蛋白质密度低、极其好吃且不给饱腹感，在自由进食条件下几乎必然导致过量。</li>
+    <li><strong>但别一刀切：</strong>蛋白棒、蛋白粉、纤维补充剂在 NOVA 分类里也算超加工，把它们和糖果薯片等同看待会丢掉有用的区分。</li>
+  </ul>
+
+  <h4>断食：一次公开的立场修正</h4>
+  <p>Attia 曾连续三年每季度做 7–10 天断食、每月做 3 天断食。他现在的结论明显收窄了。</p>
+  <div class="card flag">
+    <p class="card-h">代价被低估了</p>
+    <p>长时间断食中，<strong>瘦体重占减重的 50–66%</strong>。作为对比，GLP-1 药物和减重手术的这个比例约为三分之一，而理想目标是控制在 25% 以内。Attia 自己那三年掉了约 20 磅，其中大部分是瘦体重，花了<strong>约 18 个月</strong>才长回来——而且他当时每天都在练力量。</p>
+    <p style="margin-bottom:0">他的复盘是：热量赤字太深，蛋白质摄入为零，合成代谢信号不足，力量训练救不回来。他希望当时每天补 60–80 g 乳清分离蛋白。</p>
+  </div>
+  <p><strong>其余结论：</strong></p>
+  <ul>
+    <li>没有任何人体证据表明断食延长寿命。在啮齿动物模型里，持续热量限制的效果<em>等于或优于</em>断食。</li>
+    <li>改善胰岛素敏感性上，间歇性断食不优于等热量的持续限制。</li>
+    <li>对减重来说，持续热量限制可能更有效；断食的优势在于对某些人<em>更容易坚持</em>——短暂饥饿加正常进食，比长期低度饥饿好熬。</li>
+    <li>唯一 Attia 认为可能有独特价值的领域是<strong>癌症治疗辅助</strong>——提高对化疗和放疗的耐受，保护正常组织。</li>
+    <li>一项 54 人的小型研究提示 5:2 模式在降低肝脂肪上可能优于等量热量限制（中重度脂肪肝比例 82%→30% vs 93%→60%），机制可能与肝糖原耗竭有关。样本小、周期短，只能算线索。</li>
+  </ul>
+  <p><strong>什么人适合用：</strong>营养过剩、肌肉量足够、代谢不健康的人，可以把断食当作一个<em>启动器</em>——耗竭糖原、打断旧模式、过渡到新的饮食结构。但断完就恢复原样，等于什么也没做。<br>
+  <strong>什么人不该用：</strong>1 型糖尿病、孕妇、有进食障碍史的人、肌肉量很低的人。</p>
+
+  <h4>酒精</h4>
+  <p>迄今最大的一项分析（JAMA，107 个队列、500 万人，以终身滴酒不沾者为对照）：</p>
+  <div class="scroll">
+    <table>
+      <caption>饮酒量与全因死亡率</caption>
+      <thead><tr><th>饮酒量</th><th class="num">全因死亡风险变化</th></tr></thead>
+      <tbody>
+        <tr><th>偶尔（&lt; 1 杯/周）</th><td class="num">无显著升高</td></tr>
+        <tr><th>低量（≤ 1.5 杯/天）</th><td class="num">无显著升高</td></tr>
+        <tr><th>中量（≤ 3 杯/天）</th><td class="num">无显著升高</td></tr>
+        <tr><th>高量（3–4 杯/天）</th><td class="num bad">+20%</td></tr>
+        <tr><th>很高（&gt; 4 杯/天）</th><td class="num bad">+35%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>但流行病学的曲线是平的或 J 形，而<strong>孟德尔随机化提示风险是线性上升的</strong>——即使很低的摄入量也在增加风险。两者冲突时，Attia 采用预防原则：<em>不存在对健康有益的饮酒量</em>。</p>
+  <p>他给出的实际上限大致是<strong>每周不超过 7–8 杯，单日不超过 2 杯</strong>，并且一次超过 4 杯的暴饮即使不常发生也明确有害。女性风险更高（体重和瘦体重更低、乙醇脱氢酶水平更低）。APOE4 携带者可能对酒精更敏感——一项随访 20 余年的队列中，E4 携带者里"从不喝"与"经常喝"的痴呆风险相差 3.6 倍，而非 E4 人群没有这个差异。</p>
+
+  <h3 id="l-sleep">杠杆三 · 睡眠 <span class="rank" style="margin-left:10px">强度 <span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></span></h3>
+  <p>睡眠的证据比营养干净得多——短期剥夺很容易研究，而且结果毫不含糊。</p>
+  <div class="claim">
+    "人体里所有能出错的东西，在睡眠不足时都会出错。"
+    <span class="src">Peter Attia · #311</span>
+  </div>
+  <p>把人降到每晚 4 小时，两三周内就能在认知、体能、胰岛素敏感性、食欲各个维度上把他摧毁。而睡 5.5–6 小时的人会出现同方向但程度较轻的问题——说明这是<strong>剂量效应</strong>，不是开关。</p>
+
+  <h4>Attia 的说法：这五条做到，八成人的睡眠会变好</h4>
+  <div class="protocol">
+    <header><b>无风险、无遗憾的五件事</b><span>先做这些，再谈别的</span></header>
+    <div class="body">
+      <ul>
+        <li>每天<strong>同一时间</strong>上床、同一时间起床</li>
+        <li>给自己<strong>8 到 8.5 小时</strong>的在床时间（不是睡着时间）</li>
+        <li>房间尽可能<strong>黑</strong>、尽可能<strong>凉</strong></li>
+        <li>睡前 <strong>2 小时</strong>切断一切刺激源——工作、社交媒体、任何会让你上头的东西</li>
+        <li>睡前 <strong>3 小时</strong>不进食、不喝酒</li>
+      </ul>
+      <p style="margin:14px 0 0">"如果给我 100 个抱怨睡眠差的人，让他们全都做到这五条，我认为 80 个会好转。"</p>
+    </div>
+  </div>
+  <p>Attia 反复强调的一点是：<em>很多说自己"什么都试过了"的人，其实这五条一条都没真正做到。</em></p>
+
+  <h4>他自己额外做的事</h4>
+  <ul>
+    <li><strong>桑拿</strong>：每周 4–6 晚，睡前。他的流程是 15 分钟桑拿 → 冷水浸泡 → 再 20–25 分钟。他直言"对我睡眠的影响大得离谱"，同时承认这可能有一部分只是"被强制安排了一小时降速"的效果。没有桑拿的话，热水澡或热水淋浴也值得一试。</li>
+    <li><strong>降低刺激</strong>：刷牙用牙线都放在桑拿之前完成，桑拿结束直奔床上——连浴室的灯都不开。</li>
+    <li><strong>床垫温控</strong>：他用可以在夜间分段调温的床垫罩，入睡后逐渐降到约 60 °F，凌晨 4–5 点开始回升配合 6 点起床。</li>
+  </ul>
+  <div class="card warn">
+    <p class="card-h">关于药物和补剂：这一段请当作案例而非处方</p>
+    <p>Attia 睡前会用两种处方药（普瑞巴林 100 mg、曲唑酮 50 mg）和三种补剂（甘氨酸 2 g、南非醉茄 600 mg、L-苏糖酸镁约 2 g），在计划起床前约 8.5 小时服用。</p>
+    <p>他自己加了一长串限定：他有睡眠专科医生随时可咨询，能做多导睡眠图验证效果；其中两种是处方药；这套组合针对的是他个人的睡眠结构问题（REM 天然偏多、深睡偏少）；<strong>他诊所里没有任何一位患者用的是完全相同的组合</strong>。</p>
+    <p style="margin-bottom:0"><strong>更重要的一条：这些东西不是用来偷工减料的。</strong>一旦服用，你就承诺了八小时的睡眠——只睡五小时还吃这些，第二天会非常难受。</p>
+  </div>
+  <p><strong>关于褪黑素</strong>：Attia 不常规使用。松果体分泌的生理量只有 20–100 微克，而市售剂量普遍在 1 毫克（1000 微克）以上。有数据提示超过 700–800 微克会下调脑内受体。如果非用不可，用极低剂量（100–200 微克）；更好的做法是靠睡前几小时的避光来自然生成。</p>
+
+  <h4>关于睡眠追踪器</h4>
+  <p>它们不测脑电波，只测<strong>体动、心率、心率变异性</strong>三个变量，再用算法推断分期，准确度大约 75–80%。Attia 的建议是别看那个综合评分，直接看原始输入：静息心率、HRV、体温——这三个一起偏离基线时是可靠信号。</p>
+  <div class="card flag">
+    <p class="card-h">被告知睡得差，本身就会让你表现变差</p>
+    <p style="margin:0">2014 年一项研究用假的"睡眠质量测量"给受试者随机分配"高于平均"或"低于平均"的反馈，结果被告知"高于平均"的那组在听觉注意和处理速度测试上表现更好，而<em>真实的自评睡眠质量并不预测认知表现</em>。2020 年一项住院研究通过操纵时钟速度让受试者误判自己的睡眠时长——同样睡了八小时，被告知只睡了五小时的人反应时明显更差。<br><br>所以如果数据开始影响你的心情和状态，摘掉它。Iñigo San-Millán 说环法冠军 Pogačar 比赛期间绝不戴睡眠追踪器："我最不希望他早上起来想的是，昨晚没睡好。"</p>
+  </div>
+
+  <h3 id="l-emotion">杠杆四 · 情绪健康 <span class="rank" style="margin-left:10px">强度 <span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></span></h3>
+  <p>Attia 把这一项的权重标得和运动一样高，理由是它有<strong>否决权</strong>：如果一个人的情绪健康处于废墟状态，那么在处理它之前，其余四项都不重要——所有的身体健康只是在延长痛苦。</p>
+  <p>它也是健康期三个子维度里唯一<em>可以随年龄变好</em>的那个。但这不会自动发生，需要刻意。</p>
+
+  <h4>没有生物标志物，只能靠提问</h4>
+  <p>Paul Conti 的方法是向内看，问对问题：</p>
+  <ul>
+    <li>早上醒来时，我对自己是什么感觉？对生活是什么感觉？是不是有一种低度的恐惧？是不是总觉得自己处在被动的一方？</li>
+    <li>独处时我对自己说什么？有哪些句子在反复播放？</li>
+    <li>我批评自己吗？内心是不是有一个压迫性的、悔恨的或羞耻的声音？</li>
+  </ul>
+
+  <h4>一个可用的自检信号</h4>
+  <p>Attia 问过一个很实用的问题：如果一个人客观上知道自己没在照顾身体——喝太多、吃太多、不运动——这件事作为"情绪上有问题"的阳性预测值有多高？</p>
+  <p>Conti 的回答是<strong>非常高</strong>。逻辑很直接：每天醒来感觉不好，不好受；知道自己不健康、精力低下，不好受；照镜子时想着"我本可以更健康"，不好受；跟不上孩子，不好受。如果这些在发生，那说明内部有什么东西没对齐。</p>
+  <p>但关键在于连接这两件事的<strong>好奇心</strong>——而不是又一次自我批评。Attia 用自己举例（情绪性进食）：不要把每一次多吃一份甜点都妖魔化，偶尔放纵没问题；要辨认的是那个模式——"我压力大的时候会用不想要的方式吃东西，当下被安抚了一点，然后感觉更糟，然后又得做点什么来补偿"。那个循环才是信号。</p>
+
+  <h4>生成性驱力，和三种驱力的平衡</h4>
+  <p>Conti 的核心概念是<strong>生成性驱力（generative drive）</strong>——想创造、想学习、想让事情因你而更好的那种内在推力。它跟外部成就不是一回事。</p>
+  <p>两个人可以在外部看起来完全一样——都在同时经营三家公司——但一个是被生成性驱力推着走的（享受、有联结、感觉自己有价值），另一个是被羞耻、恐惧或早年匮乏追着跑的（永远不够，怕被夺走）。<em>外部数据脱离语境就不是价值，反而会误导。</em></p>
+  <p>健康的状态是三种驱力的平衡：<strong>主张（assertion）</strong>——在世界上有健康的掌控感；<strong>愉悦（pleasure）</strong>——不匮乏、有安全感、能享受好东西；<strong>生成（generative）</strong>——创造与学习。三者平衡时，人自然产生<em>感恩</em>与<em>谦逊</em>——这两样东西不是道德要求，是内部状态平衡的输出信号。</p>
+  <p style="font-size:15px;color:var(--muted)">Conti 观察到一个附带现象：真正活在生成性驱力里的人，往往不惧怕死亡。不是不想活，而是因为健康且快乐地想继续活着——这和恐惧驱动的活着是完全不同的两种东西。</p>
+
+  <h3 id="l-drugs">杠杆五 · 药物与补剂 <span class="rank" style="margin-left:10px">强度 <span class="bars"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></span></h3>
+  <div class="claim">
+    "难题需要很多工具。造一张野餐桌不需要多少工具，造一枚火箭需要。你觉得最大化寿命和健康期更像哪一个？"
+    <span class="src">Peter Attia · #329</span>
+  </div>
+  <p>Attia 不属于任何一个极端阵营——不属于"只信补剂不碰药"（这一派的逻辑最难自洽：他们信任完全不受监管的公司，却不信任被政府盯着的公司），不属于"生活方式万能"，也不属于"分子能抵消一切坏选择"。</p>
+
+  <h4>评估任何一种补剂的六个问题</h4>
+  <p>Attia 说这一段是整期节目里唯一真正重要的东西：</p>
+  <ol class="steps">
+    <li><b>你是在纠正缺乏，还是在追求超生理水平？</b>补维生素 D 是前者，补肌酸是后者。这两件事的证据标准完全不同。</li>
+    <li><b>是为了寿命还是健康期？</b>你想减少疾病风险，还是想改善生活质量（体能、认知、情绪）？</li>
+    <li><b>如果是寿命，它针对某个具体疾病，还是宣称广谱抗衰？</b>他汀针对心血管病是前者，雷帕霉素属于后者。</li>
+    <li><b>有没有可追踪的生物标志物？</b>能验证它确实起作用吗？（鱼油 → Omega-3 指数；维 D → 25-羟维生素 D；肌酸 → 没有，只能按标准剂量执行）</li>
+    <li><b>机制清楚吗？</b>不一定要完全清楚才能用，但越清楚信心越高。</li>
+    <li><b>风险回报如何？</b>包括副作用、效应量、数据可信度，以及<strong>产品质量</strong>——补剂行业的质量问题可能是制药行业的十倍到百倍。</li>
+  </ol>
+
+  <h4>逐个过一遍</h4>
+  <div class="scroll">
+    <table>
+      <caption>Attia 对常见分子的判断</caption>
+      <thead><tr><th>分子</th><th>用途</th><th class="num">剂量</th><th>判断</th></tr></thead>
+      <tbody>
+        <tr><th>肌酸<br><span style="font-weight:400;color:var(--muted);font-size:13px">monohydrate</span></th><td>力量、爆发力、肌肉量，可能还有认知</td><td class="num">3–5 g/天</td><td class="good">低风险、中等回报。他<strong>普遍推荐</strong>的极少数补剂之一</td></tr>
+        <tr><th>鱼油<br><span style="font-weight:400;color:var(--muted);font-size:13px">EPA / DHA</span></th><td>纠正缺乏；心血管与脑健康</td><td class="num">按 Omega-3 指数调</td><td>先测指数。目标 8–12%。优先靠每周 2 份多脂鱼</td></tr>
+        <tr><th>维生素 D</th><td>纠正缺乏</td><td class="num">通常 2000 IU/天</td><td>先测。目标 40–60 ng/mL。脂溶性会蓄积，需随日晒季节调整</td></tr>
+        <tr><th>B 族维生素</th><td>纠正缺乏（尤其素食者 B12）</td><td class="num">按检测</td><td class="norm">看同型半胱氨酸等指标，普通人群普遍补充证据有限</td></tr>
+        <tr><th>南非醉茄</th><td>降皮质醇、助眠</td><td class="num">600 mg</td><td class="norm">人体 RCT 不算稳健，但他主观客观都感到有效</td></tr>
+        <tr><th>褪黑素</th><td>助眠 / 倒时差</td><td class="num">日常 100–200 μg</td><td class="norm">不推荐日常大剂量使用</td></tr>
+        <tr><th>雷帕霉素</th><td>广谱抗衰</td><td class="num">—</td><td class="norm">"有前景"，尚未进入"已证实"</td></tr>
+        <tr><th>NAD 前体 / 白藜芦醇</th><td>宣称抗衰</td><td class="num">—</td><td class="bad">证据不支持</td></tr>
+        <tr><th>端粒延长类补剂</th><td>宣称抗衰</td><td class="num">—</td><td class="bad">缺乏可信科学依据</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:15px;color:var(--muted)"><strong>鱼油的一个真实风险：</strong>2021 年一项 7 项 RCT 的荟萃分析显示房颤风险升高，且呈剂量依赖——每天 &gt; 1 g 的 HR 为 1.49，&lt; 1 g 为 1.12（绝对风险增加约 0.63%）。7 项里有 6 项在高危心血管人群中进行，唯一在低风险人群中的 VITAL 试验没有发现这一关联。<br>
+  <strong>肌酸的一个实用提醒：</strong>它会抬高血清肌酐，可能被误读为肾功能下降。做肾功能检查前停用 1–2 周。</p>
+</section>
+
+<!-- ============ PART 4 ============ -->
+<section class="part">
+  <p class="part-no">第四部分</p>
+  <h2>逐个击破四骑士</h2>
+
+  <h3 id="h-ascvd">心血管疾病：唯一一个你可以基本划掉的死因</h3>
+  <p>ASCVD 需要三条通路同时成立：<strong>脂蛋白通路</strong>（带 ApoB 的颗粒进入内皮下）、<strong>内皮通路</strong>（内皮受损让颗粒更容易进去）、<strong>炎症通路</strong>（被困住的颗粒氧化后引发级联反应）。</p>
+  <div class="claim">
+    "ApoB 是 ASCVD 的必要但不充分条件。降得越低，风险越低。就这么简单。"
+    <span class="src">Peter Attia · #238 AMA 43</span>
+  </div>
+  <p>三层证据都指向同一方向。LDL-C 每降 1 mmol/L（约 40 mg/dL）：</p>
+  <div class="grid2">
+    <div class="tile"><span class="big">−22%</span>随机对照试验，中位随访 5 年</div>
+    <div class="tile"><span class="big">−33%</span>前瞻队列研究，随访约 12 年</div>
+    <div class="tile"><span class="big">−53%</span>孟德尔随机化，等于终身暴露，中位 52 年</div>
+  </div>
+  <p>三条线的斜率差异本身就是论点：<em>暴露时间越长，收益越大</em>。这就是为什么二十几岁开始比五十几岁开始重要得多。</p>
+
+  <h4>三个可改变的大项</h4>
+  <ol>
+    <li><strong>不吸烟</strong></li>
+    <li><strong>血压保持在 120/80 以下</strong>——不是 130/85</li>
+    <li><strong>ApoB 压到人群第 5 百分位以下</strong></li>
+  </ol>
+  <p>做到这三件事，得 ASCVD 会变得相当困难。Attia 的说法是：这是四骑士里唯一一个"我们有工具把它从你的死因清单上拿掉"的。</p>
+
+  <h4>钙化积分（CAC）的陷阱</h4>
+  <p>一个常见场景：四十岁，LDL-C 250，做了 CAC 得零分，于是认为自己没事。两个问题：</p>
+  <ul>
+    <li><strong>CAC 有约 15% 的假阴性率。</strong>每一百个零分的人里，约 15 人在 CT 血管造影上有阳性发现——可能是钙化，可能是软斑块，其中 1–2% 甚至有不稳定表现的软斑块。</li>
+    <li><strong>即使是真阴性，它回答的也是十年风险。</strong>而你关心的是五十年风险。Attia 举过一个 23 岁男性的尸检案例：左前降支近端的内皮下已有泡沫细胞——这个人的 CAC 一定是零。</li>
+  </ul>
+  <p>更根本的逻辑问题：<em>因果风险因子存在时，你要做的是移除它。</em>"我还没有钙化所以我继续保持高 ApoB"，等价于"我的肺部扫描还没发现癌所以我继续抽烟"。</p>
+
+  <h4>Lp(a)</h4>
+  <p>由基因决定，目前无法通过生活方式改变。8–20% 的人偏高（阈值通常取 50 mg/dL，也有取 30 的）。它同时升高<strong>主动脉瓣狭窄</strong>的风险，所以高 Lp(a) 人群需要定期评估瓣膜。</p>
+  <p>目前唯一的策略是<strong>把 ApoB 压得更低来对冲</strong>。用药上有个细节：高 Lp(a) 患者的一线药物 Attia 选 PCSK9 抑制剂而非他汀，因为前者平均能降低约 30% 的 Lp(a)（个体差异大，有人降 60%，有人几乎不降）。针对 Lp(a) 的反义寡核苷酸药物正在三期临床——这是值得持续关注的方向。</p>
+  <p style="font-size:15px;color:var(--muted)">UK Biobank 数据显示黑人群体高 Lp(a) 的比例更高；风险比的曲线走向与白人相似（都能到 2.6–2.7），但置信区间宽得多——这解释了为什么临床上看少数个案容易得出错误印象。Attia 提到他在临床中见到的最高 Lp(a) 集中度出现在东南亚裔人群。</p>
+
+  <h4>血压：把测量做对</h4>
+  <p>高血压没有症状，除非准确测量，否则你不会知道。而诊室环境几乎不可能测准——刚爬完楼梯、手臂位置不对、隔着衣服。<strong>这件事得自己在家做。</strong></p>
+  <div class="protocol">
+    <header><b>正确测量血压</b><span>每一条都对应 5–30 mmHg 的误差</span></header>
+    <div class="body">
+      <ul>
+        <li>袖带尺寸要合适，且必须<strong>直接贴皮肤</strong>，不要隔着衣服</li>
+        <li>背部有支撑，双脚平放地面（不悬空）—— 差 5–10 mmHg</li>
+        <li><strong>不要翘二郎腿</strong> —— 差 5–8 mmHg</li>
+        <li>测量前静坐 <strong>5 分钟</strong>（最少 3 分钟）—— 差 10–20 mmHg</li>
+        <li>测量中和测量前<strong>不要说话</strong> —— 差 10–15 mmHg</li>
+        <li>先排空膀胱 —— 差 10–15 mmHg</li>
+        <li>手臂与心脏齐平 —— 每偏离 1 英寸约 2 mmHg</li>
+        <li>疼痛状态下不要测 —— 差 10–30 mmHg</li>
+      </ul>
+      <p style="margin:14px 0 0">手动袖带 + 听诊器是金标准；自动袖带测的是平均动脉压再反推，倾向于高估（Attia 本人差 10–15 mmHg）。新手用自动的也可以，把上面这些做对更重要。</p>
+    </div>
+  </div>
+  <p><strong>生活方式在血压上是真的有用的</strong>（这一点和血脂不同——把 ApoB 靠饮食降到位需要极端手段，代价太大）：</p>
+  <ul>
+    <li>每减重 1 kg：收缩压 −1.05 mmHg，舒张压 −0.92 mmHg</li>
+    <li>有氧运动：每周 90–150 分钟、65–75% 最大心率（差不多就是 Zone 2），4 周内收缩压最多降 8 mmHg、舒张压降 5 mmHg</li>
+    <li>等长阻力训练（不用重量）：收缩压约 −6 mmHg，舒张压约 −3 mmHg</li>
+    <li>动态阻力训练：收缩压约 −2 mmHg，舒张压约 −3 mmHg</li>
+    <li>减少饮酒、纠正睡眠呼吸暂停也是高杠杆项</li>
+  </ul>
+  <p style="font-size:15px;color:var(--muted)"><strong>关于钠：</strong>存在明显的个体差异（非裔、老年人、已有高血压者、有代谢综合征/糖尿病/慢性肾病者可能更敏感）。可以自己做实验。但注意：把钠降到每天 1.5 g 这种极端水平，虽然能让高血压者收缩压降 5–6 mmHg，却在最新的荟萃分析中<em>与全因死亡率上升相关</em>。<br><strong>关于夜间：</strong>正常情况下夜间血压应比白天低 10–20%。<br><strong>关于用药时机：</strong>Attia 的立场已经转向更早用药——在 135/85–90 这个区间就等着生活方式起效，往往一等就是几个月甚至几年，而这段时间的累积暴露是白付的代价。策略是同时启动药物和生活方式改变，等后者见效再逐步减药。</p>
+
+  <h3 id="h-cancer">癌症：预防手段很薄，所以筛查是主战场</h3>
+  <p>男性终身患癌率约 41%，女性约 39%，其中约一半致死。任何一个年龄段，癌症都在死因前三。</p>
+  <p>与心血管病相比，我们有两件事处于劣势：<strong>对疾病生物学的掌控力弱得多</strong>，以及<strong>晚期治疗手段有效得多</strong>。今天一个 IV 期实体瘤患者的十年生存率，与五十年前相差不大——中位生存期延长了（可能从一年变成五年），但治愈率没有实质提升。</p>
+  <div class="scroll">
+    <table>
+      <caption>五年生存率：早期 vs 远处转移</caption>
+      <thead><tr><th>癌种</th><th class="num">I / II 期</th><th class="num">IV 期</th></tr></thead>
+      <tbody>
+        <tr><th>乳腺癌</th><td class="num good">92–100%</td><td class="num bad">13–40%</td></tr>
+        <tr><th>结直肠癌</th><td class="num good">88%（未及淋巴结）</td><td class="num bad">16%（已至肝）</td></tr>
+        <tr><th>肺癌</th><td class="num">59%</td><td class="num bad">6%</td></tr>
+        <tr><th>前列腺癌</th><td class="num good">100%</td><td class="num bad">33%</td></tr>
+        <tr><th>胰腺癌</th><td class="num">38%</td><td class="num bad">3%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>这张表就是 Attia 主张激进早筛的全部理由。十年生存率的差距比五年还要大。</p>
+
+  <h4>能做的预防</h4>
+  <p>明确的环境触发因素只有两个：<strong>吸烟</strong>和<strong>肥胖</strong>。约三分之二的癌症与肥胖有较强关联，而机制可能不是脂肪本身，而是随之而来的炎症和生长因子（胰岛素、IGF）。</p>
+  <p>代谢综合征对各癌种的相对风险增幅：肝癌 +58%、子宫内膜癌 +61%、胰腺癌 +58%、绝经后乳腺癌 +56%、直肠癌 +52%、结直肠癌 +25%（女性 +34%）、男性膀胱癌 +10%。</p>
+  <p>至于其他被广泛传播的饮食因素——等热量条件下的红肉、大豆等等——Attia 的评价是"支持这些促癌说法的证据薄得可怜"。</p>
+
+  <h4>筛查：先算你的检前概率</h4>
+  <p>这是 Attia 在这个话题上最强调的一点。<strong>敏感度和特异度是检测的属性，但它们本身不能告诉你结果意味着什么。</strong>你还需要知道自己的检前概率，才能算出阳性/阴性预测值——也就是"检出阳性时我真的有癌的概率是多少"。</p>
+  <p>调整检前概率的因素：年龄、家族史、基因（BRCA 突变把乳腺癌终身风险推到 50–80%）、既往癌症史、已知致癌物暴露（石棉、氡——可能是肺癌第二大原因、砷）、吸烟（肺癌风险 15–30 倍）、代谢综合征、过量饮酒。</p>
+
+  <div class="scroll">
+    <table>
+      <caption>筛查项目、指南与 Attia 的做法</caption>
+      <thead><tr><th>项目</th><th>标准指南</th><th>Attia 的做法</th></tr></thead>
+      <tbody>
+        <tr><th>结肠镜</th><td>45 岁起，每 10 年</td><td class="good">约 40 岁起</td></tr>
+        <tr><th>乳腺 X 线</th><td>平均风险女性 40 岁起</td><td>致密乳腺必须加第二种方式（超声或 MRI）</td></tr>
+        <tr><th>宫颈</th><td>20 多岁每 3 年；30–65 每 3 年（或联合 HPV 每 5 年）</td><td>按指南</td></tr>
+        <tr><th>低剂量胸部 CT</th><td>50–80 岁、吸烟或戒烟 &lt; 15 年、20 包年史</td><td class="good">从不吸烟者也建议考虑（非吸烟者肺癌单列的话是癌症死因第七位；每次约 $120–150）</td></tr>
+        <tr><th>PSA</th><td>无官方推荐，"与医生商量"</td><td class="good">所有男性每年测；他的患者每次抽血都测（每年 3–4 次），为的是拿到 PSA 密度和速率的高分辨趋势</td></tr>
+        <tr><th>皮肤检查</th><td>无官方推荐</td><td>每月自查 + 定期皮肤科</td></tr>
+        <tr><th>全身 MRI</th><td>无官方推荐</td><td class="norm">高敏感度、低特异度。假阳性代价高。必须在医生指导下做</td></tr>
+        <tr><th>液体活检</th><td>无官方推荐</td><td class="norm">太早，看不清它的甜区在哪</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>各种检测的盲区，同样要知道：</strong>乳腺 X 线在致密乳腺上很吃力；结肠镜可能漏掉扁平的无蒂息肉，升结肠最常见；低剂量 CT 对腺癌敏感度最高、对非腺癌较差（而吸烟者更容易得非腺癌）；巴氏涂片对腺体来源的早期病变较差；PSA 特异度极低（且服用非那雄胺、度他雄胺——很多男性用于脱发——会让 PSA 降低约 50%，可能掩盖癌症）；MRI 在腺体组织上表现很差，甲状腺结节是假阳性重灾区。</p>
+  <div class="card">
+    <p class="card-h">Attia 的做法：叠加检测</p>
+    <p style="margin:0">没有单一检测是完美的，所以他倾向于把多种方式叠起来看，并且明确定义规则。<strong>"或"规则</strong>（任一阳性即视为阳性）提高综合敏感度但降低特异度；<strong>"与"规则</strong>（两项都阳性才算）提高特异度但降低敏感度。他自己常用的一个组合是全身 MRI + 液体活检，然后问：两个都阳性怎么办？只有一个阳性怎么办？<br><br>"我们从来不会只做一项检测。我们总是把检测叠起来，确保这堆瑞士奶酪上没有哪个地方能让一支铅笔直接穿过去。"</p>
+  </div>
+  <p><strong>决定要不要做某项超出指南的筛查之前，把四件事想清楚：</strong>① 我的检前概率是多少？② 财务成本和<em>情绪成本</em>我能承受吗（尤其是假阳性带来的折腾）？③ 物理风险我能接受吗，我能找到记录良好的操作者吗？④ <strong>如果真查出来，我会怎么做？</strong>——如果答案是"什么也不会做"，那这个检测就不该做。</p>
+
+  <h3 id="h-brain">神经退行：好消息在预防端</h3>
+  <p>有一句 Attia 反复引用的老话：<strong>对心脏好的，对大脑也好。</strong>研究一次又一次证实，每一项降低 ASCVD 风险的干预也降低痴呆风险——更好的代谢健康、更低的 ApoB、更低的血压、不吸烟。</p>
+  <p>而<strong>运动</strong>是唯一一个在痴呆上的效应比在心血管病上还要大的干预："运动益处的证据，在神经退行性疾病预防上无论是效应量还是置信度都更高。"</p>
+
+  <h4>APOE 基因型</h4>
+  <p>三个等位基因，六种组合。人群分布大致是：E3/E3 约 50–55%，E3/E4 约 25%，E2/E4 约 5–10%，E2/E3 不算少见，E2/E2 和 E4/E4 最罕见。全球范围内女性患阿尔茨海默病的概率约为男性的两倍（帕金森病则相反）。</p>
+  <p>关于"要不要测"的争议，Attia 的立场是：反对测的理由建立在"知道了也无能为力"这个前提上，而他不接受这个前提——他认为有相当多的事情可以做来延缓发病和降低风险。即使真的无能为力，知道也允许你据此规划。</p>
+
+  <h4>明确的风险因素</h4>
+  <div class="scroll">
+    <table>
+      <caption>可改变因素与痴呆风险</caption>
+      <thead><tr><th>因素</th><th class="num">风险变化</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><th>吸烟</th><td class="num bad">全因痴呆 +60%</td><td class="good">戒烟满 9 年后回到非吸烟者水平</td></tr>
+        <tr><th>睡眠 &lt; 5 h vs &gt; 7 h</th><td class="num bad">HR 2.6</td><td>睡眠紊乱（非时长）约 +20%</td></tr>
+        <tr><th>头部外伤</th><td class="num bad">约 +80%</td><td>指严重外伤；E4 携带者可能风险更高</td></tr>
+        <tr><th>饮酒 &gt; 12 杯/周</th><td class="num bad">相比 &lt; 12 杯 +30%</td><td>Attia 认为 12 杯这个门槛本身就太高</td></tr>
+        <tr><th>血压 &lt; 120 vs &lt; 140</th><td class="num good">相对风险 −16%</td><td>SPRINT MIND，仅 3 年干预、5 年随访</td></tr>
+        <tr><th>桑拿 4–7 次/周 vs 1 次/周</th><td class="num good">AD 相对风险 −50%</td><td>绝对风险 6%→3%；全因痴呆 10%→4%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:15px;color:var(--muted)">SPRINT MIND 的绝对风险降幅只有 0.6%（需治疗人数 180），看起来不大。但 Attia 提醒：干预期只有 3 年、随访 5 年。慢性病的时间尺度上，这个数字只会变大不会变小。</p>
+
+  <h4>三小时怎么花，才对大脑最好</h4>
+  <p>一份 2022 年的系统综述和网状荟萃分析比较了不同运动类型对 MCI 和痴呆患者认知功能的影响，最重要的三类是<strong>有氧、抗阻、以及"身心/多成分"运动</strong>。基于此，如果只有三小时：</p>
+  <div class="protocol">
+    <header><b>大脑优先的三小时</b><span>多样性和新颖性是关键</span></header>
+    <div class="body">
+      <ul>
+        <li><strong>1 小时</strong> 力量训练</li>
+        <li><strong>1 小时</strong> Zone 2</li>
+        <li><strong>1 小时</strong> 高强度 + 协调性动作——影子拳击、动感舞蹈课、反应类训练（地面或墙面亮灯要你去触碰的那种）</li>
+      </ul>
+      <p style="margin:14px 0 0">"理想情况下，你不是在跑步机上无脑冲刺加波比跳。如果我们要最大化这段时间，需要比那多一点协调性。"</p>
+    </div>
+  </div>
+
+  <h4>补剂：一个需要小心的推理</h4>
+  <p>EPA/DHA、维生素 D、B 族维生素在流行病学上都有关联，但<strong>我们不知道这些标志物是否因果</strong>。Attia 说得很直白：如果不是因果的，纠正它不解决问题；如果是因果的，纠正它才有用。ApoB 之于心血管病、吸烟之于癌症是<em>因果</em>的——这才是为什么针对它们有效。</p>
+  <p>在神经退行这一块，他认为可以谈因果的只有：<strong>运动、听力损失、血脂管理、2 型糖尿病</strong>。其余多为关联。</p>
+
+  <h4>口腔健康</h4>
+  <p>牙周病不只是嘴的问题——炎症可能参与心血管病和阿尔茨海默病。基本要求：<strong>每天两次、每次两分钟、用电动牙刷</strong>。牙缝清洁至少和刷牙一样重要，可能更重要。牙线时牙龈疼或出血？那正是牙龈有炎症的信号，继续，坚持过去。</p>
+  <p style="font-size:15px;color:var(--muted)">Attia 的说法很实在："就算这些一点也不降低你的阿尔茨海默风险，九十岁时嘴里还有自己的牙，本身就足够构成理由。"</p>
+
+  <h3 id="h-metabolic">代谢功能障碍：另外三个的助燃剂</h3>
+  <p>机制上这是四骑士里最清楚的一个：<strong>营养过剩 → 能量失衡 → 胰岛素抵抗 → 从脂肪肝到 2 型糖尿病的整条谱系</strong>。这些病本身就有害，但真正的危险在于它们把另外三个骑士的风险各推高 25–50%。</p>
+  <p>关于肥胖有一条重要的细分：<strong>脂肪本身不是问题，代谢健康才是。</strong>BMI 25 的代谢健康者和 BMI 30 的代谢健康者，死亡率没有差异；但 BMI 25 的代谢健康者和 BMI 25 的代谢不健康者，差异很大。</p>
+  <div class="scroll">
+    <table>
+      <caption>BMI 与全因死亡率</caption>
+      <thead><tr><th>BMI</th><th class="num">全因死亡风险</th></tr></thead>
+      <tbody>
+        <tr><th>约 22.5–30</th><td class="num">基本没有差异</td></tr>
+        <tr><th>&gt; 30</th><td class="num bad">+20%</td></tr>
+        <tr><th>35–40</th><td class="num bad">+40%</td></tr>
+        <tr><th>&gt; 40</th><td class="num bad">+100%</td></tr>
+        <tr><th>&lt; 22.5（曲线左侧）</th><td class="num bad">同样单调上升</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:15px;color:var(--muted)">曲线左侧上升的原因不同：疾病相关的消瘦（癌症、肾病）、以及虚弱。60 岁以上营养不良人群的风险比是 2.6–2.8——也就是全因死亡率高出 160–180%。这也是为什么<strong>"营养不足"是一个真实的风险类别</strong>，不只是"过量"需要防。</p>
+
+  <h4>为什么肌肉是代谢器官</h4>
+  <ul>
+    <li><strong>骨骼肌是主要的葡萄糖汇。</strong>胰岛素介导和非胰岛素介导的葡萄糖摄取主要都发生在这里。理想的肌肉能储存 300–500 g 糖原，且胰岛素敏感。</li>
+    <li><strong>肌肉是内分泌器官。</strong>它分泌肌肉因子（myokines）——由肌肉释放的 IL-6 是抗炎的，这和大多数白介素相反。</li>
+    <li><strong>肌肉是身体唯一有意义的蛋白质储备。</strong>生病、手术、感染、住院、烧伤时，肌肉多的人损失更少、恢复更好。</li>
+  </ul>
+  <p>顺带一个常被夸大的数字：骨骼肌静息代谢约 12–13 kcal/kg/天，脂肪约 4–5，差值约 8。换掉 10 kg 也只多烧 80 kcal/天。<em>真正的价值不在这里，在葡萄糖处置和内分泌功能上。</em></p>
+
+  <h4>糖尿病前期：没有统一顺序</h4>
+  <p>Attia 拒绝给出一个通用的干预排序，因为表型差异太大：有人明显超重，有人是"瘦胖子"；有人规律运动但长期吃过量，有人久坐但不多吃；有人各方面都不错但睡眠严重紊乱。工具箱是固定的——<strong>营养（能量与宏量）、睡眠、抗阻训练、Zone 2、高强度</strong>——组合方式因人而异。</p>
+  <p>但有一条是无条件的：<strong>睡眠必须先修好。</strong>每晚五小时的人，身体几乎不可能正常分配燃料或维持正常糖代谢。</p>
+</section>
+
+<!-- ============ PART 5 ============ -->
+<section class="part">
+  <p class="part-no">第五部分</p>
+  <h2>便宜的补漏</h2>
+  <p class="part-note">这些不属于五大杠杆，但代价极低、被忽略的频率极高。</p>
+
+  <h3 id="x-list">值得花二十分钟处理的事</h3>
+
+  <h4>意外死亡</h4>
+  <p>Attia 在提到"第六个桶"时会把这一类放进去：污染、极端温度暴露、以及避免事故——尤其是交通事故。在 25–44 岁这两个年龄段，<strong>意外死亡（多为过量用药）是死因第一位</strong>，远超癌症。对年轻人来说，安全带、不酒驾、不看手机开车的收益，可能超过任何补剂。</p>
+
+  <h4>跌倒</h4>
+  <p>美国每年约 30 万例因跌倒导致的住院。60 岁以上发生股骨骨折的人，<strong>一年内死亡率 10–30%</strong>，且多数再也回不到原来的活动水平。按年龄看，跌倒死亡率是一条指数曲线。这是"稳定性 + 力量 + 平衡"训练最直接的兑付点。</p>
+
+  <h4>皮肤与日晒</h4>
+  <p>Attia 的立场明确是<strong>倒 U 形</strong>：两个极端都不好。"不晒太阳的生理和心理代价是灾难性的。"目标是拿到户外活动和日晒的好处，同时避免过量 UV。</p>
+  <ul>
+    <li><strong>每月自查一次</strong>，用 ABCDE：<em>A</em> 不对称、<em>B</em> 边界不规则、<em>C</em> 颜色不均、<em>D</em> 直径 &gt; 6 mm、<em>E</em> 随时间演变。另外注意：出血且长期不愈的痣或皮损。</li>
+    <li>防晒霜最重要的属性是<strong>你愿意反复涂</strong>。Attia 提到的两个牌子是 EltaMD（无味、不油腻、贵）和 Blue Lizard（矿物型，适合水上活动，偏油）。</li>
+    <li>尽量避开含<strong>氧苯酮（oxybenzone）</strong>的产品——内分泌干扰的担忧尚无定论，谨慎为宜。</li>
+  </ul>
+
+  <h4>听力</h4>
+  <p>听力损失是 Attia 少数认为与认知衰退存在<em>因果</em>关系的因素之一。它便宜、可测、可干预，却几乎总被忽略。</p>
+
+  <h4>骨密度</h4>
+  <p>DEXA 报告上除了体成分，还有 T 值和 Z 值。<strong>绝经前就该开始处理</strong>——不要等到完全绝经、雌二醇测不出来、FSH 冲高之后才开始，那时骨量已经流失了相当一部分。</p>
+
+  <h4>关于女性激素替代（HRT）的时间窗</h4>
+  <p>Attia 把过去二十五年 WHI 研究造成的影响称为"一场悲剧"——它吓退了整整一代医生和女性，代价不只是更年期症状本身，还有一波本可避免的骨量流失。</p>
+  <p>要点：更年期过渡是一个持续数年的渐进过程，<strong>讨论应该在症状完全出现之前就开始</strong>；症状范围比多数人以为的宽（除了潮热盗汗，还有脑雾、易怒、睡眠中断、性欲改变）；FSH 可以追踪但不必等到它升高才处理，症状和临床背景往往更重要。</p>
+
+  <h4>男性睾酮替代（TRT）</h4>
+  <p>关键判断标准不是化验单上的数字，而是<strong>症状是否可归因于低睾酮</strong>——唯一确认方式是试用并评估改善。真正基线偏低的男性，临床反应率约 80%。需要监测的项目里，最被低估的是<strong>红细胞压积</strong>：管理不当可以升到危险水平（Attia 举过一个血红蛋白约 20、压积约 65 的案例）。血压同样需要监测，部分人每年需要献血数次。</p>
+</section>
+
+<!-- ============ PART 6 ============ -->
+<section class="part">
+  <p class="part-no">第六部分</p>
+  <h2>怎么开始</h2>
+
+  <h3 id="s-start">第一个九十天</h3>
+  <p>面对这份文档的合理反应是被淹没。Attia 给新手的建议非常反直觉：<strong>只挑一样，其余什么都不改。</strong></p>
+  <div class="claim">
+    "如果听完这些你觉得'我的睡眠是真的差'，那就只做睡眠那部分。别的什么都别做。营养不动，运动不动，别买任何补剂。"
+    <span class="src">Peter Attia · #311</span>
+  </div>
+  <p>理由有两个：把一件事修好会让后面的事更容易；更重要的是，它给你一个<strong>掌控感</strong>——原来这件事在我手里，不是命运。</p>
+
+  <p>如果你想要一个更结构化的起点，这是一个把上面所有内容压缩成可执行序列的版本：</p>
+  <ol class="steps">
+    <li><b>第 0–2 周 · 量出基线</b>
+      抽一次完整的血（务必包含 ApoB、Lp(a)、空腹胰岛素、ALT、hs-CRP、维生素 D、Omega-3 指数、完整甲状腺）；测一次 APOE；做一次 DEXA；买一个血压计并按前面的规程测三天；做一次悬垂、靠墙静蹲、农夫行走，把数字记下来。
+    </li>
+    <li><b>第 1–4 周 · 只改一件事</b>
+      在睡眠五条、每周 3 次 × 30 分钟的运动、或者"每天四餐每餐 40 g 蛋白质"里选一个。成功的定义是"下周还在做"，不是"做得多好"。
+    </li>
+    <li><b>第 5–12 周 · 叠第二件事</b>
+      第一件事稳定后再加。运动上按前面的处方逐步扩展：先加时长，再加频率，最后加强度。
+    </li>
+    <li><b>第 12 周 · 复查</b>
+      把可以快速变化的指标重测一遍（ApoB、空腹胰岛素、ALT、血压、体成分）。Attia 的经验值是：<strong>2–3 个月能看到可测量的变化</strong>，而实质性的代谢和体成分改变会持续一年以上。别测得太频繁，噪声会淹没信号。
+    </li>
+    <li><b>持续 · 写下你的十项清单</b>
+      列出十件你希望在 80–90 岁还能做的事，一半是日常活动，一半是体能壮举。然后倒推：每一件需要什么力量、什么活动度、什么 VO₂ max？你今天的水平，按已知衰退速率能不能撑到那时候？
+    </li>
+  </ol>
+
+  <h3 id="s-habit">习惯的建法</h3>
+  <p>Attia 在这件事上很坦率地承认自己有盲区——运动对他而言接近成瘾，从来不需要建立习惯，所以他谈这个话题时刻意保持谦逊。他给出的原则来自实践观察：</p>
+  <ul>
+    <li><strong>从极小开始，并且把"改变"本身当成目标，而不是把"结果"当成目标。</strong>让一个从不运动的人每天早上走 10 分钟——这在训练效应上是零，无所谓。一个月后他还在走，游戏就赢了。习惯建立起来之后再谈别的。</li>
+    <li><strong>不要靠盲目的信念驱动。</strong>如果一个人本来就讨厌运动，你必须让他在几个月内真的感觉到好处，否则"为了多活几年而痛苦六十年"不可能成为可持续的策略。</li>
+    <li><strong>在饮食上，默认食物环境（default food environment）是最重要的变量。</strong>Attia 自己的说法：如果每一餐都有人给你备好，吃对东西会容易得多。他家里的做法是——他跟妻子说"能不能把储藏室里的垃圾食品全扔了"，结果第二天发现垃圾食品还在，只是被装进了一个贴着"仅限学校午餐"标签的箱子里。<em>这对他没用，他需要那些东西真的消失。</em></li>
+    <li><strong>用"置换"代替"意志力"。</strong>他打不赢"家里不能有孩子爱吃的零食"这场仗，但只要旁边有他愿意吃的好东西，他就能赢。真正打不赢的情形是：柜子里除了垃圾食品什么都没有。</li>
+  </ul>
+
+  <h4>最后两条判断标准</h4>
+  <p><strong>可持续压倒极致。</strong>高动机的人最常见的失败模式是一次性推翻所有东西：极端节食、暴增训练量、同时买十种补剂。这条路径的终点是六个月后的崩盘。Attia 的表述是——<em>无限期保持 80% 的一致性，胜过短期内 100% 的完美。</em></p>
+  <p><strong>抓大放小。</strong>回到第一部分那条：在小事上下大功夫容易且愉快，在大事上下功夫难受且乏味。每次你发现自己在纠结某个次级问题时——哪种按摩最好、红光该照几分钟——问一句：我把让我需要按摩的那个训练做够了吗？</p>
+</section>
+
+<footer class="colophon">
+  <h3>关于这份文档</h3>
+  <p>内容整理自 Peter Attia《The Drive》播客的 show notes 存档（约 380 期，含 90 期 AMA）。核心依据的篇目包括：<br>
+  <code>#311</code> Longevity 101 · <code>#231</code> AMA 41 Medicine 3.0 · <code>#261</code> 百岁十项全能训练 · <code>#206</code> 长寿运动 · <code>#379</code> AMA 79 心肺训练指南 · <code>#349</code> AMA 71 力量与肌肉 · <code>#293</code> AMA 57 HIIT · <code>#328</code> AMA 66 营养 · <code>#336</code> AMA 68 综合 · <code>#353</code> AMA 72 断食 · <code>#233</code> AMA 42 睡眠 · <code>#238</code> AMA 43 ApoB/Lp(a)/胰岛素 · <code>#258</code> AMA 48 血压 · <code>#289</code> AMA 56 癌症筛查 · <code>#251</code> AMA 46 大脑健康 · <code>#340</code> AMA 69 补剂 · <code>#376</code> AMA 78 长寿干预 · <code>#370</code> AMA 76 长寿药物 · <code>#298</code> 情绪健康（Paul Conti）· <code>#322</code> 骨骼健康（Belinda Beck）· <code>#308</code> AMA 61 日晒与皮肤 · <code>#292</code> Rucking · <code>#329</code> 特别 AMA。</p>
+  <p>其中若干处保留了 Attia 本人对早年观点的公开修正——尤其是断食和限时进食——因为那些修正本身就是这份指南的一部分内容。</p>
+  <div class="disc">
+    <strong>免责声明。</strong>本文档整理的是一位医生在公开播客中表达的观点和临床实践偏好，不构成医疗建议，也不能替代你与自己医生的沟通。文中所有"最优目标"是 Attia 在其私人诊所中追求的靶点，并非诊断标准或临床指南。任何检测的解读、任何药物的使用、任何显著的训练或饮食改变，都应在了解你个人病史的专业人员指导下进行。
+  </div>
+</footer>
+
+</main>
+</div>
+</div>
+</body>
+</html>
