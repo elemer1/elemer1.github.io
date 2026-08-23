@@ -156,8 +156,8 @@ h1 .sub{display:block;font-size:.3em;line-height:1.5;letter-spacing:.01em;color:
 }
 .ledger dl{margin:0}
 .ledger dt{
-  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--ink-3);margin-block-start:.85rem
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);margin-block-start:.9rem;line-height:1.5
 }
 .ledger dl > dt:first-child{margin-block-start:0}
 .ledger dd{margin:.22rem 0 0;font-size:.9em;line-height:1.62;color:var(--ink-2)}
@@ -233,7 +233,40 @@ h3 .tag{
   font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink-3);font-weight:400;border:1px solid var(--rule-2);border-radius:2px;padding:.06rem .38rem
 }
-h4{font-family:var(--font-body);font-weight:600;font-size:.95em;margin:1.8rem 0 .1rem;color:var(--ink-2)}
+h4{font-family:var(--font-body);font-weight:600;font-size:1.02em;margin:2.6rem 0 .1rem;color:var(--ink);letter-spacing:.005em}
+h4::before{content:"";display:block;width:1.6rem;height:2px;background:var(--accent);opacity:.5;margin-block-end:.75rem}
+h5.sub-h{
+  font-family:var(--font-body);font-weight:600;font-size:.97em;color:var(--ink);
+  margin:2.1rem 0 .1rem;letter-spacing:.005em;display:flex;align-items:center;gap:.6rem
+}
+h5.sub-h::before{content:"";width:.9rem;height:1px;background:var(--accent);opacity:.6;flex:none}
+
+/* ── verbatim quote + clause parsing ── */
+.qt{margin:1.9rem 0 0;border-inline-start:2px solid var(--accent);padding-inline-start:1.4rem}
+.qt .en{font-family:var(--font-display);font-size:1.14em;line-height:1.6;color:var(--ink);margin:0;text-wrap:pretty}
+.qt .en b{font-weight:600;background:linear-gradient(transparent 60%,var(--accent-wash) 60%)}
+.qt .zh{margin:.9rem 0 0;font-size:.95em;color:var(--ink-2);line-height:1.75}
+.qt cite{
+  display:block;margin-block-start:.8rem;font-style:normal;
+  font-family:var(--font-mono);font-size:.65rem;letter-spacing:.1em;color:var(--ink-3)
+}
+.parse{margin:1.6rem 0 0}
+.parse > div{padding:.9rem 0;border-block-end:1px solid var(--rule)}
+.parse > div:last-child{border-block-end:0}
+.parse b{display:block;font-family:var(--font-display);font-weight:600;font-size:1.04em;color:var(--accent-ink);margin:0 0 .28rem}
+.parse p{margin:0;font-size:.93em;color:var(--ink-2);line-height:1.68}
+
+/* ── chronology of restatements ── */
+.chron{margin:1.7rem 0 0;border-block-start:1px solid var(--rule)}
+.chron > div{padding:1.05rem 0;border-block-end:1px solid var(--rule)}
+@media (min-width:640px){
+  .chron > div{display:grid;grid-template-columns:5.4rem minmax(0,1fr);column-gap:1.4rem}
+}
+.chron .d{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;color:var(--accent);font-variant-numeric:tabular-nums}
+.chron .q{margin:.3rem 0 0;font-size:.95em;line-height:1.66;font-family:var(--font-display);color:var(--ink)}
+@media (min-width:640px){.chron .q{margin-block-start:0}}
+.chron .zh{display:block;margin-block-start:.45rem;font-family:var(--font-body);color:var(--ink-2);font-size:.94em;line-height:1.7}
+.chron .where{display:block;margin-block-start:.4rem;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;color:var(--ink-3)}
 p{margin:.85rem 0 0}
 a{color:var(--accent-ink);text-decoration-thickness:1px;text-underline-offset:.18em}
 strong{font-weight:600}
@@ -341,8 +374,10 @@ footer p{max-width:36rem}
     这个结论不是保守，是同一套标准量出来的结果——他书的副标题就是 <em>An Evidence-Based Approach to Longevity</em>。
   </p>
   <p class="thesis thesis-2">
-    而「预防」这一边没有任何单一开关。运动、饮食、睡眠、酒精、环境、社交、疫苗、几项便宜的化验——
-    每一项单看都只是几个百分点，叠加几十年才是真正的差距。这份指南就是把那些百分点一条条列出来。
+    而「预防」这一边没有任何单一开关：运动、饮食、睡眠、酒精、环境、社交、疫苗、几项便宜的化验——
+    每一项单看都只是几个百分点，叠加几十年才是真正的差距。<strong>而这一栏远没有被走满</strong>：
+    10.5 万名<em>健康从业者</em>里，只有 9.3% 在 70 岁时仍算健康老化；75% 的美国人连最低活动量都达不到。
+    缺口不在知识，在注意力放在哪里。
   </p>
 
   <figure class="figure">
@@ -394,19 +429,20 @@ footer p{max-width:36rem}
   <p class="rail-h">目录</p>
   <nav id="toc">
     <a href="#frame"><span class="n">00</span>收益的不对称</a>
-    <a href="#tier1"><span class="n">01</span>五个高证据行为</a>
-    <a href="#exercise"><span class="n">1.1</span>运动</a>
-    <a href="#diet"><span class="n">1.2</span>饮食</a>
-    <a href="#sleep"><span class="n">1.3</span>睡眠</a>
-    <a href="#alcohol"><span class="n">1.4</span>酒精</a>
-    <a href="#smoke"><span class="n">1.5</span>烟草</a>
-    <a href="#tier2"><span class="n">02</span>被低估的因素</a>
-    <a href="#tier3"><span class="n">03</span>检查清单</a>
-    <a href="#tier4"><span class="n">04</span>药物与补剂</a>
-    <a href="#tier5"><span class="n">05</span>怎么读信息</a>
-    <a href="#schedule"><span class="n">06</span>落到日程</a>
-    <a href="#future"><span class="n">07</span>正在到来的</a>
-    <a href="#limits"><span class="n">08</span>边界</a>
+    <a href="#why"><span class="n">01</span>为什么没人在做</a>
+    <a href="#tier1"><span class="n">02</span>五个高证据行为</a>
+    <a href="#exercise"><span class="n">2.1</span>运动</a>
+    <a href="#diet"><span class="n">2.2</span>饮食</a>
+    <a href="#sleep"><span class="n">2.3</span>睡眠</a>
+    <a href="#alcohol"><span class="n">2.4</span>酒精</a>
+    <a href="#smoke"><span class="n">2.5</span>烟草</a>
+    <a href="#tier2"><span class="n">03</span>被低估的因素</a>
+    <a href="#tier3"><span class="n">04</span>检查清单</a>
+    <a href="#tier4"><span class="n">05</span>药物与补剂</a>
+    <a href="#tier5"><span class="n">06</span>怎么读信息</a>
+    <a href="#schedule"><span class="n">07</span>落到日程</a>
+    <a href="#future"><span class="n">08</span>正在到来的</a>
+    <a href="#limits"><span class="n">09</span>边界</a>
   </nav>
 </aside>
 
@@ -420,7 +456,119 @@ footer p{max-width:36rem}
 
   <p>Topol 对衰老生物学的兴奋是真实的——器官时钟、细胞时钟、免疫组，他写了几十篇。但每当话题回到「那么我今天该做什么」，他的答案总是同一个。关键在于，<em>这个答案不是出于保守，而是把同一把严格的证据尺子先后放到两边之后自然掉出来的结果</em>。他没有对预防放宽标准，也没有对抗衰加严标准——他两边都问同样四个问题：研究设计是什么？终点是什么？效应量多大？出错了会怎样？</p>
 
-  <p>先看总账，再逐边拆开。</p>
+  <h4>他的原话</h4>
+  <p>下面这段是整个判断最完整、也最常被引用的一次表述。先读英文原文，因为它的分量在措辞里——每一个限定词都是他刻意放进去的。</p>
+
+  <div class="qt">
+    <p class="en">“While there are many shots on goal to reverse aging (such as cellular reprogramming, senolytics, rapamycin, rejuvenation of the thymus gland, NAD+, etc), <b>none are proven in people and all carry some risk. In contrast, we have many ways now to prevent the major 3 age-related diseases</b>—cancer, cardiovascular, neurodegenerative.”</p>
+    <p class="zh">「尽管在逆转衰老这个方向上有很多次射门（比如细胞重编程、senolytics、雷帕霉素、胸腺再生、NAD+ 等等），<strong>没有一项在人身上被证实，而且每一项都带风险。相比之下，我们现在已经有很多办法去预防那三大年龄相关疾病</strong>——癌症、心血管病、神经退行性疾病。」</p>
+    <cite>Ground Truths · 2025-04-21</cite>
+  </div>
+
+  <p>这句话短，但每个词都在承重。逐个拆：</p>
+
+  <div class="parse">
+    <div>
+      <b>“shots on goal”</b>
+      <p>他用的是「射门」。射门是好事——这是一个赞许的比喻，不是嘲讽。他从一开始就把对面定位成<em>正在进行中的严肃科学</em>，不是骗局。这决定了整句话不是一次否定，而是一次<strong>比较</strong>。</p>
+    </div>
+    <div>
+      <b>“none are proven <em>in people</em>”</b>
+      <p>重心在 <strong>in people</strong>。他没有说「没有证据」——细胞重编程能逆转老年小鼠的衰老特征，这是被独立重复过的真实结果。他说的是证据<em>停在了动物和机制这一层，没有过人这一关</em>。这是一个精确、可证伪的断言：任何一项合格的人体试验都能推翻它。</p>
+    </div>
+    <div>
+      <b>“<em>all</em> carry some risk”</b>
+      <p><strong>all</strong>，不是 some。他不是在说「风险未知所以要谨慎」，而是在说每一项都有<em>已知的、具体的</em>坏结局——而且他在同一篇里逐个点了名。「未知的风险」和「已知的风险」在决策上完全不是一回事。</p>
+    </div>
+    <div>
+      <b>“In contrast”</b>
+      <p>这两个词是整句的枢轴。前后不是两句独立的话，而是一个<strong>比较句</strong>：他把两条路线放进同一个句子，用同一把尺子量。<em>他没有对预防放宽标准，也没有对抗衰加严标准</em>——不对称是量出来的结果，不是前提。</p>
+    </div>
+    <div>
+      <b>“we have many ways <em>now</em>”</b>
+      <p><strong>now</strong>。不是「将来会有」，是<em>现在就在手上、已经可以用</em>。这一个词把整句从一个学术判断变成了一条行动建议——它的意思是你今天就在为不做而付出代价。</p>
+    </div>
+    <div>
+      <b>“<em>prevent</em> the major 3”</b>
+      <p>不是 treat，不是 detect earlier，是 <strong>prevent</strong>。他在别处专门澄清过：乳腺 X 线、结肠镜、PSA、全身 MRI 都属于<em>二级</em>预防（早点找到），不算 prevent。用词是精确的，不是修辞。</p>
+    </div>
+  </div>
+
+  <h4>他为什么说「每一项都带风险」——原文点名</h4>
+  <p>这是同一篇文章里紧接着的段落（原为《纽约时报》评论版，经该报事实核查后全文重刊）。注意他给每一项配的具体坏结局：</p>
+
+  <div class="qt">
+    <p class="en">“The dream of reversing aging has captivated humans for centuries, and today science is closer than it ever has been to achieving that goal. <b>Which is to say: It’s still pretty far away.</b><br><br>That’s not for lack of trying. Some researchers are attempting to reprogram cells to make them biologically younger, which has been shown to reverse features of aging in older animals. <b>Unfortunately, this can also induce cancer.</b> Other researchers are studying drugs called senolytics, which aim to clear aging cells out of the body. <b>However, they can also destroy other cells humans need to survive.</b> Transfusions of blood from young mice appear to rejuvenate older mice, but companies offering this unproven treatment for humans are <b>charging a lot for a potentially dangerous therapy</b>. And while some longevity enthusiasts are taking the drug rapamycin because studies have shown it helps animals live longer, <b>it also weakens the immune system and hasn’t been proved to work in people</b>.”</p>
+    <p class="zh">「逆转衰老的梦想吸引人类已有数百年，而今天的科学比以往任何时候都更接近这个目标。<strong>也就是说：它仍然相当遥远。</strong><br><br>这并不是因为没人努力。有些研究者在尝试重编程细胞、使其在生物学意义上变年轻，这已被证明能逆转老年动物的衰老特征。<strong>不幸的是，它同时也会诱发癌症。</strong>另一些研究者在研究一类叫 senolytics 的药，目标是清除体内的衰老细胞；<strong>然而它们也会摧毁人赖以生存的其他细胞。</strong>把年轻小鼠的血输给年老小鼠似乎能让后者返老还童，但那些向人兜售这一未经证实疗法的公司，<strong>正在为一种潜在危险的治疗收取高价</strong>。还有一些长寿爱好者在服用雷帕霉素，因为研究显示它能让动物活得更久——<strong>但它同时削弱免疫系统，而且从未在人身上被证明有效</strong>。」</p>
+    <cite>《纽约时报》评论版 · 2025-04-21 · 重刊于 Ground Truths</cite>
+  </div>
+
+  <p>接着他给出那一句判决，也是这份指南的排序依据：</p>
+
+  <div class="qt">
+    <p class="en">“But most people don’t simply want to live until 110. They want to extend the amount of time they live free of serious disease, a concept known as health span. That’s why the most sensible approach is to reduce the toll of three major age-related diseases: cancer, heart disease and neurodegenerative disorders, such as Alzheimer’s disease. <b>It may be less flashy, but it’s more attainable than ever.</b>”</p>
+    <p class="zh">「但大多数人并不只是想活到 110 岁。他们想延长的是<em>不被重病困扰的那段时间</em>，也就是健康寿命。这就是为什么最合理的做法是去减轻那三大年龄相关疾病的负担：癌症、心脏病，以及阿尔茨海默这类神经退行性疾病。<strong>它也许不那么炫目，但它比以往任何时候都更可及。</strong>」</p>
+    <cite>同上</cite>
+  </div>
+
+  <h4>广度：同一个判断，他说了四年多</h4>
+  <p>如果这只是一篇文章里的一句话，它就只是一个观点。让它变成这份指南的骨架的，是他在完全不同的题材下——长寿产业、免疫衰老、一级预防、生物学时钟——反复回到同一个结论，而且每次都补上新的支撑。按时间排：</p>
+
+  <div class="chron">
+    <div>
+      <span class="d">2025-03</span>
+      <p class="q">“Each of the three major age-related diseases takes <i>at least two decades to incubate</i>, giving us a long runway to prevent or markedly delay their appearance. We’ve got <i>extraordinary data on lifestyle factors that are of no or minimal cost</i> and relate to each of the principal age-related diseases.”
+      <span class="zh">三大年龄相关疾病每一种都要至少二十年才能酝酿成形，这给了我们一条很长的跑道去预防或大幅推迟它们。而我们已经掌握了关于生活方式因素的大量出色数据——它们成本为零或极低，且与每一种主要年龄相关疾病都有关。</span>
+      <span class="where">The Business of Promoting Longevity and Healthspan</span></p>
+    </div>
+    <div>
+      <span class="d">2025-04</span>
+      <p class="q">“It’s estimated that <i>at least 80 percent of cardiovascular disease cases, 40 percent of cancer cases and 45 percent of Alzheimer’s cases are preventable.</i>”
+      <span class="zh">据估计，至少 80% 的心血管病、40% 的癌症和 45% 的阿尔茨海默病是可预防的。</span>
+      <span class="where">NYT op-ed / How the Science of Aging Can Extend Healthspan</span></p>
+    </div>
+    <div>
+      <span class="d">2025-04</span>
+      <p class="q">“Getting an injection of youthful blood or taking the latest trendy anti-aging supplement <i>might seem like a shortcut</i> to a longer life. But extending the years people live without the burden of major age-related diseases is <i>what should be a national priority</i>.”
+      <span class="zh">打一针年轻人的血、或者吃最新流行的抗衰补剂，看上去像是通往长寿的捷径。但真正应该成为国家优先事项的，是延长人们不被重大年龄相关疾病拖累的年数。</span>
+      <span class="where">同上，文章结尾</span></p>
+    </div>
+    <div>
+      <span class="d">2025-06</span>
+      <p class="q">“All of this supports my <i>firm belief</i> that we have an extraordinary opportunity to prevent the major age-related diseases now that was not previously possible… That’s <i>without the need for reversing aging</i>, or the unmitigated torrent of pseudoscience from longevity clinics, longevity companies, unproven procedures and total body imaging, and anti-aging supplements, <i>all of which are void of any meaningful data</i>.”
+      <span class="zh">所有这些都支持我的一个坚定信念：我们现在拥有了一个前所未有的机会去预防主要的年龄相关疾病……而这<strong>不需要逆转衰老</strong>，也不需要来自长寿诊所、长寿公司、未经证实的操作、全身影像和抗衰补剂的那股伪科学洪流——它们全都拿不出任何有意义的数据。</span>
+      <span class="where">The Drivers of Age-Related Diseases</span></p>
+    </div>
+    <div>
+      <span class="d">2025-06</span>
+      <p class="q">“<i>Ironically, primary prevention has enormous economic value and advantage compared to the cost of treatment</i> of any of these age-related diseases. No less the rarity of finding actual cures. <i>We’re staring at the prevention potential right now, yet stymied from going after it full throttle.</i>”
+      <span class="zh">讽刺的是，与治疗任何一种年龄相关疾病的成本相比，一级预防有着巨大的经济价值和优势——更别说真正的治愈本就罕见。我们此刻正盯着预防的潜力，却被卡住无法全力去追。</span>
+      <span class="where">同上，结论部分</span></p>
+    </div>
+    <div>
+      <span class="d">2025-09</span>
+      <p class="q">“Now, about 75 years later, <i>we’ve yet to achieve any substantive primary prevention</i> with the notable exception of vaccinations that prevent infectious diseases… Remember screening for cancer (such as mammography, colonoscopy, PSA, or total body MRI…) <i>is a secondary prevention</i>.”
+      <span class="zh">如今大约七十五年过去了，除了预防传染病的疫苗这一显著例外，我们尚未取得任何实质性的一级预防成果……请记住，癌症筛查（乳腺 X 线、结肠镜、PSA，或某些人主张的全身 MRI）属于<strong>二级</strong>预防。</span>
+      <span class="where">It’s Time for Primary Prevention in Medicine</span></p>
+    </div>
+    <div>
+      <span class="d">2025-09</span>
+      <p class="q">“<i>It’s inevitable—we’re going to age. But that doesn’t mean we have to manifest age-related diseases.</i>”
+      <span class="zh">衰老是必然的，我们都会变老。但这不意味着我们必须让那些年龄相关疾病显现出来。</span>
+      <span class="where">同上</span></p>
+    </div>
+    <div>
+      <span class="d">2026-07</span>
+      <p class="q">“Biological age is <i>now measurable at a granular level and increasingly shown to be modifiable</i>. I believe this represents <i>the most important advance we have yet seen in the science of human aging.</i>”
+      <span class="zh">生物学年龄如今已能在很细的粒度上被测量，而且越来越多的证据显示它是<strong>可改变的</strong>。我认为这代表着我们在人类衰老科学中迄今见到的最重要的一项进展。</span>
+      <span class="where">Medicine is Moving From Calendars to Clocks</span></p>
+    </div>
+  </div>
+
+  <p>最后这条很重要，别把它读漏了：<em>他把器官时钟和细胞时钟称为「人类衰老科学迄今最重要的进展」</em>。所以这个判断从来不是「衰老生物学没用」。它是一个关于<strong>时序</strong>的判断——衰老科学最先兑现的价值，是让我们<em>更准确地知道该对谁做预防、以及什么时候做</em>，而不是给出一种可以直接吃的抗衰疗法。这也是为什么他在同一篇里紧接着写：目前不要购买任何商业的甲基化年龄检测。</p>
+
+  <h4>总账</h4>
+  <p>把上面所有原话摊平并列，就是这张表：</p>
 
   <div class="ledger">
     <div class="side-a">
@@ -464,12 +612,83 @@ footer p{max-width:36rem}
   <h4>左边这栏的账：证据长什么样</h4>
   <p>「可预防」这三个数字不是估计出来的口号，它们背后是一整套硬终点研究——终点是<strong>死亡、心梗、痴呆诊断</strong>，不是某个标志物变好看了。几个能说明效应量的例子：</p>
   <ul>
-    <li><strong>体能。</strong>75 万名美国退伍军人（30–95 岁）：体能最差的 20% 比同年龄同性别最好的 2% <em>死亡风险高 4 倍</em>。原文的结论句是——「不健康（unfit）所带来的风险，超过本研究考察的任何一项心脏危险因素。」另一项 12.2 万人的数据里，体能低于平均 vs 高于平均的风险比是 1.41，<em>和吸烟或糖尿病是同一量级</em>。</li>
+    <li><strong>体能。</strong>效应量大到需要单独一节，见下。</li>
     <li><strong>饮食。</strong>10.5 万人随访 30 年：饮食质量最高五分位比最低五分位，健康活到 75 岁的几率 <em>OR 2.24</em>。</li>
     <li><strong>疫苗。</strong>四个国家（威尔士、澳大利亚、美国、加拿大）用出生日期断点做的自然实验，一致指向带状疱疹疫苗使痴呆<em>下降约 20%</em>。加拿大那项的绝对下降是 2.0 个百分点。</li>
     <li><strong>药物。</strong>他汀、降压药、GLP-1、秋水仙碱——各自都有以心梗、卒中、死亡为终点的随机对照试验，参与者以万计。</li>
   </ul>
-  <p>更值得注意的是<strong>这条路还远没有被走满</strong>：那 10.5 万名健康从业者里，最终在 70 岁时达到「健康老化」的只有 <span class="num">9.3%</span>；而 <em>75% 的美国人连每周 150 分钟的最低活动量都达不到</em>。也就是说，左边这一栏不是「已经榨干了，所以得去找新东西」——恰恰相反，绝大多数人连已知有效的部分都还没做。</p>
+
+  <h4>「不健康」本身就是最大的那个危险因素</h4>
+  <p>大多数人心里的「心脏危险因素」是一份清单：高血压、高血脂、糖尿病、吸烟、家族史。<strong>体能不在那份清单上</strong>——它被归到「生活方式」，一件锦上添花、有空再说的事。</p>
+  <p>数据不是这么排的。2022 年《JACC》发表了 75 万名美国退伍军人（30–95 岁、平均随访 10.2 年）的运动平板数据。体能最差的 20% 比同年龄同性别最好的 2% <em>死亡风险高 4 倍</em>。论文自己的结论句是：</p>
+
+  <div class="qt">
+    <p class="en">“<b>Being unfit carried a greater risk than any of the cardiac risk factors examined.</b>”</p>
+    <p class="zh">「<strong>体能低下所带来的风险，超过本研究考察的任何一项心脏危险因素。</strong>」</p>
+    <cite>Kokkinos et al · JACC 2022 · N = 750,000+</cite>
+  </div>
+
+  <p>这句话值得停一下再往下读。它说的不是「运动有好处」。它说的是——在同一项研究、同一批人、同一套统计校正里比下来——<em>体能低下比高血压更危险、比高血脂更危险、比糖尿病更危险、比吸烟更危险</em>。它不是清单上的第六项，它是排在最前面的那一项。</p>
+
+  <p>这不是一项孤例。旁证一路对得上：</p>
+  <div class="dims">
+    <div><b>HR 1.41</b><p>Cleveland Clinic 连续 122,007 名做过运动平板的患者：体能<em>低于平均</em> vs <em>高于平均</em>，全因死亡风险比 1.41。Topol 的注解是——<strong>和吸烟或糖尿病是同一量级</strong>。</p></div>
+    <div><b>&gt; 5 倍</b><p>同一批数据里，最低体能组与精英组之间的死亡风险差距超过 5 倍。退伍军人那项算出来是 4 倍。两个完全独立的大队列，同一个量级。</p></div>
+    <div><b>每 +1 MET</b><p>全因死亡下降 <strong>14–15%</strong>（33 项研究、102,980 人的荟萃分析）。这是线性的剂量—反应关系，而且<em>在最高体能层里没有出现风险回升</em>——每个年龄组都是一路继续下降。</p></div>
+    <div><b>2016 年</b><p>美国心脏协会当年就发过科学声明：心肺适能<strong>应当被视为一项临床生命体征</strong>（a clinical vital sign）。这个说法在专业上已经站了十年。</p></div>
+  </div>
+
+  <p>然后是那个不太体面的事实：<strong>它至今不在你的体检单上。</strong>你每次看病都会被量血压，但没有人量你的 METs——尽管后者是一个<em>免费的算式</em>（<code>0.05 × 心率 + 2</code>），而且它比血压更能预测你什么时候死。一个被学会正式命名为「生命体征」的指标，十年来从未被当成生命体征来对待。</p>
+
+  <h4>而这条路远没有被走满</h4>
+  <p>看到上面那些效应量，你大概会以为这一栏早就被榨干了，所以人们才不得不去别处找新东西。<strong>事实完全相反。</strong></p>
+  <p>那项随访 30 年的研究里，最终在 70 岁时<em>无 11 种重大慢病、且认知、体能、心理功能均完好</em>的人，只有 <span class="num">9.3%</span>。而这批人<strong>全部是健康从业者</strong>——医生、护士，最知道该怎么做、也最有条件做的一群人。十个人里有九个没做到。</p>
+  <p>更基础的一层：<em>75% 的美国人连每周最低限度的身体活动量都达不到</em>；同时满足有氧和力量两项建议的，只有四分之一。</p>
+  <p>把两边的数字并排放，就是这份指南真正想说的那件事：</p>
+
+  <div class="ledger">
+    <div class="side-a">
+      <h5>有证据，但没人做</h5>
+      <p class="cap">执行率</p>
+      <dl>
+        <dt>每周 150 分钟有氧 ＋ 2 次力量</dt>
+        <dd>两项都达标的：<b>1 / 4</b></dd>
+        <dt>最低限度的身体活动</dt>
+        <dd><b>75%</b> 的人达不到</dd>
+        <dt>以植物为主、低超加工的饮食</dt>
+        <dd>美国成人约 <b>60%</b> 的热量来自 UPF，儿童约 70%</dd>
+        <dt>70 岁时仍然健康老化</dt>
+        <dd><b>9.3%</b>——而且样本全是健康从业者</dd>
+        <dt>70 岁以上停掉一级预防的阿司匹林</dt>
+        <dd>仍有 <b>30%+</b> 在吃，多数是医生建议的</dd>
+      </dl>
+    </div>
+    <div class="side-b">
+      <h5>没证据，但人人在追</h5>
+      <p class="cap">投入</p>
+      <dl>
+        <dt>提高蛋白摄入</dt>
+        <dd><b>71%</b> 的美国人想增加（2022 年还是 52%）——而 85% 的人本就已经超过推荐量</dd>
+        <dt>长寿体检</dt>
+        <dd>Function Health：<b>5 万</b>会员 ＋ 等候名单，$499/年，估值 <b>25 亿美元</b></dd>
+        <dt>高端长寿会员</dt>
+        <dd>Fountain Life：<b>$19,500</b> / 年</dd>
+        <dt>抗衰公司</dt>
+        <dd><b>50+</b> 家在研，Altos、Calico、Unity、Retro 等融资以十亿计</dd>
+        <dt>肽类 / NAD+ 注射</dt>
+        <dd>每针数百美元，<b>零</b>项随机试验</dd>
+      </dl>
+    </div>
+  </div>
+
+  <p><strong>所以缺口不在知识。</strong>那 10.5 万人是医生和护士；71% 想加蛋白的人里，绝大多数早已超标；花 19,500 美元做全身扫描的人，显然不缺健康动机，也不缺钱。缺的是<em>注意力放在哪里</em>——同一批人愿意为一个没有随机试验支撑的指标付月费、为一针没有人体数据的肽付几百美元，却没有每周走够 150 分钟。</p>
+  <p>Topol 有一句话是对着美国削减研究经费说的，但它在个人层面同样成立，而且更刺耳：</p>
+  <div class="qt">
+    <p class="en">“<b>We’re staring at the prevention potential right now, yet stymied from going after it full throttle.</b>”</p>
+    <p class="zh">「<strong>我们此刻正盯着预防的潜力，却被卡住，无法全力去追。</strong>」</p>
+    <cite>The Drivers of Age-Related Diseases · 2025-06-08</cite>
+  </div>
+  <p>这就是「复利」这个词在标题里的真正含义：它不是一个励志比喻。<em>复利只对已经在做的事生效</em>——而左边这一栏，绝大多数人连本金都还没投进去。</p>
 
   <h4>右边这栏的账：不是没有生物学，是没有人</h4>
   <p>Topol 从不把这一栏说成骗局，他明确写过「我觉得这些努力很有意思，值得推进」；Venki Ramakrishnan（诺奖得主，《Why We Die》作者）在 Ground Truths 上的判断也是「底下有严肃的生物学」。问题出在从生物学到人这一段：</p>
@@ -527,14 +746,232 @@ footer p{max-width:36rem}
 </section>
 
 <!-- ═══════════ 01 ═══════════ -->
+<section id="why">
+  <div class="tier-head"><span class="tier-num">01</span><h2>为什么最扎实的那一栏最没人做</h2></div>
+  <p class="dek">上一节留下了一个没回答的问题：如果证据这么强、成本这么低，为什么十个医生护士里有九个都没做到？在回答之前，得先把利害说清楚——正着说一遍，再反过来说一遍，然后交代哪些事情是真的已经确定了。</p>
+  <hr class="rule">
+
+  <h4>一、利害到底有多大</h4>
+
+  <p>前面给的都是比例和风险比。风险比是给研究者看的，它不会让任何人改变行为。换成人话说一遍：</p>
+
+  <p><strong>它作用的地方，不是死亡原因里的一个角落，它就是主体。</strong>心脏病是美国的第一位死因，卒中第三位；即便已经有四分之一的美国人在服用他汀，每年仍然发生<em>超过 80 万次心梗</em>。而这一整块里，<strong>至少 80% 被认为是可预防的</strong>。痴呆当中约七成是阿尔茨海默，Lancet 委员会认为其中<strong>约 45% 可预防</strong>。癌症那一块是 40%。</p>
+
+  <p>再加一个更宽的口径：一项覆盖 195 个国家的系统评估得出，<em>糟糕的饮食与全球 22% 的死亡相关</em>——<strong>它造成的死亡多于烟草，多于癌症，多于高血压，多于任何其他单一的疾病或健康风险</strong>。而体能低下所带来的风险，前面已经引过原句，超过任何一项被考察的心脏危险因素。</p>
+
+  <p>把这几句话叠在一起，你会看到一件很朴素的事：那些被归为「生活方式」、被放在体检单最后一页、被当成有空再说的东西，<em>恰好覆盖了人类死亡原因中最大的那几块</em>。它们不是健康清单上的补充项，它们是主项。</p>
+
+  <h4>二、被决定的是哪二十年</h4>
+
+  <p>这里有一个最容易被误解的地方，值得单独说：<strong>这不是一个「活多久」的问题。</strong></p>
+
+  <p>那项随访 30 年的研究，给「健康老化」下的定义非常具体——在 70 岁这一年，<em>没有 11 种重大慢性病中的任何一种，并且认知功能、身体功能、心理健康三项均无损伤</em>。达到这个标准的人是 9.3%。</p>
+
+  <p>把这句话反过来读一遍，它的分量才出来：<strong>90.7% 的人在 70 岁那年，已经带着至少一种重大慢病，或者认知、体能、心理已经出现损伤。</strong>而这批人是医生和护士——是全社会最知道该怎么做的那一群。</p>
+
+  <p>所以真正被决定的东西，不是你活到 82 岁还是 85 岁。是你<em>从 60 岁到人生结束的那二十多年，处在什么状态里</em>：是能走、能想、能自己照顾自己，还是在管理疾病、在门诊之间往返、在别人的照护下生活。这两种二十年，在寿命统计上可能长度相同。</p>
+
+  <p>Topol 之所以坚持用 healthspan（健康寿命）而不是 lifespan（寿命），整本《Super Agers》之所以叫这个名字，指的就是这段差别。</p>
+
+  <h4>三、代价是多少</h4>
+
+  <p>另一半的「有多大」，是入场价。把左边那栏的核心剂量摊开算一下：</p>
+
+  <div class="dose">
+    <div><dt>有氧摊到每天</dt><dd>21<small> 分钟</small></dd></div>
+    <div><dt>力量训练 · 每次约 30 分钟</dt><dd>2–3<small> 次 / 周</small></dd></div>
+    <div><dt>每周合计</dt><dd>≈ 4<small> 小时</small></dd></div>
+    <div><dt>占清醒时间</dt><dd>3.5%<small> （占全周 2.4%）</small></dd></div>
+  </div>
+
+  <p>每周四个小时，占你清醒时间的三十分之一左右。<em>换来的是移除一个与吸烟或糖尿病同量级的风险因素</em>——这是 12.2 万人数据里算出来的原话。饮食、睡眠、限酒这几项的边际时间成本更低，因为你本来就要吃饭、要睡觉。</p>
+
+  <p>而右边那栏的入场价是：每针数百美元起，一年最高 19,500 美元，换来的是<strong>零项人体随机试验</strong>。</p>
+
+  <p>这个对比不需要任何统计训练就能看懂。真正需要解释的，恰恰是为什么看懂了也不做——那是这一节剩下部分要回答的。</p>
+
+  <h4>四、把它反过来看一遍</h4>
+
+  <p>上面三块都是正着说的：收益有多大、影响哪一段、要花多少。但正着说有一个根本弱点——<em>收益是抽象的，而且永远不会到达</em>。反过来说往往清楚得多，因为损失是具体的。</p>
+
+  <h5 class="sub-h">两个你</h5>
+
+  <p>想象两个你。同一副基因，同一份工作，同一段关系，同一个城市。区别只有一处：其中一个每周走了那 150 分钟、练了那两三次，另一个没有。</p>
+
+  <div class="dims">
+    <div><b>35 岁</b><p>完全看不出区别。两个人都觉得自己很健康，因为两个人确实都还很健康。</p></div>
+    <div><b>45 岁</b><p>仍然看不出。化验单可能已经开始分岔，但两份结果都落在「正常范围」里，也就都不会被标星号。</p></div>
+    <div><b>55 岁</b><p>差别第一次出现在纸面上：血压、HbA1c、ApoB、腰围。<em>仍然没有任何症状。</em>这是唯一一段既看得见分岔、又还完全来得及的时期。</p></div>
+    <div><b>68 岁</b><p>一个刚爬完山。另一个刚做完支架。</p></div>
+  </div>
+
+  <p>这个故事真正残酷的地方不在结局，而在于：<strong>那个爬山的人永远不会知道自己避开了什么。</strong>他不会有任何一个瞬间感受到「我刚刚避免了一次心梗」。他只会觉得自己运气不错，基因还行。</p>
+
+  <p>这就是预防最根本的传播困境——<em>它的全部回报，都发生在一个你无法访问的平行版本里。</em>所以你必须刻意去想象那个版本，因为现实永远不会替你演示它。</p>
+
+  <h5 class="sub-h">同一组数字，翻过来说一遍</h5>
+
+  <p>行为经济学里最稳的一条发现是：同等大小的损失，心理权重大约是收益的两倍。下面右栏和左栏说的是<em>完全相同的事实</em>，只是换了个方向。</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>正着说</th><th>翻过来说</th></tr></thead>
+    <tbody>
+      <tr><td>每周 150 分钟能把心血管风险降低约一半</td><td class="k">不做，等于保留了那一半<em>本可以移除</em>的风险</td></tr>
+      <tr><td>每高 1 MET，全因死亡下降 14–15%</td><td class="k">每少 1 MET，全因死亡<strong>上升</strong> 14–15%</td></tr>
+      <tr><td>体能最好的 2% 比最差的 20% 死亡风险低 4 倍</td><td class="k">不练，就是主动把自己留在那个 <strong>4 倍组</strong>里</td></tr>
+      <tr><td>1 分钟运动约换来 5 分钟寿命</td><td class="k"><strong>每不动的 1 分钟，你在花掉 5 分钟</strong></td></tr>
+      <tr><td>作息规律与更低的全因、癌症、心血管死亡相关</td><td class="k">作息紊乱不是「没有加分」，是<em>在扣分</em></td></tr>
+      <tr><td>以植物为主的饮食让健康老化几率约翻倍</td><td class="k">按现在这么吃，你健康活到 70 岁的几率<em>只有另一种吃法的一半</em></td></tr>
+    </tbody>
+  </table></div>
+
+  <p>两栏是同一件事。<strong>如果它们给你的感觉不一样，那说明问题不在证据，在你怎么读它。</strong>而这份指南能做的，恰恰只有换个方向再说一遍。</p>
+
+  <h5 class="sub-h">你没有「不参与」这个选项</h5>
+
+  <p>最常见的念头是「等我忙完这阵子再说」。这个念头预设了一件事：<em>在我开始之前，什么都没有发生。</em></p>
+
+  <p>但事实是——动脉粥样硬化在<strong>青少年期</strong>就已经能在血管里看到了。三大疾病各自二十年的酝酿期，不是等你准备好才开始计时的，它<em>已经在走</em>。p-tau217 在症状出现前二十多年就开始爬升，而它爬升的时候你毫无感觉。</p>
+
+  <p>换句话说：<strong>你并没有站在这个实验外面。你已经在实验里了，只是被分到了某一组。不做选择，就是选择了对照组。</strong>你能改变的是这条曲线的斜率，不是它的起点。</p>
+
+  <p>而斜率能兑现多少，取决于你还剩多少年在这条曲线上。这就是为什么「以后再说」是所有选项里最贵的一个——<em>它花掉的不是时间，是复利里的指数部分</em>。</p>
+
+  <h5 class="sub-h">一个检验：如果右边那栏明天就被证实了呢？</h5>
+
+  <p>这个思想实验可以一次性关掉「要不要先等等看」这个问题。</p>
+
+  <p>假设明天发表了一项三万人的随机对照试验，确凿证明某种抗衰干预能让人类的健康寿命延长五年。<em>你今天的最优策略会因此改变吗？</em></p>
+
+  <p><strong>不会。</strong>三条理由：</p>
+  <ul>
+    <li><strong>它们不冲突。</strong>你依然需要左栏——没有任何一种抗衰干预声称过可以替代运动、睡眠或血压控制。</li>
+    <li><strong>等待的成本很低。</strong>如果它真被证实，你几年后再加入，损失极小；而现在跳进去，你承担的是全部未知风险。</li>
+    <li><strong>反过来不成立。</strong>你今天不做左栏而损失的复利，<em>永远补不回来</em>——那几年不会再来一次。</li>
+  </ul>
+
+  <p>所以结论是干净的：<strong>右栏被证实与否，几乎不改变你今天该做什么；而左栏改变一切。</strong>当一个决定在两种可能的未来下都指向同一个动作时，它就不是一个需要犹豫的决定。</p>
+
+  <h5 class="sub-h">最后：两种错误的代价并不对称</h5>
+
+  <p>再做一次反向检查——假设你判断错了，会怎么样？</p>
+
+  <p><strong>你做了左栏，事后发现其实没必要。</strong>代价：你多走了路，多睡了觉，少喝了酒。而这些事情<em>在当下本身就有回报</em>——精力、情绪、睡眠质量。这个错误的代价接近于零，甚至可能是正的。</p>
+
+  <p><strong>你做了右栏，事后发现它无效甚至有害。</strong>代价：可能的癌症风险或免疫抑制，几千到几万美元，以及最容易被忽略的一项——<em>那几年你本来可以用来做左栏</em>。</p>
+
+  <p>两种错误的代价严重不对称。而当两个选项「错了」的代价差这么多的时候，理性的默认值不是「两边都试试」，而是<strong>倒向错得起的那一边</strong>。</p>
+
+  <h4>五、哪些事情已经确定到不必再争论</h4>
+
+  <p>先定义一下这里的「确定」。它不是指「绝对真理」——医学里没有那种东西。它的操作性含义是：<em>再往下争论也不会改变你今天该做什么</em>。证据已经够了，瓶颈在执行，不在知识。</p>
+
+  <p>按这个标准，下面这些事情是确定的：</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>事项</th><th>证据基础</th><th>已知的效应量</th></tr></thead>
+    <tbody>
+      <tr><td class="k">不吸烟</td><td>数十年一致证据</td><td>冠心病最强的可改变危险因素之一；没有安全剂量</td></tr>
+      <tr><td class="k">提高心肺适能</td><td>33 项研究 / 102,980 人荟萃；75 万退伍军人；12.2 万 Cleveland Clinic</td><td>每 +1 MET 全因死亡 <span class="num">−14~15%</span>；最差 20% vs 最好 2% 死亡风险 <span class="num">4 倍</span></td></tr>
+      <tr><td class="k">加上抗阻训练</td><td>UK Biobank 7 万+</td><td>同时改善体能与肌力，优于只改善其一；也是维持肌肉量的唯一主驱动</td></tr>
+      <tr><td class="k">血压控制在 ≤120/80</td><td>数十年随机试验</td><td>最常见、也最可控的心血管危险因素之一</td></tr>
+      <tr><td class="k">高风险者降 LDL / ApoB</td><td>大量随机试验，硬终点</td><td>他汀、依折麦布、PCSK9 抑制剂均已证实降低事件</td></tr>
+      <tr><td class="k">以植物为主、低超加工的饮食</td><td>10.5 万人 / 30 年 ＋ 多项独立复制</td><td>健康老化几率约翻倍；饮食差与全球 <span class="num">22%</span> 死亡相关</td></tr>
+      <tr><td class="k">睡眠的时长、质量与规律性</td><td>UK Biobank 等大型队列</td><td>规律性预测全因、癌症与心血管死亡，几乎压过时长</td></tr>
+      <tr><td class="k">限制酒精</td><td>IARC 分类 ＋ 2025 年三份报告</td><td>已被列为致癌物；女性乳腺癌风险是三份报告唯一的共识</td></tr>
+      <tr><td class="k">接种疫苗</td><td>数十年</td><td>用 Topol 的原话：这是医学迄今<em>唯一</em>真正实现的一级预防</td></tr>
+      <tr><td class="k">70 岁以上停用一级预防的阿司匹林</td><td>3 项大型随机试验</td><td>ASPREE：全因死亡 <span class="num">+14%</span>，大出血 <span class="num">+38%</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <p>关于这张表，有三点值得注意。</p>
+  <p><strong>第一，它上面没有一项需要你等待新研究、付月费、或者掌握内部消息。</strong>它们全部在今天就可以开始，而且大部分不花钱。</p>
+  <p><strong>第二，最后一条提醒我们：确定的事情不只是「要做什么」，也包括「要停掉什么」。</strong>——而那一条至今仍有超过三成的 70 岁以上美国人在违反，多数还是遵医嘱。</p>
+  <p><strong>第三，本指南第 05 节里那份「没有证据」的清单——肽类、NAD+、雷帕霉素、年轻血浆、商业生物年龄检测——没有任何一项能进这张表。</strong>不是因为它们太新，而是因为它们不确定。这两件事经常被混为一谈，但它们完全不同：新的东西将来可能变确定，而不确定的东西现在就不该进你的清单。</p>
+
+  <hr class="rule" style="margin-block-start:3rem">
+
+  <p style="margin-block-start:1.6rem">利害讲完了，确定性也讲完了。<strong>那么真正的问题就变成：既然这么大、这么便宜、这么确定，为什么绝大多数人没有在做？</strong></p>
+
+  <div class="box box-note">
+    <p class="box-h">接下来这部分的出处</p>
+    <p>上面每一个数字都来自 Topol 的文章。<strong>但接下来这部分不是他的原话。</strong>他反复描述了这个现象——「我们正盯着预防的潜力，却无法全力去追」——但他没有系统地解释它<em>为什么</em>会发生。下面是我读完全集之后自己的归纳，你可以不同意其中任何一条。之所以要放进来，是因为如果不理解这套机制，上面所有的数字大概会在你合上这个页面之后的三天之内失效。</p>
+  </div>
+
+  <p>先立一个前提：<strong>这不是意志力问题。</strong>把它归因成「现代人太浮躁」「大家都想走捷径」是最省事、也最没用的解释——因为那批只有 9.3% 做到的人，是医生和护士；而那些花 19,500 美元买长寿会员的人，显然既不缺健康动机，也不缺执行力，更不缺钱。</p>
+  <p>一个在如此不同的人群里都稳定出现的偏差，通常不是性格造成的，而是<em>结构</em>造成的。下面这三层结构——信息、市场、心理——每一层都在把人从证据强的那一边，往证据弱的那一边推。</p>
+
+  <h4>第一层 · 信息：你听到的东西是按「新」排序的</h4>
+
+  <p>试着回忆一下，你上一次在信息流里看到「规律的中等强度运动能把心血管风险降低约一半」是什么时候。大概想不起来。<strong>因为它不是新闻。</strong></p>
+
+  <p>一个事实一旦被证实得足够彻底，它就永久地退出了新闻。「运动有益健康」上一次具有传播价值，可能是几十年前的事了。而一篇小鼠实验、一个刚发表的机制发现、一种刚上市的补剂，今天就可以出现在你眼前——<em>正因为它是新的，正因为还没人知道它到底对不对</em>。</p>
+
+  <p>把这两句话放在一起，会得到一个相当不舒服的结论：在你的信息环境里，一条健康信息的<strong>曝光度和它的证据成熟度大体上是负相关的</strong>。你每天接收到的健康内容按「新」排序，不按「确定」排序。而如果你的行动清单跟着信息流走，它就会自动地、持续地被证据最弱的东西填满——你甚至察觉不到这个过程，因为每一次单看都很合理。</p>
+
+  <p>还有第二个更隐蔽的过滤器：<strong>曝光度反映的是利润率，不是有效性。</strong>没有人会为「每周走 150 分钟」投放广告，因为它不产生收入；也没有哪家公司能靠劝人多走路做到 25 亿美元估值。但任何有利润的东西都自带一支传播队伍——检测、补剂、会员、注射、课程。所以当你发现某样健康产品周围的信息密度特别高时，那个密度衡量的是它的<em>商业模式</em>，不是它的效应量。</p>
+
+  <p>这里有一条非常便宜的启发式，可以直接拿去用：看到任何一条健康信息，先问一句——<em>谁在为这条信息的传播付钱？</em>如果答案是「没有人」，它反而更可能是真的。</p>
+
+  <h4>第二层 · 市场：能被购买的东西，天然赢过只能被执行的东西</h4>
+
+  <p>看一眼右边那栏所有东西的共同点：<strong>它们都可以被买下来。</strong>一针肽、一次全身扫描、一年的会员、一瓶 NAD+。购买是一个离散的、有明确终点的动作——付完款的那一刻，这件事就「做完了」。它给你一个干净的心理闭环。</p>
+
+  <p>左边那栏一样都不能买。你没法购买睡眠规律性，没法购买那 150 分钟，没法购买以植物为主的饮食。它们只能被<em>执行</em>，而且永远执行不完：今天走够了不会让明天不用走，这个月睡得规律也不会给下个月存下额度。它没有终点，因此永远给不了那个闭环。</p>
+
+  <p>人对「可完成的动作」有极强的偏好，这一点在很多领域都成立——买一本书比读完它容易，报一个课程比上完它容易。健康领域只是同一件事的又一次上演，只不过赌注大得多。</p>
+
+  <p>而市场会诚实地长在能收钱的那一侧，<strong>这不需要任何阴谋</strong>。一个能被购买的干预自带资本、渠道、代言和复购；一个只能被执行的干预什么都没有。于是二十年过去，你看到的是 50 多家抗衰公司、几十亿美元融资、一家估值 25 亿美元的体检公司——而与此同时，被美国心脏协会正式命名为「临床生命体征」的心肺适能，<em>十年来仍然不在任何一张常规体检单上</em>。</p>
+
+  <p>医疗系统内部的激励指向同一边。量血压有编码、可以报销；算 METs 没有编码、不能报销，尽管它只是一个免费的算式。医生的时间按「处理已经发生的问题」计价，不按「避免了什么」计价——<em>你永远无法为一场没有发生的心梗开出账单</em>。所以即便一位医生完全清楚体能是最强的预测因子，整个系统也不奖励他花那几分钟去测。这同样解释了为什么在三项大型随机试验发表七年之后，仍有超过三成的 70 岁以上美国人在服用一级预防的阿司匹林，<strong>而且多数是医生建议的</strong>——更新是缓慢的，而缓慢的更新还常常朝着错误的方向。</p>
+
+  <h4>第三层 · 心理：为什么你知道了，还是不做</h4>
+
+  <p>这一层最难承认，因为前两层都发生在外部，而这一层作用在你自己身上。</p>
+
+  <p><strong>熟悉感在偷走执行力。</strong>当你读到「要规律运动、要好好睡觉、要多吃蔬菜」，你的大脑会立刻给出一个信号：<em>我知道。</em>而「我知道」和「我在做」是完全不同的两件事，可它们在主观体验上极其相似。熟悉被误读成了掌握。那个 9.3% 就是这个错觉的精确度量——一群把这些知识背得比谁都熟的人，做到的只有十分之一。</p>
+
+  <p>反过来，新信息不会触发这种错觉。它是陌生的，因此它要求你做点什么。于是产生了一个荒谬的结果：<em>你更可能因为一条弱证据而行动，因为一条强证据而按兵不动</em>——不是因为你判断错了，而是因为强证据早已不再让你感到需要判断。</p>
+
+  <p><strong>预防的回报是一件没有发生的事。</strong>这是它最根本的劣势，也是最容易被忽略的一条。如果你今年把所有事都做对了，你会得到什么？你会得到一场没有到来的心梗、一次没有确诊的痴呆。而<em>你永远不会经历那件被你避免掉的事</em>——没有那一刻，没有那个感觉，什么反馈都没有。你做对了，世界一片安静。</p>
+
+  <p>而右边那栏的东西全都提供即时反馈。一份检测给你一个分数，一针注射给你一种感觉。这些反馈和最终结局可能毫无关系，但它们是<em>可感知的</em>，而人在完全没有反馈的行为上极难坚持。这也许才是可穿戴设备真正的价值所在：它未必测得多准，但它人为地制造了一个反馈回路——很多人正是看到戒指上显示酒精对睡眠的破坏之后，才真的开始少喝。</p>
+
+  <p>同样的逻辑解释了为什么「生物年龄」这类检测卖得那么好：<em>它把一个二十年后才会揭晓的结局，压缩成今天就能看到的一个数字。</em>人极度渴望这种压缩，哪怕那个数字根本还没有被验证过。</p>
+
+  <p><strong>那二十年的窗口是一把双刃剑。</strong>它一方面给了你极大的干预空间——这正是整个立论成立的前提；另一方面，它把回报推到了二十年之后。人对远期收益的贴现极其陡峭，一个二十年后的好处，在今天的感受权重接近于零。而复利偏偏要求你<em>在感受权重最低的时候投入最多</em>。所以：证据最强的那类干预，恰好也是心理上最难坚持的那一类。这不是巧合，这是同一个事实的两面。</p>
+
+  <p><strong>最后是身份。</strong>「我每周练三次、饮食以植物为主」不构成一个身份，那听起来像一件家务。「我在做前沿的抗衰干预」是一个身份——它把你放进一个更小、更精英、更有故事感的群体。健康行为的采纳在很大程度上是社会性的：人们采纳的常常不是效应量最大的那个行为，而是<em>最能表达自我的那个行为</em>。而基础的东西恰恰缺乏表达价值——正因为人人都能做，做了也不显得特别。</p>
+
+  <h4>一个横跨三层的悖论</h4>
+
+  <p>Topol 在关于肽类的那篇里点出过一个尖锐的现象，它同时穿透上面三层：<em>反对疫苗的人拒绝一种有七万多人参与的随机双盲对照试验支持的注射，却乐于接受一种几乎没有任何人体数据的肽注射。</em></p>
+
+  <p>这看起来自相矛盾，但机制并不神秘：<strong>对建制的不信任，被误当成了怀疑精神本身。</strong>真正的怀疑精神应当同时作用于两边——你既怀疑药厂，也怀疑那个卖你肽的诊所。只对建制怀疑、不对替代方案怀疑，那不是怀疑主义，那只是换了一个愿意相信的权威。</p>
+
+  <p>而且新权威的举证标准通常低得多：制药公司要拿出数万人的随机试验，卖肽的人只需要一段个人经历和一位名人代言。<em>怀疑的门槛在两边严重不对称</em>——这是整件事里最容易骗过自己的一环，也是为什么这份指南把「怎么读健康信息」单独列了一节。</p>
+
+  <h4>那么该怎么办</h4>
+
+  <p><strong>第一，把「我读什么」和「我做什么」彻底分开。</strong>这两份清单不应该同步更新。信息流按「新」排序，而你的行动清单必须按「证据成熟度」排序。看到一个令人兴奋的新发现时，正确的默认反应通常是——<em>什么都不做</em>。因为按定义，越新的发现证据成熟度越低。</p>
+
+  <p>这不是反对好奇心。读前沿是有价值的：它让你知道未来会来什么，也让你在它真正成熟时能第一时间认出来。但<strong>阅读的前沿和执行的前沿应该是两条不同的曲线</strong>，中间隔着好几年。Topol 本人就是这么活的——他写了几十篇关于细胞时钟、免疫组、基因编辑的文章，而他自己每天在做的事情是：每周三次力量训练，早餐希腊酸奶、零食坚果、晚餐沙拉配鱼或豆类，四十多年不吃红肉。</p>
+
+  <p><strong>第二，承认这个偏差是结构性的，然后用结构去对抗它。</strong>既然问题不出在意志力，解法也不该寄望于意志力。可行的做法是<em>把左边那栏变得更像右边那栏</em>——给它人工加上闭环和反馈：固定的时间段而不是「有空就练」，可见的记录而不是凭感觉，和别人约好而不是全靠自己。你不是在弥补自制力的不足，你是在给一件本来没有反馈的事情装上反馈。</p>
+
+  <p><strong>第三，先把清单补满，再考虑扩展。</strong>在你每周走够 150 分钟、每周练两到三次力量、睡眠规律、酒精在限度内、血压血脂血糖都清楚之前，任何关于肽、NAD+、生物年龄检测的讨论都是次序错了。不是因为那些东西一定没用，而是因为<em>你手上还有一大笔确定收益没有领取</em>——而两边的期望收益不在一个量级上。</p>
+
+  <p>这也是这份指南剩下部分的排列方式：先是证据最强、效应最大、成本最低的五件事，然后才是其余的一切。</p>
+</section>
+
 <section id="tier1">
-  <div class="tier-head"><span class="tier-num">01</span><h2>五个高证据行为</h2></div>
+  <div class="tier-head"><span class="tier-num">02</span><h2>五个高证据行为</h2></div>
   <p class="dek">这一层是复利的本金。如果时间和注意力有限，全部投在这五件事上，其余章节都可以先放着。</p>
   <hr class="rule">
 </section>
 
 <section id="exercise">
-  <h3>1.1　运动 <span class="tag">证据 A</span></h3>
+  <h3>2.1　运动 <span class="tag">证据 A</span></h3>
   <p>Euan Ashley 在 Ground Truths 上那句被 Topol 反复引用的话：<em>运动可能是人类已知最强效的医学干预</em>。在预防上，它的效应量超过任何一种药：心血管风险约降 <span class="num">50%</span>，多种癌症风险约降 <span class="num">50%</span>，还有精神健康、肺、消化、骨骼、肌肉。</p>
 
   <h4>剂量：把两种运动都做够</h4>
@@ -578,7 +1015,7 @@ footer p{max-width:36rem}
 </section>
 
 <section id="diet">
-  <h3>1.2　饮食 <span class="tag">证据 A–B</span></h3>
+  <h3>2.2　饮食 <span class="tag">证据 A–B</span></h3>
   <p>Topol 的结论很简单：<em>看模式，不要看单一营养素</em>。10.5 万名健康从业者随访 30 年，只有 <span class="num">9.3%</span> 的人在 70 岁时达到“健康老化”（无 11 种重大慢病、认知与体能与心理健康均完好）。八种饮食模式里，AHEI（另类健康饮食指数）关联最强——最高五分位比最低五分位，健康活到 70 岁的几率翻倍以上（到 75 岁 OR 2.24）。</p>
 
   <div class="scroll"><table>
@@ -632,7 +1069,7 @@ footer p{max-width:36rem}
 </section>
 
 <section id="sleep">
-  <h3>1.3　睡眠 <span class="tag">证据 B+</span></h3>
+  <h3>2.3　睡眠 <span class="tag">证据 B+</span></h3>
   <p>睡眠有三个维度，大多数人只盯着第一个。</p>
   <div class="dose">
     <div><dt>时长</dt><dd>7–9<small> 小时</small></dd></div>
@@ -681,7 +1118,7 @@ footer p{max-width:36rem}
 </section>
 
 <section id="alcohol">
-  <h3>1.4　酒精 <span class="tag">证据 B / 有争议</span></h3>
+  <h3>2.4　酒精 <span class="tag">证据 B / 有争议</span></h3>
   <p>2025 年出了三份重量级报告，结论差异之大本身就是一堂方法论课。它们只在<strong>一件事</strong>上完全一致：<em>女性乳腺癌风险</em>。</p>
   <div class="scroll"><table>
     <thead><tr><th>问题</th><th>三份报告怎么说</th></tr></thead>
@@ -706,17 +1143,17 @@ footer p{max-width:36rem}
 </section>
 
 <section id="smoke">
-  <h3>1.5　烟草 <span class="tag">证据 A</span></h3>
+  <h3>2.5　烟草 <span class="tag">证据 A</span></h3>
   <p>Topol 那份十条建议里，这条只有一句话：应该已经众所周知，吸烟是冠心病的强效危险因素，<strong>应完全避免</strong>。没有需要展开的细节，也没有安全剂量。</p>
 </section>
 
 <!-- ═══════════ 02 ═══════════ -->
 <section id="tier2">
-  <div class="tier-head"><span class="tier-num">02</span><h2>被低估的那一层</h2></div>
+  <div class="tier-head"><span class="tier-num">03</span><h2>被低估的那一层</h2></div>
   <p class="dek">Topol 在《Super Agers》里把这些统称为“lifestyle <em>plus</em> 因素”——加号表示远不止饮食、睡眠、运动。这一层没有一项能单独改变命运，但它们恰恰是复利里最容易被漏掉的项。</p>
   <hr class="rule">
 
-  <h3>2.1　你呼吸的空气 <span class="tag">证据 B</span></h3>
+  <h3>3.1　你呼吸的空气 <span class="tag">证据 B</span></h3>
   <p>Joseph Allen（哈佛，"forever chemicals" 这个词就是他造的）给出的室内空气目标，全部可测、可执行、便宜：</p>
   <div class="scroll"><table>
     <thead><tr><th>指标</th><th>目标</th><th>现实</th></tr></thead>
@@ -730,7 +1167,7 @@ footer p{max-width:36rem}
   <p>做不了整屋改造就用<strong>便携空气净化器（PAC）</strong>：本质就是风扇加滤网，尺寸选对就能达到 4–6 ACH，成本很低。哈佛的 CFD 模拟给了两条具体建议——<em>尽量放在房间中央</em>，并且让空气动起来（气流本身有助于打散呼出的气溶胶）。良好的通风加过滤可以把呼吸道感染风险降低约 <span class="num">60–70%</span>。</p>
   <p>顺带一提：MERV 13 不只挡病毒。去年东海岸野火烟尘期间，室外 PM2.5 冲到 100–300 µg/m³，而升级了滤网的哈佛楼内颗粒物水平几乎没动。</p>
 
-  <h3>2.2　微塑料与化学暴露 <span class="tag">证据 B / C</span></h3>
+  <h3>3.2　微塑料与化学暴露 <span class="tag">证据 B / C</span></h3>
   <p>这是 Topol 最近几年态度明显收紧的一块，因为数据一直在往坏的方向走。</p>
   <ul>
     <li><strong>动脉里。</strong>做颈动脉内膜剥脱术的患者中，约 <span class="num">58–60%</span> 的斑块里检出微塑料/纳米塑料（MNPs），随后 3 年内全因死亡、心梗、卒中的复合风险<em>高 4.5 倍</em>。</li>
@@ -750,15 +1187,15 @@ footer p{max-width:36rem}
   <p><strong>永久化学物质（PFAS）</strong>与睾丸癌、肾癌、脂代谢干扰、激素紊乱相关；有研究发现体内 PFAS 水平高的儿童<em>疫苗效力下降</em>。EPA 只监管了其中 6 种，而“化学表亲”有一万多种——Allen 把这叫“化学打地鼠”。</p>
   <p><strong>铅</strong>是一个几乎被临床忽略的心血管危险因素：2019 年全球有 <span class="num">550 万</span>例心血管死亡归因于相对低水平的铅暴露，而且<em>没有已知的安全阈值</em>。一个具体提醒：阿育吠陀等草药补剂监管薄弱，是重要的铅来源（有个案的血铅升到 70 µg/dL）。</p>
 
-  <h3>2.3　社交连接 <span class="tag">证据 B</span></h3>
+  <h3>3.3　社交连接 <span class="tag">证据 B</span></h3>
   <p>先分清两个词：<strong>孤独</strong>是主观感受（我需要的连接多于我实际拥有的），<strong>社交隔离</strong>是客观计数。校园里被几千人围着的学生也可能极度孤独。</p>
   <p>Vivek Murthy 引用的数字：社交断连与老年人痴呆风险 <span class="num">+50%</span>、心脏病 <span class="num">+31%</span> 以及显著升高的早死风险相关。他给出的正向框架是<strong>“充实三要素”：关系、服务、目的感</strong>——有能理解你的人，日常生活里包含帮助别人，并且你的目的感建立在贡献他人之上。</p>
 
-  <h3>2.4　多语言 <span class="tag">证据 B−</span></h3>
+  <h3>3.4　多语言 <span class="tag">证据 B−</span></h3>
   <p>2025 年新加入的一条 lifestyle plus 因素。27 国、86,000 名 51–90 岁成人：横断面分析里，<em>单语者出现加速衰老的几率是 2.1 倍，会一门以上外语的人是 0.46（低 2.2 倍）</em>；纵向分析同向（RR 1.4 / 0.7），而且有剂量-反应——语言越多，保护越强。换算下来大约相当于 3 年健康寿命。</p>
   <p>这是关联而非因果，数据也是国家层面而非个人层面。但 Topol 的评价很直接：<em>它比任何抗衰补剂、任何长寿诊所的证据都强，成本为零，风险为零</em>。</p>
 
-  <h3>2.5　疫苗（尤其是带状疱疹疫苗） <span class="tag">证据 B+</span></h3>
+  <h3>3.5　疫苗（尤其是带状疱疹疫苗） <span class="tag">证据 B+</span></h3>
   <p>这是全集里最出人意料、也最扎实的一条发现。四个国家级<strong>自然实验</strong>——利用出生日期作为疫苗资格的断点，形成近似随机的分组——一致指向<em>痴呆减少约 20%</em>：</p>
   <div class="scroll"><table>
     <thead><tr><th>国家</th><th>规模</th><th>结果</th></tr></thead>
@@ -776,7 +1213,7 @@ footer p{max-width:36rem}
   </div>
   <p>另外：流感疫苗也有观察性证据与阿尔茨海默风险下降相关；COVID 疫苗与<em>血管加速老化的保护</em>相关，也降低 Long COVID 风险。</p>
 
-  <h3>2.6　避免感染，尤其是 COVID <span class="tag">证据 B</span></h3>
+  <h3>3.6　避免感染，尤其是 COVID <span class="tag">证据 B</span></h3>
   <p>Topol 把 COVID 对动脉的影响拆成三层，一层比一层更晚被认识：</p>
   <ol>
     <li><strong>内皮炎症。</strong>血管内壁发炎、血小板活化、凝血倾向——"COVID 归根到底是一种内皮疾病"。</li>
@@ -784,11 +1221,11 @@ footer p{max-width:36rem}
     <li><strong>血管加速老化。</strong>18 国、2,000 多人的前瞻研究：<em>连没住院的人都出现约 5 年的血管加速老化</em>，重症约 10 年。效应在女性中显著；接种疫苗与保护相关；部分人 1 年后可恢复。</li>
   </ol>
 
-  <h3>2.7　肠道 <span class="tag">证据 C–B</span></h3>
+  <h3>3.7　肠道 <span class="tag">证据 C–B</span></h3>
   <p>植物性食物 → 短链脂肪酸（丁酸、丙酸、乙酸）→ 肠道屏障完整、Treg 细胞、全身抗炎。红肉走另一条路：短链脂肪酸减少、屏障渗漏、菌群产生 TMAO（与心血管风险强相关，也可能与结肠癌相关）。</p>
   <p>实务层面（来自 Trisha Pasricha 的那期）：<em>如厕不超过 5 分钟</em>；洋车前子（psyllium）是有证据的膳食纤维补充；<strong>肠道清洁（bowel cleanse）无用且有害</strong>；咖啡、酒精、NSAIDs、水分都会影响排便；99% 的屁没有气味，有味的那 1% 来自硫化氢。</p>
 
-  <h3>2.8　体重与代谢 <span class="tag">证据 A</span></h3>
+  <h3>3.8　体重与代谢 <span class="tag">证据 A</span></h3>
   <p>内脏脂肪不是被动的仓库——脂肪细胞分泌 adipokines，直接驱动全身炎症。两个应该主动去查的状态：</p>
   <div class="scroll"><table>
     <thead><tr><th></th><th>定义</th></tr></thead>
@@ -802,7 +1239,7 @@ footer p{max-width:36rem}
 
 <!-- ═══════════ 03 ═══════════ -->
 <section id="tier3">
-  <div class="tier-head"><span class="tier-num">03</span><h2>检查：做什么，以及省下哪些钱</h2></div>
+  <div class="tier-head"><span class="tier-num">04</span><h2>检查：做什么，以及省下哪些钱</h2></div>
   <p class="dek">Topol 对检查的态度经常被误读成“反对数据”。恰恰相反——他反对的是<em>不分对象地测</em>。顺序应该是：先用便宜的数据把风险分层，再针对特定器官加做昂贵的确认。</p>
   <hr class="rule">
 
@@ -832,14 +1269,14 @@ footer p{max-width:36rem}
     <li class="no"><span class="mk">✕</span><span><b>按年龄做 Galleri 多癌种早检</b><span class="d">PATHFINDER 2 是迄今最大的研究，35,878 人：阳性预测值 61.6% 看起来不错，但<em>早期癌症检出只有 3/1,000</em>，<strong>假阴性 196 例多于真阳性 133 例</strong>，敏感性 40%，售价 949 美元且不报销。Topol：“按现在这种做法（50 岁以上），我不推荐。”</span></span></li>
     <li class="no"><span class="mk">✕</span><span><b>消费级“生物年龄”/表观遗传时钟检测</b><span class="d">直接原话：<em>“我建议不要买这些检测。”</em>缺乏标准化和临床验证，价格不低。真正有前景的是器官时钟和细胞时钟，但目前都还没商业化。</span></span></li>
     <li class="no"><span class="mk">✕</span><span><b>非糖尿病者的连续血糖监测（CGM）</b><span class="d">Kevin Hall 在代谢病房做的验证很致命：同一个人在受控条件下吃<strong>同一餐两次</strong>，血糖反应的差异<em>和吃完全不同的餐一样大</em>；同时佩戴的两个监测仪给出的餐食排序也不一致。你据此改变饮食，换个设备就会得出不同结论。</span></span></li>
-    <li class="no"><span class="mk">✕</span><span><b>常规 VO₂max 测试</b><span class="d">约 150 美元、需要跑到力竭、而且不是那个真正被研究过的指标（见 1.1）。除非你是精英运动员，或有心衰、肺动脉高压。</span></span></li>
+    <li class="no"><span class="mk">✕</span><span><b>常规 VO₂max 测试</b><span class="d">约 150 美元、需要跑到力竭、而且不是那个真正被研究过的指标（见 2.1）。除非你是精英运动员，或有心衰、肺动脉高压。</span></span></li>
     <li class="no"><span class="mk">✕</span><span><b>长寿体检套餐</b><span class="d">Function Health、Superpower、Biograph、Fountain Life（19,500 美元/年）、Human Longevity……<em>目前没有任何一家提供过获益的证据</em>。Topol 的批评不是反对收集更多数据，而是它们“不加区分”：谁去测、测什么、什么时候测都没有依据；同时又漏掉了真正有用的分析（比如个人设定点趋势）。</span></span></li>
   </ul>
 </section>
 
 <!-- ═══════════ 04 ═══════════ -->
 <section id="tier4">
-  <div class="tier-head"><span class="tier-num">04</span><h2>药物与补剂</h2></div>
+  <div class="tier-head"><span class="tier-num">05</span><h2>药物与补剂</h2></div>
   <p class="dek">这一节最省钱。凡是需要处方的，都请和你的医生讨论；这里列的是 Topol 在证据层面的判断。</p>
   <hr class="rule">
 
@@ -892,7 +1329,7 @@ footer p{max-width:36rem}
 
 <!-- ═══════════ 05 ═══════════ -->
 <section id="tier5">
-  <div class="tier-head"><span class="tier-num">05</span><h2>怎么读健康信息</h2></div>
+  <div class="tier-head"><span class="tier-num">06</span><h2>怎么读健康信息</h2></div>
   <p class="dek">这一节的价值可能超过前面所有具体建议。指南会过期，判断力不会。</p>
   <hr class="rule">
 
@@ -914,7 +1351,7 @@ footer p{max-width:36rem}
 
 <!-- ═══════════ 06 ═══════════ -->
 <section id="schedule">
-  <div class="tier-head"><span class="tier-num">06</span><h2>把它落到日程上</h2></div>
+  <div class="tier-head"><span class="tier-num">07</span><h2>把它落到日程上</h2></div>
   <p class="dek">复利只有在重复中才成立。下面是把前面所有内容压缩成的操作表。</p>
   <hr class="rule">
 
@@ -936,7 +1373,7 @@ footer p{max-width:36rem}
 
 <!-- ═══════════ 07 ═══════════ -->
 <section id="future">
-  <div class="tier-head"><span class="tier-num">07</span><h2>五到十年内会到来的</h2></div>
+  <div class="tier-head"><span class="tier-num">08</span><h2>五到十年内会到来的</h2></div>
   <p class="dek">这些今天还买不到，或者买了也没有意义。列在这里，是为了让你在它们真正成熟时能认出来——也为了让你在<em>现在</em>看到有人兜售时能认出那是早了。</p>
   <hr class="rule">
 
@@ -954,7 +1391,7 @@ footer p{max-width:36rem}
 
 <!-- ═══════════ 08 ═══════════ -->
 <section id="limits">
-  <div class="tier-head"><span class="tier-num">08</span><h2>这份指南的边界</h2></div>
+  <div class="tier-head"><span class="tier-num">09</span><h2>这份指南的边界</h2></div>
   <hr class="rule">
   <ol>
     <li><strong>这不是医疗建议。</strong>它是对一位作者公开写作的整理，不是对你个人情况的处方。任何用药、停药或检查决定都请和你的医生讨论——尤其是阿司匹林、他汀、激素治疗和 GLP-1。</li>
