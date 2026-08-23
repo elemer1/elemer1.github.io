@@ -135,7 +135,35 @@ h1 .sub{display:block;font-size:.3em;line-height:1.5;letter-spacing:.01em;color:
   margin:2.5rem 0 0;max-width:44rem;font-size:1.06em;color:var(--ink-2);
   border-inline-start:2px solid var(--accent);padding-inline-start:1.25rem
 }
+.thesis-2{margin-block-start:1.1rem;border-inline-start-color:var(--rule-2);font-size:1em}
 .thesis strong{color:var(--ink);font-weight:600}
+
+/* ── ledger: the asymmetry, side by side ── */
+.ledger{display:grid;gap:.7rem;margin:1.9rem 0 0;grid-template-columns:1fr}
+@media (min-width:620px){.ledger{grid-template-columns:1fr 1fr}}
+.ledger > div{
+  border:1px solid var(--rule);border-radius:3px;background:var(--surface);
+  padding:1.15rem 1.2rem;box-shadow:var(--shadow)
+}
+.ledger .side-a{border-block-start:2px solid var(--teal)}
+.ledger .side-b{border-block-start:2px solid var(--accent)}
+.ledger h5{margin:0;font-family:var(--font-body);font-size:1em;font-weight:600;line-height:1.4}
+.ledger .side-a h5{color:var(--teal)}
+.ledger .side-b h5{color:var(--accent-ink)}
+.ledger .cap{
+  font-family:var(--font-mono);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-3);margin:.3rem 0 1rem
+}
+.ledger dl{margin:0}
+.ledger dt{
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-3);margin-block-start:.85rem
+}
+.ledger dl > dt:first-child{margin-block-start:0}
+.ledger dd{margin:.22rem 0 0;font-size:.9em;line-height:1.62;color:var(--ink-2)}
+.ledger dd b{color:var(--ink);font-weight:600}
+.ledger .zero{font-family:var(--font-display);font-size:1.55em;font-weight:600;line-height:1.1;color:var(--accent-ink)}
+.ledger .big{font-family:var(--font-display);font-size:1.1em;font-weight:600;line-height:1.3;color:var(--teal)}
 
 /* ── runway figure ──────────────────────── */
 .figure{margin:3rem 0 0;max-width:52rem}
@@ -296,8 +324,13 @@ footer p{max-width:36rem}
   <h1>健康的复利<span class="sub">读完 Eric Topol 全部 Substack 之后：他实际推荐什么、明确反对什么，以及为什么真正决定健康的从来不是某一个因素。</span></h1>
 
   <p class="thesis">
-    Topol 反复讲的不是长生不老，而是一件更朴素的事：心血管病、癌症、神经退行性疾病<strong>各自都要酝酿二十年以上</strong>才会露面。
-    这二十年就是你的窗口。没有哪一项干预能单独填满它——<strong>运动、饮食、睡眠、酒精、环境、社交、疫苗、几项便宜的化验</strong>，
+    Topol 全部写作可以压成一句话：<strong>把同一把严格的证据尺子同时量在「预防疾病」和「前沿抗衰」这两条路线上，前者的期望收益高出一个数量级。</strong>
+    一边是心血管病 ≥80%、癌症 ~40%、阿尔茨海默 ~45% 已被认为可预防，而且每一种都要<strong>酝酿二十年以上</strong>才露面——那是一个极长的干预窗口；
+    另一边是细胞重编程、senolytics、雷帕霉素、NAD+、年轻血浆、肽类，<strong>在人身上被证实的有效项是 0，而且每一项都带风险</strong>。
+    这个结论不是保守，是同一套标准量出来的结果——他书的副标题就是 <em>An Evidence-Based Approach to Longevity</em>。
+  </p>
+  <p class="thesis thesis-2">
+    而「预防」这一边没有任何单一开关。运动、饮食、睡眠、酒精、环境、社交、疫苗、几项便宜的化验——
     每一项单看都只是几个百分点，叠加几十年才是真正的差距。这份指南就是把那些百分点一条条列出来。
   </p>
 
@@ -342,14 +375,14 @@ footer p{max-width:36rem}
 
       <text class="lbl" x="60" y="228" style="fill:var(--ink-3)">可预防比例：心血管 ≥80% · 癌症 ~40% · 阿尔茨海默 ~45%</text>
     </svg>
-    <figcaption>三大年龄相关疾病的自然史。Topol 的整个立论建立在这张图上：既然疾病要酝酿几十年，那么在它显形之前，你有非常长的时间可以改变它的走向——这比“逆转衰老”现实得多。</figcaption>
+    <figcaption>三大年龄相关疾病的自然史。上面那个数量级的差距就来自这张图：既然疾病要酝酿几十年，那么在它显形之前，你有非常长的时间可以改变它的走向。这条路径今天有人体结局证据，「逆转衰老」那条没有。</figcaption>
   </figure>
 </header>
 
 <aside class="rail">
   <p class="rail-h">目录</p>
   <nav id="toc">
-    <a href="#frame"><span class="n">00</span>底层框架</a>
+    <a href="#frame"><span class="n">00</span>收益的不对称</a>
     <a href="#tier1"><span class="n">01</span>五个高证据行为</a>
     <a href="#exercise"><span class="n">1.1</span>运动</a>
     <a href="#diet"><span class="n">1.2</span>饮食</a>
@@ -370,23 +403,66 @@ footer p{max-width:36rem}
 
 <!-- ═══════════ 00 ═══════════ -->
 <section id="frame">
-  <div class="tier-head"><span class="tier-num">00</span><h2>先装上他的五把尺子</h2></div>
-  <p class="dek">读完全集，最值得带走的不是某个补剂或指标，而是一套判断标准。有了它，你自己就能筛掉九成的健康噪音。</p>
+  <div class="tier-head"><span class="tier-num">00</span><h2>收益的不对称</h2></div>
+  <p class="dek">如果这份指南只有一个论点，就是这一节。它决定了后面每一条建议的排序，也决定了哪些东西根本不该出现在你的清单上。</p>
   <hr class="rule">
 
-  <h3>一 · 目标是健康寿命，不是逆转衰老</h3>
-  <p>细胞重编程、senolytics、雷帕霉素、胸腺再生、NAD+——Topol 认为这些都值得研究，但<em>在人身上一个都没被证实，而且都带风险</em>。现实得多的目标是：把心血管病、癌症、神经退行性疾病推迟或挡住。这三件事我们现在真的有办法做。</p>
+  <p>Topol 对衰老生物学的兴奋是真实的——器官时钟、细胞时钟、免疫组，他写了几十篇。但每当话题回到「那么我今天该做什么」，他的答案总是同一个。而且关键在于，<em>这个答案不是出于保守，是把同一把严格的证据尺子放到两边之后自然得出的</em>。</p>
 
-  <h3>二 · 免疫衰老 + 炎症衰老是共同上游</h3>
+  <div class="ledger">
+    <div class="side-a">
+      <h5>把三种病挡住</h5>
+      <p class="cap">有人体结局证据</p>
+      <dl>
+        <dt>目标</dt>
+        <dd>不让心血管病、癌症、神经退行性疾病<b>显现</b>——不是把某个「生物学年龄」数字拉低。</dd>
+        <dt>已被认为可预防的比例</dt>
+        <dd class="big">心血管 ≥80%<br>癌症 ~40%<br>阿尔茨海默 ~45%</dd>
+        <dt>时间窗</dt>
+        <dd>每一种都要<b>酝酿 20 年以上</b>才显形。</dd>
+        <dt>手段</dt>
+        <dd>运动、饮食、睡眠、控酒、不吸烟、管住血压/血脂/血糖、疫苗、空气与环境、社交连接。</dd>
+        <dt>成本 / 风险</dt>
+        <dd>接近零 / 基本没有。</dd>
+      </dl>
+    </div>
+    <div class="side-b">
+      <h5>逆转衰老本身</h5>
+      <p class="cap">人体未证实</p>
+      <dl>
+        <dt>目标</dt>
+        <dd>直接干预衰老过程，降低生物学年龄。</dd>
+        <dt>在人身上被证实有效的</dt>
+        <dd><span class="zero">0 项</span></dd>
+        <dt>手段</dt>
+        <dd>细胞重编程、senolytics、雷帕霉素、NAD+、年轻血浆输注、胸腺再生、各类肽。</dd>
+        <dt>已知风险</dt>
+        <dd>重编程可<b>诱发癌症</b>；senolytics 同时杀死你需要的细胞；雷帕霉素<b>削弱免疫系统</b>；肽类的剂量、纯度与长期影响全部未知。</dd>
+        <dt>成本</dt>
+        <dd>每针数百美元，到每年 <b>19,500 美元</b>的长寿会员。</dd>
+      </dl>
+    </div>
+  </div>
+
+  <p>他从不说右边那栏没有前途——他的原话是「我觉得这些努力很有意思，值得推进」。他说的是<strong>今天这两边的账不在一个量级上</strong>，而绝大多数人的钱和注意力恰好花在了收益低的那一边：有人一年付 19,500 美元做长寿体检、每针几百美元打肽，同时 <em>75% 的美国人连每周 150 分钟的活动量都达不到</em>。</p>
+
+  <h4>还有一个常被跳过的区分：一级预防 ≠ 筛查</h4>
+  <p><strong>一级预防</strong>是让疾病<em>不发生</em>。<strong>二级预防</strong>是早点找到它——乳腺 X 线、结肠镜、PSA、全身 MRI 全都属于后者。这个词 1940 年代末就被造出来了，七十多年后，医学在一级预防上<em>除了疫苗几乎一无所成</em>：癌症和神经退行性疾病一项都没做到，心血管靠血脂管理算是部分先发制人，但心脏病和卒中仍是美国第一和第三位死因。</p>
+  <p>这正是生活方式那一层如此重要的原因——它目前几乎是唯一真正能用的一级预防杠杆。</p>
+
+  <hr class="rule" style="margin-block-start:2.8rem">
+  <p style="margin-block-start:1.6rem">在这个总判断之下，还有四把小尺子，它们基本都是它的推论：</p>
+
+  <h3>一 · 免疫衰老 + 炎症衰老是共同上游</h3>
   <p>Topol 把 immunosenescence 和 inflammaging 放在三大疾病的交汇处：它能解释为什么这些病常常一起来，也解释为什么单独盯着胆固醇、淀粉样蛋白或肿瘤大小可能不够。他自己承认这个模型有还原论的风险——但几乎所有有效的生活方式干预，最后都能落回“降低慢性炎症”这一条。</p>
 
-  <h3>三 · 你的器官不是同步变老的</h3>
+  <h3>二 · 你的器官不是同步变老的</h3>
   <p>同一周出生的 1,800 人，到 63 岁时器官年龄相差约 <span class="num">10</span> 年。衰老也不是匀速的，在 <span class="num">34</span>、<span class="num">60</span>、<span class="num">78</span> 岁附近有三次波峰。在所有器官时钟里，<em>大脑和免疫系统像主调节器</em>——这两样正常老化的人,15–17 年生存率接近 100%。</p>
 
-  <h3>四 · “多测一点”不是精准预防</h3>
+  <h3>三 · “多测一点”不是精准预防</h3>
   <p>这是贝叶斯先验问题：在低风险人群里同时做几百项检查，哪怕每项单独看都不错，假阳性、重复影像、活检和焦虑也会累积。Topol 主张<em>顺序式</em>——先用便宜的数据确定风险，再对特定器官加做昂贵的确认。</p>
 
-  <h3>五 · 只认患者结局</h3>
+  <h3>四 · 只认患者结局</h3>
   <p>机制有趣、相关性显著、生物标志物改善、benchmark 好看——这些都不是获益。死亡率、安全性、生活质量、成本与可及性才是。这把尺子他同样用来量自己最兴奋的那些论文。</p>
 
   <blockquote class="pull">“有趣的机制不等于可以自我实验。”
