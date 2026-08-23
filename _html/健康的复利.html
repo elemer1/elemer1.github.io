@@ -1,0 +1,886 @@
+---
+title: "健康的复利"
+permalink: /eric-topol/
+listed: false
+---
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>健康的复利</title>
+<meta name="description" content="根据 Eric Topol《Ground Truths》全部 277 篇文章整理的循证健康指南：哪些行为真的有用、哪些检查值得做、哪些流行做法没有证据。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Noto+Serif+SC:wght@600;700&display=swap">
+<style>
+/* ─────────────────────────────────────────────
+   健康的复利 — tokens
+   ground: pine-tinted paper / ink
+   accent: madder (flags, emphasis)
+   support: pine-teal (strong evidence), ochre (caution)
+   ───────────────────────────────────────────── */
+:root{
+  --ground:#F2F4F2;
+  --surface:#FBFCFB;
+  --surface-2:#E9EDEA;
+  --ink:#151B18;
+  --ink-2:#3B4844;
+  --ink-3:#66756F;
+  --rule:#D5DCD7;
+  --rule-2:#C2CBC5;
+  --accent:#96262C;
+  --accent-ink:#7C1F25;
+  --accent-wash:#F6E7E6;
+  --teal:#1D5A52;
+  --teal-wash:#E1EDE9;
+  --ochre:#7E5610;
+  --ochre-wash:#F5EBD8;
+  --steel:#2E5566;
+  --steel-wash:#E3ECF0;
+  --shadow:0 1px 2px rgba(21,27,24,.05), 0 8px 24px -16px rgba(21,27,24,.28);
+
+  --font-display:"Newsreader","Noto Serif SC","Songti SC",Georgia,serif;
+  --font-body:"IBM Plex Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono","SF Mono",ui-monospace,Menlo,monospace;
+
+  --measure:40rem;
+  --step:clamp(1rem,.9rem + .4vw,1.09rem);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1311;
+    --surface:#151C19;
+    --surface-2:#1D2622;
+    --ink:#E6EAE7;
+    --ink-2:#B3C0BA;
+    --ink-3:#87968F;
+    --rule:#28332E;
+    --rule-2:#36443E;
+    --accent:#E0827C;
+    --accent-ink:#EC968F;
+    --accent-wash:#2A1A1B;
+    --teal:#71BCAE;
+    --teal-wash:#132824;
+    --ochre:#D2A252;
+    --ochre-wash:#292013;
+    --steel:#8AB4C6;
+    --steel-wash:#132128;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1311;
+  --surface:#151C19;
+  --surface-2:#1D2622;
+  --ink:#E6EAE7;
+  --ink-2:#B3C0BA;
+  --ink-3:#87968F;
+  --rule:#28332E;
+  --rule-2:#36443E;
+  --accent:#E0827C;
+  --accent-ink:#EC968F;
+  --accent-wash:#2A1A1B;
+  --teal:#71BCAE;
+  --teal-wash:#132824;
+  --ochre:#D2A252;
+  --ochre-wash:#292013;
+  --steel:#8AB4C6;
+  --steel-wash:#132128;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -18px rgba(0,0,0,.9);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:var(--step);
+  line-height:1.78;
+  letter-spacing:.005em;
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* ── layout ─────────────────────────────── */
+.shell{max-width:68rem;margin:0 auto;padding:0 1.25rem 6rem;display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+@media (min-width:1080px){
+  .shell{grid-template-columns:14rem minmax(0,1fr);column-gap:4rem;padding:0 2rem 8rem}
+  .rail{grid-column:1;grid-row:2}
+  .doc{grid-column:2;grid-row:2}
+  .masthead{grid-column:1 / -1;grid-row:1}
+}
+.doc{max-width:var(--measure);min-width:0}
+.doc > * + *{margin-block-start:0}
+
+/* ── masthead ───────────────────────────── */
+.masthead{padding:3.5rem 0 2.5rem;border-block-end:1px solid var(--rule)}
+.eyebrow{
+  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;margin:0 0 1.5rem
+}
+.eyebrow b{color:var(--accent);font-weight:500}
+h1{
+  font-family:var(--font-display);font-weight:600;
+  font-size:clamp(2.6rem,1.6rem + 4.4vw,5rem);line-height:1.02;letter-spacing:-.02em;
+  margin:0;text-wrap:balance;
+}
+h1 .sub{display:block;font-size:.3em;line-height:1.5;letter-spacing:.01em;color:var(--ink-2);font-weight:400;margin-block-start:1.1rem;max-width:34rem}
+.thesis{
+  margin:2.5rem 0 0;max-width:44rem;font-size:1.06em;color:var(--ink-2);
+  border-inline-start:2px solid var(--accent);padding-inline-start:1.25rem
+}
+.thesis strong{color:var(--ink);font-weight:600}
+
+/* ── runway figure ──────────────────────── */
+.figure{margin:3rem 0 0;max-width:52rem}
+.figure figcaption{font-size:.83rem;color:var(--ink-3);margin-block-start:.9rem;line-height:1.6}
+.runway{width:100%;height:auto;display:block;overflow:visible}
+.runway .lbl{font-family:var(--font-body);font-size:11px;fill:var(--ink-2)}
+.runway .lbl-s{font-family:var(--font-mono);font-size:9.5px;fill:var(--ink-3);letter-spacing:.06em}
+.runway .axis{stroke:var(--rule-2);stroke-width:1}
+.runway .track{fill:var(--surface-2)}
+.runway .fill-c{fill:var(--accent);opacity:.78}
+.runway .fill-b{fill:var(--steel);opacity:.78}
+.runway .fill-n{fill:var(--teal);opacity:.78}
+.runway .win{fill:var(--ochre);opacity:.09}
+.runway .win-edge{stroke:var(--ochre);stroke-width:1;stroke-dasharray:3 3;opacity:.65}
+.runway .dot{fill:var(--ink)}
+
+/* ── rail ───────────────────────────────── */
+.rail{padding:2rem 0;font-size:.83rem}
+.rail nav{display:flex;flex-direction:column;gap:.1rem}
+.rail .rail-h{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin:0 0 .9rem}
+.rail a{
+  color:var(--ink-3);text-decoration:none;padding:.34rem 0 .34rem .8rem;
+  border-inline-start:2px solid var(--rule);line-height:1.45;display:block;
+  transition:color .18s ease,border-color .18s ease
+}
+.rail a:hover{color:var(--ink)}
+.rail a.on{color:var(--ink);border-inline-start-color:var(--accent);font-weight:500}
+.rail a .n{font-family:var(--font-mono);font-size:.72rem;color:var(--ink-3);margin-inline-end:.45rem}
+@media (min-width:1080px){
+  .rail{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;padding:3rem 0}
+}
+@media (max-width:1079px){
+  .rail{border-block-end:1px solid var(--rule)}
+  .rail nav{display:grid;grid-template-columns:repeat(auto-fill,minmax(8.5rem,1fr));gap:.15rem .9rem}
+}
+
+/* ── sections ───────────────────────────── */
+section{padding-block-start:4.5rem;scroll-margin-top:1.5rem}
+.tier-head{display:flex;align-items:baseline;gap:.85rem;margin:0 0 .4rem}
+.tier-num{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;color:var(--accent);
+  border:1px solid currentColor;border-radius:2px;padding:.12rem .45rem;flex:none;
+  position:relative;top:-.28rem
+}
+h2{
+  font-family:var(--font-display);font-weight:600;font-size:clamp(1.55rem,1.2rem + 1.5vw,2.15rem);
+  line-height:1.22;letter-spacing:-.012em;margin:0;text-wrap:balance
+}
+.dek{color:var(--ink-3);font-size:.94em;margin:.5rem 0 0;max-width:34rem}
+.rule{height:1px;background:var(--rule);border:0;margin:1.6rem 0 0}
+h3{
+  font-family:var(--font-body);font-weight:600;font-size:1.06em;line-height:1.5;
+  margin:2.6rem 0 .1rem;letter-spacing:.005em;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap
+}
+h3 .tag{
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:400;border:1px solid var(--rule-2);border-radius:2px;padding:.06rem .38rem
+}
+h4{font-family:var(--font-body);font-weight:600;font-size:.95em;margin:1.8rem 0 .1rem;color:var(--ink-2)}
+p{margin:.85rem 0 0}
+a{color:var(--accent-ink);text-decoration-thickness:1px;text-underline-offset:.18em}
+strong{font-weight:600}
+em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent-wash) 62%);padding:0 .1em}
+code,.num{font-family:var(--font-mono);font-size:.88em;font-variant-numeric:tabular-nums}
+
+ul,ol{margin:.9rem 0 0;padding-inline-start:1.15rem}
+li{margin:.42rem 0}
+li::marker{color:var(--ink-3)}
+ul.tight li{margin:.24rem 0}
+
+/* ── evidence chip ──────────────────────── */
+.ev{
+  display:inline-flex;align-items:center;gap:.35rem;vertical-align:.06em;
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:.1rem .4rem;border-radius:2px;white-space:nowrap;font-weight:500
+}
+.ev-a{background:var(--teal-wash);color:var(--teal)}
+.ev-b{background:var(--steel-wash);color:var(--steel)}
+.ev-c{background:var(--ochre-wash);color:var(--ochre)}
+.ev-d{background:var(--surface-2);color:var(--ink-3)}
+.ev-x{background:var(--accent-wash);color:var(--accent-ink)}
+
+/* ── boxes ──────────────────────────────── */
+.box{
+  background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  padding:1.25rem 1.35rem;margin:1.6rem 0 0;box-shadow:var(--shadow)
+}
+.box > :first-child{margin-block-start:0}
+.box-h{
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 .55rem;display:flex;align-items:center;gap:.5rem
+}
+.box-h::before{content:"";width:1.4rem;height:1px;background:var(--rule-2);flex:none}
+.box-self{border-inline-start:2px solid var(--teal)}
+.box-self .box-h{color:var(--teal)}
+.box-self .box-h::before{background:var(--teal);opacity:.5}
+.box-stop{border-inline-start:2px solid var(--accent);background:var(--accent-wash)}
+.box-stop .box-h{color:var(--accent-ink)}
+.box-stop .box-h::before{background:var(--accent);opacity:.5}
+.box-note{background:var(--surface-2);box-shadow:none}
+
+.pull{
+  font-family:var(--font-display);font-size:1.3em;line-height:1.5;color:var(--ink);
+  margin:2.2rem 0 0;padding-inline-start:1.25rem;border-inline-start:2px solid var(--rule-2);
+  text-wrap:pretty
+}
+.pull cite{display:block;font-family:var(--font-body);font-style:normal;font-size:.62em;color:var(--ink-3);margin-block-start:.7rem;letter-spacing:.02em}
+
+/* ── tables ─────────────────────────────── */
+.scroll{overflow-x:auto;margin:1.6rem 0 0;border:1px solid var(--rule);border-radius:3px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:34rem;font-size:.88rem;line-height:1.6}
+th,td{text-align:left;padding:.68rem .85rem;border-block-end:1px solid var(--rule);vertical-align:top}
+thead th{
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:400;background:var(--surface-2);white-space:nowrap
+}
+tbody tr:last-child td{border-block-end:0}
+td.n{font-family:var(--font-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.k{font-weight:500;color:var(--ink)}
+
+/* ── dose strip ─────────────────────────── */
+.dose{display:grid;gap:.5rem;margin:1.6rem 0 0;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr))}
+.dose div{background:var(--surface);border:1px solid var(--rule);border-radius:3px;padding:.8rem .9rem}
+.dose dt{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0}
+.dose dd{margin:.3rem 0 0;font-size:1.32rem;font-family:var(--font-display);font-weight:500;line-height:1.15;font-variant-numeric:tabular-nums}
+.dose dd small{font-size:.55em;font-family:var(--font-body);font-weight:400;color:var(--ink-3);letter-spacing:.01em}
+
+/* ── verdict list ───────────────────────── */
+.verdict{list-style:none;padding:0;margin:1.4rem 0 0;display:flex;flex-direction:column;gap:.1rem}
+.verdict li{
+  display:grid;grid-template-columns:1.4rem minmax(0,1fr);gap:.7rem;margin:0;
+  padding:.6rem 0;border-block-end:1px solid var(--rule)
+}
+.verdict li:last-child{border-block-end:0}
+.verdict .mk{font-family:var(--font-mono);font-size:.95rem;line-height:1.6;text-align:center}
+.verdict .yes .mk{color:var(--teal)}
+.verdict .no .mk{color:var(--accent)}
+.verdict .maybe .mk{color:var(--ochre)}
+.verdict b{font-weight:600;display:block}
+.verdict span.d{color:var(--ink-2);font-size:.92em}
+
+/* ── footer ─────────────────────────────── */
+footer{margin-block-start:5rem;padding-block-start:2rem;border-block-start:1px solid var(--rule);font-size:.86rem;color:var(--ink-3)}
+footer p{max-width:36rem}
+.src{margin:1.4rem 0 0;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;line-height:2;color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+<header class="masthead">
+  <p class="eyebrow">
+    <span>Eric Topol · <b>Ground Truths</b></span>
+    <span>277 篇 · 2021–2026</span>
+    <span>循证健康指南</span>
+  </p>
+  <h1>健康的复利<span class="sub">读完 Eric Topol 全部 Substack 之后：他实际推荐什么、明确反对什么，以及为什么真正决定健康的从来不是某一个因素。</span></h1>
+
+  <p class="thesis">
+    Topol 反复讲的不是长生不老，而是一件更朴素的事：心血管病、癌症、神经退行性疾病<strong>各自都要酝酿二十年以上</strong>才会露面。
+    这二十年就是你的窗口。没有哪一项干预能单独填满它——<strong>运动、饮食、睡眠、酒精、环境、社交、疫苗、几项便宜的化验</strong>，
+    每一项单看都只是几个百分点，叠加几十年才是真正的差距。这份指南就是把那些百分点一条条列出来。
+  </p>
+
+  <figure class="figure">
+    <svg class="runway" viewBox="0 0 720 250" role="img" aria-label="三大年龄相关疾病的潜伏期示意图：心血管、癌症、神经退行性疾病都在症状出现前二十年以上开始，形成很长的干预窗口。">
+      <rect class="win" x="60" y="24" width="450" height="172"></rect>
+      <line class="win-edge" x1="510" y1="18" x2="510" y2="202"></line>
+
+      <text class="lbl-s" x="60" y="16">干预窗口 · 无症状</text>
+      <text class="lbl-s" x="516" y="16">症状 / 诊断</text>
+
+      <!-- track 1 -->
+      <rect class="track" x="60" y="44" width="450" height="16" rx="2"></rect>
+      <rect class="fill-c" x="60" y="44" width="450" height="16" rx="2"></rect>
+      <text class="lbl" x="68" y="56" style="fill:var(--surface)">动脉粥样硬化 · 青少年期即可见斑块</text>
+      <circle class="dot" cx="510" cy="52" r="3"></circle>
+      <text class="lbl" x="522" y="56">心梗 / 卒中</text>
+
+      <!-- track 2 -->
+      <rect class="track" x="60" y="88" width="450" height="16" rx="2"></rect>
+      <rect class="fill-n" x="60" y="88" width="450" height="16" rx="2"></rect>
+      <text class="lbl" x="68" y="100" style="fill:var(--surface)">p-tau217 在症状前 20 年以上开始升高</text>
+      <circle class="dot" cx="510" cy="96" r="3"></circle>
+      <text class="lbl" x="522" y="100">阿尔茨海默</text>
+
+      <!-- track 3 -->
+      <rect class="track" x="60" y="132" width="450" height="16" rx="2"></rect>
+      <rect class="fill-b" x="290" y="132" width="220" height="16" rx="2"></rect>
+      <text class="lbl" x="298" y="144" style="fill:var(--surface)">14 蛋白信号 · 提前 5.6 年</text>
+      <circle class="dot" cx="510" cy="140" r="3"></circle>
+      <text class="lbl" x="522" y="144">肺癌</text>
+
+      <line class="axis" x1="60" y1="176" x2="640" y2="176"></line>
+      <line class="axis" x1="60" y1="176" x2="60" y2="182"></line>
+      <line class="axis" x1="290" y1="176" x2="290" y2="182"></line>
+      <line class="axis" x1="510" y1="176" x2="510" y2="182"></line>
+      <line class="axis" x1="640" y1="176" x2="640" y2="182"></line>
+      <text class="lbl-s" x="52" y="196">−25 年</text>
+      <text class="lbl-s" x="278" y="196">−12 年</text>
+      <text class="lbl-s" x="500" y="196">0</text>
+      <text class="lbl-s" x="620" y="196">+10</text>
+
+      <text class="lbl" x="60" y="228" style="fill:var(--ink-3)">可预防比例：心血管 ≥80% · 癌症 ~40% · 阿尔茨海默 ~45%</text>
+    </svg>
+    <figcaption>三大年龄相关疾病的自然史。Topol 的整个立论建立在这张图上：既然疾病要酝酿几十年，那么在它显形之前，你有非常长的时间可以改变它的走向——这比“逆转衰老”现实得多。</figcaption>
+  </figure>
+</header>
+
+<aside class="rail">
+  <p class="rail-h">目录</p>
+  <nav id="toc">
+    <a href="#frame"><span class="n">00</span>底层框架</a>
+    <a href="#tier1"><span class="n">01</span>五个高证据行为</a>
+    <a href="#exercise"><span class="n">1.1</span>运动</a>
+    <a href="#diet"><span class="n">1.2</span>饮食</a>
+    <a href="#sleep"><span class="n">1.3</span>睡眠</a>
+    <a href="#alcohol"><span class="n">1.4</span>酒精</a>
+    <a href="#smoke"><span class="n">1.5</span>烟草</a>
+    <a href="#tier2"><span class="n">02</span>被低估的因素</a>
+    <a href="#tier3"><span class="n">03</span>检查清单</a>
+    <a href="#tier4"><span class="n">04</span>药物与补剂</a>
+    <a href="#tier5"><span class="n">05</span>怎么读信息</a>
+    <a href="#schedule"><span class="n">06</span>落到日程</a>
+    <a href="#future"><span class="n">07</span>正在到来的</a>
+    <a href="#limits"><span class="n">08</span>边界</a>
+  </nav>
+</aside>
+
+<main class="doc">
+
+<!-- ═══════════ 00 ═══════════ -->
+<section id="frame">
+  <div class="tier-head"><span class="tier-num">00</span><h2>先装上他的五把尺子</h2></div>
+  <p class="dek">读完全集，最值得带走的不是某个补剂或指标，而是一套判断标准。有了它，你自己就能筛掉九成的健康噪音。</p>
+  <hr class="rule">
+
+  <h3>一 · 目标是健康寿命，不是逆转衰老</h3>
+  <p>细胞重编程、senolytics、雷帕霉素、胸腺再生、NAD+——Topol 认为这些都值得研究，但<em>在人身上一个都没被证实，而且都带风险</em>。现实得多的目标是：把心血管病、癌症、神经退行性疾病推迟或挡住。这三件事我们现在真的有办法做。</p>
+
+  <h3>二 · 免疫衰老 + 炎症衰老是共同上游</h3>
+  <p>Topol 把 immunosenescence 和 inflammaging 放在三大疾病的交汇处：它能解释为什么这些病常常一起来，也解释为什么单独盯着胆固醇、淀粉样蛋白或肿瘤大小可能不够。他自己承认这个模型有还原论的风险——但几乎所有有效的生活方式干预，最后都能落回“降低慢性炎症”这一条。</p>
+
+  <h3>三 · 你的器官不是同步变老的</h3>
+  <p>同一周出生的 1,800 人，到 63 岁时器官年龄相差约 <span class="num">10</span> 年。衰老也不是匀速的，在 <span class="num">34</span>、<span class="num">60</span>、<span class="num">78</span> 岁附近有三次波峰。在所有器官时钟里，<em>大脑和免疫系统像主调节器</em>——这两样正常老化的人,15–17 年生存率接近 100%。</p>
+
+  <h3>四 · “多测一点”不是精准预防</h3>
+  <p>这是贝叶斯先验问题：在低风险人群里同时做几百项检查，哪怕每项单独看都不错，假阳性、重复影像、活检和焦虑也会累积。Topol 主张<em>顺序式</em>——先用便宜的数据确定风险，再对特定器官加做昂贵的确认。</p>
+
+  <h3>五 · 只认患者结局</h3>
+  <p>机制有趣、相关性显著、生物标志物改善、benchmark 好看——这些都不是获益。死亡率、安全性、生活质量、成本与可及性才是。这把尺子他同样用来量自己最兴奋的那些论文。</p>
+
+  <blockquote class="pull">“有趣的机制不等于可以自我实验。”
+  <cite>这句话是本指南里出现频率最高的一条判断——肽类、锂、胸腺再生、cGAS–STING，Topol 常常在最兴奋的论文之后紧接着写“现在不要做”。</cite></blockquote>
+</section>
+
+<!-- ═══════════ 01 ═══════════ -->
+<section id="tier1">
+  <div class="tier-head"><span class="tier-num">01</span><h2>五个高证据行为</h2></div>
+  <p class="dek">这一层是复利的本金。如果时间和注意力有限，全部投在这五件事上，其余章节都可以先放着。</p>
+  <hr class="rule">
+</section>
+
+<section id="exercise">
+  <h3>1.1　运动 <span class="tag">证据 A</span></h3>
+  <p>Euan Ashley 在 Ground Truths 上那句被 Topol 反复引用的话：<em>运动可能是人类已知最强效的医学干预</em>。在预防上，它的效应量超过任何一种药：心血管风险约降 <span class="num">50%</span>，多种癌症风险约降 <span class="num">50%</span>，还有精神健康、肺、消化、骨骼、肌肉。</p>
+
+  <h4>剂量：把两种运动都做够</h4>
+  <div class="dose">
+    <div><dt>有氧</dt><dd>150<small> 分钟 / 周（中等强度）</small></dd></div>
+    <div><dt>力量</dt><dd>2–3<small> 次 / 周 ≈ 60 分钟</small></dd></div>
+    <div><dt>起效门槛</dt><dd>2,500<small> 步 / 天（需连续）</small></dd></div>
+    <div><dt>换算</dt><dd>1 : 5<small> 分钟运动 : 分钟寿命</small></dd></div>
+  </div>
+  <p>只有约四分之一的美国人同时满足前两条。高强度间歇的换算更高（约 1 : 7–8），但 Topol 和 Ashley 的顺序很明确：<strong>先让人离开沙发，再谈强度</strong>。“周末战士”式的集中锻炼同样有效，早年“只在周末运动有害”的说法已被推翻。</p>
+  <p>UK Biobank 七万多人的分析说明为什么两种都要：<em>同时改善心肺适能与肌肉力量，比只改善其中一项更能降低全因和心血管死亡</em>。</p>
+
+  <h4>指标：用 METs，别追 VO₂max</h4>
+  <p>这是 Topol 2026 年最尖锐的一次纠偏。几乎所有把“体能”和“寿命”连起来的数据，测的都是运动平板上的 <strong>METs（代谢当量）</strong>，不是实验室里的 VO₂max——在一项 2024 年的荟萃分析里，有 METs 数据的参与者比有 VO₂max 数据的多 <span class="num">234</span> 倍，也就是 <em>99% 以上的结局证据来自 METs</em>。</p>
+  <div class="scroll"><table>
+    <thead><tr><th>你要记的数</th><th>含义</th></tr></thead>
+    <tbody>
+      <tr><td class="k n">METs ≈ 0.05 × 心率 + 2</td><td>任何有氧活动都能算。心率 140 ≈ 9 METs。心率每高 10 bpm ≈ 多 1 MET。</td></tr>
+      <tr><td class="k n">7.9 METs</td><td>在 102,980 人的荟萃分析中，达到这个水平的人全因与心血管死亡显著更低。</td></tr>
+      <tr><td class="k n">每 +1 MET</td><td>全因死亡下降 <span class="num">14–15%</span>。</td></tr>
+      <tr><td class="k n">HR 1.41</td><td>Cleveland Clinic 122,007 人：体能低于平均 vs 高于平均，<em>风险相当于吸烟或糖尿病</em>。最低组与精英组差 5 倍以上。</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box box-stop">
+    <p class="box-h">别被这些数字吓到</p>
+    <p>智能手表的 VO₂max 是<strong>推算</strong>的，不是测的。Apple Watch / Garmin / Fitbit 的平均绝对百分比误差在 <span class="num">7–16%</span>，且系统性地<em>低估体能好的人、高估体能差的人</em>；很多设备只用一次 6 分钟步行就更新数值。Topol 自己从没做过 VO₂max，Super Agers 全书没提这个词。他也明确指出“VO₂max 是寿命最强预测因子”这个流行说法是错的——那是把 METs 的研究结果张冠李戴了。</p>
+    <p>更麻烦的是，ChatGPT Health 和 Claude Health 这类工具已经开始拿手表的 VO₂max 给人打 D、F 分——垃圾进，垃圾出。</p>
+  </div>
+
+  <h4>别忽略的三件事</h4>
+  <ul>
+    <li><strong>运动能降 p-tau217。</strong>这是阿尔茨海默最早的血液生物标志物，而且它是<em>可变的</em>——运动干预研究已经看到它下降。Topol 本人正在牵头一项以 p-tau217 为主要终点的生活方式随机试验。</li>
+    <li><strong>对抑郁的效果超过 SSRI。</strong>218 项研究、14,000 多人的网络荟萃分析里，跳舞、走路、慢跑、力量训练的效应量把药物比了下去。</li>
+    <li><strong>唯一确凿的坏处是房颤。</strong>超耐力运动者房颤增加是真的。另外他们的冠脉钙化分数常常偏高，但心梗风险仍然低——斑块可能反而更稳定。</li>
+  </ul>
+
+  <div class="box box-self">
+    <p class="box-h">Topol 本人（70 多岁）</p>
+    <p>每周至少 <strong>3 次力量训练，每次 30 分钟以上</strong>：弹力带、自由重量、俯卧撑、引体向上、硬拉。加上日常有氧。他的原话是：“如果我要变老，我宁愿又老又强壮。”</p>
+  </div>
+</section>
+
+<section id="diet">
+  <h3>1.2　饮食 <span class="tag">证据 A–B</span></h3>
+  <p>Topol 的结论很简单：<em>看模式，不要看单一营养素</em>。10.5 万名健康从业者随访 30 年，只有 <span class="num">9.3%</span> 的人在 70 岁时达到“健康老化”（无 11 种重大慢病、认知与体能与心理健康均完好）。八种饮食模式里，AHEI（另类健康饮食指数）关联最强——最高五分位比最低五分位，健康活到 70 岁的几率翻倍以上（到 75 岁 OR 2.24）。</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>方向</th><th>食物</th><th>数据</th></tr></thead>
+    <tbody>
+      <tr><td class="k" style="color:var(--teal)">多吃</td><td>水果、蔬菜、全谷物、豆类、坚果、单不饱和脂肪</td><td>健康老化几率接近翻倍（多变量校正后）</td></tr>
+      <tr><td class="k" style="color:var(--teal)">多吃</td><td>橄榄油</td><td>每天 ≥7 g（半汤匙）比几乎不吃：痴呆风险 ↓<span class="num">28%</span>（9.2 万人 / 28 年）；全因死亡 ↓约 <span class="num">20%</span></td></tr>
+      <tr><td class="k" style="color:var(--teal)">多吃</td><td>富含 omega-3 的鱼（三文鱼、金枪鱼）</td><td>抗炎饮食的组成部分</td></tr>
+      <tr><td class="k" style="color:var(--teal)">多吃</td><td>膳食纤维 ≈ 30 g / 天</td><td>185 项研究荟萃：高纤维者冠心病 ↓<span class="num">31%</span>，2 型糖尿病与结肠癌 ↓<span class="num">16%</span></td></tr>
+      <tr><td class="k" style="color:var(--accent-ink)">少吃</td><td>反式脂肪</td><td>健康老化 OR <span class="num">0.52</span>——几率直接砍半，是全表最差的一项</td></tr>
+      <tr><td class="k" style="color:var(--accent-ink)">少吃</td><td>超加工食品（UPF）</td><td>见下</td></tr>
+      <tr><td class="k" style="color:var(--accent-ink)">少吃</td><td>红肉与加工肉、钠</td><td>见下</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>超加工食品：唯一一项人体随机对照证据</h4>
+  <p>Kevin Hall 在 NIH 代谢病房做的试验是这个领域最硬的一块。把两组食物的<strong>碳水、脂肪、糖、钠、纤维全部配平</strong>，只让参与者随意吃：在 80% 热量来自 UPF 的环境里，他们每天自发多吃约 <span class="num">500</span> 千卡，体重上升；换到全是低加工食物的环境，体重和体脂下降。也就是说，问题不只在“糖和油多”，加工形态本身在起作用。</p>
+  <p>美国成人约 <span class="num">60%</span> 的热量、儿童约 <span class="num">70%</span> 来自 UPF。Hall 本人的态度值得学：他不主张 0% UPF（不现实），而是在 UPF 里挑全谷、豆类多、饱和脂肪与糖低的那些。<em>UPF 是个大类，不是一个毒物</em>。</p>
+
+  <h4>红肉：小风险，但可以被“稀释”</h4>
+  <ul>
+    <li>加工红肉 >0.25 份/天 vs &lt;0.10 份/天：痴呆风险 <span class="num">+13%</span>，主观认知下降 <span class="num">+14%</span>（13.4 万人）；未加工红肉 1 份/天：主观认知下降 <span class="num">+16%</span>。</li>
+    <li>IARC：加工肉是“人类致癌物”，红肉“很可能致癌”（针对结肠癌）。</li>
+    <li><strong>关键在替换。</strong>把每天 1 份加工红肉换成坚果或豆类，痴呆风险 ↓<span class="num">19%</span>，主观认知下降 ↓<span class="num">21%</span>。</li>
+    <li>2.15 万人的菌群研究显示：<em>杂食者只要增加植物性食物，肠道菌群就会向素食者的抗炎特征移动</em>——不需要变成素食者。</li>
+  </ul>
+
+  <h4>蛋白质：这是 Topol 亲自纠正过自己的一条</h4>
+  <p>他在 2023 年对高蛋白还比较宽容，2025 年做了系统复查后明确翻转。要点：</p>
+  <ul>
+    <li>RDA 是 <span class="num">0.8 g/kg/天</span>。美国已有 <span class="num">85%</span> 的人超过它，近 <span class="num">25%</span> 的人吃到两倍。“蛋白摄入不足”这个前提本身就不成立。</li>
+    <li><em>没有任何数据支持超过 1.6 g/kg/天</em>。而且连 1.6 这个拐点本身都站不住——被广泛引用的 Morton 图上那条竖线，回归的 <span class="num">P = 0.079</span>，并不显著。</li>
+    <li>50 岁以上：12 项随机试验一致显示，在抗阻训练之上再加高蛋白，对瘦体重<strong>没有额外增益</strong>。欧洲对 65+ 的建议也只是从 0.8 提到约 1.2 g/kg/天。</li>
+    <li>“1 克/磅”（≈2.2 g/kg，RDA 的三倍）没有任何高质量证据支持。推广它的两位主要影响者都持有蛋白产品公司的股份。</li>
+  </ul>
+  <div class="box box-stop">
+    <p class="box-h">高蛋白的风险不是零</p>
+    <p>Washington University 的工作找到了机制：必需氨基酸<strong>亮氨酸</strong>激活 mTOR，抑制巨噬细胞清除受损线粒体（mitophagy），从而促进动脉粥样硬化。人体外推的风险起点约在 <span class="num">1.5 g/kg/天</span>。Topol 在《华盛顿邮报》写的界线是：<em>超过 1.4 g/kg/天</em>（150 磅的人约 95 克）与炎症和动脉粥样硬化相关，尤以动物蛋白为甚。</p>
+    <p>顺带一个讽刺：亮氨酸是长寿圈常吃的 BCAA 补剂主成分，而它<strong>强力激活 mTOR，正好和雷帕霉素相反</strong>——不少人同时在吃这两样。<strong>不要吃亮氨酸/BCAA 补剂。</strong></p>
+    <p>还有两条硬事实：身体<strong>无法储存蛋白质</strong>，多余的会脱氨→尿素→随尿排出；<strong>长肌肉的主驱动是抗阻训练，不是蛋白粉</strong>。</p>
+  </div>
+
+  <div class="box box-self">
+    <p class="box-h">Topol 本人（82 kg）</p>
+    <p>以植物为主的地中海式饮食。早餐希腊酸奶，零食坚果，晚餐沙拉配三文鱼、金枪鱼或豆类。偶尔加起来算，一天 <strong>100–120 g 蛋白质，即 1.2–1.4 g/kg</strong>。他说要吃到 180 g（1 g/磅）对他会是一场苦役，而且多出来的部分只会被排掉。四十多年不吃红肉。</p>
+  </div>
+
+  <h4>关于热量与进食窗口</h4>
+  <p>“一卡路里就是一卡路里”——减重主要取决于摄入的热量，而不是生成了多少酮体或血糖指数。限时进食（TRE，例如中午 12 点到晚上 8 点）在 2 型糖尿病的小型随机试验中减重效果好、降 HbA1c 与热量限制相当，而且<em>依从性明显更高</em>。它值得作为一种“更容易做到的减少热量的方式”，但还没被充分研究。</p>
+  <p>至于“精准营养”——按你的基因、菌群、代谢定制食谱——Topol 的判断是方向对、时候未到。Zoe 这类公司收着不低的月费，但还没有任何验证显示它改善健康结局。</p>
+</section>
+
+<section id="sleep">
+  <h3>1.3　睡眠 <span class="tag">证据 B+</span></h3>
+  <p>睡眠有三个维度，大多数人只盯着第一个。</p>
+  <div class="dose">
+    <div><dt>时长</dt><dd>7–9<small> 小时</small></dd></div>
+    <div><dt>质量</dt><dd>≥85%<small> 睡眠效率</small></dd></div>
+    <div><dt>规律性</dt><dd>第一位<small> 甚至压过时长</small></dd></div>
+  </div>
+
+  <h4>规律性可能是最被低估的一条</h4>
+  <p>UK Biobank 数以千计参与者的数据里，把“时长”和“规律性”放进同一个统计模型做对比，<em>规律性在预测全因死亡上几乎赢过了时长</em>，对癌症和心血管死亡也一样。Matt Walker 读完那篇论文的反应是“我要加倍重视规律性”。</p>
+  <p>原因不在睡眠本身，在昼夜节律：<strong>固定的入睡与起床时间是你喂给大脑的节律信号</strong>，它反过来改善时长和质量。这不代表你可以规律地睡 4 小时——两者都要。</p>
+
+  <h4>质量：睡眠效率 85% 是那条线</h4>
+  <p>睡眠效率 = 睡着时间 ÷ 躺床时间。你可能躺 10 小时睡够 8.5 小时——时长达标，但质量很差。低于 85% 之后，糖尿病、肥胖、心血管风险开始上升，男女都出现激素变化。Walker 的一句话值得记住：<em>他的中心 23 年里没有找到任何一种精神疾病是睡眠正常的</em>，而精神疾病的标志往往不是时长短，是质量差。</p>
+
+  <h4>机制：为什么深睡不能省</h4>
+  <p>大脑的类淋巴系统（glymphatic）主要在 <strong>NREM 慢波深睡（N3）</strong>期间冲刷代谢废物，其中就包括 β-淀粉样蛋白和 tau。去甲肾上腺素的波动像一个泵在驱动脑脊液流动。</p>
+  <ul>
+    <li>PET 研究：<em>仅一晚睡眠剥夺</em>就使阿尔茨海默相关脑区的 β-淀粉样蛋白显著增加。</li>
+    <li>近 8,000 人随访 25 年：50–60 岁前每晚睡 ≤6 小时，晚发痴呆风险 <span class="num">+>20%</span>。</li>
+    <li>这是双向恶性循环：睡得差 → 毒性蛋白堆积 → 毒性蛋白又干扰睡眠。</li>
+    <li>心-肺-脑是耦合的：房颤患者的类淋巴清除更差。</li>
+  </ul>
+
+  <div class="box box-stop">
+    <p class="box-h">安眠药：不是所有“睡着”都算数</p>
+    <p><strong>Ambien（唑吡坦）</strong>确实延长睡眠、按分期看深睡也更多，但它啃掉了<em>最慢的那部分慢波</em>——而恰恰是最慢的慢波在驱动类淋巴清除。小鼠数据显示脑清除下降 <span class="num">30–40%</span>。苯二氮卓类和多种安眠药在多项研究中与痴呆风险升高相关。</p>
+    <p>唯一让 Topol 和 Walker 都表态支持的新类别是 <strong>DORA（双重食欲素受体拮抗剂）</strong>，例如 suvorexant（Belsomra）。在 85 岁以上的随机对照试验中，它不仅延长睡眠，还<em>增加了血中 β-淀粉样蛋白和 tau 的清除</em>——这是第一次看到一种安眠药带来的是“功能性睡眠”而不是“垃圾睡眠”。</p>
+  </div>
+
+  <h4>可以直接执行的清单</h4>
+  <ul class="tight">
+    <li>固定入睡与起床时间（周末也是）</li>
+    <li>白天运动</li>
+    <li>睡前不晚食</li>
+    <li><strong>睡前 3 小时内不喝酒</strong></li>
+    <li>卧室凉、全黑</li>
+    <li>避免蓝光</li>
+    <li>诊断并治疗睡眠呼吸暂停</li>
+    <li>放松训练，或数字化 CBT-I（失眠的一线方案）</li>
+  </ul>
+
+  <h4>关于睡眠追踪器</h4>
+  <p>Walker 的立场是有条件的推荐：睡眠是三大健康行为里<em>唯一无法主观估计</em>的（你能说出这周练了几次、吃得好不好，但说不出上周二深睡多久）。很多人是看到戒指上酒精对睡眠的破坏之后才真的减少了饮酒。</p>
+  <p>但两个前提：一是<strong>最好的追踪器是你真的会一直戴的那个</strong>——精度 100% 却用三次就扔的设备毫无价值；二是<strong>失眠的人要当心 orthosomnia</strong>（约 5–7% 的人群），过度盯数据本身会造成失眠。真到那一步，要么摘下来先做 CBT-I，要么改成每周只在固定时间回看一次趋势。</p>
+  <p>无论如何，最终仍要回到那个最朴素的指标：<em>第二天感觉如何</em>。很多人 readiness 92 分却难受得要命，62 分那天却跑出了半年最好成绩。</p>
+</section>
+
+<section id="alcohol">
+  <h3>1.4　酒精 <span class="tag">证据 B / 有争议</span></h3>
+  <p>2025 年出了三份重量级报告，结论差异之大本身就是一堂方法论课。它们只在<strong>一件事</strong>上完全一致：<em>女性乳腺癌风险</em>。</p>
+  <div class="scroll"><table>
+    <thead><tr><th>问题</th><th>三份报告怎么说</th></tr></thead>
+    <tbody>
+      <tr><td class="k">乳腺癌</td><td>一致同意有风险。终身绝对风险从每周 &lt;1 杯的 <span class="num">11.3%</span> 升到每天 1 杯的 <span class="num">13.1%</span>。</td></tr>
+      <tr><td class="k">其他癌症<br><span style="font-weight:400;color:var(--ink-3)">口腔/咽/喉/肝/食管/结肠</span></td><td>外科医生总长报告和 ICCPUD 认为低剂量起就有风险；<strong>National Academies 认为证据不足</strong>（结肠癌仅 ~9%，95%CI 0.96–1.22，不显著）。</td></tr>
+      <tr><td class="k">全因死亡</td><td>National Academies——三份里唯一做了 de novo 全面复审、并处理了“戒酒者偏倚”的——结论是适量饮酒（男 2 杯/天、女 1 杯/天）与全因死亡 ↓<span class="num">16%</span>、心血管死亡 ↓<span class="num">18%</span> 相关，中等确定性。另外两份根本没报告获益。</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Topol 的处理方式不是选边站，而是给一个折中的上限：</p>
+  <div class="box">
+    <p class="box-h">他的实际建议</p>
+    <ul class="tight" style="margin-top:0">
+      <li>上限 <strong>每周 7 杯</strong>，女性再少一些。</li>
+      <li>避免暴饮：一次 4 杯（女）/ 5 杯（男）以上。</li>
+      <li><strong>睡前 3 小时内不喝。</strong></li>
+      <li>记住这些都是<em>人群层面</em>的结论。酒精代谢基因跨祖源差异极大——<em>同样一杯，在有的人身上相当于三杯</em>。</li>
+    </ul>
+  </div>
+  <p>两条容易被忽略的背景：脑萎缩的五种影像学模式中，<strong>酒精摄入在全部五种里都出现</strong>；而另一边，社交连接本身是有力的健康因素，而很多社交是围绕酒展开的——Vivek Murthy 自己也承认这个张力。把它当成一个需要权衡的账本，而不是一个道德问题。</p>
+</section>
+
+<section id="smoke">
+  <h3>1.5　烟草 <span class="tag">证据 A</span></h3>
+  <p>Topol 那份十条建议里，这条只有一句话：应该已经众所周知，吸烟是冠心病的强效危险因素，<strong>应完全避免</strong>。没有需要展开的细节，也没有安全剂量。</p>
+</section>
+
+<!-- ═══════════ 02 ═══════════ -->
+<section id="tier2">
+  <div class="tier-head"><span class="tier-num">02</span><h2>被低估的那一层</h2></div>
+  <p class="dek">Topol 在《Super Agers》里把这些统称为“lifestyle <em>plus</em> 因素”——加号表示远不止饮食、睡眠、运动。这一层没有一项能单独改变命运，但它们恰恰是复利里最容易被漏掉的项。</p>
+  <hr class="rule">
+
+  <h3>2.1　你呼吸的空气 <span class="tag">证据 B</span></h3>
+  <p>Joseph Allen（哈佛，"forever chemicals" 这个词就是他造的）给出的室内空气目标，全部可测、可执行、便宜：</p>
+  <div class="scroll"><table>
+    <thead><tr><th>指标</th><th>目标</th><th>现实</th></tr></thead>
+    <tbody>
+      <tr><td class="k">换气次数 ACH</td><td class="n">4–6 / 小时</td><td>美国典型住宅只有 <span class="num">0.5</span>；学校设计 3、实际运行 1.5</td></tr>
+      <tr><td class="k">滤网等级</td><td class="n">MERV 13</td><td>多数建筑装的是 MERV 8（捕获 20–30%）；MERV 13 捕获 <span class="num">80–90%</span>，<em>只贵几美元</em></td></tr>
+      <tr><td class="k">CO₂</td><td class="n">&lt; 800 ppm</td><td>通风是否够的直接指标（传统标准是 1000，Allen 建议压到 800）</td></tr>
+      <tr><td class="k">PM2.5</td><td class="n">&lt; 5 µg/m³</td><td>WHO 室外标准即 5；美国 EPA 刚从 12 降到 9。室内则几乎无强制标准</td></tr>
+    </tbody>
+  </table></div>
+  <p>做不了整屋改造就用<strong>便携空气净化器（PAC）</strong>：本质就是风扇加滤网，尺寸选对就能达到 4–6 ACH，成本很低。哈佛的 CFD 模拟给了两条具体建议——<em>尽量放在房间中央</em>，并且让空气动起来（气流本身有助于打散呼出的气溶胶）。良好的通风加过滤可以把呼吸道感染风险降低约 <span class="num">60–70%</span>。</p>
+  <p>顺带一提：MERV 13 不只挡病毒。去年东海岸野火烟尘期间，室外 PM2.5 冲到 100–300 µg/m³，而升级了滤网的哈佛楼内颗粒物水平几乎没动。</p>
+
+  <h3>2.2　微塑料与化学暴露 <span class="tag">证据 B / C</span></h3>
+  <p>这是 Topol 最近几年态度明显收紧的一块，因为数据一直在往坏的方向走。</p>
+  <ul>
+    <li><strong>动脉里。</strong>做颈动脉内膜剥脱术的患者中，约 <span class="num">58–60%</span> 的斑块里检出微塑料/纳米塑料（MNPs），随后 3 年内全因死亡、心梗、卒中的复合风险<em>高 4.5 倍</em>。</li>
+    <li><strong>脑里更多。</strong>2025 年《Nature Medicine》：脑组织中的 MNP 浓度是肝肾的 <span class="num">7–30</span> 倍；2016 到 2024 年间上升约 <span class="num">50%</span>；<em>痴呆患者脑中的浓度是无痴呆者的 2–10 倍</em>（中位 26,076 vs 4,917 µg/g）。因果尚未确立——痴呆本身会损伤血脑屏障和清除机制。</li>
+    <li>动物实验显示 MNPs 能穿过血脑屏障、激活免疫、造成脑血流淤滞和血栓。</li>
+  </ul>
+  <div class="box">
+    <p class="box-h">能做的事</p>
+    <ul class="tight" style="margin-top:0">
+      <li>少买塑料包装的食品和饮料，少用瓶装水</li>
+      <li><strong>不要微波塑料容器</strong>——加热会大量析出</li>
+      <li>少用合成纤维织物</li>
+      <li>定期清理室内灰尘</li>
+      <li>用净水/滤水设备</li>
+    </ul>
+  </div>
+  <p><strong>永久化学物质（PFAS）</strong>与睾丸癌、肾癌、脂代谢干扰、激素紊乱相关；有研究发现体内 PFAS 水平高的儿童<em>疫苗效力下降</em>。EPA 只监管了其中 6 种，而“化学表亲”有一万多种——Allen 把这叫“化学打地鼠”。</p>
+  <p><strong>铅</strong>是一个几乎被临床忽略的心血管危险因素：2019 年全球有 <span class="num">550 万</span>例心血管死亡归因于相对低水平的铅暴露，而且<em>没有已知的安全阈值</em>。一个具体提醒：阿育吠陀等草药补剂监管薄弱，是重要的铅来源（有个案的血铅升到 70 µg/dL）。</p>
+
+  <h3>2.3　社交连接 <span class="tag">证据 B</span></h3>
+  <p>先分清两个词：<strong>孤独</strong>是主观感受（我需要的连接多于我实际拥有的），<strong>社交隔离</strong>是客观计数。校园里被几千人围着的学生也可能极度孤独。</p>
+  <p>Vivek Murthy 引用的数字：社交断连与老年人痴呆风险 <span class="num">+50%</span>、心脏病 <span class="num">+31%</span> 以及显著升高的早死风险相关。他给出的正向框架是<strong>“充实三要素”：关系、服务、目的感</strong>——有能理解你的人，日常生活里包含帮助别人，并且你的目的感建立在贡献他人之上。</p>
+
+  <h3>2.4　多语言 <span class="tag">证据 B−</span></h3>
+  <p>2025 年新加入的一条 lifestyle plus 因素。27 国、86,000 名 51–90 岁成人：横断面分析里，<em>单语者出现加速衰老的几率是 2.1 倍，会一门以上外语的人是 0.46（低 2.2 倍）</em>；纵向分析同向（RR 1.4 / 0.7），而且有剂量-反应——语言越多，保护越强。换算下来大约相当于 3 年健康寿命。</p>
+  <p>这是关联而非因果，数据也是国家层面而非个人层面。但 Topol 的评价很直接：<em>它比任何抗衰补剂、任何长寿诊所的证据都强，成本为零，风险为零</em>。</p>
+
+  <h3>2.5　疫苗（尤其是带状疱疹疫苗） <span class="tag">证据 B+</span></h3>
+  <p>这是全集里最出人意料、也最扎实的一条发现。四个国家级<strong>自然实验</strong>——利用出生日期作为疫苗资格的断点，形成近似随机的分组——一致指向<em>痴呆减少约 20%</em>：</p>
+  <div class="scroll"><table>
+    <thead><tr><th>国家</th><th>规模</th><th>结果</th></tr></thead>
+    <tbody>
+      <tr><td class="k">威尔士</td><td class="n">280,000</td><td>首个自然实验，男性未见获益</td></tr>
+      <tr><td class="k">澳大利亚</td><td class="n">101,219</td><td>复制</td></tr>
+      <tr><td class="k">美国</td><td class="n">103,615</td><td>Shingrix 比 Zostavax 多 <span class="num">17%</span> 的“无痴呆时间”</td></tr>
+      <tr><td class="k">加拿大</td><td class="n">464,000</td><td>5.5 年随访，痴呆<strong>绝对</strong>下降 <span class="num">2.0</span> 个百分点；用第二个出生日期断点复制，并与无接种计划的省份对照——三角验证</td></tr>
+    </tbody>
+  </table></div>
+  <p>另有两条独立线索：美国健康与退休研究 3,884 人的多组学分析显示，接种者的<em>表观遗传时钟与转录组时钟走得更慢</em>，适应性免疫更强（女性更明显）；韩国 160 万人的分析显示心血管结局全面改善（男性和 60+ 更明显）。</p>
+  <div class="box box-self">
+    <p class="box-h">Topol 的原话</p>
+    <p>“如果这是一种药物，能把阿尔茨海默降低 20%，那会被视为一项重大突破。”而且前三个自然实验用的还是旧的 Zostavax（防带状疱疹有效率约 50%，Shingrix >90%）——<em>真实效果可能被低估了</em>。他的建议：<strong>50 岁以上、还没打过 Shingrix 的，可以考虑</strong>。</p>
+  </div>
+  <p>另外：流感疫苗也有观察性证据与阿尔茨海默风险下降相关；COVID 疫苗与<em>血管加速老化的保护</em>相关，也降低 Long COVID 风险。</p>
+
+  <h3>2.6　避免感染，尤其是 COVID <span class="tag">证据 B</span></h3>
+  <p>Topol 把 COVID 对动脉的影响拆成三层，一层比一层更晚被认识：</p>
+  <ol>
+    <li><strong>内皮炎症。</strong>血管内壁发炎、血小板活化、凝血倾向——"COVID 归根到底是一种内皮疾病"。</li>
+    <li><strong>促进动脉粥样硬化。</strong>尸检在冠脉的巨噬细胞和泡沫细胞里检出病毒<em>正在复制</em>；重复 CT 冠脉造影显示感染者的斑块进展更快、高危非钙化斑块更多、心血管事件更多。</li>
+    <li><strong>血管加速老化。</strong>18 国、2,000 多人的前瞻研究：<em>连没住院的人都出现约 5 年的血管加速老化</em>，重症约 10 年。效应在女性中显著；接种疫苗与保护相关；部分人 1 年后可恢复。</li>
+  </ol>
+
+  <h3>2.7　肠道 <span class="tag">证据 C–B</span></h3>
+  <p>植物性食物 → 短链脂肪酸（丁酸、丙酸、乙酸）→ 肠道屏障完整、Treg 细胞、全身抗炎。红肉走另一条路：短链脂肪酸减少、屏障渗漏、菌群产生 TMAO（与心血管风险强相关，也可能与结肠癌相关）。</p>
+  <p>实务层面（来自 Trisha Pasricha 的那期）：<em>如厕不超过 5 分钟</em>；洋车前子（psyllium）是有证据的膳食纤维补充；<strong>肠道清洁（bowel cleanse）无用且有害</strong>；咖啡、酒精、NSAIDs、水分都会影响排便；99% 的屁没有气味，有味的那 1% 来自硫化氢。</p>
+
+  <h3>2.8　体重与代谢 <span class="tag">证据 A</span></h3>
+  <p>内脏脂肪不是被动的仓库——脂肪细胞分泌 adipokines，直接驱动全身炎症。两个应该主动去查的状态：</p>
+  <div class="scroll"><table>
+    <thead><tr><th></th><th>定义</th></tr></thead>
+    <tbody>
+      <tr><td class="k">代谢综合征</td><td>五项里满足三项：空腹血糖高 / 空腹甘油三酯高 / 血压高 / HDL 低 / 中心性肥胖（男腰围 >40 英寸，女 >35 英寸）。肥胖者三分之二有；<em>另有约 5,000 万非肥胖的美国人也有</em>。</td></tr>
+      <tr><td class="k">糖尿病前期</td><td>HbA1c <span class="num">5.7–6.4%</span>，或空腹血糖 <span class="num">100–125 mg/dL</span>。脑影像研究显示，<em>仅仅到糖尿病前期，脑龄差就已经出现</em>。</td></tr>
+    </tbody>
+  </table></div>
+  <p>两者都可以靠减重、运动和饮食预防与逆转。<strong>GLP-1 类药物</strong>已经不只是减重药：心血管获益里只有约三分之一能用体重下降解释，在减重发生之前就已经有全身和脑部的抗炎作用；适应症正在扩展到心衰（HFpEF）、肾病、肝病、睡眠呼吸暂停，甚至成瘾行为。代价是肌肉流失——<em>用药期间抗阻训练不是可选项</em>。</p>
+</section>
+
+<!-- ═══════════ 03 ═══════════ -->
+<section id="tier3">
+  <div class="tier-head"><span class="tier-num">03</span><h2>检查：做什么，以及省下哪些钱</h2></div>
+  <p class="dek">Topol 对检查的态度经常被误读成“反对数据”。恰恰相反——他反对的是<em>不分对象地测</em>。顺序应该是：先用便宜的数据把风险分层，再针对特定器官加做昂贵的确认。</p>
+  <hr class="rule">
+
+  <h3>值得做：便宜、可行动</h3>
+  <ul class="verdict">
+    <li class="yes"><span class="mk">✓</span><span><b>家庭血压计</b><span class="d">目标 ≤120/80 mmHg。随年龄增长收缩压常漂到 130 左右（动脉变硬），<em>仍然算升高</em>。轻度异常通常靠生活方式改善，明显升高需要用药。</span></span></li>
+    <li class="yes"><span class="mk">✓</span><span><b>血脂 —— 而且至少测一次 ApoB</b><span class="d">约 <span class="num">20%</span> 的人 LDL 正常但 ApoB 高，只看 LDL 会漏掉他们。注意：高剂量强效他汀（瑞舒伐他汀、阿托伐他汀）与糖耐量异常和 2 型糖尿病风险相关，不常见但常被忽视。</span></span></li>
+    <li class="yes"><span class="mk">✓</span><span><b>Lp(a) —— 一生测一次</b><span class="d">独立的动脉血栓风险因素。好消息是终于有药了：五种降 Lp(a) 的药物正在后期临床试验。</span></span></li>
+    <li class="yes"><span class="mk">✓</span><span><b>HbA1c / 空腹血糖、腰围</b><span class="d">用来抓代谢综合征和糖尿病前期。</span></span></li>
+    <li class="yes"><span class="mk">✓</span><span><b>hs-CRP</b><span class="d">不到 30 美元的全身炎症指标。Topol 的判断是它<em>还不够好</em>，但目前临床能拿到的就是它。</span></span></li>
+    <li class="yes"><span class="mk">✓</span><span><b>血常规（CBC）—— 但看的是你自己的趋势</b><span class="d">这可能是最被低估的一项。12,407 人 20 年数据显示，9 项 CBC 指标的<strong>个人设定点</strong>极其稳定，而且与 98% 的其他健康成人不同。<em>个人设定点预测 10 年全因死亡的能力远优于人群参考区间</em>。它还能提示：RDW↔房颤、HCT↔慢性肾病、WBC↔2 型糖尿病、MCHC↔重大心血管事件、高血小板设定点↔JAK2 突变（高 9 倍以上）。所以：<strong>把历年化验单存下来看趋势</strong>，别只看有没有那个星号。</span></span></li>
+    <li class="yes"><span class="mk">✓</span><span><b>冠心病多基因风险评分（PRS）</b><span class="d">所有常见病 PRS 中验证最充分的一个，<em>独立于家族史和传统危险因素</em>（父母双方的变异组合方式因人而异，你的风险可能和家族模式完全不同）。高 PRS 者从降脂药中获益最大。多家商业公司可做，通常不在保险覆盖内。</span></span></li>
+    <li class="yes"><span class="mk">✓</span><span><b>睡眠呼吸暂停筛查</b><span class="d">很常见、常被忽略。打鼾响或睡不好就去查——可以做睡眠监测，也可以先用带血氧的手表/戒指看夜间血氧饱和度和呼吸紊乱。</span></span></li>
+  </ul>
+
+  <h3>只在高风险时考虑</h3>
+  <ul class="verdict">
+    <li class="maybe"><span class="mk">~</span><span><b>p-tau217</b><span class="d">阿尔茨海默的突破性血液标志物，在症状出现前 <em>20 年以上</em>就开始升高，准确度接近 tau-PET 扫描，而且是<strong>可变的</strong>——运动和综合生活方式干预已被证明能降低它。但 Topol 明确反对全民筛查，也反对把无症状阳性者标为“1 期阿尔茨海默病”。适合：有家族史、APOE4 携带、或高 PRS 的人，在纵向随访框架里使用。</span></span></li>
+    <li class="maybe"><span class="mk">~</span><span><b>CT 冠脉造影（CCTA）</b><span class="d">有症状（如活动时胸部不适）时才做。它比钙化积分的信息量大得多。新一代 AI 影像（Cleerly、Elucid、HeartFlow、Caristo）能识别高危非阻塞性斑块和血管周围炎症——数据惊人：<em>哪怕只有一条动脉发炎，死亡风险就高 13 倍；三条全炎则 30 倍</em>。</span></span></li>
+    <li class="maybe"><span class="mk">~</span><span><b>多癌种早检血检（Galleri）</b><span class="d">只在真正的高风险个体考虑，不是“满 50 岁就做”。见下。</span></span></li>
+  </ul>
+
+  <h3>Topol 明确不推荐</h3>
+  <ul class="verdict">
+    <li class="no"><span class="mk">✕</span><span><b>冠脉钙化积分（CAC）</b><span class="d">他的原话是<em>“我从没给任何患者开过”</em>。原因很实在：真正危险的易损斑块<strong>恰恰不含致密钙化</strong>，钙化分数常常误导；而高分数又会给无症状、无真实风险的人造成压倒性的焦虑。</span></span></li>
+    <li class="no"><span class="mk">✕</span><span><b>全身 MRI</b><span class="d">Prenuvo、Ezra 一次约 2,500 美元。核心问题不是技术，是先验概率——低风险人群做全身扫描必然堆积偶发发现，然后是活检、并发症（肝出血、气胸）和长期焦虑。</span></span></li>
+    <li class="no"><span class="mk">✕</span><span><b>按年龄做 Galleri 多癌种早检</b><span class="d">PATHFINDER 2 是迄今最大的研究，35,878 人：阳性预测值 61.6% 看起来不错，但<em>早期癌症检出只有 3/1,000</em>，<strong>假阴性 196 例多于真阳性 133 例</strong>，敏感性 40%，售价 949 美元且不报销。Topol：“按现在这种做法（50 岁以上），我不推荐。”</span></span></li>
+    <li class="no"><span class="mk">✕</span><span><b>消费级“生物年龄”/表观遗传时钟检测</b><span class="d">直接原话：<em>“我建议不要买这些检测。”</em>缺乏标准化和临床验证，价格不低。真正有前景的是器官时钟和细胞时钟，但目前都还没商业化。</span></span></li>
+    <li class="no"><span class="mk">✕</span><span><b>非糖尿病者的连续血糖监测（CGM）</b><span class="d">Kevin Hall 在代谢病房做的验证很致命：同一个人在受控条件下吃<strong>同一餐两次</strong>，血糖反应的差异<em>和吃完全不同的餐一样大</em>；同时佩戴的两个监测仪给出的餐食排序也不一致。你据此改变饮食，换个设备就会得出不同结论。</span></span></li>
+    <li class="no"><span class="mk">✕</span><span><b>常规 VO₂max 测试</b><span class="d">约 150 美元、需要跑到力竭、而且不是那个真正被研究过的指标（见 1.1）。除非你是精英运动员，或有心衰、肺动脉高压。</span></span></li>
+    <li class="no"><span class="mk">✕</span><span><b>长寿体检套餐</b><span class="d">Function Health、Superpower、Biograph、Fountain Life（19,500 美元/年）、Human Longevity……<em>目前没有任何一家提供过获益的证据</em>。Topol 的批评不是反对收集更多数据，而是它们“不加区分”：谁去测、测什么、什么时候测都没有依据；同时又漏掉了真正有用的分析（比如个人设定点趋势）。</span></span></li>
+  </ul>
+</section>
+
+<!-- ═══════════ 04 ═══════════ -->
+<section id="tier4">
+  <div class="tier-head"><span class="tier-num">04</span><h2>药物与补剂</h2></div>
+  <p class="dek">这一节最省钱。凡是需要处方的，都请和你的医生讨论；这里列的是 Topol 在证据层面的判断。</p>
+  <hr class="rule">
+
+  <h3>有强证据（在合适的人群）</h3>
+  <ul class="verdict">
+    <li class="yes"><span class="mk">✓</span><span><b>降脂药</b><span class="d">他汀、依折麦布、bempedoic acid，以及注射类的 evolocumab（Repatha）、alirocumab（Praluent）、inclisiran（Leqvio）。风险越高，降 LDL 越应该积极。口服 PCSK9 抑制剂即将到来。</span></span></li>
+    <li class="yes"><span class="mk">✓</span><span><b>降压药</b><span class="d">明显升高时基本需要用药，生活方式只能处理轻度异常。</span></span></li>
+    <li class="yes"><span class="mk">✓</span><span><b>GLP-1 类</b><span class="d">这是二十年来被随机试验检验得最彻底的一类肽。糖尿病、肥胖、心衰（HFpEF）、肾病、肝病、睡眠呼吸暂停均有获益，心血管事件下降。两项预防阿尔茨海默的大型试验正在读出结果——但 Topol 提前预警了它们的设计弱点：<em>入组的是已有认知障碍的人，介入太晚了</em>。</span></span></li>
+    <li class="yes"><span class="mk">✓</span><span><b>秋水仙碱（二级预防）</b><span class="d">6 项随机试验支持，FDA 2023 年批准 LoDoCo 0.5 mg/日降低心血管事件——第一个获此适应症的抗炎药。仿制药 0.6 mg 效果应相同，价格便宜 20 倍（约 15 vs 300 美元）。缺点：约四分之一的人有胃肠道副作用，主要是腹泻。<em>这是给已有心血管病的人的，不是一级预防。</em></span></span></li>
+    <li class="yes"><span class="mk">✓</span><span><b>绝经激素治疗（时机对的时候）</b><span class="d">见下方专栏。</span></span></li>
+  </ul>
+
+  <div class="box">
+    <p class="box-h">关于绝经激素治疗 (MHT)：一个持续 23 年的误读</p>
+    <p>2002 年 WHI 试验被叫停、“乳腺癌风险显著增加”上了头版，此后二十多年激素处方下降超过 <span class="num">60%</span>。但那项试验有一个致命缺陷：<em>参与者平均 63 岁，大多数已绝经 10 年以上</em>——完全不代表真正需要用药的人群。</p>
+    <p>更被忽略的是，WHI 还有一个<strong>单用雌激素</strong>的独立随机臂（10,700 名切除子宫的女性），结果很不一样：<em>侵袭性乳腺癌更少</em>，心脏病和肺栓塞无显著增加。后续分析显示，在 60 岁前或绝经 10 年内开始，<strong>心脏病风险和全因死亡都下降</strong>。经皮给药（绕过肝首过代谢）的血栓和卒中更少。</p>
+    <p>而且绝对风险一直很小：那个“增加 26%”换算成绝对数是<em>每年每一万名女性多 8 例</em>。</p>
+    <p>新证据还在往同一个方向加码：UK Biobank 中 9 种与全因死亡下降相关的处方药里，<strong>4 种是雌激素制剂</strong>；器官时钟分析显示雌激素与<em>免疫系统、肝脏、动脉、大脑</em>的衰老减缓相关，而绝经本身把每一个时钟推向相反方向。</p>
+    <p>目前所有主要学会（ACOG、NAMS 等）都支持在 60 岁前或绝经 10 年内使用。</p>
+  </div>
+
+  <h3>Topol 明确反对</h3>
+  <div class="box box-stop">
+    <p class="box-h">低剂量阿司匹林用于一级预防</p>
+    <p>“一级预防”是指<em>没有</em>心梗、搭桥或支架史。2018 年三项大型随机试验结论一致：</p>
+    <div class="scroll" style="margin-top:1rem"><table>
+      <thead><tr><th>试验</th><th>人群</th><th>结果</th></tr></thead>
+      <tbody>
+        <tr><td class="k">ASPREE</td><td class="n">19,114 人<br>平均 74 岁</td><td>全因死亡 <span class="num">+14%</span>（主要来自癌症死亡 3.1% vs 2.3%，HR +31%）；大出血 <span class="num">+38%</span>；<em>心血管事件无显著下降</em>。再延长随访 4.3 年后：MACE <span class="num">+17%</span>、大出血 <span class="num">+8%</span>。</td></tr>
+        <tr><td class="k">ASCEND</td><td class="n">15,480 人<br>糖尿病</td><td>血管事件 <span class="num">−12%</span> 被大出血 <span class="num">+29%</span> 完全抵消。</td></tr>
+        <tr><td class="k">ARRIVE</td><td class="n">12,546 人<br>中危</td><td>无获益；胃肠道出血约翻倍。</td></tr>
+      </tbody>
+    </table></div>
+    <p>指南已相应修改：USPSTF 不推荐 60 岁以上使用，ACC/AHA 不推荐 70 岁以上。钙化积分高只能用于 40–70 岁的风险重新分层（CAC ≥400 的人也要治 400 人 5 年才能防住 1 例事件）。</p>
+    <p>然而 7 年过去，仍有超过 <span class="num">30%</span> 的 70 岁以上美国人在吃低剂量阿司匹林做一级预防，<em>而且大多是医生建议的</em>。<strong>二级预防</strong>（已有心血管病或卒中/TIA）则获益明确，不在此列。</p>
+  </div>
+
+  <h3>没有人体证据 —— 不要花这个钱</h3>
+  <p>Topol 2025 年专门写了一整篇复盘“肽类热潮”。他的结论是：<em>最重要的那一列是最后一列——没有任何随机试验证明它们能带来所宣称的获益</em>。</p>
+  <ul class="verdict">
+    <li class="no"><span class="mk">✕</span><span><b>肽类</b><span class="d">BPC-157、CJC-1295、Ipamorelin、Sermorelin（1997 年获批、<em>2008 年已撤市</em>）、Tesamorelin、Thymosin Alpha-1、AOD 9604、Epitalon、GHK-Cu、TB-500、Cerebrolysin、Dihexa、Melanotan II、口服胶原蛋白肽。它们以“research chemicals”的名义绕开 FDA 审查。风险不是零：TB-500 在动物实验中<em>加速休眠肿瘤生长</em>；生长激素通路的几种有理论上的致癌风险；剂量、纯度、污染物、长期影响全部未知。一针常常几百美元。</span></span></li>
+    <li class="no"><span class="mk">✕</span><span><b>NAD+ / NR / NMN</b><span class="d">口服、注射、透皮都一样。营销话术是“抗衰老、修复青春、提升认知与能量”，人体证据为零。（顺带：NAD+ 根本不是肽，很多卖它的公司却叫它“NAD+ 肽”。）</span></span></li>
+    <li class="no"><span class="mk">✕</span><span><b>亮氨酸 / BCAA 补剂</b><span class="d">不只是没用——它强力激活 mTOR，机制上与促进动脉粥样硬化直接相连。</span></span></li>
+    <li class="no"><span class="mk">✕</span><span><b>鱼油补剂</b><span class="d">Chris Labos：“证据相当清楚，它没有帮助；如果有什么，可能还轻微增加房颤风险。”吃鱼可以，吃胶囊不行。</span></span></li>
+    <li class="no"><span class="mk">✕</span><span><b>维生素 C 防感冒</b><span class="d">经典的亚组分析与 p-hacking 案例。</span></span></li>
+    <li class="no"><span class="mk">✕</span><span><b>雷帕霉素、senolytics、年轻血浆、细胞重编程</b><span class="d">全部未在人体证实，且各有明确风险：细胞重编程可诱发癌症，senolytics 也会杀死需要的细胞，雷帕霉素削弱免疫系统。</span></span></li>
+    <li class="no"><span class="mk">✕</span><span><b>锂（lithium orotate）</b><span class="d">这一条值得单独说，因为它最能体现 Topol 的标准。2025 年《Nature》那篇研究非常漂亮：淀粉样斑块会<em>螯合并夺走</em>脑内的锂，导致小胶质细胞清除功能受损；换成不被螯合的锂盐（orotate）能逆转老年小鼠的记忆。丹麦全国数据也显示饮用水锂暴露越高、痴呆越少。那么现在要不要吃市售的 5 mg 锂酸盐补剂？<strong>他的回答是：不。</strong>因为最佳剂量未知（5–10 mg 可能根本不够），而且需要临床试验来证明它在人身上有效——他自己正准备启动一项。</span></span></li>
+  </ul>
+</section>
+
+<!-- ═══════════ 05 ═══════════ -->
+<section id="tier5">
+  <div class="tier-head"><span class="tier-num">05</span><h2>怎么读健康信息</h2></div>
+  <p class="dek">这一节的价值可能超过前面所有具体建议。指南会过期，判断力不会。</p>
+  <hr class="rule">
+
+  <h3>十一个能救你很多钱的思维工具</h3>
+  <ol>
+    <li><strong>相关不等于因果。</strong>营养流行病学几乎全部依赖回忆和食物日记——这是一种主观且随时间变化的数据源。Topol 自己给最强的那项 30 年队列研究列了一整段限制。</li>
+    <li><strong>亚组分析陷阱。</strong>经典的 ISIS-2 试验：按星座分组时，阿司匹林对双子座和天秤座“无效”。<em>计算机分不清星座亚组和糖尿病亚组</em>——对它来说都是 0 和 1。看到“在某某人群中效果显著”，先问这是不是事后切出来的。</li>
+    <li><strong>选择偏倚。</strong>1981 年《新英格兰医学杂志》报告咖啡使胰腺癌风险近乎三倍。错误出在对照组：那年代消化科住院的病人多有消化性溃疡，<em>他们本来就不喝咖啡</em>。这叫 Berkson 偏倚。</li>
+    <li><strong>戒酒者偏倚。</strong>把因为生病而戒酒的人混进“从不饮酒”组，会让饮酒者显得更健康。三份酒精报告的分歧有一半源于此。</li>
+    <li><strong>多重比较。</strong>拿一个已有的大数据集去问一个当初没打算问的问题，是数据挖掘，不是实验。Topol 批评过他自己引用的那项健康老化研究——加了太多次要终点。</li>
+    <li><strong>自然实验很强。</strong>利用出生日期作为疫苗资格断点这类设计，<em>在某些方面比随机试验更有说服力</em>：没有入选偏倚、规模大几个数量级、真实世界，而且不受霍桑效应影响。</li>
+    <li><strong>孟德尔随机化。</strong>用基因变异逼近因果。ICCPUD 报告把这类研究排除在外，是 Topol 对它最主要的批评。</li>
+    <li><strong>贝叶斯先验。</strong>在低风险人群里，测得越多，假阳性越多。这一条同时解释了为什么他反对全身 MRI、按年龄做 MCED、和长寿体检套餐。</li>
+    <li><strong>看利益冲突。</strong>推广“1 克/磅蛋白”的两位主要影响者<em>都持有蛋白产品公司的股份</em>；推广 VO₂max 的那位则把 METs 研究的结果当成 VO₂max 的证据来引用。</li>
+    <li><strong>绝对风险 vs 相对风险。</strong>“乳腺癌风险增加 26%”听起来吓人，绝对数是每年每一万名女性多 8 例。反过来也一样：“降低 20%”要看基线有多大。</li>
+    <li><strong>AI 健康助手会放大坏指标。</strong>把 Apple Health 数据丢给 ChatGPT Health 或 Claude Health，它们会拿手表推算的 VO₂max 给你打 D 或 F——即使你十年来每天走 7,500 步。<em>模型不会替你判断输入指标本身是否可靠。</em></li>
+  </ol>
+</section>
+
+<!-- ═══════════ 06 ═══════════ -->
+<section id="schedule">
+  <div class="tier-head"><span class="tier-num">06</span><h2>把它落到日程上</h2></div>
+  <p class="dek">复利只有在重复中才成立。下面是把前面所有内容压缩成的操作表。</p>
+  <hr class="rule">
+
+  <div class="scroll"><table>
+    <thead><tr><th>频率</th><th>做什么</th></tr></thead>
+    <tbody>
+      <tr><td class="k">每天</td><td>走够步数（下限 2,500 步连续活动，多多益善）· 每一餐都以植物为主 · 固定的入睡与起床时间 · 睡前 3 小时不喝酒、不晚食 · 卧室凉且全黑 · 开窗或开净化器</td></tr>
+      <tr><td class="k">每周</td><td>≥150 分钟中等强度有氧 · <strong>2–3 次力量训练</strong>（弹力带、自由重量、俯卧撑、引体向上、硬拉）· 酒精 ≤7 杯 · 至少一次真实的社交或帮助别人的事</td></tr>
+      <tr><td class="k">每月</td><td>家庭血压测 1–2 次 · 回看一次睡眠规律性的趋势（不要每天盯）</td></tr>
+      <tr><td class="k">每年</td><td>血脂、HbA1c、hs-CRP、血常规 —— <strong>把结果存下来，看的是你自己的趋势线</strong> · 流感疫苗 · 牙科 · 40 岁以上加听力与视力（都是 Lancet 痴呆可预防因素）</td></tr>
+      <tr><td class="k">一生一次</td><td>ApoB · Lp(a) · 冠心病多基因风险评分 · 50 岁以上打 Shingrix · 按指南做结直肠癌 / 乳腺癌 / 宫颈癌筛查</td></tr>
+      <tr><td class="k">如果有条件</td><td>学一门外语并持续使用 · 把家里的滤网换成 MERV 13 · 减少塑料接触 · 有家族史或 APOE4 时和医生讨论 p-tau217</td></tr>
+    </tbody>
+  </table></div>
+
+  <blockquote class="pull">如果只能记住一句话：<strong>不必焦虑于任何单一指标，尽可能保持身体活跃、吃得以植物为主、睡得规律</strong>——把其余的注意力留给那几项便宜且能改变决策的化验。
+  <cite>这是 Topol 在 VO₂max 那篇结尾的原意：“也许更好的策略是尽可能多活动，然后别为任何一个指标发愁。”</cite></blockquote>
+</section>
+
+<!-- ═══════════ 07 ═══════════ -->
+<section id="future">
+  <div class="tier-head"><span class="tier-num">07</span><h2>五到十年内会到来的</h2></div>
+  <p class="dek">这些今天还买不到，或者买了也没有意义。列在这里，是为了让你在它们真正成熟时能认出来——也为了让你在<em>现在</em>看到有人兜售时能认出那是早了。</p>
+  <hr class="rule">
+
+  <ul>
+    <li><strong>器官时钟与细胞时钟。</strong>一管血、几千种蛋白，就能测出你的大脑、心脏、肝、肾、肺、动脉、免疫系统各自的年龄。已经推进到 40 多种细胞类型：<em>星形胶质细胞“老”的人，阿尔茨海默发病率高 12.6 倍</em>；如果同时携带两个 APOE4 拷贝，接近 40 倍。UK Biobank 已把 6,000 种蛋白的检测成本压到每人约 50 美元。</li>
+    <li><strong>免疫组（immunome）。</strong>今天的临床<em>完全没有</em>评估一个人免疫状态的手段——CBC、白细胞计数、hs-CRP 都远远不够。这是 Topol 呼吁最多的一块空白。</li>
+    <li><strong>胸腺健康评分。</strong>胸腺切除的人全因死亡高 2.9 倍、癌症发病翻倍。AI 已经能从常规胸部 CT 里读出胸腺健康度——美国每年做 2,000 万次胸部 CT，这是近乎零成本的附加信息。</li>
+    <li><strong>p-tau217 变成常规监测项。</strong>“就像去查血胆固醇，高了就给他汀。”</li>
+    <li><strong>连续蛋白监测（CPM）。</strong>像连续血糖监测一样，但测的是循环中的任意蛋白——炎症标志物可以实时看。</li>
+    <li><strong>大健康模型。</strong>Delphi-2M 用 40 万 UK Biobank 参与者训练、在 190 万丹麦人身上外部验证，能预测 1,000 多种疾病，<em>不只是“会得什么”，还有“大约什么时候”</em>，可以投射 20 年。</li>
+    <li><strong>个人健康智能体。</strong>能读你的电子病历、化验、可穿戴数据并长期记忆的多智能体系统——在专家评分中已经明显优于单模型。</li>
+    <li><strong>从早筛转向拦截。</strong>2026 年《Cell》：14 种血浆蛋白的组合能在<em>确诊前 5.6 年</em>预测肺癌，在 8 个队列中验证，对从不吸烟者同样有效。配合已有的抗炎药（CANTOS 试验中最高剂量组致死性肺癌下降近 80%），这条路线是“预防癌症”而不只是“早点发现癌症”。</li>
+  </ul>
+</section>
+
+<!-- ═══════════ 08 ═══════════ -->
+<section id="limits">
+  <div class="tier-head"><span class="tier-num">08</span><h2>这份指南的边界</h2></div>
+  <hr class="rule">
+  <ol>
+    <li><strong>这不是医疗建议。</strong>它是对一位作者公开写作的整理，不是对你个人情况的处方。任何用药、停药或检查决定都请和你的医生讨论——尤其是阿司匹林、他汀、激素治疗和 GLP-1。</li>
+    <li><strong>几乎所有结论都是人群层面的。</strong>Topol 自己在酒精那篇里强调过这一点：这些报告没有考虑你的基因易感性、其他生活方式、或环境暴露。<em>酒精代谢基因的跨祖源差异尤其大。</em></li>
+    <li><strong>证据强度不等于文章质量。</strong>本页的 A/B/C 标记指的是该条建议当前的成熟度，不是对 Topol 写作的评分。</li>
+    <li><strong>访谈里的独到观点首先属于嘉宾。</strong>Matt Walker 的睡眠、Euan Ashley 的运动、Joseph Allen 的空气、Kevin Hall 的营养、Vivek Murthy 的社交连接——Topol 的选择、追问和认同只是次级归属。</li>
+    <li><strong>时间戳。</strong>本指南基于 2021-11-30 至 2026-07-20 期间的 277 篇 Ground Truths 文章。Topol 本人多次修正过自己早年的判断（蛋白质、癌症早筛、人机协作），你也应该预期这份指南会过期。第 05 节就是为这一天准备的。</li>
+  </ol>
+</section>
+
+<footer>
+  <p>内容整理自 Eric Topol 的 Ground Truths（erictopol.substack.com）全部公开文章与播客文字稿，共 277 条记录，覆盖 2021 年 11 月至 2026 年 7 月。文中所有数字均来自原文。</p>
+  <p class="src">
+    核心来源 ·
+    How the Science of Aging Can Extend Healthspan (2025-04) ·
+    The Drivers of Age-Related Diseases (2025-06) ·
+    Our Preoccupation With Protein Intake (2025-08) ·
+    The Flawed VO₂ Max Craze (2026-02) ·
+    Our Sleep, Brain Aging and Waste Clearance (2025-01) ·
+    A Ground Truth on Alcohol Intake (2025-04) ·
+    Your Lab Tests (2024-12) ·
+    The Business of Promoting Longevity (2025-03) ·
+    The Lowdown on Low-Dose Aspirin (2026-01) ·
+    Spotlight on the Shingles Vaccine—Again! (2026-01) ·
+    The Peptide Craze (2025-07) ·
+    Medicine is Moving From Calendars to Clocks (2026-07) ·
+    Chronic Lead Exposure + 10 Ways to Prevent Heart Disease (2025-08)
+  </p>
+</footer>
+
+</main>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('#toc a'));
+  var map = {};
+  links.forEach(function(a){
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if (el) map[el.id] = a;
+  });
+  var ids = Object.keys(map);
+  if (!ids.length || !('IntersectionObserver' in window)) return;
+
+  var visible = {};
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ visible[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+    var best = null, bestVal = 0;
+    ids.forEach(function(id){
+      if (visible[id] > bestVal){ bestVal = visible[id]; best = id; }
+    });
+    if (!best) return;
+    links.forEach(function(a){ a.classList.remove('on'); });
+    map[best].classList.add('on');
+  }, { rootMargin: '-10% 0px -70% 0px', threshold: [0, .25, .5, 1] });
+
+  ids.forEach(function(id){ io.observe(document.getElementById(id)); });
+})();
+</script>
+
+</body>
+</html>
