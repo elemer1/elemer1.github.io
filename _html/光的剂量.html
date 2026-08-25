@@ -1,0 +1,1046 @@
+---
+title: "光的剂量"
+permalink: /huberman/
+listed: false
+---
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="description" content="基于 Huberman Lab 全库 512 期节目的光照与昼夜节律深度指南：机制、体温最低点、按时段的执行协议、时差与倒班、以及夜间手机的第二个旋钮——唤醒度。">
+<meta name="color-scheme" content="light dark">
+<title>光的剂量</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Noto+Sans+SC:wght@300;400;500;700&amp;family=Noto+Serif+SC:wght@600;700&amp;display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0}
+svg{max-width:100%;height:auto;display:block}
+
+/* ---- tokens: light (daylight ground) ---- */
+:root{
+  color-scheme:light dark;
+  --bg:#E8ECF1;
+  --bg-2:#DFE5EC;
+  --surface:#F5F8FB;
+  --surface-2:#E3E9F0;
+  --ink:#0F131A;
+  --ink-2:#333C49;
+  --muted:#5A6473;
+  --faint:#828C9B;
+  --line:#CBD3DD;
+  --line-2:#AAB5C3;
+  /* the two accents are the mechanism: ipRGC reads blue-minus-orange */
+  --warm:#A2560A;
+  --warm-bg:#F2E4D2;
+  --cool:#22557E;
+  --cool-bg:#DCE6F0;
+  --on-accent:#FFFFFF;
+  --flag:#8E2F26;
+  --flag-bg:#F4E2DF;
+  --flag-line:#D6B1AB;
+  --shadow:0 1px 2px rgba(15,19,26,.05),0 10px 26px -16px rgba(15,19,26,.35);
+  --serif:"Noto Serif SC","Songti SC",STSong,SimSun,Georgia,serif;
+  --sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+/* ---- tokens: dark (night ground) ---- */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#080B12;
+    --bg-2:#0C111A;
+    --surface:#111725;
+    --surface-2:#171F30;
+    --ink:#E3E9F3;
+    --ink-2:#BEC8D8;
+    --muted:#8B96A9;
+    --faint:#6C7789;
+    --line:#1E2839;
+    --line-2:#334056;
+    --warm:#F0A95F;
+    --warm-bg:#2A1D0F;
+    --cool:#7CB2E8;
+    --cool-bg:#111F30;
+    --on-accent:#0A0E15;
+    --flag:#EC8A7C;
+    --flag-bg:#2C1815;
+    --flag-line:#53302B;
+    --shadow:0 1px 2px rgba(0,0,0,.5),0 12px 30px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#080B12;
+  --bg-2:#0C111A;
+  --surface:#111725;
+  --surface-2:#171F30;
+  --ink:#E3E9F3;
+  --ink-2:#BEC8D8;
+  --muted:#8B96A9;
+  --faint:#6C7789;
+  --line:#1E2839;
+  --line-2:#334056;
+  --warm:#F0A95F;
+  --warm-bg:#2A1D0F;
+  --cool:#7CB2E8;
+  --cool-bg:#111F30;
+  --on-accent:#0A0E15;
+  --flag:#EC8A7C;
+  --flag-bg:#2C1815;
+  --flag-line:#53302B;
+  --shadow:0 1px 2px rgba(0,0,0,.5),0 12px 30px -18px rgba(0,0,0,.9);
+}
+
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:16.5px;line-height:1.86;letter-spacing:.005em
+}
+::selection{background:var(--warm-bg);color:var(--ink)}
+a{color:var(--cool);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--cool) 40%,transparent)}
+a:hover{border-bottom-color:var(--cool)}
+:focus-visible{outline:2px solid var(--warm);outline-offset:3px;border-radius:2px}
+
+.shell{max-width:1220px;margin:0 auto;padding:0 20px}
+.layout{display:grid;grid-template-columns:222px minmax(0,1fr);gap:60px;align-items:start}
+@media (max-width:1040px){.layout{grid-template-columns:minmax(0,1fr);gap:0}}
+
+/* ---------- masthead ---------- */
+.masthead{border-bottom:1px solid var(--line);background:var(--bg-2);overflow:hidden;position:relative}
+.masthead .shell{padding:58px 20px 46px;position:relative;z-index:1}
+.kicker{
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 24px
+}
+.kicker .sun{
+  display:inline-block;width:7px;height:7px;border-radius:50%;
+  background:var(--warm);vertical-align:.1em;margin-right:10px;
+  box-shadow:0 0 0 4px var(--warm-bg)
+}
+.kicker .div{color:var(--line-2);margin:0 11px}
+h1{
+  font-family:var(--serif);font-weight:700;font-size:clamp(2.2rem,6vw,3.9rem);
+  line-height:1.14;letter-spacing:-.015em;margin:0 0 20px;max-width:15ch;text-wrap:balance
+}
+h1 em{font-style:normal;color:var(--warm)}
+.deck{font-size:1.08rem;line-height:1.82;color:var(--ink-2);max-width:58ch;margin:0 0 8px}
+.deck b{font-weight:500;color:var(--ink);box-shadow:inset 0 -.45em 0 var(--warm-bg)}
+.mmeta{
+  display:flex;flex-wrap:wrap;gap:2px 36px;margin-top:34px;padding-top:22px;
+  border-top:1px solid var(--line);font-family:var(--mono);font-size:12px
+}
+.mmeta div{display:flex;flex-direction:column;gap:3px;padding:7px 0}
+.mmeta .k{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.mmeta .v{color:var(--ink-2);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* ---------- rail ---------- */
+.rail{position:sticky;top:0;max-height:100vh;overflow-y:auto;padding:38px 0 60px;scrollbar-width:thin}
+.rail-t{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin:0 0 14px}
+.toc{list-style:none;margin:0 0 24px;padding:0}
+.toc a{
+  display:block;padding:5px 0 5px 13px;border:0;border-left:2px solid var(--line);
+  font-size:13.5px;line-height:1.5;color:var(--muted)
+}
+.toc a:hover{color:var(--ink);border-left-color:var(--line-2)}
+.toc a.on{color:var(--warm);border-left-color:var(--warm);font-weight:500}
+.toc .grp{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--faint);padding:16px 0 6px 13px
+}
+.toc .grp:first-child{padding-top:0}
+.rail-n{font-size:11.5px;line-height:1.7;color:var(--faint);border-top:1px solid var(--line);padding-top:13px}
+.mob{display:none}
+@media (max-width:1040px){
+  .rail{display:none}
+  .mob{display:block;border-bottom:1px solid var(--line);background:var(--surface)}
+  .mob summary{cursor:pointer;padding:14px 20px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);list-style:none}
+  .mob summary::-webkit-details-marker{display:none}
+  .mob summary::after{content:" ▾"}
+  .mob[open] summary::after{content:" ▴"}
+  .mob .toc{padding:0 20px 18px;margin:0}
+}
+
+/* ---------- main ---------- */
+main{padding:38px 0 0;min-width:0}
+.col{max-width:70ch}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.5rem,3.3vw,2.05rem);line-height:1.3;letter-spacing:-.008em;margin:0;text-wrap:balance}
+h3{font-family:var(--sans);font-weight:700;font-size:1.12rem;line-height:1.55;margin:36px 0 10px;text-wrap:balance}
+h4{font-family:var(--sans);font-weight:700;font-size:.99rem;line-height:1.6;margin:0}
+p{margin:0 0 1.05em}
+.lede{font-size:1.02rem;color:var(--ink-2);margin-bottom:1.5em}
+strong,b{font-weight:700;color:var(--ink)}
+
+section{padding:54px 0;border-top:1px solid var(--line);scroll-margin-top:16px}
+section:first-of-type{border-top:0;padding-top:6px}
+.shead{margin-bottom:22px}
+.stime{
+  font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.13em;
+  color:var(--warm);display:block;margin-bottom:9px
+}
+.stime.night{color:var(--cool)}
+
+/* band divider */
+.band{padding:48px 0 4px;border-top:2px solid var(--ink);margin-top:14px}
+.band .bk{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--warm);margin:0 0 9px}
+.band h2{margin-bottom:11px}
+.band p{color:var(--muted);max-width:62ch;font-size:.96rem;margin:0}
+
+/* ---------- protocol ---------- */
+.p{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:18px 20px;margin:0 0 12px;box-shadow:var(--shadow)}
+.p-h{display:flex;align-items:flex-start;gap:12px;justify-content:space-between;margin-bottom:9px}
+.p p{margin:0 0 .55em;font-size:.955rem;line-height:1.78}
+.p p:last-child{margin-bottom:0}
+.k{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-right:9px}
+.edge{color:var(--muted);font-size:.9rem;line-height:1.72}
+.edge .k{color:var(--warm)}
+.t{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.08em;padding:3px 7px;border-radius:3px;white-space:nowrap;flex:none;margin-top:2px}
+.t-hi{color:var(--warm);background:var(--warm-bg)}
+.t-mh{color:var(--cool);background:var(--cool-bg)}
+.t-md{color:var(--muted);background:var(--surface-2)}
+
+/* ---------- figure ---------- */
+figure{margin:26px 0 30px;padding:20px 18px 14px;background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow-x:auto}
+figure svg{margin:0 auto}
+figcaption{font-size:.85rem;line-height:1.72;color:var(--muted);margin-top:16px;padding-top:13px;border-top:1px solid var(--line)}
+figcaption b{color:var(--ink-2);font-weight:500}
+
+/* ---------- callouts ---------- */
+.note{border-left:3px solid var(--line-2);padding:2px 0 2px 16px;margin:22px 0;color:var(--muted);font-size:.93rem;line-height:1.76}
+.note b{color:var(--ink-2)}
+.key{border:1px solid var(--warm);background:var(--warm-bg);border-radius:5px;padding:16px 18px;margin:24px 0}
+.key .kt{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--warm);margin:0 0 7px}
+.key p{margin:0;font-size:.97rem;line-height:1.78;color:var(--ink)}
+.key p+p{margin-top:.7em}
+.flag{border:1px solid var(--flag-line);background:var(--flag-bg);border-radius:5px;padding:16px 18px;margin:22px 0}
+.flag h4{color:var(--flag);margin-bottom:8px;display:flex;align-items:center;gap:9px}
+.flag h4::before{content:"!";font-family:var(--mono);font-size:11px;font-weight:700;width:17px;height:17px;border-radius:50%;background:var(--flag);color:var(--flag-bg);display:grid;place-items:center;flex:none}
+.flag p,.flag li{color:var(--ink-2);font-size:.92rem;line-height:1.74}
+.flag p:last-child,.flag ul:last-child{margin-bottom:0}
+
+ul.tick{list-style:none;padding:0;margin:0 0 1.1em;display:flex;flex-direction:column;gap:7px}
+ul.tick li{padding-left:20px;position:relative;font-size:.95rem;line-height:1.75}
+ul.tick li::before{content:"";position:absolute;left:2px;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--warm)}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:0 0 1.1em;display:flex;flex-direction:column;gap:11px}
+ol.steps li{counter-increment:s;padding-left:34px;position:relative;font-size:.95rem;line-height:1.75}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:.18em;font-family:var(--mono);font-size:11px;font-weight:700;color:var(--warm);background:var(--warm-bg);width:22px;height:22px;border-radius:3px;display:grid;place-items:center}
+
+/* tables */
+.tw{overflow-x:auto;margin:0 0 1.4em;border:1px solid var(--line);border-radius:5px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:.9rem}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.65}
+thead th{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:var(--surface-2);white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td.n,th.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.tm{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--warm);white-space:nowrap;letter-spacing:.03em}
+
+/* checklist */
+.day{border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--surface);margin:0 0 24px}
+.day ul{margin:0;padding:0}
+.day li{list-style:none;display:flex;gap:14px;align-items:baseline;padding:12px 16px;border-bottom:1px solid var(--line);font-size:.94rem;line-height:1.7}
+.day li:last-child{border-bottom:0}
+.day .w{font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--warm);letter-spacing:.03em;white-space:nowrap;flex:none;width:86px}
+.day .w.n{color:var(--cool)}
+.day .s{color:var(--muted);font-size:.86rem;display:block;margin-top:2px}
+
+footer{border-top:1px solid var(--line);background:var(--bg-2);margin-top:58px;padding:44px 0 60px}
+footer .col{max-width:74ch}
+footer p{font-size:.89rem;color:var(--muted);line-height:1.8}
+footer h3{margin-top:0;font-size:1.04rem}
+.srcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:18px 30px;margin:20px 0}
+.srcs div{font-size:.85rem;line-height:1.7;color:var(--muted)}
+.srcs .h{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:5px}
+
+/* diagrams read better wider than the prose measure; main has slack to the right */
+@media (min-width:1100px){
+  figure,.tw{width:calc(100% + 150px);max-width:none}
+}
+/* on narrow screens keep labels legible and let the figure pan instead of shrinking */
+@media (max-width:700px){
+  figure svg{min-width:620px}
+  figcaption{position:sticky;left:0}
+}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{.rail,.mob{display:none}body{background:#fff;color:#000;font-size:11pt}.layout{grid-template-columns:1fr}section,figure{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="shell">
+    <p class="kicker"><span class="sun"></span>Huberman Lab 全库 512 期<span class="div">/</span>光照与昼夜节律专题</p>
+    <h1>光的剂量</h1>
+    <p class="deck">在 Huberman 讲过的所有东西里，<b>光照是杠杆最大、成本最低、也最被低估的一个</b>。它不是「睡眠技巧」中的一条——睡眠、皮质醇、褪黑素、体温、食欲、情绪、学习，全都挂在同一个由光校准的时钟下面。</p>
+    <p class="deck">而绝大多数人每天的光照剂量，是完全错的：白天太少，夜里太多，而且<b>人类主观上根本无法判断光的强度</b>。这份指南只讲光这一件事，讲到能直接执行——外加一个必须一起讲的邻居：夜里的手机除了光，还在拧<b>另一个独立的旋钮</b>。</p>
+    <div class="mmeta">
+      <div><span class="k">主题</span><span class="v">光 · 昼夜节律</span></div>
+      <div><span class="k">核心工具</span><span class="v">体温最低点</span></div>
+      <div><span class="k">见效周期</span><span class="v">以天计</span></div>
+      <div><span class="k">成本</span><span class="v">零</span></div>
+    </div>
+  </div>
+</header>
+
+<details class="mob"><summary>目录</summary><nav><ul class="toc" id="toc-m"></ul></nav></details>
+
+<div class="shell"><div class="layout">
+  <aside class="rail">
+    <p class="rail-t">目录</p>
+    <nav><ul class="toc" id="toc"></ul></nav>
+    <p class="rail-n">档位标签标的是「我们知道得有多确定」，不是「有没有用」。</p>
+  </aside>
+  <main><div class="col">
+
+<section id="why">
+  <div class="shead"><span class="stime">为什么是这件事</span><h2>光不是习惯之一，它是所有节律的输入端</h2></div>
+
+  <p class="lede">大多数健康内容把「早上晒太阳」放在睡眠章节的第七条，和「睡前别看手机」并列。这个位置是错的。光不是与运动、饮食并列的一个变量——<b>它是那个决定其他所有变量在什么时间发生的信号</b>。</p>
+
+  <p>你身体里几乎每一个细胞都有自己的 24 小时时钟。它们靠一个位于下丘脑的中央起搏器——视交叉上核（SCN）——保持同步，而 SCN 校准自己的唯一可靠外部信号，就是到达视网膜的光。时钟没校准，下游一切都会漂移：皮质醇该在早晨冲高却拖到中午，褪黑素该在夜里升起却提前到傍晚，核心体温的升降曲线整体错位，而入睡恰恰依赖体温下降。</p>
+
+  <p>这就是为什么光照的效果「非常好」：你不是在改善一个指标，你是在<b>把整条流水线的开工时间调准</b>。</p>
+
+  <h3>而它被低估，有三个具体原因</h3>
+
+  <p><b>第一，你感觉不到强度。</b>视锥细胞为了让你在烈日和暗室里都能看清东西，会剧烈地自动调节增益——就像相机自动曝光。所以你主观感受到的「亮」几乎不携带绝对强度信息。但负责授时的那类细胞几乎不做这种适应，它们老老实实地线性计量光子。结果就是：<b>你觉得办公室「挺亮的」，而你的生物钟认为你在山洞里。</b></p>
+
+  <p><b>第二，室内外的差距是数量级的，不是百分比的。</b>晴天正午户外超过 100,000 lux，最亮的室内环境（想想灯光通亮的百货商场）撑死 4,000–6,000 lux，普通家居照明只有几百。这不是「稍微暗一点」，这是差了一到两个数量级。而现代人约 90% 的白天时间在室内。</p>
+
+  <p><b>第三，也是最关键的一点：光对情绪和学习有一条独立于生物钟、也独立于睡眠的直接通路。</b>这是 Samer Hattar 实验室发表在 Nature 上的工作（LeGates、Altimus 等）。他们设计了一种光暗方案，<b>既不打乱昼夜节律，也不造成睡眠剥夺</b>——在这个前提下，只要把光给在错误的时间，动物依然出现显著的情绪改变和学习障碍。后续工作（Diego Fernández 等）进一步发现这条通路走的是完全不同的脑区：视网膜 → 视旁缰核（perihabenular nucleus）→ 腹内侧前额叶皮层。</p>
+
+  <div class="key">
+    <p class="kt">这份指南的核心主张</p>
+    <p>「我睡够了七小时，所以光照无所谓」——这个推论是错的。光影响情绪和认知的那条通路，<b>不经过生物钟，也不经过睡眠</b>。你可以睡眠时长正常、作息规律，同时因为光照剂量和时机错误而情绪低落、注意力涣散、记不住东西。</p>
+    <p>这也是为什么很多人做遍了补剂、冷水、断食、追踪器，却始终觉得「哪里不对」——他们优化的全是下游。</p>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 700 350" role="img" aria-label="视网膜 ipRGC 细胞把光信号送往两条独立通路：一条到视交叉上核校准生物钟，输出体温、皮质醇、褪黑素与睡眠时相；另一条到视旁缰核再到腹内侧前额叶，直接影响情绪与学习，不经过生物钟也不经过睡眠。">
+      <defs>
+        <marker id="aC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,1 L9,5 L0,9 z" fill="var(--cool)"></path>
+        </marker>
+        <marker id="aW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,1 L9,5 L0,9 z" fill="var(--warm)"></path>
+        </marker>
+      </defs>
+
+      <rect x="22" y="140" width="128" height="66" rx="5" fill="var(--surface-2)" stroke="currentColor" stroke-opacity=".35"></rect>
+      <text x="86" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="currentColor">视网膜 ipRGC</text>
+      <text x="86" y="188" text-anchor="middle" font-size="12" fill="var(--muted)">视黑素 melanopsin</text>
+
+      <rect x="272" y="45" width="156" height="66" rx="5" fill="var(--cool-bg)" stroke="var(--cool)" stroke-opacity=".55"></rect>
+      <text x="350" y="73" text-anchor="middle" font-size="15" font-weight="700" fill="currentColor">视交叉上核 SCN</text>
+      <text x="350" y="93" text-anchor="middle" font-size="12" fill="var(--muted)">中央起搏器</text>
+
+      <rect x="502" y="45" width="176" height="66" rx="5" fill="var(--surface-2)" stroke="currentColor" stroke-opacity=".25"></rect>
+      <text x="590" y="73" text-anchor="middle" font-size="14" fill="currentColor">体温 · 皮质醇 · 褪黑素</text>
+      <text x="590" y="93" text-anchor="middle" font-size="14" fill="currentColor">睡眠时相</text>
+
+      <rect x="272" y="235" width="156" height="66" rx="5" fill="var(--warm-bg)" stroke="var(--warm)" stroke-opacity=".65"></rect>
+      <text x="350" y="263" text-anchor="middle" font-size="15" font-weight="700" fill="currentColor">视旁缰核 PHb</text>
+      <text x="350" y="283" text-anchor="middle" font-size="12" fill="var(--muted)">→ 腹内侧前额叶</text>
+
+      <rect x="502" y="235" width="176" height="66" rx="5" fill="var(--surface-2)" stroke="var(--warm)" stroke-opacity=".45"></rect>
+      <text x="590" y="263" text-anchor="middle" font-size="14" fill="currentColor">情绪 · 执行功能</text>
+      <text x="590" y="283" text-anchor="middle" font-size="14" fill="currentColor">学习与记忆</text>
+
+      <line x1="152" y1="158" x2="266" y2="92" stroke="var(--cool)" stroke-width="1.8" marker-end="url(#aC)"></line>
+      <line x1="152" y1="188" x2="266" y2="254" stroke="var(--warm)" stroke-width="2.2" marker-end="url(#aW)"></line>
+      <line x1="430" y1="78" x2="496" y2="78" stroke="var(--cool)" stroke-width="1.8" marker-end="url(#aC)"></line>
+      <line x1="430" y1="268" x2="496" y2="268" stroke="var(--warm)" stroke-width="2.2" marker-end="url(#aW)"></line>
+
+      <rect x="167" y="107" width="88" height="23" rx="3" fill="var(--surface)"></rect>
+      <text x="211" y="123" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--cool)">校时通路</text>
+      <rect x="167" y="199" width="88" height="23" rx="3" fill="var(--surface)"></rect>
+      <text x="211" y="215" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--warm)">情绪通路</text>
+
+      <line x1="272" y1="322" x2="678" y2="322" stroke="var(--warm)" stroke-width="1" stroke-dasharray="4 4" stroke-opacity=".7"></line>
+      <text x="475" y="341" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--warm)">这条路不经过 SCN，也不经过睡眠</text>
+    </svg>
+    <figcaption><b>光有两个收件人，不是一个。</b>校时通路（上）负责把身体的时间对准外界，它的失调表现为睡不着、醒不来、时差感。情绪通路（下）由同一批视网膜细胞驱动，但走完全不同的脑区，直接作用于心境与前额叶功能——所以即使你的睡眠时长和作息都正常，错误的光照剂量仍然可以单独压低情绪和学习能力。</figcaption>
+  </figure>
+</section>
+
+<section id="mech">
+  <div class="shead"><span class="stime">机制</span><h2>你眼睛里有一套不看图像的系统</h2></div>
+  <p class="lede">要正确执行光照，你需要知道接收它的是什么细胞。因为这类细胞的物理特性，直接决定了所有协议里的「多久」「多亮」「什么时候」为什么是那些数字。</p>
+
+  <p>视网膜里除了负责成像的视杆和视锥，还有一类<b>内在光敏视网膜神经节细胞（ipRGC）</b>。它们含有一种叫视黑素（melanopsin）的光敏色素，本身就能感光——不需要视杆视锥的帮助。这类细胞在 1990 年代末到 2000 年代初才被确认（David Berson 等人的工作是奠基性的），所以整个领域非常年轻，公众认知严重滞后。它们有五个对你极其实用的特性：</p>
+
+  <ul class="tick">
+    <li><b>它们不成像。</b>可以把它们理解成极少数几个「大像素」，不关心边缘、图案和运动，只关心环境里到底有多少光。</li>
+    <li><b>它们主要分布在视网膜的下三分之二</b>——也就是负责<b>朝上看</b>的那部分。这套系统在进化上是用来看天空的。这也解释了为什么天窗有效而侧窗效果差很多。</li>
+    <li><b>它们几乎不做光适应。</b>视锥会自动调节增益（所以你在暗室和沙滩上都能看清），ipRGC 不会。它们线性计量光子。<b>所以你的主观亮度判断，对这套系统完全无效。</b></li>
+    <li><b>它们是累加器，不是开关。</b>给足够的光，这些细胞会进入可持续数小时的持续放电。这就是为什么协议是「在户外待 10 分钟以上」而不是「看一眼窗外」——你在给一个积分器投喂光子。强度不够，就用时长补。</li>
+    <li><b>它们靠「蓝减橙」读时间。</b>ipRGC 同时接收蓝视锥和红/橙视锥的输入，用两者的差值来判断此刻是不是黎明或黄昏。太阳角度低的时候，天空的蓝黄反差最大——这正是清晨和傍晚的光谱特征，也是正午白光无法替代它的原因。</li>
+  </ul>
+
+  <div class="note"><b>一个说明这套系统有多独立的事实：</b>很多失去图像视觉、但眼球仍在的盲人，依然保有这些视黑素细胞，依然能被光暗周期正常授时。反过来，一项声称「往膝盖后方打光可以移动昼夜节律」的著名研究后来被撤稿——<b>只有进入眼睛的光算数</b>。</div>
+
+  <h3>剂量：室内和室外不是一个量级</h3>
+  <p>下面这张图是整份指南里最该记住的一张。注意横轴是<b>对数刻度</b>——每一格代表 10 倍。</p>
+
+  <figure>
+    <svg viewBox="0 0 700 322" role="img" aria-label="对数刻度的照度对比：晴天正午户外约 100000 lux，阴天户外约 10000 lux，最亮的室内约 5000 lux，隔窗看到的室外约 2500 lux，普通家居照明约 300 lux，昏暗夜灯约 5 lux。室内比室外低一到两个数量级。">
+      <line x1="282.3" y1="40" x2="282.3" y2="282" stroke="currentColor" stroke-opacity=".12"></line>
+      <line x1="369.6" y1="40" x2="369.6" y2="282" stroke="currentColor" stroke-opacity=".12"></line>
+      <line x1="456.9" y1="40" x2="456.9" y2="282" stroke="currentColor" stroke-opacity=".12"></line>
+      <line x1="544.2" y1="40" x2="544.2" y2="282" stroke="currentColor" stroke-opacity=".12"></line>
+      <line x1="631.5" y1="40" x2="631.5" y2="282" stroke="currentColor" stroke-opacity=".12"></line>
+
+      <rect x="195" y="52" width="436.5" height="26" rx="2" fill="var(--warm)" fill-opacity=".85"></rect>
+      <rect x="195" y="90" width="349.2" height="26" rx="2" fill="var(--warm)" fill-opacity=".85"></rect>
+      <rect x="195" y="128" width="322.9" height="26" rx="2" fill="var(--cool)" fill-opacity=".7"></rect>
+      <rect x="195" y="166" width="296.6" height="26" rx="2" fill="var(--cool)" fill-opacity=".7"></rect>
+      <rect x="195" y="204" width="216.2" height="26" rx="2" fill="var(--cool)" fill-opacity=".45"></rect>
+      <rect x="195" y="242" width="61" height="26" rx="2" fill="var(--cool)" fill-opacity=".45"></rect>
+
+      <text x="182" y="70" text-anchor="end" font-size="12.5" fill="currentColor">晴天正午 · 户外</text>
+      <text x="182" y="108" text-anchor="end" font-size="12.5" fill="currentColor">阴天 · 户外</text>
+      <text x="182" y="146" text-anchor="end" font-size="12.5" fill="currentColor">最亮的室内</text>
+      <text x="182" y="184" text-anchor="end" font-size="12.5" fill="currentColor">隔一层窗玻璃</text>
+      <text x="182" y="222" text-anchor="end" font-size="12.5" fill="currentColor">普通家居照明</text>
+      <text x="182" y="260" text-anchor="end" font-size="12.5" fill="currentColor">昏暗夜灯 / 暗红光</text>
+
+      <text x="639.5" y="70" font-size="11.5" fill="var(--muted)">100,000+</text>
+      <text x="552.2" y="108" font-size="11.5" fill="var(--muted)">~10,000</text>
+      <text x="525.9" y="146" font-size="11.5" fill="var(--muted)">~5,000</text>
+      <text x="499.6" y="184" font-size="11.5" fill="var(--muted)">~2,500</text>
+      <text x="419.2" y="222" font-size="11.5" fill="var(--muted)">~300</text>
+      <text x="264" y="260" font-size="11.5" fill="var(--muted)">&lt;10</text>
+
+      <line x1="195" y1="282" x2="675" y2="282" stroke="currentColor" stroke-opacity=".3"></line>
+      <text x="195" y="300" text-anchor="middle" font-size="11" fill="var(--faint)">1</text>
+      <text x="282.3" y="300" text-anchor="middle" font-size="11" fill="var(--faint)">10</text>
+      <text x="369.6" y="300" text-anchor="middle" font-size="11" fill="var(--faint)">100</text>
+      <text x="456.9" y="300" text-anchor="middle" font-size="11" fill="var(--faint)">1,000</text>
+      <text x="544.2" y="300" text-anchor="middle" font-size="11" fill="var(--faint)">10,000</text>
+      <text x="631.5" y="300" text-anchor="middle" font-size="11" fill="var(--faint)">100,000</text>
+      <text x="435" y="318" text-anchor="middle" font-size="11" font-weight="700" fill="var(--faint)">照度（lux，对数刻度）</text>
+    </svg>
+    <figcaption><b>「亮」是一种错觉。</b>橙色是户外，蓝色是室内。最亮的室内环境也比阴天的户外低一个数量级，比晴天户外低一到两个数量级；隔一层窗玻璃至少再砍一半，而且如果你透过窗户看不见太阳，相关波长基本已经被滤掉了。数值随纬度、季节、天气和玻璃镀膜变化很大，这里是量级参考，不是测量值——真想知道自己的环境有多暗，用手机上任意一个照度计 App 实测一次，通常比看任何文章都更有说服力。</figcaption>
+  </figure>
+</section>
+
+<section id="four">
+  <div class="shead"><span class="stime">框架</span><h2>每 24 小时，你需要四个光信号</h2></div>
+  <p class="lede">把整套协议压缩成一个清单的话，就是下面这四条。前三条是「要拿到的光」，第四条是「要拿到的暗」——而第四条的独立价值，是近年研究里最重要的更新之一。</p>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>信号</th><th class="n">时机</th><th>它干什么</th></tr></thead>
+      <tbody>
+        <tr><td class="tm">① 低角度晨光</td><td class="n">醒后尽早<br>日出前后</td><td>把时钟往前对，触发早晨的皮质醇脉冲，设定当晚褪黑素上升的时间</td></tr>
+        <tr><td class="tm">② 全天明亮</td><td class="n">白天全程</td><td>喂养情绪与警觉通路，抬高睡眠压力；对时钟本身影响小</td></tr>
+        <tr><td class="tm">③ 低角度暮光</td><td class="n">日落前后</td><td>告诉大脑一天在收尾，并<b>下调视网膜敏感度</b>，为夜间的人造光留出缓冲</td></tr>
+        <tr><td class="tm">④ 夜间黑暗</td><td class="n">入睡前至清晨</td><td>独立于白天光照的一项保护因素</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="key">
+    <p class="kt">第四个信号被严重低估</p>
+    <p>一项针对大样本人群的研究给出了一个反直觉的结果：<b>坚持获得夜间黑暗的人是受益的，即使他们白天的光照并不充足</b>。也就是说「暗」不只是「没有光」这个消极状态，它本身就是一个有独立效应的输入。</p>
+    <p>实践含义很直接：如果你的生活条件让你白天很难出门（值班、育儿、高纬度冬季、通勤在地下），<b>你仍然可以拿到相当一部分收益——只要认真守住夜间的暗</b>。这一条不需要任何条件配合，只需要你去关灯。</p>
+  </div>
+</section>
+
+<section id="tmin">
+  <div class="shead"><span class="stime">核心工具</span><h2>体温最低点：整套系统唯一的参考点</h2></div>
+  <p class="lede">如果这份指南只能留一节，是这一节。绝大多数关于「早上晒太阳」的建议都漏掉了一个前提：<b>同样的光，在不同的内部时间给，效果是相反的</b>。而判断「内部时间」的锚点，不是钟表上的时刻，是你的体温最低点。</p>
+
+  <h3>怎么算出你的体温最低点</h3>
+  <p>不需要温度计。它<b>通常落在你平均起床时间之前 90–120 分钟</b>。</p>
+  <ol class="steps">
+    <li>取最近 <b>3–7 天</b>的实际起床时间（用闹钟叫醒的也算；半夜醒了又睡回去的，以最终起床时间为准）。</li>
+    <li>求平均。比如平均 06:30 起床。</li>
+    <li>往前推 90–120 分钟：你的体温最低点大约在 <b>04:30</b>。</li>
+  </ol>
+  <p>这个点会跟着你的起床时间移动——只要起床时间的变化超过大约半小时到一小时，最低点也会跟着挪。所以它不是一个固定值，是一个需要偶尔重算的参考点。</p>
+
+  <figure>
+    <svg viewBox="0 0 700 344" role="img" aria-label="以体温最低点为参考的相位反应示意：体温最低点之后约四小时内见光会让作息提前，之前约八小时内见光会让作息推迟，白天中段是死区几乎推不动时钟。简化规则是体温在升就见光，体温在降就避光。">
+      <defs>
+        <marker id="pW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="var(--warm)"></path></marker>
+        <marker id="pC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="var(--cool)"></path></marker>
+      </defs>
+
+      <text x="50" y="34" font-size="11.5" font-weight="700" fill="var(--faint)">核心体温</text>
+      <path d="M50,74 C120,98 190,114 250,116 C330,118 430,62 550,58 C600,57 630,66 650,76"
+            fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="2"></path>
+      <circle cx="250" cy="116" r="5" fill="var(--warm)"></circle>
+      <text x="250" y="140" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--warm)">体温最低点</text>
+
+      <line x1="250" y1="50" x2="250" y2="268" stroke="var(--warm)" stroke-width="1" stroke-dasharray="4 4" stroke-opacity=".8"></line>
+
+      <rect x="50" y="152" width="200" height="42" rx="3" fill="var(--cool)" fill-opacity=".7"></rect>
+      <rect x="250" y="152" width="100" height="42" rx="3" fill="var(--warm)" fill-opacity=".85"></rect>
+      <rect x="350" y="152" width="300" height="42" rx="3" fill="currentColor" fill-opacity=".1"></rect>
+
+      <text x="150" y="178" text-anchor="middle" font-size="13" font-weight="700" fill="var(--on-accent)">见光 → 推迟</text>
+      <text x="300" y="178" text-anchor="middle" font-size="13" font-weight="700" fill="var(--on-accent)">见光 → 提前</text>
+      <text x="500" y="178" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">死区 · 几乎推不动</text>
+
+      <line x1="112" y1="220" x2="188" y2="220" stroke="var(--cool)" stroke-width="2" marker-end="url(#pC)"></line>
+      <text x="150" y="240" text-anchor="middle" font-size="11.5" fill="var(--cool)">作息整体后移</text>
+      <line x1="338" y1="220" x2="262" y2="220" stroke="var(--warm)" stroke-width="2" marker-end="url(#pW)"></line>
+      <text x="300" y="240" text-anchor="middle" font-size="11.5" fill="var(--warm)">作息整体前移</text>
+
+      <line x1="50" y1="268" x2="650" y2="268" stroke="currentColor" stroke-opacity=".3"></line>
+      <line x1="50" y1="268" x2="50" y2="274" stroke="currentColor" stroke-opacity=".3"></line>
+      <line x1="150" y1="268" x2="150" y2="274" stroke="currentColor" stroke-opacity=".3"></line>
+      <line x1="250" y1="268" x2="250" y2="274" stroke="currentColor" stroke-opacity=".3"></line>
+      <line x1="350" y1="268" x2="350" y2="274" stroke="currentColor" stroke-opacity=".3"></line>
+      <line x1="450" y1="268" x2="450" y2="274" stroke="currentColor" stroke-opacity=".3"></line>
+      <line x1="550" y1="268" x2="550" y2="274" stroke="currentColor" stroke-opacity=".3"></line>
+      <line x1="650" y1="268" x2="650" y2="274" stroke="currentColor" stroke-opacity=".3"></line>
+
+      <text x="50" y="290" text-anchor="middle" font-size="11" fill="var(--faint)">−8h</text>
+      <text x="150" y="290" text-anchor="middle" font-size="11" fill="var(--faint)">−4h</text>
+      <text x="250" y="290" text-anchor="middle" font-size="11" font-weight="700" fill="var(--warm)">T-min</text>
+      <text x="350" y="290" text-anchor="middle" font-size="11" fill="var(--faint)">+4h</text>
+      <text x="450" y="290" text-anchor="middle" font-size="11" fill="var(--faint)">+8h</text>
+      <text x="550" y="290" text-anchor="middle" font-size="11" fill="var(--faint)">+12h</text>
+      <text x="650" y="290" text-anchor="middle" font-size="11" fill="var(--faint)">+16h</text>
+
+      <text x="50" y="308" text-anchor="middle" font-size="10.5" fill="var(--faint)">20:30</text>
+      <text x="150" y="308" text-anchor="middle" font-size="10.5" fill="var(--faint)">00:30</text>
+      <text x="250" y="308" text-anchor="middle" font-size="10.5" fill="var(--faint)">04:30</text>
+      <text x="350" y="308" text-anchor="middle" font-size="10.5" fill="var(--faint)">08:30</text>
+      <text x="450" y="308" text-anchor="middle" font-size="10.5" fill="var(--faint)">12:30</text>
+      <text x="550" y="308" text-anchor="middle" font-size="10.5" fill="var(--faint)">16:30</text>
+      <text x="650" y="308" text-anchor="middle" font-size="10.5" fill="var(--faint)">20:30</text>
+      <text x="350" y="336" text-anchor="middle" font-size="11" fill="var(--faint)">下排为「平均 06:30 起床」者的对应钟表时间，因人而异</text>
+    </svg>
+    <figcaption><b>同样的光，方向相反。</b>体温最低点之后见光把时钟往前推（想早睡早起就在这个窗口见光）；之前见光把时钟往后拖（熬夜时开着大灯，就是在主动把自己变成夜猫子）。白天中段属于死区——正午的光对情绪和警觉很有价值，但几乎移不动时钟。<b>深夜同样推不动时钟，但那时的光仍会压制褪黑素、干扰情绪通路，所以「推不动」不等于「无害」。</b>区带边界是示意，个体的相位反应曲线形状和幅度都有差异。</figcaption>
+  </figure>
+
+  <div class="key">
+    <p class="kt">如果记不住上面那张图</p>
+    <p>就记这一句：<b>体温在升的时候见光，体温在降的时候避光。</b></p>
+    <p>体温在起床前触底、然后一路升到下午——所以白天见光。体温从傍晚开始下降、一路降到清晨——所以入夜避光。这句话对倒班的人同样成立，只是他们的体温曲线整体挪了位置，需要按自己的实际作息去算。</p>
+  </div>
+
+  <h3>为什么「往前调」比「往后调」难</h3>
+  <p>人类的自主神经系统是不对称的：<b>强行保持清醒比强行提早入睡容易得多</b>。需要的时候你可以靠肾上腺素硬撑着多醒几小时，但你没法命令自己提前两小时睡着。这个不对称直接解释了一个所有人都体验过的现象——<b>往东飞比往西飞难受</b>，因为往东要求你提早睡；也解释了为什么周末晚睡两天，周一早上就废了：你在两天里做了一次自发的相位推迟，而推迟很容易，往回拉很难。</p>
+</section>
+
+<div class="band">
+  <p class="bk">执行 · 按时间顺序</p>
+  <h2>一天该怎么过</h2>
+  <p>下面五节按 24 小时顺序排列。每条给出剂量、可替代方案和边界。档位标签沿用知识库的证据核对口径：<b>高</b>＝与权威共识一致，<b>中高</b>＝人体证据收敛但细节有限，<b>中</b>＝方向合理但不能写成普遍因果。</p>
+</div>
+
+<section id="wake">
+  <div class="shead"><span class="stime">醒后 0–60 分钟</span><h2>这一小时的价值高于其余 23 小时</h2></div>
+  <p class="lede">这是唯一一个「你做什么会决定今晚几点困」的窗口。它同时触发早晨的皮质醇脉冲——那个让你清醒、有动力的正常生理峰值——并设定当晚褪黑素开始上升的时间。</p>
+
+  <div class="p">
+    <div class="p-h"><h4>醒来后尽快到户外，不隔玻璃</h4><span class="t t-mh">中高</span></div>
+    <p><span class="k">剂量</span>晴天 <b>5–10 分钟</b>；多云 <b>10–20 分钟</b>；厚云或天色很暗 <b>20–30 分钟或更久</b>。原则是<b>强度不够就用时长补</b>，因为接收端是个光子累加器。不必盯着太阳，站在户外的阴影里通常也足够——阴影处的光子量依然远高于室内。</p>
+    <p><span class="k">合并</span>不要把它当成一件额外的事。遛狗、走路去地铁、在阳台吃早饭、把第一杯咖啡端到户外喝——这些都算，而且比「专门去晒 10 分钟」更容易长期坚持。</p>
+    <p class="edge"><span class="k">边界</span><b>绝不直视太阳，也不要看任何让眼睛疼的光源。</b>这些分钟数是行为提示，不是适用于所有纬度、季节和眼病的临床阈值。视网膜疾病、光敏药物、白内障术后、极地季节需要眼科个体化。</p>
+  </div>
+
+  <div class="p">
+    <div class="p-h"><h4>早晚不要戴墨镜，正午可以戴</h4><span class="t t-md">中</span></div>
+    <p><span class="k">怎么做</span>晨光和暮光正是你需要采集的信号，墨镜会把大量光子挡在外面。反过来，正午太阳当头时戴墨镜完全合理——那时的紫外线剂量才是白内障和黄斑损伤真正需要防的部分。低角度阳光时朝太阳的大方向看，风险很小，正常眨眼即可。</p>
+    <p class="edge"><span class="k">边界</span>开车迎着太阳等安全场景优先。近视矫正眼镜和隐形眼镜不影响这套机制（它们不滤掉相关波长）。</p>
+  </div>
+
+  <div class="p">
+    <div class="p-h"><h4>天还没亮就起床：先开室内的亮灯</h4><span class="t t-md">中</span></div>
+    <p><span class="k">怎么做</span>如果你在日出前起床，把家里能开的灯都打开，尽量制造亮环境，触发清醒机制；等天亮之后再补一次户外光。有研究显示，在醒来之前给予明亮光的闪烁（甚至能穿透眼睑）可以让原本很难叫醒的青少年更容易醒来。</p>
+    <p class="edge"><span class="k">边界</span>反过来也成立：<b>如果你半夜醒来、想继续睡，就要反着做</b>——保持暗，别开亮灯。</p>
+  </div>
+
+  <div class="note"><b>起得很晚怎么办？</b>如果你中午才醒，光照仍然值得拿——它对情绪、警觉和当晚的睡眠压力仍然有效。但要清楚：<b>那个时间点已经在死区里，你推不动时钟</b>。想真正把作息往前挪，得先靠逐步提前起床时间把体温最低点也带过来，然后才能在正确的窗口里用光。</div>
+</section>
+
+<section id="day">
+  <div class="shead"><span class="stime">白天</span><h2>不是为了时钟，是为了情绪和大脑</h2></div>
+  <p class="lede">白天中段的光几乎移不动生物钟——它在死区里。但它并不是没用，恰恰相反：它喂的是本文开头那条「情绪通路」，同时抬高睡眠压力，让你晚上更容易困。这两件事都不经过时钟。</p>
+
+  <div class="p">
+    <div class="p-h"><h4>把「出门」拆散到一天里</h4><span class="t t-mh">中高</span></div>
+    <p><span class="k">怎么做</span>不需要一次性待很久。午饭去户外吃、打电话时去楼下走一圈、把一次会议改成走路会议。目标是<b>累计的白天户外时长</b>，而不是某一次的完美剂量。如果实在出不去：靠窗坐远好过不靠窗，<b>天窗远好过侧窗</b>（因为负责授时的细胞主要看向上方）。</p>
+    <p class="edge"><span class="k">边界</span>「白天要充足明亮光照」是共识方向，但没有统一的每日 lux·小时处方。</p>
+  </div>
+
+  <div class="p">
+    <div class="p-h"><h4>白天绝对不要戴防蓝光眼镜</h4><span class="t t-mh">中高</span></div>
+    <p><span class="k">怎么做</span>这是这个领域里最常见、也最有代价的一个错误：把本来就严重不足的白天光照，再人为削掉一块。<b>如果你一定要用防蓝光眼镜，那应该是在晚上用</b>——而即便在晚上，直接把灯调暗也比戴眼镜更有效、更便宜。</p>
+    <p class="edge"><span class="k">边界</span>眼睛的疲劳和头痛更可能来自长时间近距离用眼，而不是「蓝光」本身。</p>
+  </div>
+</section>
+
+<section id="dusk">
+  <div class="shead"><span class="stime">日落前后</span><h2>被漏掉最多的一个信号</h2></div>
+  <p class="lede">几乎所有人都听过「早上晒太阳」，很少有人听说过傍晚这一次。但它有一个独特的、非常实用的功能：<b>它会下调你视网膜的敏感度，为你晚上不可避免要接触的人造光留出缓冲。</b></p>
+
+  <div class="p">
+    <div class="p-h"><h4>日落前后到户外，看西边</h4><span class="t t-md">中</span></div>
+    <p><span class="k">剂量</span><b>10 分钟以上</b>，不必非要看到完整日落。太阳在低角度下沉的那段时间就够。这一次和早晨那一次一样，用的是低太阳角度特有的蓝黄反差。</p>
+    <p><span class="k">为什么值得</span>研究提示，傍晚接触自然光可以<b>部分抵消</b>（注意：是部分，不是全部）夜间人造光的负面效应。等于给你的夜晚上了一层保险。在冬天尤其重要——如果你早上进办公室时天还没亮、出来时天已经黑了，那种说不出的怪异和低落感，很可能就是这两个信号一起缺失的结果。</p>
+    <p class="edge"><span class="k">边界</span>「部分抵消」不等于「可以随便熬夜开大灯」。它降低损失，不消除损失。</p>
+  </div>
+</section>
+
+<section id="night">
+  <div class="shead"><span class="stime">入夜 → 睡前</span><h2>找到你的最小可视光量</h2></div>
+  <p class="lede">夜间协议的关键不是买什么产品，而是一个可以今晚就做的自我校准实验。它来自 Samer Hattar 本人的做法。</p>
+
+  <div class="p">
+    <div class="p-h"><h4>最小可视光量测试</h4><span class="t t-md">中</span></div>
+    <ol class="steps">
+      <li>入夜后，把家里的灯逐级调暗，一直调到<b>刚好还能舒服地看清东西</b>为止。</li>
+      <li><b>关键一步：调暗之后先坐着等 10–15 分钟</b>。你的视杆细胞需要这么久才能完成暗适应。如果你刚从亮灯环境切过去就下判断，一定会觉得「太暗了」——那不是暗，那是你的眼睛还没适应。</li>
+      <li>15 分钟后重新评估。绝大多数人会发现，自己实际需要的光比习惯用的少得多。</li>
+    </ol>
+    <p class="edge"><span class="k">边界</span>安全优先——有跌倒风险的老人、走廊和楼梯该亮就亮。这是自我校准的实践框架，不是有强临床终点的干预。</p>
+  </div>
+
+  <div class="p">
+    <div class="p-h"><h4>把光放低，关掉顶灯</h4><span class="t t-mh">中高</span></div>
+    <p><span class="k">怎么做</span>负责授时的细胞主要接收来自<b>上方</b>的光——它们本来就是用来看天空的。所以同样的亮度，顶灯的干扰远大于台灯和地灯。夜里只保留低位光源。烛光、壁炉这类低强度暖光基本不构成问题。</p>
+    <p class="edge"><span class="k">边界</span>真正起作用的是<b>剂量、时机和个体敏感性</b>，不是把「蓝光」单独妖魔化。先调暗、再谈滤波。</p>
+  </div>
+
+  <div class="p">
+    <div class="p-h"><h4>不必追求完全黑暗</h4><span class="t t-md">中</span></div>
+    <p><span class="k">怎么做</span>睡眠环境要暗，但不需要绝对全黑——完全的黑暗对不少人反而带来焦虑感。需要一点照明的话，用<b>非常暗的红光</b>：<b>10 lux 以下的暗红光对睡眠几乎没有可测量的影响</b>。这是起夜、哄孩子、找东西时的正确选择。</p>
+    <p class="edge"><span class="k">边界</span>「暗红光无害」的前提是<b>真的很暗</b>。一盏很亮的红色灯依然是亮光。</p>
+  </div>
+
+  <div class="note"><b>关于屏幕：</b>比「蓝光」更重要的是四件事——<b>屏幕有多亮、离眼睛多近、你用到几点，以及你在上面看什么</b>。前三件属于光：把亮度调到最低、把设备拿远、早点放下，收益远大于任何滤蓝光设置。第四件不属于光，但它经常才是真正让你睡不着的那一个——见<a href="#arousal">第二个旋钮</a>。</div>
+</section>
+
+<section id="deep">
+  <div class="shead"><span class="stime night">22:00 – 04:00</span><h2>视网膜最敏感的那段时间</h2></div>
+  <p class="lede">这是一天里唯一一段「一点点光就够造成影响」的窗口。早晨你需要成千上万 lux 才能推动系统，而在这个窗口里，大约 <b>1,000–1,500 lux 量级</b>的光就足以产生可观的作用——顺手打开的浴室顶灯就在这个量级。</p>
+
+  <ul class="tick">
+    <li><b>起夜时用最暗的光。</b>不要开顶灯。走廊小夜灯、暗红光、或者干脆摸黑（在安全的前提下）。</li>
+    <li><b>半夜醒了睡不着：保持暗。</b>不要开灯刷手机——你会同时给自己一剂在错误窗口的光，和一剂在错误时间的刺激。躺着做一段引导式的深度休息（NSDR / yoga nidra，10–30 分钟）通常比强迫自己睡更有效。</li>
+    <li><b>如果 20 分钟仍然完全清醒</b>，可以离开床、到<b>昏暗</b>环境做低刺激的事，真正困了再回床（这是失眠认知行为治疗里刺激控制的核心）。注意关键词是昏暗——别把自己搬到亮着大灯的客厅里。</li>
+  </ul>
+
+  <div class="key">
+    <p class="kt">一个重要的澄清</p>
+    <p>深夜其实也处在<b>移相死区</b>——这个时间点的光很难真正把你的时钟推到别处。但「推不动时钟」绝不等于「无害」：它依然会压制褪黑素，依然会通过那条独立的情绪通路起作用。</p>
+    <p>所以不必因为半夜开了一次灯就焦虑地认为「今晚全毁了」，但也不要用「反正推不动」当作长期在深夜泡在亮光里的借口。</p>
+  </div>
+</section>
+
+<section id="arousal">
+  <div class="shead"><span class="stime night">第二个旋钮</span><h2>唤醒度：手机在拧的另一个开关</h2></div>
+  <p class="lede">严格来说这一节不属于「光」。它在这里，是因为绝大多数人应用光照建议的第一个场景就是「晚上的手机」——而手机同时在拧<b>两个彼此独立的旋钮</b>。只调其中一个，你会把事情做对一半，然后困惑为什么没效果。</p>
+
+  <h3>睡眠不是开关，是减速</h3>
+  <p>Matt Walker 的比方很准：很多人以为睡眠像电灯开关——躺下、关灯、睡着。但睡眠是一个生理<b>过程</b>，它更像降落一架飞机，需要时间逐步下降到地面。你不会以 40 迈的速度直接开进车库，你会先减速、再停稳。</p>
+  <p>这个比方的实际含义是：<b>入睡需要一段下降，而任何把你重新拉高的东西都会打断它——不管它是不是光。</b></p>
+
+  <h3>「累，但睡不着」</h3>
+  <p>睡眠门诊里有一个常见到有专门叫法的现象：<b>wired and tired</b>——躺下时睡眠压力已经很足，人是真的困，但就是睡不着，因为交感神经激活和皮质醇水平太高。</p>
+  <p>换句话说，<b>睡眠压力和唤醒度是两个独立的量</b>。唤醒度足够高的时候，它会直接压过睡眠压力。</p>
+  <p>这解释了一个很多人体验过、但归错了因的场景：你在全黑的房间里，戴着防蓝光眼镜，屏幕调到最暗，刷了二十分钟短视频，然后躺下四十五分钟睡不着。<b>那不是光的问题。光那一侧你已经做对了。</b></p>
+
+  <figure>
+    <svg viewBox="0 0 660 430" role="img" aria-label="两个独立旋钮的四象限图：横轴是光剂量，纵轴是唤醒度。暗且低唤醒是目标区；暗但高唤醒会出现累却睡不着；亮但低唤醒会让作息持续推迟；两者都高则两条通路同时受损。调暗屏幕和防蓝光只让人沿横轴左移，不会把人从高唤醒降到低唤醒。">
+      <defs>
+        <marker id="qC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="var(--cool)"></path></marker>
+        <marker id="qW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="var(--warm)"></path></marker>
+      </defs>
+
+      <rect x="100" y="55" width="260" height="140" rx="3" fill="var(--cool)" fill-opacity=".16" stroke="var(--cool)" stroke-opacity=".5"></rect>
+      <rect x="360" y="55" width="260" height="140" rx="3" fill="currentColor" fill-opacity=".07"></rect>
+      <rect x="100" y="195" width="260" height="140" rx="3" fill="var(--warm)" fill-opacity=".2" stroke="var(--warm)" stroke-opacity=".75" stroke-width="1.5"></rect>
+      <rect x="360" y="195" width="260" height="140" rx="3" fill="currentColor" fill-opacity=".07"></rect>
+
+      <text x="230" y="105" text-anchor="middle" font-size="14.5" font-weight="700" fill="currentColor">累，但睡不着</text>
+      <text x="230" y="127" text-anchor="middle" font-size="12" fill="var(--muted)">光做对了，内容没做对</text>
+
+      <text x="490" y="105" text-anchor="middle" font-size="14.5" font-weight="700" fill="currentColor">两条通路同时受损</text>
+      <text x="490" y="127" text-anchor="middle" font-size="12" fill="var(--muted)">最常见的默认状态</text>
+
+      <text x="230" y="272" text-anchor="middle" font-size="14.5" font-weight="700" fill="currentColor">容易入睡 · 时相稳定</text>
+      <text x="230" y="294" text-anchor="middle" font-size="12" fill="var(--muted)">目标区</text>
+
+      <text x="490" y="272" text-anchor="middle" font-size="14.5" font-weight="700" fill="currentColor">睡得着，但越来越晚</text>
+      <text x="490" y="294" text-anchor="middle" font-size="12" fill="var(--muted)">时相被持续推迟</text>
+
+      <line x1="470" y1="163" x2="255" y2="163" stroke="var(--cool)" stroke-width="2" marker-end="url(#qC)"></line>
+      <rect x="300" y="140" width="128" height="21" rx="3" fill="var(--surface)"></rect>
+      <text x="364" y="155" text-anchor="middle" font-size="12" font-weight="700" fill="var(--cool)">调暗屏幕 · 防蓝光</text>
+
+      <line x1="140" y1="180" x2="140" y2="250" stroke="var(--warm)" stroke-width="2" marker-end="url(#qW)"></line>
+      <text x="152" y="211" font-size="12" font-weight="700" fill="var(--warm)">减速 · 内容分级 · 闭环</text>
+
+      <line x1="100" y1="335" x2="620" y2="335" stroke="currentColor" stroke-opacity=".35"></line>
+      <line x1="100" y1="55" x2="100" y2="335" stroke="currentColor" stroke-opacity=".35"></line>
+      <text x="120" y="356" font-size="11.5" fill="var(--faint)">暗</text>
+      <text x="600" y="356" text-anchor="end" font-size="11.5" fill="var(--faint)">亮</text>
+      <text x="360" y="380" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)">光剂量 →</text>
+      <text x="88" y="330" text-anchor="end" font-size="11.5" fill="var(--faint)">低</text>
+      <text x="88" y="68" text-anchor="end" font-size="11.5" fill="var(--faint)">高</text>
+      <text x="34" y="195" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--muted)" transform="rotate(-90 34 195)">唤醒度 →</text>
+    </svg>
+    <figcaption><b>两个旋钮，需要分别拧。</b>把屏幕调暗、戴防蓝光眼镜、用夜间模式——这些动作全都只让你沿着<b>横轴</b>左移。它们不会把你从上半区带到下半区。如果你已经把光做到位却仍然躺着睡不着，说明你停在了左上角，而那里缺的不是更暗的屏幕，是一段减速。</figcaption>
+  </figure>
+
+  <h3>手机的第二条路径：预期性焦虑</h3>
+  <p>Walker 指出一个和光<b>完全无关</b>的机制：手机在卧室里会制造一种低水平的<b>预期性焦虑</b>（anticipatory anxiety）。它不需要你去看它——只要它在那儿、只要你知道那边可能有什么在等着你，这个状态就存在。</p>
+  <p>而这个状态是可测量的：处在低水平预期性焦虑中时，<b>深睡的深度会变浅</b>。</p>
+  <p>有一个几乎所有人都亲自验证过的例子：明天早上五点要赶飞机，而你平时七点起。两件事几乎一定会发生——那一夜你睡得更浅；而且你会在闹钟响之前几分钟自己醒过来。你的大脑整晚保持在一个警戒的浅层状态。<b>手机做的是同一件事的弱化版，只是它每天都在做。</b></p>
+  <p>还有一个方向常被忽略：<b>早上闹钟一响就解锁手机</b>，消息、邮件、社交内容一次性涌进来——那一波压力会训练你的大脑去<b>预期</b>它。而这份训练的账，是在当天晚上的睡眠上结的。</p>
+
+  <h3>为什么短视频尤其难对付</h3>
+  <p>两个机制叠在一起：</p>
+  <ul class="tick">
+    <li><b>新异性是多巴胺最强的刺激之一</b>，而短视频的更新速度极高——每一次滑动都是一片全新的内容。</li>
+    <li><b>间歇性强化是维持行为最强的一种程序。</b>你不知道下一条是不是好的，这个不确定性本身就是驱动力。老虎机用的是同一套机制。</li>
+  </ul>
+  <p>Huberman 有一句话说得很到位：如果一图胜千言，那么一部影片胜过一百万张图——而我们现在用大拇指一滑就能取用无数部影片，<b>这是神经系统在人类历史上从未面对过的处境</b>。</p>
+
+  <h3>深度长文与连载：另一种机制，同样有效</h3>
+  <p>深度文章、剧集、连载不像短视频那样制造快速的唤醒尖峰。它们的问题是另一个：<b>它们打开了循环</b>——一个悬念、一个你想反驳的论证、一个你放不下的角色。</p>
+  <p>而 Walker 给入睡的核心建议恰恰是<b>「让脑子从它自己身上挪开」</b>（get your mind off itself）。好的连载内容做的是相反的事：它交给你一个必须继续处理的对象。这就是为什么「再看一集就睡」几乎从来不成立，也是为什么在床上读一篇让你想争论的文章，比读一本平淡的书更难入睡。</p>
+  <div class="key">
+    <p class="kt">一条足够好用的判据</p>
+    <p><b>不要在睡前开启一个你今晚结束不了的叙事或任务。</b>能不能在 20 分钟内自然收尾，比它是不是「屏幕」更能预测你今晚几点睡着。</p>
+  </div>
+
+  <h3>内容分级：比时间禁令更容易执行</h3>
+  <p>「睡前一小时不碰手机」失败率极高，因为它只给禁令、不给替代品。按唤醒度分级更实际：</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th class="n">唤醒度</th><th>内容</th><th>放在哪</th></tr></thead>
+      <tbody>
+        <tr><td class="tm">低 · 被动</td><td>纸质书、有声书、平淡的播客、听过很多遍的音乐、引导冥想、轻度拉伸</td><td>睡前 60 分钟内的默认选项</td></tr>
+        <tr><td class="tm">中</td><td>重看过的剧、轻松的长视频、和家人聊天</td><td>可以，但要能主动收尾</td></tr>
+        <tr><td class="tm">高 · 主动</td><td>短视频、社交动态、新闻、工作邮件与消息、竞技游戏、任何形式的争论</td><td>移到晚饭前后，不要带进减速区</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>原则很简单：<b>越接近睡觉，越往表格上方走。</b></p>
+
+  <h3>减速带：睡前 30–60 分钟</h3>
+  <ul class="tick">
+    <li><b>固定一套下降流程。</b>做什么不重要，重要的是它低唤醒、且每天重复——重复本身就是信号。</li>
+    <li><b>闭合当天。</b>把没做完的事写下来，标好明天的第一个入口，然后停。不要躺在床上继续处理它们。</li>
+    <li><b>生理性叹息 1–3 次</b>：鼻子深吸 → 顶端再补一小口短吸 → 长长地慢慢呼出。这是当下降低生理唤醒最快的自主工具。</li>
+    <li><b>NSDR / 引导冥想 10–30 分钟</b>，尤其适合明知很累却停不下来的夜晚。</li>
+  </ul>
+
+  <h3>已经躺下、但脑子停不下来</h3>
+  <ul class="tick">
+    <li><b>不要数羊。</b>这条被真的拿去做了对照实验（Allison Harvey）——数羊组入睡<b>更慢</b>。</li>
+    <li><b>改用「心理散步」。</b>选一条你极其熟悉的路线（比如每天遛狗那条），闭上眼，以尽可能高的保真度重走一遍：走到门口、扣上狗绳、下台阶、走到车道、右转、过马路时习惯性地左右看一眼、经过那家门口堆了很久没人清理的杂物……细节越具体越好。它可能有效的原因之一是它调用的是<b>程序性记忆</b>，而且它把注意力从「你自己」身上挪开了。</li>
+    <li><b>把钟面移出卧室。</b>半夜醒来知道现在几点，只会让情况更糟，不会更好。「现在 2:45，我 6 点要起，还剩三小时十五分」——这个计算本身就是一次唤醒。</li>
+    <li><b>手机出卧室。</b>如果因为紧急联络必须留在房间，Walker 自己的做法是：用一台只连 Wi-Fi、只用来播放引导冥想的旧手机，按下播放后就把它翻过去，全程不看时间。</li>
+  </ul>
+
+  <div class="note"><b>这不是道德批判。</b>手机没有毒，短视频也不是罪。这一节的全部意思只有一句：<b>它同时拧两个旋钮，而这两个旋钮要分别处理。</b>光那一侧靠调暗、放低、早点结束；唤醒那一侧靠内容分级和闭环。只做前者，你很可能会得出「光照建议对我没用」这个错误结论。</div>
+
+  <div class="flag">
+    <h4>什么时候这不再是习惯问题</h4>
+    <p>如果入睡困难持续<b>三个月以上</b>、每周多次发生、并且影响白天的功能，那属于慢性失眠。一线治疗是完整的<b>失眠认知行为治疗（CBT-I）</b>，而不是把自我调节技巧一层层叠加上去。请找睡眠门诊，不要长期自行加用助眠补剂。</p>
+  </div>
+</section>
+
+<div class="band">
+  <p class="bk">特殊情况</p>
+  <h2>当作息不在你手里的时候</h2>
+  <p>时差、倒班、冬季、育儿、高纬度——这些是最需要这套工具、也最容易做反的场景。共同点是：你不能再靠钟表时间做判断，必须回到体温最低点去算。</p>
+</div>
+
+<section id="jetlag">
+  <div class="shead"><span class="stime">场景</span><h2>时差</h2></div>
+
+  <p>先分清两件常被混为一谈的事：<b>旅途疲劳</b>（travel fatigue）来自久坐、脱水、气压和睡眠中断，南北向飞行也会有；<b>时区时差</b>（time zone jet lag）才是内部节律与当地日光不匹配。前者靠休息和补水，后者只能靠授时信号。</p>
+
+  <p><b>往东比往西难，而且不是心理作用。</b>往东要求你提早入睡，而人类强行提前入睡的能力远弱于强行保持清醒的能力。有研究比较了频繁东向、西向和不飞行人群的多项生物学指标，东向的代价更大。</p>
+
+  <div class="p">
+    <div class="p-h"><h4>操作方法：用目的地的作息推算新的体温最低点</h4><span class="t t-md">中</span></div>
+    <ol class="steps">
+      <li>确定你在目的地<b>打算</b>几点起床，往前推 90–120 分钟，得到目标体温最低点。</li>
+      <li><b>往东飞（需要相位提前）</b>：抵达后在目标体温最低点之后的窗口——也就是当地的清晨——尽量多见光；当地的傍晚和夜里严格避光。出发前几天开始逐日提前起床和见光时间，可以把落地后的落差缩小。</li>
+      <li><b>往西飞（需要相位推迟）</b>：反过来。抵达后争取傍晚的光，头几天主动避开过早的晨光，帮助自己晚睡晚起。往西本来就容易，通常不需要太用力。</li>
+      <li>抵达后立刻按<b>当地</b>时间安排三餐和运动。进食时间和规律运动都是次级授时信号，本身推不动主时钟，但能帮助外周器官（尤其是肝脏）跟上，减轻那种「整个人是散的」的感觉。</li>
+    </ol>
+    <p class="edge"><span class="k">边界</span>时差敏感度个体差异极大，<b>并且通常随年龄增加而加重</b>。有规律运动习惯的人调整起来更容易。跨 1–2 个时区的短途，通常不值得做复杂调整。</p>
+  </div>
+
+  <div class="note"><b>不要在错误的窗口硬拿光。</b>时差最常见的失败不是「没晒太阳」，而是在应该避光的时段暴晒——那等于用最大功率把时钟往反方向推，比什么都不做更糟。方向错了，剂量越大越坏。</div>
+</section>
+
+<section id="shift">
+  <div class="shead"><span class="stime">场景</span><h2>倒班</h2></div>
+  <p class="lede">倒班是这套系统里最难的情况，也是危害最明确的一种：轮转式的排班会打乱皮质醇释放、损害学习、扰乱多巴胺系统与情绪。如果你或家人在倒班，下面这一条比其他所有细节都重要。</p>
+
+  <div class="p">
+    <div class="p-h"><h4>第一原则：同一个班次至少连续保持 14 天</h4><span class="t t-md">中</span></div>
+    <p><span class="k">怎么做</span>如果排班可以协商，<b>争取连续两周同一班次，包括周末</b>。真正伤人的不是「上夜班」，而是<b>四天一轮、翻来覆去的轮转</b>——你的身体永远处在调整中途，从来没有对准过任何一个时相。</p>
+    <p><span class="k">推论</span>这条对不倒班的人同样成立：周末大幅晚睡晚起，本质上是给自己安排了一次小型倒班。<b>周日睡懒觉的代价，会在周一早上收取。</b></p>
+    <p class="edge"><span class="k">边界</span>很多人对排班没有话语权。做不到就退而求其次，尽量减少轮转频率，并把下面的光照原则用满。</p>
+  </div>
+
+  <div class="p">
+    <div class="p-h"><h4>光 = 清醒时段，暗 = 睡眠时段</h4><span class="t t-md">中</span></div>
+    <p><span class="k">怎么做</span>规则不变，只是重新对齐到你的实际作息：<b>在你需要清醒的那几个小时里，尽可能安全地拿到多的光</b>；在你需要睡觉的那几个小时里，尽可能地暗。比如 16:00–02:00 的班，就在这十小时里保持亮环境；02:00 下班后回家路上戴墨镜避光，到家用最暗的光完成洗漱，遮光窗帘拉严。</p>
+    <p><span class="k">补充</span>这是防蓝光眼镜少数真正合理的用途之一：下夜班回家、又不得不看屏幕时，调暗屏幕再加上滤镜是有意义的。<b>不合理的是在你需要清醒的时段戴它。</b></p>
+    <p class="edge"><span class="k">边界</span>倒班对健康的影响是系统性的，光照管理能减轻但不能消除。持续的过度困倦、驾驶时打盹、情绪显著变化，应该做医学评估。</p>
+  </div>
+</section>
+
+<section id="winter">
+  <div class="shead"><span class="stime">场景</span><h2>冬季与高纬度</h2></div>
+  <p class="lede">日照长度与情绪之间的相关性是稳定的：白天变长时，报告抑郁症状的人变少；白天变短时，变多。这不只发生在极北地区。</p>
+
+  <ul class="tick">
+    <li><b>把出门时间往光里挪。</b>冬天户外的光依然远亮于室内。中午出去 20 分钟，通常比早晨天没亮时勉强站在门口更有效。</li>
+    <li><b>傍晚那一次在冬天格外值钱。</b>下午 4–5 点出去看一眼西边的天，可以避免「进办公室天亮、出办公室天黑」那种完全失去时间锚点的状态。</li>
+    <li><b>考虑光照灯。</b>如果因为纬度、季节或工作实在拿不到晨光，一台约 <b>10,000 lux</b> 的光照灯（俗称 SAD 灯）是有证据支持的替代方案，通常在早晨使用 <b>5–30 分钟</b>，按产品说明保持正确距离。</li>
+  </ul>
+
+  <div class="p">
+    <div class="p-h"><h4>但要知道人造光替代不了什么</h4><span class="t t-md">中</span></div>
+    <p><span class="k">怎么做</span>光照灯提供的是<b>强度</b>。它无法复现低角度阳光特有的<b>蓝黄光谱反差</b>——而那正是「黎明/黄昏」这个信号的关键特征之一。所以：能出门就出门，光照灯是补位方案，不是等价替代。</p>
+    <p class="edge"><span class="k">边界</span>季节性情绪变化与临床抑郁不是一回事。如果情绪低落持续两周以上、影响功能，或伴随失去兴趣、自责、睡眠食欲明显改变，请就医——<b>光照是支持手段，不是治疗替代</b>。</p>
+  </div>
+
+  <div class="flag">
+    <h4>使用光照灯前需要注意</h4>
+    <p>光照治疗是一种真正有生理作用的干预，不是「摆着好看的台灯」。<b>双相障碍、有躁狂或轻躁狂病史、正在服用光敏药物、有视网膜疾病或黄斑病变的人，开始任何光照治疗方案前应先咨询医生。</b>这属于常规临床注意事项，不针对任何特定产品。</p>
+  </div>
+</section>
+
+<section id="kids">
+  <div class="shead"><span class="stime">场景</span><h2>孩子、青少年与年龄</h2></div>
+
+  <ul class="tick">
+    <li><b>孩子的卧室夜里要尽量全黑。</b>睡在有夜灯或微光房间里的儿童，近视发生率显著更高。真需要照明就用极暗的红光。</li>
+    <li><b>每天 2 小时户外</b>与更低的近视发生率相关，这条对儿童和成人都成立。可以是在户外读书、写作业、聊天——不必是运动。</li>
+    <li><b>青少年天然相位靠后。</b>他们晚睡晚起有生物学基础，不完全是「懒」。醒来前后的明亮光照能帮助他们更容易起床；晚上的手机与亮灯则是在主动把他们推得更晚。</li>
+    <li><b>婴儿对强光有天然回避</b>，不需要刻意「让宝宝晒太阳」来授时。婴幼儿的节律本来就更接近多个短周期，会随着发育逐步整合成 24 小时。</li>
+    <li><b>年龄增大后节律会变弱。</b>褪黑素的分泌节律随年龄变得不那么鲜明，对时间变化更敏感，时差也更难恢复。这意味着<b>越老，规律性和光照剂量越重要</b>，而不是越不重要。</li>
+  </ul>
+
+  <div class="flag">
+    <h4>不要自行给儿童使用褪黑素</h4>
+    <p>褪黑素不只是「助眠剂」，它是一个作用广泛的激素信号，会抑制促性腺激素释放激素与黄体生成素通路。在儿童体内，褪黑素本来是持续高水平分泌的，并与青春期启动时间相关。市售补剂的常见剂量（1 mg、3 mg、甚至 12 mg）远超生理水平，而在发育中儿童身上使用这种超生理剂量的长期研究是缺失的。<b>儿童的睡眠问题应当交给医生评估。</b></p>
+  </div>
+</section>
+
+<div class="band">
+  <p class="bk">校准</p>
+  <h2>被误解、被夸大、被卖掉的部分</h2>
+  <p>这个话题传播得越广，失真越多。下面这些说法要么是把细节当成了重点，要么是把重点丢了——每一条都会直接改变你的执行。</p>
+</div>
+
+<section id="myths">
+  <div class="shead"><span class="stime">校准</span><h2>八个需要修正的认知</h2></div>
+
+  <h3>一、蓝光不是重点，强度才是——而强度也不是全部</h3>
+  <p>这是整个领域传播失真最严重的一处。授时细胞对蓝光确实最敏感，<b>但它们的响应谱很宽</b>，而且同时接收视杆和视锥的输入。结果是：只要光足够亮，滤掉 480 nm 附近那一小段并不能阻止它影响你的节律。更麻烦的是，滤单一波长会扭曲你看到的整个色彩世界——太阳光本来就是全谱的。</p>
+  <p><b>正确的操作顺序是：先降低整体亮度，再考虑光谱。</b>调暗一盏灯，比戴任何眼镜都更直接、更便宜、也更有效。想更进一步，就用可以调色温的灯具，在夜里降低蓝色成分、提高暖色成分，同时保持全谱——而不是粗暴地砍掉一整段。</p>
+  <p>还有一层需要补上：<b>就算你把光这一侧全部做对，屏幕上的内容依然可以单独让你睡不着。</b>亮度和光谱管的是昼夜节律，内容管的是唤醒度，两者是独立的——详见<a href="#arousal">第二个旋钮</a>。</p>
+
+  <h3>二、防蓝光眼镜：时段错了，就是净损失</h3>
+  <p>问题从来不是这类产品本身，而是使用时段。<b>大量人整天戴着它——包括白天开会的时候</b>。那是在给一个本来就严重不足的白天光照剂量再打一次折。要用就在夜里用，而且要清楚它的作用弱于直接调暗。</p>
+
+  <h3>三、褪黑素是授时信号，不是安眠药</h3>
+  <p>身体分泌褪黑素的作用是<b>告诉全身「天黑了」</b>，而不是把你敲晕。它对入睡时相的影响，远大于对睡眠深度的影响。三个需要知道的事实：</p>
+  <ul class="tick">
+    <li>市售常见剂量（1 / 3 / 5 / 12 mg）是<b>超生理量</b>——身体自己分泌的量要小得多。有数据提示微克级（例如 0.5 mg）在某些指标上可能更合理。</li>
+    <li>它会抑制促性腺激素释放激素与黄体生成素通路，从而影响男性睾酮与女性雌激素相关的下游功能；较高水平还与性腺功能的抑制相关。</li>
+    <li>它与青春期启动时间相关，因此<b>儿童和青少年使用需格外谨慎</b>，应由医生决定。</li>
+  </ul>
+  <p>如果你的问题是「几点困」，先用光去解决，那是更根本、也更安全的杠杆。</p>
+
+  <h3>四、隔着窗户基本不算数</h3>
+  <p>玻璃会滤掉相当一部分相关波长，同时把照度砍掉一半甚至更多。有一个足够好用的经验判据：<b>如果你透过窗户看不见太阳本身，那么进来的光对授时通常是不够的</b>。天窗是个明显的例外，而且效果不错——因为授时细胞主要看向上方。</p>
+
+  <h3>五、红光与近红外：确实在争议区</h3>
+  <p>关于红光和近红外光改善线粒体功能、视网膜老化等方向，近年讨论很多，也确实有值得关注的研究。但要诚实地说：<b>效果依波长、剂量、照射部位和具体疾病而异，把它外推成「全身改善代谢」是超出证据的</b>；相应地，「普通 LED 普遍有害」同样属于宽泛外推。在证据核对里，这一整块被列入争议区。</p>
+  <p>本指南能给出的确定结论只有一条，而且它和红光设备无关：<b>非常暗的红光（10 lux 以下）在夜间几乎不干扰睡眠</b>，因此适合做夜间照明。这一条与「红光疗法有什么疗效」是两个完全不同的问题。</p>
+
+  <h3>六、夏令时切换本身就是代价</h3>
+  <p>时间制度的切换会让内部时间与外部时间失配，仅仅一小时的偏移也足以让不少人在随后一两天里状态明显下滑。研究昼夜节律的科学家长期主张取消这种切换——问题不在于选择哪个标准时间，而在于<b>每年来回切换这个动作本身</b>。</p>
+
+  <h3>七、只有眼睛算数</h3>
+  <p>曾有一项在《Science》发表、声称「照射膝盖后方可以移动昼夜节律」的著名研究，后来被撤稿——很多人不知道这件事。就目前的证据而言，<b>授时的入口是眼睛</b>。皮肤接受阳光有它自己的意义（维生素 D 等），但那是另一个话题，不能用来替代眼睛的光照。</p>
+
+  <h3>八、个体差异是真实的，但方向不变</h3>
+  <p>有些人对光极其敏感，有些人怎么折腾都没事。这种差异可能有遗传基础，目前还不清楚具体机制（关于虹膜颜色是否影响敏感度，不同研究者说法并不一致，属于开放问题）。<b>但敏感度的差异改变的是剂量，不是方向</b>：不管你是哪一种人，白天要亮、夜里要暗这一点不变。</p>
+</section>
+
+<section id="safety">
+  <div class="shead"><span class="stime">边界</span><h2>安全与红旗</h2></div>
+
+  <div class="flag">
+    <h4>眼睛安全</h4>
+    <ul class="tick">
+      <li><b>永远不要直视太阳</b>，也不要注视任何让眼睛产生疼痛或不适的光源。需要的时候正常眨眼、移开视线。</li>
+      <li>太阳在低角度（清晨、傍晚）时，朝它的大方向看风险很小；<b>太阳当头时的高强度紫外线才是白内障和黄斑损伤真正需要防的部分</b>——那时戴墨镜是合理的。</li>
+      <li>视网膜疾病、黄斑病变、白内障术后、正在服用光敏药物的人，光照方案应由眼科医生个体化。</li>
+    </ul>
+  </div>
+
+  <div class="flag">
+    <h4>什么时候这套方法不够，需要看医生</h4>
+    <ul class="tick">
+      <li><b>情绪</b>：持续两周以上的情绪低落、失去兴趣、功能明显受损。光照是支持层，不是治疗替代。有自伤念头请立即寻求专业帮助。</li>
+      <li><b>双相障碍或有躁狂史</b>：任何光照治疗方案应先与医生讨论。</li>
+      <li><b>睡眠</b>：大声打鼾、被目击到睡眠中停止呼吸、晨起完全不恢复、白天过度困倦——这些指向睡眠呼吸暂停，需要正规评估和睡眠检测，不是靠调光能解决的问题。</li>
+      <li><b>节律本身</b>：如果你的作息严重偏移（例如无论如何都在凌晨 5 点才能入睡）、或者每天都在往后漂移，可能属于昼夜节律睡眠-觉醒障碍，应该去睡眠门诊，而不是自己硬扛。</li>
+      <li><b>长期失眠</b>：优先考虑完整的失眠认知行为治疗（CBT-I），而不是长期自行叠加助眠补剂。</li>
+    </ul>
+  </div>
+
+  <div class="note"><b>还有一件不能被光替代的事：</b>光照负责的是「几点该困、几点该醒」。它不能替代<b>足够的睡眠机会</b>——多数成年人需要规律地把 7–9 小时留出来。把作息调准之后仍然睡不够，那是时间分配问题，不是光照问题。</div>
+</section>
+
+<div class="band">
+  <p class="bk">落地</p>
+  <h2>一页速查与两周启动</h2>
+  <p>上面所有内容压缩成可以贴在冰箱上的版本。真正的难点从来不是知道，是让它变成默认行为。</p>
+</div>
+
+<section id="plan">
+  <div class="shead"><span class="stime">速查</span><h2>一天的光</h2></div>
+
+  <div class="day">
+    <ul>
+      <li><span class="w">醒来</span><span>固定时间起床，误差控制在 1 小时内。<span class="s">起床时间是整个系统的输入——它决定了体温最低点在哪。</span></span></li>
+      <li><span class="w">醒后 60′ 内</span><span>到户外。晴天 5–10 分钟，多云 10–20，厚云 20–30+。不隔玻璃，不戴墨镜，不直视太阳。<span class="s">天没亮就先开室内亮灯，等天亮再补。</span></span></li>
+      <li><span class="w">白天</span><span>把出门拆散：午饭在户外、通话时走一圈。靠窗好过不靠窗，天窗好过侧窗。<span class="s">白天不要戴防蓝光眼镜。正午戴墨镜可以。</span></span></li>
+      <li><span class="w">日落前后</span><span>出去 10 分钟以上，看西边。<span class="s">它会下调视网膜敏感度，为夜里的人造光留缓冲。冬天尤其重要。</span></span></li>
+      <li><span class="w">入夜</span><span>调暗、把光放低、关顶灯。做一次「最小可视光量」测试，记得调暗后等 15 分钟再判断。</span></li>
+      <li><span class="w">睡前 60′</span><span>进入减速区：内容降到低唤醒一档（纸书、有声书、平淡播客），闭合当天未完的事。<span class="s">不要开启一个今晚结束不了的叙事或任务。</span></span></li>
+      <li><span class="w">睡前</span><span>屏幕调到最暗、拿远、早点放下。卧室要暗，但不必全黑，钟面移出卧室。</span></li>
+      <li><span class="w n">22:00–04:00</span><span>视网膜最敏感的窗口。起夜用暗红光或小夜灯，别开顶灯。<span class="s">半夜醒了保持暗；20 分钟仍清醒就到昏暗处待着，别开大灯刷手机。</span></span></li>
+    </ul>
+  </div>
+
+  <div class="key">
+    <p class="kt">如果全部忘光</p>
+    <p><b>体温在升 → 见光。体温在降 → 避光。</b>体温在起床前触底，一路升到下午；从傍晚开始下降，一路降到清晨。</p>
+  </div>
+
+  <h3>两周启动</h3>
+  <p>不要同时改所有事。这套东西的反馈周期是几天，所以按周推进就够：</p>
+  <ol class="steps">
+    <li><b>第 1–3 天：只做晨光。</b>固定起床时间，醒后一小时内出门。别的什么都不改。多数人在第三到第五天开始注意到晚上更容易困。</li>
+    <li><b>第 4–7 天：加上夜间调暗。</b>做一次最小可视光量测试，把家里的顶灯换成台灯和地灯。这一步的收益通常比第一步更明显。</li>
+    <li><b>第 8–11 天：加上傍晚那一次。</b>日落前后出去 10 分钟。冬天或者纬度高的话，这一步的权重要往上调。</li>
+    <li><b>第 12–14 天：算一次你的体温最低点。</b>取这两周的实际起床时间求平均、往前推 90–120 分钟。有了这个数，你才能在出差、倒班、或者想调整作息时知道该往哪个窗口投光。</li>
+    <li><b>之后：只守两条底线。</b>起床时间的稳定性，和夜间的暗。其他都可以随生活弹性调整——包括漏做。漏一天不必重来，<b>要防的是连续漏两天</b>。</li>
+  </ol>
+
+  <div class="note"><b>怎么知道有没有效？</b>不用买设备。三个主观指标就够，观察两周：<b>晚上开始犯困的时间是否提前并稳定</b>、<b>早晨闹钟响之前是否更容易自然醒</b>、<b>下午的低谷是否变浅</b>。这三个都是这条通路的直接输出，比任何追踪器的评分都更接近真相。</div>
+</section>
+
+<section id="src">
+  <div class="shead"><span class="stime">附录</span><h2>来源、档位与局限</h2></div>
+
+  <p class="lede">这份指南来自 Huberman Lab 2020–2026 年全部 512 期节目 transcript 的全文检索，再叠加一层对健康主张的外部证据核对。</p>
+
+  <h3>主要语料</h3>
+  <div class="srcs">
+    <div><p class="h">Samer Hattar</p>美国国立精神卫生研究院时间生物学负责人。ipRGC、光对情绪与学习的直接通路、视旁缰核、三元模型、最小可视光量。</div>
+    <div><p class="h">David Berson</p>布朗大学。内在光敏视网膜神经节细胞的奠基性电生理记录。</div>
+    <div><p class="h">Huberman 独立单集</p>光照与健康专题、睡眠工具箱、时差与倒班、视觉与眼健康、皮质醇与倦怠。</div>
+    <div><p class="h">相关研究线</p>Ken Wright 的野外露营实验、Jamie Zeitzer 的晨间光脉冲、LeGates 与 Altimus 关于错时光照的 Nature 研究、Diego Fernández 的通路解剖。</div>
+  </div>
+
+  <h3>档位怎么定的</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>档位</th><th>含义</th><th>本指南中的例子</th></tr></thead>
+      <tbody>
+        <tr><td><span class="t t-hi">高</span></td><td>与当前权威指南或共识声明大体一致</td><td>白天要充足明亮光照、夜间要降低到达眼睛的光；晨光与紫外线剂量应分开管理</td></tr>
+        <tr><td><span class="t t-mh">中高</span></td><td>人体证据收敛，但剂量与长期终点仍有限</td><td>醒后尽早户外见光；固定起床时间；把光放低、关顶灯</td></tr>
+        <tr><td><span class="t t-md">中</span></td><td>方向合理，但不能写成普遍因果或临床处方</td><td>具体分钟数；11 分钟级别的精确阈值；傍晚光的「接种」效应；最小可视光量测试</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>需要说清楚的局限</h3>
+  <ul class="tick">
+    <li><b>那些精确的分钟数是行为提示，不是临床阈值。</b>真正决定效果的是到达眼睛的光谱、强度、持续时间、你的既往光照史和你此刻的生物时间。「晴天 10 分钟」的意义在于给你一个可执行的锚，不在于 10 这个数字。</li>
+    <li><b>关键的机制研究有相当一部分来自动物模型。</b>视旁缰核通路、错时光照对情绪与学习的分离效应，最干净的因果证据来自小鼠。人体的相关证据以流行病学和干预研究为主，方向一致，但强度不同。</li>
+    <li><b>这是对一档播客的整理，不是对文献的系统综述。</b>档位标签是可审计的编辑判断，不是「科学真值」。</li>
+    <li><b>个体差异真实存在。</b>对光的敏感度、chronotype、季节反应都因人而异。把本文当作起点，用自己的反应做最后的校准。</li>
+  </ul>
+</section>
+
+  </div></main>
+</div></div>
+
+<footer>
+  <div class="shell"><div class="col">
+    <h3>免责声明</h3>
+    <p>本页是基于公开播客内容的科普整理，<b>不构成医疗建议、诊断或治疗方案</b>，也不能替代执业医师的判断。文中所有数值均为参考区间或行为提示，不是临床阈值或处方。涉及用药、光照治疗方案、已确诊疾病（包括情绪障碍、双相障碍、睡眠障碍、眼科疾病）管理的决定，请由了解你完整情况的临床医生做出。</p>
+    <p style="margin-top:22px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--faint)">语料：Huberman Lab 2020–2026 · 512 期 transcript　·　外部核对参照 AASM · SRS 成人睡眠共识、PLOS Biology 光照共识及相应原始研究　·　整理于 2026-08</p>
+  </div></div>
+</footer>
+
+<script>
+(function(){
+  var groups=[
+    {t:'开始',ids:['why','mech','four']},
+    {t:'核心工具',ids:['tmin']},
+    {t:'一天该怎么过',ids:['wake','day','dusk','night','deep']},
+    {t:'第二个旋钮',ids:['arousal']},
+    {t:'特殊情况',ids:['jetlag','shift','winter','kids']},
+    {t:'校准与安全',ids:['myths','safety']},
+    {t:'落地',ids:['plan','src']}
+  ];
+  function build(ul){
+    groups.forEach(function(g){
+      var h=document.createElement('li');h.className='grp';h.textContent=g.t;ul.appendChild(h);
+      g.ids.forEach(function(id){
+        var s=document.getElementById(id); if(!s) return;
+        var t=s.querySelector('h2');
+        var li=document.createElement('li'),a=document.createElement('a');
+        a.href='#'+id; a.textContent=t?t.textContent:id; a.dataset.target=id;
+        li.appendChild(a); ul.appendChild(li);
+      });
+    });
+  }
+  var u1=document.getElementById('toc'); if(u1) build(u1);
+  var u2=document.getElementById('toc-m'); if(u2) build(u2);
+
+  var secs=Array.prototype.slice.call(document.querySelectorAll('main section'));
+  var links=Array.prototype.slice.call(document.querySelectorAll('#toc a'));
+  if('IntersectionObserver' in window){
+    var vis={};
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ vis[e.target.id]=e.isIntersecting; });
+      var cur=null;
+      for(var i=0;i<secs.length;i++){ if(vis[secs[i].id]){ cur=secs[i].id; break; } }
+      links.forEach(function(a){
+        var on=a.dataset.target===cur;
+        a.classList.toggle('on',on);
+        if(on){
+          var rail=a.closest('.rail');
+          if(rail){
+            var r=a.getBoundingClientRect(),rr=rail.getBoundingClientRect();
+            if(r.top<rr.top+10||r.bottom>rr.bottom-10) a.scrollIntoView({block:'nearest'});
+          }
+        }
+      });
+    },{rootMargin:'-8% 0px -70% 0px',threshold:0});
+    secs.forEach(function(s){ if(s.id) io.observe(s); });
+  }
+  var m=document.querySelector('.mob');
+  if(m) m.addEventListener('click',function(e){ if(e.target.tagName==='A') m.removeAttribute('open'); });
+})();
+</script>
+</body>
+</html>
