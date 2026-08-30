@@ -13,291 +13,423 @@ listed: false
 <title>边际十年操作手册</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<meta name="color-scheme" content="light dark">
 
 <style>
-:root{
-  --ground:#F1F3F1;
-  --surface:#FAFBFA;
-  --surface-2:#E8EDEA;
-  --ink:#16211F;
-  --ink-soft:#334340;
-  --muted:#5A6A66;
-  --rule:#D7DEDA;
-  --rule-soft:#E4E9E6;
-  --accent:#2E7D6B;
-  --accent-soft:#DCEBE6;
-  --ochre:#9E6716;
-  --ochre-soft:#F3E8D5;
-  --rust:#A6402F;
-  --rust-soft:#F4E0DC;
-  --shadow:0 1px 2px rgba(22,33,31,.05), 0 8px 24px -16px rgba(22,33,31,.28);
+/* ══════════════════════════════════════════════════════════════
+   边际十年操作手册 — "field manual"
+   A technical operating manual: grotesque type, tabular numerals,
+   hairline rules, one signal colour. Data colours appear only
+   inside data — never in the chrome.
+   ══════════════════════════════════════════════════════════════ */
 
-  --f-display:"Fraunces","Noto Serif SC",Georgia,"Songti SC",serif;
-  --f-body:"Noto Serif SC",Georgia,"Songti SC","Source Han Serif SC",serif;
-  --f-ui:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
-  --f-mono:"IBM Plex Mono","SF Mono",ui-monospace,Menlo,monospace;
+:root{
+  --paper:#F6F4F0;
+  --paper-2:#EDEAE3;
+  --surface:#FFFFFF;
+  --surface-2:#F1EEE8;
+  --ink:#14161A;
+  --ink-2:#3B424C;
+  --ink-3:#69717D;
+  --ink-4:#9AA1AC;
+  --rule:#E1DDD4;
+  --rule-2:#CCC7BB;
+  --accent:#B4470F;
+  --accent-2:#8E380B;
+  --accent-wash:#F8E9DB;
+  --good:#12604D;
+  --good-wash:#E0EFE8;
+  --warn:#8A6109;
+  --warn-wash:#F7EDD8;
+  --bad:#A32E1C;
+  --bad-wash:#F8E4DF;
+  --lift:0 1px 1px rgba(20,22,26,.03), 0 12px 28px -22px rgba(20,22,26,.35);
+
+  --f-head:"Archivo","Inter","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --f-body:"Inter","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,sans-serif;
+  --f-mono:"IBM Plex Mono","SF Mono",ui-monospace,Menlo,Consolas,monospace;
+
+  --gut:clamp(20px,4vw,40px);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --ground:#0E1513;
-    --surface:#161F1D;
-    --surface-2:#1E2926;
-    --ink:#E3EAE7;
-    --ink-soft:#C4D0CC;
-    --muted:#8FA09B;
-    --rule:#293633;
-    --rule-soft:#212C29;
-    --accent:#5CBBA1;
-    --accent-soft:#17322C;
-    --ochre:#D8A055;
-    --ochre-soft:#2E2418;
-    --rust:#D4735F;
-    --rust-soft:#31201C;
-    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+    --paper:#101114;
+    --paper-2:#161819;
+    --surface:#191B1E;
+    --surface-2:#202225;
+    --ink:#EAE8E4;
+    --ink-2:#C0BFBB;
+    --ink-3:#8D8D8B;
+    --ink-4:#6C6D6D;
+    --rule:#26282B;
+    --rule-2:#383A3E;
+    --accent:#EE8542;
+    --accent-2:#F49E64;
+    --accent-wash:#2A1A0F;
+    --good:#54B598;
+    --good-wash:#12251F;
+    --warn:#D6A44A;
+    --warn-wash:#251E10;
+    --bad:#E27963;
+    --bad-wash:#2A1713;
+    --lift:0 1px 1px rgba(0,0,0,.4), 0 14px 30px -22px rgba(0,0,0,.9);
   }
 }
 :root[data-theme="dark"]{
-  --ground:#0E1513;
-  --surface:#161F1D;
-  --surface-2:#1E2926;
-  --ink:#E3EAE7;
-  --ink-soft:#C4D0CC;
-  --muted:#8FA09B;
-  --rule:#293633;
-  --rule-soft:#212C29;
-  --accent:#5CBBA1;
-  --accent-soft:#17322C;
-  --ochre:#D8A055;
-  --ochre-soft:#2E2418;
-  --rust:#D4735F;
-  --rust-soft:#31201C;
-  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  --paper:#101114;--paper-2:#161819;--surface:#191B1E;--surface-2:#202225;
+  --ink:#EAE8E4;--ink-2:#C0BFBB;--ink-3:#8D8D8B;--ink-4:#6C6D6D;
+  --rule:#26282B;--rule-2:#383A3E;
+  --accent:#EE8542;--accent-2:#F49E64;--accent-wash:#2A1A0F;
+  --good:#54B598;--good-wash:#12251F;--warn:#D6A44A;--warn-wash:#251E10;
+  --bad:#E27963;--bad-wash:#2A1713;
+  --lift:0 1px 1px rgba(0,0,0,.4), 0 14px 30px -22px rgba(0,0,0,.9);
 }
 
-*{box-sizing:border-box}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{
-  margin:0;
-  background:var(--ground);
-  color:var(--ink);
-  font-family:var(--f-body);
-  font-size:17px;
-  line-height:1.85;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--f-body);font-size:16.5px;line-height:1.82;
+  font-feature-settings:"kern" 1,"liga" 1,"cv05" 1;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
+svg{display:block;max-width:100%;height:auto}
+::selection{background:var(--accent-wash);color:var(--ink)}
+:where(a,button,summary):focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 
-/* ---------- layout ---------- */
-.shell{max-width:1240px;margin:0 auto;padding:0 24px 120px;}
-.masthead{padding:88px 0 40px;border-bottom:1px solid var(--rule);}
+/* ── reading progress ───────────────────────────────────────── */
+#prog{position:fixed;inset:0 auto auto 0;height:2px;width:0;background:var(--accent);z-index:60;transition:width .1s linear}
+
+/* ── shell ──────────────────────────────────────────────────── */
+.shell{max-width:1320px;margin:0 auto;padding:0 var(--gut) 140px}
+
+/* ── masthead: the manual cover ─────────────────────────────── */
+.masthead{padding:clamp(56px,9vw,104px) 0 0}
 .eyebrow{
-  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--accent);display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:0 0 26px;
+  font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 clamp(28px,4vw,44px);
+  display:flex;align-items:center;gap:12px
 }
-.eyebrow::after{content:"";flex:1;min-width:40px;height:1px;background:var(--rule);}
+.eyebrow::before{
+  content:"";width:9px;height:9px;flex:none;background:var(--accent);
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)
+}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--rule);min-width:24px}
 h1{
-  font-family:var(--f-display);font-weight:700;font-size:clamp(38px,6.4vw,72px);line-height:1.08;
-  letter-spacing:-.015em;margin:0 0 22px;text-wrap:balance;
+  font-family:var(--f-head);font-weight:700;
+  font-size:clamp(46px,10.5vw,116px);line-height:.94;letter-spacing:-.035em;
+  margin:0 0 clamp(24px,3vw,36px);text-wrap:balance;
 }
-.deck{font-size:clamp(17px,2.1vw,20px);color:var(--ink-soft);max-width:34em;margin:0 0 30px;line-height:1.8;}
-.byline{font-family:var(--f-ui);font-size:13.5px;color:var(--muted);line-height:1.9;max-width:38em;}
-.byline b{color:var(--ink-soft);font-weight:600;}
+h1 span{display:block;color:var(--accent)}
+.deck{
+  font-size:clamp(17px,1.5vw,20.5px);line-height:1.66;color:var(--ink-2);
+  max-width:24ch;margin:0;font-weight:400;text-wrap:pretty
+}
+.mast-body{
+  display:grid;gap:clamp(26px,4vw,56px);align-items:start;
+  padding:clamp(28px,4vw,44px) 0 clamp(32px,4vw,48px);margin-top:clamp(30px,4vw,46px);
+  border-top:1px solid var(--rule)
+}
+@media (min-width:900px){.mast-body{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,5vw,72px)}}
+.byline{margin:0;font-size:15px;line-height:1.8;color:var(--ink-2);max-width:46em}
+.byline p{margin:0 0 14px}
+.byline p:last-child{margin-bottom:0}
+.byline b{font-weight:600;color:var(--accent);letter-spacing:.005em}
 
-.cols{display:block;padding-top:44px;}
-@media (min-width:1080px){
-  .cols{display:grid;grid-template-columns:236px minmax(0,1fr);gap:72px;align-items:start;}
+/* index strip: the six parts, as a cover contents block */
+.index{border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);margin-bottom:clamp(44px,6vw,76px)}
+.index ol{
+  list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--rule);
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr))
 }
-nav.rail{display:none;}
+.index li{background:var(--paper)}
+.index a{
+  display:block;padding:16px 16px 18px;text-decoration:none;color:var(--ink);
+  transition:background .18s ease,color .18s ease;height:100%
+}
+.index a:hover{background:var(--surface);color:var(--accent)}
+.index .no{
+  display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.16em;color:var(--ink-4);margin-bottom:7px
+}
+.index .nm{font-family:var(--f-head);font-weight:600;font-size:14.5px;line-height:1.35;letter-spacing:-.005em}
+
+/* ── two-column body ────────────────────────────────────────── */
+.cols{display:block}
+@media (min-width:1080px){
+  .cols{display:grid;grid-template-columns:212px minmax(0,1fr);gap:clamp(48px,6vw,88px);align-items:start}
+}
+
+/* ── rail ───────────────────────────────────────────────────── */
+nav.rail{display:none}
 @media (min-width:1080px){
   nav.rail{
-    display:block;position:sticky;top:28px;max-height:calc(100vh - 56px);overflow-y:auto;
-    font-family:var(--f-ui);font-size:13px;line-height:1.55;padding-right:8px;
+    display:block;position:sticky;top:0;max-height:100vh;overflow-y:auto;
+    padding:34px 0 60px;font-size:13px;line-height:1.5;scrollbar-width:thin
   }
-  nav.rail::-webkit-scrollbar{width:5px}
-  nav.rail::-webkit-scrollbar-thumb{background:var(--rule);border-radius:3px}
+  nav.rail::-webkit-scrollbar{width:4px}
+  nav.rail::-webkit-scrollbar-thumb{background:var(--rule-2);border-radius:2px}
 }
 nav.rail .rail-title{
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--muted);margin:0 0 14px;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-4);margin:0 0 16px
 }
-nav.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px;}
+nav.rail ol{list-style:none;margin:0;padding:0}
 nav.rail .grp{
-  margin-top:18px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--accent);padding-bottom:6px;border-bottom:1px solid var(--rule-soft);margin-bottom:6px;
+  margin-top:22px;padding:0 0 7px 12px;margin-bottom:6px;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-3);border-bottom:1px solid var(--rule)
 }
 nav.rail .grp:first-child{margin-top:0}
 nav.rail a{
-  color:var(--muted);text-decoration:none;display:block;padding:4px 0 4px 10px;
-  border-left:2px solid transparent;transition:color .15s,border-color .15s;
+  color:var(--ink-3);text-decoration:none;display:block;padding:5px 0 5px 12px;
+  border-left:2px solid var(--rule);transition:color .16s,border-color .16s
 }
-nav.rail a:hover,nav.rail a:focus-visible{color:var(--accent);border-left-color:var(--accent);}
+nav.rail a:hover{color:var(--ink)}
+nav.rail a.on{color:var(--accent);border-left-color:var(--accent);font-weight:500}
 
-main{min-width:0;max-width:70ch;}
+main{min-width:0;max-width:74ch}
 
-/* ---------- typography ---------- */
-.part{
-  margin:96px 0 0;padding-top:34px;border-top:2px solid var(--ink);
-}
-.part:first-child{margin-top:0;border-top:none;padding-top:0;}
+/* ── part / heading system ──────────────────────────────────── */
+.part{margin:clamp(80px,10vw,132px) 0 0;padding-top:clamp(26px,3vw,36px);border-top:2px solid var(--ink)}
+.part:first-child{margin-top:0;border-top:0;padding-top:0}
 .part-no{
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--muted);margin:0 0 10px;
+  font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 14px
 }
 h2{
-  font-family:var(--f-display);font-weight:600;font-size:clamp(27px,3.6vw,36px);line-height:1.22;
-  letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance;
+  font-family:var(--f-head);font-weight:700;font-size:clamp(28px,4vw,42px);line-height:1.12;
+  letter-spacing:-.028em;margin:0 0 16px;text-wrap:balance
 }
-.part-note{color:var(--muted);font-size:15.5px;margin:0 0 8px;max-width:36em;}
+.part-note{color:var(--ink-3);font-size:15.5px;line-height:1.72;margin:0 0 6px;max-width:40em}
 h3{
-  font-family:var(--f-display);font-weight:600;font-size:22px;line-height:1.35;
-  margin:54px 0 12px;text-wrap:balance;scroll-margin-top:24px;
+  font-family:var(--f-head);font-weight:600;font-size:22.5px;line-height:1.3;letter-spacing:-.018em;
+  margin:clamp(52px,6vw,72px) 0 14px;scroll-margin-top:20px;text-wrap:balance;
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap
 }
 h4{
-  font-family:var(--f-ui);font-weight:700;font-size:15px;letter-spacing:.01em;
-  margin:32px 0 8px;color:var(--ink);
+  font-family:var(--f-mono);font-weight:600;font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink);margin:38px 0 12px;display:flex;align-items:center;gap:11px
 }
-p{margin:0 0 18px;}
-main a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;}
-strong{font-weight:700;color:var(--ink);}
-em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent-soft) 62%);padding:0 1px;}
-ul,ol{margin:0 0 20px;padding-left:1.3em;}
-li{margin:0 0 8px;}
-li::marker{color:var(--accent);}
-ul ul,ol ol,ul ol,ol ul{margin:8px 0 0;}
-hr{border:none;border-top:1px solid var(--rule);margin:40px 0;}
-code,.n{font-family:var(--f-mono);font-size:.88em;font-variant-numeric:tabular-nums;}
-.n{color:var(--ink);font-weight:500;}
-
-/* ---------- components ---------- */
-.lede{
-  font-size:19px;line-height:1.8;color:var(--ink-soft);border-left:3px solid var(--accent);
-  padding-left:22px;margin:0 0 34px;
+h4::before{content:"";width:14px;height:2px;background:var(--accent);flex:none}
+p{margin:0 0 17px}
+main a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(--rule-2)}
+main a:hover{text-decoration-color:var(--accent)}
+strong{font-weight:600;color:var(--ink)}
+em{font-style:normal;background:linear-gradient(transparent 64%,var(--accent-wash) 64%);padding:0 1px}
+ul,ol{margin:0 0 20px;padding-left:1.25em}
+li{margin:0 0 9px}
+li::marker{color:var(--accent)}
+ul ul,ol ol,ul ol,ol ul{margin:9px 0 0}
+hr{border:0;border-top:1px solid var(--rule);margin:40px 0}
+code,.n{
+  font-family:var(--f-mono);font-size:.86em;font-variant-numeric:tabular-nums;
+  letter-spacing:-.01em
 }
+code{background:var(--surface-2);padding:.1em .38em;border-radius:2px;color:var(--ink-2)}
+.n{color:var(--ink);font-weight:500}
 
+/* ── lede ───────────────────────────────────────────────────── */
+.lede{font-size:18.5px;line-height:1.7;color:var(--ink-2);border-left:2px solid var(--accent);padding-left:20px;margin:0 0 32px}
+
+/* ── pull quote ─────────────────────────────────────────────── */
 .claim{
-  font-family:var(--f-display);font-size:21px;line-height:1.5;font-weight:600;
-  margin:34px 0;padding:24px 26px;background:var(--surface);border:1px solid var(--rule);
-  border-radius:2px;box-shadow:var(--shadow);text-wrap:balance;
+  position:relative;margin:clamp(34px,4vw,46px) 0;padding:0 0 0 clamp(30px,5vw,58px);
+  font-family:var(--f-head);font-weight:500;font-size:clamp(19px,2.2vw,24px);line-height:1.46;
+  letter-spacing:-.015em;color:var(--ink);text-wrap:pretty
+}
+.claim::before{
+  content:"";position:absolute;left:0;top:.42em;bottom:.3em;width:3px;background:var(--accent)
 }
 .claim .src{
-  display:block;font-family:var(--f-mono);font-size:11px;font-weight:400;letter-spacing:.08em;
-  color:var(--muted);margin-top:14px;text-transform:uppercase;
+  display:block;font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);margin-top:16px
 }
 
+/* ── note cards ─────────────────────────────────────────────── */
 .card{
-  background:var(--surface);border:1px solid var(--rule);border-radius:2px;
-  padding:24px 26px;margin:28px 0;box-shadow:var(--shadow);
+  background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--ink-4);
+  border-radius:2px;padding:20px 22px;margin:30px 0
 }
 .card > :last-child{margin-bottom:0}
+.card p{font-size:15.5px;line-height:1.76}
 .card-h{
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--accent);margin:0 0 14px;display:flex;gap:10px;align-items:baseline;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 11px
 }
-.card.warn{border-color:var(--ochre);background:var(--ochre-soft);}
-.card.warn .card-h{color:var(--ochre);}
-.card.flag{border-color:var(--rust);background:var(--rust-soft);}
-.card.flag .card-h{color:var(--rust);}
+.card.warn{border-left-color:var(--warn);background:var(--warn-wash);border-color:var(--rule)}
+.card.warn .card-h{color:var(--warn)}
+.card.flag{border-left-color:var(--bad);background:var(--bad-wash);border-color:var(--rule)}
+.card.flag .card-h{color:var(--bad)}
 
+/* ── protocol spec sheet ────────────────────────────────────── */
 .protocol{
-  border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:2px;
-  background:var(--surface);margin:28px 0;overflow:hidden;
+  background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  margin:30px 0;overflow:hidden;box-shadow:var(--lift)
 }
 .protocol > header{
-  padding:16px 22px 14px;border-bottom:1px solid var(--rule-soft);
   display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap;
+  padding:14px 20px;background:var(--surface-2);border-bottom:1px solid var(--rule)
 }
-.protocol > header b{font-family:var(--f-ui);font-size:15.5px;font-weight:700;}
+.protocol > header b{font-family:var(--f-head);font-size:16px;font-weight:600;letter-spacing:-.012em}
 .protocol > header span{
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)
 }
-.protocol .body{padding:18px 22px 20px;font-family:var(--f-ui);font-size:14.5px;line-height:1.75;}
-.protocol .body ul{padding-left:1.15em;margin-bottom:0;}
-.protocol .body li{margin-bottom:6px;}
+.protocol .body{padding:18px 20px 20px;font-size:15px;line-height:1.76}
+.protocol .body ul{list-style:none;padding:0;margin:0}
+.protocol .body li{position:relative;padding-left:20px;margin:0 0 9px}
+.protocol .body li::before{
+  content:"";position:absolute;left:2px;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--accent)
+}
 .protocol .body > :last-child{margin-bottom:0}
 
-.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--rule);border-radius:2px;background:var(--surface);}
-table{border-collapse:collapse;width:100%;min-width:520px;font-family:var(--f-ui);font-size:14px;line-height:1.6;}
+/* ── tables ─────────────────────────────────────────────────── */
+.scroll{overflow-x:auto;margin:28px 0;border:1px solid var(--rule);border-radius:3px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.62}
 caption{
-  caption-side:top;text-align:left;padding:16px 20px 4px;
-  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  caption-side:top;text-align:left;padding:15px 18px 5px;background:var(--surface);
+  font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--accent)
 }
-th,td{padding:11px 20px;text-align:left;border-bottom:1px solid var(--rule-soft);vertical-align:top;}
+th,td{padding:10px 18px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top}
 thead th{
-  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted);font-weight:500;border-bottom:1px solid var(--rule);background:var(--surface-2);
-  white-space:nowrap;
+  font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-3);background:var(--surface-2);border-bottom:1px solid var(--rule-2);white-space:nowrap
 }
-tbody tr:last-child td{border-bottom:none;}
-td.num,th.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap;}
-td.good{color:var(--accent);font-weight:600;}
-td.norm{color:var(--muted);}
-td.bad{color:var(--rust);font-weight:600;}
-tbody th{font-weight:600;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+tbody th{font-weight:600;white-space:nowrap;color:var(--ink)}
+tbody tr:hover td,tbody tr:hover th{background:var(--surface-2)}
+td.num,th.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.01em}
+td.good{color:var(--good);font-weight:600}
+td.norm{color:var(--ink-3)}
+td.bad{color:var(--bad);font-weight:600}
 
+/* ── lever strength meter ───────────────────────────────────── */
 .rank{
-  display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:10.5px;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10px;
+  font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-4);
+  border:1px solid var(--rule);border-radius:2px;padding:3px 8px;position:relative;top:-2px
 }
-.bars{display:inline-flex;gap:2px;}
-.bars i{width:5px;height:11px;background:var(--rule);border-radius:1px;display:block;}
-.bars i.on{background:var(--accent);}
+.bars{display:inline-flex;gap:3px}
+.bars i{width:5px;height:12px;background:var(--rule-2);border-radius:1px;display:block}
+.bars i.on{background:var(--accent)}
 
-.grid2{display:grid;gap:16px;margin:26px 0;}
-@media (min-width:620px){.grid2{grid-template-columns:1fr 1fr;}}
-.tile{
-  background:var(--surface);border:1px solid var(--rule);border-radius:2px;padding:18px 20px;
-  font-family:var(--f-ui);font-size:14px;line-height:1.7;
-}
-.tile b{display:block;font-size:15px;margin-bottom:6px;}
+/* ── stat tiles ─────────────────────────────────────────────── */
+.grid2{display:grid;gap:1px;margin:30px 0;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+@media (min-width:620px){.grid2{grid-template-columns:1fr 1fr}}
+.tile{background:var(--surface);padding:18px 20px;font-size:14.5px;line-height:1.68;color:var(--ink-2)}
+.tile b{display:block;font-family:var(--f-head);font-size:15.5px;font-weight:600;color:var(--ink);margin-bottom:6px;letter-spacing:-.012em}
 .tile .big{
-  font-family:var(--f-mono);font-size:26px;font-weight:600;color:var(--accent);
-  font-variant-numeric:tabular-nums;line-height:1.2;display:block;margin-bottom:4px;
+  display:block;font-family:var(--f-head);font-size:clamp(30px,4vw,38px);font-weight:700;
+  color:var(--accent);font-variant-numeric:tabular-nums;line-height:1;letter-spacing:-.035em;
+  margin:0 0 12px;padding-bottom:12px;border-bottom:1px solid var(--rule)
 }
+.tile strong{color:var(--ink)}
 
-.steps{list-style:none;padding:0;margin:26px 0;counter-reset:s;}
-.steps li{
-  counter-increment:s;position:relative;padding-left:46px;margin-bottom:22px;
+/* ── numbered steps ─────────────────────────────────────────── */
+.steps{list-style:none;padding:0;margin:30px 0;counter-reset:s}
+.steps > li{
+  counter-increment:s;position:relative;padding-left:46px;margin-bottom:24px;
+  font-size:15.5px;line-height:1.76;color:var(--ink-2)
 }
-.steps li::before{
-  content:counter(s);position:absolute;left:0;top:2px;width:30px;height:30px;
-  display:grid;place-items:center;border:1px solid var(--accent);color:var(--accent);
-  border-radius:50%;font-family:var(--f-mono);font-size:12px;font-weight:600;
+.steps > li::before{
+  content:counter(s,decimal-leading-zero);position:absolute;left:0;top:2px;
+  font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.02em;
+  color:var(--accent);background:var(--accent-wash);border-radius:2px;
+  width:30px;height:22px;display:grid;place-items:center
 }
-.steps li b{display:block;font-family:var(--f-ui);font-size:16px;margin-bottom:4px;}
+.steps > li b{display:block;font-family:var(--f-head);font-size:16px;font-weight:600;color:var(--ink);margin-bottom:5px;letter-spacing:-.014em}
 
+/* ── figures ────────────────────────────────────────────────── */
+figure.fig{
+  margin:clamp(34px,4vw,48px) 0;padding:0;border:1px solid var(--rule);border-radius:3px;
+  background:var(--surface);overflow:hidden
+}
+@media (min-width:1180px){figure.fig,.scroll{width:calc(100% + 110px)}}
+@media (min-width:1340px){figure.fig,.scroll{width:calc(100% + 200px)}}
+.fig-h{
+  display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;
+  padding:13px 20px;border-bottom:1px solid var(--rule);background:var(--surface-2);
+  font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase
+}
+.fig-h b{color:var(--accent);font-weight:600}
+.fig-h span{color:var(--ink-4);font-weight:400;letter-spacing:.1em}
+.fig-body{padding:24px 20px 8px;overflow-x:auto}
+.fig-body svg{margin:0 auto;min-width:460px}
+figcaption{
+  padding:14px 20px 18px;font-size:13.5px;line-height:1.72;color:var(--ink-3);
+  border-top:1px solid var(--rule)
+}
+figcaption b{color:var(--ink-2);font-weight:600}
+/* svg text roles */
+.s-ax{stroke:var(--rule-2);stroke-width:1}
+.s-gr{stroke:var(--rule);stroke-width:1}
+.s-lb{font-family:var(--f-body);font-size:12px;fill:var(--ink-2)}
+.s-sm{font-family:var(--f-mono);font-size:10px;fill:var(--ink-4);letter-spacing:.06em}
+.s-vl{font-family:var(--f-mono);font-size:11.5px;font-weight:600;fill:var(--ink);font-variant-numeric:tabular-nums}
+.s-hd{font-family:var(--f-mono);font-size:10px;font-weight:600;fill:var(--ink-3);letter-spacing:.14em;text-transform:uppercase}
+
+/* ── colophon ───────────────────────────────────────────────── */
 footer.colophon{
-  margin-top:96px;padding-top:34px;border-top:2px solid var(--ink);
-  font-family:var(--f-ui);font-size:13.5px;color:var(--muted);line-height:1.85;
+  margin-top:clamp(84px,10vw,120px);padding-top:32px;border-top:2px solid var(--ink);
+  font-size:14px;color:var(--ink-3);line-height:1.82
 }
-footer.colophon h3{font-family:var(--f-display);font-size:19px;color:var(--ink);margin:0 0 12px;}
+footer.colophon h3{
+  font-family:var(--f-head);font-size:19px;font-weight:600;color:var(--ink);margin:0 0 14px;
+  letter-spacing:-.018em;display:block
+}
+footer.colophon code{font-size:.85em}
 footer.colophon .disc{
-  margin-top:24px;padding:16px 20px;border:1px solid var(--rule);border-radius:2px;
-  background:var(--surface);font-size:13px;
+  margin-top:26px;padding:18px 20px;border:1px solid var(--rule);border-left:3px solid var(--ink-4);
+  border-radius:2px;background:var(--surface);font-size:13.5px
 }
+footer.colophon .disc strong{color:var(--ink-2)}
 
-:where(a,button,summary):focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
-@media (max-width:520px){
-  body{font-size:16px;}
-  .shell{padding:0 18px 80px;}
-  .masthead{padding:56px 0 32px;}
-  th,td{padding:10px 14px;}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media (max-width:560px){
+  body{font-size:16px}
+  .shell{padding:0 18px 90px}
+  th,td{padding:10px 14px}
+  .claim{padding-left:20px}
+  .fig-body{padding:18px 14px 6px}
+}
+@media print{
+  nav.rail,#prog,.index{display:none}
+  body{background:#fff;color:#000;font-size:10.5pt}
+  .cols{display:block}
+  .part,figure.fig,.protocol{page-break-inside:avoid}
 }
 </style>
 </head>
 <body>
+<div id="prog" aria-hidden="true"></div>
 
 <div class="shell">
 
 <header class="masthead">
   <p class="eyebrow">综合指南 · 基于 The Drive 全部 show notes</p>
-  <h1>边际十年<br>操作手册</h1>
-  <p class="deck">把 Peter Attia 三百八十多期节目里散落的证据、阈值和协议，收拢成一份可以照着做、也可以反复回来查的东西。</p>
-  <p class="byline">
-    <b>它想解决什么问题。</b>真正改变健康轨迹的，从来不是某一个神奇因素，而是一组行为在几十年里的复利。所以这份指南不给"十条秘诀"，它给的是一套顺序：先想清楚要什么，再量出自己在哪，然后按杠杆大小依次下手。<br>
-    <b>怎么读。</b>第一次从头读一遍，建立框架；之后当查询手册用——检测目标查第二部分，训练处方查第三部分，某个疾病的具体打法查第四部分。
-  </p>
+  <h1>边际十年<span>操作手册</span></h1>
+  <div class="mast-body">
+    <p class="deck">把 Peter Attia 三百八十多期节目里散落的证据、阈值和协议，收拢成一份可以照着做、也可以反复回来查的东西。</p>
+    <div class="byline">
+      <p><b>它想解决什么问题。</b>真正改变健康轨迹的，从来不是某一个神奇因素，而是一组行为在几十年里的复利。所以这份指南不给"十条秘诀"，它给的是一套顺序：先想清楚要什么，再量出自己在哪，然后按杠杆大小依次下手。</p>
+      <p><b>怎么读。</b>第一次从头读一遍，建立框架；之后当查询手册用——检测目标查第二部分，训练处方查第三部分，某个疾病的具体打法查第四部分。</p>
+    </div>
+  </div>
 </header>
+
+<nav class="index" aria-label="分部索引">
+  <ol>
+    <li><a href="#p1"><span class="no">第一部分</span><span class="nm">思维框架</span></a></li>
+    <li><a href="#p2"><span class="no">第二部分</span><span class="nm">先量出你在哪</span></a></li>
+    <li><a href="#p3"><span class="no">第三部分</span><span class="nm">五大杠杆</span></a></li>
+    <li><a href="#p4"><span class="no">第四部分</span><span class="nm">逐个击破四骑士</span></a></li>
+    <li><a href="#p5"><span class="no">第五部分</span><span class="nm">便宜的补漏</span></a></li>
+    <li><a href="#p6"><span class="no">第六部分</span><span class="nm">怎么开始</span></a></li>
+  </ol>
+</nav>
 
 <div class="cols">
 
@@ -344,7 +476,7 @@ footer.colophon .disc{
 <main>
 
 <!-- ============ PART 1 ============ -->
-<section class="part">
+<section class="part" id="p1">
   <p class="part-no">第一部分</p>
   <h2>思维框架：在做任何事之前</h2>
   <p class="part-note">大多数人在健康上做的第一个错误决定，是直接跳到战术层——吃什么补剂、做哪个动作。Attia 的整套方法论里，框架先于动作。</p>
@@ -367,6 +499,65 @@ footer.colophon .disc{
     <li><strong>健康期与寿命同等重要</strong>——2.0 对健康期投入的注意力接近于零。</li>
   </ol>
   <p>落到实处，3.0 最直接的体现是<strong>"正常"与"最优"的区别</strong>。实验室报告上的参考范围来自人群统计分布，而那个人群本身代谢紊乱率很高。第二部分那些表格里，你会一遍遍看到这两列的差距——那个差距就是 Medicine 3.0 的全部论点。</p>
+  <figure class="fig">
+    <div class="fig-h"><b>图一 · 「正常」与「最优」之间的那一段</b><span>数值取自第二部分各表</span></div>
+    <div class="fig-body">
+      <svg viewBox="0 0 700 292" role="img" aria-label="六项指标的最优目标与实验室参考上限对比：ApoB 最优小于 60、参考上限 130；LDL-C 70 对 100；甘油三酯 100 对 150；空腹胰岛素 6 对 25；ALT 20 对 55；hs-CRP 0.5 对 3.0。每一条右侧未被着色的那一段，都是实验室判为正常、而 Attia 视为已经偏离目标的区间。">
+        <text class="s-hd" x="134" y="30">最优目标</text>
+        <text class="s-hd" x="566" y="30" text-anchor="end">实验室参考上限</text>
+        <line class="s-ax" x1="134" y1="40" x2="566" y2="40"></line>
+
+        <g>
+          <rect x="134" y="56" width="432" height="15" rx="2" fill="var(--accent)" fill-opacity=".13"></rect>
+          <rect x="134" y="56" width="199.4" height="15" rx="2" fill="var(--good)"></rect>
+          <line x1="333.4" y1="52" x2="333.4" y2="75" stroke="var(--accent)" stroke-width="1.5"></line>
+          <text class="s-lb" x="120" y="67.5" text-anchor="end">ApoB</text>
+          <text class="s-vl" x="578" y="67.5"><tspan fill="var(--good)">60</tspan><tspan fill="var(--ink-4)"> / 130</tspan><tspan class="s-sm" dx="7">mg/dL</tspan></text>
+        </g>
+        <g>
+          <rect x="134" y="90" width="432" height="15" rx="2" fill="var(--accent)" fill-opacity=".13"></rect>
+          <rect x="134" y="90" width="302.4" height="15" rx="2" fill="var(--good)"></rect>
+          <line x1="436.4" y1="86" x2="436.4" y2="109" stroke="var(--accent)" stroke-width="1.5"></line>
+          <text class="s-lb" x="120" y="101.5" text-anchor="end">LDL-C</text>
+          <text class="s-vl" x="578" y="101.5"><tspan fill="var(--good)">70</tspan><tspan fill="var(--ink-4)"> / 100</tspan><tspan class="s-sm" dx="7">mg/dL</tspan></text>
+        </g>
+        <g>
+          <rect x="134" y="124" width="432" height="15" rx="2" fill="var(--accent)" fill-opacity=".13"></rect>
+          <rect x="134" y="124" width="288" height="15" rx="2" fill="var(--good)"></rect>
+          <line x1="422" y1="120" x2="422" y2="143" stroke="var(--accent)" stroke-width="1.5"></line>
+          <text class="s-lb" x="120" y="135.5" text-anchor="end">甘油三酯</text>
+          <text class="s-vl" x="578" y="135.5"><tspan fill="var(--good)">100</tspan><tspan fill="var(--ink-4)"> / 150</tspan><tspan class="s-sm" dx="7">mg/dL</tspan></text>
+        </g>
+        <g>
+          <rect x="134" y="158" width="432" height="15" rx="2" fill="var(--accent)" fill-opacity=".13"></rect>
+          <rect x="134" y="158" width="103.7" height="15" rx="2" fill="var(--good)"></rect>
+          <line x1="237.7" y1="154" x2="237.7" y2="177" stroke="var(--accent)" stroke-width="1.5"></line>
+          <text class="s-lb" x="120" y="169.5" text-anchor="end">空腹胰岛素</text>
+          <text class="s-vl" x="578" y="169.5"><tspan fill="var(--good)">6</tspan><tspan fill="var(--ink-4)"> / 25</tspan><tspan class="s-sm" dx="7">μIU/mL</tspan></text>
+        </g>
+        <g>
+          <rect x="134" y="192" width="432" height="15" rx="2" fill="var(--accent)" fill-opacity=".13"></rect>
+          <rect x="134" y="192" width="157.1" height="15" rx="2" fill="var(--good)"></rect>
+          <line x1="291.1" y1="188" x2="291.1" y2="211" stroke="var(--accent)" stroke-width="1.5"></line>
+          <text class="s-lb" x="120" y="203.5" text-anchor="end">ALT</text>
+          <text class="s-vl" x="578" y="203.5"><tspan fill="var(--good)">20</tspan><tspan fill="var(--ink-4)"> / 55</tspan><tspan class="s-sm" dx="7">U/L</tspan></text>
+        </g>
+        <g>
+          <rect x="134" y="226" width="432" height="15" rx="2" fill="var(--accent)" fill-opacity=".13"></rect>
+          <rect x="134" y="226" width="72" height="15" rx="2" fill="var(--good)"></rect>
+          <line x1="206" y1="222" x2="206" y2="245" stroke="var(--accent)" stroke-width="1.5"></line>
+          <text class="s-lb" x="120" y="237.5" text-anchor="end">hs-CRP</text>
+          <text class="s-vl" x="578" y="237.5"><tspan fill="var(--good)">0.5</tspan><tspan fill="var(--ink-4)"> / 3.0</tspan><tspan class="s-sm" dx="7">mg/L</tspan></text>
+        </g>
+
+        <rect x="134" y="266" width="11" height="11" rx="2" fill="var(--good)"></rect>
+        <text class="s-sm" x="151" y="276">Attia 的最优区</text>
+        <rect x="258" y="266" width="11" height="11" rx="2" fill="var(--accent)" fill-opacity=".13" stroke="var(--accent)" stroke-opacity=".5"></rect>
+        <text class="s-sm" x="275" y="276">实验室称为「正常」，但已偏离目标</text>
+      </svg>
+    </div>
+    <figcaption><b>每一条右边那段浅色，就是 Medicine 3.0 的全部论点。</b>把六项指标按「实验室参考上限 = 满格」归一化之后，最优区往往只占参考范围的三分之一到一半。落在浅色段里的人，拿到的每一张化验单都不会被标星号。</figcaption>
+  </figure>
 
   <h3 id="f-horsemen">四骑士</h3>
   <p>四类疾病吃掉了绝大部分非意外死亡。它们的可干预程度差别巨大，这决定了你该在哪里花力气。</p>
@@ -384,6 +575,45 @@ footer.colophon .disc{
   </div>
   <p>读这张表要读出两件事。第一，ASCVD 是头号杀手，同时也是最可预防的——不吸烟、血压压到 120/80 以下、ApoB 压到人群第 5 百分位以下，你基本可以把它从死因清单上划掉。第二，癌症和神经退行的治疗端都很糟，所以在这两项上，<em>预防和早期发现几乎是全部</em>。</p>
   <p>代谢功能障碍单独造成的死亡不多，但它是另外三个的助燃剂——把它们的风险各推高 25% 到 50%。</p>
+  <figure class="fig">
+    <div class="fig-h"><b>图二 · 四骑士：花力气的地方在哪</b><span>纵轴 = 预防手段强度，横轴 = 晚期治疗有效性</span></div>
+    <div class="fig-body">
+      <svg viewBox="0 0 700 356" role="img" aria-label="四骑士按预防手段强度与晚期治疗有效性定位：心血管病与代谢功能障碍位于右上，预防很强且治疗有办法；癌症与神经退行性疾病位于左侧，晚期治疗基本无解，因此预防与早期发现几乎是全部。">
+        <rect x="80" y="54" width="560" height="246" fill="var(--surface-2)"></rect>
+        <rect x="80" y="54" width="285" height="246" fill="var(--accent)" fill-opacity=".09"></rect>
+        <line x1="365" y1="54" x2="365" y2="300" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 4" stroke-opacity=".7"></line>
+        <text class="s-hd" x="92" y="44" fill="var(--accent)">治疗端基本无解 · 预防与早筛几乎是全部</text>
+        <text class="s-hd" x="628" y="44" text-anchor="end">治疗端有办法</text>
+
+        <circle cx="140" cy="180" r="7" fill="var(--warn)"></circle>
+        <text class="s-lb" x="140" y="162" text-anchor="middle">神经退行性疾病</text>
+        <text class="s-sm" x="140" y="202" text-anchor="middle">预防中等 · 几乎无方案</text>
+
+        <circle cx="186" cy="252" r="7" fill="var(--bad)"></circle>
+        <text class="s-lb" x="186" y="234" text-anchor="middle">癌症</text>
+        <text class="s-sm" x="186" y="274" text-anchor="middle">预防有限 · IV 期几无进展</text>
+
+        <circle cx="452" cy="98" r="7" fill="var(--good)"></circle>
+        <text class="s-lb" x="452" y="80" text-anchor="middle">动脉粥样硬化性心血管病</text>
+        <text class="s-sm" x="452" y="120" text-anchor="middle">预防很强 · 治疗中等偏好</text>
+
+        <circle cx="588" cy="84" r="7" fill="var(--good)"></circle>
+        <text class="s-lb" x="588" y="160" text-anchor="middle">代谢功能障碍</text>
+        <text class="s-sm" x="588" y="180" text-anchor="middle">预防很强 · 治疗好</text>
+        <line x1="588" y1="94" x2="588" y2="146" stroke="var(--rule-2)" stroke-width="1"></line>
+
+        <line class="s-ax" x1="80" y1="300" x2="640" y2="300"></line>
+        <line class="s-ax" x1="80" y1="54" x2="80" y2="300"></line>
+        <text class="s-sm" x="86" y="318">低</text>
+        <text class="s-sm" x="634" y="318" text-anchor="end">高</text>
+        <text class="s-sm" x="360" y="338" text-anchor="middle">晚期治疗的有效性 →</text>
+        <text class="s-sm" x="72" y="300" text-anchor="end">弱</text>
+        <text class="s-sm" x="72" y="62" text-anchor="end">强</text>
+        <text class="s-sm" x="30" y="177" text-anchor="middle" transform="rotate(-90 30 177)">预防手段强度 →</text>
+      </svg>
+    </div>
+    <figcaption><b>右上角是可以下手的地方，左半边是只能提前下手的地方。</b>ASCVD 既是头号杀手、又最可预防，所以它是唯一一个能从死因清单上划掉的；癌症和神经退行落在左侧——治疗端既然基本无解，预防和早期发现就几乎是全部。</figcaption>
+  </figure>
 
   <h3 id="f-backcast">百岁十项全能：从终点倒推</h3>
   <p>这个框架来自 Attia 2018 年在一场葬礼上的顿悟：死者活到 89 岁，但最后十年已经完全丧失了她在意的一切能力——打不了高尔夫、种不了花、抱不动孙辈。死亡只是形式上的收尾。</p>
@@ -417,7 +647,7 @@ footer.colophon .disc{
 </section>
 
 <!-- ============ PART 2 ============ -->
-<section class="part">
+<section class="part" id="p2">
   <p class="part-no">第二部分</p>
   <h2>先量出你在哪</h2>
   <p class="part-note">下面所有"最优目标"来自 Attia 在节目中反复给出的临床实践区间，与实验室参考范围并列呈现。它们不是诊断标准，是他在自己诊所里追求的靶点。</p>
@@ -562,6 +792,48 @@ footer.colophon .disc{
     <div class="tile"><span class="big">约 10%</span>每十年的自然衰退幅度。而日常活动的耗氧量不会随年龄下降——这就是功能丧失的交叉点从何而来。</div>
     <div class="tile"><span class="big">30</span>Attia 给自己设的底线（mL/kg/min）。低于这个数，很多活动会开始变得不可能。</div>
   </div>
+    <figure class="fig">
+    <div class="fig-h"><b>图三 · 交叉点从哪里来</b><span>按文中的每十年 −10% 与底线 30 mL/kg/min 画出</span></div>
+    <div class="fig-body">
+      <svg viewBox="0 0 700 330" role="img" aria-label="两条 VO2max 衰退曲线：起点 50 与起点 38，均按每十年下降 10% 推演，与 30 mL/kg/min 的功能底线分别在约 78 岁和约 52 岁相交。日常活动的耗氧需求不随年龄下降，所以交叉点的位置完全由起点决定。">
+        <line class="s-gr" x1="84" y1="210.7" x2="640" y2="210.7"></line>
+        <line class="s-gr" x1="84" y1="133.3" x2="640" y2="133.3"></line>
+        <line class="s-gr" x1="84" y1="56" x2="640" y2="56"></line>
+        <text class="s-sm" x="76" y="214.7" text-anchor="end">20</text>
+        <text class="s-sm" x="76" y="137.3" text-anchor="end">40</text>
+        <text class="s-sm" x="76" y="60" text-anchor="end">60</text>
+        <text class="s-sm" x="76" y="292" text-anchor="end">0</text>
+
+        <line x1="84" y1="172" x2="640" y2="172" stroke="var(--bad)" stroke-width="1.5" stroke-dasharray="6 4"></line>
+        <text class="s-sm" x="90" y="166" fill="var(--bad)">30 mL/kg/min · 功能底线</text>
+
+        <path d="M84,94.7 L176.7,114 L269.3,131.4 L362,147.1 L454.7,161.1 L547.3,173.9 L640,185.2" fill="none" stroke="var(--good)" stroke-width="2.4"></path>
+        <path d="M84,141.1 L176.7,155.8 L269.3,168.9 L362,180.9 L454.7,191.7 L547.3,201.4 L640,209.9" fill="none" stroke="var(--accent)" stroke-width="2.4"></path>
+        <text class="s-vl" x="92" y="86" fill="var(--good)">起点 50</text>
+        <text class="s-vl" x="92" y="133" fill="var(--accent)">起点 38</text>
+
+        <circle cx="533.4" cy="172" r="5" fill="var(--good)"></circle>
+        <line x1="533.4" y1="172" x2="533.4" y2="288" stroke="var(--good)" stroke-width="1" stroke-dasharray="3 3"></line>
+        <text class="s-vl" x="533.4" y="162" text-anchor="middle" fill="var(--good)">≈ 78 岁</text>
+
+        <circle cx="291.6" cy="172" r="5" fill="var(--accent)"></circle>
+        <line x1="291.6" y1="172" x2="291.6" y2="288" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 3"></line>
+        <text class="s-vl" x="291.6" y="162" text-anchor="middle" fill="var(--accent)">≈ 52 岁</text>
+
+        <line class="s-ax" x1="84" y1="288" x2="640" y2="288"></line>
+        <line class="s-ax" x1="84" y1="288" x2="84" y2="56"></line>
+        <text class="s-sm" x="84" y="306" text-anchor="middle">30</text>
+        <text class="s-sm" x="176.7" y="306" text-anchor="middle">40</text>
+        <text class="s-sm" x="269.3" y="306" text-anchor="middle">50</text>
+        <text class="s-sm" x="362" y="306" text-anchor="middle">60</text>
+        <text class="s-sm" x="454.7" y="306" text-anchor="middle">70</text>
+        <text class="s-sm" x="547.3" y="306" text-anchor="middle">80</text>
+        <text class="s-sm" x="640" y="306" text-anchor="middle">90</text>
+        <text class="s-sm" x="640" y="324" text-anchor="end">年龄（岁）· 纵轴 VO₂ max, mL/kg/min</text>
+      </svg>
+    </div>
+    <figcaption><b>衰退速率是共同的，起点不是。</b>两条曲线的斜率完全一样——都是每十年 −10%；唯一的差别是三十岁那年站在哪里。日常活动的耗氧需求不会随年龄下降，所以这条底线是水平的，而你今天的高度决定了它在什么时候被穿过。</figcaption>
+  </figure>
   <p><strong>目标设定：</strong>最低标准是同龄同性别的前 25%；理想目标是前 1–2%；对高度自律的人，目标是<em>比自己小二十岁那一代人的前 1–2%</em>。</p>
   <p><strong>怎么测：</strong>实验室间接测热法是金标准（约 150–300 美元，大学、医院、运动医学诊所常有），需要充分热身和真正力竭的方案。没有条件时用 <strong>Cooper 测试</strong>：充分热身后全力跑 12 分钟，记距离。<br>
   公里制 <code>VO₂max = 22.351 × 公里数 − 11.288</code>；英里制 <code>VO₂max = 35.97 × 英里数 − 11.29</code>。</p>
@@ -597,7 +869,7 @@ footer.colophon .disc{
 </section>
 
 <!-- ============ PART 3 ============ -->
-<section class="part">
+<section class="part" id="p3">
   <p class="part-no">第三部分</p>
   <h2>五大杠杆</h2>
   <p class="part-note">运动、营养、睡眠、情绪健康、药物与补剂。它们不等权重，下面按 Attia 给出的实际权重排列。</p>
@@ -617,6 +889,32 @@ footer.colophon .disc{
     <li><strong>峰值有氧输出（VO₂ max / Zone 5）</strong>——三角形的顶点，发动机排量。</li>
   </ol>
   <p>心肺训练的目标是<em>最大化这个三角形的面积</em>——底要宽，尖要高。两者需要不同的训练方式，但边界没那么干净：Zone 2 也会抬高峰值，高强度也会拓宽底边，只是效率不同。</p>
+  <figure class="fig">
+    <div class="fig-h"><b>图四 · 心肺能力是一个三角形的面积</b><span>底边 = Zone 2 · 顶点 = VO₂ max</span></div>
+    <div class="fig-body">
+      <svg viewBox="0 0 700 300" role="img" aria-label="心肺训练示意：把有氧能力画成一个三角形，底边宽度代表 Zone 2 有氧效率，顶点高度代表 VO₂ max 峰值输出，训练的目标是同时把底加宽、把尖抬高，从而最大化三角形的面积。">
+        <text class="s-hd" x="70" y="28">↑ 顶点 · VO₂ MAX 峰值输出</text>
+        <line class="s-ax" x1="70" y1="246" x2="640" y2="246"></line>
+        <line x1="365" y1="64" x2="365" y2="246" stroke="var(--rule-2)" stroke-width="1" stroke-dasharray="4 4"></line>
+
+        <polygon points="130,246 600,246 365,64" fill="var(--accent)" fill-opacity=".16" stroke="var(--accent)" stroke-width="1.6"></polygon>
+        <polygon points="250,246 420,246 335,162" fill="var(--ink-3)" fill-opacity=".14" stroke="var(--ink-3)" stroke-width="1.2" stroke-dasharray="4 3"></polygon>
+
+        <circle cx="365" cy="64" r="4.5" fill="var(--accent)"></circle>
+        <text class="s-lb" x="365" y="52" text-anchor="middle" fill="var(--accent)">训练后</text>
+        <circle cx="335" cy="162" r="3.5" fill="var(--ink-3)"></circle>
+        <text class="s-sm" x="335" y="152" text-anchor="middle">训练前</text>
+
+        <text class="s-lb" x="494" y="204" text-anchor="middle">面积＝你实际拥有的心肺能力</text>
+
+        <line x1="130" y1="264" x2="600" y2="264" stroke="var(--accent)" stroke-width="1"></line>
+        <line x1="130" y1="259" x2="130" y2="269" stroke="var(--accent)" stroke-width="1"></line>
+        <line x1="600" y1="259" x2="600" y2="269" stroke="var(--accent)" stroke-width="1"></line>
+        <text class="s-hd" x="70" y="290">← 底边 · ZONE 2 有氧效率：最大脂肪氧化 · 全天配速 →</text>
+      </svg>
+    </div>
+    <figcaption><b>底要宽，尖要高。</b>两端需要不同的训练方式，但边界并不干净——Zone 2 也会抬高峰值，高强度也会拓宽底边，只是效率不同。真正要最大化的是面积，不是其中任何一个端点。</figcaption>
+  </figure>
 
   <h4>稳定性：最难讲、最容易看出缺失</h4>
   <p>Attia 说这是他转向长寿式训练后"最大的一次再教育"，而且"我们每个人都缺"。核心是四件事的组合能力：</p>
@@ -967,7 +1265,7 @@ footer.colophon .disc{
 </section>
 
 <!-- ============ PART 4 ============ -->
-<section class="part">
+<section class="part" id="p4">
   <p class="part-no">第四部分</p>
   <h2>逐个击破四骑士</h2>
 
@@ -983,6 +1281,55 @@ footer.colophon .disc{
     <div class="tile"><span class="big">−33%</span>前瞻队列研究，随访约 12 年</div>
     <div class="tile"><span class="big">−53%</span>孟德尔随机化，等于终身暴露，中位 52 年</div>
   </div>
+    <figure class="fig">
+    <div class="fig-h"><b>图五 · 同一个干预，暴露越久斜率越陡</b><span>LDL-C 每降 1 mmol/L ≈ 40 mg/dL</span></div>
+    <div class="fig-body">
+      <svg viewBox="0 0 700 330" role="img" aria-label="三类研究给出的心血管风险降幅随暴露时长上升：随机对照试验中位随访 5 年降 22%，前瞻队列随访约 12 年降 33%，孟德尔随机化相当于终身暴露、中位 52 年降 53%。三条射线的斜率依次变陡。">
+        <line class="s-gr" x1="84" y1="210.7" x2="640" y2="210.7"></line>
+        <line class="s-gr" x1="84" y1="133.3" x2="640" y2="133.3"></line>
+        <line class="s-gr" x1="84" y1="56" x2="640" y2="56"></line>
+        <text class="s-sm" x="76" y="292" text-anchor="end">0</text>
+        <text class="s-sm" x="76" y="214.7" text-anchor="end">−20%</text>
+        <text class="s-sm" x="76" y="137.3" text-anchor="end">−40%</text>
+        <text class="s-sm" x="76" y="60" text-anchor="end">−60%</text>
+
+        <line x1="84" y1="288" x2="609.7" y2="83.1" stroke="var(--accent)" stroke-width="2.4"></line>
+        <line x1="84" y1="288" x2="205.3" y2="160.4" stroke="var(--warn)" stroke-width="2.4"></line>
+        <line x1="84" y1="288" x2="134.5" y2="202.9" stroke="var(--ink-3)" stroke-width="2.4"></line>
+
+        <circle cx="134.5" cy="202.9" r="4.5" fill="var(--ink-3)"></circle>
+        <circle cx="205.3" cy="160.4" r="4.5" fill="var(--warn)"></circle>
+        <circle cx="609.7" cy="83.1" r="5.5" fill="var(--accent)"></circle>
+
+        <text class="s-vl" x="128" y="194" text-anchor="end" fill="var(--ink-3)">−22%</text>
+        <text class="s-vl" x="198" y="150" text-anchor="end" fill="var(--warn)">−33%</text>
+        <text class="s-vl" x="602" y="74" text-anchor="end" fill="var(--accent)">−53%</text>
+
+        <rect x="330" y="206" width="10" height="10" rx="2" fill="var(--ink-3)"></rect>
+        <text class="s-sm" x="348" y="215">随机对照试验 · 中位随访 5 年</text>
+        <rect x="330" y="228" width="10" height="10" rx="2" fill="var(--warn)"></rect>
+        <text class="s-sm" x="348" y="237">前瞻队列研究 · 随访约 12 年</text>
+        <rect x="330" y="250" width="10" height="10" rx="2" fill="var(--accent)"></rect>
+        <text class="s-sm" x="348" y="259">孟德尔随机化 · 等于终身暴露 · 中位 52 年</text>
+
+        <line class="s-ax" x1="84" y1="288" x2="640" y2="288"></line>
+        <line class="s-ax" x1="84" y1="288" x2="84" y2="56"></line>
+        <line class="s-ax" x1="185.1" y1="288" x2="185.1" y2="293"></line>
+        <line class="s-ax" x1="286.2" y1="288" x2="286.2" y2="293"></line>
+        <line class="s-ax" x1="387.3" y1="288" x2="387.3" y2="293"></line>
+        <line class="s-ax" x1="488.4" y1="288" x2="488.4" y2="293"></line>
+        <line class="s-ax" x1="589.5" y1="288" x2="589.5" y2="293"></line>
+        <text class="s-sm" x="84" y="306" text-anchor="middle">0</text>
+        <text class="s-sm" x="185.1" y="306" text-anchor="middle">10</text>
+        <text class="s-sm" x="286.2" y="306" text-anchor="middle">20</text>
+        <text class="s-sm" x="387.3" y="306" text-anchor="middle">30</text>
+        <text class="s-sm" x="488.4" y="306" text-anchor="middle">40</text>
+        <text class="s-sm" x="589.5" y="306" text-anchor="middle">50</text>
+        <text class="s-sm" x="640" y="324" text-anchor="end">暴露时长（年）</text>
+      </svg>
+    </div>
+    <figcaption><b>同一个分子，同一个方向，三条不同的斜率。</b>三类研究测的是同一件事——把 ApoB 颗粒压下去——差别只在于被测者暴露了多久。终身暴露的那条最陡，这就是为什么二十几岁开始和五十几岁开始不是同一件事。</figcaption>
+  </figure>
   <p>三条线的斜率差异本身就是论点：<em>暴露时间越长，收益越大</em>。这就是为什么二十几岁开始比五十几岁开始重要得多。</p>
 
   <h4>三个可改变的大项</h4>
@@ -1163,7 +1510,7 @@ footer.colophon .disc{
 </section>
 
 <!-- ============ PART 5 ============ -->
-<section class="part">
+<section class="part" id="p5">
   <p class="part-no">第五部分</p>
   <h2>便宜的补漏</h2>
   <p class="part-note">这些不属于五大杠杆，但代价极低、被忽略的频率极高。</p>
@@ -1199,7 +1546,7 @@ footer.colophon .disc{
 </section>
 
 <!-- ============ PART 6 ============ -->
-<section class="part">
+<section class="part" id="p6">
   <p class="part-no">第六部分</p>
   <h2>怎么开始</h2>
 
@@ -1257,5 +1604,37 @@ footer.colophon .disc{
 </main>
 </div>
 </div>
+<script>
+(function(){
+  var bar = document.getElementById('prog');
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.rail a[href^="#"]'));
+  var targets = links.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); });
+  var ticking = false;
+
+  function paint(){
+    ticking = false;
+    var d = document.documentElement;
+    var max = d.scrollHeight - d.clientHeight;
+    if (bar) bar.style.width = (max > 0 ? Math.min(100, d.scrollTop / max * 100) : 0) + '%';
+    var active = -1;
+    for (var i = 0; i < targets.length; i++){
+      var el = targets[i];
+      if (el && el.getBoundingClientRect().top < 160) active = i;
+    }
+    for (var j = 0; j < links.length; j++) links[j].classList.toggle('on', j === active);
+    if (active > -1){
+      var a = links[active], rail = a.closest('nav.rail');
+      if (rail){
+        var r = a.getBoundingClientRect(), rr = rail.getBoundingClientRect();
+        if (r.top < rr.top + 8 || r.bottom > rr.bottom - 8) a.scrollIntoView({ block: 'nearest' });
+      }
+    }
+  }
+  function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(paint); } }
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  paint();
+})();
+</script>
 </body>
 </html>
