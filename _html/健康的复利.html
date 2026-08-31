@@ -14,388 +14,495 @@ listed: false
 <meta name="description" content="根据 Eric Topol《Ground Truths》全部 277 篇文章整理的循证健康指南：哪些行为真的有用、哪些检查值得做、哪些流行做法没有证据。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,400&family=Noto+Serif+SC:wght@400;500;700&display=swap">
 <meta name="color-scheme" content="light dark">
 <style>
-/* ══════════════════════════════════════════════════════════════
-   健康的复利 — "the ledger"
-   A broadsheet argument built on one dichotomy, so the dichotomy
-   is the colour system: PROOF (human outcome evidence) against
-   UNPROVEN (reversing ageing). Everything else is ink on paper.
-   ══════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════════════
+   健康的复利 · BROADSHEET
+   Aesthetic: newsprint. No cards anywhere — hierarchy comes from rules,
+   column gutters and type size, the way a newspaper does it. Two print
+   inks carry the document's own dichotomy: PROOF against UNPROVEN.
+   Scales are intent-encoded (100 surface → 1000 primary ink).
+   ══════════════════════════════════════════════════════════════════════ */
 :root{
-  --paper:#FBFAF6;
-  --surface:#FFFFFF;
-  --surface-2:#F2F0E9;
-  --ink:#131312;
-  --ink-2:#3B3B37;
-  --ink-3:#6D6D66;
-  --ink-4:#9C9C93;
-  --rule:#E3E0D6;
-  --rule-2:#C9C5B8;
+  --p-000:#FBF9F2;   /* newsprint */
+  --p-100:#F6F3EA;
+  --p-200:#EFEBDF;
+  --p-300:#E4DFCF;
+  --p-400:#D2CCB8;   /* rule */
+  --p-500:#B5AE97;
+  --p-600:#948C74;
+  --p-700:#77705B;
+  --p-800:#5C5645;
+  --p-900:#3B372C;
+  --p-1000:#16130F;  /* ink */
+  --alpha-200:rgba(22,19,15,.07);
+  --alpha-400:rgba(22,19,15,.16);
 
-  --proof:#15556E;         /* column A — evidence, prevention */
-  --proof-2:#0E4257;
-  --proof-wash:#E4EDF2;
-  --unproven:#9A2C22;      /* column B — unproven, anti-ageing */
-  --unproven-2:#7C221A;
-  --unproven-wash:#F7E6E2;
-  --ochre:#7C5610;
-  --ochre-wash:#F5EBD7;
+  --proof:#1B5296;    /* column A — human outcome evidence */
+  --proof-ink:#143F76;
+  --proof-100:#E7EDF6;
+  --unproven:#B32A1E; /* column B — unproven */
+  --unproven-ink:#8E2117;
+  --unproven-100:#F8E7E3;
+  --amber:#8A6410;
+  --amber-100:#F6EDD8;
 
-  --serif:"Source Serif 4","Noto Serif SC","Songti SC",Georgia,serif;
+  --display:"Instrument Serif","Noto Serif SC",Georgia,serif;
+  --serif:"Newsreader","Noto Serif SC","Songti SC",Georgia,serif;
   --cjk:"Noto Serif SC","Songti SC","Source Han Serif SC",serif;
-  --sans:"IBM Plex Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
-  --mono:"IBM Plex Mono","SF Mono",ui-monospace,Menlo,monospace;
+  --mono:"Azeret Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 
-  --measure:39rem;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s6:24px;
+  --s8:32px; --s10:40px; --s16:64px; --s24:96px;
+  --ease:cubic-bezier(.175,.885,.32,1.1);
+  --measure:40rem;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --paper:#111110;--surface:#181816;--surface-2:#1F1F1D;
-    --ink:#EDEAE3;--ink-2:#C3C0B8;--ink-3:#918E86;--ink-4:#6E6C66;
-    --rule:#2A2A27;--rule-2:#3C3C37;
-    --proof:#7FBBD6;--proof-2:#9BCEE4;--proof-wash:#12252E;
-    --unproven:#E58A7C;--unproven-2:#F0A093;--unproven-wash:#2B1714;
-    --ochre:#D2A252;--ochre-wash:#282011;
+    --p-000:#131210; --p-100:#191815; --p-200:#1F1E1A; --p-300:#292722;
+    --p-400:#37342C; --p-500:#4C4840; --p-600:#6D6960; --p-700:#8C877C;
+    --p-800:#A9A498; --p-900:#C9C4B7; --p-1000:#F2EEE2;
+    --alpha-200:rgba(242,238,226,.08); --alpha-400:rgba(242,238,226,.18);
+    --proof:#5595DE; --proof-ink:#7FB2E9; --proof-100:#12212F;
+    --unproven:#DC6B58; --unproven-ink:#E88877; --unproven-100:#2B1613;
+    --amber:#CFA24E; --amber-100:#2A2211;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#111110;--surface:#181816;--surface-2:#1F1F1D;
-  --ink:#EDEAE3;--ink-2:#C3C0B8;--ink-3:#918E86;--ink-4:#6E6C66;
-  --rule:#2A2A27;--rule-2:#3C3C37;
-  --proof:#7FBBD6;--proof-2:#9BCEE4;--proof-wash:#12252E;
-  --unproven:#E58A7C;--unproven-2:#F0A093;--unproven-wash:#2B1714;
-  --ochre:#D2A252;--ochre-wash:#282011;
+  --p-000:#131210; --p-100:#191815; --p-200:#1F1E1A; --p-300:#292722;
+  --p-400:#37342C; --p-500:#4C4840; --p-600:#6D6960; --p-700:#8C877C;
+  --p-800:#A9A498; --p-900:#C9C4B7; --p-1000:#F2EEE2;
+  --alpha-200:rgba(242,238,226,.08); --alpha-400:rgba(242,238,226,.18);
+  --proof:#5595DE; --proof-ink:#7FB2E9; --proof-100:#12212F;
+  --unproven:#DC6B58; --unproven-ink:#E88877; --unproven-100:#2B1613;
+  --amber:#CFA24E; --amber-100:#2A2211;
 }
 
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{
-  margin:0;background:var(--paper);color:var(--ink);
-  font-family:var(--cjk);font-size:17px;line-height:1.9;
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  margin:0;background:var(--p-000);color:var(--p-1000);
+  font-family:var(--cjk);font-size:17px;line-height:1.92;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility
 }
 svg{display:block;max-width:100%;height:auto}
-::selection{background:var(--proof-wash);color:var(--ink)}
-:focus-visible{outline:2px solid var(--proof);outline-offset:3px;border-radius:2px}
-#prog{position:fixed;inset:0 auto auto 0;height:2px;width:0;background:var(--proof);z-index:60;transition:width .1s linear}
+::selection{background:var(--amber-100);color:var(--p-1000)}
+:where(a,button,summary):focus-visible{outline:none;box-shadow:0 0 0 2px var(--p-000),0 0 0 4px var(--proof)}
 
-/* ── shell ──────────────────────────────────────────────────── */
-.shell{max-width:74rem;margin:0 auto;padding:0 1.5rem 7rem;display:grid;grid-template-columns:minmax(0,1fr);gap:0}
-@media (min-width:1080px){
-  .shell{grid-template-columns:13.5rem minmax(0,1fr);column-gap:4.5rem;padding:0 2.5rem 9rem}
-  .rail{grid-column:1;grid-row:2}
-  .doc{grid-column:2;grid-row:2}
-  .masthead{grid-column:1 / -1;grid-row:1}
+/* ── sticky nameplate bar ───────────────────────────────────────── */
+.topbar{
+  position:fixed;inset:0 0 auto 0;z-index:50;background:var(--p-000);
+  border-bottom:1px solid var(--p-1000);
+  transform:translateY(-101%);transition:transform .28s var(--ease)
+}
+.topbar.show{transform:none}
+.tb-in{
+  max-width:76rem;margin:0 auto;padding:var(--s2) var(--s6);
+  display:flex;align-items:center;gap:var(--s4)
+}
+.tb-t{
+  font-family:var(--display);font-size:19px;line-height:1;letter-spacing:-.01em;
+  color:var(--p-1000);white-space:nowrap
+}
+.tb-t a{color:inherit;text-decoration:none}
+.tb-s{
+  flex:1;min-width:0;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.06em;
+  color:var(--p-700);white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+}
+.tb-menu{position:relative}
+.tb-menu > summary{
+  list-style:none;cursor:pointer;font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--p-1000);
+  border:1px solid var(--p-1000);padding:3px var(--s2);white-space:nowrap
+}
+.tb-menu > summary::-webkit-details-marker{display:none}
+.tb-menu[open] > summary{background:var(--p-1000);color:var(--p-000)}
+.tb-menu nav{
+  position:absolute;right:0;top:calc(100% + 8px);width:min(20rem,80vw);
+  background:var(--p-000);border:1px solid var(--p-1000);padding:var(--s2) 0;
+  box-shadow:0 1px 1px rgba(0,0,0,.02),0 8px 16px -4px rgba(0,0,0,.06),0 24px 32px -8px rgba(0,0,0,.08)
+}
+.tb-menu nav a{
+  display:flex;gap:var(--s3);align-items:baseline;padding:5px var(--s4);
+  font-family:var(--cjk);font-size:14px;line-height:1.5;color:var(--p-900);text-decoration:none
+}
+.tb-menu nav a:hover{background:var(--p-1000);color:var(--p-000)}
+.tb-menu nav a:hover .n{color:var(--p-000)}
+.tb-menu nav .n{font-family:var(--mono);font-size:11px;color:var(--p-600);flex:none;min-width:2.2em}
+.tb-bar{height:2px;background:var(--proof);width:0;transition:width .1s linear}
+
+/* ── grid ───────────────────────────────────────────────────────── */
+.shell{max-width:76rem;margin:0 auto;padding:0 var(--s6) var(--s24)}
+@media (min-width:1120px){
+  .shell{
+    display:grid;grid-template-columns:11.5rem minmax(0,var(--measure)) minmax(0,1fr);
+    column-gap:2.5rem;padding-inline:var(--s10)
+  }
+  .masthead{grid-column:1/-1}
+  .doc{grid-column:2}
 }
 .doc{max-width:var(--measure);min-width:0}
 
-/* ── masthead ───────────────────────────────────────────────── */
-.masthead{padding:clamp(3rem,6vw,5.5rem) 0 0;border-block-end:3px double var(--rule-2)}
+/* ── nameplate ──────────────────────────────────────────────────── */
+.masthead{padding:var(--s16) 0 0;border-bottom:4px double var(--p-1000);margin-bottom:var(--s10)}
 .eyebrow{
-  font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--ink-3);display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin:0 0 1.9rem;align-items:center
+  font-family:var(--mono);font-size:10px;font-weight:500;line-height:16px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--p-700);margin:0 0 var(--s6);
+  display:flex;flex-wrap:wrap;gap:var(--s1) var(--s4);align-items:center;
+  padding-bottom:var(--s3);border-bottom:1px solid var(--p-1000)
 }
-.eyebrow span{display:inline-flex;align-items:center;gap:.55rem}
-.eyebrow span+span::before{content:"";width:3px;height:3px;border-radius:50%;background:var(--rule-2)}
-.eyebrow b{color:var(--unproven);font-weight:600}
+.eyebrow span{display:inline-flex;align-items:center;gap:var(--s2)}
+.eyebrow span+span::before{content:"";width:3px;height:3px;background:var(--p-500)}
+.eyebrow b{color:var(--unproven-ink);font-weight:600}
 h1{
-  font-family:var(--serif);font-weight:700;
-  font-size:clamp(3rem,2rem + 5.2vw,6.2rem);line-height:.98;letter-spacing:-.028em;
-  margin:0;text-wrap:balance
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(56px,10vw,124px);line-height:.94;letter-spacing:-.03em;
+  margin:0;text-wrap:balance;color:var(--p-1000)
 }
 h1 .sub{
-  display:block;font-family:var(--cjk);font-size:clamp(.95rem,.42em,1.12rem);line-height:1.75;
-  letter-spacing:0;color:var(--ink-2);font-weight:400;margin-block-start:1.6rem;max-width:36rem
+  display:block;font-family:var(--cjk);font-weight:400;
+  font-size:clamp(15px,1.35vw,18px);line-height:1.8;letter-spacing:0;
+  color:var(--p-900);margin-top:var(--s6);max-width:36rem
 }
 .thesis{
-  margin:2.4rem 0 0;max-width:44rem;font-size:1.02em;line-height:1.86;color:var(--ink-2);
-  padding-inline-start:1.35rem;border-inline-start:3px solid var(--proof)
+  margin:var(--s8) 0 0;max-width:44rem;font-size:1.02em;line-height:1.88;color:var(--p-900);
+  padding-left:var(--s4);border-left:3px solid var(--proof)
 }
-.thesis-2{margin-block-start:1rem;border-inline-start-color:var(--ochre)}
-.thesis strong{color:var(--ink);font-weight:700}
+.thesis-2{margin-top:var(--s4);border-left-color:var(--amber)}
+.thesis strong{color:var(--p-1000);font-weight:700}
 
-/* ── rail ───────────────────────────────────────────────────── */
-.rail{padding:2rem 0;font-family:var(--sans);font-size:.82rem}
-.rail .rail-h{font-family:var(--mono);font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-4);margin:0 0 1rem}
-.rail nav{display:flex;flex-direction:column}
-.rail a{
-  color:var(--ink-3);text-decoration:none;display:flex;gap:.6rem;align-items:baseline;
-  padding:.36rem 0 .36rem .75rem;border-inline-start:2px solid var(--rule);line-height:1.45;
-  transition:color .18s ease,border-color .18s ease
+/* newspaper index box */
+.contents{
+  margin:var(--s10) 0 var(--s8);border-top:1px solid var(--p-1000);border-bottom:1px solid var(--p-1000);
+  padding:var(--s3) 0 var(--s4)
 }
-.rail a:hover{color:var(--ink)}
-.rail a.on{color:var(--proof);border-inline-start-color:var(--proof);font-weight:600}
-.rail a .n{font-family:var(--mono);font-size:.66rem;color:var(--ink-4);flex:none;letter-spacing:.04em}
-.rail a.on .n{color:var(--proof)}
-@media (min-width:1080px){.rail{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;padding:3rem 0 4rem;scrollbar-width:thin}}
-@media (max-width:1079px){
-  .rail{border-block-end:1px solid var(--rule);padding-block-end:1.4rem}
-  .rail nav{display:grid;grid-template-columns:repeat(auto-fill,minmax(9rem,1fr));gap:0 1rem}
+.contents .ch{
+  font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--p-700);margin:0 0 var(--s3)
 }
+.contents nav{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(11rem,1fr));
+  column-gap:var(--s6);row-gap:2px
+}
+.contents a{
+  display:flex;gap:var(--s2);align-items:baseline;text-decoration:none;color:var(--p-900);
+  font-size:14.5px;line-height:1.6;padding:2px 0;
+  border-bottom:1px dotted transparent;transition:color .15s var(--ease),border-color .15s var(--ease)
+}
+.contents a:hover{color:var(--unproven-ink);border-bottom-color:var(--p-400)}
+.contents .n{font-family:var(--mono);font-size:10.5px;color:var(--p-600);flex:none;min-width:2.4em}
 
-/* ── sections ───────────────────────────────────────────────── */
-section{padding-block-start:clamp(3.4rem,6vw,5.5rem);scroll-margin-top:1.2rem}
-.tier-head{display:flex;align-items:flex-start;gap:1rem;margin:0 0 .5rem}
+/* ── sections ───────────────────────────────────────────────────── */
+section{padding-top:clamp(56px,7vw,88px);scroll-margin-top:var(--s16)}
+.tier-head{display:flex;align-items:baseline;gap:var(--s3);margin:0 0 var(--s2);position:relative}
 .tier-num{
-  font-family:var(--serif);font-size:1.6rem;font-weight:700;line-height:1;color:var(--rule-2);
-  flex:none;letter-spacing:-.03em;padding-block-start:.28rem;font-variant-numeric:tabular-nums
+  font-family:var(--display);font-weight:400;font-size:34px;line-height:1;color:var(--p-500);
+  flex:none;letter-spacing:-.02em
+}
+@media (min-width:1120px){
+  .tier-num{
+    position:absolute;right:calc(100% + 2.5rem);top:-.14em;font-size:76px;
+    color:var(--p-400);line-height:.9
+  }
 }
 h2{
-  font-family:var(--serif);font-weight:700;font-size:clamp(1.7rem,1.2rem + 1.8vw,2.5rem);
-  line-height:1.16;letter-spacing:-.022em;margin:0;text-wrap:balance
+  font-family:var(--display);font-weight:400;font-size:clamp(34px,4.6vw,54px);
+  line-height:1.02;letter-spacing:-.02em;margin:0;text-wrap:balance
 }
-.dek{color:var(--ink-3);font-size:.94em;line-height:1.8;margin:.7rem 0 0;max-width:34rem}
-.rule{height:0;border:0;border-block-start:1px solid var(--rule-2);margin:1.5rem 0 0}
+.dek{
+  color:var(--p-800);font-size:.94em;line-height:1.8;margin:var(--s3) 0 0;max-width:34rem;
+  font-family:var(--serif)
+}
+.rule{height:0;border:0;border-top:1px solid var(--p-1000);margin:var(--s6) 0 0}
 h3{
-  font-family:var(--serif);font-weight:600;font-size:1.28em;line-height:1.42;letter-spacing:-.012em;
-  margin:2.9rem 0 .2rem;display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;text-wrap:balance
+  font-family:var(--display);font-weight:400;font-size:1.62em;line-height:1.2;letter-spacing:-.015em;
+  margin:clamp(40px,5vw,60px) 0 var(--s1);display:flex;align-items:baseline;gap:var(--s3);flex-wrap:wrap;
+  text-wrap:balance
 }
 h3 .tag{
-  font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--ink-3);background:var(--surface-2);border-radius:2px;padding:.16rem .45rem;
-  position:relative;top:-.15em
+  font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--p-700);border:1px solid var(--p-400);padding:2px var(--s2);position:relative;top:-.35em
 }
 h4{
-  font-family:var(--sans);font-weight:600;font-size:.98em;letter-spacing:.005em;color:var(--ink);
-  margin:2.6rem 0 .2rem;padding-block-start:.9rem;border-block-start:1px solid var(--rule)
+  font-family:var(--mono);font-weight:600;font-size:11px;line-height:16px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--p-1000);margin:var(--s10) 0 var(--s3);
+  padding-top:var(--s3);border-top:1px solid var(--p-1000)
 }
 h5.sub-h{
-  font-family:var(--sans);font-weight:600;font-size:.94em;color:var(--ink-2);margin:2.2rem 0 .2rem;
-  display:flex;align-items:center;gap:.6rem
+  font-family:var(--display);font-weight:400;font-size:1.24em;line-height:1.3;letter-spacing:-.01em;
+  color:var(--p-1000);margin:var(--s8) 0 var(--s1)
 }
-h5.sub-h::before{content:"";width:1.1rem;height:2px;background:var(--proof);flex:none}
-p{margin:.9rem 0 0}
-a{color:var(--proof);text-decoration-thickness:1px;text-underline-offset:.18em}
-strong{font-weight:700;color:var(--ink)}
-em{font-style:normal;background:linear-gradient(transparent 78%,var(--ochre-wash) 78%);padding:0 .08em}
-code,.num{font-family:var(--mono);font-size:.86em;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-ul,ol{margin:.95rem 0 0;padding-inline-start:1.2em}
-li{margin:.45rem 0}
-li::marker{color:var(--ink-4)}
-ul.tight li{margin:.22rem 0}
+p{margin:var(--s3) 0 0}
+a{color:var(--proof-ink);text-decoration-thickness:1px;text-underline-offset:.18em}
+strong{font-weight:700;color:var(--p-1000)}
+em{
+  font-style:normal;background:none;
+  -webkit-text-emphasis:filled dot currentColor;text-emphasis:filled dot currentColor;
+  -webkit-text-emphasis-position:under right;text-emphasis-position:under right
+}
+.qt .en em,.chron .q em,.parse b em,cite em{font-style:italic;-webkit-text-emphasis:none;text-emphasis:none}
+code,.num{font-family:var(--mono);font-size:.84em;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+ul,ol{margin:var(--s3) 0 0;padding-inline-start:1.2em}
+li{margin:var(--s1) 0;line-height:1.86}
+li::marker{color:var(--p-600)}
+ul.tight li{margin:2px 0}
 
-/* ── the signature quote block ──────────────────────────────── */
-.qt{margin:2rem 0 0;padding:0 0 0 2.3rem;position:relative}
-.qt::before{
-  content:"\201C";position:absolute;left:-.1rem;top:-.16em;
-  font-family:var(--serif);font-weight:700;font-size:3rem;line-height:1;color:var(--proof);opacity:.3
-}
+/* ── the quotation — hanging mark, cite in the margin ───────────── */
+.qt{margin:var(--s8) 0 0;padding-left:var(--s6);position:relative;border-left:1px solid var(--p-400)}
 .qt .en{
-  font-family:var(--serif);font-size:1.14em;line-height:1.62;color:var(--ink);margin:0;text-wrap:pretty;
-  font-feature-settings:"kern" 1
+  font-family:var(--serif);font-optical-sizing:auto;font-size:1.2em;line-height:1.56;
+  color:var(--p-1000);margin:0;text-wrap:pretty
 }
 .qt .en b{font-weight:700}
 .qt .en i{font-style:italic}
-.qt .zh{
-  margin:1rem 0 0;font-size:.95em;line-height:1.85;color:var(--ink-2);
-  padding-inline-start:1rem;border-inline-start:2px solid var(--rule)
-}
+.qt .zh{margin:var(--s4) 0 0;font-size:.95em;line-height:1.88;color:var(--p-900)}
 .qt cite{
-  display:block;margin-block-start:.9rem;font-style:normal;font-family:var(--mono);
-  font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-4)
+  display:block;margin-top:var(--s3);font-style:normal;font-family:var(--mono);
+  font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--p-700)
+}
+@media (min-width:1120px){
+  .qt cite{
+    position:absolute;top:.35em;right:calc(100% + 2.5rem);width:11.5rem;
+    text-align:right;margin:0;line-height:1.6
+  }
 }
 
-/* ── close reading of a sentence ────────────────────────────── */
-.parse{margin:1.7rem 0 0;border-block-start:1px solid var(--rule)}
-.parse > div{padding:1rem 0;border-block-end:1px solid var(--rule)}
-@media (min-width:700px){.parse > div{display:grid;grid-template-columns:12rem minmax(0,1fr);column-gap:1.6rem;align-items:baseline}}
+/* ── close reading ──────────────────────────────────────────────── */
+.parse{margin:var(--s6) 0 0;border-top:1px solid var(--p-1000)}
+.parse > div{padding:var(--s4) 0;border-bottom:1px solid var(--p-400)}
+@media (min-width:700px){.parse > div{display:grid;grid-template-columns:11rem minmax(0,1fr);column-gap:var(--s6);align-items:baseline}}
 .parse b{
-  display:block;font-family:var(--serif);font-weight:600;font-size:1.02em;color:var(--proof-2);
-  margin:0 0 .3rem;letter-spacing:-.005em
+  display:block;font-family:var(--serif);font-weight:600;font-size:1.02em;line-height:1.4;
+  color:var(--unproven-ink);margin:0 0 var(--s1)
 }
 @media (min-width:700px){.parse b{margin:0}}
-.parse b em{background:none;font-style:italic}
-.parse p{margin:0;font-size:.94em;line-height:1.78;color:var(--ink-2)}
+.parse b em{font-style:italic}
+.parse p{margin:0;font-size:.94em;line-height:1.82;color:var(--p-900)}
 
-/* ── chronology ─────────────────────────────────────────────── */
-.chron{margin:1.8rem 0 0;position:relative}
-.chron > div{padding:1.15rem 0 1.15rem 0;border-block-end:1px solid var(--rule)}
-.chron > div:first-child{border-block-start:1px solid var(--rule)}
-@media (min-width:640px){
-  .chron > div{display:grid;grid-template-columns:5.6rem minmax(0,1fr);column-gap:1.6rem}
-}
+/* ── chronology — dates hang in the margin ──────────────────────── */
+.chron{margin:var(--s6) 0 0;border-top:1px solid var(--p-1000)}
+.chron > div{padding:var(--s4) 0;border-bottom:1px solid var(--p-400);position:relative}
 .chron .d{
-  font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.08em;color:var(--proof);
-  font-variant-numeric:tabular-nums;display:block;padding-block-start:.35rem
+  font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--unproven-ink);
+  font-variant-numeric:tabular-nums;display:block
 }
-.chron .q{margin:.35rem 0 0;font-size:.98em;line-height:1.62;font-family:var(--serif);color:var(--ink)}
-@media (min-width:640px){.chron .q{margin-block-start:0}}
-.chron .q i{font-style:italic;background:linear-gradient(transparent 66%,var(--proof-wash) 66%)}
-.chron .zh{display:block;margin-block-start:.6rem;font-family:var(--cjk);color:var(--ink-2);font-size:.92em;line-height:1.82}
-.chron .where{display:block;margin-block-start:.5rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4)}
+.chron .q{margin:var(--s2) 0 0;font-size:1.02em;line-height:1.56;font-family:var(--serif);color:var(--p-1000)}
+.chron .q i{font-style:italic}
+.chron .zh{display:block;margin-top:var(--s3);font-family:var(--cjk);color:var(--p-900);font-size:.92em;line-height:1.86}
+.chron .where{display:block;margin-top:var(--s2);font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--p-600)}
+@media (min-width:1120px){
+  .chron .d{position:absolute;top:var(--s4);right:calc(100% + 2.5rem);width:11.5rem;text-align:right}
+  .chron .q{margin-top:0}
+}
 
-/* ── THE LEDGER ─────────────────────────────────────────────── */
-.ledger{display:grid;gap:1px;margin:2rem 0 0;grid-template-columns:1fr;background:var(--rule-2);border:1px solid var(--rule-2)}
-@media (min-width:660px){.ledger{grid-template-columns:1fr 1fr}}
-.ledger > div{background:var(--surface);padding:1.3rem 1.35rem 1.5rem}
+/* ── THE LEDGER: two ruled columns, no boxes ────────────────────── */
+.ledger{
+  display:grid;grid-template-columns:1fr;margin:var(--s8) 0 0;
+  border-top:4px double var(--p-1000);border-bottom:4px double var(--p-1000)
+}
+@media (min-width:660px){.ledger{grid-template-columns:1fr 1fr;column-gap:var(--s10)}}
+.ledger > div{background:none;padding:var(--s4) 0 var(--s6)}
+@media (min-width:660px){.ledger .side-b{border-left:1px solid var(--p-400);padding-left:var(--s10)}}
+@media (max-width:659px){.ledger .side-b{border-top:1px solid var(--p-400)}}
 .ledger h5{
-  margin:0;font-family:var(--serif);font-size:1.16em;font-weight:700;line-height:1.3;letter-spacing:-.012em
+  margin:0;font-family:var(--display);font-size:1.5em;font-weight:400;line-height:1.1;letter-spacing:-.015em
 }
-.ledger .side-a{border-block-start:3px solid var(--proof)}
-.ledger .side-b{border-block-start:3px solid var(--unproven)}
-.ledger .side-a h5{color:var(--proof-2)}
-.ledger .side-b h5{color:var(--unproven-2)}
+.ledger .side-a h5{color:var(--proof-ink)}
+.ledger .side-b h5{color:var(--unproven-ink)}
 .ledger .cap{
-  font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-4);margin:.35rem 0 1.15rem
+  font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--p-700);margin:var(--s2) 0 var(--s4);padding-bottom:var(--s2);
+  border-bottom:1px solid var(--p-400)
 }
+.ledger .side-a .cap{border-bottom-color:var(--proof);color:var(--proof-ink)}
+.ledger .side-b .cap{border-bottom-color:var(--unproven);color:var(--unproven-ink)}
 .ledger dl{margin:0}
 .ledger dt{
-  font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.02em;
-  color:var(--ink-3);margin-block-start:1rem;line-height:1.5;
-  display:flex;align-items:baseline;gap:.5rem
+  font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--p-700);margin-top:var(--s4);line-height:1.5;
+  display:flex;align-items:baseline;gap:var(--s2)
 }
-.ledger dt::after{content:"";flex:1;border-block-end:1px dotted var(--rule-2);position:relative;top:-.2em}
-.ledger dl > dt:first-child{margin-block-start:0}
-.ledger dd{margin:.28rem 0 0;font-size:.9em;line-height:1.7;color:var(--ink-2)}
-.ledger dd b{color:var(--ink);font-weight:700}
+.ledger dt::after{content:"";flex:1;border-bottom:1px dotted var(--p-500);position:relative;top:-.2em}
+.ledger dl > dt:first-child{margin-top:0}
+.ledger dd{margin:var(--s1) 0 0;font-size:.92em;line-height:1.78;color:var(--p-900)}
+.ledger dd b{color:var(--p-1000);font-weight:700}
 .ledger .zero{
-  font-family:var(--serif);font-size:2.1em;font-weight:700;line-height:1;color:var(--unproven);
-  letter-spacing:-.03em;display:inline-block
+  font-family:var(--display);font-size:2.6em;font-weight:400;line-height:.9;color:var(--unproven);
+  letter-spacing:-.02em;display:inline-block
 }
-.ledger .big{font-family:var(--serif);font-size:1.16em;font-weight:600;line-height:1.5;color:var(--proof)}
+.ledger .big{font-family:var(--display);font-size:1.35em;font-weight:400;line-height:1.35;color:var(--proof-ink)}
 
-/* ── dimension rows ─────────────────────────────────────────── */
-.dims{margin:1.7rem 0 0;border-block-start:1px solid var(--rule)}
-.dims > div{padding:1rem 0;border-block-end:1px solid var(--rule)}
-@media (min-width:620px){
-  .dims > div{display:grid;grid-template-columns:7.5rem minmax(0,1fr);column-gap:1.5rem;align-items:baseline}
-}
+/* ── dimension rows ─────────────────────────────────────────────── */
+.dims{margin:var(--s6) 0 0;border-top:1px solid var(--p-1000)}
+.dims > div{padding:var(--s4) 0;border-bottom:1px solid var(--p-400)}
+@media (min-width:620px){.dims > div{display:grid;grid-template-columns:7.5rem minmax(0,1fr);column-gap:var(--s6);align-items:baseline}}
 .dims b{
-  font-family:var(--serif);font-weight:700;color:var(--ink);font-size:1.02em;display:block;
-  letter-spacing:-.008em;font-variant-numeric:tabular-nums
+  font-family:var(--display);font-weight:400;font-size:1.28em;line-height:1.2;color:var(--p-1000);
+  display:block;letter-spacing:-.015em
 }
-.dims p{margin:.25rem 0 0;font-size:.93em;color:var(--ink-2);line-height:1.78}
-@media (min-width:620px){.dims p{margin-block-start:0}}
+.dims p{margin:var(--s1) 0 0;font-size:.93em;color:var(--p-900);line-height:1.82}
+@media (min-width:620px){.dims p{margin-top:0}}
 
-/* ── boxes ──────────────────────────────────────────────────── */
-.box{background:var(--surface);border:1px solid var(--rule);border-radius:2px;padding:1.25rem 1.35rem;margin:1.8rem 0 0}
-.box > :first-child{margin-block-start:0}
+/* ── ruled blocks instead of cards ──────────────────────────────── */
+.box{background:none;border:0;border-top:1px solid var(--p-1000);padding:var(--s3) 0 var(--s4);margin:var(--s6) 0 0}
+.box > :first-child{margin-top:0}
 .box-h{
-  font-family:var(--mono);font-size:.63rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-3);margin:0 0 .6rem;display:flex;align-items:center;gap:.55rem
+  font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--p-700);margin:0 0 var(--s2)
 }
-.box-h::before{content:"";width:1.3rem;height:1px;background:var(--rule-2);flex:none}
-.box p{font-size:.95em;line-height:1.82}
-.box-self{border-inline-start:3px solid var(--proof)}
-.box-self .box-h{color:var(--proof)}
-.box-self .box-h::before{background:var(--proof)}
-.box-stop{border-inline-start:3px solid var(--unproven);background:var(--unproven-wash);border-color:var(--rule)}
-.box-stop .box-h{color:var(--unproven-2)}
-.box-stop .box-h::before{background:var(--unproven)}
-.box-note{background:var(--surface-2)}
+.box p{font-size:.95em;line-height:1.85}
+.box-self{border-top:2px solid var(--proof)}
+.box-self .box-h{color:var(--proof-ink)}
+.box-stop{border-top:2px solid var(--unproven)}
+.box-stop .box-h{color:var(--unproven-ink)}
+.box-note{
+  border-top:0;border-left:2px solid var(--p-400);padding:var(--s1) 0 var(--s1) var(--s4);
+  background:none
+}
 
 .pull{
-  font-family:var(--serif);font-size:1.42em;line-height:1.46;font-weight:600;color:var(--ink);
-  margin:2.4rem 0 0;padding:0 0 0 1.4rem;border-inline-start:3px solid var(--ochre);
-  letter-spacing:-.012em;text-wrap:pretty
+  font-family:var(--display);font-weight:400;font-size:2em;line-height:1.14;color:var(--p-1000);
+  margin:var(--s10) 0 0;padding:var(--s6) 0 var(--s4);letter-spacing:-.02em;text-wrap:pretty;
+  border-top:4px double var(--p-1000);border-bottom:1px solid var(--p-400)
 }
 .pull cite{
-  display:block;font-family:var(--cjk);font-style:normal;font-weight:400;font-size:.54em;
-  line-height:1.75;color:var(--ink-3);margin-block-start:.9rem;letter-spacing:0
+  display:block;font-family:var(--cjk);font-style:normal;font-weight:400;font-size:.38em;
+  line-height:1.8;color:var(--p-800);margin-top:var(--s4);letter-spacing:0
 }
 
-/* ── tables ─────────────────────────────────────────────────── */
-.scroll{overflow-x:auto;margin:1.7rem 0 0;border-block:1px solid var(--rule-2);background:transparent}
-table{border-collapse:collapse;width:100%;min-width:32rem;font-family:var(--sans);font-size:.86rem;line-height:1.68}
-th,td{text-align:left;padding:.72rem .9rem;border-block-end:1px solid var(--rule);vertical-align:top}
-th:first-child,td:first-child{padding-inline-start:0}
-th:last-child,td:last-child{padding-inline-end:0}
+/* ── tables: ruled, no container box ────────────────────────────── */
+.scroll{overflow-x:auto;margin:var(--s6) 0 0;border-top:1px solid var(--p-1000);border-bottom:1px solid var(--p-1000);background:none}
+table{border-collapse:collapse;width:100%;min-width:32rem;font-family:var(--serif);font-size:15px;line-height:1.66}
+th,td{text-align:left;padding:var(--s2) var(--s3);border-bottom:1px solid var(--p-400);vertical-align:top}
+th:first-child,td:first-child{padding-left:0}
+th:last-child,td:last-child{padding-right:0}
 thead th{
-  font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--ink-4);background:transparent;white-space:nowrap;border-block-end:1px solid var(--rule-2)
+  font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--p-700);background:none;white-space:nowrap;border-bottom:1px solid var(--p-1000)
 }
-tbody tr:last-child td{border-block-end:0}
-td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
-td.k{font-weight:600;color:var(--ink)}
+tbody tr:last-child td{border-bottom:0}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:13px}
+td.k{font-weight:600;color:var(--p-1000);font-family:var(--cjk)}
 
-/* ── dose strip ─────────────────────────────────────────────── */
-.dose{display:grid;gap:1px;margin:1.8rem 0 0;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));background:var(--rule);border:1px solid var(--rule)}
-.dose div{background:var(--surface);padding:.9rem 1rem 1rem}
-.dose dt{font-family:var(--mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-4);margin:0;line-height:1.5;min-height:2.9em}
+/* ── figures strip ──────────────────────────────────────────────── */
+.dose{
+  display:grid;margin:var(--s6) 0 0;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));
+  border-top:1px solid var(--p-1000);border-bottom:1px solid var(--p-1000)
+}
+.dose div{background:none;padding:var(--s3) var(--s4) var(--s4) 0}
+.dose div+div{border-left:1px solid var(--p-400);padding-left:var(--s4)}
+.dose dt{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--p-700);
+  margin:0;line-height:1.5;min-height:3em
+}
 .dose dd{
-  margin:.45rem 0 0;font-size:1.75rem;font-family:var(--serif);font-weight:700;line-height:1.05;
-  font-variant-numeric:tabular-nums;letter-spacing:-.03em;color:var(--proof-2)
+  margin:var(--s2) 0 0;font-size:2.1rem;font-family:var(--display);font-weight:400;line-height:1;
+  letter-spacing:-.02em;color:var(--p-1000)
 }
 .dose dd small{
-  display:block;font-size:.4em;font-family:var(--sans);font-weight:400;color:var(--ink-3);
-  letter-spacing:0;margin-block-start:.4rem;line-height:1.5
+  display:block;font-size:.36em;font-family:var(--mono);font-weight:400;color:var(--p-700);
+  letter-spacing:.04em;margin-top:var(--s2);line-height:1.5
 }
 
-/* ── verdict list ───────────────────────────────────────────── */
-.verdict{list-style:none;padding:0;margin:1.5rem 0 0;border-block-start:1px solid var(--rule)}
+/* ── verdict list ───────────────────────────────────────────────── */
+.verdict{list-style:none;padding:0;margin:var(--s4) 0 0;border-top:1px solid var(--p-1000)}
 .verdict li{
-  display:grid;grid-template-columns:1.5rem minmax(0,1fr);gap:.8rem;margin:0;
-  padding:.7rem 0;border-block-end:1px solid var(--rule)
+  display:grid;grid-template-columns:1.6rem minmax(0,1fr);gap:var(--s3);margin:0;
+  padding:var(--s3) 0;border-bottom:1px solid var(--p-400)
 }
-.verdict .mk{font-family:var(--mono);font-size:.95rem;font-weight:600;line-height:1.7;text-align:center}
+.verdict .mk{font-family:var(--mono);font-size:15px;font-weight:600;line-height:1.7;text-align:center}
 .verdict .yes .mk{color:var(--proof)}
 .verdict .no .mk{color:var(--unproven)}
-.verdict .maybe .mk{color:var(--ochre)}
-.verdict b{font-weight:700;display:block;font-family:var(--sans);font-size:.96em}
-.verdict span.d{color:var(--ink-2);font-size:.92em;line-height:1.75}
+.verdict .maybe .mk{color:var(--amber)}
+.verdict b{font-weight:700;display:block;font-size:.98em}
+.verdict span.d{color:var(--p-900);font-size:.93em;line-height:1.8}
 
-/* ── figures ────────────────────────────────────────────────── */
-.figure,figure.fig{margin:2.4rem 0 0;padding:0;border:1px solid var(--rule);background:var(--surface)}
-@media (min-width:1180px){.doc figure.fig{width:calc(100% + 11rem)}}
-.masthead .figure{max-width:54rem;margin-block-start:2.8rem}
+/* ── figures ────────────────────────────────────────────────────── */
+.figure,figure.fig{margin:var(--s8) 0 0;padding:0;border-top:1px solid var(--p-1000);border-bottom:1px solid var(--p-1000);background:none}
+@media (min-width:1180px){.doc figure.fig{width:calc(100% + 13rem)}}
+.masthead .figure{max-width:52rem;margin-top:var(--s10);margin-bottom:var(--s10)}
 .fig-h{
-  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;
-  padding:.75rem 1.1rem;border-block-end:1px solid var(--rule);background:var(--surface-2);
-  font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase
+  display:flex;justify-content:space-between;align-items:baseline;gap:var(--s4);flex-wrap:wrap;
+  padding:var(--s2) 0;border-bottom:1px solid var(--p-400);
+  font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase
 }
-.fig-h b{color:var(--proof);font-weight:600}
-.fig-h span{color:var(--ink-4);font-weight:400;letter-spacing:.1em}
-.fig-body{padding:1.4rem 1.1rem .5rem;overflow-x:auto}
+.fig-h b{color:var(--p-1000);font-weight:600}
+.fig-h span{color:var(--p-600);font-weight:400;letter-spacing:.1em}
+.fig-body{padding:var(--s6) 0 var(--s2);overflow-x:auto}
 .fig-body svg{margin:0 auto;min-width:28rem}
 .figure figcaption,figure.fig figcaption{
-  padding:.85rem 1.1rem 1.05rem;font-family:var(--sans);font-size:.8rem;line-height:1.75;
-  color:var(--ink-3);border-block-start:1px solid var(--rule)
+  padding:var(--s3) 0 var(--s4);font-family:var(--serif);font-size:14px;line-height:1.75;
+  color:var(--p-800);border-top:1px solid var(--p-400)
 }
-figcaption b{color:var(--ink-2);font-weight:600}
-/* svg roles */
-.s-ax{stroke:var(--rule-2);stroke-width:1}
-.s-gr{stroke:var(--rule);stroke-width:1}
-.s-lb{font-family:var(--sans);font-size:12px;fill:var(--ink-2)}
-.s-sm{font-family:var(--mono);font-size:10px;fill:var(--ink-4);letter-spacing:.05em}
-.s-vl{font-family:var(--mono);font-size:12px;font-weight:600;fill:var(--ink);font-variant-numeric:tabular-nums}
-.s-hd{font-family:var(--mono);font-size:10px;font-weight:600;fill:var(--ink-3);letter-spacing:.14em}
-
-/* the runway figure keeps its own class names */
+figcaption b{color:var(--p-1000);font-weight:600}
+.s-ax{stroke:var(--p-500);stroke-width:1}
+.s-gr{stroke:var(--alpha-200);stroke-width:1}
+.s-lb{font-family:var(--cjk);font-size:12px;fill:var(--p-900)}
+.s-sm{font-family:var(--mono);font-size:9.5px;fill:var(--p-700);letter-spacing:-.01em}
+.s-vl{font-family:var(--mono);font-size:11.5px;font-weight:600;fill:var(--p-1000);letter-spacing:-.03em}
+.s-hd{font-family:var(--mono);font-size:9.5px;font-weight:600;fill:var(--p-700);letter-spacing:.13em}
 .runway{width:100%;height:auto;display:block;overflow:visible}
-.runway .lbl{font-family:var(--sans);font-size:11px;fill:var(--ink-2)}
-.runway .lbl-s{font-family:var(--mono);font-size:9.5px;fill:var(--ink-4);letter-spacing:.06em}
-.runway .axis{stroke:var(--rule-2);stroke-width:1}
-.runway .track{fill:var(--surface-2)}
-.runway .fill-c{fill:var(--proof);opacity:.92}
-.runway .fill-n{fill:var(--proof);opacity:.72}
-.runway .fill-b{fill:var(--proof);opacity:.52}
-.runway .win{fill:var(--ochre);opacity:.10}
-.runway .win-edge{stroke:var(--ochre);stroke-width:1;stroke-dasharray:3 3;opacity:.75}
-.runway .dot{fill:var(--ink)}
+.runway .lbl{font-family:var(--cjk);font-size:11px;fill:var(--p-900)}
+.runway .lbl-s{font-family:var(--mono);font-size:9.5px;fill:var(--p-700);letter-spacing:.04em}
+.runway .axis{stroke:var(--p-500);stroke-width:1}
+.runway .track{fill:var(--p-200)}
+.runway .fill-c{fill:var(--proof);opacity:.95}
+.runway .fill-n{fill:var(--proof);opacity:.75}
+.runway .fill-b{fill:var(--proof);opacity:.55}
+.runway .win{fill:var(--amber);opacity:.09}
+.runway .win-edge{stroke:var(--amber);stroke-width:1;stroke-dasharray:3 3;opacity:.8}
+.runway .dot{fill:var(--p-1000)}
 
-/* ── footer ─────────────────────────────────────────────────── */
 footer{
-  margin-block-start:5rem;padding-block-start:2rem;border-block-start:3px double var(--rule-2);
-  font-family:var(--sans);font-size:.85rem;color:var(--ink-3);line-height:1.85
+  margin-top:var(--s24);padding-top:var(--s6);border-top:4px double var(--p-1000);
+  font-family:var(--serif);font-size:14.5px;color:var(--p-800);line-height:1.85
 }
 footer p{max-width:38rem}
-.src{margin:1.5rem 0 0;font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;line-height:2.1;color:var(--ink-4)}
+.src{
+  margin:var(--s6) 0 0;font-family:var(--mono);font-size:10px;letter-spacing:.04em;line-height:2.1;
+  color:var(--p-700);columns:2;column-gap:var(--s10);column-rule:1px solid var(--p-400)
+}
+@media (max-width:700px){.src{columns:1}}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 @media (max-width:560px){
   body{font-size:16.5px}
-  .shell{padding:0 1.1rem 5rem}
-  .fig-body{padding:1rem .7rem .3rem}
+  .shell{padding:0 var(--s4) var(--s16)}
+  .fig-body{padding:var(--s4) 0 var(--s1)}
 }
-@media print{.rail,#prog{display:none}body{background:#fff;color:#000;font-size:10.5pt}.shell{display:block}section,.figure,figure.fig,.ledger{page-break-inside:avoid}}
+@media print{.topbar{display:none}body{background:#fff;color:#000;font-size:10.5pt}.shell{display:block}section,.figure,figure.fig,.ledger{page-break-inside:avoid}}
 </style>
 </head>
-<body>
-<div id="prog" aria-hidden="true"></div>
+<body id="top">
+<div class="topbar" id="topbar">
+  <div class="tb-in">
+    <span class="tb-t"><a href="#top">健康的复利</a></span>
+    <span class="tb-s" id="tb-sec"></span>
+    <details class="tb-menu" id="tb-menu">
+      <summary>目录</summary>
+      <nav>
+        <a href="#frame"><span class="n">00</span>收益的不对称</a>
+        <a href="#why"><span class="n">01</span>为什么没人在做</a>
+        <a href="#tier1"><span class="n">02</span>五个高证据行为</a>
+        <a href="#exercise"><span class="n">2.1</span>运动</a>
+        <a href="#diet"><span class="n">2.2</span>饮食</a>
+        <a href="#sleep"><span class="n">2.3</span>睡眠</a>
+        <a href="#alcohol"><span class="n">2.4</span>酒精</a>
+        <a href="#smoke"><span class="n">2.5</span>烟草</a>
+        <a href="#tier2"><span class="n">03</span>被低估的因素</a>
+        <a href="#tier3"><span class="n">04</span>检查清单</a>
+        <a href="#tier4"><span class="n">05</span>药物与补剂</a>
+        <a href="#tier5"><span class="n">06</span>怎么读信息</a>
+        <a href="#schedule"><span class="n">07</span>落到日程</a>
+        <a href="#future"><span class="n">08</span>正在到来的</a>
+        <a href="#limits"><span class="n">09</span>边界</a>
+      </nav>
+    </details>
+  </div>
+  <div class="tb-bar" id="tb-bar"></div>
+</div>
 
 <div class="shell">
 
@@ -420,57 +527,9 @@ footer p{max-width:38rem}
     缺口不在知识，在注意力放在哪里。
   </p>
 
-  <figure class="figure">
-    <div class="fig-h"><b>图一 · 三大疾病的自然史</b><span>症状出现前的干预窗口</span></div>
-    <div class="fig-body">
-      <svg class="runway" viewBox="0 0 720 250" role="img" aria-label="三大年龄相关疾病的潜伏期示意图：心血管、癌症、神经退行性疾病都在症状出现前二十年以上开始，形成很长的干预窗口。">
-      <rect class="win" x="60" y="24" width="450" height="172"></rect>
-      <line class="win-edge" x1="510" y1="18" x2="510" y2="202"></line>
-
-      <text class="lbl-s" x="60" y="16">干预窗口 · 无症状</text>
-      <text class="lbl-s" x="516" y="16">症状 / 诊断</text>
-
-      <!-- track 1 -->
-      <rect class="track" x="60" y="44" width="450" height="16" rx="2"></rect>
-      <rect class="fill-c" x="60" y="44" width="450" height="16" rx="2"></rect>
-      <text class="lbl" x="68" y="56" style="fill:var(--surface)">动脉粥样硬化 · 青少年期即可见斑块</text>
-      <circle class="dot" cx="510" cy="52" r="3"></circle>
-      <text class="lbl" x="522" y="56">心梗 / 卒中</text>
-
-      <!-- track 2 -->
-      <rect class="track" x="60" y="88" width="450" height="16" rx="2"></rect>
-      <rect class="fill-n" x="60" y="88" width="450" height="16" rx="2"></rect>
-      <text class="lbl" x="68" y="100" style="fill:var(--surface)">p-tau217 在症状前 20 年以上开始升高</text>
-      <circle class="dot" cx="510" cy="96" r="3"></circle>
-      <text class="lbl" x="522" y="100">阿尔茨海默</text>
-
-      <!-- track 3 -->
-      <rect class="track" x="60" y="132" width="450" height="16" rx="2"></rect>
-      <rect class="fill-b" x="290" y="132" width="220" height="16" rx="2"></rect>
-      <text class="lbl" x="298" y="144" style="fill:var(--surface)">14 蛋白信号 · 提前 5.6 年</text>
-      <circle class="dot" cx="510" cy="140" r="3"></circle>
-      <text class="lbl" x="522" y="144">肺癌</text>
-
-      <line class="axis" x1="60" y1="176" x2="640" y2="176"></line>
-      <line class="axis" x1="60" y1="176" x2="60" y2="182"></line>
-      <line class="axis" x1="290" y1="176" x2="290" y2="182"></line>
-      <line class="axis" x1="510" y1="176" x2="510" y2="182"></line>
-      <line class="axis" x1="640" y1="176" x2="640" y2="182"></line>
-      <text class="lbl-s" x="52" y="196">−25 年</text>
-      <text class="lbl-s" x="278" y="196">−12 年</text>
-      <text class="lbl-s" x="500" y="196">0</text>
-      <text class="lbl-s" x="620" y="196">+10</text>
-
-      <text class="lbl" x="60" y="228" style="fill:var(--ink-3)">可预防比例：心血管 ≥80% · 癌症 ~40% · 阿尔茨海默 ~45%</text>
-    </svg>
-    </div>
-    <figcaption>三大年龄相关疾病的自然史。上面那个数量级的差距就来自这张图：既然疾病要酝酿几十年，那么在它显形之前，你有非常长的时间可以改变它的走向。这条路径今天有人体结局证据，「逆转衰老」那条没有。</figcaption>
-  </figure>
-</header>
-
-<aside class="rail">
-  <p class="rail-h">目录</p>
-  <nav id="toc">
+<nav class="contents" aria-label="目录">
+  <p class="ch">目录 · Contents</p>
+  <nav>
     <a href="#frame"><span class="n">00</span>收益的不对称</a>
     <a href="#why"><span class="n">01</span>为什么没人在做</a>
     <a href="#tier1"><span class="n">02</span>五个高证据行为</a>
@@ -487,7 +546,58 @@ footer p{max-width:38rem}
     <a href="#future"><span class="n">08</span>正在到来的</a>
     <a href="#limits"><span class="n">09</span>边界</a>
   </nav>
-</aside>
+</nav>
+
+  <figure class="figure">
+    <div class="fig-h"><b>图一 · 三大疾病的自然史</b><span>症状出现前的干预窗口</span></div>
+    <div class="fig-body">
+      <svg class="runway" viewBox="0 0 720 250" role="img" aria-label="三大年龄相关疾病的潜伏期示意图：心血管、癌症、神经退行性疾病都在症状出现前二十年以上开始，形成很长的干预窗口。">
+      <rect class="win" x="60" y="24" width="450" height="172"></rect>
+      <line class="win-edge" x1="510" y1="18" x2="510" y2="202"></line>
+
+      <text class="lbl-s" x="60" y="16">干预窗口 · 无症状</text>
+      <text class="lbl-s" x="516" y="16">症状 / 诊断</text>
+
+      <!-- track 1 -->
+      <rect class="track" x="60" y="44" width="450" height="16" rx="2"></rect>
+      <rect class="fill-c" x="60" y="44" width="450" height="16" rx="2"></rect>
+      <text class="lbl" x="68" y="56" style="fill:var(--p-000)">动脉粥样硬化 · 青少年期即可见斑块</text>
+      <circle class="dot" cx="510" cy="52" r="3"></circle>
+      <text class="lbl" x="522" y="56">心梗 / 卒中</text>
+
+      <!-- track 2 -->
+      <rect class="track" x="60" y="88" width="450" height="16" rx="2"></rect>
+      <rect class="fill-n" x="60" y="88" width="450" height="16" rx="2"></rect>
+      <text class="lbl" x="68" y="100" style="fill:var(--p-000)">p-tau217 在症状前 20 年以上开始升高</text>
+      <circle class="dot" cx="510" cy="96" r="3"></circle>
+      <text class="lbl" x="522" y="100">阿尔茨海默</text>
+
+      <!-- track 3 -->
+      <rect class="track" x="60" y="132" width="450" height="16" rx="2"></rect>
+      <rect class="fill-b" x="290" y="132" width="220" height="16" rx="2"></rect>
+      <text class="lbl" x="298" y="144" style="fill:var(--p-000)">14 蛋白信号 · 提前 5.6 年</text>
+      <circle class="dot" cx="510" cy="140" r="3"></circle>
+      <text class="lbl" x="522" y="144">肺癌</text>
+
+      <line class="axis" x1="60" y1="176" x2="640" y2="176"></line>
+      <line class="axis" x1="60" y1="176" x2="60" y2="182"></line>
+      <line class="axis" x1="290" y1="176" x2="290" y2="182"></line>
+      <line class="axis" x1="510" y1="176" x2="510" y2="182"></line>
+      <line class="axis" x1="640" y1="176" x2="640" y2="182"></line>
+      <text class="lbl-s" x="52" y="196">−25 年</text>
+      <text class="lbl-s" x="278" y="196">−12 年</text>
+      <text class="lbl-s" x="500" y="196">0</text>
+      <text class="lbl-s" x="620" y="196">+10</text>
+
+      <text class="lbl" x="60" y="228" style="fill:var(--p-700)">可预防比例：心血管 ≥80% · 癌症 ~40% · 阿尔茨海默 ~45%</text>
+    </svg>
+    </div>
+    <figcaption>三大年龄相关疾病的自然史。上面那个数量级的差距就来自这张图：既然疾病要酝酿几十年，那么在它显形之前，你有非常长的时间可以改变它的走向。这条路径今天有人体结局证据，「逆转衰老」那条没有。</figcaption>
+  </figure>
+
+</header>
+
+
 
 <main class="doc">
 
@@ -690,29 +800,25 @@ footer p{max-width:38rem}
   <figure class="fig">
     <div class="fig-h"><b>图二 · 证据最强的那一栏，被走满了多少</b><span>百分比取自本节引用的原始研究</span></div>
     <div class="fig-body">
-      <svg viewBox="0 0 700 214" role="img" aria-label="三项执行率条形图：达到每周最低身体活动量的人约 25%，同时达到有氧 150 分钟与每周两次力量训练的人约 25%，在 70 岁时仍算健康老化的人只有 9.3%，而这批样本全部是医生与护士。三条都远远不满。">
-        <text class="s-hd" x="300" y="26">已 做 到</text>
-        <text class="s-hd" x="640" y="26" text-anchor="end">全部人口 100%</text>
-        <line class="s-ax" x1="300" y1="34" x2="640" y2="34"></line>
-
-        <rect x="300" y="48" width="340" height="18" rx="2" fill="var(--surface-2)" stroke="var(--rule)"></rect>
-        <rect x="300" y="48" width="85" height="18" rx="2" fill="var(--proof)"></rect>
-        <text class="s-lb" x="288" y="61" text-anchor="end">达到每周最低身体活动量</text>
-        <text class="s-vl" x="395" y="61" fill="var(--proof)">25%</text>
-
-        <rect x="300" y="86" width="340" height="18" rx="2" fill="var(--surface-2)" stroke="var(--rule)"></rect>
-        <rect x="300" y="86" width="85" height="18" rx="2" fill="var(--proof)"></rect>
-        <text class="s-lb" x="288" y="99" text-anchor="end">有氧 150 分钟 ＋ 每周 2 次力量</text>
-        <text class="s-vl" x="395" y="99" fill="var(--proof)">25%</text>
-
-        <rect x="300" y="124" width="340" height="18" rx="2" fill="var(--surface-2)" stroke="var(--rule)"></rect>
-        <rect x="300" y="124" width="31.6" height="18" rx="2" fill="var(--unproven)"></rect>
-        <text class="s-lb" x="288" y="137" text-anchor="end">70 岁时仍算健康老化</text>
-        <text class="s-vl" x="341.6" y="137" fill="var(--unproven)">9.3%</text>
-        <text class="s-sm" x="288" y="153" text-anchor="end">样本 10.5 万人，全部是医生与护士</text>
-
-        <line class="s-gr" x1="300" y1="172" x2="640" y2="172"></line>
-        <text class="s-sm" x="300" y="192">每一条的灰色部分，都是已经拿到人体结局证据、却没有被用掉的收益。</text>
+      <svg viewBox="0 0 700 208" role="img" aria-label="三项执行率条形图：达到每周最低身体活动量的人约 25%，同时达到有氧 150 分钟与每周两次力量训练的人约 25%，在 70 岁时仍算健康老化的人只有 9.3%，而这批样本全部是医生与护士。三条都远远不满。">
+        <text class="s-hd" x="300" y="28">已做到</text>
+        <text class="s-hd" x="640" y="28" text-anchor="end">全部人口 100%</text>
+        <line class="s-ax" x1="300" y1="36" x2="640" y2="36"></line>
+        <path d="M300,50 H636 Q640,50 640,54 V62 Q640,66 636,66 H300 Z" fill="var(--proof-100)"></path>
+        <path d="M300,50 H381.0 Q385.0,50 385.0,54 V62 Q385.0,66 381.0,66 H300 Z" fill="var(--proof)"></path>
+        <text class="s-lb" x="288" y="62" text-anchor="end">达到每周最低身体活动量</text>
+        <text class="s-vl" x="395.0" y="62">25%</text>
+        <path d="M300,90 H636 Q640,90 640,94 V102 Q640,106 636,106 H300 Z" fill="var(--proof-100)"></path>
+        <path d="M300,90 H381.0 Q385.0,90 385.0,94 V102 Q385.0,106 381.0,106 H300 Z" fill="var(--proof)"></path>
+        <text class="s-lb" x="288" y="102" text-anchor="end">有氧 150 分钟 ＋ 每周 2 次力量</text>
+        <text class="s-vl" x="395.0" y="102">25%</text>
+        <path d="M300,130 H636 Q640,130 640,134 V142 Q640,146 636,146 H300 Z" fill="var(--proof-100)"></path>
+        <path d="M300,130 H327.62 Q331.62,130 331.62,134 V142 Q331.62,146 327.62,146 H300 Z" fill="var(--proof)"></path>
+        <text class="s-lb" x="288" y="142" text-anchor="end">70 岁时仍算健康老化</text>
+        <text class="s-vl" x="341.62" y="142">9.3%</text>
+        <text class="s-sm" x="288" y="159" text-anchor="end">样本 10.5 万人，全部是医生与护士</text>
+        <line class="s-gr" x1="300" y1="178" x2="640" y2="178"></line>
+        <text class="s-sm" x="300" y="196">浅色部分，是已经拿到人体结局证据、却没有被用掉的收益。</text>
       </svg>
     </div>
     <figcaption><b>缺口不在知识。</b>这三条的证据强度在本页所有条目里名列前茅，成本接近于零；而最后一条的样本是全社会最知道该怎么做的那群人。</figcaption>
@@ -882,8 +988,8 @@ footer p{max-width:38rem}
     <div class="fig-h"><b>图三 · 两个你</b><span>示意图 · 纵轴无刻度</span></div>
     <div class="fig-body">
       <svg viewBox="0 0 700 344" role="img" aria-label="两条风险负担曲线示意：同一副基因、同一份工作，区别只在于其中一个每周走了 150 分钟。三十五到四十五岁之间两条线几乎重合，五十五岁时化验单上第一次出现分岔但仍无症状，到六十八岁时一个刚爬完山、另一个刚做完支架。两条线之间的面积，就是那个你永远看不到的差额。">
-        <text class="s-hd" x="404" y="42" text-anchor="middle" fill="var(--ochre)">55 岁 · 既看得见分岔，又还完全来得及</text>
-        <line x1="404" y1="52" x2="404" y2="288" stroke="var(--ochre)" stroke-width="1" stroke-dasharray="4 4"></line>
+        <text class="s-hd" x="404" y="42" text-anchor="middle" fill="var(--amber)">55 岁 · 既看得见分岔，又还完全来得及</text>
+        <line x1="404" y1="52" x2="404" y2="288" stroke="var(--amber)" stroke-width="1" stroke-dasharray="4 4"></line>
         <line class="s-gr" x1="247.1" y1="60" x2="247.1" y2="288"></line>
 
         <path d="M90,268 C160,262 200,258 247.1,245 C310,228 350,212 404,190 C470,160 550,118 609,92 L609,215 C550,224 470,235 404,242 C350,247 310,251 247.1,258 C200,264 160,266 90,268 Z"
@@ -894,12 +1000,16 @@ footer p{max-width:38rem}
         <path d="M90,268 C160,266 200,264 247.1,258 C310,251 350,247 404,242 C470,235 550,224 609,215"
               fill="none" stroke="var(--proof)" stroke-width="2.6"></path>
 
-        <circle cx="609" cy="92" r="5" fill="var(--unproven)"></circle>
-        <circle cx="609" cy="215" r="5" fill="var(--proof)"></circle>
-        <text class="s-lb" x="620" y="88" fill="var(--unproven)">刚做完支架</text>
-        <text class="s-lb" x="620" y="211" fill="var(--proof)">刚爬完山</text>
+        <circle cx="609" cy="92" r="5" fill="var(--unproven)" stroke="var(--p-000)" stroke-width="2"></circle>
+        <circle cx="609" cy="215" r="5" fill="var(--proof)" stroke="var(--p-000)" stroke-width="2"></circle>
+        <text class="s-lb" x="620" y="88">刚做完支架</text>
+        <text class="s-lb" x="620" y="211">刚爬完山</text>
 
         <text class="s-lb" x="452" y="168" text-anchor="middle">你永远不会看到的那段差距</text>
+        <rect x="110" y="66" width="10" height="10" fill="var(--unproven)"></rect>
+        <text class="s-sm" x="126" y="75">没有做</text>
+        <rect x="110" y="86" width="10" height="10" fill="var(--proof)"></rect>
+        <text class="s-sm" x="126" y="95">每周走了那 150 分钟</text>
 
         <line class="s-ax" x1="90" y1="288" x2="660" y2="288"></line>
         <line class="s-ax" x1="90" y1="288" x2="90" y2="52"></line>
@@ -1113,15 +1223,15 @@ footer p{max-width:38rem}
     <div class="fig-h"><b>图四 · 把 METs 换算成你能看见的数</b><span>METs ≈ 0.05 × 心率 + 2</span></div>
     <div class="fig-body">
       <svg viewBox="0 0 700 226" role="img" aria-label="METs 与心率的双刻度换算尺：METs 4 到 13 与心率 40 到 220 bpm 线性对应，心率每高 10 bpm 约多 1 MET，心率 140 约等于 9 METs；7.9 METs 是荟萃分析中死亡显著更低的水平；每多 1 MET，全因死亡下降 14 到 15%。">
-        <rect x="110" y="76" width="550" height="52" fill="var(--proof-wash)"></rect>
+        <rect x="110" y="76" width="550" height="52" fill="var(--proof-100)"></rect>
 
-        <line x1="348.3" y1="58" x2="348.3" y2="140" stroke="var(--ochre)" stroke-width="1.5" stroke-dasharray="4 3"></line>
-        <text class="s-vl" x="343" y="52" text-anchor="end" fill="var(--ochre)">7.9 METs</text>
+        <line x1="348.3" y1="58" x2="348.3" y2="140" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="4 3"></line>
+        <text class="s-vl" x="343" y="52" text-anchor="end">7.9 METs</text>
 
         <line x1="415.6" y1="76" x2="415.6" y2="128" stroke="var(--proof)" stroke-width="1.5"></line>
         <circle cx="415.6" cy="76" r="4" fill="var(--proof)"></circle>
         <circle cx="415.6" cy="128" r="4" fill="var(--proof)"></circle>
-        <text class="s-vl" x="422" y="52" fill="var(--proof)">心率 140 ≈ 9 METs</text>
+        <text class="s-vl" x="422" y="52">心率 140 ≈ 9 METs</text>
 
         <line class="s-ax" x1="110" y1="76" x2="660" y2="76"></line>
         <line class="s-ax" x1="110" y1="128" x2="660" y2="128"></line>
@@ -1141,9 +1251,9 @@ footer p{max-width:38rem}
           <text class="s-sm" x="660" y="68" text-anchor="middle">13</text><text class="s-sm" x="660" y="146" text-anchor="middle">220</text>
         </g>
 
-        <line x1="415.6" y1="176" x2="476.7" y2="176" stroke="var(--ink-3)" stroke-width="1"></line>
-        <line x1="415.6" y1="171" x2="415.6" y2="181" stroke="var(--ink-3)" stroke-width="1"></line>
-        <line x1="476.7" y1="171" x2="476.7" y2="181" stroke="var(--ink-3)" stroke-width="1"></line>
+        <line x1="415.6" y1="176" x2="476.7" y2="176" stroke="var(--p-700)" stroke-width="1"></line>
+        <line x1="415.6" y1="171" x2="415.6" y2="181" stroke="var(--p-700)" stroke-width="1"></line>
+        <line x1="476.7" y1="171" x2="476.7" y2="181" stroke="var(--p-700)" stroke-width="1"></line>
         <text class="s-lb" x="446" y="198" text-anchor="middle">+1 MET ≈ 心率 +10 bpm ≈ 全因死亡 −14~15%</text>
 
         <text class="s-sm" x="110" y="218">7.9 METs：102,980 人的荟萃分析中，达到这一水平的人全因与心血管死亡显著更低。</text>
@@ -1177,13 +1287,13 @@ footer p{max-width:38rem}
   <div class="scroll"><table>
     <thead><tr><th>方向</th><th>食物</th><th>数据</th></tr></thead>
     <tbody>
-      <tr><td class="k" style="color:var(--teal)">多吃</td><td>水果、蔬菜、全谷物、豆类、坚果、单不饱和脂肪</td><td>健康老化几率接近翻倍（多变量校正后）</td></tr>
-      <tr><td class="k" style="color:var(--teal)">多吃</td><td>橄榄油</td><td>每天 ≥7 g（半汤匙）比几乎不吃：痴呆风险 ↓<span class="num">28%</span>（9.2 万人 / 28 年）；全因死亡 ↓约 <span class="num">20%</span></td></tr>
-      <tr><td class="k" style="color:var(--teal)">多吃</td><td>富含 omega-3 的鱼（三文鱼、金枪鱼）</td><td>抗炎饮食的组成部分</td></tr>
-      <tr><td class="k" style="color:var(--teal)">多吃</td><td>膳食纤维 ≈ 30 g / 天</td><td>185 项研究荟萃：高纤维者冠心病 ↓<span class="num">31%</span>，2 型糖尿病与结肠癌 ↓<span class="num">16%</span></td></tr>
-      <tr><td class="k" style="color:var(--accent-ink)">少吃</td><td>反式脂肪</td><td>健康老化 OR <span class="num">0.52</span>——几率直接砍半，是全表最差的一项</td></tr>
-      <tr><td class="k" style="color:var(--accent-ink)">少吃</td><td>超加工食品（UPF）</td><td>见下</td></tr>
-      <tr><td class="k" style="color:var(--accent-ink)">少吃</td><td>红肉与加工肉、钠</td><td>见下</td></tr>
+      <tr><td class="k" style="color:var(--proof)">多吃</td><td>水果、蔬菜、全谷物、豆类、坚果、单不饱和脂肪</td><td>健康老化几率接近翻倍（多变量校正后）</td></tr>
+      <tr><td class="k" style="color:var(--proof)">多吃</td><td>橄榄油</td><td>每天 ≥7 g（半汤匙）比几乎不吃：痴呆风险 ↓<span class="num">28%</span>（9.2 万人 / 28 年）；全因死亡 ↓约 <span class="num">20%</span></td></tr>
+      <tr><td class="k" style="color:var(--proof)">多吃</td><td>富含 omega-3 的鱼（三文鱼、金枪鱼）</td><td>抗炎饮食的组成部分</td></tr>
+      <tr><td class="k" style="color:var(--proof)">多吃</td><td>膳食纤维 ≈ 30 g / 天</td><td>185 项研究荟萃：高纤维者冠心病 ↓<span class="num">31%</span>，2 型糖尿病与结肠癌 ↓<span class="num">16%</span></td></tr>
+      <tr><td class="k" style="color:var(--unproven-ink)">少吃</td><td>反式脂肪</td><td>健康老化 OR <span class="num">0.52</span>——几率直接砍半，是全表最差的一项</td></tr>
+      <tr><td class="k" style="color:var(--unproven-ink)">少吃</td><td>超加工食品（UPF）</td><td>见下</td></tr>
+      <tr><td class="k" style="color:var(--unproven-ink)">少吃</td><td>红肉与加工肉、钠</td><td>见下</td></tr>
     </tbody>
   </table></div>
 
@@ -1280,7 +1390,7 @@ footer p{max-width:38rem}
     <thead><tr><th>问题</th><th>三份报告怎么说</th></tr></thead>
     <tbody>
       <tr><td class="k">乳腺癌</td><td>一致同意有风险。终身绝对风险从每周 &lt;1 杯的 <span class="num">11.3%</span> 升到每天 1 杯的 <span class="num">13.1%</span>。</td></tr>
-      <tr><td class="k">其他癌症<br><span style="font-weight:400;color:var(--ink-3)">口腔/咽/喉/肝/食管/结肠</span></td><td>外科医生总长报告和 ICCPUD 认为低剂量起就有风险；<strong>National Academies 认为证据不足</strong>（结肠癌仅 ~9%，95%CI 0.96–1.22，不显著）。</td></tr>
+      <tr><td class="k">其他癌症<br><span style="font-weight:400;color:var(--p-700)">口腔/咽/喉/肝/食管/结肠</span></td><td>外科医生总长报告和 ICCPUD 认为低剂量起就有风险；<strong>National Academies 认为证据不足</strong>（结肠癌仅 ~9%，95%CI 0.96–1.22，不显著）。</td></tr>
       <tr><td class="k">全因死亡</td><td>National Academies——三份里唯一做了 de novo 全面复审、并处理了“戒酒者偏倚”的——结论是适量饮酒（男 2 杯/天、女 1 杯/天）与全因死亡 ↓<span class="num">16%</span>、心血管死亡 ↓<span class="num">18%</span> 相关，中等确定性。另外两份根本没报告获益。</td></tr>
     </tbody>
   </table></div>
@@ -1584,28 +1694,34 @@ footer p{max-width:38rem}
 
 <script>
 (function(){
-  var links = Array.prototype.slice.call(document.querySelectorAll('#toc a'));
-  var map = {};
-  links.forEach(function(a){
-    var el = document.getElementById(a.getAttribute('href').slice(1));
-    if (el) map[el.id] = a;
-  });
-  var ids = Object.keys(map);
-  if (!ids.length || !('IntersectionObserver' in window)) return;
-
-  var visible = {};
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ visible[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
-    var best = null, bestVal = 0;
-    ids.forEach(function(id){
-      if (visible[id] > bestVal){ bestVal = visible[id]; best = id; }
-    });
-    if (!best) return;
-    links.forEach(function(a){ a.classList.remove('on'); });
-    map[best].classList.add('on');
-  }, { rootMargin: '-10% 0px -70% 0px', threshold: [0, .25, .5, 1] });
-
-  ids.forEach(function(id){ io.observe(document.getElementById(id)); });
+  var bar=document.getElementById('tb-bar'), tb=document.getElementById('topbar'),
+      sec=document.getElementById('tb-sec'), menu=document.getElementById('tb-menu');
+  var links=Array.prototype.slice.call(document.querySelectorAll('.contents a[href^="#"]'));
+  var targets=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  var head=document.querySelector('.masthead');
+  var t=false;
+  function paint(){
+    t=false;
+    var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+    if(bar) bar.style.width=(max>0?Math.min(100,d.scrollTop/max*100):0)+'%';
+    if(tb && head) tb.classList.toggle('show', d.scrollTop > head.offsetHeight*0.7);
+    var k=-1;
+    for(var i=0;i<targets.length;i++){
+      var el=targets[i];
+      if(el && el.getBoundingClientRect().top < 140) k=i;
+    }
+    if(sec){
+      if(k>-1){
+        var a=links[k], num=a.querySelector('.n');
+        sec.textContent=(num?num.textContent+'  ':'')+a.textContent.slice(num?num.textContent.length:0);
+      } else sec.textContent='';
+    }
+  }
+  addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(paint);}},{passive:true});
+  addEventListener('resize',paint);
+  if(menu) menu.addEventListener('click',function(e){ if(e.target.tagName==='A') menu.removeAttribute('open'); });
+  document.addEventListener('click',function(e){ if(menu && menu.open && !menu.contains(e.target)) menu.removeAttribute('open'); });
+  paint();
 })();
 </script>
 
