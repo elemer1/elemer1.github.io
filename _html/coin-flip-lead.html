@@ -1,0 +1,403 @@
+---
+title: "抛硬币的领先悖论"
+permalink: /coin-flip-lead/
+listed: false
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="公平硬币对赌 20,000 次：谁领先的时间占比呈 U 形分布。十万局蒙特卡罗模拟，加上只用组合计数与归纳法的完整推导。">
+<title>抛硬币的领先悖论</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+:root{
+  color-scheme:light;
+  --surface:#fcfcfb; --panel:#f4f3f0; --rule:#e4e2dc; --grid:#ecebe6;
+  --ink:#0b0b0b; --ink2:#52514e; --muted:#7a7873;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --wash:rgba(42,120,214,.08);
+  --warn-bg:#fff6e5; --warn-rule:#eda100;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --surface:#1a1a19; --panel:#232321; --rule:#34332f; --grid:#2a2927;
+  --ink:#ffffff; --ink2:#c3c2b7; --muted:#96958c;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --wash:rgba(57,135,229,.12);
+  --warn-bg:#2b2412; --warn-rule:#c98500;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface:#1a1a19; --panel:#232321; --rule:#34332f; --grid:#2a2927;
+  --ink:#ffffff; --ink2:#c3c2b7; --muted:#96958c;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --wash:rgba(57,135,229,.12);
+  --warn-bg:#2b2412; --warn-rule:#c98500;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--sans);line-height:1.8;font-size:16.5px}
+main{max-width:720px;margin:0 auto;padding:48px 16px 96px}
+h1{font-size:30px;line-height:1.3;margin:0 0 8px;letter-spacing:-.01em}
+.sub{color:var(--ink2);margin:0 0 32px}
+h2{font-size:22px;margin:56px 0 12px;padding-top:12px;border-top:1px solid var(--rule)}
+h3{font-size:17.5px;margin:32px 0 8px}
+p{margin:12px 0}
+a{color:var(--s1)}
+small,.note{color:var(--muted);font-size:14px}
+code{font-family:var(--mono);font-size:.9em;background:var(--panel);padding:1px 5px;border-radius:4px}
+.callout{background:var(--warn-bg);border-left:3px solid var(--warn-rule);padding:12px 16px;border-radius:0 6px 6px 0;margin:20px 0}
+.callout p{margin:6px 0}
+.box{background:var(--panel);border-radius:8px;padding:14px 18px;margin:18px 0}
+.box p{margin:6px 0}
+.thm{border-left:3px solid var(--s1);padding:4px 0 4px 16px;margin:18px 0}
+.thm b.t{display:block;margin-bottom:2px}
+.proof{color:var(--ink);margin:8px 0 20px}
+.qed{float:right;color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:20px 0}
+.tile{background:var(--panel);border-radius:8px;padding:12px 14px}
+.tile .v{font-size:24px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.3}
+.tile .l{font-size:13px;color:var(--ink2);line-height:1.5}
+.table-wrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;font-size:14.5px;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:6px 10px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--ink2);font-weight:600}
+figure{margin:24px 0}
+figcaption{font-size:14px;color:var(--ink2);margin-top:6px;line-height:1.6}
+.chart{position:relative;width:100%}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink2);margin:0 0 6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.legend i.dot{border-radius:50%;background:var(--ink)}
+.legend i.line{height:2px;width:14px;vertical-align:3px;border-radius:1px}
+.axis text{fill:var(--muted);font-size:11px;font-family:var(--sans)}
+.axis line,.axis path{stroke:var(--grid)}
+.lbl{fill:var(--ink2);font-size:11.5px;font-family:var(--sans)}
+.tip{position:absolute;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:6px 9px;font-size:12.5px;line-height:1.5;box-shadow:0 4px 14px rgba(0,0,0,.12);opacity:0;transition:opacity .08s;white-space:nowrap;z-index:5}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:560px){.pair{grid-template-columns:1fr}}
+.ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
+button,select{font:inherit;font-size:14px;padding:6px 12px;border-radius:6px;border:1px solid var(--rule);background:var(--panel);color:var(--ink);cursor:pointer}
+button:focus-visible,select:focus-visible{outline:2px solid var(--s1);outline-offset:2px}
+.katex{position:relative}
+.katex-display{overflow-x:auto;overflow-y:hidden;padding:4px 0}
+body{overflow-x:clip}
+.paths td:nth-child(2),td.wrap{white-space:normal;min-width:170px}
+.paths td,.paths th{text-align:center}
+.paths td:first-child{font-family:var(--mono);text-align:left}
+ol.steps{padding-left:22px}
+ol.steps li{margin:6px 0}
+</style>
+</head>
+<body>
+<main>
+
+<h1>抛硬币的领先悖论</h1>
+<p class="sub">一枚公平的硬币，两个人对赌 20,000 次。直觉说两人各领先一半时间。十万局模拟和一段只用组合计数的证明都说：不是这样。</p>
+
+<div class="callout">
+<p><b>先修正原文的三处说法</b>，其余部分没问题。</p>
+<p>① <b>“绝大多数对局中，一方从头压制到尾”是错的。</b>一方领先 ≥98.25% 时间的局只占 <b>16.9%</b>（每一方各 8.5%）；真正“从头到尾没平过”的只有 <b>0.56%</b>。准确的说法是：极端结果是<b>单个取值里最可能的</b>，均衡结果是<b>最不可能的</b>。分布是 U 形，但 U 的中间并非空的。</p>
+<p>② <b>“19,650 次的概率远大于各领先一半”成立，但它比较的是两个单点。</b>P(甲恰好领先 19,650 步) ÷ P(恰好 10,000 步) = <b>3.81</b>。换成区间比较更有力：一方领先 ≥98.25% 的概率是 16.9%，而同样宽度的中间区间（48.25%–51.75%）只有 2.2%，差 <b>7.6 倍</b>。</p>
+<p>③ <b>“公平”并没有被打破。</b>甲领先时间的<b>平均值</b>恰好是 50%（模拟得 49.89%）。错的是把“平均 50%”当成“典型 50%”。</p>
+<p class="note">20,000 与 19,650 这组数字的原始出处我没有核实到；Feller《概率论及其应用》第一卷第三章确实讨论了这一现象（“反正弦律”），下面的推导沿用他的组合路线，但只用计数和归纳法。</p>
+</div>
+
+<h2>一、蒙特卡罗模拟</h2>
+<p>设定：100,000 局，每局抛 20,000 次公平硬币（numpy，种子 20260926）。第 <i>i</i> 次抛完后甲的净胜数是 $S_i$。第 <i>i</i> 步算“甲领先”，当且仅当这一步的线段位于横轴上方，即 $S_{i-1}&gt;0$ 或 $S_i&gt;0$。平局那一刻两侧的线段归给刚离开或即将到达的一方，因此每一步非甲即乙。这是 Feller 的约定，也是下面推导用的约定。</p>
+
+<div class="tiles">
+  <div class="tile"><div class="v">16.8%</div><div class="l">一方领先 ≥98.25% 时间<br>（精确值 16.93%）</div></div>
+  <div class="tile"><div class="v">40.7%</div><div class="l">一方领先 ≥90% 时间<br>（精确值 40.98%）</div></div>
+  <div class="tile"><div class="v">12.9%</div><div class="l">领先占比在 40%–60% 之间<br>（精确值 12.82%）</div></div>
+  <div class="tile"><div class="v">49.89%</div><div class="l">甲领先占比的平均值<br>（理论值 50%）</div></div>
+</div>
+
+<figure>
+  <div class="legend"><span><i style="background:var(--s1)"></i>模拟：落在该 5% 区间的局数占比</span><span><i class="dot"></i>精确公式 $u_{2k}u_{2n-2k}$ 的区间和</span></div>
+  <div class="chart" id="c-hist"></div>
+  <figcaption>图 1　甲领先步数占比的分布，20 个区间，每格宽 5%。两端各约 14.3%，中间每格约 3.2%。均衡的中间四格（40%–60%）加起来还不如最边上一格的一半。</figcaption>
+</figure>
+
+<div class="table-wrap"><table>
+<tr><th>比较的两件事</th><th>精确概率</th><th>模拟（10 万局）</th><th>倍数</th></tr>
+<tr><td>甲恰好领先 19,650 步</td><td>2.43×10⁻⁴</td><td rowspan="1">38 局（两方合计）</td><td rowspan="2">3.81×</td></tr>
+<tr><td>甲恰好领先 10,000 步</td><td>6.37×10⁻⁵</td><td>3 局</td></tr>
+<tr><td>一方领先 ≥ 19,650 步（≥98.25%）</td><td>16.93%</td><td>16.79%</td><td rowspan="2">7.6×</td></tr>
+<tr><td>领先 9,650–10,350 步（同宽中间带）</td><td>2.23%</td><td>2.21%</td></tr>
+<tr><td>一方领先 ≥ 90%</td><td>40.98%</td><td>40.71%</td><td rowspan="2">3.2×</td></tr>
+<tr><td>领先 40%–60%</td><td>12.82%</td><td>12.93%</td></tr>
+<tr><td>整局从未平过（一方 100%）</td><td>0.56%</td><td>0.53%</td><td></td></tr>
+</table></div>
+<p class="note">单点概率很小，十万局里只命中几十次，所以单点那一行的模拟局数噪声较大（理论期望分别是 48.5 与 6.4 局）；区间那几行才是模拟真正能验证的。</p>
+
+<h3>对照组：同一批硬币，换一个问题</h3>
+<p>直觉并不是凭空来的。问“20,000 次里正面占多少”，答案确实紧贴 50%：标准差只有 0.35%。问“甲领先的时间占多少”，就成了 U 形。两张图用的是同样的随机硬币，只是统计的量不同。</p>
+<div class="pair">
+<figure>
+  <div class="chart" id="c-ind"></div>
+  <figcaption>图 2a　正面占比（每格 1%）：几乎全部挤在 49%–51%。</figcaption>
+</figure>
+<figure>
+  <div class="chart" id="c-lead"></div>
+  <figcaption>图 2b　领先时间占比（每格 1%）：两头高，中间低。</figcaption>
+</figure>
+</div>
+
+<h3>三条真实轨迹</h3>
+<figure>
+  <div class="legend" id="lg-paths"></div>
+  <div class="chart" id="c-paths"></div>
+  <figcaption>图 3　随机抽的三局，纵轴是甲的净胜数 $S_i$。轨迹一旦离开 0，往往要很久才回来；领先权只在碰到 0 的时候才可能换手。</figcaption>
+</figure>
+
+<h3>自己跑一遍</h3>
+<p class="note">在你的浏览器里现场模拟，每次点击追加一批局。</p>
+<div class="ctrl">
+  <label>每局抛 <select id="sim-n"><option value="200">200</option><option value="2000">2,000</option><option value="20000" selected>20,000</option></select> 次</label>
+  <button id="sim-go">再跑 2,000 局</button>
+  <button id="sim-reset">清空</button>
+  <span class="note" id="sim-stat">尚未运行</span>
+</div>
+<div class="chart" id="c-sim"></div>
+
+<h2>二、离散数学推导</h2>
+<p>整段推导只用到：计数、二项式系数、一个一一对应（反射）、错项相消（telescoping）、数学归纳法。不出现极限、积分或测度。</p>
+
+<h3>2.1 记号</h3>
+<div class="box">
+<p>一局抛 $2n$ 次，$X_i=+1$（甲赢）或 $-1$（乙赢），$S_0=0,\ S_i=X_1+\cdots+X_i$。全部 $2^{2n}$ 条“路径”等可能，所以<b>概率 = 符合条件的路径数 ÷ $2^{2n}$</b>。</p>
+<p>$N(m,x)$：从 0 出发走 $m$ 步到达 $x$ 的路径数。向上 $a$ 步、向下 $b$ 步，$a+b=m,\ a-b=x$，所以 $N(m,x)=\binom{m}{(m+x)/2}$（不是整数或越界时为 0）。</p>
+<p>$u_{2m}=P(S_{2m}=0)=\dfrac{\binom{2m}{m}}{2^{2m}}$，约定 $u_0=1$。</p>
+<p>$f_{2r}=P(\text{第一次回到 0 恰在第 } 2r \text{ 步})$。</p>
+<p>$p_{2k,2n}=P(\text{在 } 2n \text{ 步中甲恰好领先 } 2k \text{ 步})$。</p>
+</div>
+<p>领先步数一定是偶数：相邻两次平局之间的一段路径起点和终点都是 0，长度必为偶数，且整段都在同一侧。</p>
+
+<div class="thm"><b class="t">目标定理（离散反正弦律）</b>
+$$p_{2k,2n}=u_{2k}\,u_{2n-2k},\qquad k=0,1,\dots,n.$$
+</div>
+
+<h3>2.2 引理 1：反射原理</h3>
+<div class="thm"><b class="t">引理 1</b>设 $a,b&gt;0$。从 $(s,a)$ 走到 $(t,b)$、途中碰到过 0 的路径，与从 $(s,-a)$ 走到 $(t,b)$ 的全部路径一样多。</div>
+<p class="proof">给一条碰到过 0 的路径，找到它第一次碰 0 的时刻 $\tau$，把 $\tau$ 之前那一段上下翻转，得到一条从 $-a$ 出发到 $b$ 的路径。反过来，任何从 $-a$ 到 $b$ 的路径因为每步只走 ±1，必然经过 0；把第一次经过 0 之前的部分翻回去即可复原。这是一一对应。<span class="qed">∎</span></p>
+
+<h3>2.3 引理 2：一直严格领先的路径数</h3>
+<div class="thm"><b class="t">引理 2</b>$S_1,\dots,S_{2n}$ 全部 $&gt;0$ 的路径有 $\binom{2n-1}{n}=\tfrac12\binom{2n}{n}$ 条，所以 $P(S_1&gt;0,\dots,S_{2n}&gt;0)=\tfrac12 u_{2n}$。</div>
+<div class="proof">
+<p>第一步必须向上，到达 $(1,1)$。设终点为 $2r$（$r=1,\dots,n$）。从 $(1,1)$ 到 $(2n,2r)$ 的路径共 $N(2n-1,2r-1)$ 条；其中碰过 0 的，按引理 1 等于从 $(1,-1)$ 出发的路径数 $N(2n-1,2r+1)$。于是</p>
+$$\#\{\text{始终}>0\}=\sum_{r=1}^{n}\bigl[N(2n-1,2r-1)-N(2n-1,2r+1)\bigr].$$
+<p>相邻项互相抵消，只剩首项减末项：$N(2n-1,1)-N(2n-1,2n+1)=\binom{2n-1}{n}-0$。又 $\binom{2n}{n}=\binom{2n-1}{n-1}+\binom{2n-1}{n}$，而这两项相等，所以 $\binom{2n-1}{n}=\tfrac12\binom{2n}{n}$。<span class="qed">∎</span></p>
+</div>
+
+<h3>2.4 三个推论</h3>
+<div class="thm"><b class="t">推论 A（从不平局）</b>$P(S_1\ne0,\dots,S_{2n}\ne0)=u_{2n}$。</div>
+<p class="proof">一直在上方和一直在下方对称，各为 $\tfrac12u_{2n}$，相加即可。<span class="qed">∎</span></p>
+<p>这一条本身就很反直觉：<b>“$2n$ 步里一次都没平过”与“第 $2n$ 步恰好平局”概率完全相等。</b>比如 20 次抛掷，两者都是 17.6%。</p>
+
+<div class="thm"><b class="t">推论 B（从不落后）</b>$P(S_1\ge0,\dots,S_{2n}\ge0)=u_{2n}$。</div>
+<p class="proof">严格为正的路径 = 先向上走到 1，之后 $2n-1$ 步都不低于 1；整体下移 1，就是“$2n-1$ 步都 $\ge0$”的路径，所以后者也有 $\tfrac12\binom{2n}{n}$ 条。长度为奇数的这类路径终点是奇数，至少为 1，再走任意一步都不会跌破 0，所以长度 $2n$ 的“始终 $\ge0$”路径恰好是它的两倍：$\binom{2n}{n}$ 条。<span class="qed">∎</span></p>
+
+<div class="thm"><b class="t">推论 C（首次回到 0）</b>$f_{2r}=u_{2r-2}-u_{2r}$。</div>
+<p class="proof">“前 $2r-2$ 步没碰 0”这件事包含了“前 $2r$ 步没碰 0”，两者之差正是“第一次碰 0 恰在第 $2r$ 步”。代入推论 A。<span class="qed">∎</span></p>
+
+<h3>2.5 引理 3：按首次平局分类</h3>
+<div class="thm"><b class="t">引理 3</b>对 $m\ge1$：$u_{2m}=\sum_{r=1}^{m}f_{2r}\,u_{2m-2r}$。</div>
+<p class="proof">把 $S_{2m}=0$ 的路径按“第一次回到 0 的时刻 $2r$”分类。前 $2r$ 步有 $f_{2r}2^{2r}$ 种走法，后 $2m-2r$ 步是一条独立的、终点为 0 的路径，有 $u_{2m-2r}2^{2m-2r}$ 种。相乘、求和、除以 $2^{2m}$。<span class="qed">∎</span></p>
+
+<h3>2.6 定理的证明（对 $n$ 归纳）</h3>
+<div class="proof">
+<p><b>边界 $k=n$。</b>“$2n$ 步全归甲”等价于“$S_i\ge0$ 对所有 $i$”：若某个 $S_i=-1$，通向它的那一步两端都 $\le0$，归乙；反之若全部 $S_i\ge0$，每一步的两端都 $\ge0$ 且不能同为 0，于是至少一端 $&gt;0$，归甲。由推论 B，$p_{2n,2n}=u_{2n}=u_{2n}u_0$。$k=0$ 对称。</p>
+<p><b>中间 $1\le k\le n-1$。</b>这时路径必定碰过 0（否则全部步数在同一侧，$k$ 只能是 0 或 $n$）。设第一次回到 0 在第 $2r$ 步。前 $2r$ 步整段在上方或整段在下方，两种情形各占 $\tfrac12 f_{2r}$。之后剩下 $2n-2r$ 步，是一条全新的路径：</p>
+<ol class="steps">
+<li>若第一段在上方，甲已领先 $2r$ 步，剩下的路径里还需要甲领先 $2k-2r$ 步（要求 $r\le k$）；</li>
+<li>若第一段在下方，剩下的路径里甲需要领先整整 $2k$ 步（要求 $r\le n-k$）。</li>
+</ol>
+$$p_{2k,2n}=\tfrac12\sum_{r=1}^{k}f_{2r}\,p_{2k-2r,\,2n-2r}+\tfrac12\sum_{r=1}^{n-k}f_{2r}\,p_{2k,\,2n-2r}.$$
+<p>右边的 $p$ 长度都小于 $2n$，按归纳假设代入 $p_{2j,2m}=u_{2j}u_{2m-2j}$：</p>
+$$p_{2k,2n}=\tfrac12\,u_{2n-2k}\underbrace{\sum_{r=1}^{k}f_{2r}u_{2k-2r}}_{=\,u_{2k}\ (\text{引理 3})}+\tfrac12\,u_{2k}\underbrace{\sum_{r=1}^{n-k}f_{2r}u_{2n-2k-2r}}_{=\,u_{2n-2k}\ (\text{引理 3})}=u_{2k}\,u_{2n-2k}.$$
+<p><span class="qed">∎</span></p>
+</div>
+
+<h3>2.7 为什么是 U 形：相邻项之比</h3>
+<p>由 $\binom{2m}{m}$ 的定义直接得到 $\dfrac{u_{2m}}{u_{2m-2}}=\dfrac{2m-1}{2m}$，也就是 $u_{2m}=\prod_{j=1}^{m}\dfrac{2j-1}{2j}$。它严格递减：$1,\ \tfrac12,\ \tfrac38,\ \tfrac5{16},\dots$</p>
+<p>于是</p>
+$$\frac{p_{2k+2,2n}}{p_{2k,2n}}=\frac{u_{2k+2}}{u_{2k}}\cdot\frac{u_{2n-2k-2}}{u_{2n-2k}}=\frac{(2k+1)(2n-2k)}{(2k+2)(2n-2k-1)}.$$
+<p>分母减分子，展开后只剩 $2n-4k-2$。所以当 $k&lt;\tfrac{n-1}{2}$ 时比值 $&lt;1$（在下降），过了中点之后 $&gt;1$（在上升）。<b>$p_{2k,2n}$ 从两端向中间严格单调下降，中点最小，两端最大。</b>这就是 U 形，不需要任何近似。</p>
+
+<h3>2.8 把 19,650 对 10,000 算出来：Wallis 型夹逼</h3>
+<div class="thm"><b class="t">引理 4</b>对 $m\ge1$：$\dfrac{1}{4m}\le u_{2m}^2&lt;\dfrac{1}{2m+1}$。</div>
+<div class="proof">
+<p><b>上界。</b>因为 $(2j-1)(2j+1)=4j^2-1&lt;4j^2$，有 $\tfrac{2j-1}{2j}&lt;\tfrac{2j}{2j+1}$。令 $v=\prod_{j=1}^{m}\tfrac{2j}{2j+1}$，则 $u_{2m}&lt;v$，而 $u_{2m}\cdot v=\prod_{j=1}^{m}\tfrac{2j-1}{2j+1}=\tfrac13\cdot\tfrac35\cdots\tfrac{2m-1}{2m+1}=\tfrac{1}{2m+1}$（错项相消）。所以 $u_{2m}^2&lt;u_{2m}v=\tfrac1{2m+1}$。</p>
+<p><b>下界。</b>对 $j\ge2$，$(2j-1)^2=4j^2-4j+1&gt;2j(2j-2)$，所以 $\tfrac{2j-1}{2j}&gt;\tfrac{2j-2}{2j-1}$。于是 $u_{2m}\ge\tfrac12\prod_{j=2}^{m}\tfrac{2j-2}{2j-1}$，两边乘以 $u_{2m}=\tfrac12\prod_{j=2}^{m}\tfrac{2j-1}{2j}$：$u_{2m}^2\ge\tfrac14\prod_{j=2}^{m}\tfrac{j-1}{j}=\tfrac1{4m}$。<span class="qed">∎</span></p>
+</div>
+<p>换句话说，$u_{2m}$ 夹在 $\tfrac{1}{\sqrt{4m}}$ 和 $\tfrac{1}{\sqrt{2m+1}}$ 之间，大小“像 $1/\sqrt m$”。代入 $2n=20{,}000$：</p>
+$$\frac{p_{19650,\,20000}}{p_{10000,\,20000}}=\frac{u_{19650}\,u_{350}}{u_{10000}^2}\ \ge\ \frac{\sqrt{\tfrac{1}{4\cdot9825}\cdot\tfrac{1}{4\cdot175}}}{\tfrac{1}{10001}}=\frac{10001}{\sqrt{27{,}510{,}000}}\approx1.91.$$
+<p>这是一个<b>严格证明</b>：领先 19,650 步的概率至少是均分的 1.9 倍。直接把乘积算出来，精确比值是 <b>3.81</b>。原文的说法在单点比较的意义下成立。</p>
+
+<h3>2.9 附带一个更短的证明：最后一次平局</h3>
+<p>“最后一次平局发生在第 $2k$ 步” = “第 $2k$ 步平局” 且 “之后 $2n-2k$ 步不再平局”。后一段是独立的新路径，由推论 A：</p>
+$$P(\text{最后一次平局在 }2k)=u_{2k}\cdot u_{2n-2k}.$$
+<p>和领先时间是<b>同一个分布</b>。模拟里最后一次平局时刻的直方图同样是 U 形：最后一次平局落在前 5% 的局有 14.2%，落在正中间 45%–55% 的只有 6.4%。</p>
+
+<h2>三、直觉上怎么理解</h2>
+
+<h3>3.1 最小的例子：抛 4 次，16 条路径全部列出来</h3>
+<p>按上面的约定数甲领先几步：</p>
+<div class="table-wrap"><table class="paths">
+<tr><th>甲领先步数</th><th>路径（+ 甲赢，− 乙赢）</th><th>条数</th><th>公式 $u_{2k}u_{4-2k}\cdot16$</th></tr>
+<tr><td>4（全程）</td><td>++++　+++−　++−+　++−−　+−++　+−+−</td><td>6</td><td>$\tfrac38\cdot1\cdot16=6$</td></tr>
+<tr><td>2（各一半）</td><td>+−−+　+−−−　−++−　−+++</td><td>4</td><td>$\tfrac12\cdot\tfrac12\cdot16=4$</td></tr>
+<tr><td>0（全程落后）</td><td>−−−−　−−−+　−−+−　−−++　−+−−　−+−+</td><td>6</td><td>$1\cdot\tfrac38\cdot16=6$</td></tr>
+</table></div>
+<p>要做到各领先一半，路径必须在第 2 步平局，然后<b>换边</b>，而且之后不能再换回来。一方全程领先则只需要“别跌破 0”，这个条件宽松得多。抛的次数越多，差距越大（全部是穷举计数，已用程序逐条核对）：</p>
+<div class="table-wrap"><table>
+<tr><th>抛掷次数</th><th>路径总数</th><th>甲领先步数 0, 2, 4, …（路径条数）</th></tr>
+<tr><td>4</td><td>16</td><td>6, 4, 6</td></tr>
+<tr><td>6</td><td>64</td><td>20, 12, 12, 20</td></tr>
+<tr><td>10</td><td>1,024</td><td>252, 140, 120, 120, 140, 252</td></tr>
+<tr><td>20</td><td>1,048,576</td><td class="wrap">184,756, 97,240, 77,220, 68,640, 64,680, <b>63,504</b>, 64,680, …（对称）</td></tr>
+</table></div>
+<p>抛 20 次时，“10 比 10 各领先一半”是 11 种结果里最少的（6.1%）；“有一方全程领先”合计占 35.2%。</p>
+
+<h3>3.2 领先权只在平局时换手，而平局少得惊人</h3>
+<p>甲要从领先变成落后，必须先经过 0。所以领先时间怎么分，完全取决于平局的次数和位置。</p>
+<ul>
+<li>20,000 次抛掷里，平局次数的期望是 $\sum_{m=1}^{10000}u_{2m}\approx111.8$ 次（模拟 112.1），不是几千次。</li>
+<li>其中约 78.8 次在前一半，只有 33.0 次在后一半。越往后，平局越稀。</li>
+<li>每次平局后领先权只有一半机会真的换边，所以整局平均只换手 56 次左右。</li>
+</ul>
+<p>平局次数像 $\sqrt{n}$ 那样增长，而不是像 $n$。抛的次数翻 100 倍，平局只多约 10 倍。于是步数很多、换手很少，每次换手之间隔得很长。</p>
+
+<h3>3.3 “回本”为什么这么难：落后之后迟迟回不来</h3>
+<p>推论 A 说“$2n$ 步都没平过”的概率是 $u_{2n}$。换个说法：<b>第一把输了之后，之后一直没能回本的概率</b>也是 $u_{2n}$：</p>
+<div class="table-wrap"><table>
+<tr><th>之后又抛了</th><th>20 次</th><th>200 次</th><th>2,000 次</th><th>20,000 次</th></tr>
+<tr><td>仍未回本的概率 $u_{2n}$</td><td>17.6%</td><td>5.6%</td><td>1.8%</td><td>0.56%</td></tr>
+</table></div>
+<p>次数乘 10，概率只除以约 3.2（$\sqrt{10}$）。这个衰减慢得反常：大多数人会很快回本，但总有相当比例的人要等极久。等待时间的平均值甚至是<b>无穷大</b>：由推论 C 和分部求和，$\sum_{r=1}^{n}2r\,f_{2r}=2\sum_{r=0}^{n-1}u_{2r}-2n\,u_{2n}$，再用引理 4 的夹逼可知它随 $n$ 无限增长（大致与 $\sqrt n$ 同阶）。这就是原文标题里的“回本陷阱”：游戏公平，却不保证你在任何合理的时间内回到起点。</p>
+
+<h3>3.4 一段超长的“远行”吃掉了大半局</h3>
+<p>一局可以切成若干段：从 0 出发、离开、再回到 0。每一段整段归一方。因为回到 0 的等待时间是上面那种“大多数很短、少数极长”的分布，<b>最长的那一段往往比其余所有段加起来还长</b>。模拟里，最长的一段平均占整局 62.5%（中位数 61.6%）。</p>
+<p>于是领先时间占比基本由“那段最长的远行在哪一侧”决定。它在甲这边，甲的占比就被拉向 1；在乙那边就被拉向 0。一枚硬币决定了一个接近 0 或 1 的结果，这就是 U 形两端那么高的原因。</p>
+
+<h3>3.5 “平均 50%”和“通常 50%”是两回事</h3>
+<p>单看任意一步，甲在上方和下方的机会相等，所以领先占比的<b>期望</b>一定是 50%，公平性没有问题。直觉错在把 20,000 步当成了 20,000 次独立的抽签。正面次数确实是独立累加的，所以会稳稳集中到 50%（图 2a）。但“第 10,001 步是否领先”和“第 10,000 步是否领先”几乎总是同一个答案：它们共享了前 10,000 次抛掷的全部历史。20,000 个高度相关的量相加，不会互相抵消，而是整体一起偏向一边（图 2b）。</p>
+<p>可以这样记：<b>大数定律管的是“正面占比”，它会回到 50%；它不管“谁在领先”，领先者不会被拉回来。</b>硬币没有记忆，不会因为甲领先了就偏向乙。甲已经积累的领先既不会被“纠正”，也没有外力把它拉回 0，只能靠运气慢慢被抹平，而那要等很久。</p>
+
+<p class="note" style="margin-top:48px">方法说明：精确值由 $u_{2k}u_{2n-2k}$ 逐项求和得到（双精度），全部 10,001 项之和为 1（误差 &lt;10⁻¹²）；小规模表格由穷举全部路径得到，与公式逐项一致。模拟：numpy，10 万局 × 20,000 步。</p>
+
+</main>
+<div class="tip" id="tip"></div>
+<script>
+const DATA = {"hist20":[14260,6168,4881,4110,3859,3578,3508,3341,3317,3086,3199,3326,3367,3307,3617,3710,4264,4823,6215,14064],"exact20":[0.1435261349193327,0.061274801385928605,0.04844254048252374,0.0418959079091852,0.038166383570270204,0.035746025042592854,0.03399989347468908,0.03282485912089549,0.03220878335367079,0.03188284134419095,0.031882520675256786,0.03227276281682056,0.03282485912089551,0.03406935025203666,0.0356030626463926,0.038160317934322674,0.04206461502358022,0.04824731606308052,0.061380889945777145,0.14352613491933286],"hist100":[6312,2709,2038,1654,1547,1339,1293,1242,1196,1098,1059,954,989,935,937,837,876,825,780,799,782,780,772,750,775,751,702,697,726,696,701,721,741,685,666,689,710,641,660,641,711,632,649,681,644,601,585,643,647,610,586,664,673,648,628,650,649,699,680,643,655,681,676,650,710,644,696,652,696,619,704,704,741,721,747,729,750,756,723,752,848,792,859,893,864,885,907,961,1034,1044,1083,1197,1238,1340,1357,1504,1674,2013,2602,6271],"ind100":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,261,49381,50112,246,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"lastz_hist":[14244,6051,4927,4209,3812,3505,3397,3271,3223,3273,3154,3253,3280,3391,3563,3759,4211,4915,6094,14468],"G":100000,"paths":[[1,3,13,7,9,23,23,23,27,27,27,25,35,29,19,21,35,35,41,43,33,31,19,7,13,7,11,7,5,15,15,1,5,-3,-1,-1,-1,3,15,13,21,21,21,35,37,41,37,37,33,41,43,49,51,45,37,21,19,27,29,31,21,23,19,31,21,21,21,17,17,3,11,1,-3,-9,-5,-1,-5,-1,1,1,-1,-5,-11,-19,-17,-21,-21,-13,-9,-15,-15,-17,-19,-21,-5,-1,-3,1,-1,7,7,11,7,9,9,17,13,15,21,23,15,11,7,-3,-7,-15,-15,-19,-15,-17,-17,-17,-21,-19,-21,-31,-35,-39,-53,-57,-49,-45,-57,-73,-77,-65,-53,-43,-31,-35,-27,-29,-33,-41,-45,-45,-39,-49,-53,-57,-55,-61,-59,-75,-73,-69,-69,-55,-53,-47,-47,-49,-41,-45,-57,-61,-57,-63,-73,-81,-87,-95,-101,-95,-97,-105,-103,-111,-127,-137,-141,-145,-143,-135,-127,-131,-129,-135,-143,-149,-153,-155,-155,-149,-149,-155,-157,-155,-149,-149,-147,-141,-133,-131,-123,-133,-135,-145,-147,-143,-133,-131,-131,-133,-121,-113,-117,-117,-115,-113,-121,-121,-107,-113,-107,-117,-127,-139,-139,-135,-127,-131,-137,-129,-127,-123,-121,-135,-141,-137,-127,-141,-121,-113,-115,-115,-117,-113,-103,-105,-101,-115,-115,-107,-97,-97,-99,-93,-93,-87,-87,-79,-73,-69,-65,-49,-51,-49,-51,-47,-43,-39,-31,-23,-19,-23,-33,-49,-45,-39,-37,-27,-25,-27,-21,-21,-11,-13,-15,-19,-23,-19,-17,-31,-27,-27,-29,-25,-25,-13,-15,-19,-29,-19,-17,-23,-19,-17,-11,-11,-19,-27,-27,-27,-33,-27,-31,-27,-25,-27,-27,-35,-33,-37,-47,-51,-63,-67,-65,-49,-35,-43,-43,-33,-33,-37,-25,-21,-13,-31,-33,-27,-25,-27,-35,-39,-33,-39,-39,-49,-55,-61,-55,-59,-39,-43,-39,-51,-57,-47,-47,-41,-37,-35,-29,-27,-19,-9,-1,3,3,7,1,1,5,15,19,15,1,-5,-5,-5,3,-3,-5,-7,-9,-3,-7,-19,-35,-31,-27,-27,-23,-17,-23,-29,-23,-29],[1,5,7,13,9,9,15,11,13,13,-1,-1,3,11,11,1,5,1,1,-5,-15,-11,-9,-7,3,3,1,-3,-3,9,7,-5,-17,-11,-19,-27,-25,-25,-17,-5,-5,-5,-7,-9,-15,-11,-17,-33,-25,-23,-19,-33,-23,-15,-11,-5,13,9,11,7,19,15,15,27,11,9,9,1,13,19,25,29,41,37,37,41,45,43,43,31,33,35,47,51,69,63,67,73,83,81,83,83,81,97,89,83,73,81,75,75,87,97,109,113,107,113,119,129,135,139,143,149,147,147,153,139,141,137,141,137,141,149,153,147,143,143,141,135,127,113,115,115,123,125,125,131,137,143,133,127,133,139,151,159,161,149,155,155,157,161,153,145,143,141,143,151,155,151,131,135,129,135,151,149,159,167,177,181,195,199,203,197,205,213,215,189,187,173,177,175,181,187,195,193,201,201,199,195,195,189,193,183,183,183,181,187,183,201,199,207,215,201,193,195,195,187,199,205,209,209,211,211,217,213,217,225,229,231,235,233,217,225,231,223,225,217,209,207,207,195,193,187,187,199,193,193,203,199,201,185,173,175,169,163,165,177,179,177,177,177,177,169,155,157,167,175,183,187,175,175,179,189,185,177,187,183,185,189,189,185,191,187,193,187,193,183,189,181,177,163,161,161,165,167,167,163,169,165,159,165,183,181,183,171,171,169,183,187,191,179,183,189,193,185,193,199,199,207,213,201,203,201,211,217,225,219,221,211,205,209,203,195,195,201,203,209,217,221,215,217,215,215,215,207,207,221,219,213,211,223,217,217,221,221,213,209,217,219,217,215,221,227,221,229,223,219,223,233,241,239,237,239,249,235,233,223,217,213,221,221,219,211,211,207,195,191,193,193,201,197,189,191,187,197,209,221,215,217,221,219,231,239,239,221,219,209,199,199,201,207],[1,-11,-9,3,-3,-9,-5,-7,-9,-7,-9,-7,1,-7,-15,-13,-19,-19,-15,-21,-29,-31,-29,-33,-29,-23,-25,-19,-21,-29,-23,-29,-31,-39,-45,-37,-33,-41,-41,-39,-49,-37,-39,-51,-47,-37,-41,-33,-33,-39,-47,-53,-45,-49,-53,-57,-59,-59,-59,-59,-57,-37,-27,-29,-31,-31,-45,-37,-49,-35,-37,-27,-9,-3,-11,-23,-27,-21,-17,-15,-9,-13,-5,-5,-1,-5,13,15,13,17,17,15,23,17,27,21,27,33,39,29,29,29,19,11,9,13,27,25,33,39,31,35,37,49,47,45,33,25,31,33,29,25,25,17,29,29,37,27,29,31,19,21,15,15,15,13,11,19,23,11,7,1,-11,-25,-9,-17,-13,-15,-11,-17,-19,-17,-11,-25,-25,-13,-17,-13,3,-3,-1,3,-9,-1,-9,-5,-1,-3,-5,1,13,21,19,9,5,3,11,19,27,23,19,15,13,27,21,5,7,21,21,19,11,13,15,15,9,3,-1,3,9,11,19,11,15,17,21,13,3,-7,1,3,5,9,-1,1,3,-1,7,11,11,-1,11,23,25,19,21,19,19,33,29,31,43,51,67,65,75,83,75,79,95,93,101,101,97,97,87,87,79,83,85,81,83,89,93,97,95,97,105,99,105,117,111,103,105,105,111,115,113,117,135,139,149,159,167,153,145,147,153,163,163,159,161,163,175,165,173,169,171,167,173,173,165,171,171,177,167,177,183,183,179,171,173,181,181,177,177,169,167,173,169,169,159,149,155,143,149,147,153,167,183,187,185,185,185,179,179,179,193,203,193,193,201,199,193,187,181,173,179,181,181,195,191,195,189,179,173,171,163,173,177,175,175,173,171,179,183,187,177,175,177,181,181,185,183,191,181,181,183,183,185,183,195,193,193,201,195,197,197,209,203,195,193,189,189,181,187,189,183,181,175,167,169,161,153,153,157,153,159,153,145,139]]};
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const NS = 'http://www.w3.org/2000/svg';
+const el = (t, a={}, p) => { const e=document.createElementNS(NS,t); for(const k in a) e.setAttribute(k,a[k]); if(p) p.appendChild(e); return e; };
+const tip = document.getElementById('tip');
+function showTip(ev, html){ tip.innerHTML=html; tip.style.opacity=1; const r=tip.getBoundingClientRect(); let x=ev.pageX+14, y=ev.pageY-r.height-10; if(x+r.width>window.scrollX+document.documentElement.clientWidth-8) x=ev.pageX-r.width-14; if(y<window.scrollY+4) y=ev.pageY+16; tip.style.left=x+'px'; tip.style.top=y+'px'; }
+function hideTip(){ tip.style.opacity=0; }
+const pct = (v,d=1) => (v*100).toFixed(d)+'%';
+
+// Bar histogram over [0,1] with equal-width bins; optional exact dots.
+function histChart(id, vals, opt={}){
+  const box=document.getElementById(id); box.innerHTML='';
+  const W=opt.w||680, H=opt.h||260, m={t:14,r:8,b:34,l:44};
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':opt.aria||''},box);
+  const iw=W-m.l-m.r, ih=H-m.t-m.b, nb=vals.length;
+  const ymax=opt.ymax||Math.max(...vals, ...(opt.dots||[]))*1.08;
+  const y=v=>m.t+ih-v/ymax*ih, bw=iw/nb;
+  const ax=el('g',{class:'axis'},svg);
+  const ticks=opt.yticks||niceTicks(ymax);
+  ticks.forEach(t=>{ el('line',{x1:m.l,x2:W-m.r,y1:y(t),y2:y(t)},ax); const tx=el('text',{x:m.l-6,y:y(t)+4,'text-anchor':'end'},ax); tx.textContent=opt.yfmt?opt.yfmt(t):pct(t,0); });
+  [0,.25,.5,.75,1].forEach(t=>{ const tx=el('text',{x:m.l+t*iw,y:H-m.b+16,'text-anchor':t==0?'start':t==1?'end':'middle'},ax); tx.textContent=Math.round(t*100)+'%'; });
+  const xl=el('text',{x:m.l+iw/2,y:H-4,'text-anchor':'middle',class:'lbl'},svg); xl.textContent=opt.xlabel||'甲领先的步数占比';
+  const gap=nb>40?0.6:2, maxw=24;
+  vals.forEach((v,i)=>{
+    const w=Math.min(maxw,bw-gap), x0=m.l+i*bw+(bw-w)/2, h=Math.max(0,m.t+ih-y(v)), r=Math.min(4,w/2,h);
+    const bar=el('path',{d:roundTop(x0,m.t+ih,w,h,r),fill:opt.color||css('--s1')},svg);
+    const hit=el('rect',{x:m.l+i*bw,y:m.t,width:bw,height:ih,fill:'transparent'},svg);
+    const lo=i/nb, hi=(i+1)/nb;
+    hit.addEventListener('mousemove',ev=>{ bar.setAttribute('opacity',.8); showTip(ev, opt.tip?opt.tip(i,lo,hi,v):`${pct(lo,0)}–${pct(hi,0)}<br>${pct(v)}`); });
+    hit.addEventListener('mouseleave',()=>{ bar.removeAttribute('opacity'); hideTip(); });
+  });
+  (opt.dots||[]).forEach((v,i)=>{ el('circle',{cx:m.l+(i+.5)*bw,cy:y(v),r:4,fill:css('--ink'),stroke:css('--surface'),'stroke-width':2,'pointer-events':'none'},svg); });
+  el('line',{x1:m.l,x2:W-m.r,y1:m.t+ih,y2:m.t+ih,stroke:css('--rule')},svg);
+  (opt.labels||[]).forEach(L=>{ const t=el('text',{x:m.l+(L.i+.5)*bw+(L.dx||0),y:y(L.v)-9,'text-anchor':L.anchor||'middle',class:'lbl'},svg); t.textContent=L.text; });
+}
+function roundTop(x,base,w,h,r){ if(h<=0) return ''; return `M${x},${base}V${base-h+r}Q${x},${base-h} ${x+r},${base-h}H${x+w-r}Q${x+w},${base-h} ${x+w},${base-h+r}V${base}Z`; }
+function niceTicks(max){ const raw=max/4, p=Math.pow(10,Math.floor(Math.log10(raw))), s=[1,2,2.5,5,10].find(k=>k*p>=raw)*p; const out=[]; for(let t=0;t<=max+1e-12;t+=s) out.push(+t.toFixed(10)); return out; }
+
+function drawAll(){
+  const G=DATA.G;
+  const mc=DATA.hist20.map(c=>c/G);
+  histChart('c-hist', mc, {dots:DATA.exact20, aria:'甲领先占比的直方图，U 形',
+    tip:(i,lo,hi,v)=>`领先 ${pct(lo,0)}–${pct(hi,0)}<br>模拟 ${pct(v,2)}（${DATA.hist20[i].toLocaleString()} 局）<br>精确 ${pct(DATA.exact20[i],2)}`,
+    labels:[{i:0,v:mc[0],text:pct(mc[0]),anchor:'start',dx:-8},{i:19,v:mc[19],text:pct(mc[19]),anchor:'end',dx:8},{i:10,v:mc[10],text:pct(mc[10])}]});
+  const ind=DATA.ind100.map(c=>c/G), ld=DATA.hist100.map(c=>c/G);
+  histChart('c-ind', ind, {w:340,h:230,color:css('--s2'),xlabel:'正面次数占比',aria:'正面占比集中在 50%',
+    tip:(i,lo,hi,v)=>`正面 ${pct(lo,0)}–${pct(hi,0)}<br>${pct(v,1)}`});
+  histChart('c-lead', ld, {w:340,h:230,xlabel:'甲领先的步数占比',aria:'领先占比两端高',
+    tip:(i,lo,hi,v)=>`领先 ${pct(lo,0)}–${pct(hi,0)}<br>${pct(v,2)}`});
+  drawPaths(); drawSim();
+}
+
+function drawPaths(){
+  const box=document.getElementById('c-paths'); box.innerHTML='';
+  const P=DATA.paths, step=50, N=20000, W=680, H=280, m={t:12,r:12,b:30,l:44};
+  const cols=[css('--s1'),css('--s2'),css('--s3')];
+  const all=P.flat(), lo=Math.min(0,...all), hi=Math.max(0,...all);
+  const iw=W-m.l-m.r, ih=H-m.t-m.b;
+  const x=i=>m.l+i*step/N*iw, y=v=>m.t+(hi-v)/(hi-lo)*ih;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'三条随机游走轨迹'},box);
+  const ax=el('g',{class:'axis'},svg);
+  niceTicks(hi).concat(niceTicks(-lo).slice(1).map(t=>-t)).forEach(t=>{ el('line',{x1:m.l,x2:W-m.r,y1:y(t),y2:y(t)},ax); const tx=el('text',{x:m.l-6,y:y(t)+4,'text-anchor':'end'},ax); tx.textContent=t; });
+  [0,5000,10000,15000,20000].forEach(t=>{ const tx=el('text',{x:m.l+t/N*iw,y:H-10,'text-anchor':t==0?'start':t==N?'end':'middle'},ax); tx.textContent=t.toLocaleString(); });
+  el('line',{x1:m.l,x2:W-m.r,y1:y(0),y2:y(0),stroke:css('--muted'),'stroke-width':1},svg);
+  const lg=document.getElementById('lg-paths'); lg.innerHTML='';
+  P.forEach((s,k)=>{
+    const d=s.map((v,i)=>(i?'L':'M')+x(i).toFixed(1)+','+y(v).toFixed(1)).join('');
+    el('path',{d,fill:'none',stroke:cols[k],'stroke-width':2,'stroke-linejoin':'round','stroke-linecap':'round'},svg);
+    const share=s.filter(v=>v>0).length/s.length;
+    lg.insertAdjacentHTML('beforeend',`<span><i class="line" style="background:${cols[k]}"></i>第 ${k+1} 局：甲领先约 ${pct(share,0)}</span>`);
+  });
+  const vline=el('line',{y1:m.t,y2:m.t+ih,stroke:css('--muted'),'stroke-width':1,opacity:0},svg);
+  const hit=el('rect',{x:m.l,y:m.t,width:iw,height:ih,fill:'transparent'},svg);
+  hit.addEventListener('mousemove',ev=>{ const r=svg.getBoundingClientRect(); const px=(ev.clientX-r.left)/r.width*W; const i=Math.max(0,Math.min(P[0].length-1,Math.round((px-m.l)/iw*N/step))); vline.setAttribute('x1',x(i)); vline.setAttribute('x2',x(i)); vline.setAttribute('opacity',1);
+    showTip(ev, `第 ${(i*step).toLocaleString()} 次<br>`+P.map((s,k)=>`<i style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${cols[k]};margin-right:5px"></i>第 ${k+1} 局 ${s[i]>0?'+':''}${s[i]}`).join('<br>')); });
+  hit.addEventListener('mouseleave',()=>{ vline.setAttribute('opacity',0); hideTip(); });
+}
+
+// Live simulator
+let simCounts=new Array(20).fill(0), simGames=0, simExt=0, simMid=0;
+function simBatch(n, games){
+  for(let g=0; g<games; g++){
+    let s=0, pos=0;
+    for(let i=0;i<n;i++){ const prev=s; s+= (Math.random()<.5)?1:-1; if(prev>0||s>0) pos++; }
+    const f=pos/n; simCounts[Math.min(19,Math.floor(f*20))]++; simGames++;
+    if(f>=.9||f<=.1) simExt++; if(f>=.4&&f<=.6) simMid++;
+  }
+}
+function drawSim(){
+  const v=simCounts.map(c=>simGames?c/simGames:0);
+  histChart('c-sim', v, {h:220, ymax:simGames?undefined:.16, aria:'浏览器内模拟结果',
+    tip:(i,lo,hi,val)=>`领先 ${pct(lo,0)}–${pct(hi,0)}<br>${pct(val,1)}（${simCounts[i]} 局）`});
+  document.getElementById('sim-stat').textContent = simGames ? `已模拟 ${simGames.toLocaleString()} 局：一方领先 ≥90% 占 ${pct(simExt/simGames)}，领先 40%–60% 占 ${pct(simMid/simGames)}` : '尚未运行';
+}
+document.getElementById('sim-go').addEventListener('click',e=>{ const b=e.target; b.disabled=true; b.textContent='运行中…'; setTimeout(()=>{ simBatch(+document.getElementById('sim-n').value, 2000); drawSim(); b.disabled=false; b.textContent='再跑 2,000 局'; },20); });
+document.getElementById('sim-reset').addEventListener('click',()=>{ simCounts.fill(0); simGames=0; simExt=0; simMid=0; drawSim(); });
+document.getElementById('sim-n').addEventListener('change',()=>{ simCounts.fill(0); simGames=0; simExt=0; simMid=0; drawSim(); });
+
+drawAll();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', drawAll);
+document.addEventListener('DOMContentLoaded',()=>{ if(window.renderMathInElement) renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false}); });
+window.addEventListener('load',()=>{ if(window.renderMathInElement && !document.querySelector('.katex')) renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false}); });
+</script>
+</body>
+</html>
