@@ -267,7 +267,7 @@ h2{
   font-size:clamp(30px,4.2vw,46px);line-height:1.04;letter-spacing:-.055em;
   margin:0 0 var(--s4);text-wrap:balance
 }
-.part-note{color:var(--n-900);font-size:15px;line-height:1.7;margin:0;max-width:44em}
+.part-note{color:var(--n-900);font-size:16px;line-height:1.75;margin:0}
 h3{
   font-family:var(--display);font-variation-settings:"wdth" 94,"opsz" 32;font-weight:700;
   font-size:25px;line-height:1.2;letter-spacing:-.04em;
@@ -435,8 +435,6 @@ td.bad{color:var(--d-bad);font-weight:600}
 
 /* ── figures ────────────────────────────────────────────────────── */
 figure.fig{margin:var(--s10) 0;padding:0;border:1px solid var(--n-1000);background:var(--n-100)}
-@media (min-width:1180px){figure.fig,.scroll{width:calc(100% + 110px)}}
-@media (min-width:1400px){figure.fig,.scroll{width:calc(100% + 210px)}}
 .fig-h{
   display:flex;justify-content:space-between;align-items:baseline;gap:var(--s4);flex-wrap:wrap;
   padding:var(--s2) var(--s4);border-bottom:1px solid var(--n-1000);background:var(--n-200);
@@ -500,6 +498,71 @@ footer.colophon .disc strong{color:var(--n-1000)}
   .cols{display:block}
   .part,figure.fig,.protocol{page-break-inside:avoid}
 }
+/* ── readability pass ───────────────────────────────────────────────
+   One column width for every block (no right-side overhang), CJK-friendly
+   labels in the body face instead of spaced-out uppercase mono, and a
+   larger reading size. Mono stays for numerals only. */
+main{max-width:45em}
+p{font-size:17px;line-height:1.85;margin-bottom:1.1em}
+main > section > ul,main > section > ol{font-size:17px}
+main > section > ul > li,main > section > ol > li{line-height:1.8;margin-bottom:var(--s3)}
+h3{margin-top:calc(var(--s16) + var(--s4))}
+h4{
+  font-family:var(--display);font-variation-settings:"wdth" 96,"opsz" 24;font-weight:700;
+  font-size:19px;line-height:1.4;letter-spacing:-.02em;text-transform:none;
+  margin:var(--s10) 0 var(--s3);gap:var(--s3)
+}
+h4::before{width:14px;height:3px}
+.eyebrow,.index .no,nav.rail .grp,.part-no,.claim .src,.card-h,caption,thead th,
+.fig-h,.protocol > header span{
+  font-family:var(--body);text-transform:none;letter-spacing:.03em;font-weight:600
+}
+.eyebrow{font-size:13px}
+.index .no{font-size:12px}
+nav.rail .grp{font-size:12px;line-height:16px}
+.part-no{font-size:13px}
+.part-no::before{font-family:var(--mono)}
+.claim .src{font-size:13px;font-weight:500}
+.card-h{font-size:13.5px;margin-bottom:var(--s3)}
+.card p,.card li{font-size:16px}
+caption{font-size:14px;padding-top:var(--s4)}
+thead th{font-size:13px;line-height:18px;white-space:normal}
+table{font-size:15px}
+.fig-h{font-size:13px}
+.fig-h b{font-weight:600}
+.fig-h span{font-weight:400}
+.protocol > header span{font-size:12.5px;font-weight:500}
+.protocol .body{font-size:16px}
+.tile{font-size:15px}
+.steps > li{font-size:16px}
+figcaption{font-size:14px}
+.s-lb{font-size:14px}
+.s-vl{font-size:13px}
+.s-sm{font-family:var(--body);font-size:12px;letter-spacing:0}
+.s-hd{font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:.03em}
+.tile .big{letter-spacing:-.025em;font-variation-settings:"wdth" 90,"opsz" 48}
+@media (min-width:1120px){main{margin-inline:auto;width:100%}}
+.grid3{display:grid;gap:0;margin:var(--s8) 0;border:1px solid var(--n-1000)}
+.grid3 .tile{border-bottom:1px solid var(--a-400)}
+.grid3 .tile:last-child{border-bottom:0}
+@media (min-width:620px){
+  .grid3{grid-template-columns:repeat(3,1fr)}
+  .grid3 .tile{border-bottom:0}
+  .grid3 .tile + .tile{border-left:1px solid var(--a-400)}
+}
+@media (max-width:560px){
+  p,main > section > ul,main > section > ol{font-size:16px}
+  h4{font-size:18px}
+  table{min-width:0;font-size:14px}
+  th,td{padding:var(--s2) 10px}
+  tbody th,thead th{white-space:normal}
+  td.num{white-space:normal}
+  table.tight{font-size:12.5px}
+  table.tight th,table.tight td{padding:var(--s2) 5px}
+  table.tight tbody th{white-space:nowrap}
+  table.tight td.num{letter-spacing:-.06em}
+}
+@media (max-width:380px){table.tight tbody th{white-space:normal}}
 </style>
 </head>
 <body>
@@ -794,7 +857,7 @@ footer.colophon .disc strong{color:var(--n-1000)}
 
   <h3 id="d-lipid">脂质与心血管</h3>
   <div class="scroll">
-    <table>
+    <table class="tight">
       <caption>脂质靶点</caption>
       <thead><tr><th>指标</th><th class="num">最优</th><th class="num">高危人群</th><th class="num">实验室"正常"</th><th>单位</th></tr></thead>
       <tbody>
@@ -820,7 +883,7 @@ footer.colophon .disc strong{color:var(--n-1000)}
 
   <h3 id="d-metab">代谢与胰岛素敏感性</h3>
   <div class="scroll">
-    <table>
+    <table class="tight">
       <caption>代谢靶点</caption>
       <thead><tr><th>指标</th><th class="num">最优</th><th class="num">警戒</th><th class="num">实验室"正常"</th><th>单位</th></tr></thead>
       <tbody>
@@ -962,7 +1025,7 @@ footer.colophon .disc strong{color:var(--n-1000)}
         <text class="s-sm" x="76" y="292" text-anchor="end">0</text>
 
         <line x1="84" y1="172" x2="640" y2="172" stroke="var(--n-1000)" stroke-width="1.5" stroke-dasharray="7 5"></line>
-        <text class="s-sm" x="90" y="166">30 mL/kg/min · 功能底线</text>
+        <text class="s-sm" x="92" y="190">30 mL/kg/min · 功能底线</text>
 
         <path d="M84,94.7 L176.7,114 L269.3,131.4 L362,147.1 L454.7,161.1 L547.3,173.9 L640,185.2" fill="none" stroke="var(--viz-2)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
         <path d="M84,141.1 L176.7,155.8 L269.3,168.9 L362,180.9 L454.7,191.7 L547.3,201.4 L640,209.9" fill="none" stroke="var(--viz-1)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
@@ -1077,7 +1140,8 @@ footer.colophon .disc strong{color:var(--n-1000)}
         <circle cx="335" cy="162" r="4" fill="var(--n-700)" stroke="var(--n-100)" stroke-width="2"></circle>
         <text class="s-sm" x="335" y="152" text-anchor="middle">训练前</text>
 
-        <text class="s-lb" x="496" y="204" text-anchor="middle">面积＝你实际拥有的心肺能力</text>
+        <text class="s-lb" x="472" y="198" text-anchor="middle">面积 ＝</text>
+        <text class="s-lb" x="472" y="217" text-anchor="middle">你实际拥有的心肺能力</text>
 
         <line x1="130" y1="266" x2="600" y2="266" stroke="var(--viz-1)" stroke-width="1"></line>
         <line x1="130" y1="261" x2="130" y2="271" stroke="var(--viz-1)" stroke-width="1"></line>
@@ -1638,7 +1702,7 @@ footer.colophon .disc strong{color:var(--n-1000)}
   <p>几个能重新校准紧迫感的事实：Attia 的病理学老师爱问"心脏病最常见的首发表现是什么？"——答案是<strong>猝死</strong>，首次心梗至今仍有约三分之一是致命的。男性一半、女性三分之一的主要心血管事件发生在 65 岁之前，男性有四分之一发生在 54 岁之前。美国女性死于动脉粥样硬化性疾病的概率约为三分之一，死于乳腺癌约为三十分之一。而病程开始得极早：在死于意外、凶杀等非心血管原因的 16–20 岁年轻人中，多达三分之一的冠状动脉已有真正的粥样硬化病变。Attia 说这本该是第十大死因，而不是第一。</p>
   <p>为什么要数颗粒，他用的是一个交通比喻：同样一吨胆固醇，装在四辆皮卡上沿街开，出事故的概率很小；分装在五百辆共享滑板车上，就是一场灾难。颗粒越多，越有可能有颗粒钻进内皮下、被卡住、被氧化，进而招来巨噬细胞、形成泡沫细胞和脂纹。吸烟（化学性）和高血压（机械性）这两个最大的危险因素，恰好都直接损伤内皮。在一级预防人群中，ApoB 每升高一个标准差，心梗风险增加 38%。而 ApoB 检测只要二三十美元，美国心脏协会的指南至今仍以 LDL-C 为主。</p>
   <p>三层证据都指向同一方向。LDL-C 每降 1 mmol/L（约 40 mg/dL）：</p>
-  <div class="grid2">
+  <div class="grid3">
     <div class="tile"><span class="big">−22%</span>随机对照试验，中位随访 5 年</div>
     <div class="tile"><span class="big">−33%</span>前瞻队列研究，随访约 12 年</div>
     <div class="tile"><span class="big">−53%</span>孟德尔随机化，等于终身暴露，中位 52 年</div>
@@ -1667,12 +1731,12 @@ footer.colophon .disc strong{color:var(--n-1000)}
         <text class="s-vl" x="196" y="152" text-anchor="end">−33%</text>
         <text class="s-vl" x="602" y="74" text-anchor="end">−53%</text>
 
-        <rect x="330" y="206" width="10" height="10" fill="var(--viz-2)"></rect>
-        <text class="s-sm" x="348" y="215">随机对照试验 · 中位随访 5 年</text>
-        <rect x="330" y="228" width="10" height="10" fill="var(--viz-3)"></rect>
-        <text class="s-sm" x="348" y="237">前瞻队列研究 · 随访约 12 年</text>
-        <rect x="330" y="250" width="10" height="10" fill="var(--viz-1)"></rect>
-        <text class="s-sm" x="348" y="259">孟德尔随机化 · 等于终身暴露 · 中位 52 年</text>
+        <rect x="330" y="224" width="10" height="10" fill="var(--viz-2)"></rect>
+        <text class="s-sm" x="348" y="233">随机对照试验 · 中位随访 5 年</text>
+        <rect x="330" y="246" width="10" height="10" fill="var(--viz-3)"></rect>
+        <text class="s-sm" x="348" y="255">前瞻队列研究 · 随访约 12 年</text>
+        <rect x="330" y="268" width="10" height="10" fill="var(--viz-1)"></rect>
+        <text class="s-sm" x="348" y="277">孟德尔随机化 · 等于终身暴露 · 中位 52 年</text>
 
         <line class="s-ax" x1="84" y1="288" x2="640" y2="288"></line>
         <line class="s-ax" x1="84" y1="288" x2="84" y2="56"></line>
