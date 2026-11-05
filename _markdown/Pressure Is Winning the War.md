@@ -79,6 +79,10 @@ Three independent lines of evidence say that when the measures disagree, risk fo
 - **Multivariable Mendelian randomization** (genetic variants used as natural randomization). When genetically instrumented apoB, LDL-C and triglycerides are modeled together, apoB is the lipid trait whose association with coronary disease survives. LDL-C and triglycerides lose most of their independent signal.[^richardson2020]
 - **Per-particle equivalence.** Discussed in section 3 below.
 
+**The standard panel misleads in predictable ways.** Most laboratories still calculate LDL-C with the 1972 Friedewald equation, which assumes a fixed triglyceride-to-VLDL-cholesterol ratio of 5:1. That assumption fails exactly where precision matters most. Martin and colleagues showed in 1.3 million lipid profiles that Friedewald systematically underestimates LDL-C when LDL-C is low or triglycerides are high, and misclassifies a large fraction of patients near treatment thresholds.[^martin2013] The NIH (Sampson) equation, derived against β-quantification, reduces but does not remove the error.[^sampson2020]
+
+A more consequential blind spot is **type III hyperlipoproteinemia** (dysbetalipoproteinemia), a remnant-dominant disorder usually linked to *APOE* ε2/ε2 homozygosity plus a metabolic second hit. It is highly atherogenic and highly treatable, yet invisible on a standard panel, where it looks like ordinary mixed hyperlipidemia. Sniderman and colleagues derived an apoB-based algorithm: total cholesterol/apoB above 6.2 (mmol/L to g/L) together with triglyceride/apoB below 10 identified ultracentrifugation-confirmed type III with an AUC of 0.99 in the derivation cohort.[^sniderman2007] In a later series of 1,351 hypertriglyceridemic patients, it identified 49 confirmed cases that would otherwise have been missed.[^sniderman2018] Independent groups have since found that simpler ratios (total cholesterol/apoB, non-HDL-C/apoB) perform as well or better.[^cclm2024] The conclusion stands either way: without apoB, the diagnosis is usually not made.
+
 The obstacle to adopting apoB is now institutional rather than scientific. ApoB immunoassays are internationally standardized, inexpensive and do not require fasting. The 2026 ACC/AHA dyslipidemia guideline recommends apoB measurement in selected patients, notably those with triglycerides above 200 mg/dL, diabetes or LDL-C already below 70 mg/dL, while keeping LDL-C and non-HDL-C as primary targets.[^acc2026] Sniderman has argued for two decades that this is a historical artifact, not a biological judgment.[^sniderman2019]
 
 ## 3. The Human Knockouts
@@ -91,20 +95,41 @@ The causal case for apoB rests on something more powerful than trials: a set of 
 
 **ANGPTL3 and APOC3.** Loss-of-function variants in *ANGPTL3*, an inhibitor of lipoprotein and endothelial lipase, lower triglycerides and LDL-C and are associated with about 40% lower odds of coronary disease.[^dewey2017] Loss-of-function variants in *APOC3*, which encodes apolipoprotein C-III, an inhibitor of lipoprotein lipase and of hepatic uptake of triglyceride-rich remnants, lower triglycerides by about 40% and coronary risk by a similar proportion.[^tghdl2014] [^jorgensen2014]
 
+**Genetics predicted the drugs.** Mendelian randomization has become a drug-target validation tool, and its record on the lipid side is strong. Inactivating mutations in *NPC1L1*, the intestinal sterol transporter that ezetimibe inhibits, were associated with lower LDL-C and about 50% lower coronary risk, matching the direction of IMPROVE-IT.[^stitziel2014] Variants in *HMGCR* and *NPC1L1* produced the same coronary benefit per unit LDL-C, so their effects were additive.[^ference2015] Variants in *ACLY*, which encodes ATP-citrate lyase, mimicked the effect of bempedoic acid on LDL-C and coronary risk before CLEAR Outcomes reported.[^ference2019acly]
+
+When genetics, mechanism and trials agree this consistently, a target is close to proven before its outcome trial starts. Part II argues that pressure now has the same status.
+
+**Familial hypercholesterolemia, treated from childhood.** The clearest human demonstration of the integral comes from FH treated early. In the Amsterdam cohort, 214 children with FH were randomized in the 1990s to pravastatin or placebo and then treated long-term. Twenty years later, the cumulative incidence of cardiovascular events at age 39 was **1%**, compared with **26%** in their affected parents, whose treatment began in adulthood. Cardiovascular death was 0% versus 7%. Carotid intima–media thickness progressed at the same rate in treated FH patients as in their unaffected siblings.[^luirink2019] The comparison with parents is historical, not randomized, and only 20% of the children reached their LDL target. That makes the result more striking: early, incomplete lowering still nearly abolished events in the fourth decade.
+
+**Why evolution tolerated high LDL.** In a Dutch FH pedigree traced over two centuries, mortality among carriers was *not* elevated in the 19th century. It rose to a peak in the 1930s–1960s and differed threefold between branches of the family.[^sijbrands2001] One explanation is that LDL protects against infection. LDL-receptor–deficient mice survive endotoxin challenge far better than wild-type mice (an eightfold higher LD50) and have lower mortality after *Klebsiella* infection.[^netea1996] High LDL is consistent with a trade-off that favored survival when infection killed young people and penalizes it when atherosclerosis kills old ones. The "physiological" LDL of the ancestral environment is therefore not necessarily the *optimal* LDL for a modern lifespan.
+
 **The per-particle test.** These variants raise an obvious question: is triglyceride-rich lipoprotein risk separate from LDL risk, or is it the same particle risk expressed through a different pool? Ference and colleagues answered it with a 2×2 factorial Mendelian randomization. Triglyceride-lowering variants in *LPL* and LDL-lowering variants in *LDLR* produced **the same reduction in coronary risk per 10 mg/dL lower apoB**, even though their effects on triglycerides and LDL-C differed greatly.[^ference2019tg] The atherogenic quantity is the particle count, whichever lipid it carries.
+
+**The exception that sharpens the rule: absorbed sterols.** Not all sterol cargo is equivalent. ABCG5/ABCG8 is the heterodimeric transporter that pumps cholesterol and plant sterols back into the intestinal lumen and into bile. Helgadottir and colleagues studied *ABCG5/8* variants in up to 610,532 people from Iceland, Denmark and UK Biobank. Variants that increased sterol absorption raised plasma phytosterols and coronary risk. The risk per unit of predicted non-HDL cholesterol was larger than for other non-HDL-raising variants: an odds ratio of 2.01 per 1 mmol/L.[^helgadottir2020] The authors' interpretation is that absorbed dietary cholesterol and phytosterols contribute to atherogenesis beyond what particle number alone predicts. They acknowledge this is not proof of a causal role for phytosterols.
+
+This has a practical correlate that lipidologists use and most cardiologists do not: measuring noncholesterol sterols to separate *hyperabsorbers* (high sitosterol and campesterol) from *hypersynthesizers* (high lathosterol and desmosterol). In a clinical laboratory database of 667,718 patients, Dayspring and colleagues reported wide variation in these phenotypes.[^dayspring2015] The phenotype bears on drug choice. Statins upregulate absorption as they suppress synthesis, while ezetimibe targets absorption directly. Outcome-trial evidence for sterol-guided therapy does not yet exist, and I present it here as a frontier practice, not a standard.
 
 ## 4. HDL: The Most Thoroughly Falsified Hypothesis in Cardiology
 
 The inverse association between HDL cholesterol and coronary disease is one of the most reproducible findings in epidemiology. The causal hypothesis built on it has failed every test.
 
 - **Genetics.** The endothelial-lipase variant LIPG Asn396Ser raises HDL-C without changing other lipoproteins and confers no protection against myocardial infarction.[^voight2012]
+- **The genetics runs in both directions.** Loss-of-function mutations in *ABCA1* substantially lower HDL-C in Copenhagen heterozygotes without raising ischemic heart disease risk.[^frikkeschmidt2008] At the other extreme, extremely high HDL-C is associated with *higher* all-cause mortality in Danish population cohorts, a U-shaped curve.[^madsen2017]
 - **The SR-B1 paradox.** In 2016, Zanoni and colleagues identified a loss-of-function variant in *SCARB1*, which encodes SR-B1, the hepatic receptor for selective uptake of HDL cholesteryl ester. P376L impairs SR-B1 processing and abolishes selective HDL uptake. Carriers have markedly *higher* HDL-C and *higher* coronary risk (odds ratio about 1.79).[^zanoni2016] SR-B1-knockout mice show the same pattern. High HDL-C produced by blocking HDL's exit route is not protective, and may be harmful. The measured quantity reflects flux through a pathway, not the benefit of that pathway.
 - **CETP inhibitors.** Torcetrapib raised HDL-C by more than 70% and increased mortality, a harm attributed partly to off-target aldosterone and blood-pressure effects.[^barter2007] Dalcetrapib and evacetrapib were neutral despite large HDL-C increases. Anacetrapib reduced major coronary events by 9% in REVEAL, in proportion to its reduction in non-HDL cholesterol and apoB rather than its doubling of HDL-C.[^reveal2017]
 - **Niacin.** AIM-HIGH and HPS2-THRIVE showed no benefit on top of statins. HPS2-THRIVE also produced an instructive ethnic signal: myopathy rates were several-fold higher in its Chinese participants than in its European ones.[^hps2thrive]
 
 Rader and Hovingh's synthesis is the field's settled position. HDL-C is a biomarker of triglyceride metabolism and insulin sensitivity. HDL *function*, in particular macrophage cholesterol-efflux capacity, may still be biologically important, but raising HDL-C is not a therapeutic goal.[^rader2014]
 
-CETP has a coda that matters for the frontier. Obicetrapib, a next-generation CETP inhibitor, lowers LDL-C by about a third on top of statins. Its outcome trial, PREVAIL, had not reported at the time of writing.[^prevail] If it succeeds, it will be as an apoB-lowering drug that happens to raise HDL-C, not the reverse.
+**The function hypothesis has now been tested too.** If HDL cholesterol is the wrong measure, perhaps HDL *function* is the right one. Cholesterol-efflux capacity is the ability of a patient's apoB-depleted serum to accept cholesterol from macrophages. In 2011 it was shown to correlate inversely with carotid intima–media thickness and angiographic coronary disease independently of HDL-C.[^khera2011] In the Dallas Heart Study it predicted incident cardiovascular events while HDL-C did not.[^rohatgi2014] That made it the strongest remaining version of the HDL hypothesis.
+
+AEGIS-II tested it directly. More than 18,000 patients after acute myocardial infarction received four weekly infusions of CSL112, a plasma-derived apoA-I formulation that acutely increases efflux capacity several-fold. The primary endpoint at 90 days was not met (4.8% vs 5.2%; HR 0.93).[^gibson2024] Exploratory later time points showed apparent reductions, which have kept the question formally open. Read alongside the genetics, the result is the closest the field has come to a direct falsification of the HDL-function hypothesis as a therapeutic strategy after an acute event.
+
+**CETP revisited.** CETP has a coda that matters for the frontier, because the class is being re-evaluated on different grounds. Mendelian randomization of *CETP* variants showed that their coronary benefit is proportional to the accompanying reduction in apoB, not to the HDL-C rise.[^ference2017cetp] That is the genetic version of the REVEAL result.
+
+Three further observations reframe the class. First, a meta-analysis of the CETP-inhibitor trials found a significant reduction in new-onset diabetes.[^dangas2022] That is the opposite of the modest diabetogenic effect of statins. Second, in kinetic studies anacetrapib *decreased the production rate* of Lp(a).[^thomas2017] Third, dal-GenE tested dalcetrapib only in patients carrying an *ADCY9* genotype predicted to respond. It narrowly missed its primary endpoint (HR 0.88), a failed but instructive attempt at genotype-guided cardiovascular pharmacology.[^tardif2022]
+
+Obicetrapib, a next-generation CETP inhibitor, lowers LDL-C by about a third and apoB substantially on top of high-intensity statins (ROSE and BROADWAY).[^nicholls2022] Its outcome trial, PREVAIL, had not reported at the time of writing.[^prevail] If it succeeds, it will be as an apoB-lowering drug that happens to raise HDL-C, and possibly lowers diabetes risk and Lp(a). It will not succeed as an HDL drug.
 
 ## 5. Triglycerides: Real Risk, Wrong Target
 
@@ -130,6 +155,10 @@ Skeletal muscle is therefore a lipid organ by proxy. Muscle insulin sensitivity 
 
 Garvey and colleagues characterized this signature by NMR lipoprotein profiling against euglycemic clamps: larger VLDL, smaller LDL, higher LDL particle number and depletion of large HDL, graded with insulin resistance.[^garvey2003] Because euglycemia is defended for years by compensatory hyperinsulinemia, glucose is a *lagging* indicator, and it moves only when β-cell compensation fails. In the Whitehall II cohort, insulin sensitivity began declining years before diabetes was diagnosed, while fasting glucose rose steeply only in the final few years.[^tabak2009] The lipoprotein profile changes during the compensated phase, which makes it one of the earliest routinely measurable readouts of the metabolic disorder.
 
+**Turning the signature into a number.** The NMR pattern has been condensed into the *lipoprotein insulin-resistance index* (LP-IR). It is a weighted score of VLDL, LDL and HDL particle sizes and large-VLDL, small-LDL and large-HDL concentrations, calibrated against HOMA-IR and glucose-clamp measures.[^shalaurova2014] In the Multi-Ethnic Study of Atherosclerosis (MESA), LP-IR predicted incident type 2 diabetes independently of glucose, insulin and conventional lipids.[^mackey2015] Glucose tolerance offers a complementary early readout. DeFronzo's group found that a one-hour post-load glucose of 155 mg/dL or more identifies people at high risk of future diabetes among those whose fasting and two-hour values are normal.[^abdulghani2008] The leading indicators of metabolic failure are measurable now, and they are lipoprotein and dynamic-glucose measures, not fasting glucose.
+
+**Is insulin resistance a target, or a defense?** Two findings complicate any simple view. Hoehn and colleagues proposed that insulin resistance is partly a *cellular antioxidant defense*: mitochondrial superoxide induces insulin resistance in multiple models, and antioxidant interventions reverse it.[^hoehn2009] Against that, the IRIS trial randomized 3,876 non-diabetic, insulin-resistant patients with recent ischemic stroke or TIA to pioglitazone or placebo. Pioglitazone reduced recurrent stroke or myocardial infarction by about 24% (HR 0.76), at the cost of weight gain, edema and fractures.[^kernan2016] Correcting insulin resistance pharmacologically lowers vascular events. Whatever its proximate cellular logic, insulin resistance behaves clinically like a cause, and specifically, as the next paragraph argues, like a cause of both hard causes.
+
 **Two causal accounts.** The lipoprotein signature is a readout of hepatic and muscular insulin resistance. It is not an independent cardiovascular cause once apoB is known. Small dense LDL adds little to risk prediction after particle number is accounted for. Insulin resistance, however, also feeds the second hard cause. Insulin normally stimulates endothelial nitric oxide production through PI3K–Akt–eNOS, and in insulin resistance that branch is impaired while the MAPK–endothelin branch is preserved.[^muniyappa2007] Insulin is antinatriuretic at the renal tubule, an effect that persists in insulin-resistant states.[^defronzo1975] Hyperinsulinemia activates the sympathetic nervous system. The same upstream disorder therefore raises *both* apoB and pressure (section 16).
 
 ## 7. Lp(a): The Inherited Particle, and the Trial That Failed
@@ -143,6 +172,16 @@ Its pathobiology is threefold:
 - **Valve calcification.** A common *LPA* variant is associated with aortic-valve calcification and incident aortic stenosis, independently of its coronary effect.[^thanassoulis2013]
 
 Two pieces of arithmetic govern the clinical implications. First, because Lp(a) particles usually make up a small fraction of total apoB, the per-particle multiplier does not translate into a proportional population burden. Second, Burgess and colleagues estimated from Mendelian randomization that lowering Lp(a) by roughly 100 mg/dL would be needed to match the coronary benefit of lowering LDL-C by 1 mmol/L.[^burgess2018]
+
+**What existing drugs do to Lp(a), and what that revealed.** Several findings from the past decade changed how lipidologists read the Lp(a) problem.
+
+- **PCSK9 inhibition lowers Lp(a)**, partly through LDL-receptor–mediated catabolism, a pathway once thought irrelevant to Lp(a).[^romagnuolo2015] In FOURIER, evolocumab reduced Lp(a) by a median of 27%. The coronary benefit was numerically larger in patients with Lp(a) above the median (HR 0.77) than below it (HR 0.93), although the interaction was not significant (P = 0.07).[^odonoghue2019]
+- **Statins raise Lp(a).** In an individual-participant meta-analysis of six trials, statins increased Lp(a) by about 9–11% relative to placebo, and atorvastatin increased *LPA* mRNA and apo(a) expression in hepatocytes.[^tsimikas2020] An earlier pooled analysis found no significant mean change, so the size of the effect is debated.[^willeit2018] In the ASTRONOMER aortic-stenosis trial, rosuvastatin raised Lp(a) and its oxidized phospholipids by about 20%.[^capoulade2015]
+- **Lowering LDL did not quiet the Lp(a)-inflamed artery.** In the ANITSCHKOW trial, 129 patients with elevated Lp(a) and arterial-wall inflammation on FDG-PET received evolocumab or placebo for 16 weeks. Evolocumab lowered LDL-C by 61% and Lp(a) by only 14%, and arterial-wall inflammation did not change.[^stiekema2019] By contrast, potent apo(a)-antisense lowering reduced the pro-inflammatory activation of circulating monocytes.[^stiekema2020] The inflammatory signature of Lp(a) appeared to respond to Lp(a) lowering, not to LDL lowering.
+- **Lp(a) carries other passengers.** Lp(a) particles carrying apoC-III, together with OxPL on Lp(a), predicted rapid progression of aortic stenosis.[^capoulade2020] Lp(a) also binds autotaxin, an enzyme that produces lysophosphatidic acid, a mediator of valve calcification.[^nsaibia2017]
+- **Very low Lp(a) may have a cost, or may not.** Low Lp(a) concentrations are consistently associated with a higher risk of type 2 diabetes in observational data, for example in about 78,000 Copenhagen participants.[^kamstrup2013] The genetic evidence is split. Icelandic data linked very low genetically imputed Lp(a) to higher diabetes risk.[^gudbjartsson2019] A Danish analysis separating Lp(a) concentration from kringle IV-2 repeat number, and a 2024 two-sample Mendelian randomization in UK Biobank, did not support a causal effect of low Lp(a) itself.[^mack2017] [^ukb2024lpa] The siRNA agents lower Lp(a) by 90% or more, and long-term follow-up will have to settle the question.
+
+The National Lipid Association's 2024 focused update now recommends measuring Lp(a) at least once in every adult.[^koschinsky2024]
 
 That arithmetic now has a clinical test. In September 2026, Novartis announced that **Lp(a)HORIZON**, the phase 3 trial of the antisense oligonucleotide pelacarsen in 8,323 patients with established cardiovascular disease and elevated Lp(a), did not meet its primary endpoint.[^horizon] Full data had not been presented at the time of writing, so interpretation is provisional. Background therapy was intensive, with mean LDL-C around 66 mg/dL. Candidate explanations include absolute Lp(a) reductions below the threshold that the Mendelian-randomization arithmetic implies, a five-year trial window too short to reverse a lifetime of exposure, and a contribution of OxPL-mediated or valvular pathology that particle lowering on this scale does not address.
 
@@ -186,6 +225,8 @@ Coronary artery calcium (CAC) scoring detects calcified plaque. A positive score
 
 The strategic point follows from section 8. Imaging answers "has the integral already crossed into disease?" It does not answer "should apoB be lowered?" Waiting for a calcium score to turn positive before acting is waiting for the outcome the intervention was meant to prevent, a point Wilkins and Lloyd-Jones made explicitly.[^wilkins2021] Imaging is most useful for *escalating* intensity when plaque is found, and least useful as permission to do nothing when it is not.
 
+The interventional trials point the same way. In ISCHEMIA, 5,179 patients with stable coronary disease and moderate or severe ischemia were randomized to an initial invasive strategy (catheterization and revascularization) or to optimal medical therapy alone. The invasive strategy did not reduce cardiovascular death or myocardial infarction over a median of 3.2 years.[^maron2020] In ORBITA, the first placebo-controlled trial of coronary stenting in stable angina, stenting severe single-vessel lesions did not increase exercise time compared with a sham procedure.[^allamee2018] Atherosclerosis is a disease of the whole arterial wall driven by systemic exposures, not a local plumbing defect, and the leverage lies in the exposures.
+
 ## 11. The Toolkit and Its Frontier
 
 Nearly every effective lipid-lowering therapy works through a single physiological lever: increased hepatic clearance of apoB particles, mostly through more LDL receptors at the hepatocyte surface. Their mechanistic convergence is itself evidence.
@@ -224,6 +265,8 @@ Metabolic health is necessary for cardiovascular health. It is not sufficient, a
 | 2019 ESC/EAS[^esc2019] | apoB < 65 mg/dL (very high risk), < 80 (high), < 100 (moderate) |
 | 2025 ESC/EAS focused update[^esc2025] | LDL-C goals unchanged; Lp(a) > ~50 mg/dL as risk modifier; bempedoic acid expanded |
 | 2026 ACC/AHA dyslipidemia guideline[^acc2026] | Restores absolute targets (LDL-C < 100 borderline/intermediate risk, < 70 high, < 55 very high); PREVENT-ASCVD equations; apoB in selected patients |
+| 2024 NLA expert consensus on apoB[^soffer2024] | ApoB endorsed as a clinical measure of atherogenic particle burden, particularly when triglycerides are elevated or LDL-C is low |
+| 2024 NLA Lp(a) focused update[^koschinsky2024] | Measure Lp(a) at least once in all adults |
 
 My own position goes beyond the guidelines and I label it as inference. For an adult who has chosen aggressive primary prevention, an apoB of about 60 mg/dL (0.6 g/L) is a defensible aim. It lies within the range achieved in outcome trials, near the physiological level of youth, and is consistent with the integral model. No outcome data support pushing apoB below 20 mg/dL. That range overlaps the genetic hypobetalipoproteinemias, and the FOURIER "below 20" figure refers to LDL-C, not apoB. Chinese and European laboratories often report apoB in g/L, so 60 mg/dL is 0.60 g/L.
 
@@ -263,6 +306,16 @@ Lipidology's power came partly from knowing exactly what controls apoB: hepatic 
 
 **Aldosterone is a continuum, not a rare tumor.** Primary aldosteronism is still taught as an uncommon cause of secondary hypertension. In 2020, Brown and colleagues measured 24-hour urinary aldosterone under sodium loading in carefully phenotyped U.S. adults. Biochemically overt, renin-independent aldosteronism was present in **11.3% of normotensive** participants, 15.7% with stage 1 hypertension, 21.6% with stage 2 and 22.0% with resistant hypertension.[^brown2020] The aldosterone-to-renin ratio screening test performed poorly. In a large academic health system, only **2.1%** of patients meeting criteria for resistant hypertension were screened for primary aldosteronism within two years.[^jaffe2020]
 
+**Insulin resistance and the endothelium form a loop.** Kim, Montagnani, Koh and Quon described the relationship between insulin resistance and endothelial dysfunction as reciprocal. Impaired insulin signaling through PI3K–Akt reduces endothelial nitric-oxide production. Reduced nitric-oxide–dependent capillary recruitment then reduces insulin and glucose delivery to skeletal muscle, which worsens insulin resistance.[^kim2006] The muscle defect that in section 6 diverts carbohydrate into hepatic lipogenesis is therefore also a vascular defect that raises resistance and pressure.
+
+**A contested upstream: urate, fructose and osmolality.** Richard Johnson's group has developed the most ambitious metabolic theory of essential hypertension, and an expert reader should know both its evidence and its failures.
+
+- **The mechanistic chain.** In rats, raising uric acid with an uricase inhibitor produced hypertension through a crystal-independent mechanism involving renin–angiotensin activation and reduced nitric-oxide synthase, and lowering urate prevented it.[^mazzali2001] Fructose metabolism by fructokinase consumes ATP and generates uric acid. In mice, high salt intake raised serum osmolality, activated aldose reductase to convert glucose into endogenous fructose, and produced leptin resistance and obesity. Blocking fructose metabolism prevented these effects.[^lanaspa2018] In humans, the acute pressor effect of a salty meal tracked the rise in serum osmolality and was blunted by drinking water with it.[^kanbay2018]
+- **The human trial that supported it.** In a randomized crossover trial in adolescents with newly diagnosed essential hypertension and hyperuricemia, allopurinol lowered casual systolic pressure by about 6.9 mmHg versus 2.0 mmHg on placebo, with parallel ambulatory reductions.[^feig2008]
+- **The trials that did not.** In adults with established disease, large urate-lowering trials were negative. CKD-FIX and PERL found no slowing of kidney decline with allopurinol,[^badve2020] [^doria2020] and ALL-HEART found no cardiovascular benefit in ischemic heart disease.
+
+My reading, which is inference rather than established fact, is that the pattern fits the integral argument. A mechanism that sets the trajectory early (the adolescent trial) may be irrelevant once structural renal and vascular change has occurred (the adult trials). That would make the urate hypothesis an *early-window* hypothesis, which no adult trial has tested. The practical implication requires no drug: the dietary sources of the proposed mechanism (fructose-sweetened beverages and high salt without water) are worth avoiding for reasons independent of this theory.
+
 Taken together, a renin-independent aldosterone excess is present across the pressure spectrum, including in normotensive people, and is almost never looked for. This is the biological context for the 2026 approval of baxdrostat (section 28). A disorder that clinical teaching calls rare is a common, continuous driver of the pressure distribution.
 
 ## 17. Pressure Is an Exposure, Not a Diagnosis
@@ -285,6 +338,8 @@ Lipidology's central conceptual move was to stop treating "hypercholesterolemia"
 The harms of intensive treatment are real: syncope, symptomatic hypotension, hyperkalemia and acute kidney injury. They are the harms of drugs titrated to a target, which becomes important in section 25. Cognition is affected too. In SPRINT MIND, intensive control reduced mild cognitive impairment (HR 0.81), while the reduction in probable dementia did not reach significance.[^sprintmind2019]
 
 **The integral begins in childhood.** Blood pressure *tracks*. A meta-analysis of cohort studies found moderate correlation between childhood and adult pressure, strengthening with age at first measurement.[^chen2008] In CARDIA, people whose pressure trajectory rose through young adulthood, even within ranges labeled normal or prehypertensive, had higher odds of coronary calcium in middle age than those with stable low trajectories.[^allen2014] Pressure, like apoB, is a lifetime exposure whose early years carry the most leverage.
+
+**Pregnancy is a vascular stress test that medicine reads and then forgets.** Pregnancy increases plasma volume and cardiac output by roughly 40–50% and imposes an insulin-resistant state. Women whose vasculature fails that test go on to higher lifetime risk. In Bellamy and colleagues' meta-analysis, a history of pre-eclampsia was associated with about 3.7 times the risk of later hypertension, about twice the risk of ischemic heart disease and stroke, and higher all-cause mortality.[^bellamy2007] The association is almost certainly bidirectional: a pre-existing susceptibility (endothelial, metabolic, renal) is unmasked by pregnancy and then progresses. The information is collected at delivery and rarely carried into the adult preventive record. Under the integral model, a woman with prior pre-eclampsia in her thirties is an early-intervention candidate, not someone to watch until her pressure crosses a threshold in her fifties.
 
 **The guidelines have moved, but not all the way.** The 2024 ESC guideline created an "elevated blood pressure" category of 120–139/70–89 mmHg and set a treated systolic target of 120–129 mmHg for most patients who tolerate it.[^esc2024] The 2025 AHA/ACC guideline kept a target below 130/80. It adopted the PREVENT equations, with a 7.5% ten-year total cardiovascular risk threshold for treating stage 1 hypertension, expanded urine albumin testing and primary-aldosteronism screening, and included isometric resistance exercise among its lifestyle options.[^aha2025] [^aha2025summary] Both guidelines still use a threshold-then-treat architecture triggered by ten-year risk, the architecture lipidology spent two decades dismantling.
 
@@ -352,12 +407,21 @@ flowchart LR
 
 **It is almost never measured.** In the CKD Prognosis Consortium's analysis of nearly four million adults across multiple countries, only 35.1% of people with diabetes and **4.1%** of people with hypertension had a UACR measured over two years. The estimated ratio of undetected to detected albuminuria was 1.8 in diabetes and **19.5** in hypertension.[^shin2021] The 2025 AHA/ACC guideline expanded albumin testing in response.[^aha2025summary]
 
+**The kidney has its own frontier, and it runs through pressure.** Obesity, insulin resistance and early diabetes produce glomerular *hyperfiltration*. Increased proximal tubular sodium–glucose reabsorption lowers sodium delivery to the macula densa. Tubuloglomerular feedback then reads this as volume depletion, dilates the afferent arteriole and raises intraglomerular pressure. The glomerulus is being damaged by pressure even when systemic pressure looks acceptable.
+
+SGLT2 inhibitors restore distal sodium delivery and reverse the dilation. They lower systemic pressure by a few mmHg and, more importantly, glomerular pressure. In DAPA-CKD, dapagliflozin reduced the composite of kidney failure, sustained eGFR decline or renal or cardiovascular death by 39% (HR 0.61), with similar benefit in patients without diabetes.[^heerspink2020] EMPA-KIDNEY confirmed this across a broader range of kidney function (HR 0.72).[^empakidney2023]
+
+Mineralocorticoid-receptor antagonism has been tested in the same population. In diabetic kidney disease, the non-steroidal mineralocorticoid-receptor antagonist finerenone reduced kidney outcomes (HR 0.82) and cardiovascular outcomes in FIDELIO-DKD.[^bakris2020] This is the aldosterone axis of section 16, acting on the kidney.
+
+Glomerular pressure, aldosterone and systemic pressure are one control problem. The drugs that protect the kidney best do so largely by fixing pressure where the systemic cuff cannot see it.
+
 ## 22. Measurement: The Error Is the Size of the Effect
 
 Lipidology owes some of its clarity to measurement. ApoB has a coefficient of variation of a few percent and needs no fasting. Pressure is an intrinsically variable quantity measured, in most of the world, by a single office reading.
 
 - **Positioning.** In the ARMS crossover trial (Liu, Brady and colleagues, 2024), supporting the arm on the lap overestimated systolic pressure by 3.9 mmHg compared with desk support, and an unsupported arm hanging at the side overestimated it by **6.5 mmHg**.[^liu2024] That error is about the size of the effect of a new antihypertensive class (section 28). In most clinics it is never corrected.
 - **Which pressure predicts outcomes.** In the Spanish ambulatory registry of 63,910 adults, 24-hour ambulatory systolic pressure predicted all-cause and cardiovascular mortality far more strongly than clinic pressure, and nighttime pressure was among the strongest predictors. Masked hypertension, normal in clinic and elevated on ambulatory monitoring, carried a risk at least as high as sustained hypertension.[^banegas2018] A clinic reading is a poor estimate of the variable that matters.
+- **The night shift.** Nocturnal pressure is where obstructive sleep apnea leaves its mark. In the Wisconsin Sleep Cohort, apnea severity at baseline predicted incident hypertension four years later in a dose-dependent way: an apnea–hypopnea index of 15 or more carried an odds ratio of about 2.9, independent of body habitus.[^peppard2000] Recurrent hypoxemia and arousal drive sympathetic surges, endothelin release and renal sodium retention. Treating apnea has a smaller effect than its epidemiology suggests. In SAVE, CPAP in 2,717 patients with cardiovascular disease and moderate-to-severe apnea did not reduce cardiovascular events. Mean adherence was only about 3.3 hours a night, which leaves the trial unable to test adequate treatment.[^mcevoy2016] The lesson for measurement is that a patient with normal daytime readings and untreated apnea may have the most dangerous pressure profile of all, and only nighttime measurement will show it.
 - **A myth refuted.** The large pragmatic TIME trial randomized 21,104 patients to morning or evening dosing of antihypertensives and found no difference in major cardiovascular outcomes.[^mackenzie2022] When a dose is taken matters much less than measuring accurately and reaching the target.
 
 The implication for the n-of-1 in section 27 is that the instrument matters as much as the intervention. A properly conducted home protocol is not a refinement. It is the prerequisite for knowing whether anything happened.
@@ -388,6 +452,16 @@ It would be wrong to say that clinicians "don't know" these things. Every cardio
 If an orally available molecule lowered systolic pressure by about 8 mmHg, cost nothing, took fourteen minutes three times a week, had no drug interactions and had a benign adverse-effect profile, it would be a blockbuster. That intervention exists.
 
 Edwards and colleagues' 2023 network meta-analysis in the *British Journal of Sports Medicine* included 270 randomized trials and 15,827 participants. Isometric exercise training reduced resting systolic and diastolic pressure by about 8.2 and 4.0 mmHg relative to controls. It ranked first among all exercise modes for systolic reduction (SUCRA 98%), ahead of combined training, dynamic resistance, aerobic training and high-intensity intervals, which produced roughly 4–6 mmHg each. Among isometric modes, the wall squat ranked highest for systolic reduction.[^edwards2023] An earlier review reached the same direction (about 7/3 mmHg) and found isometric training safe, with acute pressor responses during holds often smaller than those of guideline-recommended aerobic or dynamic training.[^baffour2022]
+
+Placed among the other non-drug levers, isometric training is unusually potent per unit of time:
+
+| Lever | Approximate systolic effect | Evidence base |
+|---|---|---|
+| Weight loss | ~1 mmHg per kg lost[^neter2003] | Meta-analysis of RCTs |
+| Aerobic endurance training | ~4–8 mmHg; largest in hypertensives[^cornelissen2013] | Meta-analyses of RCTs |
+| Modest salt reduction (~4.4 g/day salt) | ~4–5 mmHg in hypertensives, ~2 mmHg in normotensives[^he2013] | Cochrane meta-analysis |
+| Salt substitute (75% NaCl / 25% KCl) | ~7 mmHg in elderly residents; hard-outcome reduction[^yuan2023] [^neal2021] | Two large outcome trials |
+| Isometric training (~42 min/week) | ~8 mmHg pooled; ~5–10 mmHg guideline estimate[^edwards2023] | Network meta-analysis of small RCTs |
 
 The guidelines have absorbed this. The 2025 AHA/ACC guideline lists isometric handgrip: four two-minute contractions with one minute of rest, at 30–40% of maximal voluntary contraction, three times weekly, with an expected systolic reduction of about 5–10 mmHg, framed as an adjunct to established measures.[^aha2025summary] The 2024 ESC guideline lists dynamic *or* isometric resistance training two to three times weekly.[^esc2024]
 
@@ -457,7 +531,7 @@ Lipidology won the argument. Pressure is still winning the war.
 
 ---
 
-## Coda for Specialists: Twelve Propositions
+## Coda for Specialists: Sixteen Propositions
 
 For readers who skipped to the end, here are the claims of this essay that I expect to be least familiar to specialists on the *other* side of the field.
 
@@ -473,6 +547,10 @@ For readers who skipped to the end, here are the claims of this essay that I exp
 10. Albuminuria goes unmeasured in about 96% of hypertensive patients, and the undetected-to-detected ratio is about 20:1.[^shin2021]
 11. An unsupported arm adds 6.5 mmHg to a systolic reading, the same magnitude as a new drug class.[^liu2024]
 12. The cleanest dietary trial with hard cardiovascular outcomes is a salt-substitute trial in rural China.[^neal2021]
+13. Children with FH treated with statins from adolescence had a 1% cumulative incidence of cardiovascular events at age 39, versus 26% in their affected parents.[^luirink2019]
+14. Lowering LDL-C by 61% did not reduce arterial-wall inflammation in patients with high Lp(a); potent apo(a) lowering did quiet their monocytes.[^stiekema2019] [^stiekema2020]
+15. The HDL-function hypothesis has had its direct test: apoA-I infusion after infarction did not reduce 90-day events.[^gibson2024]
+16. Variants that increase intestinal sterol absorption raise coronary risk more per unit of non-HDL cholesterol than other lipid variants do.[^helgadottir2020]
 
 ---
 
@@ -703,3 +781,125 @@ For readers who skipped to the end, here are the claims of this essay that I exp
 [^jaiswal2017]: Jaiswal S, Natarajan P, Silver AJ, et al. Clonal hematopoiesis and risk of atherosclerotic cardiovascular disease. *N Engl J Med* 2017;377:111–121.
 
 [^guzik2007]: Guzik TJ, Hoch NE, Brown KA, et al. Role of the T cell in the genesis of angiotensin II induced hypertension and vascular dysfunction. *J Exp Med* 2007;204:2449–2460.
+
+[^martin2013]: Martin SS, Blaha MJ, Elshazly MB, et al. Comparison of a novel method vs the Friedewald equation for estimating low-density lipoprotein cholesterol levels from the standard lipid profile. *JAMA* 2013;310:2061–2068.
+
+[^sampson2020]: Sampson M, Ling C, Sun Q, et al. A new equation for calculation of low-density lipoprotein cholesterol in patients with normolipidemia and/or hypertriglyceridemia. *JAMA Cardiol* 2020;5:540–548.
+
+[^sniderman2007]: Sniderman A, Tremblay A, Bergeron J, Gagné C, Couture P. Diagnosis of type III hyperlipoproteinemia from plasma total cholesterol, triglyceride, and apolipoprotein B. *J Clin Lipidol* 2007;1:256–263.
+
+[^sniderman2018]: Sniderman AD, de Graaf J, Thanassoulis G, Tremblay AJ, Martin SS, Couture P. The spectrum of type III hyperlipoproteinemia. *J Clin Lipidol* 2018;12:1383–1389.
+
+[^cclm2024]: Evaluation of biochemical algorithms to screen dysbetalipoproteinemia in ε2ε2 and rare APOE variants carriers. *Clin Chem Lab Med* 2024. doi:10.1515/cclm-2024-0587.
+
+[^stitziel2014]: Myocardial Infarction Genetics Consortium Investigators (Stitziel NO, et al.). Inactivating mutations in NPC1L1 and protection from coronary heart disease. *N Engl J Med* 2014;371:2072–2082.
+
+[^ference2015]: Ference BA, Majeed F, Penumetcha R, Flack JM, Brook RD. Effect of naturally random allocation to lower low-density lipoprotein cholesterol on the risk of coronary heart disease mediated by polymorphisms in NPC1L1, HMGCR, or both: a 2 × 2 factorial Mendelian randomization study. *J Am Coll Cardiol* 2015;65:1552–1561.
+
+[^ference2019acly]: Ference BA, Ray KK, Catapano AL, et al. Mendelian randomization study of ACLY and cardiovascular disease. *N Engl J Med* 2019;380:1033–1042.
+
+[^luirink2019]: Luirink IK, Wiegman A, Kusters DM, et al. 20-year follow-up of statins in children with familial hypercholesterolemia. *N Engl J Med* 2019;381:1547–1556. doi:10.1056/NEJMoa1816454.
+
+[^sijbrands2001]: Sijbrands EJ, Westendorp RG, Defesche JC, de Meier PH, Smelt AH, Kastelein JJ. Mortality over two centuries in large pedigree with familial hypercholesterolaemia: family tree mortality study. *BMJ* 2001;322:1019–1023.
+
+[^netea1996]: Netea MG, Demacker PN, Kullberg BJ, et al. Low-density lipoprotein receptor-deficient mice are protected against lethal endotoxemia and severe gram-negative infections. *J Clin Invest* 1996;97:1366–1372.
+
+[^helgadottir2020]: Helgadottir A, Thorleifsson G, Alexandersson KF, et al. Genetic variability in the absorption of dietary sterols affects the risk of coronary artery disease. *Eur Heart J* 2020;41:2618–2628. doi:10.1093/eurheartj/ehaa531.
+
+[^dayspring2015]: Dayspring TD, Varvel SA, Ghaedi L, Thiselton DL, Bruton J, McConnell JP. Biomarkers of cholesterol homeostasis in a clinical laboratory database sample comprising 667,718 patients. *J Clin Lipidol* 2015;9:807–816.
+
+[^frikkeschmidt2008]: Frikke-Schmidt R, Nordestgaard BG, Stene MCA, et al. Association of loss-of-function mutations in the ABCA1 gene with high-density lipoprotein cholesterol levels and risk of ischemic heart disease. *JAMA* 2008;299:2524–2532.
+
+[^madsen2017]: Madsen CM, Varbo A, Nordestgaard BG. Extreme high high-density lipoprotein cholesterol is paradoxically associated with high mortality in men and women: two prospective cohort studies. *Eur Heart J* 2017;38:2478–2486.
+
+[^khera2011]: Khera AV, Cuchel M, de la Llera-Moya M, et al. Cholesterol efflux capacity, high-density lipoprotein function, and atherosclerosis. *N Engl J Med* 2011;364:127–135.
+
+[^rohatgi2014]: Rohatgi A, Khera A, Berry JD, et al. HDL cholesterol efflux capacity and incident cardiovascular events. *N Engl J Med* 2014;371:2383–2393.
+
+[^gibson2024]: Gibson CM, Duffy D, Korjian S, et al. Apolipoprotein A1 infusions and cardiovascular outcomes after acute myocardial infarction (AEGIS-II). *N Engl J Med* 2024;390:1560–1571. doi:10.1056/NEJMoa2400969.
+
+[^ference2017cetp]: Ference BA, Kastelein JJP, Ginsberg HN, et al. Association of genetic variants related to CETP inhibitors and statins with lipoprotein levels and cardiovascular risk. *JAMA* 2017;318:947–956.
+
+[^dangas2022]: Dangas K, Navar AM, Kastelein JJP. The effect of CETP inhibitors on new-onset diabetes: a systematic review and meta-analysis. *Eur Heart J Cardiovasc Pharmacother* 2022.
+
+[^thomas2017]: Thomas T, Zhou H, Karmally W, et al. CETP (cholesteryl ester transfer protein) inhibition with anacetrapib decreases production of lipoprotein(a) in mildly hypercholesterolemic subjects. *Arterioscler Thromb Vasc Biol* 2017;37:1770–1775.
+
+[^tardif2022]: Tardif JC, Pfeffer MA, Kouz S, et al. Pharmacogenetics-guided dalcetrapib therapy after an acute coronary syndrome: the dal-GenE trial. *Eur Heart J* 2022;43:3947–3956.
+
+[^nicholls2022]: Nicholls SJ, Ditmarsch M, Kastelein JJ, et al. Lipid lowering effects of the CETP inhibitor obicetrapib in combination with high-intensity statins: a randomized phase 2 trial. *Nat Med* 2022;28:1672–1678.
+
+[^shalaurova2014]: Shalaurova I, Connelly MA, Garvey WT, Otvos JD. Lipoprotein insulin resistance index: a lipoprotein particle-derived measure of insulin resistance. *Metab Syndr Relat Disord* 2014;12:422–429.
+
+[^mackey2015]: Mackey RH, Mora S, Bertoni AG, et al. Lipoprotein particles and incident type 2 diabetes in the Multi-Ethnic Study of Atherosclerosis. *Diabetes Care* 2015;38:628–636.
+
+[^abdulghani2008]: Abdul-Ghani MA, Abdul-Ghani T, Ali N, DeFronzo RA. One-hour plasma glucose concentration and the metabolic syndrome identify subjects at high risk for future type 2 diabetes. *Diabetes Care* 2008;31:1650–1655.
+
+[^hoehn2009]: Hoehn KL, Salmon AB, Hohnen-Behrens C, et al. Insulin resistance is a cellular antioxidant defense mechanism. *Proc Natl Acad Sci USA* 2009;106:17787–17792.
+
+[^kernan2016]: Kernan WN, Viscoli CM, Furie KL, et al. Pioglitazone after ischemic stroke or transient ischemic attack (IRIS). *N Engl J Med* 2016;374:1321–1331.
+
+[^romagnuolo2015]: Romagnuolo R, Scipione CA, Boffa MB, Marcovina SM, Seidah NG, Koschinsky ML. Lipoprotein(a) catabolism is regulated by proprotein convertase subtilisin/kexin type 9 through the low density lipoprotein receptor. *J Biol Chem* 2015;290:11649–11662.
+
+[^odonoghue2019]: O'Donoghue ML, Fazio S, Giugliano RP, et al. Lipoprotein(a), PCSK9 inhibition, and cardiovascular risk. *Circulation* 2019;139:1483–1492.
+
+[^tsimikas2020]: Tsimikas S, Gordts PLSM, Nora C, Yeang C, Witztum JL. Statin therapy increases lipoprotein(a) levels. *Eur Heart J* 2020;41:2275–2284.
+
+[^willeit2018]: Willeit P, Ridker PM, Nestel PJ, et al. Baseline and on-statin treatment lipoprotein(a) levels for prediction of cardiovascular events: individual patient-data meta-analysis of statin outcome trials. *Lancet* 2018;392:1311–1320.
+
+[^capoulade2015]: Capoulade R, Chan KL, Yeang C, et al. Oxidized phospholipids, lipoprotein(a), and progression of calcific aortic valve stenosis. *J Am Coll Cardiol* 2015;66:1236–1246.
+
+[^stiekema2019]: Stiekema LCA, Stroes ESG, Verweij SL, et al. Persistent arterial wall inflammation in patients with elevated lipoprotein(a) despite strong low-density lipoprotein cholesterol reduction by proprotein convertase subtilisin/kexin type 9 antibody treatment (ANITSCHKOW). *Eur Heart J* 2019;40:2775–2781.
+
+[^stiekema2020]: Stiekema LCA, Prange KHM, Hoogeveen RM, et al. Potent lipoprotein(a) lowering following apolipoprotein(a) antisense treatment reduces the pro-inflammatory activation of circulating monocytes in patients with elevated lipoprotein(a). *Eur Heart J* 2020;41:2262–2271.
+
+[^capoulade2020]: Capoulade R, et al. ApoCIII-Lp(a) complexes in conjunction with Lp(a)-OxPL predict rapid progression of aortic stenosis. 2020.
+
+[^nsaibia2017]: Nsaibia MJ, Boulanger MC, Bouchareb R, et al. Interaction of autotaxin with lipoprotein(a) in patients with calcific aortic valve stenosis. *JACC Basic Transl Sci* 2017.
+
+[^kamstrup2013]: Kamstrup PR, Nordestgaard BG. Lipoprotein(a) concentrations, isoform size, and risk of type 2 diabetes: a Mendelian randomisation study. *Lancet Diabetes Endocrinol* 2013;1:220–227.
+
+[^gudbjartsson2019]: Gudbjartsson DF, Thorgeirsson G, Sulem P, et al. Lipoprotein(a) concentration and risks of cardiovascular disease and diabetes. *J Am Coll Cardiol* 2019;74:2982–2994.
+
+[^mack2017]: Mack S, Coassin S, Rueedi R, et al. A genome-wide association meta-analysis on lipoprotein(a) concentrations adjusted for apolipoprotein(a) isoforms. *J Lipid Res* 2017; and the 2017 *Clin Chem* analysis distinguishing Lp(a)-concentration SNPs from KIV-2 repeat number (PubMed 28971985).
+
+[^ukb2024lpa]: Associations of very low lipoprotein(a) levels with risks of new-onset diabetes and non-alcoholic liver disease (UK Biobank observational and two-sample Mendelian randomization analysis), 2024.
+
+[^koschinsky2024]: Koschinsky ML, Bajaj A, Boffa MB, et al. A focused update to the 2019 NLA scientific statement on use of lipoprotein(a) in clinical practice. *J Clin Lipidol* 2024.
+
+[^soffer2024]: Soffer DE, Marston NA, Maki KC, et al. Role of apolipoprotein B in the clinical management of cardiovascular risk in adults: an expert clinical consensus from the National Lipid Association. *J Clin Lipidol* 2024.
+
+[^maron2020]: Maron DJ, Hochman JS, Reynolds HR, et al. Initial invasive or conservative strategy for stable coronary disease (ISCHEMIA). *N Engl J Med* 2020;382:1395–1407.
+
+[^allamee2018]: Al-Lamee R, Thompson D, Dehbi HM, et al. Percutaneous coronary intervention in stable angina (ORBITA): a double-blind, randomised controlled trial. *Lancet* 2018;391:31–40.
+
+[^kim2006]: Kim JA, Montagnani M, Koh KK, Quon MJ. Reciprocal relationships between insulin resistance and endothelial dysfunction: molecular and pathophysiological mechanisms. *Circulation* 2006;113:1888–1904.
+
+[^mazzali2001]: Mazzali M, Hughes J, Kim YG, et al. Elevated uric acid increases blood pressure in the rat by a novel crystal-independent mechanism. *Hypertension* 2001;38:1101–1106.
+
+[^lanaspa2018]: Lanaspa MA, Kuwabara M, Andres-Hernando A, et al. High salt intake causes leptin resistance and obesity in mice by stimulating endogenous fructose production and metabolism. *Proc Natl Acad Sci USA* 2018;115:3138–3143.
+
+[^kanbay2018]: Kanbay M, Aslan G, Afsar B, et al. Acute effects of salt on blood pressure are mediated by serum osmolality. *J Clin Hypertens* 2018.
+
+[^feig2008]: Feig DI, Soletsky B, Johnson RJ. Effect of allopurinol on blood pressure of adolescents with newly diagnosed essential hypertension: a randomized trial. *JAMA* 2008;300:924–932.
+
+[^badve2020]: Badve SV, Pascoe EM, Tiku A, et al. Effects of allopurinol on the progression of chronic kidney disease (CKD-FIX). *N Engl J Med* 2020;382:2504–2513.
+
+[^doria2020]: Doria A, Galecki AT, Spino C, et al. Serum urate lowering with allopurinol and kidney function in type 1 diabetes (PERL). *N Engl J Med* 2020;382:2493–2503.
+
+[^neter2003]: Neter JE, Stam BE, Kok FJ, Grobbee DE, Geleijnse JM. Influence of weight reduction on blood pressure: a meta-analysis of randomized controlled trials. *Hypertension* 2003;42:878–884.
+
+[^cornelissen2013]: Cornelissen VA, Smart NA. Exercise training for blood pressure: a systematic review and meta-analysis. *J Am Heart Assoc* 2013;2:e004473.
+
+[^he2013]: He FJ, Li J, MacGregor GA. Effect of longer term modest salt reduction on blood pressure: Cochrane systematic review and meta-analysis of randomised trials. *BMJ* 2013;346:f1325.
+
+[^bellamy2007]: Bellamy L, Casas JP, Hingorani AD, Williams DJ. Pre-eclampsia and risk of cardiovascular disease and cancer in later life: systematic review and meta-analysis. *BMJ* 2007;335:974.
+
+[^peppard2000]: Peppard PE, Young T, Palta M, Skatrud J. Prospective study of the association between sleep-disordered breathing and hypertension. *N Engl J Med* 2000;342:1378–1384.
+
+[^mcevoy2016]: McEvoy RD, Antic NA, Heeley E, et al. CPAP for prevention of cardiovascular events in obstructive sleep apnea (SAVE). *N Engl J Med* 2016;375:919–931.
+
+[^heerspink2020]: Heerspink HJL, Stefánsson BV, Correa-Rotter R, et al. Dapagliflozin in patients with chronic kidney disease (DAPA-CKD). *N Engl J Med* 2020;383:1436–1446.
+
+[^empakidney2023]: The EMPA-KIDNEY Collaborative Group. Empagliflozin in patients with chronic kidney disease. *N Engl J Med* 2023;388:117–127.
+
+[^bakris2020]: Bakris GL, Agarwal R, Anker SD, et al. Effect of finerenone on chronic kidney disease outcomes in type 2 diabetes (FIDELIO-DKD). *N Engl J Med* 2020;383:2219–2229.
