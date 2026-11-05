@@ -15,17 +15,24 @@ mermaid: true
 
 ## Author's Note
 
-I started learning lipidology from scratch in January 2026. This essay is what ten months of reading the primary literature produced.
+I started learning lipidology from scratch in January 2026. This essay is what ten months of reading the primary literature produced. It makes two arguments.
 
-It does three things. It rebuilds the two causal systems of cardiovascular disease, the apoB particle and arterial pressure, from first principles through to the 2026 frontier. It documents how far medical teaching and clinical guidelines have fallen behind that evidence (sections 6, 18, 25 and 34). And it argues that, although isometric exercise training has no cardiovascular outcome trial, normotensive adults should take it as they would an antihypertensive drug, alongside apoB lowering. Part III turns all of this into an evidence-graded protocol for lowering apoB and lowering pressure.
+The first is about institutions. The best medical schools and cardiology departments in the world teach and practise a version of cardiovascular medicine that the experimental record superseded decades ago. *Robbins & Cotran Pathologic Basis of Disease* (11th edition, 2026) is the standard pathology textbook of American medical schools. It still opens atherosclerosis with endothelial injury, a framework from 1976. The one clear exception among the major references is *Braunwald's Heart Disease* (13th edition), whose atherosclerosis chapter is written by Peter Libby. The ACC/AHA guidelines are followed by most of the world's cardiologists. Their first recommendation to measure apoB, the causal particle count, came in March 2026, forty-six years after apoB was shown to identify coronary patients whom cholesterol misses. Even now it is a Class 2a add-on, to be checked after the cholesterol goals have been met. Part I documents this lag textbook by textbook and guideline by guideline, against the actual testing rates in clinics. It argues that the lag is structural rather than a failure of intelligence. That makes it more serious, not less, because structures do not correct themselves.
+
+The second argument is about prevention. Atherosclerotic disease has two *leading causal indicators*, in the economist's sense of variables that move years before the outcome does. One is the number of apoB particles available to enter the artery wall. The other is the pressure that drives them in, makes the wall hold on to them, and finally ruptures the plaque they build. Parts II and III rebuild both systems from first principles to the 2026 frontier and show that the two multiply rather than add: risk scales with *particle × pressure × time*. Part IV turns this into a protocol built on two interventions. I call them radical only relative to current practice.
+
+1. **Lower apoB below about 60 mg/dL, and do it early**: in the thirties rather than after the first event, and usually with drugs, because diet rarely gets there alone (sections 25 and 45).
+2. **Take isometric exercise training as an antihypertensive drug, even with normal blood pressure** (sections 41–43). It has no cardiovascular outcome trial and probably never will. But blood pressure is a surrogate hard enough not to need one, and the measured effect is the size of a new drug class.
+
+The second intervention is the one that neither mainstream medicine nor the longevity movement, orthodox or otherwise, has taken seriously.
 
 Cardiovascular disease remains the leading cause of death in the world, with cancer second.[^who] On 31 October 2026, the actor Hu Ge said in a broadcast interview that two of his friends had died of myocardial infarction within two months of each other, one in his fifties and one his own age. He added that, after heart symptoms of his own, he now carries Suxiao Jiuxin pills.[^huge2026]
 
 That detail captures the problem. Suxiao Jiuxin is a traditional Chinese preparation used for angina attacks. It is not shown to prevent or treat infarction, and a suspected heart attack calls for emergency services, not a pocket remedy. More fundamentally, a rescue pill addresses the last minute of a disease that has been accumulating for thirty years. This essay is about the thirty years.
 
-Two discoveries surprised me most as an outsider. The pathology most students still learn describes atherosclerosis as beginning with endothelial injury, which reverses the order the experimental record establishes (section 6). And the largest guideline system in the world adopted apoB, the causal particle count, only in spring 2026, and then only as a second-line test (section 18). Hypertension has the same three-way split between textbook, guideline and evidence (section 25). I do not think any of this reflects a failure of intelligence. Section 34 argues that it is structural.
+The title of Part IV promises prevention "thoroughly," and I mean the word literally, in a specific and checkable sense. ApoB particles are a *necessary* cause of atherosclerosis: without particles retained in the artery wall there is no plaque, and in familial hypercholesterolemia, particles alone are sufficient (sections 13 and 15). Human genetics shows what happens when that cause is reduced from birth. Carriers of *PCSK9* nonsense mutations had 28% lower LDL cholesterol and 88% fewer coronary events (section 15). Children with familial hypercholesterolemia treated from adolescence had a 1% cumulative incidence of cardiovascular events by age 39, against 26% in their parents (section 15). Genetic scores combining a moderately lower LDL-C and a 10 mmHg lower systolic pressure cut the odds of major coronary events by 78% (section 34). Seventeen leading investigators, Williams, Tabas, Borén and Sniderman among them, titled their 2018 review of this evidence "Eradicating the burden of atherosclerotic cardiovascular disease by lowering apolipoprotein B lipoproteins earlier in life."[^robinson2018] Removing the necessary cause early enough is a different kind of goal from shaving a few points off a ten-year probability.
 
-No one can promise that cardiovascular disease can be *completely* avoided. The claim here is narrower and, I think, defensible. Most of it is avoidable, and the levers that matter are measurable and modifiable decades before the first symptom. Those levers are apoB, pressure, and the metabolic engine that drives both.
+The claim has limits, and I state them. It concerns *atherosclerotic* disease. It does not cover cardiomyopathies, inherited arrhythmias, valve disease or spontaneous coronary dissection, or exposure that has already accumulated by the time one starts. No randomized trial has tested lifelong lowering from youth, so the size of the benefit beyond the genetic evidence is inference, and I mark it as such wherever it appears.
 
 ---
 
@@ -35,16 +42,16 @@ This essay explains why that pattern is not an accident, and why it matters more
 
 <figure class="column-figure">
   <img src="/assets/images/the-particle-and-the-pressure/figure-1-four-numbers-of-the-same-size.svg" alt="Horizontal bar chart of five systolic blood pressure effects in mmHg: arm on lap 3.9, arm unsupported 6.5, potassium salt substitute 7.1, isometric training 8.2, baxdrostat 8.7 to 9.8. A dashed line at 5 mmHg marks the BPLTTC outcome benchmark.">
-  <figcaption><strong>Figure 1. Five numbers of the same size.</strong> The three effects above, plus two more that belong beside them: the smaller arm-position error from the same trial (3.9 mmHg for an arm resting on the lap rather than on a desk) and the 7.1 mmHg achieved by a potassium-enriched salt substitute in DECIDE-Salt (section 32). The dashed line is the exchange rate between millimetres and outcomes: in the Blood Pressure Lowering Treatment Trialists' pooled analysis of 48 trials and 344,716 participants, each 5 mmHg of systolic reduction lowered major cardiovascular events by about 10%, with no reliable heterogeneity by baseline pressure (section 25). Every bar here clears that line. One of them is an error nobody corrects; one got a new drug class; two cost nothing.</figcaption>
+  <figcaption><strong>Figure 1. Five numbers of the same size.</strong> The three effects above, plus two more that belong beside them: the smaller arm-position error from the same trial (3.9 mmHg for an arm resting on the lap rather than on a desk) and the 7.1 mmHg achieved by a potassium-enriched salt substitute in DECIDE-Salt (section 39). The dashed line is the exchange rate between millimetres and outcomes: in the Blood Pressure Lowering Treatment Trialists' pooled analysis of 48 trials and 344,716 participants, each 5 mmHg of systolic reduction lowered major cardiovascular events by about 10%, with no reliable heterogeneity by baseline pressure (section 32). Every bar here clears that line. One of them is an error nobody corrects; one got a new drug class; two cost nothing.</figcaption>
 </figure>
 
 ---
 
 ## Abstract
 
-Atherosclerotic cardiovascular disease has two causal exposures that no serious investigator disputes: the plasma concentration of apolipoprotein B–containing lipoproteins, and arterial pressure. The essay rebuilds both systems from first principles (the lipoprotein pathways, their genetics and disorders; the hemodynamic, hormonal and renal control of pressure, its Mendelian genetics and its target organs) before reaching the frontier. Over three decades, preventive lipidology turned the first into one of the best-adjudicated causal claims in medicine, and in doing so it set the epistemic standard for the whole field. Part I reconstructs that achievement at the level a biochemist or lipidologist would recognize. The topics are the receptor-mediated transcytosis and proteoglycan retention of apoB particles; the human loss-of-function experiments in *PCSK9*, *ANGPTL3*, *APOC3* and *SCARB1*; the per-particle equivalence of triglyceride-lowering and LDL-lowering variants; the hepatic and muscular biochemistry that makes the lipoprotein profile a decade-leading readout of insulin resistance; and the time-integral structure of risk. It also covers developments through late 2026. VESALIUS-CV extended PCSK9 benefit to people with no prior infarction or stroke. Lp(a)HORIZON failed. The 2026 ACC/AHA dyslipidemia guideline restored absolute targets.
+Atherosclerotic cardiovascular disease has two causal exposures that no serious investigator disputes: the plasma concentration of apolipoprotein B–containing lipoproteins, and arterial pressure. Part I shows how far the institutions that teach and practise cardiovascular medicine lag behind that evidence. It covers the 2026 pathology textbook that still begins atherosclerosis with endothelial injury and files 90–95% of hypertension under "cause unknown". It covers the 2026 ACC/AHA guideline that admits apoB only as a Class 2a add-on after cholesterol goals are met, and that gives its strongest evidence grade to counselling rather than treating 30-to-59-year-olds whose LDL-C is anywhere below 160 mg/dL. And it covers clinics in which apoB is measured in about one adult in five hundred. Part I then argues that the lag is structural. The rest of the essay rebuilds both systems from first principles (the lipoprotein pathways, their genetics and disorders; the hemodynamic, hormonal and renal control of pressure, its Mendelian genetics and its target organs) before reaching the frontier. Over three decades, preventive lipidology turned the first into one of the best-adjudicated causal claims in medicine, and in doing so it set the epistemic standard for the whole field. Part II reconstructs that achievement at the level a biochemist or lipidologist would recognize. The topics are the receptor-mediated transcytosis and proteoglycan retention of apoB particles; the human loss-of-function experiments in *PCSK9*, *ANGPTL3*, *APOC3* and *SCARB1*; the per-particle equivalence of triglyceride-lowering and LDL-lowering variants; the hepatic and muscular biochemistry that makes the lipoprotein profile a decade-leading readout of insulin resistance; and the time-integral structure of risk. It also covers developments through late 2026. VESALIUS-CV extended PCSK9 benefit to people with no prior infarction or stroke. Lp(a)HORIZON failed. The 2026 ACC/AHA dyslipidemia guideline restored absolute targets.
 
-Part II argues that pressure satisfies every criterion that made apoB a hard cause, and several of them more strongly. Yet both clinical practice and the longevity-medicine movement treat it with the threshold logic that lipidology abandoned. Six findings, each of which sits outside the working knowledge of most specialists in the other half of the field, carry the argument:
+Part III argues that pressure satisfies every criterion that made apoB a hard cause, and several of them more strongly. Yet both clinical practice and the longevity-medicine movement treat it with the threshold logic that lipidology abandoned. Six findings, each of which sits outside the working knowledge of most specialists in the other half of the field, carry the argument:
 
 1. Aortic stiffening *precedes* and predicts hypertension, rather than merely following it.
 2. Cyclic mechanical strain upregulates the very proteoglycans that retain apoB, so pressure makes the arterial wall stickier for particles.
@@ -53,7 +60,7 @@ Part II argues that pressure satisfies every criterion that made apoB a hard cau
 5. Positioning errors in routine measurement are as large as the effect of a new drug class.
 6. The largest dietary trial with hard cardiovascular outcomes is a salt-substitute trial from rural China, not a lipid trial.
 
-Part III closes with an evidence-graded protocol for lowering both. Its central claim is the practical consequence of Part II. Pressure is a drug-agnostic, baseline-agnostic surrogate, so a cheap, safe intervention that reliably lowers it does not need its own outcome trial. Isometric training, now in the 2025 AHA/ACC guideline, is such an intervention, and the case for normotensive adults adopting it now is stronger than the case for most of what the longevity movement currently recommends. The argument has one condition, which I make explicit: the reduction must be real in the individual. That is a measurement problem, not an outcome-trial problem.
+Part IV closes with an evidence-graded protocol for lowering both. It has two radical elements. The first is an apoB below 60 mg/dL, reached in early adulthood, a level that only 8.6% of untreated American adults have, about twice the newborn level, and a level that the active arms of modern outcome trials already went beyond. The second, its central claim, is the practical consequence of Part III. Pressure is a drug-agnostic, baseline-agnostic surrogate, so a cheap, safe intervention that reliably lowers it does not need its own outcome trial. Isometric training, now in the 2025 AHA/ACC guideline, is such an intervention, and the case for normotensive adults adopting it now is stronger than the case for most of what the longevity movement currently recommends. The argument has one condition, which I make explicit: the reduction must be real in the individual. That is a measurement problem, not an outcome-trial problem.
 
 ---
 
@@ -65,15 +72,228 @@ That victory had a cultural consequence. The prevention movement that grew aroun
 
 Meanwhile the mortality ledger runs the other way. The Global Burden of Disease study ranks high systolic pressure as the leading risk factor for death worldwide: 10.8 million deaths in 2019, about one in five of all deaths.[^gbd2019] In China, stroke rather than myocardial infarction was the leading cause of death, and high systolic pressure the leading risk factor.[^zhou2019] Only 12% of Chinese adults with hypertension had it controlled in the most recent national surveillance round.[^zhang2023] The template built around the American coronary patient and the particle carries a blind spot, and the blind spot is largest exactly where pressure does the most damage.
 
-The essay has two halves of equal weight. Part I reconstructs what lipidology settled, at the depth required to appreciate *why* its causal claims are so secure. Those reasons are the standards Part II applies to pressure. Part II argues that pressure meets those standards, that it interacts with the particle mechanistically in the arterial wall rather than merely adding to it statistically, and that medicine's failure to act on pressure is structural rather than a failure of knowledge.
+The essay is built in four parts. Part I is the indictment. It sets what the textbooks, guidelines and clinics of 2026 actually say and do against what the evidence established. Parts II and III are the evidence, in two halves of equal weight. Part II reconstructs what lipidology settled, at the depth required to appreciate *why* its causal claims are so secure, and those reasons become the standards Part III applies to pressure. Part III argues that pressure meets those standards, and that it interacts with the particle mechanistically in the arterial wall rather than merely adding to it statistically. Part IV is the prescription: how to lower both, how early, how far, and how to know it worked.
 
 On evidence: I distinguish what is established (with primary sources), what I infer from established findings, and what remains open. Where a figure comes from a press release or secondary report rather than a peer-reviewed paper, the note says so.
 
 ---
 
-# Part I — The Particle: ApoB from First Principles
+# Part I — The Lag: Why the Best Institutions Run a Version Behind
 
-## 1. Why Fat Needs a Vehicle
+Software has versions, and so does medical knowledge. This part argues that the institutions most people trust to hold the current version are running one that the experimental record replaced years ago, in places decades ago. Those institutions are the pathology textbook every American medical student buys, the guideline system most of the world's cardiologists follow, and the clinics of the academic departments that write both. I make the case with documents rather than adjectives: the textbook pages themselves, the guideline recommendations with their class and level of evidence, and the measured rates at which the right tests are actually ordered. Parts II and III supply the science that shows why each of these positions is wrong. A reader who wants the biology first can read those parts first and come back.
+
+## 1. The Charge Sheet
+
+Put the two clocks side by side.
+
+| Year | What the evidence established | What the institutions did |
+|---|---|---|
+| 1976 | Ross and Glomset propose that atherosclerosis is a healing response to endothelial injury[^ross1976] | |
+| 1980 | Sniderman and colleagues describe coronary patients whose LDL cholesterol is normal but whose apoB is high[^sniderman1980] | |
+| 1995 | Williams and Tabas propose that the initiating event is the *retention* of apoB particles[^williams1995] | |
+| 2002 | Skålén and colleagues show that disabling apoB's proteoglycan binding prevents disease at unchanged plasma LDL[^skalen2002] | |
+| 2006 | Carriers of *PCSK9* nonsense mutations: 28% lower LDL-C, 88% fewer coronary events[^cohen2006] | |
+| 2017 | European Atherosclerosis Society consensus: LDL causes atherosclerotic disease, in proportion to concentration × time[^ference2017] | |
+| 2018 | | ACC/AHA abandons LDL-C treatment targets; apoB appears only as a "risk-enhancing factor" at ≥ 130 mg/dL[^grundy2018] |
+| 2020 | Multivariable Mendelian randomization: apoB is the lipid trait that carries the coronary risk[^richardson2020] | |
+| 2021 | 48 trials, 344,716 people: pressure-lowering benefit is proportional to the reduction, with no threshold down to below 120 mmHg[^bpltt2021] | |
+| 2023 | 270 trials: isometric training lowers systolic pressure by about 8 mmHg[^edwards2023] | |
+| 2025 | | AHA/ACC lists isometric handgrip, as an adjunct for people who already have raised pressure[^aha2025summary] |
+| 2026 | | *Robbins & Cotran*, 11th edition, still makes endothelial injury step 1; the word *retention* does not appear in its atherosclerosis section[^robbins] |
+| 2026 | | ACC/AHA recommends measuring apoB for the first time, as Class 2a, and only after cholesterol goals have been met[^acc2026] |
+
+<figure class="wide-figure">
+  <img src="/assets/images/the-particle-and-the-pressure/figure-2-two-clocks.svg" alt="Timeline from 1970 to 2030 with two rows. The upper row, in blue, marks evidence: response-to-injury 1976, apoB discordance 1980, response-to-retention 1995, the Skålén knock-in 2002, PCSK9 carriers 2006, the EAS consensus 2017, multivariable Mendelian randomization 2020, BPLTTC 2021 and the isometric meta-analysis 2023. The lower row, in red, marks institutional events: the 2018 ACC/AHA guideline, the 2025 AHA/ACC hypertension guideline, Robbins 11th edition 2026 and the 2026 ACC/AHA apoB recommendation. Brackets show gaps of 46, 31 and 50 years.">
+  <figcaption><strong>Figure 2. Two clocks.</strong> The events of the table above on one time axis. The upper row is what the evidence established; the lower row is what the institutions did about it. The brackets measure three lags: forty-six years from the first clinical demonstration of apoB–cholesterol discordance (Sniderman 1980) to the first ACC/AHA recommendation to measure apoB (2026); thirty-one years from the response-to-retention hypothesis (Williams and Tabas 1995) to a 2026 pathology textbook in which the word <em>retention</em> does not occur in the atherosclerosis section; and fifty years over which Ross and Glomset’s 1976 response-to-injury frame has remained the one taught. For scale, the shaded bar shows the seventeen-year average lag from research to practice estimated by Morris and colleagues (2011).</figcaption>
+</figure>
+
+Three intervals summarize the table. It took forty-six years to get from the first clinical demonstration that apoB identifies coronary patients whom cholesterol misses (1980) to the first ACC/AHA recommendation to measure it (2026). Thirty-one years after the response-to-retention hypothesis, the standard pathology textbook does not contain the word. And fifty years after Ross and Glomset, theirs is still the framework the textbook prints. For comparison, the most cited estimate of the time it takes medical research to reach practice is seventeen years.[^morris2011] On its two central facts, preventive cardiology is running two to three times slower than medicine's own slow average.
+
+The lag is not academic, and it has a cost that can be counted in individual patients. Take a 35-year-old with an LDL cholesterol of 155 mg/dL and an apoB of about 117 mg/dL, which is the median apoB at that LDL-C among untreated American adults (section 4). If that person's PREVENT estimates fall below 3% at ten years and 10% at thirty, the 2026 guideline gives them a Class 1 recommendation, at Level A evidence, for counselling on health behaviours, and nothing else. Under the integral model of sections 20 and 34, those are the decades that build the plaque. The only measurement that would have shown the problem clearly is ordered for about one insured American adult in five hundred (section 5).
+
+The rest of this part documents the lag in three places, the textbook (sections 2–3), the guideline (section 4) and the clinic (section 5). It then sets out how the mainstream framework actually reasons (section 6) and why the best institutions are behind rather than ahead (section 7).
+
+## 2. The Textbook, Part One: Atherosclerosis as Injury
+
+The standard pathology text of American medical schools is *Robbins & Cotran Pathologic Basis of Disease*, whose 11th edition appeared in 2026. I checked it against the book rather than against its reputation.
+
+In the 11th edition, the "Pathogenesis" section of the Blood Vessels chapter opens by naming the framework: the "response to injury" hypothesis, which "views atherosclerosis as a chronic inflammatory and healing response of the arterial wall to endothelial injury." An eight-step sequence follows. Endothelial injury and dysfunction is step 1. Accumulation of lipoproteins in the vessel wall is step 2, framed as a consequence. The text then says it will take the factors in order, "starting with endothelial injury," and the following page opens: "EC injury is the cornerstone of the response-to-injury hypothesis."[^robbins]
+
+<figure>
+  <img src="/assets/images/the-particle-and-the-pressure/figure-3-robbins-pathogenesis-sequence.png" alt="Scan of the Pathogenesis subsection of the Blood Vessels chapter of Robbins and Cotran, page 451. It names the response-to-injury hypothesis, states that the model views atherosclerosis as a chronic inflammatory and healing response of the arterial wall to endothelial injury, and lists eight steps beginning with endothelial injury and dysfunction and continuing with accumulation of lipoproteins.">
+  <figcaption><strong>Figure 3. The sequence, as printed.</strong> The "Pathogenesis" subsection in full. Step 1 is endothelial injury and dysfunction. Step 2 is accumulation of lipoproteins, "mainly LDL and its oxidized forms," in the vessel wall. The closing line commits the rest of the section to that order: the factors will be discussed "starting with endothelial injury." Nothing in the eight steps names the binding of apoB to the intimal matrix, which the experiments of section 13 identify as the rate-limiting event.<br><span style="color:#8b949e">Source: Mitchell RN, Halushka MK. Blood Vessels. In: Kumar V, Abbas AK, Aster JC, eds. <em>Robbins &amp; Cotran Pathologic Basis of Disease</em>, 11th ed. Elsevier; 2026. Page 451. Reproduced here as a short excerpt for criticism and comment.</span></figcaption>
+</figure>
+
+Two details make the gap measurable rather than rhetorical.
+
+The first is that the vocabulary of the mechanism is simply absent. Across the whole atherosclerosis section, the word *retention* does not occur once. *Proteoglycan* occurs three times, always as a structural component of the fibrous cap or the extracellular matrix, never as the binding partner of apoB. *Transcytosis* does not occur. ApoB appears exactly once in the chapter, inside the definition of Lp(a), where it is described as the apoB-100 portion of LDL "linked to apolipoprotein A (apo A)" — a slip for apo(a), which is a different protein from apoA-I.[^robbins] A student can finish the chapter without encountering the quantity that the rest of this essay is about.
+
+The second is harder to explain away, because the chapter states the fact that undermines its own frame and does not appear to notice. One page after calling injury the cornerstone, it concedes that "early atherosclerosis lesions begin at sites of morphologically intact endothelium" that nonetheless show increased permeability and leukocyte adhesion.[^robbins] An intact endothelium is not an injured one. What the model calls injury turns out to be a change in endothelial *phenotype*, not a breach — a functional state that permits entry. Once "injury" has been redefined that way, the model has quietly conceded that the initiating event is the entry and retention of particles, and is arguing only about what licenses them.
+
+<figure>
+  <img src="/assets/images/the-particle-and-the-pressure/figure-4-robbins-fig-11-8-response-to-injury.png" alt="Robbins figure 11.8, a five-panel vertical sequence of artery cross-sections. Panel 1 is a healthy vessel. A box lists chronic endothelial injuries: hyperlipidemia, hypertension, smoking, homocysteine, hemodynamic factors, toxins, viruses and immune reactions, with an arrow labelled response to injury. Panels 2 to 5 show endothelial dysfunction with monocyte and platelet adhesion, macrophage activation and lipid accumulation, lipid engulfment by macrophages and smooth muscle cells, and finally smooth-muscle proliferation forming a plaque.">
+  <figcaption><strong>Figure 4. The picture a medical student learns from.</strong> The textbook's own diagram of the sequence in Figure 3. Read the pink box at the top left: hyperlipidemia is the first of eight interchangeable items on a list of "chronic endothelial injuries," alongside viruses and toxins. That is the pedagogical consequence of the ordering. The particle is not the cause of the disease here; it is one of the things that can irritate the vessel into causing it. The panels themselves are an accurate drawing of what a developing lesion contains — the disagreement is entirely about which arrow comes first.<br><span style="color:#8b949e">Source: Mitchell RN, Halushka MK. Blood Vessels. In: Kumar V, Abbas AK, Aster JC, eds. <em>Robbins &amp; Cotran Pathologic Basis of Disease</em>, 11th ed. Elsevier; 2026. Fig. 11.8, p. 452. Reproduced here as a short excerpt for criticism and comment.</span></figcaption>
+</figure>
+
+The framework is not merely old-fashioned. It has an author and a date. It is Russell Ross's response-to-injury hypothesis, set out with John Glomset in the *New England Journal of Medicine* in 1976. In that model the initiating event is injury to the endothelium, and the lesion is a proliferative healing response by smooth muscle.[^ross1976] Ross spent the next quarter-century revising it. By 1999 the disease had become "an inflammatory disease," and the injury had softened into endothelial *dysfunction*.[^ross1999] Williams and Tabas wrote their 1995 paper as an explicit alternative, and the experimental record of section 13 has been accumulating on their side for thirty years. That record includes Borén's binding site, Skålén's knock-in and the transcytosis receptors. A textbook revised in 2026 prints the 1976 frame in the 1999 vocabulary.
+
+<figure class="wide-figure">
+  <img src="/assets/images/the-particle-and-the-pressure/figure-5-two-causal-chains.svg" alt="Two parallel six-step chains. The upper red chain runs from endothelial injury through permeability, lipoprotein accumulation, foam cells and smooth-muscle proliferation to plaque. The lower blue chain runs from apoB particle count through transcytosis, proteoglycan binding, retention and inflammation to plaque. A dashed connector links lipoprotein accumulation in the upper chain to apoB particles in the lower one.">
+  <figcaption><strong>Figure 5. Two causal chains.</strong> Both end at the same plaque. They disagree about what starts it. The upper chain is the response-to-injury hypothesis as the pathology textbook presents it (Robbins &amp; Cotran, 11th ed., 2026, pp. 451–452). The lower is the response-to-retention hypothesis of Williams and Tabas (1995), with the mechanism since filled in: Borén's identification of apoB site B as the proteoglycan-binding address (1998), Skålén's demonstration that disabling it prevents disease at unchanged plasma LDL (2002), and Huang's identification of the SR-B1/DOCK4 transcytosis gate (2019). The dashed connector marks the hinge: the arrival of lipoproteins in the wall is step 3 and a consequence in the upper chain, step 1 and the cause in the lower one. Everything downstream of the hinge is identical in both; only the direction of causation differs.</figcaption>
+</figure>
+
+This is not a quibble about emphasis. A student taught that atherosclerosis begins with endothelial injury learns that risk factors are interchangeable "injuries," and that lipids are one item on a list. A student taught retention learns that apoB particle number is the necessary condition, that time integrates it, and that the other risk factors (pressure above all, section 34) modulate entry, retention and rupture.
+
+The clear exception among the major references is *Braunwald's Heart Disease*. In its 13th edition (Elsevier; published December 2025), the atherosclerosis chapter is written by Peter Libby, who is also one of the book's editors. It is chapter 22, "The Vascular Biology of Atherosclerosis," and Libby co-authors the chapters on primary prevention and on lipoprotein disorders as well.[^braunwald13] His treatment is organized around lipoprotein entry, retention and modification. I have not been able to read the 13th-edition chapter itself. For the sequence I rely on the official self-assessment companion, which answers on the corresponding chapter of the 12th edition and puts the order plainly: "The initial stages of atherogenesis include extracellular lipid accumulation and leukocyte recruitment."[^braunwaldreview] Lipid comes first and cells second, and there is no injury in the sentence at all. So the cardiology reference and the pathology textbook describe the first step of the same disease in incompatible terms, for the same students, in the same year. I have not been able to check *Harrison's Principles of Internal Medicine*, whose atherosclerosis chapter is also Libby's. If it reads like Braunwald, then pathology is the outlier rather than the rule, and the gap is specifically between what pathology teaches and what cardiology knows.
+
+What each book trains matters more than which book is right. The student taught from Robbins learns an aetiology of many interchangeable injuries. Cholesterol is one item on that list, and the cholesterol number on a laboratory report is "normal" or "high" against a population reference interval. That student becomes the clinician who treats LDL-C as one risk factor among several, reaches for a ten-year probability to decide whether any of them matters, and reads an apoB of 117 mg/dL as unremarkable because the report says so. Every clinical habit documented in sections 4–6 follows from that first page. None of them requires a lack of intelligence, only a faithful reading of the textbook.
+
+## 3. The Textbook, Part Two: Hypertension as "Cause Unknown"
+
+Textbook, guideline and evidence give three different answers to the same question. Here the textbook is better than its reputation in one respect and worse in another, and the two sit three paragraphs apart. *Robbins & Cotran*, 11th edition, states the exposure model correctly and without hedging: blood pressure is "a continuously distributed variable," its harms "increase continuously as the pressure rises," and "no rigidly defined threshold level of blood pressure identifies those who have an increased risk."[^robbinshtn] That is the right answer, in the pathology textbook, in print.
+
+It is abandoned in the same section. Overt hypertension is then defined as a measurement of ≥ 90 mmHg diastolic or ≥ 130 mmHg systolic — a hybrid that takes the systolic threshold from the 2017 ACC/AHA guideline and the diastolic threshold from the system that guideline replaced, in which the figure matching a systolic 130 is 80, not 90. And the causal account is the one from the 1970s: secondary hypertension accounts for 5–10% of cases, "the remaining 90% to 95% of hypertension is idiopathic—so-called essential hypertension," and "the causes of hypertension in most individuals remain largely unknown."[^robbinshtn]
+
+<figure>
+  <img src="/assets/images/the-particle-and-the-pressure/figure-6-robbins-table-11-2-hypertension.png" alt="Robbins table 11.2, Types and Causes of Hypertension. The first row reads: Essential Hypertension, accounts for 90 to 95 percent of all cases, contributions from genetics and diet. The rest of the table lists secondary causes grouped as renal, endocrine, cardiovascular and neurologic, with primary aldosteronism appearing inside the endocrine group.">
+  <figcaption><strong>Figure 6. Where the causes of hypertension are filed.</strong> Nineteen named secondary causes, and one line for the other 90–95%. Note where primary aldosteronism sits: inside the endocrine group, among the rarities, as a form of "adrenocortical hyperfunction." The screening data in section 31 put renin-independent aldosterone excess well inside the top row instead — which is to say that the top row is not a cause at all, but the place where the unmeasured goes.<br><span style="color:#8b949e">Source: Mitchell RN, Halushka MK. Blood Vessels. In: Kumar V, Abbas AK, Aster JC, eds. <em>Robbins &amp; Cotran Pathologic Basis of Disease</em>, 11th ed. Elsevier; 2026. Table 11.2, p. 445. Reproduced here as a short excerpt for criticism and comment.</span></figcaption>
+</figure>
+
+Each part of that teaching has been overtaken:
+
+Take "unknown cause" first. The genetics of section 30 identifies the renal sodium architecture that sets the level. The aldosterone data of section 31 show that a substantial part of "essential" hypertension contains an unrecognized, renin-independent mineralocorticoid excess. "Idiopathic" is now a statement about what is not measured, not about what is not known.
+The threshold fares no better. The guideline systems disagree with each other: ACC/AHA diagnoses hypertension from 130/80, while ESC 2024 and many national guidelines retain 140/90 but add an "elevated" category from 120/70. The textbook's hybrid 130/90 matches neither, and sits in a section that has just denied that any threshold identifies risk.
+And the evidence has no threshold in it at all. The Lewington curve rises from 115/75, and BPLTTC shows proportional benefit from treatment below 120 mmHg.
+
+A student, a guideline committee and a meta-analysis would therefore give three different answers to whether a person at 132/84 has a disease that warrants action. Lipidology had the same three-way split over LDL-C and resolved it toward the evidence over twenty years. For pressure, the resolution has barely begun.
+
+## 4. The Guidelines: ApoB as an Afterthought, Pressure as a Threshold
+
+Guidelines are the codified judgment of the academic departments that write them. The ACC/AHA writing committees are drawn largely from the leading American cardiology programmes. A guideline is therefore the best available proxy for what the best departments believe, and it deserves to be read as closely as the textbook.
+
+The 2018 ACC/AHA cholesterol guideline abandoned treatment targets in favour of percentage reductions in LDL-C. It admitted apoB only as a "risk-enhancing factor," at 130 mg/dL or more, a level reached by only about the top tenth of untreated American adults.[^grundy2018] Sniderman's published critique asked, in its title, whether the guideline "got apoB right."[^sniderman2019ed] It did not.
+
+The 2026 guideline, published in March, is better. Its improvements show exactly where the old frame still holds, so it is worth quoting at the level of individual recommendations. COR is the class of recommendation: 1 means "is recommended," 2a "is reasonable," 2b "may be reasonable." LOE is the level of evidence.
+
+| Section | COR | LOE | Recommendation |
+|---|---|---|---|
+| 3.3, rec. 1 | 2a | B-NR | In adults on lipid-lowering therapy, particularly with ASCVD, cardiovascular-kidney-metabolic syndrome, type 2 diabetes or elevated triglycerides, "measurement of apoB is reasonable to guide decisions regarding further therapeutic intensification" once LDL-C and/or non-HDL-C goals have been achieved |
+| 3.3, rec. 2 | 2b | B-NR | "In adults not on LLT [lipid-lowering therapy], measurement of apoB may be reasonable to enhance ASCVD risk assessment" |
+| 4.2.9, rec. 7 | 2a | B-NR | In adults with triglycerides ≥ 150 mg/dL, "measurement of non–HDL-C or apoB is preferred over LDL-C" |
+| 3.4, rec. 1 | 1 | B-NR | "In all adults, measurement of Lp(a) concentration is recommended at least once for ASCVD risk assessment" |
+| 4.2.3.7, rec. 2 | 1 | A | Adults aged 30–59 at low (< 3%) ten-year risk, with LDL-C < 160 mg/dL and thirty-year risk < 10%: counselling on health behaviours |
+| 4.2.3.7, rec. 3 | 2a | C-LD | The same group with LDL-C 160–189 mg/dL or thirty-year risk ≥ 10%: a moderate-intensity statin is reasonable, with reduction of cumulative exposure to atherogenic lipoproteins as the rationale |
+
+The guideline's goal table adds numeric apoB goals of < 90, < 70 and < 55 mg/dL. In primary prevention it applies them only in particular groups, for example when triglycerides are 150–499 mg/dL.[^acc2026]
+
+<figure class="column-figure">
+  <img src="/assets/images/the-particle-and-the-pressure/figure-7-acc-aha-2026-apob-recommendations.svg" alt="A recommendation table in the ACC/AHA format, transcribed. Rows show class of recommendation, level of evidence and wording for six recommendations of the 2026 dyslipidemia guideline: apoB after LDL-C goals are met (2a, B-NR); apoB before therapy (2b, B-NR); apoB or non-HDL-C preferred when triglycerides are at least 150 (2a, B-NR); Lp(a) once in all adults (1, B-NR); counselling for adults 30 to 59 at low risk with LDL-C below 160 (1, A); and a moderate-intensity statin for LDL-C 160 to 189 or 30-year risk of at least 10 percent (2a, C-LD).">
+  <figcaption><strong>Figure 7. The 2026 ACC/AHA recommendations on apoB, Lp(a) and young adults, as written.</strong> Colours follow the ACC/AHA convention (green, Class 1, “is recommended”; yellow, 2a, “is reasonable”; orange, 2b, “may be reasonable”). Read the column of classes from the top. The particle count is “reasonable” only after the cholesterol goal is met, and only “may be reasonable” before any treatment. Lp(a), the particle whose first outcome trial has just failed, is the only lipoprotein measurement that is Class 1 for everyone. The strongest evidence grade in the table, Class 1 at Level A, is attached to the recommendation to counsel rather than treat a 30-to-59-year-old whose LDL-C is anywhere below 160 mg/dL.<br><span style="color:#8b949e">Source: 2026 ACC/AHA/AACVPR/ABC/ACPM/ADA/AGS/APhA/ASPC/NLA/PCNA Guideline on the Management of Dyslipidemia, <em>J Am Coll Cardiol</em> 2026, doi:10.1016/j.jacc.2025.11.016, sections 3.3, 3.4, 4.2.3.7 and 4.2.9. Transcribed, not a screenshot, from the recommendation text as reproduced by Guideline Central; quotation marks indicate the guideline’s wording, the rest is condensed.</span></figcaption>
+</figure>
+
+Read as a whole, the document makes five choices, and each of them runs against the evidence of Part II.
+
+1. ApoB comes *after* cholesterol. The Class 2a recommendation applies once cholesterol goals are met, so discordance between particle count and cholesterol mass can be discovered only in people already being treated. Section 14 shows that when the two measures disagree, risk follows apoB. The people in whom they disagree are the insulin-resistant, hypertriglyceridemic and diabetic, exactly the patients prevention most needs to reach.
+2. The untreated get the weakest class. For adults not on therapy, who make up the primary-prevention population where the time leverage of section 20 is greatest, apoB is Class 2b, the weakest positive class the system has.
+3. Lp(a) was promoted and apoB was not. Measuring Lp(a) once in every adult is now Class 1, which is genuine progress. Yet apoB counts every atherogenic particle, Lp(a) particles included. The guideline now makes universal the measurement of the particle whose first lowering trial has just failed (section 19). It leaves optional the count of the particles whose lowering has passed every outcome trial it has faced (section 23).
+4. The integral is named, then gated. The 2026 guideline adds a thirty-year horizon for adults aged 30–59, and it justifies statin treatment for that group by cumulative exposure. That is the integral logic of section 20, written into an American guideline for the first time. The gate, however, is an LDL-C of 160 mg/dL. In my analysis of NHANES, among untreated American adults aged 30–59 whose LDL-C is *below* that gate, one in three has an apoB of 100 mg/dL or more. At an LDL-C of 150–159 mg/dL the median apoB is 117 (Figure 8).[^nhanes] The Class 1, Level A recommendation for counselling therefore applies to a large population whose particle count is high by any standard.
+5. Sixty is not on the map. No primary-prevention goal in the document reaches apoB 60 mg/dL. The lowest LDL-C goal for people without disease or diabetes is < 70 mg/dL, and it applies only at a ten-year risk of 10% or more.
+
+<figure class="column-figure">
+  <img src="/assets/images/the-particle-and-the-pressure/figure-8-nhanes-apob-distribution.svg" alt="Two-panel chart. The upper panel is a histogram of apoB in American adults not taking cholesterol medication, NHANES 2013 to 2016, with the median of 91 mg/dL and markers at the newborn level of about 28, the proposed aim of 60, and the risk-enhancer threshold of 130. The lower panel shows median apoB with 10th to 90th percentile bars for bands of LDL cholesterol, with the guideline's LDL-C 160 counselling gate marked; at LDL-C 150 to 159 the median apoB is 117.">
+  <figcaption><strong>Figure 8. Where 60 sits, and what an LDL-C below 160 can hide.</strong> Upper panel: the distribution of apoB in American adults aged 20 and over who were not taking cholesterol medication (NHANES 2013–2016, survey-weighted, n = 3,809). The median is 91 mg/dL; 8.6% are below 60. The newborn level (about 28 mg/dL) is shown for scale. Lower panel: median apoB, with 10th–90th percentile bars, across bands of LDL-C in the same population. Everyone to the left of the dashed line is below the 2026 guideline’s LDL-C gate of 160 mg/dL for adults aged 30–59 at low calculated risk. At an LDL-C of 150–159 the median apoB is already 117 mg/dL, and among adults aged 30–59 below the gate, one in three has an apoB of 100 or more.<br><span style="color:#8b949e">Source: author’s analysis of the U.S. National Health and Nutrition Examination Survey, 2013–2014 and 2015–2016 fasting subsamples (files APOB_H/I, TRIGLY_H/I, DEMO_H/I, BPQ_H/I), weighted with WTSAF2YR. LDL-C is the Friedewald value reported by NHANES. Newborn value: Donegá et al. 2006.</span></figcaption>
+</figure>
+
+The European system is about one version ahead on apoB, and no further. The 2019 ESC/EAS guideline states that "apoB analysis is recommended for risk assessment, particularly in people with high TG, DM, obesity or metabolic syndrome, or very low LDL-C." It lists apoB goals of < 65, < 80 and < 100 mg/dL as secondary targets, and the 2025 focused update left them unchanged.[^esc2019] [^esc2025] The National Lipid Association's 2024 consensus endorses apoB as a clinical measure of atherogenic particle burden.[^soffer2024]
+
+| Guideline | Position on apoB | Primary target |
+|---|---|---|
+| ACC/AHA, 2018[^grundy2018] | Risk-enhancing factor at ≥ 130 mg/dL | Percent LDL-C reduction |
+| ACC/AHA, 2026[^acc2026] | Class 2a after LDL-C goals are met; 2b before treatment; preferred when TG ≥ 150 mg/dL | LDL-C and non-HDL-C |
+| ESC/EAS, 2019 and 2025[^esc2019] [^esc2025] | Recommended for risk assessment; goals as secondary targets (< 65 / < 80 / < 100) | LDL-C |
+| National Lipid Association, 2024[^soffer2024] | Endorsed as a clinical measure of particle burden | LDL-C and non-HDL-C |
+
+In both of the large systems, the primary target is still a measure of cholesterol mass.
+
+The pressure guidelines repeat the pattern in a different key. Both the 2024 ESC and the 2025 AHA/ACC documents are built on threshold-then-treat: a category is defined by an office reading, and drug treatment for the milder categories is triggered by a ten-year risk estimate (section 32). The AHA/ACC guideline does list isometric handgrip training. It lists it as an adjunct for people whose pressure is already elevated, not as a means of lowering the lifetime exposure of people whose pressure is normal.[^aha2025summary] Nothing in either document asks the question section 42 asks.
+
+## 5. The Clinic: What Actually Gets Measured
+
+A guideline can be ahead of practice, and on most of the measures that matter here, practice is further behind still.
+
+| Measure | What happens in practice |
+|---|---|
+| ApoB | Measured in 0.21% of insured American adults in 2019. Among the 38% who had any lipid test, 0.55% had apoB measured[^murdock2024] |
+| Lp(a) | Measured in 0.14% of insured American adults in 2019[^murdock2024] |
+| LDL-C in established disease | In GOULD, two years after enrolment, two-thirds of 5,006 American patients with atherosclerotic disease still had LDL-C above 70 mg/dL, and only 17% had had their therapy intensified[^gould2021] |
+| Albuminuria in hypertension | Measured in 4.1% of hypertensive adults over two years; undetected cases outnumber detected ones about twenty to one (section 37)[^shin2021] |
+| Primary aldosteronism | Screened for in 2.1% of patients with resistant hypertension (section 31)[^jaffe2020] |
+| Hypertension control in China | 12.0% of hypertensive adults controlled in the 2018 national survey (section 27)[^zhang2023] |
+| Arm position during measurement | An error of 3.9–6.5 mmHg systolic, routinely uncorrected (section 38)[^liu2024] |
+
+These are not the rates of an under-resourced system that does not know better. They are the rates of the system whose norms the leading academic departments set, measured in the country that spends the most on it. In all of them, the measurement that would reveal the exposure is either never made, or made after the decision it should have informed.
+
+## 6. How the Mainstream Framework Thinks
+
+The clinical framework is coherent once its premises are accepted. It is easiest to see as the sequence a clinician following the 2026 guidelines would apply to a healthy 35-year-old.
+
+1. Order a standard lipid panel, in which LDL-C is often calculated rather than measured (section 14).
+2. Enter age, sex, cholesterol, blood pressure, smoking, diabetes and kidney function into the PREVENT equations to obtain a ten-year and a thirty-year probability.
+3. If the ten-year risk is below 3%, LDL-C below 160 mg/dL and the thirty-year risk below 10%, counsel on health behaviours and repeat in some years.
+4. Otherwise, consider a moderate-intensity statin with an LDL-C goal below 100 mg/dL.
+5. Measure apoB later, if at all: once the person is on therapy and has reached the LDL-C goal.
+6. Measure Lp(a) once.
+7. For pressure, take an office reading. Diagnose hypertension at 130/80 mmHg, and start drugs for stage 1 only if the ten-year risk is 7.5% or more.
+
+Each step is defensible in isolation. Together they produce the outcome of section 1. The framework is built to answer "how likely is an event in the next ten years?", and the cause of the disease never enters it as a quantity to be minimized.
+
+The same questions get different answers from the two frameworks.
+
+| Question | The clinical framework (textbook and guideline) | The exposure framework (this essay) |
+|---|---|---|
+| What starts atherosclerosis? | Endothelial injury, to which hyperlipidemia is one of eight contributors | Retention of apoB particles in the intima. No injury is required (section 13) |
+| What is measured? | Cholesterol mass (LDL-C, often calculated) | Particle number (apoB), plus Lp(a) once |
+| What is risk? | A ten-year (now also thirty-year) probability | The area under two curves, apoB and pressure, from adolescence on (section 34) |
+| When to act? | When the probability crosses a threshold | As soon as the exposure is above the range in which the disease does not form |
+| What is "normal"? | The laboratory reference interval | The physiological range. Newborn apoB is about 25–30 mg/dL (section 25) |
+| What is the target? | LDL-C < 100 mg/dL at low risk, down to < 55 at very high risk | ApoB < 60 mg/dL for aggressive primary prevention (section 25) |
+| What is imaging for? | Deciding whether to treat | Escalating once disease is found, never permission to wait (section 22) |
+| What is blood pressure? | A diagnosis at 130/80 or 140/90 mmHg | A continuous exposure whose lowering helps from below 120 mmHg (section 32) |
+| What causes hypertension? | In 90–95% of cases, "essential," which is to say unknown | The kidney's sodium handling, with renin-independent aldosterone excess common and rarely sought (sections 30–31) |
+| What is lifestyle advice? | "Diet and exercise" | Prescriptions with doses: a potassium-enriched salt substitute; four two-minute isometric holds three times a week (sections 39 and 41) |
+| What evidence is needed to act? | An outcome trial for each intervention | For a hard surrogate, the dose–response already measured, followed by confirmation of the effect in the individual (section 42) |
+
+## 7. Why the Best Are Behind
+
+It would be comforting to blame ignorance, and it would be wrong. Every cardiologist knows SPRINT, every guideline committee has read the Mendelian randomization, and the leading cardiology reference describes the biology largely correctly (section 2). The failure is worse than ignorance. The system knows, and it is built not to act on what it knows. Eight features of that build explain most of the lag.
+
+The trials set the currency. The Friedewald equation of 1972 made LDL-C cheap to calculate from a standard panel,[^friedewald1972] so every statin trial for forty years titrated to it. Guideline committees are bound by rules of evidence to recommend what trials measured. The field's biology is therefore denominated in particles, and its rules in cholesterol. A reasonable procedural rule produces an unreasonable result: the evidence hierarchy rewards the variable that happened to be measured over the variable that does the damage.
+
+The calculator gate excludes the young by construction. Ten-year risk is dominated by age, so it defers prevention until disease is under way (section 20). The 2026 lipid guideline's thirty-year horizon is real progress, but it is still a probability with a threshold attached. The horizon of the pressure guideline is still ten years.
+
+Diagnoses are binary, and the system runs on diagnoses. Codes, visits, quality metrics and reimbursement attach to "hyperlipidemia" and "hypertension," not to an exposure. A 35-year-old with an apoB of 117 mg/dL and a pressure of 128/82 carries neither diagnosis, and so generates no code, no follow-up visit and no metric that anyone is measured against. This is my inference about incentives, not a finding from a study, but it predicts the testing rates of section 5 well.
+
+The burden of proof is asymmetric. A new intervention must show an outcome trial before it is recommended, while inaction needs no trial at all. But leaving a young adult's apoB at 117 mg/dL for twenty-five years is also an intervention, an intervention on the integral, and no randomized trial supports its safety either. The closest thing to such a trial is the human genetics of section 15, and it says the exposure is harmful.
+
+No specialty owns the arterial wall. Lipids belong to cardiology and endocrinology, pressure to primary care, albuminuria to nephrology, the aldosterone continuum to endocrinology, and the white-matter consequences to neurology. Each specialty sees the part of the disease that reaches its clinic. The longevity movement, which defined itself against the system, inherited the silo: it copied the lipid half of preventive cardiology and left pressure where it found it (Prologue).
+
+Textbooks change by generation. A chapter passes from author to successor, and pathology organizes disease by visible lesion. The first event, retention of particles in a matrix, cannot be seen on a stained section, while injury, inflammation and foam cells can. This is an inference about why the injury frame persists in pathology while the cardiology reference has moved on, and it fits the split between Robbins and Braunwald.
+
+The money is at the last minute. The prestige, the revenue and the visible rescues of cardiology are concentrated where the disease ends: the catheterization laboratory, the stent, the emergency department. Trials of invasive treatment for stable coronary disease, ISCHEMIA and ORBITA, found that the procedure did not reduce death or infarction and did not beat a sham for symptoms, respectively (section 22). Prevention thirty years earlier has no procedure attached to it.
+
+The frameworks are exported without reweighting. The coronary-and-cholesterol template was built around the American patient and transplanted into East Asia, where stroke and pressure dominate the mortality ledger (section 27).
+
+Taken together, these features produce a system in which a motivated layperson with an apoB result and a validated home cuff can be a version ahead of the cardiology department that will eventually treat them. That should embarrass the institutions involved. A pocket pill for the last minute of a thirty-year disease, of the kind Hu Ge now carries, is the logical product of a medicine organized around the last minute.
+
+The last failure is the one most easily fixed. "Exercise more" and "reduce salt" are not prescriptions. "Four two-minute isometric holds, three times a week" and "replace household salt with a potassium-enriched substitute" are.
+
+---
+
+
+
+# Part II — The Particle: ApoB from First Principles
+
+## 8. Why Fat Needs a Vehicle
 
 Every account of atherosclerosis begins, whether it says so or not, with a problem in physical chemistry. Triglycerides and cholesteryl esters are almost insoluble in water, yet they must travel between the intestine, the liver, muscle, adipose tissue and every cell that needs cholesterol for its membranes. Evolution solved this with the *lipoprotein*: a spherical particle with a hydrophobic core of triglyceride and cholesteryl ester, wrapped in an amphipathic monolayer of phospholipid and free cholesterol, and organized by one or more *apolipoproteins*. These proteins give the particle its structure, its solubility and its address.
 
@@ -92,7 +312,7 @@ The classical ultracentrifugal classes:
 
 The last column is the hinge of the whole field. Particles smaller than roughly 70 nm can cross the endothelium into the arterial intima. Every particle that can cross and that carries apoB can be retained there.[^boren2020] Large nascent chylomicrons and large VLDL are excluded by size, while their lipolytic remnants are not. Pancreatitis-causing chylomicronemia and atherosclerosis are therefore different diseases, even though both are labeled "high triglycerides."
 
-## 2. ApoB: One Molecule, One Particle
+## 9. ApoB: One Molecule, One Particle
 
 ApoB is encoded by a single gene, *APOB*, on chromosome 2, and it exists in two forms. ApoB-100, made in the liver, is one of the largest monomeric proteins in the human body: 4,536 amino acids and about 512 kDa. ApoB-48, made in the intestine, is its N-terminal 48%, produced because the cytidine deaminase APOBEC1 edits a single cytidine in the *APOB* mRNA of enterocytes to uridine, converting codon 2153 into a stop codon.[^powell1987] The truncated protein lacks the C-terminal region that binds the LDL receptor, which is why chylomicron remnants depend on apoE for hepatic clearance.
 
@@ -102,19 +322,19 @@ The first is that the cell builds it and then decides whether to keep it. Micros
 
 Second, apoB never leaves its particle. ApoE and the C-apolipoproteins shuttle between lipoproteins; apoB is non-exchangeable. Each VLDL, IDL, LDL and Lp(a) particle carries exactly one molecule from secretion to clearance, so a plasma apoB concentration is a direct particle count. In a typical fasting adult, LDL accounts for about 90% of those particles.
 
-Third, and most consequentially, the stretch of the molecule that gets a particle cleared is the same stretch that gets it caught. The LDL-receptor binding domain of apoB-100 lies near residues 3359–3369, known as site B, and that same basic region forms the principal binding site for arterial proteoglycans (section 6). A single substitution, R3527Q, causes familial defective apoB-100, a phenocopy of FH in which LDL cannot be cleared normally. One stretch of one protein thus decides both whether an LDL particle is removed by the liver and whether it is held by the artery.
+Third, and most consequentially, the stretch of the molecule that gets a particle cleared is the same stretch that gets it caught. The LDL-receptor binding domain of apoB-100 lies near residues 3359–3369, known as site B, and that same basic region forms the principal binding site for arterial proteoglycans (section 13). A single substitution, R3527Q, causes familial defective apoB-100, a phenocopy of FH in which LDL cannot be cleared normally. One stretch of one protein thus decides both whether an LDL particle is removed by the liver and whether it is held by the artery.
 
-## 3. Three Routes: Dietary Fat, Hepatic Fat, and the Way Back
+## 10. Three Routes: Dietary Fat, Hepatic Fat, and the Way Back
 
 Lipoprotein metabolism resolves into three pathways. Each has a characteristic failure that leads to disease.
 
 The exogenous pathway carries dietary fat. Enterocytes package dietary triglyceride and cholesterol into apoB-48 chylomicrons, which enter the circulation through the lymph. In the capillaries of muscle, heart and adipose tissue, LPL hydrolyzes chylomicron triglyceride. LPL is carried to the endothelial surface and anchored there by GPIHBP1,[^beigneux2007] activated by apoC-II and restrained by apoC-III and the ANGPTL proteins. The released fatty acids are taken up for oxidation or storage. The shrunken, cholesterol-enriched remnant acquires apoE and is cleared by the liver through the LDL receptor, LRP1 and heparan sulfate proteoglycans. When this pathway fails completely, as in LPL, APOC2 or GPIHBP1 deficiency, the result is chylomicronemia and pancreatitis. When it is merely slow, as in insulin resistance, the result is an excess of atherogenic remnants.
 
-The endogenous pathway carries the fat the liver handles itself. It secretes apoB-100 VLDL whose triglyceride comes from plasma fatty acids, *de novo* lipogenesis and hepatic stores. LPL converts VLDL to IDL, and hepatic lipase converts IDL to LDL. LDL, now mostly cholesteryl ester and apoB-100, circulates for roughly two to three days. About 70% of its clearance occurs in the liver through the LDL receptor. Brown and Goldstein's discovery of that receptor, and of its endocytic recycling roughly every ten minutes, defined modern lipid biology and earned the 1985 Nobel Prize.[^brown1986] Every major drug class in section 16 acts by changing how many LDL receptors the hepatocyte displays.
+The endogenous pathway carries the fat the liver handles itself. It secretes apoB-100 VLDL whose triglyceride comes from plasma fatty acids, *de novo* lipogenesis and hepatic stores. LPL converts VLDL to IDL, and hepatic lipase converts IDL to LDL. LDL, now mostly cholesteryl ester and apoB-100, circulates for roughly two to three days. About 70% of its clearance occurs in the liver through the LDL receptor. Brown and Goldstein's discovery of that receptor, and of its endocytic recycling roughly every ten minutes, defined modern lipid biology and earned the 1985 Nobel Prize.[^brown1986] Every major drug class in section 23 acts by changing how many LDL receptors the hepatocyte displays.
 
-The third pathway runs the other way. Peripheral cells cannot degrade the sterol ring, so they must export cholesterol, which then returns to the liver for excretion in bile. The liver and intestine secrete lipid-poor apoA-I. ABCA1 transfers cellular phospholipid and cholesterol to it, forming nascent HDL. Loss of ABCA1 causes Tangier disease, with near-absent HDL.[^brookswilson1999] LCAT esterifies HDL cholesterol, trapping it in the particle core. The liver then takes up HDL cholesteryl ester selectively through SR-B1. In humans, but not in mice, CETP moves much of this ester onto apoB particles in exchange for triglyceride, so a large share of "reverse" transport actually returns to the liver *through LDL*. This one species difference explains why mouse HDL biology so often failed to predict human trials (section 9).
+The third pathway runs the other way. Peripheral cells cannot degrade the sterol ring, so they must export cholesterol, which then returns to the liver for excretion in bile. The liver and intestine secrete lipid-poor apoA-I. ABCA1 transfers cellular phospholipid and cholesterol to it, forming nascent HDL. Loss of ABCA1 causes Tangier disease, with near-absent HDL.[^brookswilson1999] LCAT esterifies HDL cholesterol, trapping it in the particle core. The liver then takes up HDL cholesteryl ester selectively through SR-B1. In humans, but not in mice, CETP moves much of this ester onto apoB particles in exchange for triglyceride, so a large share of "reverse" transport actually returns to the liver *through LDL*. This one species difference explains why mouse HDL biology so often failed to predict human trials (section 16).
 
-## 4. What Sets Plasma ApoB: The Liver's Clearance Machinery
+## 11. What Sets Plasma ApoB: The Liver's Clearance Machinery
 
 Plasma apoB is the balance between particle production and particle clearance. In most adults, clearance is the variable that moves.
 
@@ -125,15 +345,15 @@ Two brakes act on the receptor, and both matter clinically. SREBP-2 also induces
 This machinery is also what makes apoB a moving target over a life. ApoB and LDL-C are very low in children and rise throughout adult life in Western populations, and the rise reflects mainly a decline in hepatic receptor-mediated clearance, driven by several inputs at once:
 
 - dietary saturated fat and cholesterol, which suppress LDL-receptor activity;
-- weight gain and insulin resistance, which raise VLDL production (section 11);
+- weight gain and insulin resistance, which raise VLDL production (section 18);
 - falling thyroid hormone action, which raises LDL (hypothyroidism is a classic secondary cause);
 - the loss of estrogen at menopause. In the SWAN cohort, LDL-C and apoB rose sharply within the year around the final menstrual period, a change independent of chronological aging.[^matthews2009]
 
-Production moves as well, in the direction that insulin resistance pushes it. Increased flux of fatty acids from adipose tissue, hepatic *de novo* lipogenesis and dietary fructose all increase hepatic triglyceride, which rescues more nascent apoB from degradation and secretes it as large VLDL. That is the production side of the metabolic connection developed in section 11.
+Production moves as well, in the direction that insulin resistance pushes it. Increased flux of fatty acids from adipose tissue, hepatic *de novo* lipogenesis and dietary fructose all increase hepatic triglyceride, which rescues more nascent apoB from degradation and secretes it as large VLDL. That is the production side of the metabolic connection developed in section 18.
 
-The clinical implication is that "normal" adult apoB is not a physiological constant. It is the population distribution of a clearance system degraded by decades of exposure, which is why section 18 rejects laboratory reference intervals as treatment goals.
+The clinical implication is that "normal" adult apoB is not a physiological constant. It is the population distribution of a clearance system degraded by decades of exposure, which is why section 25 rejects laboratory reference intervals as treatment goals.
 
-## 5. A Map of Lipoprotein Disorders
+## 12. A Map of Lipoprotein Disorders
 
 The Fredrickson phenotypes of 1967 still organize clinical teaching.[^fredrickson1967] Their main value today is as a bridge to the genes and pathways now known to underlie them.
 
@@ -142,19 +362,19 @@ The Fredrickson phenotypes of 1967 still organize clinical teaching.[^fredrickso
 | I | Chylomicrons | Biallelic *LPL*, *APOC2*, *GPIHBP1*, *APOA5*, *LMF1* (familial chylomicronemia syndrome) | Pancreatitis; little atherosclerosis |
 | IIa | LDL | FH (*LDLR*, *APOB*, *PCSK9*); polygenic hypercholesterolemia | Premature ASCVD |
 | IIb | LDL + VLDL | Familial combined hyperlipidemia; polygenic; insulin resistance | High apoB; premature ASCVD |
-| III | Remnants (β-VLDL) | *APOE* ε2/ε2 plus a metabolic second hit | Highly atherogenic; palmar xanthomas; missed without apoB (section 7) |
+| III | Remnants (β-VLDL) | *APOE* ε2/ε2 plus a metabolic second hit | Highly atherogenic; palmar xanthomas; missed without apoB (section 14) |
 | IV | VLDL | Polygenic hypertriglyceridemia; insulin resistance, alcohol | Risk tracks apoB |
 | V | VLDL + chylomicrons | Polygenic multifactorial chylomicronemia | Pancreatitis and ASCVD |
 
-Several clinically important disorders fall outside the scheme altogether. Lp(a) hyperlipoproteinemia is the most common inherited dyslipidemia and is invisible on a standard panel (section 12). The hypobetalipoproteinemias — truncating *APOB* variants and loss of function in *PCSK9* or *ANGPTL3* — are the human knockouts of section 8, and some carry hepatic steatosis because the liver cannot export its fat. Sitosterolemia (*ABCG5/ABCG8*) is the extreme of sterol hyperabsorption, also section 8. Tangier disease (*ABCA1*) and LCAT deficiency produce near-absent HDL without a clearly proportional increase in atherosclerosis, which is where section 9 begins.
+Several clinically important disorders fall outside the scheme altogether. Lp(a) hyperlipoproteinemia is the most common inherited dyslipidemia and is invisible on a standard panel (section 19). The hypobetalipoproteinemias — truncating *APOB* variants and loss of function in *PCSK9* or *ANGPTL3* — are the human knockouts of section 15, and some carry hepatic steatosis because the liver cannot export its fat. Sitosterolemia (*ABCG5/ABCG8*) is the extreme of sterol hyperabsorption, also section 15. Tangier disease (*ABCA1*) and LCAT deficiency produce near-absent HDL without a clearly proportional increase in atherosclerosis, which is where section 16 begins.
 
 Secondary causes of high apoB are common and correctable. They include hypothyroidism, nephrotic syndrome, cholestatic liver disease, anorexia nervosa, pregnancy, and drugs such as glucocorticoids, retinoids, some antiretrovirals and calcineurin inhibitors.
 
-One genetic finding refines how all of this should be read, and it is that FH is far rarer than severe hypercholesterolemia. Among 1,386 people with LDL-C of 190 mg/dL or more, only 1.7% carried a pathogenic FH variant. Yet at any given LDL-C, carriers had substantially higher coronary risk than non-carriers. Those with both LDL-C ≥ 190 mg/dL and an FH mutation had about 22 times the odds of coronary disease of people with LDL-C below 130 mg/dL and no mutation, compared with about 6 times for LDL-C ≥ 190 mg/dL without a mutation.[^khera2016] The most plausible explanation is the integral of section 13. A monogenic defect raises LDL from birth, so a carrier's cumulative exposure exceeds that of a non-carrier whose LDL rose only in adulthood, even when today's value is the same.
+One genetic finding refines how all of this should be read, and it is that FH is far rarer than severe hypercholesterolemia. Among 1,386 people with LDL-C of 190 mg/dL or more, only 1.7% carried a pathogenic FH variant. Yet at any given LDL-C, carriers had substantially higher coronary risk than non-carriers. Those with both LDL-C ≥ 190 mg/dL and an FH mutation had about 22 times the odds of coronary disease of people with LDL-C below 130 mg/dL and no mutation, compared with about 6 times for LDL-C ≥ 190 mg/dL without a mutation.[^khera2016] The most plausible explanation is the integral of section 20. A monogenic defect raises LDL from birth, so a carrier's cumulative exposure exceeds that of a non-carrier whose LDL rose only in adulthood, even when today's value is the same.
 
 The newest therapies target the rarest disorders first. Olezarsen, an antisense oligonucleotide against *APOC3*, reduced triglycerides and pancreatitis events in familial chylomicronemia syndrome,[^stroes2024] and evinacumab, an ANGPTL3 antibody, lowers LDL-C in homozygous FH independently of LDL receptors. Both show how pathway knowledge becomes drug targets.
 
-## 6. Atherosclerosis Is a Disease of Particle Trafficking, Not Injury
+## 13. Atherosclerosis Is a Disease of Particle Trafficking, Not Injury
 
 The working model of atherogenesis is the *response-to-retention* hypothesis, proposed by Williams and Tabas in 1995.[^williams1995] [^tabas2007] Its core claim is that the initiating event is not oxidation, not inflammation and not endothelial "injury". It is the retention of apoB-containing lipoproteins in the subendothelial matrix. Oxidation, inflammation, foam-cell formation, necrotic-core expansion and calcification follow from that retention, and none of them occurs without it.
 
@@ -162,7 +382,7 @@ Two discoveries since then have made the model mechanistically concrete. Most ge
 
 For decades, LDL entry into the intima was described as leakage through a damaged or permeable endothelium. The modern picture is close to the opposite: a substantial fraction of LDL crosses *intact* endothelium by receptor-mediated transcytosis, which is to say that the wall lets the particle in on purpose. A genome-wide RNAi screen identified ALK1 (activin receptor-like kinase 1) as an LDL-binding receptor that mediates LDL uptake and transcytosis in endothelial cells independently of the classical LDL receptor.[^kraehling2016] Huang and colleagues then showed in *Nature* that endothelial SR-B1 (scavenger receptor class B type 1) drives LDL transcytosis in vivo by coupling LDL binding to RAC1 activation through the guanine-nucleotide exchange factor DOCK4. SR-B1 and DOCK4 are expressed at higher levels in atherosclerosis-prone aortic regions, and endothelial SR-B1 deletion reduced LDL delivery into the artery wall and atherosclerosis in mice.[^huang2019]
 
-Endothelium is therefore not a passive filter but a gate with receptors, and the gate is preferentially open where plaques form. Part II returns to this point, because it explains why low and oscillatory shear and high pressure both matter.
+Endothelium is therefore not a passive filter but a gate with receptors, and the gate is preferentially open where plaques form. Part III returns to this point, because it explains why low and oscillatory shear and high pressure both matter.
 
 Borén and colleagues then gave retention a molecular address. They identified the principal proteoglycan-binding site of apoB-100, a cluster of basic residues (site B, residues 3359–3369) that binds the negatively charged glycosaminoglycan chains of arterial proteoglycans. A single substitution there severely impairs proteoglycan binding without affecting LDL-receptor binding.[^boren1998] In 2002, Skålén and colleagues used that mutation to perform the decisive experiment. Mice expressing proteoglycan-binding-defective human LDL developed markedly less atherosclerosis than mice expressing wild-type LDL *at the same plasma concentration*.[^skalen2002] Retention is not a correlate of atherosclerosis. In this model, it is the rate-limiting step.
 
@@ -172,40 +392,14 @@ The first is that the unit of causation is the particle. Every atherogenic lipop
 
 The second is that the process is an integral. Retention is a flux and plaque is its accumulated product, so the disease begins early. In the PDAY autopsy study of young Americans who died of external causes, aortic fatty streaks were present in essentially all subjects aged 15–19, and coronary lesions in a substantial fraction.[^strong1999] Fetal aortas from hypercholesterolemic mothers already show increased fatty-streak formation.[^napoli1997] The infarcts of the sixth and seventh decades are laid down in the second and third.
 
-None of this has reached the textbooks, and I checked that against the books rather than against their reputation. In *Robbins & Cotran Pathologic Basis of Disease*, 11th edition (2026), the standard pathology text of American medical schools, the "Pathogenesis" section of the Blood Vessels chapter opens by naming the framework: the "response to injury" hypothesis, which "views atherosclerosis as a chronic inflammatory and healing response of the arterial wall to endothelial injury." An eight-step sequence follows. Endothelial injury and dysfunction is step 1. Accumulation of lipoproteins in the vessel wall is step 2, framed as a consequence. The text then says it will take the factors in order, "starting with endothelial injury," and the following page opens: "EC injury is the cornerstone of the response-to-injury hypothesis."[^robbins]
+The experimental record therefore fixes the order. Endothelial biology matters, because shear-dependent transcytosis machinery determines *where* particles enter and are retained. But retention of apoB particles is the necessary initiating event. Knocking out apoB's proteoglycan binding at an unchanged plasma LDL largely prevents disease, and in FH, LDL alone suffices, with no injury required. Section 2 sets this against what the standard pathology textbook still teaches, in which the order is reversed (Figure 5).
 
-<figure>
-  <img src="/assets/images/the-particle-and-the-pressure/figure-2-robbins-pathogenesis-sequence.png" alt="Scan of the Pathogenesis subsection of the Blood Vessels chapter of Robbins and Cotran, page 451. It names the response-to-injury hypothesis, states that the model views atherosclerosis as a chronic inflammatory and healing response of the arterial wall to endothelial injury, and lists eight steps beginning with endothelial injury and dysfunction and continuing with accumulation of lipoproteins.">
-  <figcaption><strong>Figure 2. The sequence, as printed.</strong> The "Pathogenesis" subsection in full. Step 1 is endothelial injury and dysfunction. Step 2 is accumulation of lipoproteins, "mainly LDL and its oxidized forms," in the vessel wall. The closing line commits the rest of the section to that order: the factors will be discussed "starting with endothelial injury." Nothing in the eight steps names the binding of apoB to the intimal matrix, which the experiments in this section identify as the rate-limiting event.<br><span style="color:#8b949e">Source: Mitchell RN, Halushka MK. Blood Vessels. In: Kumar V, Abbas AK, Aster JC, eds. <em>Robbins &amp; Cotran Pathologic Basis of Disease</em>, 11th ed. Elsevier; 2026. Page 451. Reproduced here as a short excerpt for criticism and comment.</span></figcaption>
-</figure>
 
-Two details make the gap measurable rather than rhetorical.
-
-The first is that the vocabulary of the mechanism is simply absent. Across the whole atherosclerosis section, the word *retention* does not occur once. *Proteoglycan* occurs three times, always as a structural component of the fibrous cap or the extracellular matrix, never as the binding partner of apoB. *Transcytosis* does not occur. ApoB appears exactly once in the chapter, inside the definition of Lp(a), where it is described as the apoB-100 portion of LDL "linked to apolipoprotein A (apo A)" — a slip for apo(a), which is a different protein from apoA-I.[^robbins] A student can finish the chapter without encountering the quantity that the rest of this essay is about.
-
-The second is harder to explain away, because the chapter states the fact that undermines its own frame and does not appear to notice. One page after calling injury the cornerstone, it concedes that "early atherosclerosis lesions begin at sites of morphologically intact endothelium" that nonetheless show increased permeability and leukocyte adhesion.[^robbins] An intact endothelium is not an injured one. What the model calls injury turns out to be a change in endothelial *phenotype*, not a breach — a functional state that permits entry. Once "injury" has been redefined that way, the model has quietly conceded that the initiating event is the entry and retention of particles, and is arguing only about what licenses them.
-
-<figure>
-  <img src="/assets/images/the-particle-and-the-pressure/figure-3-robbins-fig-11-8-response-to-injury.png" alt="Robbins figure 11.8, a five-panel vertical sequence of artery cross-sections. Panel 1 is a healthy vessel. A box lists chronic endothelial injuries: hyperlipidemia, hypertension, smoking, homocysteine, hemodynamic factors, toxins, viruses and immune reactions, with an arrow labelled response to injury. Panels 2 to 5 show endothelial dysfunction with monocyte and platelet adhesion, macrophage activation and lipid accumulation, lipid engulfment by macrophages and smooth muscle cells, and finally smooth-muscle proliferation forming a plaque.">
-  <figcaption><strong>Figure 3. The picture a medical student learns from.</strong> The textbook's own diagram of the sequence in Figure 2. Read the pink box at the top left: hyperlipidemia is the first of eight interchangeable items on a list of "chronic endothelial injuries," alongside viruses and toxins. That is the pedagogical consequence of the ordering. The particle is not the cause of the disease here; it is one of the things that can irritate the vessel into causing it. The panels themselves are an accurate drawing of what a developing lesion contains — the disagreement is entirely about which arrow comes first.<br><span style="color:#8b949e">Source: Mitchell RN, Halushka MK. Blood Vessels. In: Kumar V, Abbas AK, Aster JC, eds. <em>Robbins &amp; Cotran Pathologic Basis of Disease</em>, 11th ed. Elsevier; 2026. Fig. 11.8, p. 452. Reproduced here as a short excerpt for criticism and comment.</span></figcaption>
-</figure>
-
-The experimental record summarized above reverses that order. Endothelial biology matters, because shear-dependent transcytosis machinery determines *where* particles enter and are retained. But retention of apoB particles is the necessary initiating event. Knocking out apoB's proteoglycan binding at an unchanged plasma LDL largely prevents disease, and in FH, LDL alone suffices, with no injury required.
-
-<figure class="wide-figure">
-  <img src="/assets/images/the-particle-and-the-pressure/figure-4-two-causal-chains.svg" alt="Two parallel six-step chains. The upper red chain runs from endothelial injury through permeability, lipoprotein accumulation, foam cells and smooth-muscle proliferation to plaque. The lower blue chain runs from apoB particle count through transcytosis, proteoglycan binding, retention and inflammation to plaque. A dashed connector links lipoprotein accumulation in the upper chain to apoB particles in the lower one.">
-  <figcaption><strong>Figure 4. Two causal chains.</strong> Both end at the same plaque. They disagree about what starts it. The upper chain is the response-to-injury hypothesis as the pathology textbook presents it (Robbins &amp; Cotran, 11th ed., 2026, pp. 451–452). The lower is the response-to-retention hypothesis of Williams and Tabas (1995), with the mechanism since filled in: Borén's identification of apoB site B as the proteoglycan-binding address (1998), Skålén's demonstration that disabling it prevents disease at unchanged plasma LDL (2002), and Huang's identification of the SR-B1/DOCK4 transcytosis gate (2019). The dashed connector marks the hinge: the arrival of lipoproteins in the wall is step 3 and a consequence in the upper chain, step 1 and the cause in the lower one. Everything downstream of the hinge is identical in both; only the direction of causation differs.</figcaption>
-</figure>
-
-This is not a quibble about emphasis. A student taught that atherosclerosis begins with endothelial injury learns that risk factors are interchangeable "injuries," and that lipids are one item on a list. A student taught retention learns that apoB particle number is the necessary condition, that time integrates it, and that the other risk factors (pressure above all, section 27) modulate entry, retention and rupture.
-
-In my reading, the clear exception among major references is *Braunwald's Heart Disease*, whose atherosclerosis chapters are written by Peter Libby and are organized around lipoprotein entry, retention and modification. I have not been able to read that chapter directly, so I am relying on the official self-assessment companion keyed to it, which puts the order plainly. Answering on Braunwald chapter 24, pp. 426–427, it begins: "The initial stages of atherogenesis include extracellular lipid accumulation and leukocyte recruitment."[^braunwaldreview] Lipid first, cells second, and no injury in the sentence at all. That is the cardiology reference and the pathology textbook describing the same first step in incompatible terms, for the same students, in the same year. I have also not been able to check *Harrison's Principles of Internal Medicine*, whose atherosclerosis chapter is likewise Libby's; if it reads like Braunwald, then the pathology text is the outlier rather than the rule, and the gap is specifically between what pathology teaches and what cardiology teaches.
-
-## 7. Count, Not Cargo
+## 14. Count, Not Cargo
 
 LDL cholesterol (LDL-C) measures the cholesterol mass carried in LDL particles. ApoB measures the number of atherogenic particles. The two are concordant in most people and discordant in exactly the people prevention most needs to catch. In insulin resistance, hypertriglyceridemia and type 2 diabetes, LDL particles are cholesterol-depleted and triglyceride-enriched, so particle number runs ahead of cholesterol mass.
 
-Three independent lines of evidence say that when the measures disagree, risk follows the particle. The first is discordance analysis: across cohorts, individuals whose apoB runs higher than their LDL-C would predict carry the higher risk, and those whose apoB runs lower carry the lower one.[^sniderman2014] In statin-treated participants of the Copenhagen General Population Study, apoB and non-HDL cholesterol captured residual risk that LDL-C missed.[^johannesen2021] The second is multivariable Mendelian randomization, which uses genetic variants as natural randomization. When genetically instrumented apoB, LDL-C and triglycerides are modeled together, apoB is the lipid trait whose association with coronary disease survives; LDL-C and triglycerides lose most of their independent signal.[^richardson2020] The third is per-particle equivalence, which section 8 takes up below.
+Three independent lines of evidence say that when the measures disagree, risk follows the particle. The first is discordance analysis: across cohorts, individuals whose apoB runs higher than their LDL-C would predict carry the higher risk, and those whose apoB runs lower carry the lower one.[^sniderman2014] In statin-treated participants of the Copenhagen General Population Study, apoB and non-HDL cholesterol captured residual risk that LDL-C missed.[^johannesen2021] The second is multivariable Mendelian randomization, which uses genetic variants as natural randomization. When genetically instrumented apoB, LDL-C and triglycerides are modeled together, apoB is the lipid trait whose association with coronary disease survives; LDL-C and triglycerides lose most of their independent signal.[^richardson2020] The third is per-particle equivalence, which section 15 takes up below.
 
 The standard panel then misleads in ways that are entirely predictable from arithmetic. Most laboratories still calculate LDL-C with the 1972 Friedewald equation, which assumes a fixed triglyceride-to-VLDL-cholesterol ratio of 5:1 — an assumption that fails exactly where precision matters most. Martin and colleagues showed in 1.3 million lipid profiles that Friedewald systematically underestimates LDL-C when LDL-C is low or triglycerides are high, and misclassifies a large fraction of patients near treatment thresholds.[^martin2013] The NIH (Sampson) equation, derived against β-quantification, reduces but does not remove the error.[^sampson2020]
 
@@ -213,19 +407,19 @@ A more consequential blind spot is *type III hyperlipoproteinemia* (dysbetalipop
 
 The obstacle to adopting apoB is now institutional rather than scientific. ApoB immunoassays are internationally standardized, inexpensive and do not require fasting. The 2026 ACC/AHA dyslipidemia guideline recommends apoB measurement in selected patients, notably those with triglycerides above 200 mg/dL, diabetes or LDL-C already below 70 mg/dL, while keeping LDL-C and non-HDL-C as primary targets.[^acc2026] Sniderman has argued for two decades that this is a historical artifact, not a biological judgment.[^sniderman2019]
 
-## 8. Nature's Randomized Trials: The Human Knockouts
+## 15. Nature's Randomized Trials: The Human Knockouts
 
 The causal case for apoB rests on something more powerful than trials: a set of natural human experiments in which a single gene variant shifts lipoprotein metabolism for an entire lifetime.
 
-In 2006, Cohen, Boerwinkle, Mosley and Hobbs reported that among Black participants in the ARIC study, about 2.6% carried nonsense mutations in *PCSK9* (Y142X or C679X). Those carriers had about 28% lower LDL-C and an 88% lower incidence of coronary heart disease over fifteen years. In White participants, the milder R46L variant lowered LDL-C by about 15% and coronary risk by about 47%.[^cohen2006] No five-year drug trial has produced anything like an 88% reduction from a 28% LDL change. The difference between the genetic and pharmacological effect sizes is the first quantitative clue that *time* is the dominant variable (section 13). The finding also led directly to a drug class.
+In 2006, Cohen, Boerwinkle, Mosley and Hobbs reported that among Black participants in the ARIC study, about 2.6% carried nonsense mutations in *PCSK9* (Y142X or C679X). Those carriers had about 28% lower LDL-C and an 88% lower incidence of coronary heart disease over fifteen years. In White participants, the milder R46L variant lowered LDL-C by about 15% and coronary risk by about 47%.[^cohen2006] No five-year drug trial has produced anything like an 88% reduction from a 28% LDL change. The difference between the genetic and pharmacological effect sizes is the first quantitative clue that *time* is the dominant variable (section 20). The finding also led directly to a drug class.
 
-The oldest of these experiments is familial hypercholesterolemia, which in its heterozygous form affects roughly 1 in 250 people. A defect in a single gene (*LDLR*, *APOB* or *PCSK9*) does nothing except impair LDL clearance, and it produces coronary disease decades early in untreated carriers, regardless of their metabolic health.[^nordestgaard2013] FH is the strongest available refutation of the idea that high LDL is benign in an otherwise healthy metabolism (section 17).
+The oldest of these experiments is familial hypercholesterolemia, which in its heterozygous form affects roughly 1 in 250 people. A defect in a single gene (*LDLR*, *APOB* or *PCSK9*) does nothing except impair LDL clearance, and it produces coronary disease decades early in untreated carriers, regardless of their metabolic health.[^nordestgaard2013] FH is the strongest available refutation of the idea that high LDL is benign in an otherwise healthy metabolism (section 24).
 
 Two further genes make the same point from the triglyceride side. Loss-of-function variants in *ANGPTL3*, an inhibitor of lipoprotein and endothelial lipase, lower triglycerides and LDL-C and are associated with about 40% lower odds of coronary disease.[^dewey2017] Loss-of-function variants in *APOC3*, which encodes apolipoprotein C-III, an inhibitor of lipoprotein lipase and of hepatic uptake of triglyceride-rich remnants, lower triglycerides by about 40% and coronary risk by a similar proportion.[^tghdl2014] [^jorgensen2014]
 
 In each of these cases the genetics arrived before the drug. Mendelian randomization has since become a drug-target validation tool, and its record on the lipid side is strong. Inactivating mutations in *NPC1L1*, the intestinal sterol transporter that ezetimibe inhibits, were associated with lower LDL-C and about 50% lower coronary risk, matching the direction of IMPROVE-IT.[^stitziel2014] Variants in *HMGCR* and *NPC1L1* produced the same coronary benefit per unit LDL-C, so their effects were additive.[^ference2015] Variants in *ACLY*, which encodes ATP-citrate lyase, mimicked the effect of bempedoic acid on LDL-C and coronary risk before CLEAR Outcomes reported.[^ference2019acly]
 
-When genetics, mechanism and trials agree this consistently, a target is close to proven before its outcome trial starts. Part II argues that pressure now has the same status.
+When genetics, mechanism and trials agree this consistently, a target is close to proven before its outcome trial starts. Part III argues that pressure now has the same status.
 
 The clearest human demonstration of the integral comes from FH treated early. In the Amsterdam cohort, 214 children with FH were randomized in the 1990s to pravastatin or placebo and then treated long-term. Twenty years later, the cumulative incidence of cardiovascular events at age 39 was 1%, compared with 26% in their affected parents, whose treatment began in adulthood. Cardiovascular death was 0% versus 7%. Carotid intima–media thickness progressed at the same rate in treated FH patients as in their unaffected siblings.[^luirink2019] The comparison with parents is historical, not randomized, and only 20% of the children reached their LDL target. That makes the result more striking: early, incomplete lowering still nearly abolished events in the fourth decade.
 
@@ -237,7 +431,7 @@ One exception sharpens the rule, and it concerns what the particles absorb. Not 
 
 This has a practical correlate that lipidologists use and most cardiologists do not: measuring noncholesterol sterols to separate *hyperabsorbers* (high sitosterol and campesterol) from *hypersynthesizers* (high lathosterol and desmosterol). In a clinical laboratory database of 667,718 patients, Dayspring and colleagues reported wide variation in these phenotypes.[^dayspring2015] The phenotype bears on drug choice. Statins upregulate absorption as they suppress synthesis, while ezetimibe targets absorption directly. Outcome-trial evidence for sterol-guided therapy does not yet exist, and I present it here as a frontier practice, not a standard.
 
-## 9. HDL: The Most Thoroughly Falsified Hypothesis in Cardiology
+## 16. HDL: The Most Thoroughly Falsified Hypothesis in Cardiology
 
 The inverse association between HDL cholesterol and coronary disease is one of the most reproducible findings in epidemiology. The causal hypothesis built on it has failed every test.
 
@@ -259,15 +453,15 @@ Three further observations reframe the class. First, a meta-analysis of the CETP
 
 Obicetrapib, a next-generation CETP inhibitor, lowers LDL-C by about a third and apoB substantially on top of high-intensity statins (ROSE and BROADWAY).[^nicholls2022] Its outcome trial, PREVAIL, had not reported at the time of writing.[^prevail] If it succeeds, it will be as an apoB-lowering drug that happens to raise HDL-C, and possibly lowers diabetes risk and Lp(a). It will not succeed as an HDL drug.
 
-## 10. Triglycerides: Real Risk, Wrong Target
+## 17. Triglycerides: Real Risk, Wrong Target
 
 Remnant cholesterol, the cholesterol carried in partially lipolyzed VLDL and chylomicron remnants, is causally associated with coronary disease in Mendelian randomization.[^varbo2013] This does not make triglycerides a target in their own right, as PROMINENT demonstrated.
 
 In 10,497 patients with type 2 diabetes, triglycerides of 200–499 mg/dL and low HDL-C, the selective PPARα modulator pemafibrate lowered triglycerides by 26%, with parallel falls in VLDL and remnant cholesterol. Cardiovascular events did not fall (HR 1.03; 95% CI 0.91–1.15). ApoB rose by about 5%.[^prominent] The investigators' own interpretation is that the rise in apoB and LDL-C may have offset any benefit from lower triglycerides.
 
-PROMINENT is the cleanest clinical illustration of the per-particle principle in section 8. The drug moved the metabolic marker a great deal, left the particle count unchanged or slightly higher, and the outcome followed the particle count. Pemafibrate converted large VLDL into a larger number of smaller apoB particles: it changed the cargo without reducing the count.
+PROMINENT is the cleanest clinical illustration of the per-particle principle in section 15. The drug moved the metabolic marker a great deal, left the particle count unchanged or slightly higher, and the outcome followed the particle count. Pemafibrate converted large VLDL into a larger number of smaller apoB particles: it changed the cargo without reducing the count.
 
-## 11. Where Lipids Meet Metabolism: Liver, Muscle and Insulin
+## 18. Where Lipids Meet Metabolism: Liver, Muscle and Insulin
 
 This is the point at which cardiovascular and metabolic physiology turn out to be one system, and the mechanism is more specific than "metabolic syndrome."
 
@@ -287,9 +481,9 @@ That signature can be condensed into a single number, the *lipoprotein insulin-r
 
 Whether insulin resistance is a target or a defense is the one genuinely unsettled question here, and two findings complicate any simple view. Hoehn and colleagues proposed that insulin resistance is partly a *cellular antioxidant defense*: mitochondrial superoxide induces insulin resistance in multiple models, and antioxidant interventions reverse it.[^hoehn2009] Against that, the IRIS trial randomized 3,876 non-diabetic, insulin-resistant patients with recent ischemic stroke or TIA to pioglitazone or placebo. Pioglitazone reduced recurrent stroke or myocardial infarction by about 24% (HR 0.76), at the cost of weight gain, edema and fractures.[^kernan2016] Correcting insulin resistance pharmacologically lowers vascular events. Whatever its proximate cellular logic, insulin resistance behaves clinically like a cause, and specifically, as the next paragraph argues, like a cause of both hard causes.
 
-Two accounts of causation have to be kept apart at this point. The lipoprotein signature is a readout of hepatic and muscular insulin resistance. It is not an independent cardiovascular cause once apoB is known. Small dense LDL adds little to risk prediction after particle number is accounted for. Insulin resistance, however, also feeds the second hard cause. Insulin normally stimulates endothelial nitric oxide production through PI3K–Akt–eNOS, and in insulin resistance that branch is impaired while the MAPK–endothelin branch is preserved.[^muniyappa2007] Insulin is antinatriuretic at the renal tubule, an effect that persists in insulin-resistant states.[^defronzo1975] Hyperinsulinemia activates the sympathetic nervous system. The same upstream disorder therefore raises *both* apoB and pressure (section 24).
+Two accounts of causation have to be kept apart at this point. The lipoprotein signature is a readout of hepatic and muscular insulin resistance. It is not an independent cardiovascular cause once apoB is known. Small dense LDL adds little to risk prediction after particle number is accounted for. Insulin resistance, however, also feeds the second hard cause. Insulin normally stimulates endothelial nitric oxide production through PI3K–Akt–eNOS, and in insulin resistance that branch is impaired while the MAPK–endothelin branch is preserved.[^muniyappa2007] Insulin is antinatriuretic at the renal tubule, an effect that persists in insulin-resistant states.[^defronzo1975] Hyperinsulinemia activates the sympathetic nervous system. The same upstream disorder therefore raises *both* apoB and pressure (section 31).
 
-## 12. Lp(a): The Inherited Particle, and the Trial That Failed
+## 19. Lp(a): The Inherited Particle, and the Trial That Failed
 
 Lipoprotein(a) is an LDL-like particle whose apoB-100 is disulfide-linked to apolipoprotein(a), a plasminogen-homologous glycoprotein with a variable number of kringle IV type 2 repeats. Plasma Lp(a) concentration is about 90% heritable and set largely by *LPA* copy-number and isoform structure, with smaller isoforms associated with higher concentrations.
 
@@ -309,7 +503,7 @@ The National Lipid Association's 2024 focused update now recommends measuring Lp
 
 That arithmetic now has a clinical test. In September 2026, Novartis announced that Lp(a)HORIZON, the phase 3 trial of the antisense oligonucleotide pelacarsen in 8,323 patients with established cardiovascular disease and elevated Lp(a), did not meet its primary endpoint.[^horizon] Full data had not been presented at the time of writing, so interpretation is provisional. Background therapy was intensive, with mean LDL-C around 66 mg/dL.
 
-The failure is more puzzling than it first looks. The particle accounting of sections 2–3, applied with Björnson's per-particle weighting, makes the null result *harder* to explain, not easier. It is worth doing explicitly, with illustrative numbers, because the full baseline distribution has not yet been published.
+The failure is more puzzling than it first looks. The particle accounting of sections 9–10, applied with Björnson's per-particle weighting, makes the null result *harder* to explain, not easier. It is worth doing explicitly, with illustrative numbers, because the full baseline distribution has not yet been published.
 
 1. Lp(a) is a small share of the particles. ApoB-100 has a molecular mass of about 512 kDa, so 1 mg/dL of apoB is about 19.5 nmol/L of particles. A patient on intensive therapy with LDL-C near 66 mg/dL might have a total apoB of about 60 mg/dL, roughly 1,170 nmol/L of particles. Trial entry required Lp(a) ≥ 70 mg/dL, roughly 150 nmol/L or more depending on isoform. Take an illustrative 190 nmol/L. Lp(a) is then about 15% of circulating apoB particles. In untreated people with ordinary LDL, the same Lp(a) concentration would be closer to 5–10%.
 2. It is nonetheless a large share of the risk. If each Lp(a) particle carries about 6.6 times the atherogenic weight of an LDL particle,[^bjornson2024] then 190 nmol/L of Lp(a) is "worth" about 1,250 nmol/L of LDL-equivalent particles. That is more than the patient's entire remaining non-Lp(a) apoB, about 980 nmol/L. On this accounting, Lp(a) carries roughly half of the residual particle-weighted risk in exactly the population the trial enrolled. Using the lower replication estimate of about fourfold, it still carries over 40%. Intensive LDL lowering does not dilute the Lp(a) problem. It *concentrates* it.
@@ -327,19 +521,19 @@ The last candidate is the trial itself. Endpoint composition, and in particular 
 
 Until then, the honest reading is that the per-particle model predicted a modest but real benefit and did not get it. That is the most important unresolved fact in lipidology in 2026.
 
-The siRNA agents (olpasiran, lepodisiran, zerlasiran), which lower Lp(a) more deeply, still have outcome trials pending. The general lesson is the one Part II depends on: *a causal exposure is not automatically a target whose short-term manipulation reverses risk.* Whether a surrogate can be acted on without its own outcome trial depends on whether *manipulating* it, by any mechanism, reliably moves outcomes. ApoB, so far, meets that test. Lp(a) has just failed its first attempt.
+The siRNA agents (olpasiran, lepodisiran, zerlasiran), which lower Lp(a) more deeply, still have outcome trials pending. The general lesson is the one Part III depends on: *a causal exposure is not automatically a target whose short-term manipulation reverses risk.* Whether a surrogate can be acted on without its own outcome trial depends on whether *manipulating* it, by any mechanism, reliably moves outcomes. ApoB, so far, meets that test. Lp(a) has just failed its first attempt.
 
 One practical point is often mishandled: Lp(a) is reported in mg/dL (mass) or nmol/L (particle number). Because particle mass varies with isoform size, no single conversion factor is valid. The 2025 ESC/EAS focused update treats values above about 50 mg/dL (105 nmol/L) as a risk modifier.[^esc2025]
 
-## 13. Time Is the Hidden Variable
+## 20. Time Is the Hidden Variable
 
 The deepest contribution of preventive lipidology may not be any biomarker. It may be the recognition that risk is an *integral*.
 
-The quantitative core is a comparison of two kinds of evidence. In five-year statin trials, each 1 mmol/L reduction in LDL-C lowers major vascular events by about 22%.[^ctt2010] In Mendelian randomization, a lifelong 1 mmol/L lower LDL-C, conferred by inherited variants, is associated with about 54% lower coronary risk.[^ference2012] The *PCSK9* nonsense-mutation carriers in section 8 are the extreme case. The same reduction in concentration buys two to three times the relative benefit when applied for a lifetime rather than for five years.
+The quantitative core is a comparison of two kinds of evidence. In five-year statin trials, each 1 mmol/L reduction in LDL-C lowers major vascular events by about 22%.[^ctt2010] In Mendelian randomization, a lifelong 1 mmol/L lower LDL-C, conferred by inherited variants, is associated with about 54% lower coronary risk.[^ference2012] The *PCSK9* nonsense-mutation carriers in section 15 are the extreme case. The same reduction in concentration buys two to three times the relative benefit when applied for a lifetime rather than for five years.
 
 <figure class="column-figure">
-  <img src="/assets/images/the-particle-and-the-pressure/figure-5-ference-2017-time-integral.png" alt="Scatter plot. The x axis is magnitude of exposure to lower LDL cholesterol in mmol per litre, from 0 to 2. The y axis is proportional reduction in risk of coronary heart disease, from 0 to 80 percent. Three fitted lines rise from the origin with different slopes: randomized controlled trials with a median follow-up of 5 years, lowest; prospective cohort studies at 12 years, intermediate; Mendelian randomization studies at 52 years, steepest. Individual trials and genetic variants are plotted as labelled squares around each line.">
-  <figcaption><strong>Figure 5. The same exposure, three lengths of time.</strong> Three bodies of evidence on one pair of axes, each plotting the proportional reduction in coronary risk against the magnitude of the reduction in LDL cholesterol. The lines differ only in how long the exposure lasted: five years in the randomized trials, twelve in the prospective cohorts, fifty-two in the Mendelian randomization studies. At 1 mmol/L the figure draws its own guide lines at roughly 22%, 33% and 52%. This is the integral made visible — the slope is not a property of LDL, it is a property of LDL multiplied by time. Every labelled square is a separate trial or genetic variant; the agreement within each line is what makes the separation between lines meaningful.<br><span style="color:#8b949e">Source: Ference BA, Ginsberg HN, Graham I, et al. Low-density lipoproteins cause atherosclerotic cardiovascular disease. 1. Evidence from genetic, epidemiologic, and clinical studies. A consensus statement from the European Atherosclerosis Society Consensus Panel. <em>Eur Heart J</em> 2017;38:2459–2472, Figure 2. Reproduced under CC BY-NC.</span></figcaption>
+  <img src="/assets/images/the-particle-and-the-pressure/figure-9-ference-2017-time-integral.png" alt="Scatter plot. The x axis is magnitude of exposure to lower LDL cholesterol in mmol per litre, from 0 to 2. The y axis is proportional reduction in risk of coronary heart disease, from 0 to 80 percent. Three fitted lines rise from the origin with different slopes: randomized controlled trials with a median follow-up of 5 years, lowest; prospective cohort studies at 12 years, intermediate; Mendelian randomization studies at 52 years, steepest. Individual trials and genetic variants are plotted as labelled squares around each line.">
+  <figcaption><strong>Figure 9. The same exposure, three lengths of time.</strong> Three bodies of evidence on one pair of axes, each plotting the proportional reduction in coronary risk against the magnitude of the reduction in LDL cholesterol. The lines differ only in how long the exposure lasted: five years in the randomized trials, twelve in the prospective cohorts, fifty-two in the Mendelian randomization studies. At 1 mmol/L the figure draws its own guide lines at roughly 22%, 33% and 52%. This is the integral made visible — the slope is not a property of LDL, it is a property of LDL multiplied by time. Every labelled square is a separate trial or genetic variant; the agreement within each line is what makes the separation between lines meaningful.<br><span style="color:#8b949e">Source: Ference BA, Ginsberg HN, Graham I, et al. Low-density lipoproteins cause atherosclerotic cardiovascular disease. 1. Evidence from genetic, epidemiologic, and clinical studies. A consensus statement from the European Atherosclerosis Society Consensus Panel. <em>Eur Heart J</em> 2017;38:2459–2472, Figure 2. Reproduced under CC BY-NC.</span></figcaption>
 </figure>
 
 The policy consequence is that ten-year risk systematically defers prevention until disease is established. Ten-year risk is dominated by age, so a 35-year-old with an apoB of 130 mg/dL has a low ten-year risk while accumulating the exposure that will produce events in the sixth decade. Pencina, Sniderman and colleagues modeled the expected 30-year benefit of early versus delayed lipid lowering and found that starting in young adulthood prevented substantially more events than starting later.[^pencina2020]
@@ -348,7 +542,7 @@ Late-2025 trial evidence pushed the boundary between secondary and primary preve
 
 On very low concentrations, a prespecified FOURIER analysis found no excess of adverse events among patients whose LDL-C fell below 20 mg/dL, although follow-up was only about two years.[^giugliano2017] Physiological LDL-C in neonates, hunter-gatherer populations and free-living non-human primates lies roughly in the 50–70 mg/dL range.[^okeefe2004] The adult "reference interval" on a laboratory report describes a population whose hepatic clearance capacity has been degraded by decades of exposure. It is not a recommended level.
 
-## 14. Inflammation Is Downstream of Retention, Not an Alternative to It
+## 21. Inflammation Is Downstream of Retention, Not an Alternative to It
 
 "Residual inflammatory risk" is often presented as a third axis of cardiovascular risk, parallel to lipids and pressure. The biochemistry says it is better understood as a consequence of the first two.
 
@@ -362,19 +556,19 @@ The less familiar development is *clonal hematopoiesis of indeterminate potentia
 
 Pressure turns out to be inflammatory in the same sense. Angiotensin II–induced hypertension in mice requires T cells. *Rag1*-deficient mice, which lack lymphocytes, show blunted hypertensive and vascular responses to angiotensin II, and adoptive transfer of T cells restores them.[^guzik2007] The immune system is part of how pressure is *set*, not just a bystander to its damage.
 
-The implication for this essay is a matter of hierarchy, not of dismissal. Inflammation sits *downstream* of both hard causes and amplifies their effects. In the integral model of section 27 it raises the gain on retention. Lowering apoB removes the stimulus. Lowering pressure removes a mechanical and immunological driver. Anti-inflammatory therapy treats the amplifier. For residual risk after both causes are controlled, the amplifier may matter. As a primary strategy, it addresses the wrong layer.
+The implication for this essay is a matter of hierarchy, not of dismissal. Inflammation sits *downstream* of both hard causes and amplifies their effects. In the integral model of section 34 it raises the gain on retention. Lowering apoB removes the stimulus. Lowering pressure removes a mechanical and immunological driver. Anti-inflammatory therapy treats the amplifier. For residual risk after both causes are controlled, the amplifier may matter. As a primary strategy, it addresses the wrong layer.
 
-## 15. What Imaging Can and Cannot Tell You
+## 22. What Imaging Can and Cannot Tell You
 
 Biomarkers measure exposure. Imaging measures what exposure has already done. The two answer different questions, and confusing them is a common error.
 
 Coronary artery calcium (CAC) scoring detects calcified plaque. A positive score establishes that disease exists. A zero score is weaker evidence than it looks, especially in younger adults, because calcification is a late feature of plaque and non-calcified disease escapes it. Coronary CT angiography adds quantification of non-calcified plaque.
 
-The strategic point follows from section 13. Imaging answers "has the integral already crossed into disease?" It does not answer "should apoB be lowered?" Waiting for a calcium score to turn positive before acting is waiting for the outcome the intervention was meant to prevent, a point Wilkins and Lloyd-Jones made explicitly.[^wilkins2021] Imaging is most useful for *escalating* intensity when plaque is found, and least useful as permission to do nothing when it is not.
+The strategic point follows from section 20. Imaging answers "has the integral already crossed into disease?" It does not answer "should apoB be lowered?" Waiting for a calcium score to turn positive before acting is waiting for the outcome the intervention was meant to prevent, a point Wilkins and Lloyd-Jones made explicitly.[^wilkins2021] Imaging is most useful for *escalating* intensity when plaque is found, and least useful as permission to do nothing when it is not.
 
 The interventional trials point the same way. In ISCHEMIA, 5,179 patients with stable coronary disease and moderate or severe ischemia were randomized to an initial invasive strategy (catheterization and revascularization) or to optimal medical therapy alone. The invasive strategy did not reduce cardiovascular death or myocardial infarction over a median of 3.2 years.[^maron2020] In ORBITA, the first placebo-controlled trial of coronary stenting in stable angina, stenting severe single-vessel lesions did not increase exercise time compared with a sham procedure.[^allamee2018] Atherosclerosis is a disease of the whole arterial wall driven by systemic exposures, not a local plumbing defect, and the leverage lies in the exposures.
 
-## 16. The Toolkit and Its Frontier
+## 23. The Toolkit and Its Frontier
 
 Nearly every effective lipid-lowering therapy works through a single physiological lever: increased hepatic clearance of apoB particles, mostly through more LDL receptors at the hepatocyte surface. Their mechanistic convergence is itself evidence.
 
@@ -393,58 +587,56 @@ Statins, ezetimibe, bempedoic acid and PCSK9 inhibition are pharmacologically un
 
 The frontier is now durability more than potency. Twice-yearly siRNA dosing and oral PCSK9 inhibition address the real constraint on population benefit, which is that people stop taking daily pills. Under the integral model, a therapy that keeps working for forty years is worth more than a slightly more potent one that people take for five.
 
-One pharmacological point matters specifically for East Asian patients. The ABCG2 c.421C>A (Q141K) variant, which reduces efflux transport of rosuvastatin, is common in East Asian populations and roughly doubles rosuvastatin exposure in homozygotes.[^keskitalo2009] This is part of the basis for lower starting doses in Asian patients on the U.S. label. Together with the niacin myopathy signal in Chinese HPS2-THRIVE participants, it shows that lipid pharmacology transfers across ancestries less cleanly than its epidemiology does. One more caution applies in every population: in the SAMSON n-of-1 trial, about 90% of the symptom burden reported on statins was also reported on placebo.[^wood2020] Much "statin intolerance" is nocebo, and an n-of-1 design can resolve it, the same instrument Part II proposes for pressure.
+One pharmacological point matters specifically for East Asian patients. The ABCG2 c.421C>A (Q141K) variant, which reduces efflux transport of rosuvastatin, is common in East Asian populations and roughly doubles rosuvastatin exposure in homozygotes.[^keskitalo2009] This is part of the basis for lower starting doses in Asian patients on the U.S. label. Together with the niacin myopathy signal in Chinese HPS2-THRIVE participants, it shows that lipid pharmacology transfers across ancestries less cleanly than its epidemiology does. One more caution applies in every population: in the SAMSON n-of-1 trial, about 90% of the symptom burden reported on statins was also reported on placebo.[^wood2020] Much "statin intolerance" is nocebo, and an n-of-1 design can resolve it, the same instrument Part III proposes for pressure.
 
-## 17. The Strongest Objection
+## 24. The Strongest Objection
 
 The best current challenge to the particle model comes from individuals on very-low-carbohydrate diets who develop markedly elevated LDL-C and apoB alongside low triglycerides, high HDL-C and excellent insulin sensitivity. They are sometimes called "lean mass hyper-responders." The associated "lipid energy model" proposes that in this metabolic context high LDL reflects increased lipid trafficking for energy and does not carry the usual risk.
 
 The 2025 KETO-CTA longitudinal analysis in *JACC: Advances* reported that, in about 100 such individuals followed by serial CT angiography for about a year, baseline plaque predicted plaque progression whereas apoB and LDL-C did not.[^ketocta] Its methods and reporting have been sharply disputed. Critics argue that the cohort in fact showed substantial progression and that the analytic choices obscured it. Secondary sources have claimed the paper was retracted, which I could not verify against the journal.
 
-Even read charitably, the study cannot bear the weight placed on it. "No detectable association within one year in 100 selected people" is a statement about statistical power, not about causation. It must be weighed against the Mendelian-randomization data on hundreds of thousands of people and against FH. In FH, a single-gene defect that raises LDL and does nothing else produces premature atherosclerosis regardless of metabolic health.[^nordestgaard2013] The retention biology in section 6 is also indifferent to *why* particle number is high. Proteoglycans bind apoB, not dietary intentions.
+Even read charitably, the study cannot bear the weight placed on it. "No detectable association within one year in 100 selected people" is a statement about statistical power, not about causation. It must be weighed against the Mendelian-randomization data on hundreds of thousands of people and against FH. In FH, a single-gene defect that raises LDL and does nothing else produces premature atherosclerosis regardless of metabolic health.[^nordestgaard2013] The retention biology in section 13 is also indifferent to *why* particle number is high. Proteoglycans bind apoB, not dietary intentions.
 
 Metabolic health is necessary for cardiovascular health. It is not sufficient, and it does not neutralize particle number.
 
-## 18. Targets, and the Guideline Gap
+## 25. Targets: Why Below 60
+
+The guideline targets are below. Section 4 sets out how they are structured and why I think the structure is wrong.
 
 | Source | Position |
 |---|---|
-| 2019 ESC/EAS[^esc2019] | apoB < 65 mg/dL (very high risk), < 80 (high), < 100 (moderate) |
-| 2025 ESC/EAS focused update[^esc2025] | LDL-C goals unchanged; Lp(a) > ~50 mg/dL as risk modifier; bempedoic acid expanded |
-| 2026 ACC/AHA dyslipidemia guideline[^acc2026] | Restores absolute targets (LDL-C < 100 borderline/intermediate risk, < 70 high, < 55 very high); PREVENT-ASCVD equations; apoB in selected patients |
+| 2019 ESC/EAS[^esc2019] | ApoB < 65 mg/dL (very high risk), < 80 (high), < 100 (moderate), as secondary targets |
+| 2025 ESC/EAS focused update[^esc2025] | LDL-C goals unchanged; Lp(a) > ~50 mg/dL as a risk modifier; bempedoic acid expanded |
+| 2026 ACC/AHA dyslipidemia guideline[^acc2026] | LDL-C < 100 mg/dL (borderline or intermediate risk), < 70 (high), < 55 (very high, and secondary prevention); apoB goals of < 90, < 70 and < 55 in selected groups |
 | 2024 NLA expert consensus on apoB[^soffer2024] | ApoB endorsed as a clinical measure of atherogenic particle burden, particularly when triglycerides are elevated or LDL-C is low |
 | 2024 NLA Lp(a) focused update[^koschinsky2024] | Measure Lp(a) at least once in all adults |
 
-My own position goes beyond the guidelines and I label it as inference. For an adult who has chosen aggressive primary prevention, an apoB of about 60 mg/dL (0.6 g/L) is a defensible aim. It lies within the range achieved in outcome trials, near the physiological level of youth, and is consistent with the integral model. No outcome data support pushing apoB below 20 mg/dL. That range overlaps the genetic hypobetalipoproteinemias, and the FOURIER "below 20" figure refers to LDL-C, not apoB. Chinese and European laboratories often report apoB in g/L, so 60 mg/dL is 0.60 g/L.
+My own position goes beyond all of these, and I label it as inference. For an adult who has chosen aggressive primary prevention, the aim should be an apoB **below 60 mg/dL (0.60 g/L)**, reached in the thirties or earlier rather than after a first event. Where Lp(a) is high or plaque has already been imaged, the aim should be lower, around 50 mg/dL. Eight considerations support that number, and each can be checked.
 
-Set the table above against Part I's evidence and the mismatch is plain. Genetics, discordance analyses and multivariable Mendelian randomization all identify the apoB particle count as the causal quantity (sections 7–8). Yet the guideline systems have handled it like this:
+1. **What 60 means in other units.** ApoB 60 mg/dL is 0.60 g/L, the unit most Chinese and European laboratories report. Because each atherogenic particle carries one apoB molecule of about 512 kDa, it is also about 1,170 nmol/L of particles. In American population data, an LDL-C of 70 mg/dL corresponds to a median apoB of 60 mg/dL, and an LDL-C of 55 to a median apoB of 49.[^sayed2024] The spread around those medians is wide, which is the whole argument of section 14: the same LDL-C can hide very different particle counts.
+2. **Where 60 sits in the population.** In my analysis of NHANES 2013–2016, the median apoB among American adults not taking cholesterol medication was 91 mg/dL. Only 8.6% were below 60. By age, 13.6% of those aged 20–39 were below 60, and 4.9% of those aged 40–59 (Figure 8).[^nhanes] An apoB below 60 is not normal in a modern population, and that is the point. The normal range describes a population in which atherosclerosis is the leading cause of death.
+3. **Where 60 sits physiologically.** Full-term newborns have an apoB of about 28 ± 7 mg/dL, with LDL-C of about 20 mg/dL.[^donega2006] LDL-C in hunter-gatherer populations and free-living non-human primates lies roughly in the 50–70 mg/dL range.[^okeefe2004] A target of 60 is about twice the newborn level and sits at the low edge of the adult distribution. It is not an extreme value for the species, only for the modern adult.
+4. **Where 60 sits in the trials.** Modern outcome trials ran their active arms below this level. The median on-treatment LDL-C was about 30 mg/dL in FOURIER and about 45 mg/dL in VESALIUS-CV.[^vesalius] Mapped to apoB with the population relationship in point 1, both lie well below 60 mg/dL. That mapping is my inference, because neither trial is cited here for its apoB. The pooled trials show benefit proportional to the reduction achieved, with no level below which the relationship flattens within the range tested.[^ctt2010] The ESC's own very-high-risk apoB goal is < 65 mg/dL, and the ACC/AHA's is < 55. The aim proposed here is therefore not beyond the evidence. It applies to people *without* disease the level the guidelines already accept for people *with* it.
+5. **Why "below," and why early.** Risk is an integral (section 20), so the start date matters as much as the target. As a heuristic, not a fitted model, count apoB-years the way smokers count pack-years. A person with an apoB of 110 mg/dL from age 20 to 60 accumulates 4,400 mg/dL·years. Lowering to 55 at age 35 cuts that to 3,025, a reduction of about 31%. Lowering to the same level at 45 cuts it to 3,575, about 19%. Waiting ten years forfeits about 40% of the achievable reduction. The comparison between five-year trials and lifelong genetics (Figure 9) says the forfeit is larger in outcomes than in arithmetic.
+6. **Safety at low levels.** In a prespecified FOURIER analysis, patients whose LDL-C fell below 20 mg/dL had no excess of adverse events over about two years.[^giugliano2017] In EBBINGHAUS, evolocumab had no detectable effect on cognitive function.[^ebbinghaus] Statins slightly increase the rate of diabetes diagnosis, mostly in people already near the threshold.[^ctt2024] No outcome data support pushing apoB below about 20 mg/dL. That range overlaps the genetic hypobetalipoproteinemias, some of which cause fatty liver because the liver cannot export its triglyceride (section 12). The FOURIER "below 20" figure refers to LDL-C, not apoB.
+7. **The Lp(a) adjustment.** ApoB counts an Lp(a) particle as one particle, but each Lp(a) particle carries roughly six times the atherogenic weight of an LDL particle (section 19). In someone with high Lp(a), the same apoB conceals more risk, and there is still no approved drug that targets Lp(a) specifically. Lowering the rest of the apoB pool further is the only lever available, which is why I suggest an aim nearer 50 mg/dL in that case.
+8. **Measuring it.** ApoB immunoassays are internationally standardized, cheap and do not require fasting.[^nordestgaard2016] Measure 6–12 weeks after any change in diet or drugs, then annually. Because day-to-day biological variation in apoB is small compared with that of blood pressure, two measurements are usually enough to know where one stands.
 
-| Guideline | Position on apoB |
-|---|---|
-| ACC/AHA, 2018[^grundy2018] | Treatment targets abandoned in favour of percent LDL-C reductions; apoB appears only as a "risk-enhancing factor," at 130 mg/dL or more |
-| ACC/AHA, 2026[^acc2026] | Absolute LDL-C and non-HDL-C targets restored; apoB recommended only for selected patients, chiefly to refine risk once cholesterol goals are met |
-| ESC/EAS, 2019[^esc2019] | ApoB goals listed as secondary targets alongside LDL-C |
-| National Lipid Association, 2024[^soffer2024] | ApoB endorsed as a clinical measure of particle burden |
+Section 45 turns this into a route (Figure 14). For most people with an apoB in the 90s or 100s, getting below 60 takes a statin and usually ezetimibe. That is a decision for one's thirties or forties, taken with a clinician, not a decision to defer until a calcium score turns positive.
 
-The primary targets, in the two largest systems, remain measures of cholesterol mass.
+## 26. What Lipidology Taught Medicine
 
-Sniderman's critique of the 2018 document, framed as the question of whether it "got apoB right," still applies in substance.[^sniderman2019ed] Trials historically titrated to LDL-C, so guidelines speak the language of the trials rather than the biology.
-
-The cost of that choice falls on exactly the patients prevention most needs to reach: the insulin-resistant, hypertriglyceridemic and diabetic, whose particle count runs ahead of their cholesterol mass (section 7). A clinician who follows the guideline faithfully will systematically under-treat them.
-
-## 19. What Lipidology Taught Medicine
-
-Lipidology's achievement is a method as much as a set of findings, and it is this method that Part II applies:
+Lipidology's achievement is a method as much as a set of findings, and it is this method that Part III applies:
 
 Find a mechanism with a molecular address — transcytosis receptors, a proteoglycan-binding site, a decisive knock-in experiment. Find the human genetic experiments that fix the exposure for a lifetime, in *PCSK9*, *LDLR*, *ANGPTL3*, *APOC3*, *SCARB1*. Show that mechanistically independent interventions converge on benefit proportional to the change in the exposure, which is what a hard surrogate means. Falsify the attractive alternatives with hard-outcome trials, as happened to HDL, to triglycerides as a standalone target and, provisionally, to Lp(a) lowering at the magnitude tested. Then reframe risk from a ten-year probability to a lifetime integral.
 
-Part II asks what happens when the same five tests are applied to pressure. The answer is that pressure passes all five, and that the second cause is coupled to the first inside the arterial wall.
+Part III asks what happens when the same five tests are applied to pressure. The answer is that pressure passes all five, and that the second cause is coupled to the first inside the arterial wall.
 
 ---
 
-# Part II — The Pressure: Hypertension from First Principles
+# Part III — The Pressure: Hypertension from First Principles
 
-## 20. The Neglected Half, Measured
+## 27. The Neglected Half, Measured
 
 By the standards just described, the epidemiology of pressure is at least as strong as that of apoB, and its burden is larger.
 
@@ -456,7 +648,7 @@ Against that burden, control is poor. In the 2018 round of China's national surv
 
 A prevention culture centered on coronary plaque and apoB, exported to East Asia without reweighting, underweights the exposure that kills the most people there. Even in the West, it underweights the exposure with the larger attributable mortality.
 
-## 21. The Hemodynamic Architecture
+## 28. The Hemodynamic Architecture
 
 Lipidology's power came from understanding the system before treating the number. Pressure deserves the same treatment, starting with what arterial pressure physically is.
 
@@ -480,9 +672,9 @@ The definitions themselves differ by guideline.
 | Elevated | 120–129 / < 80 | 120–139 / 70–89 |
 | Hypertension | Stage 1: 130–139 or 80–89; Stage 2: ≥ 140 or ≥ 90 | ≥ 140 / ≥ 90 |
 
-Two leading guideline systems therefore disagree about whether a person at 135/85 has a disease. The epidemiology (section 25) says the question is mis-posed.
+Two leading guideline systems therefore disagree about whether a person at 135/85 has a disease. The epidemiology (section 32) says the question is mis-posed.
 
-## 22. The Control System: Seconds, Hours, Years
+## 29. The Control System: Seconds, Hours, Years
 
 Pressure is regulated by nested feedback loops operating on different timescales. Which loop sets the *long-term* level is the most important question in hypertension physiology.
 
@@ -501,11 +693,11 @@ The nephron doubles as a map of pharmacology and of genetics. Nearly every antih
 | Distal convoluted tubule | ~5–10% | NCC | WNK1/WNK4–SPAK kinases | Thiazide and thiazide-like diuretics | Gitelman (low BP); Gordon syndrome / PHA2 (high BP) |
 | Collecting duct | ~2–5% | ENaC | Aldosterone → mineralocorticoid receptor | Amiloride, MRAs, aldosterone-synthase inhibitors | Liddle syndrome (high BP); PHA1 (low BP) |
 
-The table is the hypertension counterpart of the LDL-receptor pathway in Part I. The kidney is to pressure what hepatic LDL-receptor clearance is to apoB: the place where the long-term level is set, and where most effective drugs act.
+The table is the hypertension counterpart of the LDL-receptor pathway in Part II. The kidney is to pressure what hepatic LDL-receptor clearance is to apoB: the place where the long-term level is set, and where most effective drugs act.
 
-## 23. Nature's Experiments in Pressure: It Is Always the Kidney
+## 30. Nature's Experiments in Pressure: It Is Always the Kidney
 
-Part I drew much of its causal certainty from human genetic experiments: *PCSK9*, *LDLR*, *ANGPTL3*. Pressure has its own, and they point to one organ.
+Part II drew much of its causal certainty from human genetic experiments: *PCSK9*, *LDLR*, *ANGPTL3*. Pressure has its own, and they point to one organ.
 
 Lifton's group and others mapped the rare single-gene forms of high and low blood pressure, and every one of them proved to alter net renal salt balance.[^lifton2001]
 
@@ -522,17 +714,17 @@ Pressure has its own equivalent of the *PCSK9* carriers. In 2008, Ji and colleag
 
 Beyond the Mendelian forms lies the polygenic architecture. A genome-wide analysis of more than one million people identified 535 new loci for blood pressure traits. Many lie in vascular smooth-muscle, endothelial, renal and cardiac pathways.[^evangelou2018] Common hypertension is polygenic, unlike FH, which is often monogenic. The Mendelian forms nevertheless show where the control lies: in the kidney's handling of sodium and in the hormones that regulate it.
 
-Combined with the Mendelian randomization of section 27, the genetic case for pressure is now as complete as the case for apoB. Genetically lower pressure from birth means lower vascular risk, and the mechanisms are known down to the transporter.
+Combined with the Mendelian randomization of section 34, the genetic case for pressure is now as complete as the case for apoB. Genetically lower pressure from birth means lower vascular risk, and the mechanisms are known down to the transporter.
 
-## 24. What Raises the Pressure
+## 31. What Raises the Pressure
 
 Lipidology's power came partly from knowing exactly what controls apoB: hepatic clearance through LDL receptors. The equivalent knowledge exists for pressure, but specialists outside nephrology and hypertension rarely hold it.
 
-Insulin and obesity shift the pressure–natriuresis curve itself. In 1975, DeFronzo and colleagues showed that insulin, at physiological concentrations and without changes in glucose, reduces urinary sodium excretion.[^defronzo1975] Hall's synthesis of obesity-related hypertension adds sympathetic activation driven partly by leptin and the brain melanocortin system, activation of the renin–angiotensin–aldosterone system, and physical compression of the kidneys by perirenal and renal-sinus fat.[^hall2015] These are the same metabolic inputs that, in section 11, raise apoB. A single upstream disorder shifts both causal curves.
+Insulin and obesity shift the pressure–natriuresis curve itself. In 1975, DeFronzo and colleagues showed that insulin, at physiological concentrations and without changes in glucose, reduces urinary sodium excretion.[^defronzo1975] Hall's synthesis of obesity-related hypertension adds sympathetic activation driven partly by leptin and the brain melanocortin system, activation of the renin–angiotensin–aldosterone system, and physical compression of the kidneys by perirenal and renal-sinus fat.[^hall2015] These are the same metabolic inputs that, in section 18, raise apoB. A single upstream disorder shifts both causal curves.
 
 Aldosterone is the clearest case of a continuum mistaken for a rare tumor. Primary aldosteronism is still taught as an uncommon cause of secondary hypertension. In 2020, Brown and colleagues measured 24-hour urinary aldosterone under sodium loading in carefully phenotyped U.S. adults. Biochemically overt, renin-independent aldosteronism was present in 11.3% of normotensive participants, 15.7% with stage 1 hypertension, 21.6% with stage 2 and 22.0% with resistant hypertension.[^brown2020] The aldosterone-to-renin ratio screening test performed poorly. In a large academic health system, only 2.1% of patients meeting criteria for resistant hypertension were screened for primary aldosteronism within two years.[^jaffe2020]
 
-Insulin resistance and the endothelium then form a loop. Kim, Montagnani, Koh and Quon described the relationship between insulin resistance and endothelial dysfunction as reciprocal. Impaired insulin signaling through PI3K–Akt reduces endothelial nitric-oxide production. Reduced nitric-oxide–dependent capillary recruitment then reduces insulin and glucose delivery to skeletal muscle, which worsens insulin resistance.[^kim2006] The muscle defect that in section 11 diverts carbohydrate into hepatic lipogenesis is therefore also a vascular defect that raises resistance and pressure.
+Insulin resistance and the endothelium then form a loop. Kim, Montagnani, Koh and Quon described the relationship between insulin resistance and endothelial dysfunction as reciprocal. Impaired insulin signaling through PI3K–Akt reduces endothelial nitric-oxide production. Reduced nitric-oxide–dependent capillary recruitment then reduces insulin and glucose delivery to skeletal muscle, which worsens insulin resistance.[^kim2006] The muscle defect that in section 18 diverts carbohydrate into hepatic lipogenesis is therefore also a vascular defect that raises resistance and pressure.
 
 One proposed upstream cause remains contested, and it is worth setting out in full because the evidence cuts both ways. Richard Johnson's group has developed the most ambitious metabolic theory of essential hypertension, and an expert reader should know both its evidence and its failures.
 
@@ -542,30 +734,30 @@ The adult trials did not. In people with established disease, large urate-loweri
 
 My reading, which is inference rather than established fact, is that the pattern fits the integral argument. A mechanism that sets the trajectory early (the adolescent trial) may be irrelevant once structural renal and vascular change has occurred (the adult trials). That would make the urate hypothesis an *early-window* hypothesis, which no adult trial has tested. The practical implication requires no drug: the dietary sources of the proposed mechanism (fructose-sweetened beverages and high salt without water) are worth avoiding for reasons independent of this theory.
 
-Taken together, a renin-independent aldosterone excess is present across the pressure spectrum, including in normotensive people, and is almost never looked for. This is the biological context for the 2026 approval of baxdrostat (section 38). A disorder that clinical teaching calls rare is a common, continuous driver of the pressure distribution.
+Taken together, a renin-independent aldosterone excess is present across the pressure spectrum, including in normotensive people, and is almost never looked for. This is the biological context for the 2026 approval of baxdrostat (section 44). A disorder that clinical teaching calls rare is a common, continuous driver of the pressure distribution.
 
 Secondary causes, finally, are more common and less sought than the teaching implies. Part of what is labeled "essential" hypertension has an identifiable driver:
 
 - primary aldosteronism, above;
-- obstructive sleep apnea (section 31);
+- obstructive sleep apnea (section 38);
 - chronic kidney disease;
 - renovascular disease (atherosclerotic, or fibromuscular dysplasia in younger women);
 - pheochromocytoma and paraganglioma, Cushing syndrome, thyroid disease, and coarctation of the aorta;
-- drugs and substances: non-steroidal anti-inflammatory drugs, decongestants, estrogen-containing contraceptives, glucocorticoids, calcineurin inhibitors, VEGF inhibitors, stimulants, liquorice (the apparent-mineralocorticoid-excess mechanism of section 23), alcohol, and high-sodium effervescent preparations.
+- drugs and substances: non-steroidal anti-inflammatory drugs, decongestants, estrogen-containing contraceptives, glucocorticoids, calcineurin inhibitors, VEGF inhibitors, stimulants, liquorice (the apparent-mineralocorticoid-excess mechanism of section 30), alcohol, and high-sodium effervescent preparations.
 
 The diagnostic logic mirrors lipidology's secondary causes of high apoB. Look for the correctable driver before committing a patient to a lifetime of empirical therapy.
 
-## 25. Pressure Is an Exposure, Not a Diagnosis
+## 32. Pressure Is an Exposure, Not a Diagnosis
 
 Lipidology's central conceptual move was to stop treating "hypercholesterolemia" as a binary diagnosis and to treat apoB as a continuous exposure. For pressure the evidence for the same move is at least as strong. Practice has moved much less.
 
 The observational curve has no threshold in it anywhere. In the Prospective Studies Collaboration's individual-participant meta-analysis of one million adults in 61 cohorts, vascular mortality rose log-linearly with usual pressure from at least 115/75 mmHg upward. At ages 40–69, each 20 mmHg higher systolic (or 10 mmHg higher diastolic) pressure was associated with roughly twice the stroke and ischemic heart disease mortality.[^lewington2002]
 
-The trial evidence turns out to be indifferent both to the drug and to the starting pressure. The Blood Pressure Lowering Treatment Trialists' Collaboration (BPLTTC) pooled 48 randomized trials and 344,716 participants. Each 5 mmHg reduction in systolic pressure lowered major cardiovascular events by about 10% (HR 0.91 without prior cardiovascular disease; 0.89 with it). There was no reliable heterogeneity by baseline systolic category, and the categories began *below 120 mmHg*.[^bpltt2021] This is the pressure equivalent of the convergence of lipid drug classes in section 16, and of Figure 5. Benefit is proportional to the reduction achieved, irrespective of how it is achieved within the drug classes studied, and irrespective of whether the starting pressure is labeled hypertensive.
+The trial evidence turns out to be indifferent both to the drug and to the starting pressure. The Blood Pressure Lowering Treatment Trialists' Collaboration (BPLTTC) pooled 48 randomized trials and 344,716 participants. Each 5 mmHg reduction in systolic pressure lowered major cardiovascular events by about 10% (HR 0.91 without prior cardiovascular disease; 0.89 with it). There was no reliable heterogeneity by baseline systolic category, and the categories began *below 120 mmHg*.[^bpltt2021] This is the pressure equivalent of the convergence of lipid drug classes in section 23, and of Figure 9. Benefit is proportional to the reduction achieved, irrespective of how it is achieved within the drug classes studied, and irrespective of whether the starting pressure is labeled hypertensive.
 
 <figure class="column-figure">
-  <img src="/assets/images/the-particle-and-the-pressure/figure-6-bplttc-2021-proportional-benefit.jpg" alt="Bubble plot. The x axis is the reduction in systolic blood pressure between treatment groups in mmHg, from 0 to about 24. The y axis is the hazard ratio for major cardiovascular events, from about 0.5 to 1.2. Each bubble is one named trial, sized inversely to its standard error. A fitted red line descends steadily from a hazard ratio near 0.96 at zero reduction to about 0.70 at the largest reductions, with dashed confidence bounds.">
-  <figcaption><strong>Figure 6. Pressure’s version of Figure 5.</strong> Forty-eight randomized trials, each a bubble sized by its precision, plotted by how much systolic pressure the trial actually achieved against the hazard ratio it produced. The fitted line descends steadily: the benefit tracks the millimetres delivered, not the drug that delivered them and not the label the patient started with. Note which trials sit where — HYVET, SPRINT, PROGRESS, UKPDS, SYST-EUR — populations that differ in age, baseline pressure and comorbidity, all falling on one line. That is what it means to call pressure an exposure rather than a diagnosis.<br><span style="color:#8b949e">Source: Blood Pressure Lowering Treatment Trialists’ Collaboration. Pharmacological blood pressure lowering for primary and secondary prevention of cardiovascular disease across different levels of blood pressure: an individual participant-level data meta-analysis. <em>Lancet</em> 2021;397:1625–1636, Figure 2. Reproduced under CC BY.</span></figcaption>
+  <img src="/assets/images/the-particle-and-the-pressure/figure-10-bplttc-2021-proportional-benefit.jpg" alt="Bubble plot. The x axis is the reduction in systolic blood pressure between treatment groups in mmHg, from 0 to about 24. The y axis is the hazard ratio for major cardiovascular events, from about 0.5 to 1.2. Each bubble is one named trial, sized inversely to its standard error. A fitted red line descends steadily from a hazard ratio near 0.96 at zero reduction to about 0.70 at the largest reductions, with dashed confidence bounds.">
+  <figcaption><strong>Figure 10. Pressure’s version of Figure 9.</strong> Forty-eight randomized trials, each a bubble sized by its precision, plotted by how much systolic pressure the trial actually achieved against the hazard ratio it produced. The fitted line descends steadily: the benefit tracks the millimetres delivered, not the drug that delivered them and not the label the patient started with. Note which trials sit where — HYVET, SPRINT, PROGRESS, UKPDS, SYST-EUR — populations that differ in age, baseline pressure and comorbidity, all falling on one line. That is what it means to call pressure an exposure rather than a diagnosis.<br><span style="color:#8b949e">Source: Blood Pressure Lowering Treatment Trialists’ Collaboration. Pharmacological blood pressure lowering for primary and secondary prevention of cardiovascular disease across different levels of blood pressure: an individual participant-level data meta-analysis. <em>Lancet</em> 2021;397:1625–1636, Figure 2. Reproduced under CC BY.</span></figcaption>
 </figure>
 
 Intensive targets work, and they work in Chinese populations as well as Western ones.
@@ -577,7 +769,7 @@ Intensive targets work, and they work in Chinese populations as well as Western 
 | ESPRIT (2024)[^esprit2024] | 11,255 high-risk Chinese adults, with or without diabetes or prior stroke | < 120 vs < 140 | Major vascular events HR 0.88 |
 | BPROAD (2024)[^bproad2024] | 12,821 Chinese adults with type 2 diabetes | < 120 vs < 140 | Composite CV outcome HR 0.79 |
 
-The harms of intensive treatment are real: syncope, symptomatic hypotension, hyperkalemia and acute kidney injury. They are the harms of drugs titrated to a target, which becomes important in section 35. Cognition is affected too. In SPRINT MIND, intensive control reduced mild cognitive impairment (HR 0.81), while the reduction in probable dementia did not reach significance.[^sprintmind2019]
+The harms of intensive treatment are real: syncope, symptomatic hypotension, hyperkalemia and acute kidney injury. They are the harms of drugs titrated to a target, which becomes important in section 41. Cognition is affected too. In SPRINT MIND, intensive control reduced mild cognitive impairment (HR 0.81), while the reduction in probable dementia did not reach significance.[^sprintmind2019]
 
 Here too the integral begins in childhood, because blood pressure *tracks*. A meta-analysis of cohort studies found moderate correlation between childhood and adult pressure, strengthening with age at first measurement.[^chen2008] In CARDIA, people whose pressure trajectory rose through young adulthood, even within ranges labeled normal or prehypertensive, had higher odds of coronary calcium in middle age than those with stable low trajectories.[^allen2014] Pressure, like apoB, is a lifetime exposure whose early years carry the most leverage.
 
@@ -585,24 +777,8 @@ Pregnancy is a vascular stress test that medicine administers, reads, and then f
 
 The guidelines have moved, though not all the way. The 2024 ESC guideline created an "elevated blood pressure" category of 120–139/70–89 mmHg and set a treated systolic target of 120–129 mmHg for most patients who tolerate it.[^esc2024] The 2025 AHA/ACC guideline kept a target below 130/80. It adopted the PREVENT equations, with a 7.5% ten-year total cardiovascular risk threshold for treating stage 1 hypertension, expanded urine albumin testing and primary-aldosteronism screening, and included isometric resistance exercise among its lifestyle options.[^aha2025] [^aha2025summary] Both guidelines still use a threshold-then-treat architecture triggered by ten-year risk, the architecture lipidology spent two decades dismantling.
 
-Textbook, guideline and evidence give three different answers to the same question. Here the textbook is better than its reputation in one respect and worse in another, and the two sit three paragraphs apart. *Robbins & Cotran*, 11th edition, states the exposure model correctly and without hedging: blood pressure is "a continuously distributed variable," its harms "increase continuously as the pressure rises," and "no rigidly defined threshold level of blood pressure identifies those who have an increased risk."[^robbinshtn] That is the right answer, in the pathology textbook, in print.
 
-It is abandoned in the same section. Overt hypertension is then defined as a measurement of ≥ 90 mmHg diastolic or ≥ 130 mmHg systolic — a hybrid that takes the systolic threshold from the 2017 ACC/AHA guideline and the diastolic threshold from the system that guideline replaced, in which the figure matching a systolic 130 is 80, not 90. And the causal account is the one from the 1970s: secondary hypertension accounts for 5–10% of cases, "the remaining 90% to 95% of hypertension is idiopathic—so-called essential hypertension," and "the causes of hypertension in most individuals remain largely unknown."[^robbinshtn]
-
-<figure>
-  <img src="/assets/images/the-particle-and-the-pressure/figure-7-robbins-table-11-2-hypertension.png" alt="Robbins table 11.2, Types and Causes of Hypertension. The first row reads: Essential Hypertension, accounts for 90 to 95 percent of all cases, contributions from genetics and diet. The rest of the table lists secondary causes grouped as renal, endocrine, cardiovascular and neurologic, with primary aldosteronism appearing inside the endocrine group.">
-  <figcaption><strong>Figure 7. Where the causes of hypertension are filed.</strong> Nineteen named secondary causes, and one line for the other 90–95%. Note where primary aldosteronism sits: inside the endocrine group, among the rarities, as a form of "adrenocortical hyperfunction." The screening data in section 24 put renin-independent aldosterone excess well inside the top row instead — which is to say that the top row is not a cause at all, but the place where the unmeasured goes.<br><span style="color:#8b949e">Source: Mitchell RN, Halushka MK. Blood Vessels. In: Kumar V, Abbas AK, Aster JC, eds. <em>Robbins &amp; Cotran Pathologic Basis of Disease</em>, 11th ed. Elsevier; 2026. Table 11.2, p. 445. Reproduced here as a short excerpt for criticism and comment.</span></figcaption>
-</figure>
-
-Each part of that teaching has been overtaken:
-
-Take "unknown cause" first. The genetics of section 23 identifies the renal sodium architecture that sets the level. The aldosterone data of section 24 show that a substantial part of "essential" hypertension contains an unrecognized, renin-independent mineralocorticoid excess. "Idiopathic" is now a statement about what is not measured, not about what is not known.
-The threshold fares no better. The guideline systems disagree with each other: ACC/AHA diagnoses hypertension from 130/80, while ESC 2024 and many national guidelines retain 140/90 but add an "elevated" category from 120/70. The textbook's hybrid 130/90 matches neither, and sits in a section that has just denied that any threshold identifies risk.
-And the evidence has no threshold in it at all. The Lewington curve rises from 115/75, and BPLTTC shows proportional benefit from treatment below 120 mmHg.
-
-A student, a guideline committee and a meta-analysis would therefore give three different answers to whether a person at 132/84 has a disease that warrants action. Lipidology had the same three-way split over LDL-C and resolved it toward the evidence over twenty years. For pressure, the resolution has barely begun.
-
-## 26. The Arrow That Points the Other Way: Stiffness Before Pressure
+## 33. The Arrow That Points the Other Way: Stiffness Before Pressure
 
 A common clinical assumption holds that hypertension stiffens arteries. The Framingham data say the dominant temporal arrow runs the other way.
 
@@ -610,17 +786,17 @@ Kaess and colleagues followed 1,759 Framingham Offspring participants across two
 
 If the arrow runs this way, the clinical sequence is as follows. Large-artery stiffening, from elastin fatigue, collagen cross-linking, advanced glycation, calcification and endothelial dysfunction, comes first. Stiffening raises pulse pressure and systolic load. Higher systolic load accelerates stiffening, a positive feedback loop. The finding is observational and cannot exclude reverse confounding by treatment. Its implication, though, mirrors lipidology's: *the window in which intervention changes the trajectory, rather than chasing it, is early*, while arteries are still compliant. A normal blood-pressure reading in a 35-year-old does not mean nothing is happening. The arterial substrate whose stiffening will later produce hypertension may already be degrading.
 
-## 27. Where the Two Causes Meet: The Particle Builds, the Pressure Detonates
+## 34. Where the Two Causes Meet: The Particle Builds, the Pressure Detonates
 
-This is the central mechanistic claim of the essay. Pressure and particle are not merely two independent risk factors whose effects add in a regression model. They interact in the arterial wall, at the exact step that Part I identified as rate-limiting.
+This is the central mechanistic claim of the essay. Pressure and particle are not merely two independent risk factors whose effects add in a regression model. They interact in the arterial wall, at the exact step that Part II identified as rate-limiting.
 
-A correction first, because a misconception circulates widely in longevity discussions: that lowering pressure helps by "reducing shear stress." Wall shear stress is the frictional force of flowing blood on the endothelial surface. It depends on flow velocity, vessel geometry and viscosity, not on transmural pressure. Steady, laminar, relatively *high* shear is atheroprotective. Through mechanosensitive transcription factors such as KLF2 and KLF4, it maintains endothelial quiescence and eNOS expression. Plaque forms where shear is *low and oscillatory*: at bifurcations, inner curvatures and branch ostia. Those are the same regions where Huang and colleagues found SR-B1 and DOCK4, the transcytosis machinery of section 6, more highly expressed.[^huang2019] Exercise raises shear, which is part of why it protects. Pressure does its damage through other routes. Four matter here, and each couples to the particle at a different stage of the lesion's life.
+A correction first, because a misconception circulates widely in longevity discussions: that lowering pressure helps by "reducing shear stress." Wall shear stress is the frictional force of flowing blood on the endothelial surface. It depends on flow velocity, vessel geometry and viscosity, not on transmural pressure. Steady, laminar, relatively *high* shear is atheroprotective. Through mechanosensitive transcription factors such as KLF2 and KLF4, it maintains endothelial quiescence and eNOS expression. Plaque forms where shear is *low and oscillatory*: at bifurcations, inner curvatures and branch ostia. Those are the same regions where Huang and colleagues found SR-B1 and DOCK4, the transcytosis machinery of section 13, more highly expressed.[^huang2019] Exercise raises shear, which is part of why it protects. Pressure does its damage through other routes. Four matter here, and each couples to the particle at a different stage of the lesion's life.
 
 The first route is convection. Transmural pressure drives water filtration across the arterial wall, and that flow carries macromolecules, including LDL, into the intima by convection as well as diffusion.[^tarbell2003] Higher pressure increases particle *delivery*.
 
-The second route is strain, and it builds the retention matrix itself. Lee, Libby, Wight and colleagues subjected human vascular smooth-muscle cells to controlled cyclic mechanical strain. Strain increased mRNA for *versican* by about 3.2-fold and *biglycan* by about 2.0-fold, with parallel increases in core proteins, while decorin fell to about a third of control levels. Sulfate incorporation into chondroitin/dermatan sulfate chains increased, and versican–hyaluronan aggregation was enhanced.[^lee2001] Versican and biglycan are the principal apoB-binding proteoglycans of the atherosclerosis-prone intima. Sulfation density determines the negative charge that site B of apoB-100 binds (section 6). Mechanical load therefore remodels the extracellular matrix toward a composition that *retains more apoB per particle delivered*.
+The second route is strain, and it builds the retention matrix itself. Lee, Libby, Wight and colleagues subjected human vascular smooth-muscle cells to controlled cyclic mechanical strain. Strain increased mRNA for *versican* by about 3.2-fold and *biglycan* by about 2.0-fold, with parallel increases in core proteins, while decorin fell to about a third of control levels. Sulfate incorporation into chondroitin/dermatan sulfate chains increased, and versican–hyaluronan aggregation was enhanced.[^lee2001] Versican and biglycan are the principal apoB-binding proteoglycans of the atherosclerosis-prone intima. Sulfation density determines the negative charge that site B of apoB-100 binds (section 13). Mechanical load therefore remodels the extracellular matrix toward a composition that *retains more apoB per particle delivered*.
 
-The third route is wall tension. By Laplace's relation, circumferential wall stress scales with transmural pressure times radius divided by wall thickness. Sustained high stress drives medial hypertrophy, elastin fatigue and collagen deposition, which in turn drive the stiffening of section 26.
+The third route is wall tension. By Laplace's relation, circumferential wall stress scales with transmural pressure times radius divided by wall thickness. Sustained high stress drives medial hypertrophy, elastin fatigue and collagen deposition, which in turn drive the stiffening of section 33.
 
 Those three act on *initiation and growth*. The fourth acts on the moment that turns a plaque into an infarct or a stroke.
 
@@ -631,8 +807,8 @@ Pressure also acts through *intraplaque hemorrhage*. The fragile neovessels that
 The event-timing data fit this division of labor. The onset of myocardial infarction has a pronounced morning peak, coinciding with the morning surge in pressure and sympathetic tone.[^muller1985] The early trial evidence makes the same point quantitatively. In the 1990 overview of antihypertensive trials, a 5–6 mmHg diastolic reduction over about five years lowered stroke by 42%, essentially all the benefit epidemiology predicted. Coronary disease fell by 14%, only a little over half the expected benefit.[^collins1990] Pressure's contribution to stroke, much of it hemorrhagic or triggered, is rapidly reversible. Its contribution to coronary disease is partly locked into accumulated plaque, which only time undoes.
 
 <figure class="wide-figure">
-  <img src="/assets/images/the-particle-and-the-pressure/figure-8-where-pressure-acts.svg" alt="Four chevrons labelled entry, retention, remodeling and rupture, the first three in blue and the fourth in red, each above a box describing the pressure route that acts at that stage. A bar beneath divides accumulated from immediate benefit.">
-  <figcaption><strong>Figure 8. Where pressure acts on the plaque.</strong> The four routes of this section, placed on the stages of a single lesion's life. Routes 1 to 3 build: convection delivers more particles (Tarbell 2003), cyclic strain remodels the matrix so that more of them are retained per particle delivered (Lee, Libby and Wight 2001), and Laplace wall stress drives the stiffening that raises pressure again. Route 4 detonates: cap stress rises with luminal pressure and concentrates at plaque shoulders, and ruptured caps are thinner than about 65 μm. The band beneath is the test of that division of labour. In the 1990 overview of antihypertensive trials, five years of treatment delivered essentially all of the stroke benefit epidemiology predicted (42% fewer strokes) and only about half the coronary benefit (14% fewer coronary events). A trigger can be removed in five years. Thirty years of accumulated plaque cannot.</figcaption>
+  <img src="/assets/images/the-particle-and-the-pressure/figure-11-where-pressure-acts.svg" alt="Four chevrons labelled entry, retention, remodeling and rupture, the first three in blue and the fourth in red, each above a box describing the pressure route that acts at that stage. A bar beneath divides accumulated from immediate benefit.">
+  <figcaption><strong>Figure 11. Where pressure acts on the plaque.</strong> The four routes of this section, placed on the stages of a single lesion's life. Routes 1 to 3 build: convection delivers more particles (Tarbell 2003), cyclic strain remodels the matrix so that more of them are retained per particle delivered (Lee, Libby and Wight 2001), and Laplace wall stress drives the stiffening that raises pressure again. Route 4 detonates: cap stress rises with luminal pressure and concentrates at plaque shoulders, and ruptured caps are thinner than about 65 μm. The band beneath is the test of that division of labour. In the 1990 overview of antihypertensive trials, five years of treatment delivered essentially all of the stroke benefit epidemiology predicted (42% fewer strokes) and only about half the coronary benefit (14% fewer coronary events). A trigger can be removed in five years. Thirty years of accumulated plaque cannot.</figcaption>
 </figure>
 
 Put the four together. Pressure delivers more particles into the wall, increases the wall's capacity to hold them, accelerates the stiffening that raises pressure further, and finally supplies the mechanical load that ruptures the cap and the neovessel. On this account the two causes are not parallel. *The particle builds the plaque; pressure accelerates the building and then detonates it.* In the language of the integral model below, pressure acts as a gain on the particle's rate-limiting step, and as the trigger on its terminal step.
@@ -647,7 +823,7 @@ $$
 
 This is not a fitted model. The first two terms state what the genetic evidence already implies: risk accumulates as the area under two curves that start in adolescence. The third term is my inference from the mechanism in this section. It is a testable hypothesis: in the arterial wall, pressure scales the retention of particles. If it is right, lowering pressure in someone with high apoB, or apoB in someone with high pressure, is worth more than either reduction alone.
 
-## 28. The Heart Under Load
+## 35. The Heart Under Load
 
 The heart is the first organ to adapt to pressure and among the first to fail from it.
 
@@ -659,9 +835,9 @@ Raised left atrial pressure and atrial stretch also make hypertension the most p
 
 The aorta suffers in its own right. Chronic pressure and stiffening drive aortic dilatation, aneurysm and dissection. Pressure control is their principal medical therapy.
 
-The heart thus shows the same temporal division as section 27. Coronary atherosclerosis integrates particle exposure slowly. The pressure-dependent outcomes (heart failure, atrial fibrillation, hemorrhagic and lacunar stroke) respond quickly when pressure falls.
+The heart thus shows the same temporal division as section 34. Coronary atherosclerosis integrates particle exposure slowly. The pressure-dependent outcomes (heart failure, atrial fibrillation, hemorrhagic and lacunar stroke) respond quickly when pressure falls.
 
-## 29. The Brain Is Where Pressure Becomes Aging
+## 36. The Brain Is Where Pressure Becomes Aging
 
 The brain and kidney are high-flow, low-impedance organs. Their small vessels receive the pulsatile energy that a compliant aorta would normally absorb. O'Rourke and Safar argued that this explains the shared microvascular pathology of the two organs in people with stiff arteries.[^orourke2005] In the AGES–Reykjavik study, higher aortic stiffness was associated with more cerebral small-vessel disease (white-matter hyperintensities, subcortical infarcts, microbleeds) and with worse memory, and the relation was partly mediated by those lesions.[^mitchell2011]
 
@@ -669,9 +845,9 @@ A further mechanism is less familiar. In mice, Mestre and colleagues used partic
 
 Clinically, SPRINT MIND showed that intensive pressure control reduced mild cognitive impairment.[^sprintmind2019] Among the interventions that the longevity movement discusses for brain health, sustained pressure reduction has some of the strongest randomized evidence. It is rarely presented that way.
 
-## 30. The Kidney Is the Amplifier
+## 37. The Kidney Is the Amplifier
 
-The kidney sets the pressure (section 24), is damaged by pressure, and, once damaged, raises both pressure and apoB. That makes it the point at which the two causes and the metabolic engine form a loop.
+The kidney sets the pressure (section 31), is damaged by pressure, and, once damaged, raises both pressure and apoB. That makes it the point at which the two causes and the metabolic engine form a loop.
 
 ```mermaid
 flowchart LR
@@ -697,33 +873,33 @@ The kidney has a frontier of its own, and it runs through pressure. Obesity, ins
 
 SGLT2 inhibitors restore distal sodium delivery and reverse the dilation. They lower systemic pressure by a few mmHg and, more importantly, glomerular pressure. In DAPA-CKD, dapagliflozin reduced the composite of kidney failure, sustained eGFR decline or renal or cardiovascular death by 39% (HR 0.61), with similar benefit in patients without diabetes.[^heerspink2020] EMPA-KIDNEY confirmed this across a broader range of kidney function (HR 0.72).[^empakidney2023]
 
-Mineralocorticoid-receptor antagonism has been tested in the same population. In diabetic kidney disease, the non-steroidal mineralocorticoid-receptor antagonist finerenone reduced kidney outcomes (HR 0.82) and cardiovascular outcomes in FIDELIO-DKD.[^bakris2020] This is the aldosterone axis of section 24, acting on the kidney.
+Mineralocorticoid-receptor antagonism has been tested in the same population. In diabetic kidney disease, the non-steroidal mineralocorticoid-receptor antagonist finerenone reduced kidney outcomes (HR 0.82) and cardiovascular outcomes in FIDELIO-DKD.[^bakris2020] This is the aldosterone axis of section 31, acting on the kidney.
 
 Glomerular pressure, aldosterone and systemic pressure are one control problem. The drugs that protect the kidney best do so largely by fixing pressure where the systemic cuff cannot see it.
 
-## 31. Measurement: The Error Is the Size of the Effect
+## 38. Measurement: The Error Is the Size of the Effect
 
 Lipidology owes some of its clarity to measurement. ApoB has a coefficient of variation of a few percent and needs no fasting. Pressure is an intrinsically variable quantity measured, in most of the world, by a single office reading.
 
-Start with positioning. In the ARMS crossover trial (Liu, Brady and colleagues, 2024), supporting the arm on the lap overestimated systolic pressure by 3.9 mmHg compared with desk support, and an unsupported arm hanging at the side overestimated it by 6.5 mmHg.[^liu2024] That error is about the size of the effect of a new antihypertensive class (section 38). In most clinics it is never corrected.
+Start with positioning. In the ARMS crossover trial (Liu, Brady and colleagues, 2024), supporting the arm on the lap overestimated systolic pressure by 3.9 mmHg compared with desk support, and an unsupported arm hanging at the side overestimated it by 6.5 mmHg.[^liu2024] That error is about the size of the effect of a new antihypertensive class (section 44). In most clinics it is never corrected.
 Then there is the question of which pressure predicts outcomes. In the Spanish ambulatory registry of 63,910 adults, 24-hour ambulatory systolic pressure predicted all-cause and cardiovascular mortality far more strongly than clinic pressure, and nighttime pressure was among the strongest predictors. Masked hypertension, normal in clinic and elevated on ambulatory monitoring, carried a risk at least as high as sustained hypertension.[^banegas2018] A clinic reading is a poor estimate of the variable that matters.
 Nocturnal pressure is where obstructive sleep apnea leaves its mark. In the Wisconsin Sleep Cohort, apnea severity at baseline predicted incident hypertension four years later in a dose-dependent way: an apnea–hypopnea index of 15 or more carried an odds ratio of about 2.9, independent of body habitus.[^peppard2000] Recurrent hypoxemia and arousal drive sympathetic surges, endothelin release and renal sodium retention. Treating apnea has a smaller effect than its epidemiology suggests. In SAVE, CPAP in 2,717 patients with cardiovascular disease and moderate-to-severe apnea did not reduce cardiovascular events. Mean adherence was only about 3.3 hours a night, which leaves the trial unable to test adequate treatment.[^mcevoy2016] The lesson for measurement is that a patient with normal daytime readings and untreated apnea may have the most dangerous pressure profile of all, and only nighttime measurement will show it.
 One myth deserves retiring. The large pragmatic TIME trial randomized 21,104 patients to morning or evening dosing of antihypertensives and found no difference in major cardiovascular outcomes.[^mackenzie2022] When a dose is taken matters much less than measuring accurately and reaching the target.
 
-The implication for the n-of-1 in section 37 is that the instrument matters as much as the intervention. A properly conducted home protocol is not a refinement. It is the prerequisite for knowing whether anything happened.
+The implication for the n-of-1 in section 43 is that the instrument matters as much as the intervention. A properly conducted home protocol is not a refinement. It is the prerequisite for knowing whether anything happened.
 
-## 32. Salt: The Dietary Evidence That Lipidology Never Had
+## 39. Salt: The Dietary Evidence That Lipidology Never Had
 
 For all its rigor, lipidology has never produced a dietary trial with hard outcomes that is as clean as the salt-substitute trials. The longevity discourse often treats sodium as "controversial." The strongest randomized evidence in the area comes from China.
 
 SSaSS randomized 20,995 people with prior stroke, or aged 60 or older with poorly controlled hypertension, across 600 villages in rural China. The intervention replaced household salt with a 75% sodium chloride / 25% potassium chloride substitute. Over a mean of 4.74 years, stroke fell (rate ratio 0.86), major cardiovascular events fell (0.87) and all-cause death fell (0.88). There was no significant excess of clinical hyperkalemia.[^neal2021]
 DECIDE-Salt cluster-randomized 48 residential elderly-care facilities in China (1,612 residents). The salt substitute lowered systolic pressure by 7.1 mmHg and reduced definite cardiovascular events (HR 0.60; 95% CI 0.38–0.96). Restricting the salt supply alone had no detectable effect.[^yuan2023]
 
-Two lessons follow. Substitution worked where restriction failed, because it changes the default without requiring sustained effort. And the effect operates on the renal pressure–natriuresis mechanism of section 22, both reducing the sodium load and adding potassium, which is natriuretic in its own right. Potassium-enriched salt is contraindicated in advanced kidney disease and with drugs that impair potassium excretion. For the general population it is one of the most strongly evidenced cardiovascular interventions available.
+Two lessons follow. Substitution worked where restriction failed, because it changes the default without requiring sustained effort. And the effect operates on the renal pressure–natriuresis mechanism of section 29, both reducing the sodium load and adding potassium, which is natriuretic in its own right. Potassium-enriched salt is contraindicated in advanced kidney disease and with drugs that impair potassium excretion. For the general population it is one of the most strongly evidenced cardiovascular interventions available.
 
-## 33. The Architecture of Treatment
+## 40. The Architecture of Treatment
 
-Antihypertensive pharmacology looks like a crowded shelf. Mapped onto the control system of section 22, it is orderly.
+Antihypertensive pharmacology looks like a crowded shelf. Mapped onto the control system of section 29, it is orderly.
 
 | Class | Target | Position in guidelines | Notes |
 |---|---|---|---|
@@ -732,31 +908,25 @@ Antihypertensive pharmacology looks like a crowded shelf. Mapped onto the contro
 | Dihydropyridine calcium-channel blockers | Vascular L-type Ca²⁺ channels | First-line | Effective across ages and ancestries |
 | Mineralocorticoid-receptor antagonists | Collecting-duct mineralocorticoid receptor | Preferred fourth drug | In PATHWAY-2, spironolactone was the most effective add-on in resistant hypertension, consistent with hidden aldosterone excess[^williams2015] |
 | β-blockers | β1 receptors | Not first-line for uncomplicated hypertension | Indicated for specific cardiac conditions |
-| Aldosterone-synthase inhibitors | CYP11B2 | New (2026) | Section 38 |
-| siRNA against angiotensinogen | Hepatic *AGT* mRNA | In outcome trials | Section 38 |
-| Renal denervation | Renal sympathetic nerves | Class 2b for resistant hypertension | Section 38 |
+| Aldosterone-synthase inhibitors | CYP11B2 | New (2026) | Section 44 |
+| siRNA against angiotensinogen | Hepatic *AGT* mRNA | In outcome trials | Section 44 |
+| Renal denervation | Renal sympathetic nerves | Class 2b for resistant hypertension | Section 44 |
 
 The underused principle is low-dose combination. Law, Wald and colleagues' meta-analysis of 354 trials showed that the blood-pressure-lowering effects of different drug classes are additive, while side effects are strongly dose-dependent. Combining several drugs at half-standard dose therefore yields large reductions with few adverse effects.[^law2003] The QUARTET trial applied this in practice. A single pill of four antihypertensives at quarter dose, used as initial therapy, lowered pressure more and controlled more patients than standard-dose monotherapy.[^chow2021]
 
-Single-pill combinations as first-line treatment are now endorsed by the 2024 ESC guideline.[^esc2024] The logic parallels the combination lipid therapy of section 16: several mechanistically different levers at moderate doses, rather than one lever pushed to its side-effect ceiling.
+Single-pill combinations as first-line treatment are now endorsed by the 2024 ESC guideline.[^esc2024] The logic parallels the combination lipid therapy of section 23: several mechanistically different levers at moderate doses, rather than one lever pushed to its side-effect ceiling.
 
-## 34. Medicine 2.0's Blind Spots Are Structural, Not Cognitive
-
-It would be wrong to say that clinicians "don't know" these things. Every cardiologist knows SPRINT, and every guideline committee read BPLTTC. The failure is that the system knows but does not act, and the reasons are built into how care is organized.
-
-Start with the architecture. Exposure is continuous and diagnosis is binary, so a patient at 128/82 is "normal" in most clinics and nothing happens to them. The horizon compounds the error: the PREVENT-based thresholds in both the pressure and the lipid guidelines still decide on ten-year risk, which quietly discards the integral logic their own background sections accept. And the decisions rest on office readings whose known errors are the size of the treatment effects being weighed (section 31).
-
-Then there is what is simply not looked at. About 96% of hypertensive patients never have albuminuria measured, which is to say that the organ doing the damage is never examined (section 30). About 98% of eligible resistant-hypertension patients are never screened for primary aldosteronism, which is to say that the commonest identifiable cause is left unidentified (section 24). Western coronary frameworks are transplanted into East Asia, where stroke and pressure dominate instead.
-
-Teaching lags behind all of it. Atherosclerosis is still taught as a response to injury, in a chapter where the words *retention* and *transcytosis* never appear (section 6), and 90–95% of hypertension is still assigned to a category whose name means "cause unknown" (section 25). Clinicians practise what they were taught a generation ago, which is what one would expect them to do.
-
-The last failure is the one most easily fixed. "Exercise more" and "reduce salt" are not prescriptions. "Four two-minute isometric holds, three times a week" and "replace household salt with a potassium-enriched substitute" are.
-
-## 35. The Drug Nobody Takes
+## 41. The Drug Nobody Takes
 
 If an orally available molecule lowered systolic pressure by about 8 mmHg, cost nothing, took fourteen minutes three times a week, had no drug interactions and had a benign adverse-effect profile, it would be a blockbuster. That intervention exists.
 
 Edwards and colleagues' 2023 network meta-analysis in the *British Journal of Sports Medicine* included 270 randomized trials and 15,827 participants. Isometric exercise training reduced resting systolic and diastolic pressure by about 8.2 and 4.0 mmHg relative to controls. It ranked first among all exercise modes for systolic reduction (SUCRA 98%), ahead of combined training, dynamic resistance, aerobic training and high-intensity intervals, which produced roughly 4–6 mmHg each. Among isometric modes, the wall squat ranked highest for systolic reduction.[^edwards2023] An earlier review reached the same direction (about 7/3 mmHg) and found isometric training safe, with acute pressor responses during holds often smaller than those of guideline-recommended aerobic or dynamic training.[^baffour2022]
+
+<figure class="column-figure">
+  <img src="/assets/images/the-particle-and-the-pressure/figure-12-exercise-modes-edwards-2023.svg" alt="Paired horizontal bar chart of reductions in resting systolic and diastolic blood pressure, in mmHg, by exercise mode from the 2023 network meta-analysis: isometric 8.24 and 4.00; combined 6.04 and 2.54; dynamic resistance 4.55 and 3.04; aerobic 4.49 and 2.53; high-intensity interval 4.08 and 2.50. Each row also shows the SUCRA ranking probability for systolic reduction: isometric 98 percent, combined 76, dynamic resistance 46, aerobic 41, interval 39.">
+  <figcaption><strong>Figure 12. The ranking nobody quotes.</strong> Resting blood-pressure reductions relative to control, by exercise mode, from Edwards and colleagues’ pairwise and network meta-analysis of 270 randomized trials and 15,827 participants. Isometric training heads both columns. The right-hand numbers are SUCRA scores, the probability-based rank of each mode for systolic reduction (100% means certainly the best). Among individual exercises the isometric wall squat ranked first for systolic reduction, ahead of isometric leg extension and isometric handgrip. The trials are small, mostly short and unblinded, which is why the guideline’s own estimate (5–10 mmHg) is wider than the pooled point estimate.<br><span style="color:#8b949e">Source: Edwards JJ, Deenmamode AHP, Griffiths M, et al. <em>Br J Sports Med</em> 2023;57:1317–1326, pairwise estimates and SUCRA values as reported in the abstract and results.</span></figcaption>
+</figure>
+
 
 Placed among the other non-drug levers, isometric training is unusually potent per unit of time:
 
@@ -773,24 +943,30 @@ The guidelines have absorbed this. The 2025 AHA/ACC guideline lists isometric ha
 | | Isometric exercise training |
 |---|---|
 | Indication (evidence-based) | Adjunct for elevated BP and stage 1–2 hypertension (2025 AHA/ACC; 2024 ESC) |
-| Indication (inferred; §36) | Primary prevention in normotensive adults seeking lower lifetime pressure exposure |
+| Indication (inferred; §42) | Primary prevention in normotensive adults seeking lower lifetime pressure exposure |
 | Dose | 4 × 2-min holds, 1–2 min rest, 3 sessions/week. Handgrip at 30–40% MVC, or wall squat at a knee angle that is hard but sustainable for 2 min (perceived exertion ~7–8/10 by the end of each hold) |
 | Onset | Reductions reported from ~2–4 weeks; most trials run 4–12 weeks |
 | Offset | Uncertain. In a small trial in young normotensives (n = 25), resting systolic pressure fell ~6 mmHg and remained ~4 mmHg below baseline eight weeks after stopping, with ambulatory reductions also maintained;[^baross2022] older studies suggest return toward baseline over ~5–8 weeks. Treat as maintenance therapy |
 | Expected effect | ~5–10 mmHg systolic (guideline estimate); ~8 mmHg in pooled trials, with wide uncertainty |
-| Proposed mechanisms | Repeated post-contraction reactive hyperemia, a high-shear stimulus to the endothelium (§27); reduced sympathetic outflow; baroreflex resetting. None definitively established |
+| Proposed mechanisms | Repeated post-contraction reactive hyperemia, a high-shear stimulus to the endothelium (§34); reduced sympathetic outflow; baroreflex resetting. None definitively established |
 | Adverse effects | Transient pressor rise during holds; musculoskeletal strain (knee with wall squat) |
 | Precautions | Breathe continuously; no Valsalva. Conventional exercise cautions apply: severely uncontrolled pressure, unstable cardiac disease, recent cardiac events, known aortic aneurysm, or recent ocular surgery or proliferative retinopathy warrant clearance first |
 | Interactions | None pharmacological. Additive with aerobic training, weight loss and salt substitution |
 | Cost | ~42 minutes/week |
 
-The proposed mechanism has a pleasing symmetry with section 27. Pressure harms by load. Exercise, including isometric holds and the reactive hyperemia that follows them, protects partly through *shear*. Raising shear and lowering pressure are not in tension. They act on different variables.
+<figure class="wide-figure">
+  <img src="/assets/images/the-particle-and-the-pressure/figure-13-isometric-protocol.svg" alt="Three-panel illustration. Left: a person in a wall squat with back flat against a wall, feet forward, thighs angled above horizontal, labelled with the knee angle, continuous breathing and perceived exertion rising to 7 to 8 out of 10 by two minutes. Middle: a hand squeezing a handgrip dynamometer, labelled 30 to 40 percent of maximal voluntary contraction. Right: a session timeline of four two-minute holds separated by one-to-two-minute rests, about fourteen minutes in all, three sessions a week, about 42 minutes a week, with a home blood-pressure check at weeks 4 and 8.">
+  <figcaption><strong>Figure 13. The “drug,” as a dosing card.</strong> Left: the wall squat, the best-ranked isometric exercise for systolic reduction in the 2023 network meta-analysis. Set the knee angle so that the hold is hard but sustainable for two minutes: about 7–8 out of 10 in perceived exertion by the end of each hold. Start higher on the wall (a more open knee) and slide lower as you adapt. Centre: isometric handgrip, the form named in the 2025 AHA/ACC guideline, at 30–40% of maximal voluntary contraction, alternating hands between holds. Right: one session is four two-minute holds with one to two minutes’ rest, about fourteen minutes. Three sessions a week make the full dose. Breathe continuously; never hold the breath against a closed glottis (the Valsalva manoeuvre). The precautions in the table above apply.<br><span style="color:#8b949e">Dose from the 2025 AHA/ACC guideline summary and the protocols of the trials pooled by Edwards et al. 2023. Illustration by the author.</span></figcaption>
+</figure>
 
-## 36. Extrapolating to the Normotensive: When Not Waiting Is Rational
+
+The proposed mechanism has a pleasing symmetry with section 34. Pressure harms by load. Exercise, including isometric holds and the reactive hyperemia that follows them, protects partly through *shear*. Raising shear and lowering pressure are not in tension. They act on different variables.
+
+## 42. Extrapolating to the Normotensive: When Not Waiting Is Rational
 
 Isometric training has no cardiovascular outcome trial and will probably never have one. No sponsor will fund a ten-year, thirty-thousand-person trial of an unpatentable exercise. The question is whether that absence should stop a normotensive adult from adopting it now.
 
-A hard surrogate licenses action; a soft one does not. Part I showed what happens when a soft marker is moved: HDL-C rose under CETP inhibition, triglycerides fell under pemafibrate, and outcomes did not change. Lp(a) has just shown that even a causal particle can fail as a short-term target. ApoB and systolic pressure behave differently. Across mechanistically distinct interventions, benefit is proportional to the reduction achieved, and for pressure this holds across baseline categories beginning below 120 mmHg.[^bpltt2021] When a surrogate is hard in this sense, an outcome trial for each new, safe intervention that moves it is largely redundant, because the expected benefit can be read off the existing dose–response relationship. What remains uncertain is whether the intervention moves the surrogate *in this person*, by how much and for how long. That is a measurement question, and an individual can answer it in eight weeks with a validated cuff.
+A hard surrogate licenses action; a soft one does not. Part II showed what happens when a soft marker is moved: HDL-C rose under CETP inhibition, triglycerides fell under pemafibrate, and outcomes did not change. Lp(a) has just shown that even a causal particle can fail as a short-term target. ApoB and systolic pressure behave differently. Across mechanistically distinct interventions, benefit is proportional to the reduction achieved, and for pressure this holds across baseline categories beginning below 120 mmHg.[^bpltt2021] When a surrogate is hard in this sense, an outcome trial for each new, safe intervention that moves it is largely redundant, because the expected benefit can be read off the existing dose–response relationship. What remains uncertain is whether the intervention moves the surrogate *in this person*, by how much and for how long. That is a measurement question, and an individual can answer it in eight weeks with a validated cuff.
 
 The arithmetic, done with honest error bars, runs as follows. Assume a sustained 8 mmHg reduction, and apply the BPLTTC primary-prevention hazard ratio log-linearly: $0.91^{8/5} \approx 0.86$, a relative reduction of about 14% in major cardiovascular events. For a 40-year-old with a ten-year total risk of 2%, that is an absolute reduction of about 0.3 percentage points over ten years. On a ten-year view, the benefit is small.
 
@@ -805,11 +981,11 @@ What would make this wrong is worth stating as falsifiable checkpoints.
 3. Exercise-lowered pressure turns out to be less protective than drug-lowered pressure. BPLTTC's drug-agnosticism covers pharmacological classes. Extending it to non-pharmacological mechanisms is an inference, though a reasonable one. Salt substitution, a non-drug intervention that lowers pressure, reduced hard outcomes in SSaSS and DECIDE-Salt roughly as its pressure effect would predict.[^neal2021] [^yuan2023]
 4. Individuals do not respond uniformly. Pooled means hide responders and non-responders, which is why the measurement in the next section is not optional.
 
-## 37. A Protocol, and the N-of-1 That Should Follow
+## 43. A Protocol, and the N-of-1 That Should Follow
 
 I have not yet run this on myself, so I give the protocol and not results. The value lies in the measurement discipline more than in the holds.
 
-Measurement comes first, consistent with section 31: a validated upper-arm cuff of the correct size; seated with the back supported, feet flat and the arm *supported at heart level on a desk*; five minutes of quiet rest; no caffeine, exercise or nicotine in the preceding thirty minutes; two readings one minute apart, morning (before medication or breakfast) and evening, each day of a measurement week. Discard the first day and average the rest.
+Measurement comes first, consistent with section 38: a validated upper-arm cuff of the correct size; seated with the back supported, feet flat and the arm *supported at heart level on a desk*; five minutes of quiet rest; no caffeine, exercise or nicotine in the preceding thirty minutes; two readings one minute apart, morning (before medication or breakfast) and evening, each day of a measurement week. Discard the first day and average the rest.
 
 | Phase | Duration | Content |
 |---|---|---|
@@ -818,13 +994,13 @@ Measurement comes first, consistent with section 31: a validated upper-arm cuff 
 | Washout | 4–8 weeks | Stop holds; home BP in the final week |
 | Re-challenge (optional) | 4 weeks | Resume; confirm the reduction returns |
 
-The analysis is the difference between baseline and week-8 mean systolic pressure, with the day-to-day standard deviation as the noise estimate. A reduction that exceeds the noise, reverses in washout and returns on re-challenge is about as much evidence as one person can obtain. Keep body weight, sodium, alcohol, sleep and aerobic volume stable, or record them. This is the same design that SAMSON used to separate pharmacology from nocebo in statin intolerance.[^wood2020] An annual 24-hour ambulatory recording would turn the experiment into a time series, which is what the integral model in section 27 actually cares about.
+The analysis is the difference between baseline and week-8 mean systolic pressure, with the day-to-day standard deviation as the noise estimate. A reduction that exceeds the noise, reverses in washout and returns on re-challenge is about as much evidence as one person can obtain. Keep body weight, sodium, alcohol, sleep and aerobic volume stable, or record them. This is the same design that SAMSON used to separate pharmacology from nocebo in statin intolerance.[^wood2020] An annual 24-hour ambulatory recording would turn the experiment into a time series, which is what the integral model in section 34 actually cares about.
 
-## 38. The Next Decade: Pressure's PCSK9 Moment
+## 44. The Next Decade: Pressure's PCSK9 Moment
 
 Lipidology's pharmacological arc ran from statins to ezetimibe, then PCSK9 antibodies, then a twice-yearly siRNA, and now an oral PCSK9 inhibitor. Hypertension is entering the equivalent arc.
 
-Aldosterone-synthase inhibition came first. In BaxHTN, baxdrostat lowered office systolic pressure by a placebo-adjusted 8.7 mmHg (1 mg) and 9.8 mmHg (2 mg) in uncontrolled or resistant hypertension. The FDA approved it in May 2026, the first agent of its class.[^baxhtn] In Launch-HTN, lorundrostat produced placebo-adjusted reductions of 9.1 mmHg at six weeks and 11.6 mmHg at twelve weeks. Its application has an FDA action date of 22 December 2026.[^launchhtn] The prevalence data in section 24 suggest these drugs address a far more common biology than "primary aldosteronism" implies.
+Aldosterone-synthase inhibition came first. In BaxHTN, baxdrostat lowered office systolic pressure by a placebo-adjusted 8.7 mmHg (1 mg) and 9.8 mmHg (2 mg) in uncontrolled or resistant hypertension. The FDA approved it in May 2026, the first agent of its class.[^baxhtn] In Launch-HTN, lorundrostat produced placebo-adjusted reductions of 9.1 mmHg at six weeks and 11.6 mmHg at twelve weeks. Its application has an FDA action date of 22 December 2026.[^launchhtn] The prevalence data in section 31 suggest these drugs address a far more common biology than "primary aldosteronism" implies.
 RNA interference is close behind. Zilebesiran, an siRNA against hepatic angiotensinogen dosed every six months, is in ZENITH, an approximately 11,000-patient cardiovascular outcome trial whose first patient was dosed in late 2025.[^zenith]
 Devices have a foothold too: renal denervation now carries a class 2b guideline recommendation for resistant hypertension.[^aha2025summary]
 
@@ -832,49 +1008,51 @@ These drugs were tested in populations whose pressure stayed uncontrolled on two
 
 Lipidology won the argument. Pressure is still winning the war. The two do not have to be fought separately.
 
-None of this requires waiting for the next drug. Part III sets out what to do now.
+None of this requires waiting for the next drug. Part IV sets out what to do now.
 
 ---
 
-# Part III — The Protocol
+# Part IV — The Protocol: How to Prevent It Thoroughly
 
 This part turns the essay's argument into practice. Each recommendation carries its evidence grade:
 
 - [RCT]: randomized trials with hard cardiovascular outcomes.
-- [RCT-surrogate]: randomized trials on apoB, LDL-C or blood pressure, read through the hard-surrogate logic of section 36.
+- [RCT-surrogate]: randomized trials on apoB, LDL-C or blood pressure, read through the hard-surrogate logic of section 42.
 - [Inference]: my own position, derived from the evidence but not directly tested.
 
 This is an argument for informed adults and their physicians, not a substitute for clinical care. Drug therapy, in particular, belongs in a conversation with a clinician who knows the patient.
 
-## 39. Lowering ApoB
+## 45. Lowering ApoB
 
 ### Step 1: Measure the right things, once and early
 
 - ApoB, with a standard lipid panel, in young adulthood (by the twenties). Fasting is not required.[^nordestgaard2016] [Inference on timing; RCT-surrogate on the measure]
 - Lp(a) once in life, as the 2024 NLA update recommends.[^koschinsky2024] If it is high, everything below becomes more aggressive.
-- A metabolic readout: fasting insulin, triglyceride-to-HDL ratio and, ideally, a one-hour glucose during an oral glucose tolerance test (section 11).
-- Secondary causes if apoB is high: thyroid function, renal and liver function, urine protein, and medications (section 5).
-- If apoB or LDL-C is markedly elevated, or there is premature disease in the family, think about FH and cascade testing of relatives (section 5).
+- A metabolic readout: fasting insulin, triglyceride-to-HDL ratio and, ideally, a one-hour glucose during an oral glucose tolerance test (section 18).
+- Secondary causes if apoB is high: thyroid function, renal and liver function, urine protein, and medications (section 12).
+- If apoB or LDL-C is markedly elevated, or there is premature disease in the family, think about FH and cascade testing of relatives (section 12).
 
-### Step 2: Use diet for what it can actually do Diet moves apoB by roughly 10–30%, enough to matter, rarely enough by itself to reach the targets below.
+### Step 2: Use diet for what it can actually do
+
+Diet moves apoB by roughly 10–30%. That is enough to matter, and rarely enough by itself to reach the target in Step 4.
 
 | Lever | Expected effect | Evidence |
 |---|---|---|
 | Replace saturated fat with unsaturated (especially polyunsaturated) fat | LDL-C ↓ roughly 10–15% with large replacement; cardiovascular events ↓ ~17% in pooled trials | [RCT] Cochrane review of reduced saturated fat[^hooper2020] |
 | Viscous soluble fiber (psyllium ~10 g/day; oat or barley β-glucan ≥ 3 g/day) | LDL-C ↓ ~5–10% | [RCT-surrogate][^jovanovski2018] |
 | "Portfolio" pattern (plant protein, viscous fiber, nuts, plant sterols, low saturated fat) | LDL-C ↓ ~29%, similar to a first-generation statin in a short trial | [RCT-surrogate][^jenkins2003] |
-| Weight loss and exercise in insulin resistance | Small LDL-C effect; larger falls in triglycerides, remnants and VLDL apoB | [RCT-surrogate] (sections 10–11) |
-| Plant sterol/stanol supplements (~2 g/day) | LDL-C ↓ ~8–10% | [RCT-surrogate], but *no outcome data*, and the *ABCG5/8* genetics (section 8) suggest absorbed phytosterols may themselves be atherogenic. I would not use them as a substitute for proven levers |
+| Weight loss and exercise in insulin resistance | Small LDL-C effect; larger falls in triglycerides, remnants and VLDL apoB | [RCT-surrogate] (sections 17–18) |
+| Plant sterol/stanol supplements (~2 g/day) | LDL-C ↓ ~8–10% | [RCT-surrogate], but *no outcome data*, and the *ABCG5/8* genetics (section 15) suggest absorbed phytosterols may themselves be atherogenic. I would not use them as a substitute for proven levers |
 
-A warning for people on very-low-carbohydrate diets: some respond with large rises in LDL-C and apoB (section 17). The diet's metabolic benefits do not neutralize particle number. Measure apoB after any major dietary change.
+A warning for people on very-low-carbohydrate diets: some respond with large rises in LDL-C and apoB (section 24). The diet's metabolic benefits do not neutralize particle number. Measure apoB after any major dietary change.
 
 ### Step 3: Use drugs that have hard-outcome evidence
 
 | Agent | Typical LDL-C reduction | Outcome evidence | Practical notes |
 |---|---|---|---|
-| Statin (moderate to high intensity) | 30–50%+ | [RCT] ~22% fewer major vascular events per mmol/L[^ctt2010] | East Asian patients often need lower doses (*ABCG2* Q141K, section 16). Most "intolerance" is nocebo; an n-of-1 trial can settle it (SAMSON).[^wood2020] Small increase in diabetes diagnosis, mostly in people already near the threshold[^ctt2024] |
-| Ezetimibe | ~20–25% on top of statin | [RCT] IMPROVE-IT[^improveit] | Particularly logical for sterol hyperabsorbers (section 8) |
-| PCSK9 antibody (evolocumab, alirocumab) | ~60% | [RCT] FOURIER, ODYSSEY, VESALIUS-CV without prior MI or stroke[^vesalius] | Also lowers Lp(a) ~25% (section 12) |
+| Statin (moderate to high intensity) | 30–50%+ | [RCT] ~22% fewer major vascular events per mmol/L[^ctt2010] | East Asian patients often need lower doses (*ABCG2* Q141K, section 23). Most "intolerance" is nocebo; an n-of-1 trial can settle it (SAMSON).[^wood2020] Small increase in diabetes diagnosis, mostly in people already near the threshold[^ctt2024] |
+| Ezetimibe | ~20–25% on top of statin | [RCT] IMPROVE-IT[^improveit] | Particularly logical for sterol hyperabsorbers (section 15) |
+| PCSK9 antibody (evolocumab, alirocumab) | ~60% | [RCT] FOURIER, ODYSSEY, VESALIUS-CV without prior MI or stroke[^vesalius] | Also lowers Lp(a) ~25% (section 19) |
 | Inclisiran (siRNA, twice yearly) | ~50% | [RCT-surrogate]; outcome trials pending[^victorion] | Solves adherence |
 | Bempedoic acid | ~20% | [RCT] CLEAR Outcomes in statin intolerance[^clear] | Liver-activated, so no muscle exposure |
 
@@ -883,21 +1061,31 @@ Combination early beats one drug late: mechanistically different agents at moder
 ### Step 4: Choose a target and a start date
 
 - Guideline targets depend on risk category: LDL-C < 100, < 70 or < 55 mg/dL in the 2026 ACC/AHA guideline;[^acc2026] apoB < 100, < 80 or < 65 mg/dL in ESC 2019.[^esc2019]
-- My own position [Inference]: for an adult choosing aggressive primary prevention, an apoB near 60 mg/dL (0.6 g/L). That is within the range reached in outcome trials and close to the physiological level of youth. Because the benefit is an integral (section 13), the earlier the start, the more each unit of lowering is worth.
-- Where diet alone does not reach this, which is common, discussing pharmacotherapy with a clinician in one's thirties or forties is consistent with the cumulative-exposure evidence, the FH childhood-treatment data (section 8) and VESALIUS-CV, though no trial has tested this exact strategy in low-risk young adults.
-- No outcome evidence supports driving apoB below about 20 mg/dL.
-- If Lp(a) is high, there is no approved Lp(a)-specific drug, and the first outcome trial failed (section 12). The rational response is to lower apoB further and to control every other risk factor, pressure above all.
+- **My own position [Inference]: apoB below 60 mg/dL (0.60 g/L)** for an adult choosing aggressive primary prevention, and around 50 mg/dL if Lp(a) is high or plaque has been imaged. Section 25 gives the eight reasons for that number: its unit equivalents, where it sits in the population, its physiological reference, the trial levels, the integral, safety, Lp(a) and measurement. Because the benefit is an integral (section 20), the start date matters as much as the target. In the apoB-years arithmetic of section 25, starting at 45 instead of 35 forfeits about 40% of the achievable reduction in lifetime exposure.
+- **Getting there.** From a typical untreated adult apoB of 90–120 mg/dL, reaching below 60 needs a reduction of roughly 35–50%. Diet alone rarely provides that. The usual route is a statin, then ezetimibe, then, only if still above target, a PCSK9 inhibitor (Figure 14). On statins, apoB falls by somewhat less than LDL-C, so a regimen chosen to reach an LDL-C goal can leave apoB above 60. That is the discordance of section 14, and the reason to titrate to apoB rather than to LDL-C.
+- **Timing.** Where diet does not reach the target, which is common, discussing pharmacotherapy with a clinician in one's thirties or forties is consistent with the cumulative-exposure evidence, the FH childhood-treatment data (section 15) and VESALIUS-CV. No trial has tested this exact strategy in low-risk young adults, and the 2026 ACC/AHA guideline would not recommend it for most of them (section 4). That disagreement is the subject of Part I.
+- **Floor.** No outcome evidence supports driving apoB below about 20 mg/dL.
+- **Lp(a).** If Lp(a) is high, there is no approved Lp(a)-specific drug, and the first outcome trial failed (section 19). The rational response is to lower apoB further and to control every other risk factor, pressure above all.
 
-### Step 5: Re-measure Check apoB and LDL-C six to twelve weeks after any change, then annually. Use imaging (section 15) to escalate when plaque is found, never as permission to do nothing when it is not.
+<figure class="column-figure">
+  <img src="/assets/images/the-particle-and-the-pressure/figure-14-the-route-below-60.svg" alt="Step chart of apoB in mg/dL across four stages: untreated 110; high-intensity statin about 66 to 72; plus ezetimibe about 56 to 61; plus PCSK9 antibody about 25 to 33. A horizontal band marks the target below 60 and a dashed line marks the ESC very-high-risk goal of 65.">
+  <figcaption><strong>Figure 14. One route below 60.</strong> An illustrative person with an untreated apoB of 110 mg/dL, close to the 75th percentile of untreated American adults (Figure 8). Each step applies a typical proportional reduction in apoB, shown as a range. A high-intensity statin lowers apoB by roughly 35–40%, less than its effect on LDL-C. Adding ezetimibe takes off roughly another 15%. A PCSK9 antibody takes off roughly another 45–55%.[^ctt2010] [^improveit] [^vesalius] Most people starting in the 90s or low 100s reach the band with the first two steps. The third step is for those who start higher, have high Lp(a) or have imaged plaque. Individual responses vary widely. The point of the figure is the order of the steps and the need to re-measure, not the exact numbers, which only one's own laboratory results can supply.</figcaption>
+</figure>
 
-## 40. Lowering Pressure
+### Step 5: Re-measure
 
-### Step 1: Measure properly before deciding anything Most errors in hypertension care begin at the cuff (section 31).
+Check apoB and LDL-C six to twelve weeks after any change, then annually. Use imaging (section 22) to escalate when plaque is found, never as permission to do nothing when it is not.
+
+## 46. Lowering Pressure
+
+### Step 1: Measure properly before deciding anything
+
+Most errors in hypertension care begin at the cuff (section 38).
 
 - Home monitoring week. Use a validated upper-arm device and the correct cuff size. Sit with your back supported and feet flat, with the arm supported on a desk at heart level, after five minutes of rest. Take two readings a minute apart, morning and evening, for seven days. Discard day one and average the rest. Do this at least once a year from early adulthood.
 - Thresholds. Home averages map onto office categories roughly as follows: home 120/80 ≈ office 120/80; home 130/80 ≈ office 130/80; home 135/85 ≈ office 140/90.
-- Ambulatory 24-hour monitoring, where available, catches masked and nocturnal hypertension (section 31).
-- Look for causes when pressure is high: urine albumin-to-creatinine ratio (section 30); an aldosterone–renin screen, especially with resistant hypertension, low potassium, sleep apnea or onset before 40 (section 24); and an apnea assessment for snorers.
+- Ambulatory 24-hour monitoring, where available, catches masked and nocturnal hypertension (section 38).
+- Look for causes when pressure is high: urine albumin-to-creatinine ratio (section 37); an aldosterone–renin screen, especially with resistant hypertension, low potassium, sleep apnea or onset before 40 (section 31); and an apnea assessment for snorers.
 
 ### Step 2: Apply the non-drug levers, strongest evidence first
 
@@ -911,34 +1099,34 @@ Combination early beats one drug late: mechanistically different agents at moder
 | Isometric training (below) | ~5–10 mmHg | [RCT-surrogate][^edwards2023] [^aha2025summary] |
 | Dynamic resistance training (2–3 days/week) | ~4–5 mmHg | [RCT-surrogate][^edwards2023] |
 | Reduce heavy alcohol intake | ~5–6 mmHg in heavy drinkers; little effect at ≤ 2 drinks/day | [RCT-surrogate][^roerecke2017] |
-| Treat sleep apnea; protect sleep | Modest; largest for nocturnal pressure | Mixed (section 31) |
-| Stop pressor drugs where possible (NSAIDs, decongestants, liquorice, some contraceptives) | Variable | Mechanistic and clinical (section 24) |
+| Treat sleep apnea; protect sleep | Modest; largest for nocturnal pressure | Mixed (section 38) |
+| Stop pressor drugs where possible (NSAIDs, decongestants, liquorice, some contraceptives) | Variable | Mechanistic and clinical (section 31) |
 
 ### Step 3: Take isometric training as a drug [Inference built on RCT-surrogate evidence]
 
 This is the author's claim rather than a guideline's, and the reader should weigh it as such.
 
-- Who: adults whose home systolic average is in the 110s or 120s, not only those already labeled hypertensive. The argument is in sections 35–36: pressure is a drug-agnostic, baseline-agnostic hard surrogate. The reduction isometric training produces is comparable to a newly approved drug class. Its cost is about forty minutes a week. An outcome trial is unlikely ever to be run.
-- Dose: 4 × 2-minute holds, with 1–2 minutes' rest, three times a week. Use either handgrip at 30–40% of maximal grip, or a wall squat at a knee angle that becomes hard but sustainable by the end of two minutes (perceived exertion 7–8 out of 10). Breathe throughout; never strain against a closed glottis.
-- How to know it is working: run the n-of-1 in section 37. Take a two-week baseline, train for eight weeks, then wash out. If the reduction is not visible above day-to-day noise, the "drug" is not working for you, and you should know that rather than assume it.
-- Combine with apoB lowering. Pressure scales the retention and the rupture of the particles that apoB counts (section 27), and the genetics show their effects multiply. Lowering one makes the other worth more.
+- Who: adults whose home systolic average is in the 110s or 120s, not only those already labeled hypertensive. The argument is in sections 41–42: pressure is a drug-agnostic, baseline-agnostic hard surrogate. The reduction isometric training produces is comparable to a newly approved drug class. Its cost is about forty minutes a week. An outcome trial is unlikely ever to be run.
+- Dose: 4 × 2-minute holds, with 1–2 minutes' rest, three times a week. Use either handgrip at 30–40% of maximal grip, or a wall squat at a knee angle that becomes hard but sustainable by the end of two minutes (perceived exertion 7–8 out of 10). Breathe throughout; never strain against a closed glottis. Figure 13 shows both forms and the structure of a session.
+- How to know it is working: run the n-of-1 in section 43. Take a two-week baseline, train for eight weeks, then wash out. If the reduction is not visible above day-to-day noise, the "drug" is not working for you, and you should know that rather than assume it.
+- Combine with apoB lowering. Pressure scales the retention and the rupture of the particles that apoB counts (section 34), and the genetics show their effects multiply. Lowering one makes the other worth more.
 - Precautions: get clinical clearance first for severely uncontrolled pressure (≥ 180/110), unstable cardiac disease, a recent cardiac event, known aortic aneurysm, or recent eye surgery or proliferative retinopathy.
 
 ### Step 4: When pressure stays high, treat it, and treat it early
 
-- Targets: < 130/80 for most adults (2025 AHA/ACC);[^aha2025] 120–129 systolic where tolerated (ESC 2024);[^esc2024] < 120 in high-risk patients where tolerated (SPRINT, ESPRIT, BPROAD; section 25).
-- Start with low-dose combination therapy, preferably as a single pill: a thiazide-like diuretic, an ACE inhibitor or ARB, and a dihydropyridine calcium-channel blocker. This is the architecture of section 33. Add spironolactone as the fourth drug (PATHWAY-2).
-- A history of pre-eclampsia, prior hypertensive pregnancy, albuminuria or left ventricular hypertrophy marks an early-intervention candidate even below conventional thresholds (sections 25, 28, 30). [Inference]
+- Targets: < 130/80 for most adults (2025 AHA/ACC);[^aha2025] 120–129 systolic where tolerated (ESC 2024);[^esc2024] < 120 in high-risk patients where tolerated (SPRINT, ESPRIT, BPROAD; section 32).
+- Start with low-dose combination therapy, preferably as a single pill: a thiazide-like diuretic, an ACE inhibitor or ARB, and a dihydropyridine calcium-channel blocker. This is the architecture of section 40. Add spironolactone as the fourth drug (PATHWAY-2).
+- A history of pre-eclampsia, prior hypertensive pregnancy, albuminuria or left ventricular hypertrophy marks an early-intervention candidate even below conventional thresholds (sections 32, 35, 37). [Inference]
 - Avoid the two classic errors: waiting years at 135/85 because it is "only stage 1," and over-treating an unmeasured, white-coat reading.
 
-## 41. The Schedule
+## 47. The Schedule
 
 | Age | ApoB side | Pressure side |
 |---|---|---|
 | Late teens–20s | ApoB + lipid panel; Lp(a) once; family history of FH | Home monitoring week; salt substitute at home; begin isometric and aerobic habits |
-| 30s | Re-check apoB every 3–5 years, or yearly if treated; decide on a target | Annual home week; UACR if pressure ≥ 130/80, diabetes or obesity; consider ambulatory monitoring once |
+| 30s | Re-check apoB every 3–5 years, or yearly if treated; if above 60 mg/dL, decide with a clinician how and when to get below it (section 25) | Annual home week; UACR if pressure ≥ 130/80, diabetes or obesity; consider ambulatory monitoring once |
 | 40s–50s | ApoB yearly if treated; consider coronary calcium or CT angiography to calibrate intensity | Annual home week; aldosterone–renin screen if hypertensive; apnea assessment if indicated |
-| Women, at any age | Re-check apoB across the menopausal transition (section 4) | Carry pregnancy history (pre-eclampsia, gestational hypertension) into the adult record (section 25) |
+| Women, at any age | Re-check apoB across the menopausal transition (section 11) | Carry pregnancy history (pre-eclampsia, gestational hypertension) into the adult record (section 32) |
 
 The common thread is simple. Measure both curves early. Lower both curves early. Fix the metabolic engine that pushes both upward: muscle insulin sensitivity, ectopic fat, and the hepatic VLDL output they drive. Replace the salt. Do the holds. Then measure again.
 
@@ -947,7 +1135,7 @@ The particle builds the plaque. The pressure detonates it. Both are under our co
 
 ---
 
-## Coda for Specialists: Sixteen Propositions
+## Coda for Specialists: Nineteen Propositions
 
 For readers who skipped to the end, here are the claims of this essay that I expect to be least familiar to specialists on the *other* side of the field.
 
@@ -967,6 +1155,9 @@ For readers who skipped to the end, here are the claims of this essay that I exp
 14. Lowering LDL-C by 61% did not reduce arterial-wall inflammation in patients with high Lp(a); potent apo(a) lowering did quiet their monocytes.[^stiekema2019] [^stiekema2020]
 15. The HDL-function hypothesis has had its direct test: apoA-I infusion after infarction did not reduce 90-day events.[^gibson2024]
 16. Variants that increase intestinal sterol absorption raise coronary risk more per unit of non-HDL cholesterol than other lipid variants do.[^helgadottir2020]
+17. The standard American pathology textbook of 2026 makes endothelial injury step 1 of atherogenesis, and the word *retention* does not occur in its atherosclerosis section.[^robbins]
+18. The 2026 ACC/AHA guideline's first recommendation to measure apoB is Class 2a and applies only after LDL-C goals are met; measuring Lp(a) once is Class 1.[^acc2026]
+19. Among untreated American adults aged 30–59 whose LDL-C is below that guideline's 160 mg/dL counselling gate, about one in three has an apoB of 100 mg/dL or more.[^nhanes]
 
 ---
 
@@ -1016,7 +1207,7 @@ For readers who skipped to the end, here are the claims of this essay that I exp
 
 [^richardson2020]: Richardson TG, Sanderson E, Palmer TM, et al. Evaluating the relationship between circulating lipoprotein lipids and apolipoproteins with risk of coronary heart disease: a multivariable Mendelian randomisation analysis. *PLoS Med* 2020;17:e1003062.
 
-[^acc2026]: 2026 ACC/AHA multisociety guideline on the management of dyslipidemia (published spring 2026). Targets and apoB/Lp(a) recommendations as summarized in secondary reporting (Consultant360; Labcorp; Medical Dialogues); consult the primary document.
+[^acc2026]: Blumenthal RS, et al. 2026 ACC/AHA/AACVPR/ABC/ACPM/ADA/AGS/APhA/ASPC/NLA/PCNA Guideline on the Management of Dyslipidemia: a report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines. *J Am Coll Cardiol* 2026 (published online 13 March 2026). doi:10.1016/j.jacc.2025.11.016; simultaneously in *Circulation*, doi:10.1161/CIR.0000000000001423. Recommendation wording, class of recommendation and level of evidence (sections 3.3, 3.4, 4.2.3.7 and 4.2.9) as reproduced by Guideline Central; goal values from the guideline's Table 3 as reproduced in the University of Illinois Chicago Drug Information Group summary (May 2026). The publisher's full text was not accessible to me; quotations should be checked against it.
 
 [^cohen2006]: Cohen JC, Boerwinkle E, Mosley TH Jr, Hobbs HH. Sequence variations in PCSK9, low LDL, and protection against coronary heart disease. *N Engl J Med* 2006;354:1264–1272.
 
@@ -1338,7 +1529,7 @@ For readers who skipped to the end, here are the claims of this essay that I exp
 
 [^huge2026]: Interview with Hu Ge on the program《愈见》, broadcast 31 October 2026; reported by Guangming Online (gmw.cn, 1–2 November 2026) and Sina News (2 November 2026). Physicians quoted in the same coverage note that Suxiao Jiuxin pills are indicated for angina and are not a preventive or a treatment for myocardial infarction.
 
-[^robbins]: Mitchell RN, Halushka MK. Blood Vessels. In: Kumar V, Abbas AK, Aster JC, eds. *Robbins & Cotran Pathologic Basis of Disease*. 11th ed. Elsevier; 2026:447–480. Quotations from the "Pathogenesis" subsection of Atherosclerosis, pp. 451–452; the Lp(a) definition is on p. 451. The word counts reported in section 6 are mine, taken over the atherosclerosis section of the chapter (book pp. 449–465): "retention" zero, "transcytosis" zero, "proteoglycan" three times and only as a matrix component, "apolipoprotein B" once. Over the whole chapter, "retention" occurs exactly once, in the hypertension section, as fluid retention by the kidney. Compare Williams and Tabas (1995) and Skålén et al. (2002), cited in the same section.
+[^robbins]: Mitchell RN, Halushka MK. Blood Vessels. In: Kumar V, Abbas AK, Aster JC, eds. *Robbins & Cotran Pathologic Basis of Disease*. 11th ed. Elsevier; 2026:447–480. Quotations from the "Pathogenesis" subsection of Atherosclerosis, pp. 451–452; the Lp(a) definition is on p. 451. The word counts reported in section 13 are mine, taken over the atherosclerosis section of the chapter (book pp. 449–465): "retention" zero, "transcytosis" zero, "proteoglycan" three times and only as a matrix component, "apolipoprotein B" once. Over the whole chapter, "retention" occurs exactly once, in the hypertension section, as fluid retention by the kidney. Compare Williams and Tabas (1995) and Skålén et al. (2002), cited in the same section.
 
 [^robbinshtn]: Mitchell RN, Halushka MK. Blood Vessels. In: Kumar V, Abbas AK, Aster JC, eds. *Robbins & Cotran Pathologic Basis of Disease*. 11th ed. Elsevier; 2026. Quotations from "Hypertensive Vascular Disease," p. 445, including Table 11.2 ("Essential hypertension: accounts for 90%–95% of all cases").
 
@@ -1413,3 +1604,29 @@ For readers who skipped to the end, here are the claims of this essay that I exp
 [^appel1997]: Appel LJ, Moore TJ, Obarzanek E, et al. A clinical trial of the effects of dietary patterns on blood pressure (DASH). *N Engl J Med* 1997;336:1117–1124.
 
 [^roerecke2017]: Roerecke M, Kaczorowski J, Tobe SW, Gmel G, Hasan OSM, Rehm J. The effect of a reduction in alcohol consumption on blood pressure: a systematic review and meta-analysis. *Lancet Public Health* 2017;2:e108–e120.
+
+[^ross1976]: Ross R, Glomset JA. The pathogenesis of atherosclerosis (first of two parts). *N Engl J Med* 1976;295:369–377; (second of two parts) 1976;295:420–425.
+
+[^ross1999]: Ross R. Atherosclerosis — an inflammatory disease. *N Engl J Med* 1999;340:115–126.
+
+[^sniderman1980]: Sniderman A, Shapiro S, Marpole D, Skinner B, Teng B, Kwiterovich PO. Association of coronary atherosclerosis with hyperapobetalipoproteinemia [increased protein but normal cholesterol levels in human plasma low density (β) lipoproteins]. *Proc Natl Acad Sci U S A* 1980;77:604–608.
+
+[^morris2011]: Morris ZS, Wooding S, Grant J. The answer is 17 years, what is the question: understanding time lags in translational research. *J R Soc Med* 2011;104:510–520.
+
+[^friedewald1972]: Friedewald WT, Levy RI, Fredrickson DS. Estimation of the concentration of low-density lipoprotein cholesterol in plasma, without use of the preparative ultracentrifuge. *Clin Chem* 1972;18:499–502.
+
+[^murdock2024]: Murdock DJ, Moll K, Sanchez RJ, et al. Low prevalence of testing for apolipoprotein B and lipoprotein (a) in the real world. *Am J Prev Cardiol* 2024;19:100721. Nationally standardized estimates from five U.S. claims databases for 2019.
+
+[^gould2021]: Cannon CP, de Lemos JA, Rosenson RS, et al. Use of lipid-lowering therapies over 2 years in GOULD, a registry of patients with atherosclerotic cardiovascular disease in the US. *JAMA Cardiol* 2021;6:1060–1068.
+
+[^nhanes]: Author's analysis of the U.S. National Health and Nutrition Examination Survey (NHANES), 2013–2014 and 2015–2016 cycles. Adults aged 20 and over in the fasting subsample with a measured apoB (LBXAPB), excluding those answering yes to "now taking prescribed medicine" for cholesterol (BPQ100D); survey-weighted with WTSAF2YR/2 (n = 3,809; n = 2,158 aged 30–59). Results: median apoB 91 mg/dL; 8.6% below 60 mg/dL (13.6% at ages 20–39, 4.9% at 40–59); 8.8% at or above 130 mg/dL. Among those aged 30–59 with LDL-C below 160 mg/dL, 33% had apoB ≥ 100 mg/dL; at LDL-C 150–159 mg/dL, median apoB 117 mg/dL (10th–90th percentile 105–136). LDL-C is the Friedewald value reported by NHANES. Point estimates only; no variance estimation for the complex design was attempted, so treat the decimals as approximate.
+
+[^sayed2024]: Sayed A, Peterson ED, Virani SS, Sniderman AD, Navar AM. Individual variation in the distribution of apolipoprotein B levels across the spectrum of LDL-C or non-HDL-C levels. *JAMA Cardiol* 2024;9:741–747.
+
+[^donega2006]: Donegá S, Oba J, Maranhão RC. Concentration of serum lipids and apolipoprotein B in newborns. *Arq Bras Cardiol* 2006;86:419–424. Full-term newborns: apoB 28 ± 7 mg/dL, LDL-C 20 ± 10 mg/dL.
+
+[^ebbinghaus]: Giugliano RP, Mach F, Zavitz K, et al. Cognitive function in a randomized trial of evolocumab. *N Engl J Med* 2017;377:633–643.
+
+[^braunwald13]: Bonow RO, Mann DL, Tomaselli GF, Bhatt DL, Solomon SD, Libby P, eds. *Braunwald's Heart Disease: A Textbook of Cardiovascular Medicine*. 13th ed. Elsevier; 2026 (published December 2025). Part IV, Preventive Cardiology: Libby P, chapter 22, "The Vascular Biology of Atherosclerosis," p. 425; Mora S, Libby P, Ridker PM, chapter 23, "Primary Prevention of Cardiovascular Disease"; Tokgözoğlu L, Libby P, chapter 25, "Lipoprotein Disorders and Cardiovascular Disease." Chapter numbers and authors from the printed table of contents (two-volume edition).
+
+[^robinson2018]: Robinson JG, Williams KJ, Gidding S, Borén J, Tabas I, Fisher EA, Packard C, Pencina M, Fayad ZA, Mani V, Rye KA, Nordestgaard BG, Tybjærg-Hansen A, Douglas PS, Nicholls SJ, Pagidipati N, Sniderman A. Eradicating the burden of atherosclerotic cardiovascular disease by lowering apolipoprotein B lipoproteins earlier in life. *J Am Heart Assoc* 2018;7:e009778.
