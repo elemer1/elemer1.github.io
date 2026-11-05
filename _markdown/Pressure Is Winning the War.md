@@ -13,6 +13,24 @@ mermaid: true
 
 ---
 
+## Author's Note
+
+I started learning lipidology from scratch in January 2026. This essay is what ten months of reading the primary literature produced. It does two things. It gives a systematic account of the two causal frontiers of cardiovascular prevention, apoB and blood pressure. And it argues that, although isometric exercise training has no cardiovascular outcome trial, normotensive adults should take it as they would an antihypertensive drug, alongside apoB lowering.
+
+Cardiovascular disease is still the leading cause of death in the world, with cancer second.[^who] On 31 October 2026, the actor Hu Ge said in a broadcast interview that two of his friends had died of myocardial infarction within two months of each other, one in his fifties and one his own age. He added that, after heart symptoms of his own, he now carries Suxiao Jiuxin pills with him.[^huge2026] That detail captures the problem. Suxiao Jiuxin is a traditional Chinese preparation used for angina attacks. It is not shown to prevent infarction, and it is not a treatment for one. A suspected heart attack requires emergency services, not a pocket remedy. More fundamentally, a rescue pill addresses the last minute of a disease that has been accumulating for thirty years. This essay is about those thirty years.
+
+Two things surprised me as an outsider.
+
+The first was **teaching**. The standard pathology text on which most medical students learn, Robbins, still organizes atherogenesis around the *response-to-injury* hypothesis: chronic endothelial injury comes first, and lipoprotein accumulation is one of its consequences.[^robbins] The experimental record reverses that order. Retention of apoB particles in the intima is the necessary initiating event, and abolishing it at an unchanged plasma LDL largely prevents disease (section 1). Endothelial biology still matters, because it determines *where* particles enter and are retained. But "injury" is not the first cause. In my reading, the clear exception among major references is *Braunwald's Heart Disease*, whose atherosclerosis chapters, written by Peter Libby, are built around lipoprotein entry, retention and modification.
+
+The second was **practice**. In spring 2026, the ACC/AHA dyslipidemia guideline finally recommended apoB measurement, but only in selected patients, and as a supplement once LDL-C and non-HDL-C goals have been met. The primary targets remain cholesterol-mass measures.[^acc2026] European guidelines had already listed apoB targets in 2019.[^esc2019] The particle count that the genetics and trials identify as the causal quantity therefore remains, in the largest guideline system in the world, a second-line test.
+
+I do not think either lag reflects a failure of intelligence. Section 24 argues they are structural: diagnosis by threshold, risk measured over ten years, and textbooks that change more slowly than the literature they summarize.
+
+No one can promise that cardiovascular disease can be *completely* avoided. The claim of this essay is narrower and, I think, defensible. Most of it is avoidable, and the levers that matter (apoB, pressure, and the metabolic engine that drives both) are measurable and modifiable decades before the first symptom.
+
+---
+
 **Three numbers of the same size.** In October 2024, a randomized crossover trial showed that letting a patient's arm hang unsupported during an automated reading raises the measured systolic pressure by 6.5 mmHg.[^liu2024] In May 2026, the FDA approved the first aldosterone-synthase inhibitor on the strength of a placebo-adjusted systolic reduction of 8.7–9.8 mmHg.[^baxhtn] In 2023, a network meta-analysis of 270 randomized trials estimated that isometric exercise training lowers resting systolic pressure by about 8.2 mmHg.[^edwards2023] The three effects are about the same size. The middle one got a press release and a new drug class. The first is a routine, uncorrected error in clinical measurement. Almost nobody in the prevention-minded public does the third.
 
 This essay explains why that pattern is not an accident, and why it matters more than almost anything else in cardiovascular prevention.
@@ -940,3 +958,9 @@ For readers who skipped to the end, here are the claims of this essay that I exp
 [^muller1985]: Muller JE, Stone PH, Turi ZG, et al. Circadian variation in the frequency of onset of acute myocardial infarction. *N Engl J Med* 1985;313:1315–1322.
 
 [^collins1990]: Collins R, Peto R, MacMahon S, et al. Blood pressure, stroke, and coronary heart disease. Part 2, Short-term reductions in blood pressure: overview of randomised drug trials in their epidemiological context. *Lancet* 1990;335:827–838.
+
+[^who]: World Health Organization. Cardiovascular diseases fact sheet (an estimated 17.9 million deaths in 2019) and Cancer fact sheet (nearly 10 million deaths in 2020).
+
+[^huge2026]: Interview with Hu Ge on the program《愈见》, broadcast 31 October 2026; reported by Guangming Online (gmw.cn, 1–2 November 2026) and Sina News (2 November 2026). Physicians quoted in the same coverage note that Suxiao Jiuxin pills are indicated for angina and are not a preventive or a treatment for myocardial infarction.
+
+[^robbins]: Kumar V, Abbas AK, Aster JC, eds. *Robbins & Cotran Pathologic Basis of Disease*, chapter "Blood Vessels" (11th ed.), which presents atherogenesis under the response-to-injury hypothesis with chronic endothelial injury as the first step. Compare Williams and Tabas (1995) and Skålén et al. (2002), cited in section 1.
