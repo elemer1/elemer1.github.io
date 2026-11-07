@@ -850,7 +850,9 @@ $$
 \end{aligned}
 $$
 
-This is not a fitted model. The first two terms state what the genetic evidence already implies: risk accumulates as the area under two curves that start in adolescence. The third term is my inference from the mechanism in this section, and it is the term that matters practically. It says that lowering pressure in someone with high apoB, or apoB in someone with high pressure, is worth more than either reduction alone, and that the value of a millimetre of mercury depends on how many particles are in circulation while it is applied.
+Sections 19 and 33 suggest one refinement: if a plaque retains calcium after lipid leaves and an artery retains the damage from fractured elastin, then at a fixed endpoint *T* an exposure at 25 may carry more weight than the same exposure at 55, a hypothesis one could test by replacing *dt* with *w(t) dt*, with the weight declining with age at exposure.
+
+The equation is a heuristic; neither the shape of that weight nor the size of the interaction has been estimated here. The first two terms state what the genetic evidence already implies: risk accumulates as the area under two curves that start in adolescence. The third term is my inference from the mechanism in this section, and it is the term that matters practically. It says that lowering pressure in someone with high apoB, or apoB in someone with high pressure, is worth more than either reduction alone, and that the value of a millimetre of mercury depends on how many particles are in circulation while it is applied.
 
 Two things follow that the guidelines do not say. The first is that pressure-lowering in a person with no hypertension is not treatment of a disease they do not have. It is a reduction in the rate at which their particles are converted into plaque. The second is that the benefit of removing a millimetre is largest where the integral has the most years left to run, which is to say in the young, who are precisely the group every threshold in section 4 excludes. The genetic study supplies the joint clinical association. The binding, strain and cap studies supply the experiments worth doing next. Section 42 asks what a person should do in the meantime.
 
@@ -1016,7 +1018,28 @@ What would make this wrong is worth stating as falsifiable checkpoints, because 
 
 ## 43. A Protocol, and the N-of-1 That Should Follow
 
-I have not yet run this on myself, so I give the protocol and not results. The value lies in the measurement discipline more than in the holds.
+On January 22, my apoB was 80 mg/dL. The lab marked it in range. Six other numbers on the same lipid panel caught my eye.
+
+| January 22, 2026 | My result | Lab flag |
+|---|---:|---|
+| LDL particle number | 1,572 nmol/L | High |
+| Small LDL | 252 nmol/L | High |
+| Medium LDL | 353 nmol/L | High |
+| LDL peak size | 220.1 Å | Low |
+| Large HDL | 5,930 nmol/L | Low |
+| Total cholesterol / HDL-C | 3.7 | High |
+
+For follow-up I chose apoB. Each atherogenic particle carries one molecule of apoB, so the same measurement answers the same question at each draw: how many of those particles are circulating?
+
+| ApoB | January 22, 2026 | June 2026 | Change |
+|---|---:|---:|---:|
+| My result | 80 mg/dL | 65 mg/dL | −15 mg/dL (−18.75%) |
+
+My N-of-1 is ongoing. The next draw will tell me whether 65 holds. Two draws establish the size of the fall; they cannot tell me which change produced it.
+
+### The eight-week isometric protocol
+
+For an intervention, the harder question is whether the effect appears when training starts, fades when it stops and returns when it resumes.
 
 Measurement comes first, consistent with section 38: a validated upper-arm cuff of the correct size; seated with the back supported, feet flat and the arm *supported at heart level on a desk*; five minutes of quiet rest; no caffeine, exercise or nicotine in the preceding thirty minutes; two readings one minute apart, morning (before medication or breakfast) and evening, each day of a measurement week. Discard the first day and average the rest.
 
@@ -1097,8 +1120,8 @@ Ezetimibe can add LDL-C lowering when a statin alone leaves a high-risk patient 
 
 - Guideline targets depend on risk category: LDL-C < 100, < 70 or < 55 mg/dL in the 2026 ACC/AHA guideline;[^acc2026] apoB < 100, < 80 or < 65 mg/dL in ESC 2019.[^esc2019]
 - **My own position \[Inference\]: apoB below 60 mg/dL (0.60 g/L)** for an adult choosing aggressive primary prevention, and around 50 mg/dL if Lp(a) is high or plaque has been imaged. Section 25 gives the eight reasons for that number: its unit equivalents, where it sits in the population, its physiological reference, the trial levels, the integral, safety, Lp(a) and measurement. Because the benefit is an integral (section 20), the start date matters as much as the target. In the apoB-years arithmetic of section 25, starting at 45 instead of 35 forfeits about 40% of the achievable reduction in exposure between ages 20 and 60.
-- **Getting there.** Moving from apoB 90 to 60 mg/dL requires one-third lowering, and moving from 120 to 60 requires one-half. A clinician deciding whether to start or add medication weighs absolute risk, family history, documented plaque, adverse effects, cost and the patient's preferences. Missing my proposed target alone does not establish an indication for a PCSK9 inhibitor.
-- **Timing.** Where diet does not reach the target, which is common, discussing pharmacotherapy with a clinician in one's thirties or forties is consistent with the cumulative-exposure evidence, the FH childhood-treatment data (section 15) and VESALIUS-CV. No trial has tested this exact strategy in low-risk young adults, and the 2026 ACC/AHA guideline would not recommend it for most of them (section 4). That disagreement is the subject of Part I.
+- **Getting there.** Moving from apoB 90 to 60 mg/dL requires one-third lowering, and moving from 120 to 60 requires one-half. The gap tells us how much lowering it would take. Absolute risk tells us what that reduction might buy. Documented plaque or premature disease in the family can change the arithmetic; adverse effects, cost and years on treatment count on the other side.
+- **Timing.** I would make the treatment decision in the thirties if apoB stays high after a dietary change. Waiting until 50 adds another decade or two at the measured concentration. Childhood treatment in FH (section 15) and VESALIUS-CV inform that judgment. Neither tested this strategy in low-risk thirty-year-olds. Here my timetable departs from the guideline (section 4).
 - **Floor.** No outcome evidence supports driving apoB below about 20 mg/dL.
 - **Lp(a).** If Lp(a) is high, there is no approved Lp(a)-specific drug, and the first outcome trial failed (section 19). The rational response is to lower apoB further and to control every other risk factor, pressure above all.
 
@@ -1136,9 +1159,9 @@ Most errors in hypertension care begin at the cuff (section 38).
 
 The guideline supplies a training dose. My proposal adds an appointment with the cuff.[^aha2025]
 
-- **Who might use it.** Someone without hypertension who wants to test the effect of structured isometric training can use the home protocol in section 43. The short trials closest to this population and their entry pressures are in section 42. Someone with low readings, dizziness or fainting has a different clinical question.
+- **Who the protocol fits.** Section 42 gives the entry pressures in the trials. For a reader without hypertension, section 43 asks a narrower question: does the same dose produce a repeatable change at home? Low readings with dizziness or fainting call for assessment before attempting to lower pressure further.
 - **Handgrip.** Four two-minute contractions at 30–40% of measured maximal grip, one minute of rest between contractions, three sessions weekly. Use a device that can show the target force. For a wall-squat alternative see Figure 9. Keep breathing during holds. People with uncontrolled hypertension, unstable cardiovascular disease, a recent cardiac event, or an aortic condition should discuss the exercise and intensity with their clinician before starting.
-- **Follow-up.** Use two weeks of baseline readings, repeat during weeks four and eight, and compare averages under similar conditions. A supervised exercise trial can establish a short-term group effect. A home record tells you how your own pressures changed and whether the training fits your life.
+- **Follow-up.** Compare the two-week baseline with weeks four and eight under the same conditions. If the average falls, the washout tests whether it rises again.
 - **Alongside apoB.** Persistently high apoB and persistently high pressure each merit attention. Genetic studies support addressing both across the life course. How much pressure alters particle retention in living human arteries at a given apoB remains a separate mechanistic question (section 34).
 
 ### Step 4: When pressure stays high, treat it, and treat it early
@@ -1149,11 +1172,13 @@ The guideline supplies a training dose. My proposal adds an appointment with the
 
 ## 47. The Schedule
 
+This is the schedule I would use for primary prevention. Sections 45 and 46 give the guideline thresholds alongside my targets.
+
 | Age | ApoB side | Pressure side |
 |---|---|---|
-| Young adulthood | Review family history and lipid panel. Discuss a baseline apoB, particularly if triglycerides are elevated or the family history is concerning. Measure Lp(a) once in adulthood. | Learn to take a reliable home reading. Use a home week if clinic readings are elevated or inconsistent. |
-| 30s | Revisit persistent exposure alongside 10- and 30-year risk. Discuss what an apoB target near 60 would require and what absolute benefit is plausible for this person (section 25). | If trying isometric training, record a baseline and repeat under the same conditions (section 43). Symptoms or already low pressures change the decision. |
-| 40s–50s | Reassess after changes to lipid treatment. A coronary calcium score can refine a genuinely uncertain primary-prevention decision in selected adults (section 22). | Evaluate a persistently high average and look for organ involvement or a treatable cause (sections 31, 37 and 46). |
+| Young adulthood | Record the family history. Measure apoB alongside the first adult lipid panel. Measure Lp(a) once in adulthood. | Learn to take a reliable home reading. Use a home week if clinic readings are elevated or inconsistent. |
+| 30s | Compare the latest apoB with the first. Calculate the reduction needed to reach my target near 60 mg/dL, then weigh the expected absolute benefit against the cost of treatment (section 25). | For an isometric trial, compare the baseline with week eight under the same conditions (section 43). |
+| 40s–50s | Reassess after changes to lipid treatment. Use a coronary calcium score when the result would change the treatment decision (section 22). | Evaluate a persistently high average and look for organ involvement or a treatable cause (sections 31, 37 and 46). |
 | Pregnancy history and menopause | Revisit lipids across the menopausal transition and medication plans around pregnancy (sections 11 and 45). | Record gestational hypertension or pre-eclampsia and carry that history into subsequent blood-pressure assessment (section 32). |
 
 Return to the pills in Hu Ge's pocket. A heart attack makes a date on a calendar. The years in which particles were retained and the artery lived under pressure rarely leave a date anyone remembers. Years before the emergency there is still something concrete to ask for: a particle count, a reliable pressure and a decision about what to do with the next reading.
