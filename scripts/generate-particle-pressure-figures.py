@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the figures for "The Particle Builds It. The Pressure Detonates It."""
+"""Generate the figures for "The Particle and the Pressure"""
 
 from __future__ import annotations
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Longevity-podcast show-notes audit cited in "The Particle Builds It. The Pressure Detonates It."
+"""Longevity-podcast show-notes audit cited in "The Particle and the Pressure"
 
 Downloads the public RSS feeds of ten prevention/longevity podcasts (feed URLs from the
 Apple Podcasts directory) and counts, per podcast, the episodes whose title or show notes

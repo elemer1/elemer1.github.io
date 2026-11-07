@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Huberman Lab transcript audit cited in "The Particle Builds It. The Pressure Detonates It."
+"""Huberman Lab transcript audit cited in "The Particle and the Pressure"
 
 Reads the episode URLs from https://www.hubermanlab.com/sitemap.xml, downloads each episode
 page (which carries the full transcript), and reports how many episodes mention blood

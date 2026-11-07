@@ -1,13 +1,11 @@
 ---
-title: "The Particle Builds It. The Pressure Detonates It."
+title: "The Particle and the Pressure"
 permalink: /the-particle-and-the-pressure/
 listed: true
 lang: en
 math: true
 mermaid: true
 ---
-
-# The Particle Builds It. The Pressure Detonates It.
 
 *ApoB, blood pressure, and how to prevent the thirty-year disease that medicine still meets in its last minute*
 

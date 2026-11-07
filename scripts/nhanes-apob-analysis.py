@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""NHANES apoB analysis behind Figure 8 of "The Particle Builds It. The Pressure Detonates It."
+"""NHANES apoB analysis behind Figure 4 of "The Particle and the Pressure"
 
 Downloads the 2013-2014 and 2015-2016 NHANES apoB, triglyceride/LDL, demographic
 and blood-pressure/cholesterol questionnaire files from the CDC, restricts to
