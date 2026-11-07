@@ -67,6 +67,9 @@ def _save(fig: plt.Figure, name: str, preview_dir: Path | None) -> None:
         bbox_inches="tight",
         metadata={"Creator": "scripts/generate-particle-pressure-figures.py", "Date": None},
     )
+    # Keep the generated path data free of trailing whitespace in source control.
+    svg_path = OUTPUT_DIR / f"{name}.svg"
+    svg_path.write_text("\n".join(line.rstrip() for line in svg_path.read_text().splitlines()) + "\n")
     if preview_dir is not None:
         preview_dir.mkdir(parents=True, exist_ok=True)
         fig.savefig(preview_dir / f"{name}.png", format="png", dpi=200,
@@ -116,7 +119,7 @@ def figure_chains(preview_dir: Path | None) -> None:
     _figure_heading(
         fig,
         "Two causal chains",
-        "The same disease, ordered two ways. What is step 3 in the pathology textbook is step 1 in the experimental record.",
+        "Two accounts of the early lesion. The upper row condenses the textbook sequence; the lower row follows the particle.",
     )
     ax = _blank_axes(fig, (0.045, 0.045, 0.915, 0.845))
 
@@ -126,10 +129,10 @@ def figure_chains(preview_dir: Path | None) -> None:
     xs = [i * (w + gap) for i in range(n)]
 
     injury = [
-        "Endothelial\ninjury and\ndysfunction",
-        "Higher permeability,\nleukocyte\nadhesion",
+        "Endothelial injury\nand dysfunction:\npermeability, adhesion",
         "Lipoprotein\naccumulation\n(LDL, oxidized)",
         "Monocytes enter,\nbecome macrophages,\nthen foam cells",
+        "Platelet\nadhesion",
         "SMC migration,\nproliferation,\nmatrix",
         "Plaque",
     ]
@@ -147,7 +150,7 @@ def figure_chains(preview_dir: Path | None) -> None:
     ax.text(0, y_top + bh + 9.4, "RESPONSE TO INJURY", ha="left", va="bottom",
             fontsize=9.6, fontweight="bold", color=RED)
     ax.text(0, y_top + bh + 4.2,
-            "Ross, 1976 and 1986. The framework of Robbins & Cotran, 11th ed. (2026), pp. 451–452:\n"
+            "Ross and Glomset, 1976. Robbins, Cotran & Kumar, 11th ed., pp. 451–452.\n"
             "“EC injury is the cornerstone of the response-to-injury hypothesis.”",
             ha="left", va="bottom", fontsize=8.2, color=MUTED, linespacing=1.4)
 
@@ -188,15 +191,15 @@ def figure_chains(preview_dir: Path | None) -> None:
     xr = xs[3] + w / 2
     _arrow(ax, xr, y_bot + bh + 8.6, xr, y_bot + bh + 1.0, color=BLUE, lw=1.2)
     ax.text(xr, y_bot + bh + 9.4,
-            "Rate-limiting step. Disable apoB’s proteoglycan binding and mice\n"
-            "develop far less atherosclerosis at the same plasma LDL (Skålén 2002).",
+            "In mice, altering the particle’s binding to proteoglycans\n"
+            "substantially reduced atherosclerosis (Skålén et al., 2002).",
             ha="center", va="bottom", fontsize=8.2, color=BLUE, linespacing=1.4)
 
-    # the demotion
-    _arrow(ax, xs[0] + w / 2, y_bot + bh + 0.6, xs[2] + w / 2, y_top - 0.6,
+    # Compare the location of lipoproteins in each account.
+    _arrow(ax, xs[1] + w / 2, y_bot + bh + 0.6, xs[1] + w / 2, y_top - 0.6,
            color=MUTED, lw=1.0, ls=(0, (3.2, 2.4)), style="-|>")
     ax.text(xs[1] + w / 2 + 1.0, (y_top + y_bot + bh) / 2 - 1.0,
-            "the same event:\nstep 1, or step 3",
+            "lipoproteins in\nthe arterial wall",
             ha="center", va="center", fontsize=8.0, color=MUTED,
             linespacing=1.4,
             bbox=dict(boxstyle="round,pad=0.30", facecolor="white",
@@ -213,7 +216,7 @@ def figure_same_size(preview_dir: Path | None) -> None:
         ("Arm supported on the lap\ninstead of a desk", 3.9, None, "error"),
         ("Arm hanging unsupported\nat the side", 6.5, None, "error"),
         ("Potassium-enriched salt\nsubstitute (DECIDE-Salt)", 7.1, None, "nondrug"),
-        ("Isometric exercise training\n(270-trial meta-analysis)", 8.2, None, "nondrug"),
+        ("Isometric training\n(19 trials in the review)", 8.2, None, "nondrug"),
         ("Baxdrostat, first aldosterone-\nsynthase inhibitor", 8.7, 9.8, "drug"),
     ]
     style = {
@@ -226,7 +229,7 @@ def figure_same_size(preview_dir: Path | None) -> None:
     _figure_heading(
         fig,
         "Five numbers of the same size",
-        "Effect on systolic blood pressure, in mmHg. Two are measurement errors, one is a new drug class, two are free.",
+        "Absolute differences in systolic readings (mmHg). Each comparison comes from a different study.",
     )
     ax = fig.add_axes((0.30, 0.135, 0.655, 0.655))
 
@@ -246,7 +249,7 @@ def figure_same_size(preview_dir: Path | None) -> None:
 
     ax.axvline(5.0, color=INK, linewidth=0.9, linestyle=(0, (3.2, 2.4)), zorder=2)
     ax.text(5.18, 5.62,
-            "5 mmHg ≈ 10% fewer major cardiovascular events",
+            "5 mmHg drug-trial reference",
             ha="left", va="top", fontsize=8.2, color=INK, zorder=4)
     ax.text(5.18, 5.17,
             "BPLTTC, 48 trials, 344,716 participants",
@@ -256,7 +259,7 @@ def figure_same_size(preview_dir: Path | None) -> None:
     ax.set_yticklabels([r[0] for r in rows], fontsize=8.6, color=INK, linespacing=1.4)
     ax.set_xlim(0, 11.4)
     ax.set_ylim(-0.62, len(rows) + 0.75)
-    ax.set_xlabel("Systolic effect (mmHg)", fontsize=9, color=INK)
+    ax.set_xlabel("Magnitude of systolic difference (mmHg)", fontsize=9, color=INK)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.spines["left"].set_visible(False)
@@ -267,8 +270,8 @@ def figure_same_size(preview_dir: Path | None) -> None:
     ax.set_axisbelow(True)
 
     fig.text(0.30, 0.005,
-             "Red: uncorrected error in routine clinical measurement.   "
-             "Solid blue: FDA-approved drug.   Outlined blue: no drug, no cost.",
+             "Red: upward reading bias.   "
+             "Solid blue: drug effect.   Outlined blue: exercise or salt substitution.",
              ha="left", va="bottom", fontsize=7.8, color=MUTED)
 
     _save(fig, "figure-1-four-numbers-of-the-same-size", preview_dir)
@@ -282,7 +285,7 @@ def figure_four_routes(preview_dir: Path | None) -> None:
     _figure_heading(
         fig,
         "Where pressure acts on the plaque",
-        "Four routes, four stages of one lesion’s life. Three of them build it; the fourth detonates it.",
+        "Four routes, four stages of one lesion’s life. From delivery to possible cap rupture.",
     )
     ax = _blank_axes(fig, (0.045, 0.045, 0.915, 0.845))
 
@@ -291,13 +294,13 @@ def figure_four_routes(preview_dir: Path | None) -> None:
          "Transmural pressure drives water\nfiltration through the wall, carrying\nLDL into the intima by convection\nas well as diffusion.",
          "Tarbell 2003", BLUE),
         ("RETENTION", "Route 2 · Strain",
-         "Cyclic strain on smooth-muscle cells\nraises versican ×3.2 and biglycan ×2.0\nand drops decorin to ⅓: more apoB\nretained per particle delivered.",
+         "Cyclic strain on smooth-muscle cells\nraises versican ×3.2 and biglycan ×2.0\nand drops decorin to ⅓. The cells\nmake a different binding matrix.",
          "Lee, Libby, Wight 2001", BLUE),
         ("REMODELING", "Route 3 · Wall stress",
          "Laplace stress (pressure × radius ÷\nthickness) drives medial hypertrophy,\nelastin fatigue and collagen — the\nstiffening that raises pressure again.",
          "see section 33", BLUE),
         ("RUPTURE", "Route 4 · Cap load",
-         "Cap stress rises with luminal pressure\nand concentrates at plaque shoulders;\nruptured caps are thinner than ~65 μm.\nPulse pressure adds the fatigue.",
+         "Cap stress rises with luminal pressure\nand concentrates at plaque shoulders;\nmany ruptured caps were very thin\nin coronary autopsy studies.",
          "Richardson 1989; Burke 1997", RED),
     ]
 
@@ -342,37 +345,37 @@ def figure_four_routes(preview_dir: Path | None) -> None:
     ax.plot([0, split], [24.0, 24.0], color=BLUE, lw=2.4, solid_capstyle="butt")
     ax.plot([split, 100], [24.0, 24.0], color=RED, lw=2.4, solid_capstyle="butt")
     ax.text(split / 2, 21.0,
-            "Accumulated. Five years of treatment recovers only about half the\n"
+            "Coronary events. The trials achieved about half the\n"
             "predicted coronary benefit: 14% fewer coronary events.",
             ha="center", va="top", fontsize=8.3, color=BLUE, linespacing=1.5)
     ax.text(100, 21.0,
-            "Immediate. The same five years delivers\n"
-            "essentially all of the predicted stroke\n"
-            "benefit: 42% fewer strokes.",
+            "Stroke. The observed reduction approached\n"
+            "the epidemiological prediction:\n"
+            "42% fewer strokes.",
             ha="right", va="top", fontsize=8.3, color=RED, linespacing=1.5)
     ax.text(50, 2.0,
-            "The asymmetry is the signature of the mechanism: the 1990 overview of antihypertensive trials (Collins et al.) "
-            "cashed in all of pressure’s\nstroke benefit in five years and half of its coronary benefit, because routes 1–3 are "
-            "written into thirty years of accumulated plaque.",
+            "Collins et al. (1990) reported different magnitudes of clinical benefit for stroke and coronary disease. "
+            "\nThe trial comparison did not measure "
+            "particle retention or local cap stress.",
             ha="center", va="bottom", fontsize=8.2, color=MUTED, linespacing=1.5)
 
-    _save(fig, "figure-11-where-pressure-acts", preview_dir)
+    _save(fig, "figure-15-where-pressure-acts", preview_dir)
 
 
 # --------------------------------------------------------------------------
 # Figure 2 — two clocks: evidence versus institutions
 # --------------------------------------------------------------------------
 def figure_two_clocks(preview_dir: Path | None) -> None:
-    fig = plt.figure(figsize=(11.2, 6.9))
+    fig = plt.figure(figsize=(11.2, 7.6))
     _figure_heading(
         fig,
         "Two clocks",
-        "What the evidence established (above the line) and what the institutions did about it (below). Brackets measure the lag.",
+        "Selected experiments, textbook editions and guideline decisions, plotted by year.",
     )
     ax = fig.add_axes((0.035, 0.03, 0.93, 0.84))
     x0, x1 = 1970, 2032
     ax.set_xlim(x0, x1)
-    ax.set_ylim(-98, 96)
+    ax.set_ylim(-124, 96)
     ax.set_axis_off()
 
     ax.plot([x0 + 1, x1 - 0.5], [0, 0], color=INK, lw=1.1, zorder=2)
@@ -385,12 +388,12 @@ def figure_two_clocks(preview_dir: Path | None) -> None:
         (1976, 34, "1976  Ross & Glomset:\nresponse to injury"),
         (1980, 12, "1980  Sniderman: normal\nLDL-C, high apoB"),
         (1995, 56, "1995  Williams & Tabas:\nresponse to retention"),
-        (2002, 34, "2002  Skålén: retention\nis rate-limiting"),
+        (2002, 34, "2002  Skålén: impaired LDL binding,\nless plaque in mice"),
         (2006, 12, "2006  PCSK9 carriers:\n88% fewer events"),
         (2017, 78, "2017  EAS consensus:\nLDL causes ASCVD"),
         (2020, 56, "2020  Multivariable MR:\napoB carries the risk"),
-        (2021, 34, "2021  BPLTTC: no BP\nthreshold below 120"),
-        (2023, 12, "2023  Isometric:\n−8 mmHg, 270 RCTs"),
+        (2021, 34, "2021  BPLTTC: drug benefit\nacross baseline BP groups"),
+        (2023, 12, "2023  Isometric trials:\n−8 mmHg resting SBP"),
     ]
     for yr, h, label in evidence:
         color = MUTED if yr == 1976 else BLUE
@@ -400,10 +403,11 @@ def figure_two_clocks(preview_dir: Path | None) -> None:
                 color=INK if yr != 1976 else MUTED, linespacing=1.3)
 
     inst = [
-        (2018, -9, "2018  ACC/AHA drops LDL-C targets;\napoB a risk enhancer at ≥ 130"),
-        (2025, -21, "2025  AHA/ACC lists isometric handgrip,\nfor people already hypertensive"),
-        (2026, -33, "2026  Robbins 11e: injury is step 1;\n“retention” appears zero times"),
-        (2026.35, -45, "2026  ACC/AHA: apoB Class 2a,\nonly after LDL-C goals are met"),
+        (2017, -9, "2017  ACC/AHA prints a handgrip dose\nand a 4 mmHg estimate under Normotension"),
+        (2018, -22, "2018  ACC/AHA lists apoB ≥130 mg/dL\nas a risk enhancer"),
+        (2025, -35, "2025  AHA/ACC repeats the handgrip dose;\nseparate estimates with/without hypertension"),
+        (2025, -48, "2025  Robbins 11e: injury and dysfunction\nopen the printed sequence"),
+        (2026.35, -61, "2026  ACC/AHA: selective apoB testing\nbefore and during treatment"),
     ]
     for yr, h, label in inst:
         ax.plot([yr, yr], [0, h + 1.0], color=RED, lw=0.8, zorder=1)
@@ -417,17 +421,16 @@ def figure_two_clocks(preview_dir: Path | None) -> None:
         ax.text(a + 0.4, y - 1.6, text, ha="left", va="top", fontsize=8.2,
                 color=color, fontweight="bold")
 
-    bracket(1976, 2026, -60, "50 years: the 1976 frame is still the one taught", MUTED)
-    bracket(1980, 2026, -71, "46 years: apoB, from first clinical signal to first ACC/AHA recommendation", RED)
-    bracket(1995, 2026, -82, "31 years: retention, from hypothesis to a textbook without the word", RED)
-    ax.add_patch(FancyBboxPatch((1976, -96), 17, 4.2,
-                                boxstyle="round,pad=0,rounding_size=0.6",
-                                facecolor=LIGHT, edgecolor=GRID, lw=0.8))
-    ax.text(1976 + 8.5, -93.9, "17 years: average lag", ha="center",
-            va="center", fontsize=7.6, color=MUTED)
-    ax.text(1993.6, -93.9, "research-to-practice average for scale (Morris, Wooding & Grant 2011)",
-            ha="left", va="center", fontsize=7.2, color=MUTED, style="italic")
+    bracket(1976, 2025, -76, "49 years: injury hypothesis to the publication of Robbins 11e", MUTED)
+    bracket(1980, 2026, -87, "46 years: a clinical discordance report to the dedicated ACC/AHA measurement section", RED)
+    bracket(1995, 2025, -98, "30 years: retention hypothesis to the publication of Robbins 11e", RED)
+    bracket(2017, 2026, -109, "9 years: a handgrip dose in print, still filed as an adjunct for raised pressure", RED)
 
+    # Medicine's own average research-to-practice lag, for scale.
+    ax.plot([1976, 1993], [-119.5, -119.5], color=MUTED, lw=5.0, alpha=0.30,
+            solid_capstyle="butt", zorder=1)
+    ax.text(1993.6, -119.5, "17 years: the average research-to-practice lag (Morris 2011)",
+            ha="left", va="center", fontsize=8.0, color=MUTED)
     ax.text(x0 + 1, 92, "EVIDENCE", ha="left", va="top", fontsize=8.6,
             color=BLUE, fontweight="bold")
     ax.text(x0 + 1, -9, "INSTITUTIONS", ha="left", va="top", fontsize=8.6,
@@ -448,29 +451,28 @@ COR_STYLE = {
 def figure_guideline_card(preview_dir: Path | None) -> None:
     rows = [
         ("2a", "B-NR", "3.3 · 1",
-         "In adults on lipid-lowering therapy (particularly with ASCVD, CKM syndrome, type 2 diabetes\n"
-         "or elevated TG), “measurement of apoB is reasonable to guide decisions regarding further\n"
-         "therapeutic intensification” — once LDL-C and/or non-HDL-C goals have been achieved."),
+         "On lipid therapy: once LDL-C and/or non-HDL-C is at goal, apoB can guide\n"
+         "intensification, particularly with ASCVD, CKM syndrome, diabetes or high TG."),
         ("2b", "B-NR", "3.3 · 2",
-         "“In adults not on LLT, measurement of apoB may be reasonable to enhance ASCVD risk\n"
-         "assessment.”"),
+         "Before lipid therapy: consider apoB to refine risk, inform treatment initiation\n"
+         "or characterize an inherited lipid disorder."),
         ("2a", "B-NR", "4.2.9 · 7",
-         "In adults with TG ≥ 150 mg/dL, “measurement of non–HDL-C or apoB is preferred over LDL-C.”"),
+         "With triglycerides ≥150 mg/dL, prefer non-HDL-C or apoB to LDL-C\n"
+         "for clinical decision-making."),
         ("1", "B-NR", "3.4 · 1",
-         "“In all adults, measurement of Lp(a) concentration is recommended at least once for\n"
-         "ASCVD risk assessment.”"),
+         "Measure Lp(a) at least once in adulthood to assess ASCVD risk."),
         ("1", "A", "4.2.3.7 · 2",
-         "Adults aged 30–59 at low (< 3%) 10-year risk, with LDL-C < 160 mg/dL and 30-year risk\n"
-         "< 10%: counselling on health behaviours is recommended."),
+         "Age 30–59, 10-year risk <3%, LDL-C <160 and 30-year risk <10%:\n"
+         "counsel on health behaviours. LDL-C is in mg/dL."),
         ("2a", "C-LD", "4.2.3.7 · 3",
-         "Same group with LDL-C 160–189 mg/dL or 30-year risk ≥ 10%: a moderate-intensity statin is\n"
-         "reasonable, to reduce cumulative exposure to atherogenic lipoproteins."),
+         "Age 30–59, 10-year risk <3% and LDL-C 160–189 or 30-year risk ≥10%:\n"
+         "a moderate-intensity statin is reasonable."),
     ]
     fig = plt.figure(figsize=(9.4, 6.9))
     _figure_heading(
         fig,
         "2026 ACC/AHA dyslipidemia guideline: six recommendations",
-        "Transcribed, not a screenshot. Quotation marks mark the guideline’s wording; the rest is condensed.",
+        "Selected recommendations condensed from the published guideline.",
     )
     ax = _blank_axes(fig, (0.045, 0.03, 0.92, 0.85))
     top = 96.0
@@ -507,8 +509,7 @@ def figure_guideline_card(preview_dir: Path | None) -> None:
             "LOE: A = high-quality RCTs · B-NR = non-randomized · C-LD = limited data.",
             ha="left", va="top", fontsize=7.6, color=MUTED)
     ax.text(0, y - 7.2,
-            "Source: J Am Coll Cardiol 2026, doi:10.1016/j.jacc.2025.11.016 (sections 3.3, 3.4, 4.2.3.7, 4.2.9), "
-            "as reproduced by Guideline Central.",
+            "Source: J Am Coll Cardiol 2026, doi:10.1016/j.jacc.2025.11.016 (sections 3.3, 3.4, 4.2.3.7, 4.2.9).",
             ha="left", va="top", fontsize=7.4, color=MUTED, style="italic")
     _save(fig, "figure-7-acc-aha-2026-apob-recommendations", preview_dir)
 
@@ -570,7 +571,7 @@ def figure_nhanes(preview_dir: Path | None) -> None:
         bx.scatter([x], [p50], s=34, color=color, zorder=4)
         bx.text(x + 1.6, p50, f"{p50:.0f}", ha="left", va="center", fontsize=8, color=color)
     bx.axvline(160, color=INK, lw=1.0, ls=(0, (3, 2.4)), zorder=2)
-    bx.text(158, 52, "2026 ACC/AHA gate for adults 30–59\nat low calculated risk: below 160,\ncounselling only (Class 1, LOE A)",
+    bx.text(158, 52, "Age 30–59, low 10- and 30-year risk:\nLDL-C <160 mg/dL, lifestyle counselling\nrecommended (Class 1, LOE A)",
             ha="right", va="center", fontsize=7.8, color=INK, linespacing=1.35)
     bx.axhspan(0, 60, color=BLUE_LIGHT, alpha=0.55, zorder=1)
     bx.text(193, 56, "apoB below 60", ha="right", va="top", fontsize=7.8, color=BLUE)
@@ -587,7 +588,7 @@ def figure_nhanes(preview_dir: Path | None) -> None:
     bx.set_axisbelow(True)
     fig.text(0.085, 0.455, "Same population, by LDL-C. Below the gate, one adult aged 30–59 in three has apoB ≥ 100 mg/dL.",
              ha="left", va="bottom", fontsize=9.0, color=INK, fontweight="bold")
-    _save(fig, "figure-8-nhanes-apob-distribution", preview_dir)
+    _save(fig, "figure-4-nhanes-apob-distribution", preview_dir)
 
 
 # --------------------------------------------------------------------------
@@ -604,7 +605,7 @@ def figure_exercise_modes(preview_dir: Path | None) -> None:
     fig = plt.figure(figsize=(9.4, 4.9))
     _figure_heading(
         fig,
-        "The ranking nobody quotes",
+        "Exercise and resting blood pressure",
         "Reduction in resting blood pressure vs control, by exercise mode. 270 RCTs, 15,827 participants (Edwards et al., BJSM 2023).",
     )
     ax = fig.add_axes((0.31, 0.20, 0.50, 0.61))
@@ -635,10 +636,10 @@ def figure_exercise_modes(preview_dir: Path | None) -> None:
     ax.text(1.11, n - 0.45, "SUCRA\n(systolic)", transform=ax.get_yaxis_transform(),
             ha="center", va="bottom", fontsize=8.2, color=MUTED)
     fig.text(0.31, 0.02,
-             "Solid bars: systolic. Outlined bars: diastolic. SUCRA = probability-based rank for systolic reduction (100% = certainly best).\n"
+             "Solid bars: systolic. Outlined bars: diastolic. SUCRA summarizes the distribution of possible ranks.\n"
              "Within isometric training, the wall squat ranked first for systolic reduction, ahead of leg extension and handgrip.",
              ha="left", va="bottom", fontsize=7.6, color=MUTED, linespacing=1.45)
-    _save(fig, "figure-12-exercise-modes-edwards-2023", preview_dir)
+    _save(fig, "figure-17-exercise-modes-edwards-2023", preview_dir)
 
 
 # --------------------------------------------------------------------------
@@ -652,7 +653,7 @@ def figure_isometric_protocol(preview_dir: Path | None) -> None:
     _figure_heading(
         fig,
         "The “drug,” as a dosing card",
-        "Two forms, one dose: four two-minute holds, one to two minutes’ rest, three times a week. About 42 minutes a week.",
+        "Four two-minute holds per session. Table 12 handgrip uses one-minute rests; the example at right uses two.",
     )
     # --- Panel A: wall squat ---
     a = fig.add_axes((0.02, 0.04, 0.31, 0.80))
@@ -679,7 +680,7 @@ def figure_isometric_protocol(preview_dir: Path | None) -> None:
     a.text(12.5, 95, "Back flat on the wall", fontsize=7.8, color=MUTED, ha="left", va="center")
     a.text(60, 74, "Breathe throughout.\nNo breath-holding\n(no Valsalva).", fontsize=7.8,
            color=INK, ha="left", va="top", linespacing=1.35)
-    a.text(50, 2.5, "A · Wall squat (best-ranked for systolic reduction)", fontsize=8.6,
+    a.text(50, 2.5, "A · Wall squat", fontsize=8.6,
            color=INK, fontweight="bold", ha="center", va="center")
 
     # --- Panel B: handgrip with gauge ---
@@ -721,10 +722,10 @@ def figure_isometric_protocol(preview_dir: Path | None) -> None:
         c.plot([t, t + 2.0], [7.6, 9.0], color=RED, lw=1.4)
         t += 2.0
         if k < 3:
-            c.add_patch(Rectangle((t, 5.0), 1.5, 2.2, facecolor=LIGHT, edgecolor=GRID, lw=0.6))
-            c.text(t + 0.75, 6.1, "rest\n1–2", fontsize=7.0, color=MUTED, ha="center",
+            c.add_patch(Rectangle((t, 5.0), 2.0, 2.2, facecolor=LIGHT, edgecolor=GRID, lw=0.6))
+            c.text(t + 1.0, 6.1, "rest\n2 min", fontsize=7.0, color=MUTED, ha="center",
                    va="center", linespacing=1.2)
-            t += 1.5
+            t += 2.0
     c.text(0, 9.6, "perceived exertion rising to 7–8/10 by the end of each hold", fontsize=7.6,
            color=RED, ha="left", va="bottom")
     c.plot([0, t], [4.3, 4.3], color=MUTED, lw=0.8)
@@ -740,7 +741,7 @@ def figure_isometric_protocol(preview_dir: Path | None) -> None:
                ha="center", va="center")
     c.text(7.4, -0.05, "C · One session, three times a week",
            fontsize=8.6, color=INK, fontweight="bold", ha="center", va="center")
-    _save(fig, "figure-13-isometric-protocol", preview_dir)
+    _save(fig, "figure-9-isometric-protocol", preview_dir)
 
 
 # --------------------------------------------------------------------------
@@ -805,19 +806,268 @@ def figure_route_below_60(preview_dir: Path | None) -> None:
     fig.text(0.09, 0.015,
              "Step 3 is for people who start higher, have high Lp(a), or have imaged plaque. Re-measure apoB 6–12 weeks after each step.",
              ha="left", va="bottom", fontsize=7.8, color=MUTED)
-    _save(fig, "figure-14-the-route-below-60", preview_dir)
+    _save(fig, "figure-19-the-route-below-60", preview_dir)
 
 
+# --------------------------------------------------------------------------
+# Figure 15 — discordance: the same cholesterol, a different number of particles
+# --------------------------------------------------------------------------
+def figure_discordance(preview_dir: Path | None) -> None:
+    """Two real people from the NHANES 150-159 mg/dL LDL-C band.
+
+    Both report the same cholesterol mass. The 10th and 90th percentiles of
+    apoB in that band (105 and 136 mg/dL) differ by 30%: thirty-one more
+    particles presented to the artery wall behind an identical lab result.
+    """
+    fig = plt.figure(figsize=(10.4, 6.6))
+    _figure_heading(
+        fig,
+        "The same cholesterol, a different number of particles",
+        "Two untreated U.S. adults whose lipid panel reads LDL-C 155 mg/dL, at the 10th and 90th percentiles of apoB "
+        "for that band (NHANES 2013\u20132016, author\u2019s analysis).",
+    )
+    rect = (0.045, 0.085, 0.915, 0.76)
+    ax = fig.add_axes(rect)
+    ax.set_axis_off()
+    # keep the dots circular: match the data box to the physical aspect of the axes
+    w_in, h_in = 10.4 * rect[2], 6.6 * rect[3]
+    ax.set_xlim(0, 100)
+    top = 100 * h_in / w_in
+    ax.set_ylim(0, top)
+    ax.set_aspect("equal")
+
+    COLS, PITCH, R = 15, 2.62, 1.03
+    GRID_TOP = top - 10.6
+    deepest = GRID_TOP - (-(-136 // COLS) - 1) * PITCH   # bottom row of the taller panel
+    label_y = deepest - 4.4
+    bar_y = label_y - 10.6
+
+    def draw(x0, tag, pct, extra, color_tag):
+        n = 105 + extra
+        ax.text(x0, top - 1.4, f"Person {tag}", ha="left", va="top",
+                fontsize=10.6, fontweight="bold", color=color_tag)
+        ax.text(x0, top - 5.8, pct, ha="left", va="top", fontsize=8.4, color=MUTED)
+        for i in range(n):
+            cx = x0 + 1.0 + (i % COLS) * PITCH
+            cy = GRID_TOP - (i // COLS) * PITCH
+            is_extra = i >= 105
+            c = RED if is_extra else BLUE
+            ax.add_patch(plt.Circle((cx, cy), R, facecolor=c,
+                                    alpha=0.95 if is_extra else 0.55,
+                                    edgecolor=c, linewidth=0.4, zorder=3))
+        ax.text(x0, label_y, f"apoB  {n} mg/dL", ha="left", va="top",
+                fontsize=11.8, fontweight="bold", color=color_tag)
+
+    draw(4.0, "A", "10th percentile of this LDL-C band", 0, BLUE)
+    draw(52.0, "B", "90th percentile of this LDL-C band", 31, RED)
+
+    # bracket the surplus
+    surplus_top = GRID_TOP - 7 * PITCH + R + 0.5
+    ax.annotate("", xy=(52.0, deepest - R - 0.4), xytext=(52.0, surplus_top),
+                arrowprops=dict(arrowstyle="-", color=RED, lw=1.4))
+    ax.text(50.6, (surplus_top + deepest) / 2, "31 more\nparticles",
+            ha="right", va="center", fontsize=8.8, color=RED,
+            fontweight="bold", linespacing=1.35)
+
+    # the identical laboratory result both panels produce
+    for x0 in (4.0, 52.0):
+        ax.add_patch(FancyBboxPatch(
+            (x0, bar_y), 42.0, 7.6,
+            boxstyle="round,pad=0,rounding_size=1.2",
+            linewidth=0.9, facecolor=LIGHT, edgecolor=GRID, zorder=2))
+        ax.text(x0 + 21.0, bar_y + 3.8, "LDL-C  155 mg/dL", ha="center", va="center",
+                fontsize=11.0, fontweight="bold", color=INK, zorder=3)
+    ax.text(49.0, bar_y - 2.2, "identical on the report", ha="center", va="top",
+            fontsize=8.6, color=MUTED, fontstyle="italic")
+
+    fig.text(0.045, 0.028,
+             "One dot is one unit of apoB, which is one atherogenic particle. Person B\u2019s particles are the more "
+             "cholesterol-depleted, which is why the extra thirty-one do not raise the\ncholesterol result. The count is what "
+             "crosses the endothelium and binds to the matrix. One adult in ten in this band sits at each end.",
+             ha="left", va="bottom", fontsize=8.4, color=MUTED, linespacing=1.5)
+    _save(fig, "figure-10-discordance-same-ldl", preview_dir)
+
+
+# --------------------------------------------------------------------------
+# Figure 16 — the Lp(a) accounting behind the HORIZON puzzle
+# --------------------------------------------------------------------------
+def figure_lpa_accounting(preview_dir: Path | None) -> None:
+    """Why a null trial is harder to explain than it looks.
+
+    Illustrative arithmetic for a patient at trial entry: Lp(a) is a seventh
+    of the circulating particles and, weighted per particle, about half of the
+    residual particle-weighted risk.
+    """
+    fig = plt.figure(figsize=(9.6, 5.9))
+    _figure_heading(
+        fig,
+        "A sixth of the particles, more than half of the risk",
+        "Illustrative accounting for a patient entering Lp(a)HORIZON on intensive therapy "
+        "(LDL-C \u2248 66 mg/dL, Lp(a) \u2248 190 nmol/L). Not trial data.",
+    )
+    ax = fig.add_axes((0.10, 0.11, 0.56, 0.72))
+
+    other, lpa_count = 980.0, 190.0
+    lpa_weighted = 190.0 * 6.6  # Bjornson per-particle weighting
+
+    bars = [
+        (0, "Particle count\n(nmol/L)", other, lpa_count),
+        (1, "Weighted by\nper-particle risk", other, lpa_weighted),
+    ]
+    for x, label, a, b in bars:
+        ax.bar(x, a, width=0.52, color="#AEB8C1", edgecolor="none", zorder=3)
+        ax.bar(x, b, width=0.52, bottom=a, color=RED, edgecolor="none", zorder=3)
+        share = b / (a + b) * 100
+        ax.text(x, a + b + 48, f"Lp(a) = {share:.0f}%", ha="center", va="bottom",
+                fontsize=10.2, fontweight="bold", color=RED)
+        ax.text(x, a / 2, f"{a:,.0f}", ha="center", va="center",
+                fontsize=9.0, color=INK)
+        ax.text(x, a + b / 2, f"{b:,.0f}", ha="center", va="center",
+                fontsize=9.0, color="white", fontweight="bold")
+
+    ax.set_xticks([0, 1])
+    ax.set_xticklabels([b[1] for b in bars], fontsize=9.2)
+    ax.set_ylabel("LDL-equivalent particles (nmol/L)", fontsize=9)
+    ax.set_xlim(-0.6, 1.6)
+    ax.set_ylim(0, 2500)
+    ax.tick_params(axis="x", length=0)
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
+    ax.spines["left"].set_color(GRID)
+    ax.spines["bottom"].set_color(GRID)
+    ax.grid(axis="y", color=GRID, lw=0.6, alpha=0.7)
+    ax.set_axisbelow(True)
+
+    ax.annotate("", xy=(0.74, 1900), xytext=(0.26, 1250),
+                arrowprops=dict(arrowstyle="-|>", color=MUTED, lw=1.1,
+                                connectionstyle="arc3,rad=-0.25"))
+    ax.text(0.5, 2010, "\u00d7 6.6 per particle", ha="center", va="bottom",
+            fontsize=8.6, color=MUTED, fontweight="bold")
+
+    side = _blank_axes(fig, (0.70, 0.11, 0.285, 0.72))
+    side.text(0, 97, "WHY THE NULL IS PUZZLING", ha="left", va="top",
+              fontsize=8.6, fontweight="bold", color=INK)
+    side.text(0, 87,
+              "Intensive LDL lowering removes non-Lp(a)\nparticles and leaves Lp(a) untouched.\n"
+              "It does not dilute the Lp(a) problem.\nIt concentrates it.\n\n"
+              "Phase 2 pelacarsen lowered Lp(a) by\n70\u201380%. Converted at Burgess\u2019s exchange\n"
+              "rate, that is roughly 0.7 mmol/L of\nLDL-C equivalent, which the CTT\n"
+              "relationship turns into a mid-teens\nrelative risk reduction over five years.\n\n"
+              "The trial reported no reduction in its\nprimary composite.",
+              ha="left", va="top", fontsize=8.2, color=MUTED, linespacing=1.55)
+    _save(fig, "figure-11-lpa-particle-accounting", preview_dir)
+
+
+# --------------------------------------------------------------------------
+# Figure 17 — the integral, and what the interaction term implies
+# --------------------------------------------------------------------------
+def figure_integral(preview_dir: Path | None) -> None:
+    """Risk as the area under two curves, and the cost of starting late."""
+    fig = plt.figure(figsize=(11.0, 6.0))
+    _figure_heading(
+        fig,
+        "Risk is an area, not a probability",
+        "Left: the two exposures accumulate from adolescence. Right: what one intervention buys, started twenty years apart. "
+        "Illustrative, on the model of section 34.",
+    )
+
+    ages = list(range(18, 81))
+    apob = [95 + 0.42 * (a - 18) for a in ages]
+    sbp = [112 + 0.52 * (a - 18) for a in ages]
+
+    # ---- left panel: the two exposure curves ----
+    ax = fig.add_axes((0.055, 0.175, 0.375, 0.63))
+    ax.fill_between(ages, 0, sbp, color=RED, alpha=0.08, zorder=1)
+    ax.fill_between(ages, 0, apob, color=BLUE, alpha=0.14, zorder=2)
+    ax.plot(ages, sbp, color=RED, lw=1.9, zorder=4)
+    ax.plot(ages, apob, color=BLUE, lw=1.9, zorder=4)
+    ax.text(79, sbp[-1] + 4, "systolic pressure (mmHg)", ha="right", va="bottom",
+            fontsize=8.6, color=RED, fontweight="bold")
+    ax.text(79, apob[-1] - 13, "apoB (mg/dL)", ha="right", va="top",
+            fontsize=8.6, color=BLUE, fontweight="bold")
+    ax.text(48, 42, "the integral:\nexposure \u00d7 years", ha="center", va="center",
+            fontsize=9.4, color=BLUE, fontweight="bold", linespacing=1.4)
+    ax.set_xlim(18, 80)
+    ax.set_ylim(0, 185)
+    ax.set_xlabel("Age (years)", fontsize=9)
+    ax.set_ylabel("Exposure level", fontsize=9)
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
+    ax.spines["left"].set_color(GRID)
+    ax.spines["bottom"].set_color(GRID)
+    ax.grid(axis="y", color=GRID, lw=0.6, alpha=0.6)
+    ax.set_axisbelow(True)
+
+    # ---- right panel: cumulative apoB x pressure, three start ages ----
+    bx = fig.add_axes((0.555, 0.175, 0.355, 0.63))
+
+    def cumulative(start=None, factor=1.0):
+        out, acc = [], 0.0
+        for a in ages:
+            b = 95 + 0.42 * (a - 18)
+            p = 112 + 0.52 * (a - 18)
+            if start is not None and a >= start:
+                b *= factor
+                p -= 8.0
+            acc += b * p / 1000.0
+            out.append(acc)
+        return out
+
+    base, s35, s55 = cumulative(), cumulative(35, 0.55), cumulative(55, 0.55)
+
+    bx.fill_between(ages, s35, base, color=BLUE, alpha=0.12, zorder=2)
+    bx.plot(ages, base, color=INK, lw=1.8, zorder=4)
+    bx.plot(ages, s55, color=MUTED, lw=1.8, zorder=4)
+    bx.plot(ages, s35, color=BLUE, lw=2.1, zorder=5)
+
+    for a, color in ((35, BLUE), (55, MUTED)):
+        bx.axvline(a, color=color, lw=0.9, ls=(0, (3, 2.4)), zorder=1)
+        bx.text(a, base[-1] * 1.045, f"age {a}", ha="center", va="bottom",
+                fontsize=8.2, color=color, fontweight="bold")
+
+    bx.text(80.6, base[-1], "no change", ha="left", va="center",
+            fontsize=8.6, color=INK)
+    bx.text(80.6, s55[-1], "act at 55", ha="left", va="center",
+            fontsize=8.6, color=MUTED)
+    bx.text(80.6, s35[-1], "act at 35", ha="left", va="center",
+            fontsize=8.6, color=BLUE, fontweight="bold")
+
+    pct35 = (1 - s35[-1] / base[-1]) * 100
+    pct55 = (1 - s55[-1] / base[-1]) * 100
+    bx.text(20.5, base[-1] * 0.92,
+            f"By age 80 the accumulated\nexposure is {pct35:.0f}% lower if the\n"
+            f"change is made at 35,\nand {pct55:.0f}% lower at 55.",
+            ha="left", va="top", fontsize=8.8, color=INK, linespacing=1.55)
+    bx.annotate("plaque never built", xy=(71, (base[57] + s35[57]) / 2),
+                xytext=(58, base[-1] * 0.30), fontsize=8.8, color=BLUE,
+                fontweight="bold", ha="center", va="center",
+                arrowprops=dict(arrowstyle="-|>", color=BLUE, lw=1.0,
+                                connectionstyle="arc3,rad=-0.25"))
+
+    bx.set_xlim(18, 80)
+    bx.set_ylim(0, base[-1] * 1.12)
+    bx.set_xlabel("Age (years)", fontsize=9)
+    bx.set_ylabel("Cumulative apoB \u00d7 pressure", fontsize=9)
+    bx.set_yticks([])
+    for sp in ("top", "right", "left"):
+        bx.spines[sp].set_visible(False)
+    bx.spines["bottom"].set_color(GRID)
+
+    fig.text(0.055, 0.035,
+             "One intervention \u2014 a 45% lower apoB and an 8 mmHg lower systolic pressure \u2014 applied twenty years apart. "
+             "Ten-year risk, which decides treatment in every\nguideline of section 4, is close to identical for these three "
+             "people when they are 45. The quantity that differs is the one nobody calculates.",
+             ha="left", va="bottom", fontsize=8.4, color=MUTED, linespacing=1.55)
+    _save(fig, "figure-16-the-integral", preview_dir)
+
+
+# Only the figures the essay still carries are registered. The functions for the
+# retired ones are kept below the fold; re-add a line here to bring one back.
 FIGURES = {
-    "chains": figure_chains,
     "numbers": figure_same_size,
-    "routes": figure_four_routes,
     "clocks": figure_two_clocks,
-    "guideline": figure_guideline_card,
     "nhanes": figure_nhanes,
-    "modes": figure_exercise_modes,
     "isometric": figure_isometric_protocol,
-    "route60": figure_route_below_60,
 }
 
 
