@@ -13,7 +13,7 @@ mermaid: true
 
 ## The Last Minute
 
-In an interview broadcast on 31 October 2026, the actor Hu Ge described losing two friends to heart attacks. One was in his fifties. The other was Hu's age. Hu now carries Suxiao Jiuxin pills.[^huge2026] Suxiao Jiuxin is a traditional preparation used for angina attacks. It is not shown to prevent or treat infarction, and a suspected heart attack calls for an ambulance rather than a pocket remedy. The detail is worth keeping because it is exactly proportionate to how medicine is organized. A rescue pill addresses the last minute of a disease that has been accumulating for thirty years. This essay is about the thirty years.
+Medicine meets a heart attack in its last minute. The ambulance, the catheter laboratory and the rescue pill some people carry in a pocket are all built for that minute, and the first two are very good at it. All three address the last minute of a disease that has been accumulating for thirty years. This essay is about the thirty years.
 
 I started reading lipidology from scratch in January 2026. This is what ten months in the primary literature produced. It makes two arguments.
 
@@ -347,7 +347,7 @@ The prescription that exists is not written down as a prescription. "Exercise mo
 
 The frameworks are exported without reweighting. The coronary-and-cholesterol template was built around the American patient and transplanted into East Asia, where stroke and pressure dominate the mortality ledger (section 27).
 
-Taken together, these features produce a system in which a motivated layperson with an apoB result and a validated home cuff can be a version ahead of the cardiology department that will eventually treat them. Two things a patient could bring to a visit tomorrow, a measured apoB and a week of correctly taken home pressures, are things the chart will not otherwise contain. That should embarrass the institutions involved, and it is a standard that applies to the people writing longevity books as readily as to a teaching hospital. A pocket pill for the last minute of a thirty-year disease, of the kind Hu Ge now carries, is the logical product of a medicine organized around the last minute.
+Taken together, these features produce a system in which a motivated layperson with an apoB result and a validated home cuff can be a version ahead of the cardiology department that will eventually treat them. Two things a patient could bring to a visit tomorrow, a measured apoB and a week of correctly taken home pressures, are things the chart will not otherwise contain. That should embarrass the institutions involved, and it is a standard that applies to the people writing longevity books as readily as to a teaching hospital. A pocket pill for the last minute of a thirty-year disease is the logical product of a medicine organized around the last minute.
 
 ---
 
@@ -1222,7 +1222,7 @@ This is the schedule I would use for primary prevention. Sections 45 and 46 give
 | 40s–50s | Reassess after changes to lipid treatment. Use a coronary calcium score when the result would change the treatment decision (section 22). | Evaluate a persistently high average and look for organ involvement or a treatable cause (sections 31, 37 and 46). |
 | Pregnancy history and menopause | Revisit lipids across the menopausal transition and medication plans around pregnancy (sections 11 and 45). | Record gestational hypertension or pre-eclampsia and carry that history into subsequent blood-pressure assessment (section 32). |
 
-Return to the pills in Hu Ge's pocket. A heart attack makes a date on a calendar. The years in which particles were retained and the artery lived under pressure rarely leave a date anyone remembers. Years before the emergency there is still something concrete to ask for: a particle count, a reliable pressure and a decision about what to do with the next reading.
+Return to the pill in the pocket. A heart attack makes a date on a calendar. The years in which particles were retained and the artery lived under pressure rarely leave a date anyone remembers. Years before the emergency there is still something concrete to ask for: a particle count, a reliable pressure and a decision about what to do with the next reading.
 
 ---
 
@@ -1646,8 +1646,6 @@ For readers who skipped to the end, here are the claims of this essay that I exp
 [^morris2011]: Morris ZS, Wooding S, Grant J. The answer is 17 years, what is the question: understanding time lags in translational research. *J R Soc Med* 2011;104:510–520.
 [^who]: World Health Organization. Cardiovascular diseases fact sheet (an estimated 17.9 million deaths in 2019) and Cancer fact sheet (nearly 10 million deaths in 2020).
 [^robinson2018]: Robinson JG, Williams KJ, Gidding S, Borén J, Tabas I, Fisher EA, Packard C, Pencina M, Fayad ZA, Mani V, Rye KA, Nordestgaard BG, Tybjærg-Hansen A, Douglas PS, Nicholls SJ, Pagidipati N, Sniderman A. Eradicating the burden of atherosclerotic cardiovascular disease by lowering apolipoprotein B lipoproteins earlier in life. *J Am Heart Assoc* 2018;7:e009778.
-[^huge2026]: Hu Ge, interview on《愈见》, broadcast 31 October 2026. [Video report with Hu's account, China News Service, 2 November](https://finance.sina.com.cn/stock/roll/2026-11-02/doc-inixicih2966167.shtml).
-
 [^robbins]: Mitchell RN, Halushka MK. Blood Vessels. In *Robbins, Cotran & Kumar Pathologic Basis of Disease*, 11th ed., ch. 11, pp. 441–478. The printed contents place "Atherosclerosis" on pp. 449–458, with "Aneurysms and Dissection" beginning on p. 458. See the eight bullets on p. 451 and fig. 11.8 and the paragraph on endothelial injury on p. 452. Elsevier's US faculty catalog lists publication on May 30, 2025 and copyright 2026. [Publisher record, ISBN 9780443264528](https://evolve.elsevier.com/cs/product/9780443264528?role=faculty).
 
 [^robbinshtn]: Mitchell RN, Halushka MK. Blood Vessels. In *Robbins, Cotran & Kumar Pathologic Basis of Disease*, 11th ed., ch. 11, p. 445, table 11.2. See also the discussion of essential hypertension on p. 447. [Publisher record](https://evolve.elsevier.com/cs/product/9780443264528?role=faculty).
