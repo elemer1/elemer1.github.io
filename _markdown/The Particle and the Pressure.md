@@ -1083,9 +1083,9 @@ What would make this wrong is worth stating as falsifiable checkpoints, because 
 
 ## 43. A Protocol, and the N-of-1 That Should Follow
 
-On January 22, my apoB was 80 mg/dL. The lab marked it in range. Six other numbers on the same lipid panel caught my eye.
+On January 22, I had an advanced lipoprotein subfraction panel. It counts lipoprotein particles and sorts them by size, beyond the cholesterol figures of a standard lipid panel. My apoB was 80 mg/dL. The lab marked it in range. Six other numbers on the same panel caught my eye.
 
-| January 22, 2026 | My result | Lab flag |
+| Advanced lipoprotein subfractions, January 22, 2026 | My result | Lab flag |
 |---|---:|---|
 | LDL particle number | 1,572 nmol/L | High |
 | Small LDL | 252 nmol/L | High |
