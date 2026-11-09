@@ -28,7 +28,7 @@ The second intervention is the one nobody prescribes, and the reason is not that
 
 The title of Part IV promises prevention "thoroughly," and I mean the word literally, in a specific and checkable sense. ApoB particles are a *necessary* cause of atherosclerosis: without particles retained in the artery wall there is no plaque, and in familial hypercholesterolemia, particles alone are sufficient (sections 13 and 15). Human genetics shows what happens when that cause is reduced from birth. In the ARIC cohort, carriers of two *PCSK9* nonsense variants had 28% lower LDL cholesterol and an 88% lower incidence of coronary disease, on a wide confidence interval (section 15). Children with familial hypercholesterolemia treated from adolescence had a 1% cumulative incidence of cardiovascular events by age 39, against 26% in their affected parents (section 15). Genetic scores for lower LDL-C and lower systolic pressure carried odds ratios of 0.73 and 0.82 separately, and 0.61 together, almost exactly their product (section 34). Seventeen leading investigators, Williams, Tabas, Borén and Sniderman among them, titled their 2018 review of this evidence "Eradicating the burden of atherosclerotic cardiovascular disease by lowering apolipoprotein B lipoproteins earlier in life."[^robinson2018] Removing the necessary cause early enough is a different kind of goal from shaving a few points off a ten-year probability.
 
-The claim has limits, and I state them. It concerns *atherosclerotic* disease. It does not cover cardiomyopathies, inherited arrhythmias, valve disease or spontaneous coronary dissection, or exposure that has already accumulated by the time one starts. Neither a low apoB value nor a good pressure reading promises a lifetime free of infarction, and neither erases a plaque already there. No randomized trial has tested lifelong lowering from youth, so the size of the benefit beyond the genetic evidence is inference, and I mark it as such wherever it appears. Cardiovascular disease remains the leading cause of death in the world, with cancer second.[^who]
+The claim has limits, and I state them. It concerns *atherosclerotic* disease. It does not cover cardiomyopathies, inherited arrhythmias, valve disease or spontaneous coronary dissection (the section after the Prologue maps what that leaves out), or exposure that has already accumulated by the time one starts. Neither a low apoB value nor a good pressure reading promises a lifetime free of infarction, and neither erases a plaque already there. No randomized trial has tested lifelong lowering from youth, so the size of the benefit beyond the genetic evidence is inference, and I mark it as such wherever it appears. Cardiovascular disease remains the leading cause of death in the world, with cancer second.[^who]
 
 ## Abstract
 
@@ -81,6 +81,47 @@ Meanwhile the mortality ledger runs the other way. The Global Burden of Disease 
 This difference in attention has clinical consequences only if the exercise works in the people who would take it up. Sections 41–43 return to that question with randomized comparisons and home measurements.
 
 On evidence: I distinguish what is established (with primary sources), what I infer from established findings, and what remains open. Where a figure comes from a press release or secondary report rather than a peer-reviewed paper, the note says so.
+
+---
+
+## The Territory: What "Cardiovascular Disease" Contains
+
+"Cardiovascular disease" is a basket, and the essay concerns only part of it. The World Health Organization and the Global Burden of Disease study count the basket by diagnosis and organ: ischemic heart disease, three kinds of stroke, hypertensive heart disease, rheumatic and other valve disease, cardiomyopathy and myocarditis, atrial fibrillation, aortic aneurysm, peripheral artery disease, endocarditis. That list records where a disease appears, not what built it. Prevention needs a causal cut. The one I use is the distinction that US guidelines made standard in 2013 under the label *atherosclerotic cardiovascular disease* (ASCVD): was the disease built from plaque or not?[^stone2013] It is a working classification rather than an official taxonomy, and its borders leak. The table sorts GBD's estimates for 2022 into three groups.[^mensah2023]
+
+| Group | Main conditions (global deaths, 2022) | Role of apoB | Role of pressure |
+|---|---|---|---|
+| **1. Built from plaque** | Ischemic heart disease 9.24 M; ischemic stroke 3.54 M, only part of it atherosclerotic; peripheral artery disease 0.07 M | Necessary cause: no retained particles, no plaque (sections 13, 15) | Multiplies the particle's effect and helps break the plaque (section 34) |
+| **2. Built by pressure, not plaque** | Intracerebral hemorrhage 3.43 M; hypertensive heart disease 1.35 M; atrial fibrillation 0.36 M; subarachnoid hemorrhage 0.34 M; heart failure with preserved ejection fraction (not a GBD cause of death; see below) | No established causal role | The leading modifiable cause (sections 35–36) |
+| **3. Other causes** | Rheumatic heart disease 0.39 M; cardiomyopathy and myocarditis 0.39 M; non-rheumatic valve disease 0.19 M; aortic aneurysm 0.15 M; endocarditis 0.08 M | Mostly none; Lp(a) is a cause of calcific aortic stenosis (section 19) | An added load on a damaged valve, muscle or aorta, seldom the first cause |
+
+Three cautions belong to the table. GBD does not count heart failure as a cause of death; it assigns each such death to the disease underneath, so failure appears in the table only through its causes. Abdominal aortic aneurysm shares most of atherosclerosis's risk factors, so the boundary between groups 1 and 3 is drawn by convention. The largest leak is in ischemic stroke. It includes embolic strokes from a fibrillating atrium and lacunar strokes from diseased small arteries, and neither is built from plaque.
+
+With those cautions, the arithmetic is as follows. GBD put cardiovascular deaths at 19.8 million in 2022. Group 1 accounts for 12.9 million of them, about 65%, and that figure is a ceiling because of the stroke leak. My estimate is that plaque builds between half and two-thirds of cardiovascular deaths worldwide [inference]. Intracerebral hemorrhage and hypertensive heart disease alone account for 4.8 million deaths, about a quarter. In those two diseases apoB has no established causal role and pressure is the main cause.
+
+The table also shows an asymmetry. The particle appears in only one row, while pressure appears in all three. The trials show the same pattern. In the Cholesterol Treatment Trialists' pooled analysis of 26 statin trials, lowering LDL cut ischemic stroke by a fifth (RR 0.79) and left hemorrhagic stroke unchanged, with a non-significant excess (RR 1.12; 95% CI 0.93–1.35).[^ctt2010] Lowering pressure cut heart failure by 38% and atrial fibrillation by about a quarter in SPRINT (section 35). This is the second reason, besides the attention gap in the Prologue, for giving pressure equal weight. A prevention program built on apoB alone could work perfectly and leave the second row untouched, and the second row is where much of China's burden falls (section 27).
+
+The rows are separable for prevention because the exposures that build them differ. In one patient they do not stay separate. An infarct leaves a scar that becomes a circuit for ventricular tachycardia. A thick ventricle stiffens until it fails with a normal ejection fraction. A stretched atrium fibrillates, and the clot it throws is recorded as an ischemic stroke. The diagram below simplifies the pathways that both causes feed into.
+
+```mermaid
+flowchart TD
+  IR["Insulin resistance / ectopic fat"] --> APOB["ApoB particles"]
+  IR --> BP["Arterial pressure"]
+  APOB --> PLQ["Plaque (group 1)"]
+  BP --> PLQ
+  BP --> SVD["Small-vessel disease"]
+  BP --> LVH["LV hypertrophy, fibrosis, atrial stretch"]
+  PLQ --> MI["Rupture or erosion → infarction, atherothrombotic stroke"]
+  SVD --> ICH["Intracerebral hemorrhage, lacunar stroke"]
+  MI --> SCAR["Myocardial scar"]
+  SCAR --> VT["Re-entry: VT / VF"]
+  LVH --> AF["Atrial fibrillation"]
+  AF --> CE["Cardioembolic stroke"]
+  SCAR --> HFR["HF with reduced EF"]
+  LVH --> HFP["HF with preserved EF"]
+  VT --> SCD["Sudden cardiac death"]
+```
+
+That defines the scope. When Part IV says "thoroughly", it means the first row, along with the share of the second that pressure controls. The third row has other causes: sarcomere-gene variants such as *MYH7* and *MYBPC3*, inherited channelopathies, rheumatic fever, viral myocarditis and alcohol. Preventing those calls for genetic screening, infection control or specialist care, and this essay does not cover them. Calcific aortic stenosis sits on the boundary. Lp(a) is a cause, but lowering LDL with simvastatin and ezetimibe did not slow the disease in the SEAS trial.[^seas2008] Venous thromboembolism has different causes (stasis, hypercoagulability and vessel injury) and GBD does not count it in this basket. It is also outside the essay.
 
 ---
 
@@ -1229,6 +1270,12 @@ For readers who skipped to the end, here are the claims of this essay that I exp
 
 [^gbd2019]: GBD 2019 Risk Factors Collaborators. Global burden of 87 risk factors in 204 countries and territories, 1990–2019. *Lancet* 2020;396:1223–1249. doi:10.1016/S0140-6736(20)30752-2.
 
+[^stone2013]: Stone NJ, Robinson JG, Lichtenstein AH, et al. 2013 ACC/AHA guideline on the treatment of blood cholesterol to reduce atherosclerotic cardiovascular risk in adults. *Circulation* 2014;129(25 Suppl 2):S1–S45.
+
+[^mensah2023]: Mensah GA, Fuster V, Murray CJL, Roth GA; Global Burden of Cardiovascular Diseases and Risks Collaborators. Global burden of cardiovascular diseases and risks, 1990–2022. *J Am Coll Cardiol* 2023;82:2350–2473. doi:10.1016/j.jacc.2023.11.007. Death counts are from Table 1 (global, 2022); the total of 19.8 million is the sum of its rows. "Cardiomyopathy and myocarditis" sums myocarditis, alcoholic cardiomyopathy and other cardiomyopathy; "non-rheumatic valve disease" sums calcific aortic, degenerative mitral and other non-rheumatic valve disease. Rows not shown in the table: pulmonary arterial hypertension (0.02 million) and other cardiovascular and circulatory diseases (0.22 million). Group assignments are the author's.
+
+[^seas2008]: Rossebø AB, Pedersen TR, Boman K, et al. Intensive lipid lowering with simvastatin and ezetimibe in aortic stenosis. *N Engl J Med* 2008;359:1343–1356.
+
 [^zhou2019]: Zhou M, Wang H, Zeng X, et al. Mortality, morbidity, and risk factors in China and its provinces, 1990–2017. *Lancet* 2019;394:1145–1158.
 
 [^zhang2023]: Zhang M, Shi Y, Zhou B, et al. Prevalence, awareness, treatment, and control of hypertension in China, 2004–18: findings from six rounds of a national survey. *BMJ* 2023;380:e071952.
@@ -1599,7 +1646,7 @@ For readers who skipped to the end, here are the claims of this essay that I exp
 [^morris2011]: Morris ZS, Wooding S, Grant J. The answer is 17 years, what is the question: understanding time lags in translational research. *J R Soc Med* 2011;104:510–520.
 [^who]: World Health Organization. Cardiovascular diseases fact sheet (an estimated 17.9 million deaths in 2019) and Cancer fact sheet (nearly 10 million deaths in 2020).
 [^robinson2018]: Robinson JG, Williams KJ, Gidding S, Borén J, Tabas I, Fisher EA, Packard C, Pencina M, Fayad ZA, Mani V, Rye KA, Nordestgaard BG, Tybjærg-Hansen A, Douglas PS, Nicholls SJ, Pagidipati N, Sniderman A. Eradicating the burden of atherosclerotic cardiovascular disease by lowering apolipoprotein B lipoproteins earlier in life. *J Am Heart Assoc* 2018;7:e009778.
-[^huge2026]: Hu Ge, interview on 《愈见》, broadcast 31 October 2026. [Video report with Hu's account, China News Service, 2 November](https://finance.sina.com.cn/stock/roll/2026-11-02/doc-inixicih2966167.shtml).
+[^huge2026]: Hu Ge, interview on《愈见》, broadcast 31 October 2026. [Video report with Hu's account, China News Service, 2 November](https://finance.sina.com.cn/stock/roll/2026-11-02/doc-inixicih2966167.shtml).
 
 [^robbins]: Mitchell RN, Halushka MK. Blood Vessels. In *Robbins, Cotran & Kumar Pathologic Basis of Disease*, 11th ed., ch. 11, pp. 441–478. The printed contents place "Atherosclerosis" on pp. 449–458, with "Aneurysms and Dissection" beginning on p. 458. See the eight bullets on p. 451 and fig. 11.8 and the paragraph on endothelial injury on p. 452. Elsevier's US faculty catalog lists publication on May 30, 2025 and copyright 2026. [Publisher record, ISBN 9780443264528](https://evolve.elsevier.com/cs/product/9780443264528?role=faculty).
 
