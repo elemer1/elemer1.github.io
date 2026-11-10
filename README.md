@@ -12,7 +12,7 @@ Live at **[elemer.net](https://elemer.net)**.
 4. **Reusable article components.** Common objects such as YouTube videos, PDF previews, Twitter / X tweet cards, Mermaid diagrams, figures, callouts, file cards, tables, blockquotes, and footnotes have stable site-level styling.
 5. **LaTeX support.** MathJax loads by default on every page so any post can use `$...$` and `$$...$$`.
 6. **Drop-in publishing.** Drop a file into the right folder, add front matter, run `./publish.sh`.
-7. **Safety checks.** Local publishing and CI check front matter, permalink shape, duplicate permalinks, root-level Markdown mistakes, YouTube embed mistakes, and unsafe encrypted posts in public repos.
+7. **Safety checks.** Local publishing and CI check front matter, permalink shape, duplicate permalinks, missing `lang: en` on English posts, root-level Markdown mistakes, YouTube embed mistakes, and unsafe encrypted posts in public repos.
 8. **Private by default.** No analytics, no RSS feed, no search-engine indexing, no opt-in for AI training crawlers. Sharing is for humans you send the link to.
 
 ## Folder layout

@@ -1,5 +1,6 @@
 ---
 title: Patrick Collison 的一些好想法
+lang: en
 permalink: /patrick-collison-thoughts/
 listed: false
 ---

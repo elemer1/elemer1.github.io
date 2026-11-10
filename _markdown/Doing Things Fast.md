@@ -1,5 +1,6 @@
 ---
 title: Doing Things Fast
+lang: en
 permalink: /doing-things-fast/
 listed: false
 ---

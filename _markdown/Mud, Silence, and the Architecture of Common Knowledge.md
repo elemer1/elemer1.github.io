@@ -1,5 +1,6 @@
 ---
 title: "Mud, Silence, and the Architecture of Common Knowledge"
+lang: en
 permalink: /mud-silence-and-the-architecture-of-common-knowledge/
 listed: true
 math: true

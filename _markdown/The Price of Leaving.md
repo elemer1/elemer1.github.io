@@ -1,5 +1,6 @@
 ---
 title: "The Price of Leaving"
+lang: en
 permalink: /the-price-of-leaving/
 listed: true
 math: false

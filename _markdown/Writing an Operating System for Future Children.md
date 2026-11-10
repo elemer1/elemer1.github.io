@@ -1,5 +1,6 @@
 ---
 title: Writing an OS for My Children
+lang: en
 permalink: /writing-an-os-for-my-children/
 listed: true
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Biopiracy without Bioprospecting"
+lang: en
 permalink: /biopiracy-without-bioprospecting/
 listed: true
 math: false

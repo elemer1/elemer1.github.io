@@ -130,6 +130,30 @@ function checkSvgReferences(file, text) {
   for (const match of text.matchAll(markdownImageRe)) checkSvgAsset(file, match[1]);
 }
 
+// The layout falls back to lang="zh-CN", so an English post without
+// `lang: en` is announced to screen readers and browsers as Chinese.
+// Prose is counted with code, math, HTML tags and URLs stripped.
+function checkLanguage(file, fm, body) {
+  const prose = stripFencedCode(body)
+    .replace(/`[^`\n]*`/g, ' ')
+    .replace(/\$\$[\s\S]*?\$\$|\$[^$\n]*\$/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\]\([^)]*\)/g, '] ')
+    .replace(/https?:\/\/\S+/g, ' ');
+  const cjk = (prose.match(/[\u3400-\u9fff\uf900-\ufaff]/g) || []).length;
+  const words = (prose.match(/[A-Za-z]+(?:['\u2019][A-Za-z]+)*/g) || []).length;
+  if (words < 30) return;
+  const cjkShare = cjk / (cjk + words);
+  const lang = typeof fm.lang === 'string' ? fm.lang.toLowerCase() : '';
+  if (!lang && cjkShare < 0.05) {
+    fail(
+      `${file}: body reads as English (${words} words, ${cjk} CJK characters) but front matter has no lang; the page would be served as lang="zh-CN". Add lang: en`,
+    );
+  } else if (lang.startsWith('en') && cjkShare > 0.5) {
+    warn(`${file}: lang is ${fm.lang} but the body is mostly Chinese (${cjk} CJK characters, ${words} words)`);
+  }
+}
+
 function hasEncryptedTrue(fm) {
   return fm.encrypted === true || fm.encrypted === 'true';
 }
@@ -178,6 +202,7 @@ function checkMarkdownPost(file) {
   }
 
   checkSvgReferences(file, renderableBody);
+  checkLanguage(file, fm, body);
 
   if (hasEncryptedTrue(fm) && repoVisibility === 'public') {
     warn(`${file}: encrypted: true in a public repository — plaintext and password are visible in git history; treat the lock as cosmetic`);

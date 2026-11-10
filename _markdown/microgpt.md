@@ -1,5 +1,6 @@
 ---
 title: "microGPT"
+lang: en
 permalink: /microgpt/
 listed: true
 ---

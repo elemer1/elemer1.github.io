@@ -1,5 +1,6 @@
 ---
 title: Pleading the Algorithmic Cartel After Gibson
+lang: en
 permalink: /pleading-the-algorithmic-cartel-after-gibson/
 listed: true
 ---

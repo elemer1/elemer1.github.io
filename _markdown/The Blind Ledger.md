@@ -1,5 +1,6 @@
 ---
 title: "The Blind Ledger"
+lang: en
 permalink: /the-blind-ledger/
 listed: true
 math: false

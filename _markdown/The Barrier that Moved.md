@@ -1,5 +1,6 @@
 ---
 title: "The Barrier That Moved"
+lang: en
 permalink: /the-barrier-that-moved/
 listed: true
 ---

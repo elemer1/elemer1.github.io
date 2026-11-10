@@ -1,5 +1,6 @@
 ---
 title: "A Doctrinal Attack Outline for WBS Bankruptcy Remoteness"
+lang: en
 permalink: /a-doctrinal-attack-outline-for-wbs-bankruptcy-remoteness/
 listed: true
 ---

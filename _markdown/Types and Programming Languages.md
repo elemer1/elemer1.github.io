@@ -1,5 +1,6 @@
 ---
 title: "Thoughts on TAPL"
+lang: en
 permalink: /tapl/
 listed: true
 ---

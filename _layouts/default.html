@@ -50,6 +50,10 @@
     main p{margin:15px 0}
     main ul,main ol{margin:15px 0;padding-left:30px}
     main li{margin:5px 0}
+    /* Let the browser choose line breaks: no one-word last line in a paragraph,
+       no one-word second line in a heading. Ignored where unsupported. */
+    main p,main li{text-wrap:pretty}
+    .post-title,main h1,main h2,main h3,main h4{text-wrap:balance}
     main a{color:#0000ee;text-decoration:none}
     main a:hover{text-decoration:underline}
     .post-list{list-style:none;padding:0}
@@ -117,6 +121,7 @@
     main table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-collapse:collapse;margin:20px 0;font-size:15px}
     main th,main td{padding:8px 12px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;line-height:1.5}
     main th{background:#f6f8fa;font-weight:600}
+    main td{font-variant-numeric:tabular-nums}
     .smallcaps{font-variant:small-caps}
     mjx-container[display="true"]{max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;padding:2px 0}
     @media (max-width:480px){main table{font-size:14px}main th,main td{padding:6px 8px}}

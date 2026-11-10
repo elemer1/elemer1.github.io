@@ -1,5 +1,6 @@
 ---
 title: "Textual Clarity and Sovereign Conduct"
+lang: en
 permalink: /textual-clarity-and-sovereign-conduct/
 listed: true
 ---

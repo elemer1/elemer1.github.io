@@ -1,5 +1,6 @@
 ---
 title: "Litigation Finance as Shadow Insurance"
+lang: en
 permalink: /litigation-finance-as-shadow-insurance/
 listed: true
 math: false
