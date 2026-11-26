@@ -1,0 +1,1370 @@
+---
+title: "职业睡眠者"
+permalink: /bryan-johnson/
+listed: false
+---
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>职业睡眠者</title>
+<meta name="description" content="Bryan Johnson 的 Don't Die / Blueprint 体系整理：以睡眠为第一优先级，围绕睡前心率重建一天。引用他的博客、Protocol、视频与播客转写、X 帖子和短视频。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,400..700&family=Fragment+Mono&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<meta name="color-scheme" content="light dark">
+<style>
+/* ══════════════════════════════════════════════════════════════════════
+   职业睡眠者 · PROTOCOL SHEET
+   Aesthetic: a clinical readout. Cool paper, hairline instrument frames,
+   wide-set condensed numerals for the numbers he lives by (20:30, 39 bpm).
+   Two data inks only, each bound to one meaning:
+     --deep  (indigo)  = sleep, rest, the parasympathetic side
+     --pulse (crimson) = heart rate, cost, whatever raises it
+   Scales are intent-encoded (000 surface → 300 border → 700 secondary
+   text → 1000 primary ink). One radius family: 3px.
+   ══════════════════════════════════════════════════════════════════════ */
+:root{
+  --n-000:#F5F6F8; --n-050:#FAFBFC; --n-100:#EEF0F3; --n-200:#E4E7EC; --n-300:#D3D8DF;
+  --n-400:#B9C0CA; --n-500:#97A0AC; --n-600:#727C89; --n-700:#565F6B; --n-800:#3B424C;
+  --n-900:#22272E; --n-1000:#0C0E12;
+  --a-200:rgba(12,14,18,.06); --a-400:rgba(12,14,18,.14);
+  --deep:#3B36C8; --deep-ink:#2C28A3; --deep-100:#E8E7FA; --deep-200:#D4D2F5;
+  --pulse:#C9244A; --pulse-ink:#A11B3B; --pulse-100:#FAE4E9;
+  --lamp:#B5651D; --lamp-100:#F8EADB;
+  --disp:"Archivo","Noto Sans SC",system-ui,sans-serif;
+  --sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --en:"Archivo",system-ui,sans-serif;
+  --mono:"Fragment Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:3px;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;--s8:32px;--s10:40px;--s12:48px;--s16:64px;--s24:96px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --measure:42rem; --wide:68rem;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --n-000:#0E1014; --n-050:#121419; --n-100:#161920; --n-200:#1C2028; --n-300:#272C36;
+    --n-400:#363C48; --n-500:#4D5462; --n-600:#6C7482; --n-700:#8E96A3; --n-800:#B2B9C4;
+    --n-900:#D3D8DF; --n-1000:#F1F3F6;
+    --a-200:rgba(241,243,246,.07); --a-400:rgba(241,243,246,.16);
+    --deep:#8E8AFF; --deep-ink:#ABA8FF; --deep-100:#1B1A3A; --deep-200:#2A2858;
+    --pulse:#FF6B8B; --pulse-ink:#FF8FA6; --pulse-100:#3A1520;
+    --lamp:#E39A55; --lamp-100:#33220F;
+  }
+}
+:root[data-theme="dark"]{
+  --n-000:#0E1014; --n-050:#121419; --n-100:#161920; --n-200:#1C2028; --n-300:#272C36;
+  --n-400:#363C48; --n-500:#4D5462; --n-600:#6C7482; --n-700:#8E96A3; --n-800:#B2B9C4;
+  --n-900:#D3D8DF; --n-1000:#F1F3F6;
+  --a-200:rgba(241,243,246,.07); --a-400:rgba(241,243,246,.16);
+  --deep:#8E8AFF; --deep-ink:#ABA8FF; --deep-100:#1B1A3A; --deep-200:#2A2858;
+  --pulse:#FF6B8B; --pulse-ink:#FF8FA6; --pulse-100:#3A1520;
+  --lamp:#E39A55; --lamp-100:#33220F;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--n-000);color:var(--n-1000);font-family:var(--sans);
+  font-size:17px;line-height:1.88;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+svg{display:block;max-width:100%;height:auto}
+a{color:var(--deep-ink);text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(--deep-200)}
+a:hover{text-decoration-color:currentColor}
+::selection{background:var(--deep-100);color:var(--n-1000)}
+:where(a,button,summary):focus-visible{outline:none;box-shadow:0 0 0 2px var(--n-000),0 0 0 4px var(--deep);border-radius:var(--r)}
+strong{font-weight:700}
+em.dot{font-style:normal;text-emphasis:filled dot var(--deep);-webkit-text-emphasis:filled dot var(--deep);text-emphasis-position:under right;-webkit-text-emphasis-position:under right}
+.en{font-family:var(--en)}
+.mono{font-family:var(--mono)}
+
+/* ── monitor bar (sticky readout) ─────────────────────────────── */
+.mon{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--n-000) 92%,transparent);
+  -webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--n-300)}
+.mon-in{max-width:var(--wide);margin:0 auto;padding:0 var(--s6);height:44px;display:flex;align-items:center;gap:var(--s4)}
+.mon-id{font-family:var(--disp);font-weight:800;font-stretch:80%;font-size:15px;letter-spacing:-.01em;white-space:nowrap;color:var(--n-1000);text-decoration:none}
+.mon-dot{width:8px;height:8px;border-radius:50%;background:var(--deep);flex:none;box-shadow:0 0 0 3px var(--deep-100)}
+@media (prefers-reduced-motion:no-preference){.mon-dot{animation:beat 1.55s var(--ease) infinite}}
+@keyframes beat{0%,100%{transform:scale(1)}12%{transform:scale(1.35)}24%{transform:scale(1)}}
+.mon-sec{flex:1;min-width:0;font-family:var(--mono);font-size:12px;color:var(--n-700);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mon-menu{position:relative}
+.mon-menu>summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:12px;color:var(--n-1000);
+  border:1px solid var(--n-400);border-radius:var(--r);padding:3px 10px;white-space:nowrap;background:var(--n-050)}
+.mon-menu>summary::-webkit-details-marker{display:none}
+.mon-menu[open]>summary{border-color:var(--n-1000)}
+.mon-drop{position:absolute;right:0;top:calc(100% + 8px);width:min(22rem,calc(100vw - 32px));max-height:min(70vh,560px);overflow:auto;
+  background:var(--n-050);border:1px solid var(--n-300);border-radius:var(--r);box-shadow:0 12px 32px -12px rgba(0,0,0,.25);padding:var(--s2) 0}
+.mon-drop a{display:flex;gap:var(--s3);padding:6px var(--s4);color:var(--n-900);text-decoration:none;font-size:14px;line-height:1.5}
+.mon-drop a:hover{background:var(--n-100)}
+.mon-drop .n{font-family:var(--mono);font-size:12px;color:var(--n-600);min-width:2.2em;padding-top:1px}
+.mon-drop .grp{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--n-600);padding:10px var(--s4) 4px;text-transform:uppercase}
+.mon-bar{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--deep)}
+
+/* ── hero ─────────────────────────────────────────────────────── */
+.hero{position:relative;border-bottom:1px solid var(--n-300);background:var(--n-050)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(var(--a-200) 1px,transparent 1px) 0 0/100% 32px;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 22%,transparent 42%);mask-image:linear-gradient(to bottom,#000 0,#000 22%,transparent 42%)}
+.hero-in{position:relative;max-width:var(--wide);margin:0 auto;padding:var(--s16) var(--s6) var(--s12)}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--n-700);display:flex;flex-wrap:wrap;gap:6px 14px}
+@media (min-width:521px){.kicker span+span::before{content:"/";margin-right:14px;color:var(--n-400)}}
+h1.title{font-family:var(--disp);font-weight:800;font-stretch:72%;font-size:clamp(56px,11vw,132px);line-height:.92;
+  letter-spacing:-.045em;margin:var(--s6) 0 var(--s4)}
+h1.title .zh{font-family:var(--sans);font-weight:700;letter-spacing:-.02em}
+.title-en{font-family:var(--disp);font-stretch:110%;font-weight:500;font-size:clamp(15px,2vw,19px);letter-spacing:.01em;color:var(--n-700);margin:0 0 var(--s8)}
+.lede{max-width:var(--measure);font-size:19px;line-height:1.85;color:var(--n-900);margin:0}
+.lede+.lede{margin-top:var(--s4)}
+
+.vitals{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--n-300);border-radius:var(--r);
+  background:var(--n-000);margin-top:var(--s10);overflow:hidden}
+.vital{padding:var(--s4) var(--s4) var(--s3);border-left:1px solid var(--n-300);min-width:0}
+.vital:first-child{border-left:0}
+.v-k{font-family:var(--mono);font-size:11px;color:var(--n-600);letter-spacing:.04em;text-transform:uppercase}
+.v-n{font-family:var(--disp);font-weight:700;font-stretch:68%;font-size:clamp(30px,4.4vw,46px);line-height:1.05;letter-spacing:-.03em;
+  font-variant-numeric:proportional-nums;margin-top:6px;white-space:nowrap}
+.v-n small{font-size:.42em;font-stretch:100%;font-weight:500;letter-spacing:0;color:var(--n-700);margin-left:3px}
+.v-d{font-size:13px;line-height:1.5;color:var(--n-700);margin-top:4px}
+.vital.is-deep .v-n{color:var(--deep)}
+.vital.is-pulse .v-n{color:var(--pulse)}
+@media (max-width:860px){.vitals{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vital{border-left:0;border-top:1px solid var(--n-300)} .vital:nth-child(-n+2){border-top:0}
+  .vital:nth-child(even){border-left:1px solid var(--n-300)} .vital:last-child{grid-column:1/-1;border-left:0}}
+
+/* ── contents ─────────────────────────────────────────────────── */
+.contents{max-width:var(--wide);margin:0 auto;padding:var(--s12) var(--s6) var(--s4)}
+.c-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--n-1000)}
+.c-col{padding:var(--s4) var(--s4) var(--s4) 0;border-right:1px solid var(--n-300);min-width:0}
+.c-col:last-child{border-right:0}
+.c-col+.c-col{padding-left:var(--s4)}
+.c-h{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--n-600);text-transform:uppercase;margin:0 0 var(--s2)}
+.c-col ol{list-style:none;margin:0;padding:0}
+.c-col li a{display:flex;gap:10px;padding:5px 0;color:var(--n-1000);text-decoration:none;font-size:15px;line-height:1.45}
+.c-col li a:hover{color:var(--deep-ink)}
+.c-col .n{font-family:var(--mono);font-size:12px;color:var(--n-600);padding-top:2px;min-width:1.8em}
+@media (max-width:860px){.c-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.c-col:nth-child(2){border-right:0}
+  .c-col:nth-child(3){padding-left:0}.c-col:nth-child(n+3){border-top:1px solid var(--n-300)}}
+@media (max-width:520px){.c-grid{grid-template-columns:1fr}.c-col{border-right:0;padding-left:0!important;border-top:1px solid var(--n-300)}.c-col:first-child{border-top:0}}
+
+/* ── sections ─────────────────────────────────────────────────── */
+main{display:block}
+section.sec{max-width:var(--wide);margin:0 auto;padding:var(--s16) var(--s6) var(--s4);scroll-margin-top:56px}
+.part{max-width:var(--wide);margin:var(--s16) auto 0;padding:0 var(--s6)}
+.part-in{border-top:2px solid var(--n-1000);padding-top:var(--s3);display:flex;gap:var(--s4);align-items:baseline;flex-wrap:wrap}
+.part-n{font-family:var(--mono);font-size:12px;color:var(--n-600);letter-spacing:.06em}
+.part-t{font-family:var(--disp);font-weight:700;font-stretch:115%;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.sec-h{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:var(--s6);align-items:start;margin-bottom:var(--s6)}
+.sec-n{font-family:var(--disp);font-weight:300;font-stretch:62%;font-size:84px;line-height:.8;letter-spacing:-.04em;color:var(--n-400);
+  font-variant-numeric:tabular-nums;border-top:1px solid var(--n-300);padding-top:10px}
+.sec-tag{font-family:var(--mono);font-size:12px;color:var(--deep-ink);letter-spacing:.04em;border-top:1px solid var(--n-1000);padding-top:12px;margin-bottom:var(--s2)}
+h2{font-family:var(--disp);font-weight:800;font-stretch:78%;font-size:clamp(30px,4.6vw,46px);line-height:1.12;letter-spacing:-.025em;margin:0}
+h2 .zh,h3 .zh{font-family:var(--sans)}
+.sec-sub{color:var(--n-700);font-size:16px;margin:var(--s2) 0 0;max-width:var(--measure)}
+.body{margin-left:calc(7.5rem + var(--s6));max-width:var(--measure)}
+.body>p{margin:0 0 1.05em}
+.body>ul,.body>ol{margin:0 0 1.2em;padding-left:1.25em}
+.body li{margin:.25em 0}
+h3{font-family:var(--disp);font-weight:700;font-stretch:90%;font-size:23px;line-height:1.35;letter-spacing:-.01em;margin:2em 0 .6em}
+h3 .h-k{display:block;font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.08em;color:var(--n-600);text-transform:uppercase;margin-bottom:4px}
+.wide{margin-left:calc(7.5rem + var(--s6));max-width:none}
+@media (max-width:860px){.sec-h{grid-template-columns:1fr;gap:var(--s2)}.sec-n{font-size:56px;border-top:0;padding-top:0}
+  .body,.wide{margin-left:0}section.sec{padding-top:var(--s12)}}
+
+/* ── quote: transcript card ───────────────────────────────────── */
+.q{margin:1.6em 0;border:1px solid var(--n-300);border-radius:var(--r);background:var(--n-050);overflow:hidden}
+.q-h{display:flex;justify-content:space-between;gap:var(--s3);flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.03em;
+  color:var(--n-600);padding:7px var(--s4);border-bottom:1px solid var(--n-200);background:var(--n-100)}
+.q-h a{color:inherit}
+.q-h .who{color:var(--deep-ink)}
+.q-en{font-family:var(--en);font-style:italic;font-size:18px;line-height:1.6;color:var(--n-1000);padding:var(--s4) var(--s4) 0;margin:0;letter-spacing:-.003em}
+.q-zh{font-size:15.5px;line-height:1.8;color:var(--n-800);padding:var(--s2) var(--s4) var(--s4);margin:0}
+.q.big .q-en{font-size:clamp(20px,2.6vw,26px);font-stretch:95%;line-height:1.45}
+.q.big{border-color:var(--n-1000)}
+
+/* ── callouts ─────────────────────────────────────────────────── */
+.note{margin:1.6em 0;padding:var(--s4) var(--s5);border-radius:var(--r);border:1px solid var(--n-300);background:var(--n-050);font-size:15.5px;line-height:1.8}
+.note .nk{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--n-600);margin-bottom:6px}
+.note p{margin:0 0 .6em}.note p:last-child{margin:0}
+.note.deep{border-color:var(--deep-200);background:var(--deep-100)}
+.note.deep .nk{color:var(--deep-ink)}
+.note.pulse{border-color:color-mix(in srgb,var(--pulse) 30%,transparent);background:var(--pulse-100)}
+.note.pulse .nk{color:var(--pulse-ink)}
+.thesis{margin:1.8em 0;padding:var(--s6);border-left:4px solid var(--deep);background:var(--n-050);border-radius:0 var(--r) var(--r) 0;
+  font-size:19px;line-height:1.75;font-weight:500}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--n-600);line-height:1.6}
+.src a{color:var(--n-700)}
+.cite{font-family:var(--mono);font-size:11px;vertical-align:1px;margin-left:2px;white-space:nowrap}
+.cite a{color:var(--n-600);text-decoration:none;border-bottom:1px dotted var(--n-400)}
+.cite a:hover{color:var(--deep-ink)}
+
+/* ── figures ──────────────────────────────────────────────────── */
+figure.fig{margin:2em 0;border:1px solid var(--n-300);border-radius:var(--r);background:var(--n-050);overflow:hidden}
+.fig-h{display:flex;justify-content:space-between;gap:var(--s3);flex-wrap:wrap;align-items:baseline;padding:var(--s3) var(--s4);border-bottom:1px solid var(--n-200)}
+.fig-t{font-family:var(--disp);font-weight:700;font-stretch:88%;font-size:16px;letter-spacing:-.005em}
+.fig-k{font-family:var(--mono);font-size:11px;color:var(--n-600)}
+.fig-b{padding:var(--s4)}
+figure.fig figcaption{padding:var(--s3) var(--s4) var(--s4);border-top:1px solid var(--n-200);font-size:14px;line-height:1.75;color:var(--n-800)}
+figure.fig figcaption b{color:var(--n-1000)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:11.5px;color:var(--n-700);padding:0 var(--s4) var(--s3)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.c-grid-l{stroke:var(--n-300);stroke-width:1}
+.c-axis{fill:var(--n-600);font-family:var(--mono);font-size:11px}
+.c-lab{fill:var(--n-900);font-family:var(--sans);font-size:13px}
+.c-val{fill:var(--n-700);font-family:var(--mono);font-size:11px}
+.c-deep{fill:var(--deep)}.c-pulse{fill:var(--pulse)}.c-lamp{fill:var(--lamp)}.c-n{fill:var(--n-400)}
+.s-deep{stroke:var(--deep)}.s-pulse{stroke:var(--pulse)}.s-n{stroke:var(--n-500)}
+.c-surface{fill:var(--n-050)}.s-surface{stroke:var(--n-050)}
+.c-hatch{fill:url(#hatch)}
+
+/* ── protocol table: start → his version ──────────────────────── */
+.proto{margin:1.8em 0;border-top:2px solid var(--n-1000)}
+.p-row{display:grid;grid-template-columns:3rem minmax(0,1.25fr) minmax(0,1fr) minmax(0,1fr);gap:0;border-bottom:1px solid var(--n-300)}
+.p-row>div{padding:var(--s3) var(--s3) var(--s3) 0;min-width:0}
+.p-row>div+div{padding-left:var(--s3);border-left:1px solid var(--n-200)}
+.p-head>div{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--n-600);padding-top:8px;padding-bottom:8px}
+.p-n{font-family:var(--disp);font-weight:700;font-stretch:70%;font-size:26px;line-height:1.1;color:var(--n-500);font-variant-numeric:tabular-nums}
+.p-t{font-weight:700;font-size:16px;line-height:1.5}
+.p-why{font-size:14px;line-height:1.7;color:var(--n-700);margin-top:4px}
+.p-you,.p-him{font-size:14.5px;line-height:1.7}
+.p-him{color:var(--deep-ink)}
+.p-row .src{margin-top:6px}
+@media (max-width:860px){.p-head{display:none}.p-row{grid-template-columns:2.4rem minmax(0,1fr)}
+  .p-row>div+div{border-left:0;padding-left:0}.p-you,.p-him{grid-column:2;padding-top:0!important}
+  .p-you::before{content:"起步 · ";font-family:var(--mono);font-size:11px;color:var(--n-600)}
+  .p-him::before{content:"他本人 · ";font-family:var(--mono);font-size:11px;color:var(--n-600)}}
+
+/* ── data tables ──────────────────────────────────────────────── */
+.tbl-wrap{margin:1.6em 0;overflow-x:auto;border:1px solid var(--n-300);border-radius:var(--r);background:var(--n-050)}
+table.tbl{width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.6;min-width:560px}
+.tbl th{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--n-600);text-align:left;
+  padding:9px var(--s3);border-bottom:1px solid var(--n-300);background:var(--n-100);white-space:nowrap}
+.tbl td{padding:10px var(--s3);border-bottom:1px solid var(--n-200);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td.num{font-family:var(--mono);font-size:13px;white-space:nowrap}
+.tbl td.k{font-weight:700;white-space:nowrap}
+
+/* ── timeline of his own claims ───────────────────────────────── */
+.tl{margin:1.6em 0;border-left:1px solid var(--n-300);padding-left:var(--s6)}
+.tl-i{position:relative;margin:0 0 var(--s6)}
+.tl-i::before{content:"";position:absolute;left:calc(-1 * var(--s6) - 5px);top:9px;width:9px;height:9px;border-radius:50%;background:var(--n-000);border:2px solid var(--deep)}
+.tl-i.bad::before{border-color:var(--pulse)}
+.tl-d{font-family:var(--mono);font-size:12px;color:var(--n-600)}
+.tl-t{font-weight:700;margin:2px 0}
+.tl-b{font-size:15px;line-height:1.75;color:var(--n-800)}
+
+/* ── shorts library ───────────────────────────────────────────── */
+.lib-ctl{display:flex;flex-wrap:wrap;gap:8px;margin:var(--s4) 0 var(--s5)}
+.chip{font-family:var(--mono);font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--n-400);background:var(--n-050);color:var(--n-900);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--n-1000);color:var(--n-000);border-color:var(--n-1000)}
+.chip .ct{opacity:.6;margin-left:4px}
+.lib{display:grid;grid-template-columns:repeat(auto-fill,minmax(15.5rem,1fr));gap:10px}
+.sv{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border:1px solid var(--n-300);border-radius:var(--r);background:var(--n-050);
+  color:var(--n-1000);text-decoration:none;min-height:7.2rem;transition:border-color .15s var(--ease),transform .15s var(--ease)}
+.sv:hover{border-color:var(--n-1000)}
+@media (prefers-reduced-motion:no-preference){.sv:hover{transform:translateY(-1px)}}
+.sv-t{font-family:var(--en);font-size:15px;line-height:1.4;font-weight:600;flex:1}
+.sv-z{font-size:13px;line-height:1.55;color:var(--n-700)}
+.sv-m{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--n-600)}
+.sv-m .tg{color:var(--deep-ink)}
+.sv.hide{display:none}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:10px;margin:1.2em 0}
+.vd{display:block;padding:14px 16px;border:1px solid var(--n-300);border-left:3px solid var(--deep);border-radius:var(--r);background:var(--n-050);color:var(--n-1000);text-decoration:none}
+.vd:hover{border-color:var(--n-1000);border-left-color:var(--deep)}
+.vd b{display:block;font-family:var(--en);font-size:15.5px;line-height:1.4}
+.vd span{display:block;font-size:13.5px;line-height:1.6;color:var(--n-700);margin-top:4px}
+.vd i{display:block;font-style:normal;font-family:var(--mono);font-size:11px;color:var(--n-600);margin-top:6px}
+
+/* ── source inventory ─────────────────────────────────────────── */
+.inv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:1.4em 0}
+.inv>div{border:1px solid var(--n-300);border-radius:var(--r);padding:var(--s4);background:var(--n-050)}
+.inv .v-n{font-size:40px}
+@media (max-width:640px){.inv{grid-template-columns:repeat(2,minmax(0,1fr))}.inv .v-n{font-size:32px}.inv>div{padding:var(--s3)}}
+.reflist{font-size:14px;line-height:1.75;padding-left:1.2em}
+.reflist li{margin:.35em 0}
+
+/* ── HTML range bars (stay legible at phone width) ────────────── */
+.rb{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr) 4.6rem;gap:10px 14px;align-items:center;padding:var(--s4)}
+.rb-l{font-size:14px;line-height:1.4;color:var(--n-900)}
+.rb-t{position:relative;height:16px;background:linear-gradient(to right,var(--n-300) 1px,transparent 1px) 0 0/calc(100%/6) 100% repeat-x;border-right:1px solid var(--n-300)}
+.rb-b{position:absolute;top:2px;height:12px;border-radius:6px;background:var(--pulse)}
+.rb-b.deep{background:var(--deep)}
+.rb-b.soft{background:var(--deep-200)}
+.rb-p{position:absolute;top:1px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--deep);box-shadow:0 0 0 2px var(--n-050)}
+.rb-p.hollow{background:var(--n-050);border:2px solid var(--deep)}
+.rb-v{font-family:var(--mono);font-size:12px;color:var(--n-700);white-space:nowrap}
+.rb-ax{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--n-600)}
+.rb-ax span{width:0;display:flex;justify-content:center;white-space:nowrap}
+@media (max-width:640px){.rb{grid-template-columns:minmax(0,1fr) 4.2rem;gap:4px 10px}.rb-l{grid-column:1/-1;margin-top:6px}.rb-ax-l{display:none}}
+
+/* ── scrollable SVG figures on narrow screens ─────────────────── */
+.fig-b.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.fig-b.scroll svg{min-width:600px}
+
+/* ── two loops (virtuous / vicious) ───────────────────────────── */
+.cyc{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--n-300);border-radius:var(--r);background:var(--n-050);overflow:hidden}
+.cyc>div{padding:var(--s4) var(--s5) var(--s5)}
+.cyc>div+div{border-left:1px solid var(--n-300)}
+.cyc h4{margin:0 0 var(--s3);font-family:var(--mono);font-weight:400;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase}
+.cyc .good h4{color:var(--deep-ink)} .cyc .bad h4{color:var(--pulse-ink)}
+.cyc ol{list-style:none;margin:0;padding:0;counter-reset:c}
+.cyc li{position:relative;padding:8px 12px;border:1px solid var(--n-300);border-radius:var(--r);background:var(--n-000);font-size:14.5px;line-height:1.55}
+.cyc li+li{margin-top:22px}
+.cyc li+li::before{content:"↓";position:absolute;top:-21px;left:14px;font-family:var(--mono);font-size:13px;color:var(--n-500)}
+.cyc .good li{border-left:3px solid var(--deep)} .cyc .bad li{border-left:3px solid var(--pulse)}
+.cyc .back{margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--n-600)}
+@media (max-width:640px){.cyc{grid-template-columns:1fr}.cyc>div+div{border-left:0;border-top:1px solid var(--n-300)}}
+
+/* ── step ladder ──────────────────────────────────────────────── */
+.ladder{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:1.6em 0;border:1px solid var(--n-300);border-radius:var(--r);overflow:hidden;background:var(--n-050)}
+.ladder>div{padding:var(--s3) var(--s3) var(--s4);border-left:1px solid var(--n-300);min-width:0}
+.ladder>div:first-child{border-left:0}
+.ladder .lk{font-family:var(--mono);font-size:11px;color:var(--n-600)}
+.ladder .ln{font-family:var(--disp);font-weight:700;font-stretch:68%;font-size:30px;line-height:1.1;margin:4px 0}
+.ladder .ld{font-size:13px;line-height:1.55;color:var(--n-700)}
+.ladder>div.him{background:var(--deep-100)}
+.ladder>div.him .ln{color:var(--deep)}
+@media (max-width:640px){.ladder{grid-template-columns:1fr 1fr}.ladder>div{border-left:0;border-top:1px solid var(--n-300)}
+  .ladder>div:nth-child(-n+2){border-top:0}.ladder>div:nth-child(even){border-left:1px solid var(--n-300)}.ladder>div:last-child{grid-column:1/-1;border-left:0}}
+
+footer.foot{max-width:var(--wide);margin:var(--s16) auto 0;padding:var(--s8) var(--s6) var(--s16);border-top:1px solid var(--n-300);
+  font-family:var(--mono);font-size:12px;color:var(--n-600);line-height:1.8}
+.foot a{color:var(--n-700)}
+
+@media (max-width:520px){
+  body{font-size:16.5px}
+  .hero-in{padding:var(--s10) var(--s4) var(--s8)} .contents,section.sec,.part,.mon-in,footer.foot{padding-left:var(--s4);padding-right:var(--s4)}
+  .lede{font-size:17.5px} .q-en{font-size:16.5px} .thesis{font-size:17px;padding:var(--s4)}
+  .mon-id{display:none}
+}
+@media print{.mon{display:none}.sv,.q,figure.fig{break-inside:avoid}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="6" height="6" fill="var(--pulse-100)"/><line x1="0" y1="0" x2="0" y2="6" stroke="var(--pulse)" stroke-width="1.4" stroke-opacity=".55"/>
+    </pattern>
+  </defs>
+</svg>
+
+<header class="mon" id="mon">
+  <div class="mon-in">
+    <span class="mon-dot" aria-hidden="true"></span>
+    <a class="mon-id" href="#top">职业睡眠者</a>
+    <div class="mon-sec" id="mon-sec" aria-live="polite"></div>
+    <details class="mon-menu" id="mon-menu">
+      <summary>目录</summary>
+      <nav class="mon-drop" id="mon-drop" aria-label="目录"></nav>
+    </details>
+  </div>
+  <div class="mon-bar" id="mon-bar"></div>
+</header>
+
+<div class="hero" id="top">
+  <div class="hero-in">
+    <div class="kicker"><span>Bryan Johnson</span><span>Blueprint · Don't Die</span><span>睡眠优先的阅读指南</span></div>
+    <h1 class="title"><span class="zh">职业睡眠者</span></h1>
+    <p class="title-en">The Professional Sleeper — Bryan Johnson on why every day begins the night before</p>
+    <p class="lede">Bryan Johnson 做过的事情很多：一百多粒药片、基因疗法、干细胞、高压氧、全身 MRI、把七十多个器官逐一测出“生物年龄”。但当被问到“如果只能做一件事”时，他的回答始终是同一件：<strong>睡觉</strong>——更准确地说，<strong>把睡前心率降下来，让睡眠成为人生的第一优先级</strong>。</p>
+    <p class="lede">这份指南按这个排序来组织他的全部内容：先讲为什么是睡眠，再讲他的睡眠协议到底怎么做、做到什么程度，然后才是 Evening Bryan、三大幂律和 Don't Die 世界观。所有观点都尽量用他本人的原话，附出处；英文原文在前，中文译文在后。</p>
+    <div class="vitals" role="list">
+      <div class="vital is-deep" role="listitem"><div class="v-k">Bedtime</div><div class="v-n">20:30</div><div class="v-d">每晚上床时间；早上约 4:30–5:00 自然醒，不用闹钟</div></div>
+      <div class="vital is-deep" role="listitem"><div class="v-k">Sleep onset</div><div class="v-n">&lt;3<small>min</small></div><div class="v-d">他自述头碰枕头后入睡所需时间</div></div>
+      <div class="vital is-pulse" role="listitem"><div class="v-k">HR before sleep</div><div class="v-n">39–44<small>bpm</small></div><div class="v-d">他口中“最重要的健康指标”：睡前心率</div></div>
+      <div class="vital" role="listitem"><div class="v-k">Last meal</div><div class="v-n">~12:00</div><div class="v-d">末餐约在中午，距就寝约 8.5 小时</div></div>
+      <div class="vital is-deep" role="listitem"><div class="v-k">Sleep score</div><div class="v-n">8<small>个月</small></div><div class="v-d">WHOOP 连续八个月 100% 睡眠表现（2024）</div></div>
+    </div>
+  </div>
+</div>
+
+<nav class="contents" aria-label="目录">
+  <div class="c-grid">
+    <div class="c-col"><p class="c-h">I · 为什么是睡眠</p><ol>
+      <li><a href="#thesis"><span class="n">00</span>一句话，以及他和另外三位的不同</a></li>
+      <li><a href="#origin"><span class="n">01</span>起点：二十年的睡眠剥夺</a></li>
+      <li><a href="#drug"><span class="n">02</span>“世界上最强的表现增强药”</a></li>
+    </ol></div>
+    <div class="c-col"><p class="c-h">II · 协议</p><ol>
+      <li><a href="#pro"><span class="n">03</span>职业睡眠者：身份先于技巧</a></li>
+      <li><a href="#hrbs"><span class="n">04</span>一个数字：睡前心率</a></li>
+      <li><a href="#ten"><span class="n">05</span>十条习惯总表</a></li>
+      <li><a href="#food"><span class="n">06</span>末餐时间：最大的单一杠杆</a></li>
+      <li><a href="#eve"><span class="n">07</span>晚间：屏幕、光、刺激物</a></li>
+      <li><a href="#room"><span class="n">08</span>卧室：凉、暗、静、独睡</a></li>
+      <li><a href="#day"><span class="n">09</span>他的一天，从前一晚开始</a></li>
+    </ol></div>
+    <div class="c-col"><p class="c-h">III · 系统</p><ol>
+      <li><a href="#will"><span class="n">10</span>睡眠、意志力与 Evening Bryan</a></li>
+      <li><a href="#broken"><span class="n">11</span>当睡眠被打破</a></li>
+      <li><a href="#data"><span class="n">12</span>数据怎么用，怎么不被数据绑架</a></li>
+      <li><a href="#laws"><span class="n">13</span>三大幂律：睡眠 → 运动 → 饮食</a></li>
+      <li><a href="#dontdie"><span class="n">14</span>Don't Die：从一张床到一个文明</a></li>
+      <li><a href="#changed"><span class="n">15</span>他改过主意的地方</a></li>
+    </ol></div>
+    <div class="c-col"><p class="c-h">IV · 资料</p><ol>
+      <li><a href="#shorts"><span class="n">16</span>短视频库（筛选）</a></li>
+      <li><a href="#videos"><span class="n">17</span>长视频与播客</a></li>
+      <li><a href="#sources"><span class="n">18</span>来源与方法</a></li>
+    </ol></div>
+  </div>
+</nav>
+
+<main>
+
+<div class="part"><div class="part-in"><span class="part-n">PART I</span><span class="part-t">Why sleep</span></div></div>
+
+<!-- 00 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="thesis" data-t="一句话">
+  <div class="sec-h"><div class="sec-n">00</div><div><div class="sec-tag">THESIS</div><h2><span class="zh">一句话，以及他和另外三位的不同</span></h2></div></div>
+  <div class="body">
+    <p>把 Bryan Johnson 几年来关于健康的全部输出压成一句话，就是 Protocol 页面上那段问答：</p>
+    <div class="q big">
+      <div class="q-h"><span class="who">BRYAN JOHNSON · PROTOCOL</span><a href="https://protocol.bryanjohnson.com/">protocol.bryanjohnson.com</a></div>
+      <p class="q-en">“The most common question I get: what is the one thing I can do to improve my health? I’ll tell you. It’s free and within your power. Lower your resting heart rate before bed. … Why? Because sleep is the best performance enhancing drug in the world. Get your dose every night.”</p>
+      <p class="q-zh">「我最常被问的问题是：我能为健康做的那一件事是什么？我告诉你。它免费，而且完全在你掌控之内：<strong>把睡前的静息心率降下来。</strong>……为什么？因为睡眠是世界上最好的表现增强药。每晚都把这一剂吃够。」</p>
+    </div>
+    <p>注意这句话的结构：问题是“健康”，答案却是一个<em class="dot">睡前</em>的指标，而这个指标之所以重要，是因为它预测<em class="dot">睡眠</em>。也就是说，在他的体系里，睡眠不是“健康习惯之一”，而是其他一切的上游。</p>
+
+    <h3><span class="h-k">Framing</span>“睡眠最高优先级”是他的独特贡献吗？基本是，但要说清楚贡献在哪一层</h3>
+    <p>如果只看<em class="dot">建议本身</em>——卧室要凉、要暗、要静，固定就寝时间，下午之后别喝咖啡，早上见光——这些和 Matthew Walker、Huberman 讲的睡眠卫生几乎一样，并不新。他的不同不在“睡眠技巧”这一层，而在三个更上游的位置：</p>
+    <ol>
+      <li><strong>排序。</strong>他把睡眠明确放在运动和饮食之前，称为 Power Law #1，并且把整天倒过来安排：“每一天不是从醒来开始，而是从前一晚上床开始”。他甚至说，在他做过的所有长寿项目里，最自豪的是“学会了睡觉”这件事。</li>
+      <li><strong>一个可控的数字。</strong>他把复杂的健康问题压缩为“睡前心率”（heart rate before sleep，HRBS）。吃得晚、喝酒、吵架、刷屏、晚上高强度运动——全都会让它上升；它一上升，睡眠质量就下降。于是每个晚间决定都有了一个可测量的价格。</li>
+      <li><strong>治理而不是意志力。</strong>“职业睡眠者”的身份、把就寝当作迟到要道歉的会议、解雇 Evening Bryan、5 点后不吃东西、5 点后不吵架——这些都是在事情发生之前就把决定权从“晚上那个疲惫的自己”手里拿走。</li>
+    </ol>
+    <p>和你已经读过的三位放在一起看，分工很清楚：</p>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>人物</th><th>他们各自押注的“第一杠杆”</th><th>对睡眠的位置</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Huberman</td><td>光：用光的剂量和时机校准昼夜节律</td><td>睡眠是光照校准后的下游结果</td></tr>
+        <tr><td class="k">Peter Attia</td><td>运动：把训练视为最有效的长寿“药”，配合四骑士的早期干预</td><td>五大杠杆之一，与运动、营养、情绪、药物并列</td></tr>
+        <tr><td class="k">Eric Topol</td><td>证据尺子：先做已被证明能预防疾病的事</td><td>五个高证据行为之一</td></tr>
+        <tr><td class="k" style="color:var(--deep-ink)">Bryan Johnson</td><td>睡眠：以睡前心率为抓手，把整天的作息、进食、社交倒推着围绕就寝安排</td><td><strong>第一优先级，其他一切的上游</strong></td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">
+      <span class="nk">阅读提示</span>
+      <p>这是一份<strong>观点整理</strong>，不是循证评估。文中的数据（八个月 100%、39 bpm、“质量降 30%”等）都是他本人或他团队的自述和可穿戴设备读数；他引用的研究数字也照录，不另行核验。他自己的 Protocol 页面也写着：所述内容“仅供参考，不构成医疗建议”，生物年龄类测量“属初步结果”。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 01 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="origin" data-t="起点">
+  <div class="sec-h"><div class="sec-n">01</div><div><div class="sec-tag">ORIGIN</div><h2><span class="zh">起点：二十年的睡眠剥夺</span></h2><p class="sec-sub">他之所以把睡眠排第一，不是因为读了文献，而是因为他自己在反面待了二十年。</p></div></div>
+  <div class="body">
+    <div class="q">
+      <div class="q-h"><span class="who">PROTOCOL · BIOMARKERS</span><a href="https://protocol.bryanjohnson.com/">protocol.bryanjohnson.com</a></div>
+      <p class="q-en">“When I started Project Blueprint, I was a broken down 42 year old. Sugar cereal and soda as a kid, a decade of chronic depression, and 20 years of sleep deprivation. I was overweight, my joints hurt, and I was losing my hair.”</p>
+      <p class="q-zh">「开始 Blueprint 的时候，我是一个垮掉的 42 岁男人。小时候吃含糖麦片、喝汽水，十年慢性抑郁，二十年睡眠剥夺。超重，关节疼，头发在掉。」</p>
+    </div>
+    <p>二十多岁时，他一边带着几个小孩，一边创办支付公司 Braintree（后来以 8 亿美元出售）。他形容那时的睡眠是“total chaos”：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">X · 2025-09-25</span><a href="https://x.com/bryan_johnson/status/1971206518533161126">x.com/bryan_johnson</a></div>
+      <p class="q-en">“In my 20s, with a few young kids and building a start up, my sleep was total chaos. My sleep stress was so intense that I’d do wild and dangerous things at night. I’d dream that one of my children was in bed with me and I was accidentally smothering them so I’d jump up and…”</p>
+      <p class="q-zh">「二十多岁时，家里有几个小孩，又在创业，我的睡眠一团糟。睡眠压力大到我晚上会做出疯狂而危险的事：我会梦见一个孩子躺在我床上、我不小心要把他闷死，于是猛地跳起来……」</p>
+    </div>
+    <p>同一时期，他夜里磨牙磨得厉害，以为“早上起来牙肯定没了”；磨牙持续了二十年，直到牙医给他配了 SomnoDent 防磨牙装置才停下来。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-get-more-restorative-sleep">博客 2026-04</a></span><span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol·口腔</a></span> 他还说，那十年的抑郁和睡眠互相锁死：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">DON'T DIE PODCAST · ADVANCED GUIDE TO BETTER SLEEP · 2025-07-03</span><a href="https://www.youtube.com/watch?v=LPzRwzivklA">YouTube</a></div>
+      <p class="q-en">“I’ve been depressed and when you’re depressed it’s very hard to sleep … I was also overeating to try to address my depressive symptoms. … I just wish somebody would have been in my life to tell me these things. … Why did I have to navigate this for 20 years by myself without someone pointing out these very obvious things in life.”</p>
+      <p class="q-zh">「我抑郁过，抑郁的时候很难睡着……我还靠暴食去压抑郁症状。……我真希望当时有人告诉我这些。……为什么我得自己摸索二十年，没有一个人指出这些生活里再明显不过的事。」</p>
+    </div>
+
+    <h3><span class="h-k">2018</span>早在 Blueprint 之前：“Sleep is the new coffee”</h3>
+    <p>很多人以为他的睡眠执念是 Blueprint（2021）的产物。其实最早的公开记录是 2018 年 12 月的一篇短文。他读完 <em>Why We Sleep</em> 之后开始系统地优化睡眠，几周内深睡增加了 40% 到 157%，并且写下了一个此后一直没变的判断：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">BRYANJOHNSON.COM · 2018-12-06</span><a href="https://www.bryanjohnson.com/articles/sleep-is-the-new-coffee">Sleep is the new coffee</a></div>
+      <p class="q-en">“Not only did I become convinced that getting high-quality sleep is the best protector and enhancer of health and cognition, but it is also the most underappreciated. … These gains have come at a cost to my social life. I’ve been leaving events early and declining entertainment opportunities in order to maintain my routine. The benefits in how I feel have enabled me to do so without regret or FOMO.”</p>
+      <p class="q-zh">「我不仅确信高质量睡眠是健康与认知最好的保护者和增强剂，而且它也是最被低估的。……这些收益是用社交生活换来的：为了维持作息，我会提前离开活动、推掉娱乐邀约。但带来的感受让我做这些事时既不后悔，也不怕错过。」</p>
+    </div>
+    <p>那篇文章列出的清单，已经是今天协议的雏形：Oura 戒指追踪睡眠、窗户全部遮光、晚 6 点后不进食不饮水、不碰咖啡因和酒精、晚 7 点戴防蓝光眼镜、下班后至少一小时放松、睡前冥想 5–10 分钟、ChiliPad 床垫降温到 62.6°F、晚 8:45–9:30 之间上床、早上不设闹钟。§09 有一张表对比 2018、2020 和 2026 年的版本。</p>
+
+    <h3><span class="h-k">2024 → 2026</span>结果：从“最差”到“最自豪”</h3>
+    <div class="tl">
+      <div class="tl-i"><div class="tl-d">2024-08-15 · X</div><div class="tl-t">“I achieved the best recorded sleep score in history. Eight months of perfect, 100% sleep.”</div><div class="tl-b">他说自己用一年时间学会了怎么做到；用的是 WHOOP 的睡眠表现分。<span class="cite"><a href="https://x.com/bryan_johnson/status/1824078073018581129">X</a></span></div></div>
+      <div class="tl-i"><div class="tl-d">2026-03-12 · X</div><div class="tl-t">“Of all the longevity stuff I’ve done, I’m most proud of my learned ability to sleep.”</div><div class="tl-b">同一条帖子开头：“Everything in society attacks sleep. It’s humanity's greatest risk because it strips clear thinking.”（社会上的一切都在攻击睡眠。它是人类最大的风险，因为它剥夺清醒的思考。）<span class="cite"><a href="https://x.com/bryan_johnson/status/2032148870315327839">X</a></span></div></div>
+      <div class="tl-i"><div class="tl-d">2026-06 · 博客</div><div class="tl-t">“My sleep performance ranks in the 99.4th percentile. That didn’t happen by accident. It took 5 years to build the systems that produce it.”</div><div class="tl-b">睡眠表现位列第 99.4 百分位；他强调这是五年搭建系统的结果。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-evening-routine">博客</a></span></div></div>
+      <div class="tl-i"><div class="tl-d">2026-09-06 · X</div><div class="tl-t">“5 am wake &gt; asleep in 3 min &gt; 39 bpm resting heart rate &gt; 4hr 31 min restorative sleep &gt; no wake events &gt; sleep age 30 (19 yr younger)”</div><div class="tl-b">一个典型早晨的读数：39 bpm、修复性睡眠 4 小时 31 分、“睡眠年龄 30 岁，比实际年轻 19 岁”。<span class="cite"><a href="https://x.com/bryan_johnson/status/2096691396661092565">X</a></span></div></div>
+    </div>
+    <p>他也说过，人到四十七岁、生物学条件明明不如年轻时，他却睡出了一生中最好的觉：过去他能记得的夜醒是每晚三到六次，现在是零到一次。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客 2025-07</a></span></p>
+  </div>
+</section>
+
+<!-- 02 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="drug" data-t="表现增强药">
+  <div class="sec-h"><div class="sec-n">02</div><div><div class="sec-tag">THE CLAIM</div><h2><span class="zh">“世界上最强的表现增强药”</span></h2><p class="sec-sub">同一个判断，他在不同场合换了很多种说法。把它们放在一起，能看出他到底在主张什么。</p></div></div>
+  <div class="body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>原话</th><th>译文</th><th>出处</th></tr></thead>
+      <tbody>
+        <tr><td class="en">“Sleep is the most important thing a human does on a daily basis.”</td><td>睡眠是一个人每天做的最重要的事。</td><td class="num"><a href="https://www.youtube.com/watch?v=Wk9p3dhMYdk&t=15s">视频 2024-03</a></td></tr>
+        <tr><td class="en">“There is literally nothing I do in my life that changes my conscious experience more than sleep.”</td><td>我生活里没有任何一件事，比睡眠更能改变我的主观体验。</td><td class="num"><a href="https://www.youtube.com/watch?v=3kAiPSEnrHI">视频 2024-10</a></td></tr>
+        <tr><td class="en">“Sleep is my number one priority in life. It's more important than anything else because when I sleep well life feels amazing and possible and when I don't sleep well it feels challenging and miserable.”</td><td>睡眠是我人生的第一优先级，比任何事都重要：睡得好，生活显得美好而可能；睡不好，一切都艰难而痛苦。</td><td class="num"><a href="https://www.youtube.com/watch?v=Z7veiyN4LqU&t=99s">视频 2023-05</a></td></tr>
+        <tr><td class="en">“If you only do one thing for your health: sleep.”</td><td>如果你只为健康做一件事：睡觉。</td><td class="num"><a href="https://protocol.bryanjohnson.com/">Protocol</a></td></tr>
+        <tr><td class="en">“High-quality sleep is the world’s #1 longevity drug. It underpins every healthy behavior including exercise, nutrition, and emotional resilience.”</td><td>高质量睡眠是世界第一的长寿药，它支撑着运动、营养和情绪韧性在内的所有健康行为。</td><td class="num"><a href="https://protocol.bryanjohnson.com/">Protocol</a></td></tr>
+        <tr><td class="en">“Sleep is my #1 life priority because high quality rest makes hard things easy and impossible things doable.”</td><td>睡眠是我人生第一优先级，因为高质量的休息让难事变容易，让不可能的事变得可做。</td><td class="num"><a href="https://protocol.bryanjohnson.com/">Protocol·日程</a></td></tr>
+        <tr><td class="en">“Like everything you do in life maps back to sleep.”</td><td>生活里的一切都能追溯回睡眠——不只是健康，还有收入、升职、能不能找到伴侣、要不要孩子。</td><td class="num"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客 2025-07</a></td></tr>
+        <tr><td class="en">“Sleep is your first remedy, your first medication, your first intervention. Nothing beats it in its power.”</td><td>睡眠是你的第一疗法、第一药物、第一干预，没有什么比它更强。</td><td class="num"><a href="https://www.youtube.com/watch?v=hkS1Eww5jTc">演讲 2024-04</a></td></tr>
+        <tr><td class="en">“Sleep deprivation might be the new smoking.”</td><td>睡眠剥夺可能就是新的吸烟。</td><td class="num"><a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-get-more-restorative-sleep">团队博客 2026-04</a></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3><span class="h-k">Why he believes it</span>他给出的理由，分三层</h3>
+    <p><strong>第一层：睡眠不足的代价。</strong>他反复引用的几组数字（照录，未另行核验）：清醒 18 小时相当于血液酒精浓度 0.05%，24 小时相当于 0.1%，而美国法定醉驾线是 0.08%；长期每晚睡 6 小时或更少，患普通感冒的可能性高 4.2 倍；一晚只睡 4 小时，23 名受试者中 18 人的自然杀伤细胞活性下降 70%，下一晚正常睡眠即可恢复；一夜剥夺睡眠后 S100-B 上升 20%，与脑外伤后的变化类似。<span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol·Sleep</a></span> 他团队 2026 年的文章还引用了美国 3,143 个县的数据：睡眠不足 7 小时的人口比例，是继吸烟和肥胖之后第三强的短寿预测因子。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-get-more-restorative-sleep">博客 2026-04</a></span></p>
+    <p><strong>第二层：深睡时身体在做什么。</strong>他的博客把修复性睡眠（深睡 + REM）里发生的事列成清单：深睡早期胶质细胞收缩最多 60%，脑脊液借此冲洗大脑，而<em class="dot">每一次夜醒都会打断这个清洗过程</em>；自噬启动，DNA 双链断裂比碎片化睡眠少约一半；生长激素激增 10–20 倍，皮质醇降到最低，瘦素上升、饥饿素被抑制，胰岛素敏感性提高 20–40%；血压下降，血管放松；副交感神经主导，改善消化与菌群。他的目标是每晚 3 小时以上的修复性睡眠。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-get-more-restorative-sleep">博客 2026-04</a></span></p>
+    <p><strong>第三层，也是他最独特的一层：睡眠决定意志力。</strong>在他的叙述里，睡眠的价值不止于修复，而在于它决定了第二天你还有没有能力做对的选择——吃什么、几点停、要不要刷手机。这条因果链是理解他整个体系的钥匙，§10 单独讲。</p>
+    <div class="q">
+      <div class="q-h"><span class="who">PROTOCOL · THE ONE THING</span><a href="https://protocol.bryanjohnson.com/">protocol.bryanjohnson.com</a></div>
+      <p class="q-en">“When your resting heart rate (RHR) is low, your sleep is better. When your sleep is better, you’re more likely to exercise and eat well. When you exercise and eat well…you do more positive things for your health. Conversely, if your RHR is high, you won’t sleep well. Then you won’t exercise and you’ll eat poorly. Poor sleep destroys your self control. A vicious cycle.”</p>
+      <p class="q-zh">「睡前心率低，睡眠就更好；睡得好，你就更可能去运动、好好吃饭；运动和饮食好了，你会为健康做更多正确的事。反过来，心率高就睡不好，于是不想运动、吃得一塌糊涂。<strong>糟糕的睡眠摧毁自控力。</strong>一个恶性循环。」</p>
+    </div>
+  </div>
+</section>
+
+<div class="part"><div class="part-in"><span class="part-n">PART II</span><span class="part-t">The protocol</span></div></div>
+
+<!-- 03 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="pro" data-t="职业睡眠者">
+  <div class="sec-h"><div class="sec-n">03</div><div><div class="sec-tag">IDENTITY</div><h2><span class="zh">职业睡眠者：身份先于技巧</span></h2><p class="sec-sub">他的十条习惯里，第一条不是任何技巧，而是换一个身份。</p></div></div>
+  <div class="body">
+    <div class="q big">
+      <div class="q-h"><span class="who">DON'T DIE PODCAST · 2025-07-03 · 10:21</span><a href="https://www.youtube.com/watch?v=LPzRwzivklA&t=621s">YouTube</a></div>
+      <p class="q-en">“The first observation is for someone to realize that you have never been taught how to sleep. You’ve been taught how to drive a car potentially. You’ve been taught sex ed in school. You learned how to do algebra and geometry … but in society there is no course anywhere to learn how to sleep.”</p>
+      <p class="q-zh">「第一个认识是：你从来没有被教过怎么睡觉。你可能学过开车，在学校上过性教育，学过代数和几何……但整个社会里，没有任何一门课教人怎么睡觉。」</p>
+    </div>
+    <p>所以他的第一步是“重塑身份”：你不再是一个“想睡好一点的人”，你是职业睡眠者。Protocol 页面的原文是：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">PROTOCOL · SLEEP · HABIT 1</span><a href="https://protocol.bryanjohnson.com/">protocol.bryanjohnson.com</a></div>
+      <p class="q-en">“Reframe Your Identity: You are a professional sleeper. Make sleep your #1 priority. Nothing influences your conscious and unconscious existence more. Plan your day around sleep. It’s the most important appointment in your calendar. Sleep will make you a top performer. I realize this is very counterintuitive and contrary to current culture, but culture-encouraged sleep deprivation is harming you and society.”</p>
+      <p class="q-zh">「重塑你的身份：你是一名职业睡眠者。把睡眠作为第一优先级——没有什么比它更能影响你有意识和无意识的存在。围绕睡眠安排一天，它是你日程里最重要的约会。睡眠会让你成为顶尖表现者。我知道这非常反直觉、和当下文化背道而驰，但被文化鼓励的睡眠剥夺正在伤害你，也在伤害社会。」</p>
+    </div>
+    <p>2025 年世界卫生日的那篇文章把“职业”二字讲得更具体：<span class="en">“You don’t sleep when it’s convenient. You don’t sleep after your show ends, or after finishing up some late-night emails, or after one more scroll through social media. Treat sleep as a craft, something you continually improve.”</span>（你不在方便的时候才睡，不是剧看完、邮件回完、再刷一轮社交媒体之后才睡。把睡眠当作一门手艺，持续精进。）<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/the-three-power-laws-of-health">博客 2025-04</a></span></p>
+
+    <h3><span class="h-k">The meeting test</span>迟到四分钟，你会向同事道歉；那向自己呢？</h3>
+    <p>他最常用来说明“职业”含义的类比，是开会：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">DON'T DIE PODCAST · 2025-07-03</span><a href="https://www.youtube.com/watch?v=LPzRwzivklA">YouTube</a></div>
+      <p class="q-en">“If the meeting begins at 9:00 a.m. and you show up at 9:04, you typically acknowledge the group and say, ‘I’m sorry for being late’ … Now, if your bedtime is 10 p.m. and you go to bed at 10:04 p.m., it’s not customary that you apologize to yourself for being late. … And if it’s 11 or 12 or 1 or 2, you don’t even care. … Your bedtime is 10 p.m. Be on time at 10 p.m. And if you’re even a few minutes late, acknowledge that’s a form of disrespect to yourself. That’s how serious sleep is.”</p>
+      <p class="q-zh">「会议九点开始，你九点零四分到，通常会向大家说声抱歉……可如果你的就寝时间是十点，你十点零四分上床，没人会习惯性地向自己道歉。……要是拖到十一点、十二点、一点、两点，你根本不在乎。……你的就寝时间是十点，就十点准时上床。哪怕只晚几分钟，也要承认这是对自己的不尊重。睡眠就是这么严肃的事。」</p>
+    </div>
+    <p>他在 X 上把同一句话压成一行：<span class="en">“You’re on time for work meetings. Be on time for your bedtime and respect yourself.”</span><span class="cite"><a href="https://x.com/bryan_johnson/status/1824078082778816633">X 2024-08</a></span> Kate Tolo 在节目里补充了这条原则在现实中的样子：他们订机票时不会订任何牺牲睡眠的航班——去洪都拉斯时，宁可先飞到迈阿密住一晚，也不凌晨两点落地。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span></p>
+
+    <h3><span class="h-k">Against hustle culture</span>“他们是在缺觉的情况下成功，而不是因为缺觉而成功”</h3>
+    <div class="q">
+      <div class="q-h"><span class="who">DON'T DIE PODCAST · 2025-07-03</span><a href="https://www.youtube.com/watch?v=LPzRwzivklA">YouTube</a></div>
+      <p class="q-en">“That is very counter to our current culture where people say sleep doesn’t matter and actually successful people don’t sleep. That’s a ridiculous idea. It’s foolish. I mean I think people who are successful who don’t sleep could be more successful if they slept. They’re successful despite their lack of sleep.”</p>
+      <p class="q-zh">「这和当下的文化正相反——人们说睡眠不重要，成功人士都不睡觉。这个想法荒唐，愚蠢。我认为那些不睡觉的成功人士，如果睡了会更成功。他们是在缺觉的情况下成功的，而不是因为缺觉。」</p>
+    </div>
+    <p>类似的说法还有：<span class="en">“Ignore those who say sleep is for the weak… they’re drunk from sleep deprivation.”</span>（别理那些说“睡觉是弱者的事”的人——他们是缺觉缺醉了。）<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/10-habits-for-sleep">博客</a></span> 以及那条在 X 上流传很广的短帖：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">X · 2025-01-06</span><a href="https://x.com/bryan_johnson/status/1876119020434559213">x.com/bryan_johnson</a></div>
+      <p class="q-en">“go to bed / right now / it can wait until tomorrow / yes you do need more than 6 hr / you are not fine / you do have a lot going on / and why you need sleep / I know your friend only sleeps 4 hrs / he also frequently melts down / off you go”</p>
+      <p class="q-zh">「去睡觉 / 现在就去 / 那件事可以等明天 / 是的，你需要睡超过 6 小时 / 你不是没事 / 你确实事情很多 / 这正是你需要睡觉的原因 / 我知道你朋友只睡 4 小时 / 他也经常崩溃 / 去吧」</p>
+    </div>
+    <div class="note deep">
+      <span class="nk">他用来改变行为的小实验</span>
+      <p>2023 年他在街头做过一个视频：给陌生人一张 50 美元，条件是连续 7 天在自己设定的就寝时间前后 30 分钟内上床，做不到就要把钱转给别人。他说设计依据是“人喜欢得到东西，但更讨厌失去东西”，目的是“让你为衰老付出的代价变得具体而真实”。<span class="cite"><a href="https://www.youtube.com/watch?v=1FhwVPsNyjY&t=32s">视频 2023-12</a></span></p>
+    </div>
+    <p>还有一句提醒，适合放在身份转换的最后：<span class="en">“Sleep is hard work. Success will take time, as with all things. Invest in the habits, and your body will perform.”</span>（睡眠是辛苦的工作。和所有事一样，成功需要时间。投资于习惯，身体会给你回报。）<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/100-sleep-score">博客 2025-03</a></span></p>
+  </div>
+</section>
+
+<!-- 04 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="hrbs" data-t="睡前心率">
+  <div class="sec-h"><div class="sec-n">04</div><div><div class="sec-tag">ONE NUMBER · HRBS</div><h2><span class="zh">一个数字：睡前心率</span></h2><p class="sec-sub">这是他相对于其他睡眠建议最有辨识度的部分：不是追踪你睡得怎样，而是在上床那一刻，读出你今天为睡眠准备得怎样。</p></div></div>
+  <div class="body">
+    <div class="q big">
+      <div class="q-h"><span class="who">BLUEPRINT BLOG · 2026-04-03</span><a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-lower-your-heart-rate-before-sleep">How to lower your heart rate before sleep</a></div>
+      <p class="q-en">“I’ve spent millions of dollars developing health protocols backed by science. I do dozens of things a day for my health. But if you’re going to focus on one thing, it would be this: Lower your heart rate before sleep. … I cannot overstate its importance. This is the most consequential health lesson to learn.”</p>
+      <p class="q-zh">「我花了数百万美元开发有科学支撑的健康协议，每天为健康做几十件事。但如果你只关注一件，那就是：<strong>降低睡前心率。</strong>……它的重要性怎么强调都不为过。这是最值得学会的一课。」</p>
+    </div>
+
+    <h3><span class="h-k">What it is</span>它是什么、为什么是它</h3>
+    <p>他的定义很朴素：<strong>睡前安静躺着时每分钟的心跳数</strong>（heart rate before sleep，HRBS；早期他叫“resting heart rate before bed”）。之所以选它，有两层理由：</p>
+    <ul>
+      <li><strong>它是结果的预测器。</strong>心率低说明副交感（“休息与消化”）系统已经接管，于是入睡更快、深睡更多。他自述：“40 bpm，我保证会有完美的一夜；57 bpm，睡眠质量会掉大约 30%。每次都这样。”<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-lower-your-heart-rate-before-sleep">博客</a></span> 2024 年的视频里，他给出的分界是 46–50 bpm 几乎保证完美，55–57 bpm 质量约降 30%。<span class="cite"><a href="https://www.youtube.com/watch?v=3kAiPSEnrHI">视频</a></span></li>
+      <li><strong>它是一天的总账。</strong>他称它为“一个能照见灵魂的数字”：<span class="en">“Your HRBS captures and confesses levels of stress, relationship with food, wind down routine, screen usage, emotional health, cardiovascular health, sleep hygiene, circadian rhythm strength, and more.”</span>（睡前心率记录并“招供”了你的压力水平、和食物的关系、放松流程、屏幕使用、情绪健康、心血管健康、睡眠卫生、昼夜节律强度等等。）<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-get-more-restorative-sleep">博客</a></span></li>
+    </ul>
+    <p>他把它当作对抗“健康信息过载”的锚：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">DON'T DIE PODCAST · 2025-07-03</span><a href="https://www.youtube.com/watch?v=LPzRwzivklA">YouTube</a></div>
+      <p class="q-en">“Yes the world of health and wellness is very complicated. … But where you can find stability, where you can anchor your boat is your resting heart rate before bed. That is where you can find peace and comfort and control. … You can’t control like, are seed oils good or bad … So then if you just say what elevates heart rate and what lowers it, you get into basically the most important life decisions people make.”</p>
+      <p class="q-zh">「是的，健康世界非常复杂……但你能找到稳定、能把船锚定的地方，是你的睡前心率。在那里你能找到平静、安心和掌控。……你没法裁决种子油到底好不好……但如果你只问‘什么让心率升高、什么让它降低’，你就碰到了人一生中最重要的那些决定。」</p>
+    </div>
+    <p>以及：<span class="en">“Your resting heart rate before bed is your best accountability partner.”</span>（睡前心率是你最好的问责伙伴：当你盯着自己的那个坏习惯、准备在睡前沉溺时，它会帮你停下来。）<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span></p>
+  </div>
+
+  <div class="wide">
+    <figure class="fig">
+      <div class="fig-h"><span class="fig-t">什么在抬高你的睡前心率</span><span class="fig-k">每项增加的 bpm 范围 · 数据来自 Protocol 页</span></div>
+      <div class="rb" role="img" aria-label="睡前心率升高幅度：焦虑压力反刍 5到25，晚上大餐 5到15，尼古丁 5到15，睡前饮酒 5到10，晚间高强度运动 4到10，兴奋类药物 3到10，脱水 3到8，室温或体温过高 3到8，下午晚些时候的咖啡因 2到5">
+        <div class="rb-l">焦虑、压力、反刍</div><div class="rb-t"><span class="rb-b" style="left:16.67%;width:66.67%"></span></div><div class="rb-v">+5–25</div>
+        <div class="rb-l">晚上吃大餐</div><div class="rb-t"><span class="rb-b" style="left:16.67%;width:33.33%"></span></div><div class="rb-v">+5–15</div>
+        <div class="rb-l">尼古丁</div><div class="rb-t"><span class="rb-b" style="left:16.67%;width:33.33%"></span></div><div class="rb-v">+5–15</div>
+        <div class="rb-l">睡前饮酒</div><div class="rb-t"><span class="rb-b" style="left:16.67%;width:16.67%"></span></div><div class="rb-v">+5–10</div>
+        <div class="rb-l">晚间高强度运动</div><div class="rb-t"><span class="rb-b" style="left:13.33%;width:20%"></span></div><div class="rb-v">+4–10</div>
+        <div class="rb-l">兴奋类药物（如 ADHD 药）</div><div class="rb-t"><span class="rb-b" style="left:10%;width:23.33%"></span></div><div class="rb-v">+3–10</div>
+        <div class="rb-l">脱水</div><div class="rb-t"><span class="rb-b" style="left:10%;width:16.67%"></span></div><div class="rb-v">+3–8</div>
+        <div class="rb-l">卧室或体温过高</div><div class="rb-t"><span class="rb-b" style="left:10%;width:16.67%"></span></div><div class="rb-v">+3–8</div>
+        <div class="rb-l">下午晚些时候的咖啡因</div><div class="rb-t"><span class="rb-b" style="left:6.67%;width:10%"></span></div><div class="rb-v">+2–5</div>
+        <div class="rb-l rb-ax-l"></div><div class="rb-ax"><span>0</span><span>5</span><span>10</span><span>15</span><span>20</span><span>25</span><span>30</span></div><div class="rb-v">bpm</div>
+      </div>
+      <figcaption><b>压力是唯一一个能把心率抬高 25 bpm 的因素，</b>上限是其他任何一项的近两倍——这就是他为什么把“睡前别吵架”“下班后不再工作”和“末餐时间”放在同一个层级。2026 年的博客给出了一组更简化的单点数值：大餐 +10、尼古丁 +10、脱水 +5、过热 +5、某些药物 +7，压力仍是 +5–25。<span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol</a></span><span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-lower-your-heart-rate-before-sleep">博客</a></span></figcaption>
+    </figure>
+  </div>
+
+  <div class="body">
+    <h3><span class="h-k">How to measure</span>怎么测，什么算好</h3>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>项目</th><th>他的说法</th></tr></thead>
+      <tbody>
+        <tr><td class="k">测法</td><td>平躺放松 60 秒，做几次深呼吸。有可穿戴设备就看实时读数；没有就摸脉搏数 15 秒再乘 4（博客），或数 6 秒乘 10（播客）。</td></tr>
+        <tr><td class="k">好成绩</td><td>约 50 bpm 就算“非常好”，代表心脏效率高、迷走神经张力高、心肺适能好。</td></tr>
+        <tr><td class="k">他本人</td><td>通常 39–44 bpm；2025 年底一次 41 bpm，他说相当于 18 岁人群的第 99.8 百分位。</td></tr>
+        <tr><td class="k">性别差异</td><td>女性通常高约 3 bpm。</td></tr>
+        <tr><td class="k">何时就医</td><td>长期低于 40 或高于 80 且伴随症状，去看医生；头晕或晕厥立即就医。</td></tr>
+        <tr><td class="k">目标</td><td>今晚测一个基线，30 天内降低 10%（例如 60 → 56）。</td></tr>
+      </tbody>
+    </table></div>
+    <p class="src">来源：<a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-lower-your-heart-rate-before-sleep">博客 2026-04</a> · <a href="https://x.com/bryan_johnson/status/2005665640372375818">X 2025-12-29</a> · <a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客 2025-07</a></p>
+    <p>关于“30 天降 10%”，节目里 Kate 说她自己六个月也只能把心率上下挪动几拍；他的回答是，多数人有大量“低垂的果实”——还在晚吃、晚上看刺激的剧、九点还在回工作邮件，所以 10% 对大多数人是可达的，而对已经很自律的人则难得多。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span></p>
+
+    <h3><span class="h-k">Before vs during</span>为什么看“睡前”，而不是看整晚最低心率</h3>
+    <p>大多数可穿戴设备报告的是夜间最低心率。他的团队医生 Mike Mallin 在节目里解释了 Bryan 的做法为什么不同：睡前心率衡量的是<em class="dot">你为睡眠准备得怎样</em>，而不是你睡得怎样；它反映的是白天和傍晚的表现。他还描述了一个看心率曲线形状的方法：</p>
+  </div>
+  <div class="wide">
+    <figure class="fig">
+      <div class="fig-h"><span class="fig-t">“吊床”与“山谷”：夜间心率的两种形状</span><span class="fig-k">示意图 · 依据 Dr. Mike Mallin 在节目中的口述绘制，非真实数据</span></div>
+      <div class="fig-b">
+        <svg viewBox="0 0 660 240" role="img" aria-label="示意：理想的夜间心率曲线像吊床，入睡时已接近最低，午夜前后最低，清晨略升；吃得晚或压力大的夜晚像山谷，前半夜居高不下，最低点推迟到清晨">
+          <g class="c-grid-l"><line x1="60" y1="20" x2="620" y2="20"/><line x1="60" y1="107.5" x2="620" y2="107.5"/><line x1="60" y1="195" x2="620" y2="195"/></g>
+          <g class="c-axis" text-anchor="end"><text x="52" y="24">75</text><text x="52" y="111">57</text><text x="52" y="199">40</text></g>
+          <g class="c-axis" text-anchor="middle"><text x="60" y="222">22:00</text><text x="200" y="222">00:00</text><text x="340" y="222">02:00</text><text x="480" y="222">04:00</text><text x="620" y="222">06:00</text></g>
+          <path d="M60,75 C150,78 220,84 270,95 S470,140 550,145 S600,135 620,125" fill="none" class="s-pulse" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M60,165 C160,176 260,181 340,180 S560,170 620,160" fill="none" class="s-deep" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="60" cy="165" r="5" class="c-deep s-surface" stroke-width="2"/><circle cx="60" cy="75" r="5" class="c-pulse s-surface" stroke-width="2"/>
+          <circle cx="550" cy="145" r="4" class="c-pulse s-surface" stroke-width="2"/><circle cx="340" cy="180" r="4" class="c-deep s-surface" stroke-width="2"/>
+          <text x="350" y="172" class="c-val">吊床：最低点在夜半</text>
+          <text x="470" y="160" class="c-val" text-anchor="end">山谷：最低点拖到清晨</text>
+          <text x="70" y="157" class="c-val">上床时已接近谷底</text>
+          <text x="70" y="67" class="c-val">吃得晚 / 刺激的剧 / 工作到最后一刻</text>
+        </svg>
+      </div>
+      <div class="legend"><span><i style="background:var(--deep)"></i>准备充分的一晚</span><span><i style="background:var(--pulse)"></i>交感神经被激活的一晚</span><span>纵轴：bpm</span></div>
+      <figcaption>Mallin 的原话是：理想的形状“像一张吊床”——起点略高、相对平坦、在夜半达到最低、清晨缓慢回升；而“标准美国人”的形状更像“一座山然后一个谷，谷底就在醒来之前”。他还指出，Bryan 的睡前心率只比整晚最低值高 3–4 拍，大多数人要到凌晨两三点才降到 Bryan 上床时的水平。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span></figcaption>
+    </figure>
+  </div>
+  <div class="body">
+    <div class="note pulse">
+      <span class="nk">一个被当场提出的反对意见</span>
+      <p>节目里 Kate 问：睡前看到心率偏高，会不会让人焦虑“今晚完了”，于是真的睡不好？他承认“给人一个指标可能会造成焦虑”，很多人早上看到分数低，整天都觉得自己很糟。但他说自己不受影响：“我的身体对输入的反应太可预测了，感觉就像算法一样……看到什么就会得到什么。”他坚持用这个指标的理由是：多数人面对健康信息已经不堪重负，一个可控、可测的数字能把复杂性收拢。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span> §12 会再谈这个问题。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="ten" data-t="十条习惯">
+  <div class="sec-h"><div class="sec-n">05</div><div><div class="sec-tag">THE TEN HABITS</div><h2><span class="zh">十条习惯总表</span></h2><p class="sec-sub">他在 Protocol、博客、视频和 X 上反复发布的是同一套十条，表述随年份微调。下表把“建议你怎么起步”和“他本人怎么做”分开，因为两者经常差很远。</p></div></div>
+  <div class="wide">
+    <div class="proto">
+      <div class="p-row p-head"><div>#</div><div>习惯</div><div>起步版（给你的）</div><div>他本人</div></div>
+      <div class="p-row"><div class="p-n">01</div><div><div class="p-t">重塑身份：职业睡眠者</div><div class="p-why">睡眠是第一优先级，就寝是一天中最重要的约会。</div></div><div class="p-you">围绕就寝时间安排一天；向身边的人解释你的优先级，争取支持。</div><div class="p-him">整天从 20:30 倒排；不订牺牲睡眠的航班；为维持作息早退、推掉活动。</div></div>
+      <div class="p-row"><div class="p-n">02</div><div><div class="p-t">固定就寝时间</div><div class="p-why">“一致性和睡够一样重要。”</div></div><div class="p-you">选一个能保证 7–9 小时在床的时间，每天 ±30 分钟内上床，周末也一样；需要的话为“开始放松”设闹钟。</div><div class="p-him">20:30 上床，约 4:30–5:00 自然醒；八个月满分期间，上床时间误差约 ±1 分钟。</div></div>
+      <div class="p-row"><div class="p-n">03</div><div><div class="p-t">早吃，少吃</div><div class="p-why">消化与睡眠是两件相互冲突的任务。</div></div><div class="p-you">末餐至少睡前 2 小时，逐步推到 4 小时（Protocol 现行写法），可再试 6 小时；晚上避开面包、意面、披萨这类“重”食物。</div><div class="p-him">末餐在 11:00–12:00 之间，距就寝约 8.5 小时；他说这是“最有影响的单一改变”。</div></div>
+      <div class="p-row"><div class="p-n">04</div><div><div class="p-t">屏幕关闭 60 分钟</div><div class="p-why">屏幕抬高压力、心率和唤醒水平。</div></div><div class="p-you">睡前一小时关掉屏幕；手机充电放到卧室外或房间另一头。</div><div class="p-him">19:30 进入 nighttime mode：不看消息、不刷社交媒体、不看屏幕。</div></div>
+      <div class="p-row"><div class="p-n">05</div><div><div class="p-t">60 分钟放松流程</div><div class="p-why">“你不能下班后 30 秒就把头放到枕头上。”</div></div><div class="p-you">散步、读书、写日记、呼吸练习、冥想、泡澡、和家人待着、给朋友打电话。</div><div class="p-him">10 分钟户外散步；陪家人；睡前 10–20 分钟读纸质书；4:6 呼吸 10 分钟；Sleep Bryan 接管。</div></div>
+      <div class="p-row"><div class="p-n">06</div><div><div class="p-t">管理刺激物</div><div class="p-why">咖啡因半衰期约 6 小时。</div></div><div class="p-you">咖啡因、酒精等刺激物在睡前 8–10 小时前停止（或简单记成“中午后不喝”）；晚上换花草茶。</div><div class="p-him">完全不喝咖啡因，也不喝酒——“它们扰乱我的情绪，损害我的睡眠。但那是我。”</div></div>
+      <div class="p-row"><div class="p-n">07</div><div><div class="p-t">调控晚间光线</div><div class="p-why">蓝光抑制褪黑素；红光帮助放松。</div></div><div class="p-you">睡前 1–2 小时调暗灯光，用暖光或红光；装 f.lux，手机开红色模式，可戴防蓝光眼镜。</div><div class="p-him">晚上家里只用两盏低价台灯：一盏琥珀色、一盏红色。“其他时间跟着太阳走。”</div></div>
+      <div class="p-row"><div class="p-n">08</div><div><div class="p-t">凉、暗、静的卧室</div><div class="p-why">核心体温要下降约 1–1.5°C 才能入睡。</div></div><div class="p-you">卧室 15–19°C（60–67°F）；遮光；噪音机或耳塞；床只用于睡眠和性。</div><div class="p-him">温控床垫（Eight Sleep）：深睡 71°F、REM 73°F；全遮光，出差戴眼罩；与伴侣分床。</div></div>
+      <div class="p-row"><div class="p-n">09</div><div><div class="p-t">晨光</div><div class="p-why">锚定昼夜节律、提升情绪。</div></div><div class="p-you">醒后 15–30 分钟内到户外见光；天还没亮就用 10,000 lux 灯。</div><div class="p-him">约 5 点醒，比日出早，所以起床后先用 10,000 lux 灯照眼 3–4 分钟；一边吃早餐一边照。</div></div>
+      <div class="p-row"><div class="p-n">10</div><div><div class="p-t">收集数据</div><div class="p-why">“学会生活里哪些事让心率上升、哪些让它下降。”</div></div><div class="p-you">日记或任何一款可穿戴（Apple、Oura、WHOOP、Garmin 都行）；据此调整作息、室温、流程。</div><div class="p-him">每晚看睡前心率；WHOOP 记录了 8 个月 100%；他说用可穿戴是为了 “create intuitions”——弄清生活里每件事怎样影响睡眠。</div></div>
+    </div>
+    <p class="src">综合自：<a href="https://protocol.bryanjohnson.com/">Protocol · Sleep</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/10-habits-for-sleep">10 Habits for Sleep (2026-02)</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/how-i-fixed-my-terrible-sleep">How I fixed my terrible sleep (2024-04)</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-evening-routine">Evening Routine (2026-06)</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/what-is-the-ideal-sleep-temperature">Sleep Temperature (2026-08)</a> · <a href="https://x.com/bryan_johnson/status/1824078073018581129">X 线程 2024-08-15</a> · <a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客 2025-07</a></p>
+  </div>
+  <div class="body">
+    <h3><span class="h-k">Extras</span>不在十条里，但他每晚都做的事</h3>
+    <ul>
+      <li><strong>褪黑素 300 微克</strong>，此外不服用任何助眠药物。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-evening-routine">博客</a></span></li>
+      <li><strong>下午 4 点后停止饮水</strong>，白天喝的液体都加矿物质（茶、电解质），避免夜里起夜。<span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol</a></span></li>
+      <li><strong>晚 5 点后不吵架。</strong>“Fight in the morning when you’re well rested.”（要吵就早上吵，那时你们都休息好了。）<span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol</a></span></li>
+      <li><strong>高强度运动在睡前 4 小时前结束。</strong>他在节目里说，“让睡前心率升高的东西都会损害睡眠，而运动——也许反直觉——就是其中之一”。<span class="cite"><a href="https://www.youtube.com/watch?v=lKM9OB6qHCE">播客 2025-05</a></span></li>
+      <li><strong>防磨牙牙套。</strong>磨牙二十年，戴上 SomnoDent 后第一次停了。<span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol</a></span></li>
+      <li><strong>护肤、护发、口腔护理放在放松流程之前做完</strong>，这样到点可以直接上床。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-evening-routine">博客</a></span></li>
+    </ul>
+    <p>他给新手的建议一直是从一条开始：<span class="en">“You don’t need to copy my routine. Do what works for you. You also don’t have to overhaul your routine. Start small. Turning off screens 60 min before bed is a good place to start.”</span>（不必照抄我的流程，做适合你的；也不必一次推翻重来。从小处开始——睡前 60 分钟关屏幕，就是一个好起点。）<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-evening-routine">博客 2026-06</a></span></p>
+  </div>
+</section>
+
+<!-- 06 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="food" data-t="末餐时间">
+  <div class="sec-h"><div class="sec-n">06</div><div><div class="sec-tag">MEAL TIMING</div><h2><span class="zh">末餐时间：最大的单一杠杆</span></h2><p class="sec-sub">在所有影响他睡前心率的因素里，他认为可控性最高、效果最大的是“最后一口饭吃在几点”。</p></div></div>
+  <div class="body">
+    <div class="q">
+      <div class="q-h"><span class="who">BLUEPRINT BLOG · 2026-06-01</span><a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-evening-routine">Bryan Johnson’s Evening Routine</a></div>
+      <p class="q-en">“My final meal is around noon. That’s ~8.5 hours before I sleep. This is the single most impactful change I made. When I eat close to bed, my resting heart rate before sleep climbs to 52-56 beats per min (bpm) and I lose roughly 30% of my sleep quality. When my heart beat is 39 to 44 bpm, my sleep is perfect. Your body struggles to enter deep sleep while it’s digesting. It’s asking the body to do two conflicting things: digest and sleep.”</p>
+      <p class="q-zh">「我的末餐大约在中午，离睡觉约 8.5 小时。这是我做过的影响最大的单一改变。吃得离睡觉近时，我的睡前心率会升到 52–56，睡眠质量掉大约 30%；心率在 39–44 时，睡眠是完美的。身体在消化时很难进入深睡——你在要求它同时做两件互相冲突的事：消化，和睡觉。」</p>
+    </div>
+    <p>这个“中午”不是拍脑袋定的。他在 2024 年的视频里说，自己做了“几百次实验”：从睡前 1 小时、2 小时、3 小时一路往前测到上午 11 点，还对比了不同食物——睡前 3 小时吃沙拉、吃一片面包、吃一份意面分别会怎样。结论是 11:00–11:30 的末餐最好，“这样到上床时消化已经完成”。<span class="cite"><a href="https://www.youtube.com/watch?v=3kAiPSEnrHI&t=60s">视频 2024-10</a></span> 他列出的机制是：深夜进食带来大量代谢负担、血糖波动、褪黑素分泌减少，并干扰核心体温的自然下降。<span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol</a></span></p>
+  </div>
+  <div class="wide">
+    <div class="ladder" role="list" aria-label="末餐距就寝时间的进阶">
+      <div role="listitem"><div class="lk">起点</div><div class="ln">2 h</div><div class="ld">末餐至少睡前 2 小时；所有版本的最低线。</div></div>
+      <div role="listitem"><div class="lk">第一周</div><div class="ln">3 h</div><div class="ld">每天往前挪 30 分钟。“每往前一步，第二天早上的数据都会显示出来。”</div></div>
+      <div role="listitem"><div class="lk">Protocol 现行</div><div class="ln">4 h</div><div class="ld">“Eat your final meal of the day four hours before bed.”</div></div>
+      <div role="listitem"><div class="lk">可以试</div><div class="ln">6 h</div><div class="ld">“Experiment with eating your final meal 4-6 hours before bed.”</div></div>
+      <div role="listitem" class="him"><div class="lk">他本人</div><div class="ln">~8.5 h</div><div class="ld">11:00–12:00 末餐，20:30 上床；睡前心率 39–44。</div></div>
+    </div>
+    <p class="src">来源：<a href="https://blueprint.bryanjohnson.com/blogs/news/10-habits-for-sleep">10 Habits (2026)</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/100-sleep-score">100% Sleep Score (2025)</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-evening-routine">Evening Routine (2026)</a> · <a href="https://protocol.bryanjohnson.com/">Protocol</a></p>
+  </div>
+  <div class="body">
+    <p>他的 2025 年文章给了一个更激进的路线：如果你 10 点睡，先 8 点前吃完，之后每天往前挪 30 分钟，一周后末餐大约在下午 5 点。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/100-sleep-score">博客 2025-03</a></span> 同时他总会加一句：“你不需要像我一样中午吃末餐……去实验，找到适合你的。预期会有短暂的不适，但身体一定会适应。”<span class="cite"><a href="https://www.youtube.com/watch?v=3kAiPSEnrHI">视频</a></span></p>
+    <h3><span class="h-k">What, not only when</span>吃什么也算数</h3>
+    <p>“像我一样，你可能会发现某些食物，比如意面和面包，会降低睡眠质量。我很惊讶食物对睡眠的正负影响有多大。”<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/how-i-fixed-my-terrible-sleep">博客 2024</a></span> 社交场合必须晚吃时，他的建议是选清蒸蔬菜这类轻的东西；“如果你在聚会上需要合群，就吃少一点”。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-lower-your-heart-rate-before-sleep">博客</a></span></p>
+    <h3><span class="h-k">A recent update</span>拉斯维加斯那一晚之后，他把规则收得更紧</h3>
+    <p>2025 年 7 月的节目里，他讲了一次“破例”：在拉斯维加斯因为突发事情，下午 4–5 点才吃上饭——吃的只是鹰嘴豆泥和生蔬菜，“非常非常干净”，但心率照样升高，那一晚照样被毁。他得出的更新是：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">DON'T DIE PODCAST · 2025-07-03</span><a href="https://www.youtube.com/watch?v=LPzRwzivklA">YouTube</a></div>
+      <p class="q-en">“My lesson from Tuesday in eating later is I would rather go hungry and miss out on some calories for the day than I would try to pick up the calories later in the day … I should just have a cut off like it’s noon or 1. If I hit that point and I haven’t had a chance to eat, I’m not doing it.”</p>
+      <p class="q-zh">「那次晚吃给我的教训是：我宁愿饿着、少吃一些当天的热量，也不愿晚些时候再补回来……我应该直接定一个截止点，中午或者一点。到了那个点还没吃上，就不吃了。」</p>
+    </div>
+    <p>他还说，一晚糟糕的睡眠要“好几天才能恢复”：哪怕第二晚睡得很好，他当天仍然有点头痛。“所以几乎在任何情况下，这都不值得。”</p>
+    <div class="note">
+      <span class="nk">和 Evening Bryan 的关系</span>
+      <p>末餐时间在他的叙事里有双重身份：它既是睡眠的最大杠杆，也是他整个 Blueprint 的起点——2019 年“解雇 Evening Bryan”，本质上就是一条进食截止规则。2026 年 1 月他在 X 上写道：“No food after 5 pm - no matter what - was one of the best things I did to wrestle my health from being out of control. For a lot of people, night time is when you fall apart.”（下午 5 点后不吃东西，无论如何——这是我把失控的健康夺回来时做过最好的事情之一。对很多人来说，夜晚就是崩溃的时候。）<span class="cite"><a href="https://x.com/bryan_johnson/status/2007929422033097075">X 2026-01-04</a></span> 详见 §10。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="eve" data-t="晚间">
+  <div class="sec-h"><div class="sec-n">07</div><div><div class="sec-tag">THE LAST HOUR</div><h2><span class="zh">晚间：屏幕、光、刺激物</span></h2><p class="sec-sub">睡前一小时的任务只有一个：把交感神经关掉。</p></div></div>
+  <div class="body">
+    <h3><span class="h-k">Screens</span>“2025 年最英勇的行为”</h3>
+    <div class="q">
+      <div class="q-h"><span class="who">PROTOCOL · SLEEP · HABIT 3</span><a href="https://protocol.bryanjohnson.com/">protocol.bryanjohnson.com</a></div>
+      <p class="q-en">“Screens off 60 minutes before bed. Screens elevate your stress, heart rate and arousal, all of which are bad for your sleep. Having the will power to turn screens off sixty minutes before bed is the most heroic act anyone can do in 2025.”</p>
+      <p class="q-zh">「睡前 60 分钟关闭屏幕。屏幕会抬高你的压力、心率和唤醒水平，这些都不利于睡眠。在 2025 年，能有意志力在睡前一小时关掉屏幕，是任何人能做的最英勇的事。」</p>
+    </div>
+    <p>他承认这很难，原因也说得直接：“我们都对手机上瘾。你得承认自己上瘾，然后把它隔开。”<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span> 他在一支近百万播放的视频里把手机比作“温水煮青蛙”：<span class="en">“Your phone is like the frog in the pot of the slow boiling water, quietly ruining your sleep.”</span>（你的手机就像慢慢加热的那锅水，悄无声息地毁掉你的睡眠。）视频开头的数字是：人均每天用手机 4 小时 37 分钟，一年约 70 天，一生超过 14 年。<span class="cite"><a href="https://www.youtube.com/watch?v=cjKA95519SI">视频 2025-09</a></span> 团队医生 Mallin 的补充建议是把手机充电器放到别的房间或房间另一头。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span></p>
+
+    <h3><span class="h-k">Sleep Bryan</span>放松流程：让“睡眠 Bryan”接班</h3>
+    <p>他的放松流程最有特色的地方，不是读书或冥想本身，而是他给这段时间指定了一个“当班的人”：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">WHY YOU'RE ALWAYS TIRED · 2024-10</span><a href="https://www.youtube.com/watch?v=3kAiPSEnrHI">YouTube</a></div>
+      <p class="q-en">“I know if I work up until 5 minutes before my head hits a pillow I’m going to have a wrecked night sleep, just guaranteed … My bedtime is 8:30 p.m. When 7:30 arrives, nighttime Bryan is now in charge. So when 7:31 happens and a thought comes into my brain, ‘you forgot to contact so and so today,’ I can say thank you work Bryan, we have all day tomorrow to address this need.”</p>
+      <p class="q-zh">「我知道如果我一直工作到头碰枕头前五分钟，那一晚一定会被毁掉……我的就寝时间是 8:30。7:30 一到，‘夜间 Bryan’就接管了。所以 7:31 脑子里冒出一个念头——‘你今天忘了联系某某’——我可以说：谢谢你，工作 Bryan，明天一整天都可以处理这件事。」</p>
+    </div>
+    <p>2025 年他把这个技巧写得更完整：睡前他会和自己内部的各个角色——“野心 Bryan”“焦虑 Bryan”——对话，让它们说出心里挂着的事，把这些写下来，告诉它们“我听到了，明天在睡个好觉之后再处理”。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/100-sleep-score">博客 2025-03</a></span> 2026 年的版本里，这个角色叫 Sleep Bryan，“他的职责是让我的身心为睡眠做好准备”。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-evening-routine">博客 2026-06</a></span></p>
+    <p>具体活动他列得很宽：散步、读书、写日记、呼吸练习、冥想、泡澡、陪家人、给朋友打电话。他自己最喜欢的是<strong>手里拿一本纸质书</strong>：“它和真正的安眠药一样有效”，并且“在睡前 10–20 分钟拿一本真书，能制造和设备之间的隔离”。<span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol</a></span><span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-evening-routine">博客</a></span> 他还做 10 分钟 4:6 呼吸：鼻吸 4 秒、呼气 6 秒，用来激活副交感神经、抬高 HRV。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-evening-routine">博客</a></span></p>
+    <div class="note">
+      <span class="nk">放松时要避开的</span>
+      <p>他点名的“高唤醒活动”包括：争吵、高强度运动、工作、发消息、聚会，以及任何“刺激神经系统”的事。团队医生 Mallin 在节目里自曝，他睡前看急诊题材的剧 <em>The Pitt</em> 会明显推高心率、压低 HRV，最低心率被拖到后半夜——这一类归在“焦虑、压力、反刍”里，也就是 +5–25 bpm 那一行。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span></p>
+    </div>
+
+    <h3><span class="h-k">Light</span>晚上红光，早上强光</h3>
+    <p>“Red light prepares you for sleep. Blue light will keep you up.”（红光让你准备入睡，蓝光让你清醒。）<span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol</a></span> 他的做法极简：晚上家里只开两盏便宜台灯，一盏琥珀色、一盏红色；电脑装 f.lux，手机开红色模式，必要时戴防蓝光眼镜；卧室用窗帘彻底遮光，出差戴眼罩。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-evening-routine">博客</a></span><span class="cite"><a href="https://www.youtube.com/watch?v=Wk9p3dhMYdk&t=290s">视频 2024-03</a></span> 他说把家里的灯换成红灯后，“气氛平静下来，每个人都开始放松”。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/the-three-power-laws-of-health">博客</a></span></p>
+    <p>早上则相反：醒后 15–30 分钟内让光进入眼睛，用来锚定昼夜节律。他比日出早起，所以用 10,000 lux 的灯照 3–4 分钟（2026 年 9 月的帖子里是边吃早餐边工作照 30 分钟）。<span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol</a></span><span class="cite"><a href="https://x.com/bryan_johnson/status/2096691396661092565">X 2026-09</a></span> 这一部分他讲得远不如 Huberman 细；如果你需要光照的机制和剂量，<a href="/huberman/">《光的剂量》</a>是更完整的版本。</p>
+
+    <h3><span class="h-k">Stimulants</span>咖啡因的半衰期，和他为什么完全不喝</h3>
+    <p>他讲咖啡因几乎永远用同一个算术：半衰期约 6 小时，“下午 4 点的一杯咖啡，意味着晚上 10 点你体内还有半杯”。</p>
+  </div>
+  <div class="wide">
+    <figure class="fig">
+      <div class="fig-h"><span class="fig-t">同一杯咖啡，早上喝和下午喝</span><span class="fig-k">按 6 小时半衰期计算的体内残留比例</span></div>
+      <div class="fig-b scroll">
+        <svg viewBox="0 0 660 232" role="img" aria-label="按 6 小时半衰期：早上 8 点喝的咖啡到晚上 10 点剩约 20%，下午 4 点喝的咖啡到晚上 10 点剩 50%">
+          <g class="c-grid-l"><line x1="60" y1="30" x2="636" y2="30"/><line x1="60" y1="110" x2="636" y2="110"/><line x1="60" y1="150" x2="636" y2="150"/><line x1="60" y1="190" x2="636" y2="190"/></g>
+          <g class="c-axis" text-anchor="end"><text x="52" y="34">100%</text><text x="52" y="114">50%</text><text x="52" y="154">25%</text><text x="52" y="194">0</text></g>
+          <g class="c-axis" text-anchor="middle"><text x="60" y="214">06:00</text><text x="156" y="214">10:00</text><text x="252" y="214">14:00</text><text x="348" y="214">18:00</text><text x="444" y="214">22:00</text><text x="540" y="214">02:00</text><text x="636" y="214">06:00</text></g>
+          <line x1="408" y1="22" x2="408" y2="190" class="s-deep" stroke-width="1.5" stroke-dasharray="3 4"/>
+          <line x1="444" y1="22" x2="444" y2="190" class="s-n" stroke-width="1.5" stroke-dasharray="3 4"/>
+          <text x="404" y="18" class="c-val" text-anchor="end" style="fill:var(--deep-ink)">他 20:30 上床</text>
+          <text x="448" y="18" class="c-val">10 点上床</text>
+          <polyline points="108,30 156,63 204,89.2 252,110 300,126.5 348,139.6 396,150 444,158.3 492,164.9 540,170 588,174.2 636,177.4" fill="none" class="s-n" stroke-width="2.25" stroke-linejoin="round"/>
+          <polyline points="300,30 348,63 396,89.2 444,110 492,126.5 540,139.6 588,150 636,158.3" fill="none" class="s-pulse" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="444" cy="110" r="5" class="c-pulse s-surface" stroke-width="2"/>
+          <circle cx="444" cy="158.3" r="5" class="c-n s-surface" stroke-width="2" style="fill:var(--n-500)"/>
+          <text x="454" y="106" class="c-val">50%：相当于睡前再喝半杯</text>
+          <text x="454" y="154" class="c-val">≈20%</text>
+          <text x="112" y="26" class="c-val">08:00 一杯</text>
+          <text x="304" y="26" class="c-val" style="fill:var(--pulse-ink)">16:00 一杯</text>
+        </svg>
+      </div>
+      <div class="legend"><span><i style="background:var(--pulse)"></i>16:00 喝</span><span><i style="background:var(--n-500)"></i>08:00 喝</span></div>
+      <figcaption><b>他的截止规则有两种写法：“中午之后不再摄入”（X 2024、博客 2026），或“睡前至少 8–10 小时”（Protocol）；</b>对 10 点睡的人，两者大致都落在中午到下午 2 点之间。他也强调每个人代谢咖啡因的速度不同，“宁可保守一点”。他本人的选择是完全不喝：“它们会把我抬上去再摔下来……现在没有咖啡因、没有酒精，我一整天都非常稳定。”<span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol</a></span><span class="cite"><a href="https://www.youtube.com/watch?v=3kAiPSEnrHI">视频 2024-10</a></span></figcaption>
+    </figure>
+  </div>
+  <div class="body">
+    <p><strong>酒精</strong>是他讲得最重的一项：<span class="en">“I know personally if I drink any alcohol in the latter part of the day my deep sleep is going to be about 80% less.”</span>（我自己知道，只要在一天的后半段喝任何酒，我的深睡就会少大约 80%。）<span class="cite"><a href="https://www.youtube.com/watch?v=Wk9p3dhMYdk&t=253s">视频 2024-03</a></span> 他说人们拿到可穿戴设备后的第一个发现几乎都是“酒精毁了我的睡眠”，接着才会发现“晚吃也会”，一个个连起来。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span> 不过他并不要求所有人戒酒：他的十条里写的是“睡前别喝”，Blueprint 的短视频里也有一条标题就是 “Blueprint does not forbid alcohol”。他把“过量饮酒”放在应避免清单里，与快餐、吸烟、社交媒体并列。<span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol</a></span></p>
+    <p>还有两类容易忽略的刺激物：莫达非尼等兴奋性药物，以及 ADHD 药物——“也会抬高你的心率”。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span></p>
+  </div>
+</section>
+
+<!-- 08 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="room" data-t="卧室">
+  <div class="sec-h"><div class="sec-n">08</div><div><div class="sec-tag">THE ROOM</div><h2><span class="zh">卧室：凉、暗、静、独睡</span></h2><p class="sec-sub">“我为我无聊的卧室感到自豪。”——他一条百万播放短视频的标题。</p></div></div>
+  <div class="body">
+    <h3><span class="h-k">Temperature</span>“温度是最被低估的杠杆”</h3>
+    <div class="q">
+      <div class="q-h"><span class="who">BLUEPRINT BLOG · 2026-08-17</span><a href="https://blueprint.bryanjohnson.com/blogs/news/what-is-the-ideal-sleep-temperature">What is the ideal sleep temperature?</a></div>
+      <p class="q-en">“A 9°F (5°C) increase in nighttime temperature cuts sleep by an average of 23 min, which adds up to 6 days of lost sleep over a year. That’s what most people take in vacation days. I’ve spent over 5 years becoming a professional sleeper. Temperature is the most underrated lever you can pull.”</p>
+      <p class="q-zh">「夜间温度升高 5°C，平均会让睡眠缩短 23 分钟，一年累计少睡 6 天——差不多是大多数人一年的假期。我花了五年多成为一名职业睡眠者，温度是你能拉动的最被低估的杠杆。」</p>
+    </div>
+    <p>他的解释分四段：入睡需要核心体温下降约 1–1.5°C，太热会阻止这种下降，并让睡前心率升高约 5 bpm；深睡期身体希望处在最低核心温度；REM 期身体停止自主调温，完全依赖环境，太热 REM 会被截短；清晨核心温度自然回升，帮助醒来。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/what-is-the-ideal-sleep-temperature">博客</a></span></p>
+  </div>
+  <div class="wide">
+    <figure class="fig">
+      <div class="fig-h"><span class="fig-t">他给过的所有温度数字</span><span class="fig-k">°F · 条 = 建议区间 · 点 = 他本人的设定</span></div>
+      <div class="rb" role="img" aria-label="温度建议：2026 年博客卧室 60 到 67 华氏度；REM 期环境 68 到 72；Protocol 页 65 到 70；播客口述 69 到 71；他的床面深睡 71、REM 73；2018 年床垫 62.6、室温 67">
+        <div class="rb-l">卧室室温 · 深睡最佳（2026 博客 / 十条）</div><div class="rb-t" style="background-size:calc(100%/5) 100%"><span class="rb-b deep" style="left:20%;width:28%"></span></div><div class="rb-v">60–67°F</div>
+        <div class="rb-l">REM 期环境（2026 博客）</div><div class="rb-t" style="background-size:calc(100%/5) 100%"><span class="rb-b soft" style="left:52%;width:16%"></span></div><div class="rb-v">68–72°F</div>
+        <div class="rb-l">卧室室温（Protocol 页）</div><div class="rb-t" style="background-size:calc(100%/5) 100%"><span class="rb-b soft" style="left:40%;width:20%"></span></div><div class="rb-v">65–70°F</div>
+        <div class="rb-l">播客口述（2025-07）</div><div class="rb-t" style="background-size:calc(100%/5) 100%"><span class="rb-b soft" style="left:56%;width:8%"></span></div><div class="rb-v">69–71°F</div>
+        <div class="rb-l">他的床面：深睡 ● / REM ○（Eight Sleep）</div><div class="rb-t" style="background-size:calc(100%/5) 100%"><span class="rb-p" style="left:64%"></span><span class="rb-p hollow" style="left:72%"></span></div><div class="rb-v">71 / 73°F</div>
+        <div class="rb-l">2018：床垫 ● / 室温 ○</div><div class="rb-t" style="background-size:calc(100%/5) 100%"><span class="rb-p" style="left:30.4%"></span><span class="rb-p hollow" style="left:48%"></span></div><div class="rb-v">62.6 / 67°F</div>
+        <div class="rb-l rb-ax-l"></div><div class="rb-ax"><span>55</span><span>60</span><span>65</span><span>70</span><span>75</span><span>80</span></div><div class="rb-v">°F</div>
+      </div>
+      <figcaption><b>室温和床面温度是两回事。</b>他推荐的室温是 15–19°C（60–67°F），但他自己的床垫表面设在 71°F（约 21.7°C）深睡、73°F（约 22.8°C）REM——温控床垫在整夜里按睡眠阶段自动调整，起床前缓慢升温到 72–75°F 做“温度闹钟”。他还提到，热水澡（睡前 1–2 小时）能让入睡快约 36%，但他自己不洗，“因为我的日常习惯足够一致，体温会自然下降”。换算：60°F≈15.6°C，67°F≈19.4°C，70°F≈21.1°C。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/what-is-the-ideal-sleep-temperature">博客 2026-08</a></span><span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol</a></span><span class="cite"><a href="https://www.bryanjohnson.com/articles/sleep-is-the-new-coffee">2018</a></span></figcaption>
+    </figure>
+  </div>
+  <div class="body">
+    <div class="note pulse">
+      <span class="nk">利益相关</span>
+      <p>他长期推荐 Eight Sleep，并在 YouTube 上发过与 Eight Sleep 合作的赞助短视频；温度那篇博客底部也注明 Blueprint 可能从合作链接中获得佣金。他自己的评价是：出差住在没有温控床垫的酒店时，他能在数据里看到睡眠变差。<span class="cite"><a href="https://www.youtube.com/watch?v=D4wxRgJgKGs">视频 2025-04</a></span> 读这部分时把“温控床垫”当作可选项即可——他的起步版建议里，风扇、通风、棉麻床品、分开被子同样在列。</p>
+    </div>
+
+    <h3><span class="h-k">Dark, quiet, boring</span>床只做两件事</h3>
+    <p>十条里关于环境的那条，他在 X 上写成：<span class="en">“Keep your room cool, dark, and quiet. Avoid working from your bed. The bed is for sleep and sex.”</span><span class="cite"><a href="https://x.com/bryan_johnson/status/1824078100394868814">X 2024-08</a></span> 节目里 Mallin 补充，这是失眠认知行为疗法（CBT-I）里的一条：把床的用途限定为睡眠和性，训练大脑把这个位置和入睡绑定。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span> 他的短视频库里有一组同主题的标题：“I’m proud of my boring bedroom”“My bedroom is for sleep only”“Sleep hygiene. The only thing that happens in my bedroom: sleep.”（见 §16）。噪音方面：住在吵闹街边或邻居吵的人，用白噪音机抵消，或戴耳塞。</p>
+
+    <h3><span class="h-k">The hardest one</span>和伴侣分床</h3>
+    <p>在那期“进阶睡眠指南”的最后，节目把“与伴侣分开睡——哪怕只是同一房间的另一张床”列为“对很多人来说可能最痛苦的一条”。三位主持人当场讨论了这件事的污名：很多人把分床等同于感情出了问题；有过分床经验的人则说“一旦开始，你会发现关系什么都没变，睡眠却更好了”。他们也承认研究结论并不一致——有些人和伴侣同睡反而睡得更好。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客 2025-07</a></span></p>
+    <p>Bryan 自己的数据是：过去和伴侣同睡的年月里，他能记得的夜醒是每晚三到六次，现在是零到一次。2018 年那篇文章也透露，室温 67°F 是“一个妥协——我的伴侣喜欢暖一点”。<span class="cite"><a href="https://www.bryanjohnson.com/articles/sleep-is-the-new-coffee">2018</a></span> 2025 年底他公开了新恋情，2026 年 8 月有媒体报道他做了一个“让女友同床三晚”的实验。<span class="cite"><a href="https://www.youtube.com/watch?v=BQVLon0owJY">视频 2025-12</a></span><span class="cite"><a href="https://www.ladbible.com/entertainment/celebrity/bryan-johnson-shares-bed-with-girlfriend-kate-tolo-experiment-021062-20260812">媒体报道</a></span></p>
+  </div>
+</section>
+
+<!-- 09 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="day" data-t="他的一天">
+  <div class="sec-h"><div class="sec-n">09</div><div><div class="sec-tag">24 HOURS, REVERSED</div><h2><span class="zh">他的一天，从前一晚开始</span></h2><p class="sec-sub">“Every day begins for me not when I wake up but when I go to bed.”</p></div></div>
+  <div class="body">
+    <div class="q">
+      <div class="q-h"><span class="who">MY 2025 LONGEVITY PROTOCOL · FULL DAY · 2025-01</span><a href="https://www.youtube.com/watch?v=XSaDL4EO0-g">YouTube</a></div>
+      <p class="q-en">“While the protocol is always changing, this is what I’m doing now: every day begins for me not when I wake up but when I go to bed, as sleep is my number one life priority. I’m asleep by 8:30 p.m. and I naturally wake around 5:00 a.m., never using an alarm.”</p>
+      <p class="q-zh">「协议一直在变，但我现在是这样做的：我的每一天不是从醒来开始，而是从上床开始，因为睡眠是我人生的第一优先级。我 8:30 前入睡，大约 5 点自然醒，从不用闹钟。」</p>
+    </div>
+    <p>Protocol 页面上他的日程第一行写的也不是早晨，而是 “Bedtime: In bed by 8:30 pm because every day starts the night before.” 按这个逻辑，下图把他的 24 小时从 20:30 开始画：</p>
+  </div>
+  <div class="wide">
+    <figure class="fig">
+      <div class="fig-h"><span class="fig-t">从 20:30 开始的一天</span><span class="fig-k">据 Protocol「My daily routine」与 2025 全天视频整理，时间为近似值</span></div>
+      <div class="fig-b scroll">
+        <svg viewBox="0 0 700 212" role="img" aria-label="他的一天：20:30 到 5:00 睡眠；5 点醒后用 10000 lux 灯；5:35 到 12:00 为进食窗口；6:00 到 7:30 训练；12:00 后到就寝约 8.5 小时不进食，16:00 停止饮水；19:30 起关闭屏幕放松，开红灯和琥珀灯">
+          <g class="c-grid-l">
+            <line x1="96" y1="14" x2="96" y2="178"/><line x1="181.75" y1="14" x2="181.75" y2="178"/><line x1="279.75" y1="14" x2="279.75" y2="178"/><line x1="377.75" y1="14" x2="377.75" y2="178"/><line x1="475.75" y1="14" x2="475.75" y2="178"/><line x1="573.75" y1="14" x2="573.75" y2="178"/><line x1="684" y1="14" x2="684" y2="178"/>
+          </g>
+          <g class="c-lab" style="font-size:12.5px"><text x="0" y="35">睡眠</text><text x="0" y="67">光</text><text x="0" y="99">进食</text><text x="0" y="131">训练</text><text x="0" y="163">屏幕 / 放松</text></g>
+          <rect x="96" y="22" width="208.25" height="18" rx="3" class="c-deep"/>
+          <text x="104" y="35" style="fill:var(--n-000);font-family:var(--mono);font-size:11px">20:30 → 05:00 · 入睡 &lt;3 min</text>
+          <rect x="304.25" y="54" width="8" height="18" rx="2" class="c-lamp"/>
+          <text x="318" y="67" class="c-val">10,000 lux</text>
+          <rect x="659.5" y="54" width="24.5" height="18" rx="2" class="c-pulse" style="opacity:.75"/>
+          <text x="654" y="67" class="c-val" text-anchor="end">红 / 琥珀灯</text>
+          <rect x="318.5" y="86" width="157.25" height="18" rx="3" style="fill:var(--n-500)"/>
+          <rect x="475.75" y="86" width="208.25" height="18" rx="0" class="c-hatch"/>
+          <text x="326" y="99" style="fill:var(--n-000);font-family:var(--mono);font-size:11px">05:35 → 12:00</text>
+          <text x="484" y="99" class="c-val" style="fill:var(--pulse-ink)">≈8.5 h 不进食</text>
+          <path d="M573.75,80 l5,6 l-5,6 l-5,-6z" class="c-deep"/>
+          <text x="566" y="82" class="c-val" text-anchor="end" style="font-size:10px">16:00 停止饮水</text>
+          <rect x="328.75" y="118" width="36.75" height="18" rx="3" style="fill:var(--n-800)"/>
+          <text x="372" y="131" class="c-val">06:00–07:30 力量 · 有氧 · 柔韧 · 平衡</text>
+          <rect x="659.5" y="150" width="24.5" height="18" rx="3" class="c-deep" style="opacity:.45"/>
+          <text x="654" y="163" class="c-val" text-anchor="end">19:30 nighttime mode · 散步 · 读书</text>
+          <g class="c-axis" text-anchor="middle"><text x="96" y="198">20:30</text><text x="181.75" y="198">00:00</text><text x="279.75" y="198">04:00</text><text x="377.75" y="198">08:00</text><text x="475.75" y="198">12:00</text><text x="573.75" y="198">16:00</text><text x="684" y="198">20:30</text></g>
+        </svg>
+      </div>
+      <figcaption><b>把一天倒过来看，最显眼的是两段“空白”：</b>睡前 8.5 小时没有食物、睡前 1 小时没有屏幕。白天其他所有安排——早上训练、上午高强度工作、每 30 分钟起身活动 2–3 分钟、16:00 停止饮水——都在为 20:30 那一刻的低心率服务。<span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol</a></span><span class="cite"><a href="https://www.youtube.com/watch?v=XSaDL4EO0-g">视频</a></span></figcaption>
+    </figure>
+  </div>
+  <div class="body">
+    <p>那支视频的结尾是他对一天的总结：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">MY 2025 LONGEVITY PROTOCOL · FULL DAY</span><a href="https://www.youtube.com/watch?v=XSaDL4EO0-g">YouTube</a></div>
+      <p class="q-en">“I know from achieving the best sleep score in human history, 8 months of perfect sleep, that the single strongest predictor of my nighttime sleep quality is my resting heart rate. Everything I do is to lower the beats per minute of my heart. … At 8:30 my head will hit the pillow and I will be asleep within 1 to 3 minutes. … And then my favorite part of the entire thing: I know I get to do the same thing tomorrow. Life is amazing.”</p>
+      <p class="q-zh">「八个月完美睡眠让我知道，预测我夜间睡眠质量最强的单一变量是静息心率。<strong>我做的每一件事，都是为了降低心跳的次数。</strong>……8:30 头碰枕头，1 到 3 分钟内睡着。……然后是整件事里我最喜欢的部分：我知道明天还能再这样过一遍。生活太美好了。」</p>
+    </div>
+
+    <h3><span class="h-k">2018 → 2020 → 2026</span>同一套作息的三个版本</h3>
+  </div>
+  <div class="wide">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>维度</th><th>2018 · Sleep is the new coffee</th><th>2020 · I fired myself</th><th>2025–2026 · Protocol</th></tr></thead>
+      <tbody>
+        <tr><td class="k">就寝</td><td>20:45–21:30 之间上床（“我的最佳窗口”）</td><td>—</td><td>20:30 上床，±30 分钟给你，±1 分钟给他自己</td></tr>
+        <tr><td class="k">进食</td><td>18:00 后不进食、不饮水</td><td>7:00 早餐，11:00“晚餐”，每天禁食 20 小时</td><td>约 5:35 早餐，约 12:00 末餐；规则“中午或一点为截止点”</td></tr>
+        <tr><td class="k">饮水</td><td>18:00 后停</td><td>16:00 后停，避免起夜</td><td>16:00 后停；白天液体加矿物质</td></tr>
+        <tr><td class="k">刺激物</td><td>不碰咖啡因、酒精及其他兴奋物</td><td>不碰咖啡因及其他兴奋物</td><td>不碰咖啡因和酒精</td></tr>
+        <tr><td class="k">光</td><td>全遮光窗户；f.lux；19:00 起戴防蓝光眼镜</td><td>—</td><td>晚上只用红灯和琥珀灯；早上 10,000 lux</td></tr>
+        <tr><td class="k">放松</td><td>下班后至少 1 小时；睡前冥想 5–10 分钟</td><td>每天 60 分钟冥想与 HRV 训练</td><td>19:30 起 60 分钟 nighttime mode；纸质书；4:6 呼吸 10 分钟</td></tr>
+        <tr><td class="k">温度</td><td>ChiliPad 床垫 62.6°F；室温 67°F（与伴侣妥协）</td><td>—</td><td>Eight Sleep：深睡 71°F / REM 73°F</td></tr>
+        <tr><td class="k">追踪</td><td>Oura 戒指</td><td>—</td><td>WHOOP 等可穿戴；每晚看睡前心率</td></tr>
+        <tr><td class="k">其他</td><td>每周几次睡前 CBD 油；深波声音机；早上不设闹钟</td><td>—</td><td>褪黑素 300 微克；防磨牙牙套；不设闹钟</td></tr>
+      </tbody>
+    </table></div>
+    <p class="src">来源：<a href="https://www.bryanjohnson.com/articles/sleep-is-the-new-coffee">Sleep is the new coffee (2018-12-06)</a> · <a href="https://www.bryanjohnson.com/articles/i-fired-myself">I fired myself (2020-08-06)</a> · <a href="https://protocol.bryanjohnson.com/">Protocol</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-evening-routine">Evening Routine (2026)</a> · <a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客 2025-07</a></p>
+  </div>
+  <div class="body">
+    <p>演变的方向很一致：<strong>末餐越来越早、规则越来越硬、外部设备越来越少。</strong>2018 年的清单里还有 CBD 油、声音机、防蓝光眼镜这类“工具”；到 2026 年，他最强调的反而是零成本的部分——什么时候吃、什么时候关屏幕、什么时候上床。他在 Protocol 页上说自己要“引导你为健康做更少而不是更多的事：习惯，而不是昂贵、奇特的疗法”。</p>
+  </div>
+</section>
+
+<div class="part"><div class="part-in"><span class="part-n">PART III</span><span class="part-t">The system around the bed</span></div></div>
+
+<!-- 10 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="will" data-t="意志力">
+  <div class="sec-h"><div class="sec-n">10</div><div><div class="sec-tag">SLEEP × WILLPOWER</div><h2><span class="zh">睡眠、意志力与 Evening Bryan</span></h2><p class="sec-sub">这是他的睡眠观和他整个“自我治理”哲学交汇的地方：睡眠不只修复身体，它决定第二天还剩多少自控力。</p></div></div>
+  <div class="body">
+    <h3><span class="h-k">N = 1</span>Kernel 上的一次自测</h3>
+    <p>他创办的脑机接口公司 Kernel 做过一种像自行车头盔一样的设备，用光测量大脑血氧，以此作为神经活动的代理。他拿自己做了一个小研究：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">DON'T DIE PODCAST · 2025-07-03 · 07:30</span><a href="https://www.youtube.com/watch?v=LPzRwzivklA&t=450s">YouTube</a></div>
+      <p class="q-en">“We did a small study. This is N equals 1. We looked at my deep sleep … as it relates to my willpower. And what we found is when I had lower levels of deep sleep, I think on the average was somewhere around 35 to 45 minutes versus an hour and a half to two hours of deep sleep, my willpower plummeted. … When you’re staring down the pint of ice cream or the bag of chips or whatever your vice is, your likelihood of withstanding that temptation is very low if you haven’t had deep sleep the night before.”</p>
+      <p class="q-zh">「我们做了一个小研究，样本量为 1，看我的深睡和意志力的关系。结果是：深睡少的时候——平均大约 35 到 45 分钟，对比一个半到两小时——我的意志力直线下降。……当你盯着一品脱冰淇淋、一袋薯片或者随便什么你的诱惑时，如果前一晚没有深睡，你抵抗它的可能性非常低。」</p>
+    </div>
+    <p>测量方法是 go/no-go 任务：屏幕上出现图像，看到红色时要忍住不按键，用来衡量冲动控制。在 2024 年的一次演讲里，他把结论说得更直接：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">TALK · 2024-04</span><a href="https://www.youtube.com/watch?v=hkS1Eww5jTc">Watch these 39 minutes if you want to live to 200+</a></div>
+      <p class="q-en">“My willpower went down proportionally relative to how much deep sleep and how much REM sleep I got. And so the less REM and deep I had, the less self-control I had, which increased the likelihood that I would eat poorly that night, which would wreck my sleep again. And so if you want more power to be the person you want, you get more sleep. … Evening Bryan’s power is correlated to how much sleep.”</p>
+      <p class="q-zh">「我的意志力和深睡、REM 的多少成比例下降。REM 和深睡越少，自控力越差，那天晚上就越可能乱吃，而乱吃又会再次毁掉睡眠。所以如果你想要更多力量去成为你想成为的人，就多睡。……<strong>Evening Bryan 的力量，和睡了多少成正比。</strong>」</p>
+    </div>
+    <p>2025 年 7 月他做了一个反向实验：和伴侣在欧洲连续 11 天“玩得很猛”，睡得比平时晚、比平时少。结果是“九到十天的睡眠剥夺加上跨时区旅行，把我的意志力打到零。亲眼看着这个过程真的很疯狂”；到第十天，“我感觉自己像一头动物，有了动物本能”，一袋薯片突然变得很有吸引力。<span class="cite"><a href="https://www.youtube.com/watch?v=lO0JivvpbDM">播客 2025-07</a></span></p>
+  </div>
+  <div class="wide">
+    <div class="cyc" role="group" aria-label="良性循环与恶性循环">
+      <div class="good"><h4>良性循环</h4><ol>
+        <li>末餐早、睡前放松 → <strong>睡前心率低</strong></li>
+        <li>入睡快、无夜醒 → <strong>深睡与 REM 充足</strong></li>
+        <li>第二天<strong>意志力和情绪稳定</strong>，愿意运动</li>
+        <li>晚上不暴食、不熬夜、不刷屏</li>
+      </ol><div class="back">↺ 回到第一步</div></div>
+      <div class="bad"><h4>恶性循环</h4><ol>
+        <li>晚吃、争吵、工作到最后一刻 → <strong>睡前心率高</strong></li>
+        <li>睡不着、睡不深 → <strong>深睡缺失</strong></li>
+        <li>第二天<strong>自控力下降</strong>，不想运动</li>
+        <li>晚上靠食物、屏幕、酒精“自我安慰”</li>
+      </ol><div class="back">↺ 回到第一步</div></div>
+    </div>
+    <p class="src" style="margin-top:8px">据 <a href="https://protocol.bryanjohnson.com/">Protocol</a>（“Poor sleep destroys your self control. A vicious cycle.”）与 <a href="https://www.youtube.com/watch?v=lKM9OB6qHCE">播客 2025-05</a>（“I was only able to break my bad cycles because I would prioritize sleep above all”）整理。</p>
+  </div>
+  <div class="body">
+    <h3><span class="h-k">2019</span>解雇 Evening Bryan</h3>
+    <p>这是 Blueprint 的起源故事，也是他最常讲的故事。2020 年的原文值得完整读一遍：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">BRYANJOHNSON.COM · 2020-08-06</span><a href="https://www.bryanjohnson.com/articles/i-fired-myself">I fired myself</a></div>
+      <p class="q-en">“It was a difficult decision, but I had to do it. I fired Evening Bryan. To be fair, Evening Bryan (5pm-10pm) faced a formidable challenge in his daily shift: deciding when, what and how much to eat. For ten years, Evening Bryan overate and gained more than fifty pounds, fueling relentless shame, guilt and malaise. … His behavior had devastating ripple effects on the other Bryans. The excessive nighttime food consumption made quality sleep nearly impossible for Nighttime Bryan (10pm - 6am), which caused Morning Bryan (6am-12pm) to be quite displeased because he consistently felt tired, irritable and unprepared for the demands of life.”</p>
+      <p class="q-zh">「这是个艰难的决定，但我必须做：我解雇了 Evening Bryan。公平地说，Evening Bryan（下午 5 点到晚上 10 点）每天当班时面对一项艰巨的任务：决定吃什么、什么时候吃、吃多少。十年里他持续暴食，胖了五十多磅，带来无尽的羞耻、内疚和萎靡。……他的行为对其他 Bryan 造成了灾难性的连锁影响：深夜过量进食让 Nighttime Bryan（晚 10 点到早 6 点）几乎不可能睡好，于是 Morning Bryan（早 6 点到中午）总是疲惫、烦躁，对生活毫无准备。」</p>
+    </div>
+    <p>注意因果链的中间环节就是睡眠：Evening Bryan 的暴食毁掉了 Nighttime Bryan 的睡眠，进而毁掉 Morning Bryan。他的解决方案不是“更努力地忍住”，而是<strong>收回 Evening Bryan 的决策权</strong>：“无论什么情况，只有 Morning Bryan 可以决定吃什么、什么时候吃、吃多少。”2026 年的 Protocol 页面把这个故事写成了一套可以照做的方法：</p>
+    <div class="proto">
+      <div class="p-row"><div class="p-n">1</div><div style="grid-column:2/-1"><div class="p-t">给那个制造自毁行为的“你”起名字</div><div class="p-why">例如 Evening Bryan。描述他在什么时候、什么情境下出现，有什么倾向。</div></div></div>
+      <div class="p-row"><div class="p-n">2</div><div style="grid-column:2/-1"><div class="p-t">写下他的说服话术</div><div class="p-why">“今晚是最后一次”“明天多练一点把热量烧掉”“就这一次”。</div></div></div>
+      <div class="p-row"><div class="p-n">3</div><div style="grid-column:2/-1"><div class="p-t">准备好反驳</div><div class="p-why">“这不是我们真正想要的”“我们知道这会让我们难过和后悔”。</div></div></div>
+      <div class="p-row"><div class="p-n">4</div><div style="grid-column:2/-1"><div class="p-t">指定由哪个版本的你来做决定</div><div class="p-why">比如早上的你；把替晚上的你做决定的权力交给他。</div></div></div>
+      <div class="p-row"><div class="p-n">5</div><div style="grid-column:2/-1"><div class="p-t">定下硬规则：做什么、不做什么</div><div class="p-why">“None is easier than some.”——一口都不吃，比吃一点更容易。</div></div></div>
+    </div>
+    <p class="src">来源：<a href="https://protocol.bryanjohnson.com/">Protocol · How to avoid bad habits</a> · 2022 年的早期版本见 <a href="https://medium.com/future-literacy/the-power-law-of-good-behavior-586bd2a05aeb">The power law of good behavior</a></p>
+    <p>2022 年那篇《好行为的幂律》给这个方法加了一个统计学外壳：“我们 80% 的坏行为，很可能来自只占 20% 时间的那几个版本的自己——比如晚上十点那个酗酒、给不该联系的前任发消息、忽视基本自我照顾的你。”提前想好规则的意义在于，“避免在当下考验意志力——那是一场有时会 100% 输掉的仗”。<span class="cite"><a href="https://medium.com/future-literacy/the-power-law-of-good-behavior-586bd2a05aeb">Medium 2022-11</a></span></p>
+    <div class="thesis">“Systems far exceed willpower.” 系统远胜于意志力。<span class="cite"><a href="https://www.youtube.com/watch?v=uq1Vzi-52dA&t=352s">视频 2024-11</a></span></div>
+    <p>这也是他把睡眠排在饮食前面的真正理由。2025 年他写道：“这就是为什么饮食是第三幂律，而不是第一。当你休息充足、动起来了，你会自然地想吃得更好。如果你缺觉又久坐，渴望就会接管一切。”<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/the-three-power-laws-of-health">博客 2025-04</a></span> 他在 2026 年的一条帖子里把这件事放到更大的背景里：<span class="en">“Our society is a predator prey relationship. Companies make money and become rich when they convince us to do things that we can’t stop.”</span>（我们的社会是一种捕食者与猎物的关系：公司让我们停不下来，就能赚钱致富。）<span class="cite"><a href="https://x.com/bryan_johnson/status/2077144970553933842">X 2026-07</a></span> 节目里他补充：“一旦你缺觉、意志力变少，这种诱捕就越收越紧，像勒住脖子一样。”<span class="cite"><a href="https://www.youtube.com/watch?v=tv875KnuuMg">播客 2025-07</a></span></p>
+  </div>
+</section>
+
+<!-- 11 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="broken" data-t="被打破">
+  <div class="sec-h"><div class="sec-n">11</div><div><div class="sec-tag">WHEN IT BREAKS</div><h2><span class="zh">当睡眠被打破</span></h2><p class="sec-sub">他公开记录了很多次“失败”：旅行、演唱会、一顿晚饭、一部电影首映。这些记录比完美的夜晚更有用。</p></div></div>
+  <div class="body">
+    <div class="tl">
+      <div class="tl-i bad"><div class="tl-d">2024-04-23 · X</div><div class="tl-t">九天国际旅行：四年来最差的睡眠分</div><div class="tl-b">“Averaged 5.5 hrs a night versus 8.5. I felt half dead. Returned home last night and never before has 100% felt more glorious.”（平均每晚 5.5 小时，平时是 8.5。我感觉自己半死不活。昨晚回到家，100% 从没让我觉得这么美好。）<span class="cite"><a href="https://x.com/bryan_johnson/status/1782824580329140464">X</a></span></div></div>
+      <div class="tl-i bad"><div class="tl-d">2024-07-21 · X</div><div class="tl-t">一场演唱会：修复性睡眠少了 50%</div><div class="tl-b">“The music was energizing. The setting was beautiful. My friends were great. And I danced, which is my favorite thing to do. This morning I feel pretty wrecked.” 第二天他发了恢复后的读数（修复性睡眠 4 小时 30 分、心率 49）和四条清单：就寝时间前后 30 分钟内上床、睡前 30–60 分钟关屏、减少光照（用红光）、30 分钟放松。<span class="cite"><a href="https://x.com/bryan_johnson/status/1815080215384887523">X</a></span><span class="cite"><a href="https://x.com/bryan_johnson/status/1815386830247800851">X</a></span></div></div>
+      <div class="tl-i bad"><div class="tl-d">2025-07 · 播客</div><div class="tl-t">拉斯维加斯：下午 4–5 点的一顿“干净”晚饭</div><div class="tl-b">陌生酒店、床垫不冷、心率 53（平时此时 46–47）。他当晚就对 Kate 说“这会很难”，果然如此。见 §06。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span></div></div>
+      <div class="tl-i bad"><div class="tl-d">2025-07 · 播客</div><div class="tl-t">欧洲 11 天“压力测试”</div><div class="tl-b">故意晚睡少睡，看会发生什么：意志力、纪律、情绪、乐观度持续下降，最后“像动物一样”。他由此给朋友定了一条经验规则：<strong>每季度最多一次国际旅行</strong>（以 10 小时时差、5 天行程计），而且宁可一次长途、给身体时间翻转，也不要多次短途。<span class="cite"><a href="https://www.youtube.com/watch?v=lO0JivvpbDM">播客</a></span></div></div>
+      <div class="tl-i"><div class="tl-d">2025-08 · X</div><div class="tl-t">自嘲</div><div class="tl-b">“guys I went to bed late last night and everything is fine this morning. maybe i’ve taken this longevity thing too far?”（各位，我昨晚睡晚了，今早一切正常。也许我把长寿这件事搞得太过了？）以及九天后的 “I’m thinking of staying up past my bedtime. Any ideas for what I could do?”<span class="cite"><a href="https://x.com/bryan_johnson/status/1954944318801842240">X</a></span><span class="cite"><a href="https://x.com/bryan_johnson/status/1957988516631400954">X</a></span></div></div>
+      <div class="tl-i bad"><div class="tl-d">2026-10-17 · X</div><div class="tl-t">“I got 4 hr 41 min of sleep 😭”</div><div class="tl-b">回复里提到是因为一场深夜放映。<span class="cite"><a href="https://x.com/bryan_johnson/status/2111486128809517355">X</a></span></div></div>
+    </div>
+    <p>他对“偶尔一晚”的看法并不宽松：恢复一个糟糕的夜晚“需要好几天”。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span> 周末晚睡也不例外——2025 年 10 月他发帖解释“错过周五的就寝时间为什么在毁掉你的生活”：睡眠缩短或推迟会让瘦素下降 15–20%、饥饿素上升 15–30%，饥饿感增加 20–25%，然后你会想吃垃圾食品。<span class="cite"><a href="https://x.com/bryan_johnson/status/1981768185092481177">X 2025-10-24</a></span> 有一条短视频的标题是 “irregular sleep is just as bad as getting less sleep”（不规律的睡眠和睡得少一样糟）。</p>
+
+    <h3><span class="h-k">Jet lag</span>倒时差协议（Kate Tolo 执笔）</h3>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>阶段</th><th>做法</th></tr></thead>
+      <tbody>
+        <tr><td class="k">飞行中</td><td>不吃东西（改善睡眠质量）；戴防蓝光眼镜挡机舱灯，不看屏幕改读书；夜航起飞后立刻睡，提前告诉乘务员不用叫醒送餐；耳塞 + 遮光眼罩；大量喝水；不喝酒。</td></tr>
+        <tr><td class="k">落地（早上到）</td><td>用阳光、运动、进食告诉大脑“现在是白天”；咖啡因只在早上喝，下午和晚上不喝。</td></tr>
+        <tr><td class="k">头几晚</td><td>睡前服缓释褪黑素，至少前 3 晚。</td></tr>
+        <tr><td class="k">预期</td><td>每跨一个时区大约需要一天完全适应；这些手段不能预防症状，只能缩短持续时间。</td></tr>
+      </tbody>
+    </table></div>
+    <p class="src">来源：<a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-beat-jet-lag">How to beat jet lag (2026-02)</a> · <a href="https://www.youtube.com/watch?v=lO0JivvpbDM">播客 2025-07</a>。他们引用的一项研究：15 届奥运会、173 支队伍，本可拿金牌的运动员在时差未恢复时滑落到银牌。</p>
+
+    <h3><span class="h-k">Daylight saving</span>夏令时那一周</h3>
+    <p>团队 2026 年的文章把夏令时当作“一小时作息变化有多伤”的例子：有研究发现切换后的周一心脏病发作多 24%，卒中住院、致命车祸、工伤都会上升，睡眠可能要 5–7 天才恢复。准备方法是：切换前 2–3 天每天把睡醒时间和三餐都提前 15–20 分钟；切换后的早上一定要见光；那一周开车格外小心。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/daylight-saving-time">博客 2026-03</a></span></p>
+  </div>
+</section>
+
+<!-- 12 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="data" data-t="数据">
+  <div class="sec-h"><div class="sec-n">12</div><div><div class="sec-tag">MEASUREMENT</div><h2><span class="zh">数据怎么用，怎么不被数据绑架</span></h2></div></div>
+  <div class="body">
+    <p>他是“世界上被测量得最多的人”，但在睡眠上他给普通人的测量建议非常克制：任何一款可穿戴都行（Apple、Oura、WHOOP、Garmin），没有设备就数脉搏、写日记。<span class="cite"><a href="https://protocol.bryanjohnson.com/">Protocol</a></span> 用数据的目的不是分数本身，而是<strong>建立直觉</strong>：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">DON'T DIE PODCAST · 2025-07-03</span><a href="https://www.youtube.com/watch?v=LPzRwzivklA">YouTube</a></div>
+      <p class="q-en">“That’s been the best thing I’ve done is I’ve just really learned what I do in life and how it affects my sleep, which allows me then to build lifestyle and routines. So much of health is not about like take this supplement and do this therapy. It’s about lifestyle and habits. And that’s what this entirely is about: making sleep a number one life priority and then building systems around that.”</p>
+      <p class="q-zh">「我做过最好的事，就是真正弄清楚了我生活中的每件事如何影响睡眠，然后据此建立生活方式和日常。健康的大部分不是‘吃这个补剂、做那个疗法’，而是生活方式和习惯。这整件事就是：把睡眠作为人生第一优先级，然后围绕它搭建系统。」</p>
+    </div>
+
+    <h3><span class="h-k">The deep-sleep window</span>为什么就寝时间比总时长更“贵”</h3>
+    <p>他反复展示自己的睡眠图：深睡几乎全部发生在前三分之一夜。<span class="en">“Most deep sleep happens early in your sleep cycle. If you miss your deep sleep window, it’s gone (mostly).”</span>（大部分深睡发生在睡眠周期的早段。错过了深睡窗口，它基本就没了。）<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/how-did-you-sleep-last-night">博客 2025-01</a></span> 这解释了为什么他对“晚睡晚起补回来”毫无兴趣：同样的时长，起点推迟就意味着前半夜的深睡被压缩。他的每晚目标是修复性睡眠（深睡 + REM）3 小时以上，好的夜晚是“2 小时以上 REM、2 小时以上深睡、清醒不到 30 分钟”。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-get-more-restorative-sleep">博客</a></span><span class="cite"><a href="https://www.youtube.com/watch?v=XSaDL4EO0-g">视频</a></span></p>
+
+    <h3><span class="h-k">Corroboration he likes to cite</span>Karpathy 的睡眠记录</h3>
+    <p>在一期节目里，他们读了 Andrej Karpathy 一篇关于睡眠追踪的博文，作为“不止我一个人这样”的旁证：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">ANDREJ KARPATHY · 节目中引用 · 2025-04</span><a href="https://www.youtube.com/watch?v=8_iIB7_fYCg&t=1890s">YouTube 31:30</a></div>
+      <p class="q-en">“Overall I say with absolute certainty that Bryan is basically right and my sleep scores correlate strongly with the quality of work I’m able to do that day. When my sleep score is low, I lack agency. I lack courage. I lack creativity. I’m simply tired. When my sleep score is high, I can power through anything.”</p>
+      <p class="q-zh">「总的来说，我可以非常确定地说 Bryan 基本是对的：我的睡眠分数和我当天能做出的工作质量高度相关。分数低的时候，我缺乏主动性、缺乏勇气、缺乏创造力，就是累。分数高的时候，我什么都扛得下来。」</p>
+    </div>
+    <p>此前 Bryan 在 X 上回复过 Karpathy，列出他认为“影响最大的几件事”，第一条就是睡前心率：<a href="https://x.com/bryan_johnson/status/1883702802071077289">2025-01-27</a>。</p>
+
+    <h3><span class="h-k">The anxiety caveat</span>如果数据让你焦虑</h3>
+    <p>他承认分数会制造焦虑：“很多人不戴可穿戴，就是因为早上醒来看到分数差，一整天都觉得自己很糟——因为算法告诉他们很糟。”团队医生 Mallin 的经验是，坚持一段时间后焦虑会自己淡下去，“你没法一直对数据保持焦虑型依恋”。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span> 对照他的整体逻辑，一个合理的折中是：只看一个数（睡前心率）用来指导当晚的行为，而不是每天早上给自己打分。</p>
+    <div class="note">
+      <span class="nk">他什么时候说“去看医生”</span>
+      <p>“如果你有失眠或者长期睡不好，当然有些情况需要专业帮助。”他的立场是先把基础做对再说：“在美国社会，出了问题我们就找一颗药片……但大多数人连这些基础的事都没在做。”给身体几周时间适应新节律，仍不行再升级方案。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span> 节目里还提到，对真正的失眠，CBT-I（失眠认知行为疗法）是有用的工具。</p>
+    </div>
+    <p>关于情绪：他自己有十年慢性抑郁的经历；他有一条短视频的标题就是 “Sleep deprivation kept me in depression”。那期进阶睡眠节目的说法是：这期节目“本质上也可以是一期讲情绪障碍的节目”，对抑郁和焦虑的第一道防线是把睡眠做好。他有一条三百五十万播放的短视频，标题是 “Sleep deprivation can lead to a 300-400% increase in being depressed and anxious”。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span><span class="cite"><a href="https://www.youtube.com/shorts/GFfY4gx5o6I">短视频</a></span></p>
+  </div>
+</section>
+
+<!-- 13 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="laws" data-t="三大幂律">
+  <div class="sec-h"><div class="sec-n">13</div><div><div class="sec-tag">THE THREE POWER LAWS</div><h2><span class="zh">三大幂律：睡眠 → 运动 → 饮食</span></h2><p class="sec-sub">他的完整健康框架很短，而且顺序本身就是论点。</p></div></div>
+  <div class="body">
+    <div class="q big">
+      <div class="q-h"><span class="who">BLUEPRINT BLOG · WORLD HEALTH DAY · 2025-04-04</span><a href="https://blueprint.bryanjohnson.com/blogs/news/the-three-power-laws-of-health">The Three Power Laws of Health</a></div>
+      <p class="q-en">“When you sleep well, you feel well. When you feel well, you move well. And when you move, you feel even better. That’s the loop we’re building.”</p>
+      <p class="q-zh">「睡得好，你就感觉好；感觉好，你就动得好；动起来，你会感觉更好。这就是我们要建的循环。」</p>
+    </div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>幂律</th><th>核心</th><th>他的原话 / 要点</th></tr></thead>
+      <tbody>
+        <tr><td class="k" style="color:var(--deep-ink)">1 · 睡眠</td><td>职业睡眠者：早吃少吃、放松流程、红光、守就寝时间、避开刺激物</td><td>“Treat sleep as a craft… If you get your sleep right, everything else becomes easier.”（把睡眠当手艺。睡眠对了，其他一切都会变容易。）</td></tr>
+        <tr><td class="k">2 · 运动</td><td>每天动 30 分钟；每 20–30 分钟起身一次</td><td>“Be active every day. Move every hour or so. Your body craves movement.”（每天都动，大约每小时动一下，身体渴望运动。）</td></tr>
+        <tr><td class="k">3 · 饮食</td><td>永远不靠意志力；解雇最糟的那个自己；按 Don't Die 食物指南吃；避开明显的陷阱</td><td>“It’s not about being perfect. It’s about being directionally correct, consistently.”（不是要完美，而是方向一贯正确。）</td></tr>
+      </tbody>
+    </table></div>
+    <p>文章的结尾是一句很典型的 Bryan 式呼吁，把个人习惯说成集体行动：</p>
+    <div class="q">
+      <div class="q-h"><span class="who">BLUEPRINT BLOG · 2025-04-04</span><a href="https://blueprint.bryanjohnson.com/blogs/news/the-three-power-laws-of-health">The Three Power Laws of Health</a></div>
+      <p class="q-en">“So when you’re about to give in, don’t just think about yourself. Do it for everyone else. Because when you make the right choice, others will too. And when you cave, we all feel it. … Don’t do it. I’m telling you. Don’t cave. Not tonight.”</p>
+      <p class="q-zh">「所以当你快要屈服时，别只想着自己，为其他所有人坚持。因为你做对的选择，别人也会跟着做；你一垮，我们都能感觉到。……别那么做。我在跟你说：别垮。今晚别。」</p>
+    </div>
+
+    <h3><span class="h-k">Exercise</span>运动协议（简版）</h3>
+    <ul>
+      <li>每周约 6 小时：3 次力量、3 次有氧；中等强度（Zone 2，能说话）150 分钟 + 高强度（说不了话，如 HIIT）75 分钟；外加柔韧、平衡、灵活性。做不到就每天 20 分钟。</li>
+      <li>最重要的原则是<strong>避免受伤</strong>，其次是<strong>每天都练</strong>：“Do not give yourself the option to decide.”（不要给自己选择的余地。）</li>
+      <li>每餐后活动 5–10 分钟；每 30 分钟离开桌子动一动。</li>
+      <li>和睡眠的接口：高强度运动在睡前 4 小时前结束。他在节目里引用 WHOOP 对 15,000 名用户、430 万个夜晚的分析：傍晚的高强度训练会推迟入睡、缩短睡眠、抬高夜间心率；训练在睡前 4 小时以上结束则看不到负面影响，6 小时以上最好。</li>
+    </ul>
+    <p class="src">来源：<a href="https://protocol.bryanjohnson.com/">Protocol · Exercise</a> · <a href="https://www.youtube.com/watch?v=lKM9OB6qHCE">播客 2025-05</a></p>
+
+    <h3><span class="h-k">Nutrition</span>饮食哲学（简版）</h3>
+    <ul>
+      <li><strong>“Every calorie must fight for its life.”</strong>（每一卡热量都得为自己的存在而战。）每日约 2,250 千卡，比推荐量少约 10%；蛋白质 130 g、碳水 206 g、脂肪 101 g。</li>
+      <li>不认同任何饮食阵营（植物性、肉食、生酮、原始人饮食）：“我跟着科学证据和数据决定吃什么。”测你自己的生物标志物，看你吃的东西是否在为你服务。</li>
+      <li>“Try to never let your mind make eating decisions on your behalf. Build and rely upon life systems.”（尽量别让你的大脑替你做进食决定。建立并依靠生活系统。）</li>
+    </ul>
+    <p class="src">来源：<a href="https://protocol.bryanjohnson.com/">Protocol · Nutrition / Master these 5 habits</a></p>
+    <p>Protocol 页上的“五个习惯”把第四、五条补全了：<strong>家庭、友谊和社群</strong>（“love and be loved. It will extend your life.”——去爱，也被爱，它会延长你的生命）；以及<strong>要避开的东西</strong>：快餐、垃圾食品、吸烟、尼古丁、电子烟、过量饮酒、社交媒体，以及任何让人上瘾的东西——“Addiction makes you a prisoner.”（成瘾让你成为囚徒。）</p>
+  </div>
+</section>
+
+<!-- 14 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="dontdie" data-t="Don't Die">
+  <div class="sec-h"><div class="sec-n">14</div><div><div class="sec-tag">WORLDVIEW</div><h2>Don't Die<span class="zh">：从一张床到一个文明</span></h2><p class="sec-sub">理解他为什么对“按时睡觉”如此执着，需要看他把这件事放在多大的框架里。</p></div></div>
+  <div class="body">
+    <div class="q">
+      <div class="q-h"><span class="who">PROTOCOL · INTRO · 2026</span><a href="https://protocol.bryanjohnson.com/">protocol.bryanjohnson.com</a></div>
+      <p class="q-en">“We might be the first generation that doesn’t die. … Some of you don’t care about Don’t Die, you just want to be hot. That’s cool too. It’s really the same thing. … I want to be the strongest voice in your mind encouraging you to make health your top life priority. To remind you that you will be a better father, mother, brother, sister, friend, colleague, and human when you do so.”</p>
+      <p class="q-zh">「我们可能是第一代不会死的人。……有些人不在乎 Don't Die，只是想变好看。那也很好，其实是同一回事。……我想成为你脑海里最响亮的那个声音，鼓励你把健康作为人生的第一优先级；提醒你，当你这样做时，你会成为更好的父亲、母亲、兄弟、姐妹、朋友、同事和人。」</p>
+    </div>
+    <p>几个层次，从个人到文明：</p>
+    <ul>
+      <li><strong>个人：自主自我（Autonomous Self）。</strong>“我不信任我的意识——在满是垃圾食品的食品柜前不信，在我的长期利益上不信，在为我的非理性行为找借口时也不信。”<span class="cite"><a href="https://www.youtube.com/watch?v=iRL65uwnuV8">视频 2024-09</a></span> 他把 Blueprint 描述为“我的自主自我在降级我的意识，选择加入一个由数据和科学管理的健康系统”。<span class="cite"><a href="https://www.youtube.com/watch?v=kGBCu59hIGI">视频 2023-11</a></span> 2021 年的说法是：让心、肝、肾等器官通过数百项生物标志物“拥有独立的声音，其权威高于我的意识”。<span class="cite"><a href="https://medium.com/future-literacy/project-blueprint-360eaf1d8ea2">Medium 2021-10</a></span></li>
+      <li><strong>社会：一切都在攻击睡眠。</strong>“Everything in society attacks sleep. It’s humanity's greatest risk because it strips clear thinking.”<span class="cite"><a href="https://x.com/bryan_johnson/status/2032148870315327839">X 2026-03</a></span> 2018 年他就对孩子们的学校作息感到“愤怒”，认为它妨碍青少年发育、助长心理疾病；2025 年他讲到三个孩子当年为了作业和清晨的宗教课每晚只睡四五个小时，“我求他们好好睡觉，我不在乎你们的成绩”。<span class="cite"><a href="https://www.bryanjohnson.com/articles/sleep-is-the-new-coffee">2018</a></span><span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span></li>
+      <li><strong>文化：把健康当成新的信仰。</strong>“我们把这种放纵的生活方式包装成快乐、包装成活出人生。我认为真正的答案是：健康是人生最大的乐趣。”<span class="cite"><a href="https://www.youtube.com/watch?v=X-D0aHWQ7jo">视频 2025-08</a></span> 在关于压力与奋斗文化的节目里，他们主张把“地位和财富作为信仰”换成“健康作为信仰”。<span class="cite"><a href="https://www.youtube.com/watch?v=tv875KnuuMg">播客</a></span></li>
+      <li><strong>文明：AI 时代的“不死”。</strong>“Don't die is basically an endeavor to do for the world what I've done for myself, which is help everybody systematically remove all things that cause death.”（Don't Die 本质上是把我为自己做的事情推广到全世界：帮每个人系统地去掉一切导致死亡的东西。）<span class="cite"><a href="https://www.youtube.com/watch?v=X-D0aHWQ7jo">视频 2025-08</a></span> 他也说过：“Don't die 已经是地球上每个人每一秒都在玩的游戏。”<span class="cite"><a href="https://www.youtube.com/watch?v=2HTn0T21k0U">视频 2024-08</a></span></li>
+    </ul>
+    <p>在这个框架里，按时上床是这场“对死亡及其成因的战争”里最小、最日常的一步——也是他认为任何人今晚就能参与的一步。他甚至在一篇讲整容失败的博客结尾，也写上了 “Remember to go to bed on time.”（记得按时睡觉。）<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/when-blueprint-goes-wrong">博客 2024-12</a></span></p>
+    <p>这套世界观的长文本版本，是他 2024 年在 YouTube 上发布的几部完整有声书：<em>Zeroism</em>、<em>Dialogues</em> 和 <em>We the People</em>（见 §17）。</p>
+  </div>
+</section>
+
+<!-- 15 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="changed" data-t="改过主意">
+  <div class="sec-h"><div class="sec-n">15</div><div><div class="sec-tag">REVISIONS</div><h2><span class="zh">他改过主意的地方</span></h2><p class="sec-sub">“The Blueprint protocol is constantly evolving based on new results.” 他公开过的修正，是判断哪些建议更可靠的一个线索。</p></div></div>
+  <div class="body">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>时间</th><th>之前</th><th>之后 / 原因</th></tr></thead>
+      <tbody>
+        <tr><td class="num">2021</td><td>一日一餐、禁食 23 小时（他自己想试的，不是团队设计）</td><td>体脂掉到 3% 以下，“太低了”；调整进食后回到 6%。<span class="cite"><a href="https://medium.com/future-literacy/project-blueprint-360eaf1d8ea2">Medium</a></span></td></tr>
+        <tr><td class="num">2023–2024</td><td>热量限制：每日从 2,500 千卡降到 1,950</td><td>生物标志物在改善，但脸部脂肪流失、显得憔悴，“人们以为我快死了”；后来回调到约 2,250。<span class="cite"><a href="https://blueprint.bryanjohnson.com/blogs/news/when-blueprint-goes-wrong">博客</a></span></td></tr>
+        <tr><td class="num">2024–2025</td><td>雷帕霉素，按“最有前景的实验性抗衰药”使用</td><td>停药。他把反复的软组织感染、血糖和胆固醇异常归因于它；停药后这些恢复正常。“结果我其实在加速自己的衰老。”<span class="cite"><a href="https://www.youtube.com/watch?v=MizVGCELs9Q">视频 2025-03</a></span></td></tr>
+        <tr><td class="num">2025</td><td>晚间运动</td><td>根据睡前心率和 WHOOP 的大样本分析，把高强度训练放到早上，并建议睡前 4 小时内不做。<span class="cite"><a href="https://www.youtube.com/watch?v=lKM9OB6qHCE">播客</a></span></td></tr>
+        <tr><td class="num">2025-07</td><td>来不及吃饭时，下午晚些补上热量</td><td>拉斯维加斯那一晚之后：宁可饿着，设“中午或一点”为硬截止。<span class="cite"><a href="https://www.youtube.com/watch?v=LPzRwzivklA">播客</a></span></td></tr>
+        <tr><td class="num">2018 → 2026</td><td>CBD 油、声音机、防蓝光眼镜等工具</td><td>重心转向零成本的时间规则：末餐、关屏、就寝。见 §09 对比表。</td></tr>
+      </tbody>
+    </table></div>
+    <p>他在 2023 年那支 170 万播放的视频里描述过自己的方法：“据我所知，我是唯一公开全部数据的人。我不是说‘这是我的协议，相信我’，而是说‘这是我的协议，这是我全部的数据，这是我接下来要试的，这是我犯错的地方，以及我打算怎么修正’。”<span class="cite"><a href="https://www.youtube.com/watch?v=NdZHo3xuZvw&t=81s">视频 2023-01</a></span></p>
+    <div class="note">
+      <span class="nk">一个观察</span>
+      <p>值得注意的是，几乎所有修正都发生在“高级疗法”和饮食热量上；<strong>睡眠这条线从 2018 年到 2026 年只朝一个方向走——更早、更硬、更简单。</strong>在他整个体系里，这是被他自己的数据反复确认、从没被推翻过的部分。</p>
+    </div>
+  </div>
+</section>
+
+<div class="part"><div class="part-in"><span class="part-n">PART IV</span><span class="part-t">Library &amp; sources</span></div></div>
+
+<!-- 16 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="shorts" data-t="短视频库">
+  <div class="sec-h"><div class="sec-n">16</div><div><div class="sec-tag">SHORTS · 96 / 896</div><h2><span class="zh">短视频库</span></h2><p class="sec-sub">他的 YouTube 频道有 896 条 Shorts。这里按主题挑出 96 条，睡眠相关的放在前面。标题是他本人发布时写的文字，中文是我的意译；点卡片直接跳到 YouTube。</p></div></div>
+  <div class="body">
+    <p>短视频的价值在于“一句话一个规则”，适合睡前或通勤时刷——当然，按他的规则，睡前一小时不该刷。建议的用法是：先按“优先级”和“就寝”看一遍建立感觉，再按“心率”和“晚间”找具体做法。</p>
+  </div>
+  <div class="wide">
+<div class="lib-ctl" id="lib-ctl" role="group" aria-label="按主题筛选"><button class="chip" type="button" data-f="all" aria-pressed="true">全部<span class="ct">96</span></button><button class="chip" type="button" data-f="优先级" aria-pressed="false">优先级<span class="ct">21</span></button><button class="chip" type="button" data-f="就寝" aria-pressed="false">就寝<span class="ct">15</span></button><button class="chip" type="button" data-f="心率" aria-pressed="false">心率<span class="ct">9</span></button><button class="chip" type="button" data-f="晚间" aria-pressed="false">晚间<span class="ct">11</span></button><button class="chip" type="button" data-f="卧室" aria-pressed="false">卧室<span class="ct">8</span></button><button class="chip" type="button" data-f="被打破" aria-pressed="false">被打破<span class="ct">5</span></button><button class="chip" type="button" data-f="意志力" aria-pressed="false">意志力<span class="ct">10</span></button><button class="chip" type="button" data-f="早晨" aria-pressed="false">早晨<span class="ct">4</span></button><button class="chip" type="button" data-f="体系" aria-pressed="false">体系<span class="ct">13</span></button></div>
+<div class="lib" id="lib">
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/BzVsz-qPOro"><span class="sv-t">If you only do one thing for your health: sleep.</span><span class="sv-z">如果你只为健康做一件事：睡觉。</span><span class="sv-m"><span class="tg">优先级</span><span>16.8 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/3tVL9hPfDg4"><span class="sv-t">When sleep is your number one, everything else falls into place.</span><span class="sv-z">当睡眠是第一位，其他一切都会归位。</span><span class="sv-m"><span class="tg">优先级</span><span>7.2 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/FnwjmsP1-DI"><span class="sv-t">I&#x27;ve prioritized my life around sleep</span><span class="sv-z">我把整个生活都围绕睡眠来安排。</span><span class="sv-m"><span class="tg">优先级</span><span>14.3 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/b586aQ_Lz4g"><span class="sv-t">Reliable, high quality sleep is a superpower</span><span class="sv-z">可靠、高质量的睡眠是一种超能力。</span><span class="sv-m"><span class="tg">优先级</span><span>7.8 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/hEDAXhsuM3w"><span class="sv-t">Never compromise on sleep. It will make you a better entrepreneur.</span><span class="sv-z">永远别在睡眠上妥协，它会让你成为更好的创业者。</span><span class="sv-m"><span class="tg">优先级</span><span>4.6 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/TW5DCCMXp3g"><span class="sv-t">Sleep is a lighthouse - it’s immovable.</span><span class="sv-z">睡眠是一座灯塔：它不可移动。</span><span class="sv-m"><span class="tg">优先级</span><span>1.9 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/VyLMgGDrLP4"><span class="sv-t">Nothing is more powerful than sleep in determining how I feel about life.</span><span class="sv-z">没有什么比睡眠更能决定我怎么看待生活。</span><span class="sv-m"><span class="tg">优先级</span><span>2 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/G_9CXSYh61s"><span class="sv-t">If sleep is right, life is right!</span><span class="sv-z">睡眠对了，生活就对了。</span><span class="sv-m"><span class="tg">优先级</span><span>3 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/apnX3muBamQ"><span class="sv-t">My best thinking is enabled or smothered by good or bad sleep.</span><span class="sv-z">我最好的思考，被睡眠的好坏开启或扼杀。</span><span class="sv-m"><span class="tg">优先级</span><span>2.1 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/5AuEBIcd618"><span class="sv-t">Sleep is the #1 source of progress</span><span class="sv-z">睡眠是进步的第一来源。</span><span class="sv-m"><span class="tg">优先级</span><span>5.5 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/YCjykAGhHlI"><span class="sv-t">When you aren&#x27;t sleeping well your body falls apart</span><span class="sv-z">睡不好时，身体会散架。</span><span class="sv-m"><span class="tg">优先级</span><span>25.1 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/GFfY4gx5o6I"><span class="sv-t">Sleep deprivation can lead to a 300-400% increase in being depressed and anxious</span><span class="sv-z">睡眠剥夺可让抑郁和焦虑增加 300–400%。</span><span class="sv-m"><span class="tg">优先级</span><span>350 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/vGPkx0Xcc1E"><span class="sv-t">Sleep deprivation kept me in depression.</span><span class="sv-z">睡眠剥夺把我困在抑郁里。</span><span class="sv-m"><span class="tg">优先级</span><span>6.6 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/EY7AzMv4Tn4"><span class="sv-t">If you recently got less than four hours of sleep, I have some news for you.</span><span class="sv-z">如果你最近有一晚睡不到四小时，有件事要告诉你。</span><span class="sv-m"><span class="tg">优先级</span><span>100 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/1pJAYDbpypY"><span class="sv-t">This is how you can achieve PERFECT 100% sleep score every night.</span><span class="sv-z">怎样每晚拿到 100% 的睡眠分。</span><span class="sv-m"><span class="tg">优先级</span><span>180 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/AG5mOGlybGU"><span class="sv-t">Part 1. I&#x27;ve clocked the best sleep score in human history. Full video in bio.</span><span class="sv-z">（上）我拿到了人类历史上最好的睡眠分。</span><span class="sv-m"><span class="tg">优先级</span><span>16.9 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/ZpBcFEsej_Y"><span class="sv-t">Part 2. Eating earlier can improve your sleep. Full video in bio.</span><span class="sv-z">（下）早点吃饭能改善睡眠。</span><span class="sv-m"><span class="tg">优先级</span><span>30 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/156WPF1OpDk"><span class="sv-t">Become a Professional Sleeper</span><span class="sv-z">成为一名职业睡眠者。</span><span class="sv-m"><span class="tg">优先级</span><span>7.1 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/5hJKALuPIH8"><span class="sv-t">how to ACTUALLY sleep better</span><span class="sv-z">怎样真正睡得更好。</span><span class="sv-m"><span class="tg">优先级</span><span>17.3 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/RgAU64314Nw"><span class="sv-t">My sleep score reflects more than how well I slept - it highlights an overhaul of my entire life</span><span class="sv-z">睡眠分反映的不只是睡得如何，而是整个生活的翻新。</span><span class="sv-m"><span class="tg">优先级</span><span>1.9 万次播放</span></span></a>
+<a class="sv" data-tag="优先级" href="https://www.youtube.com/shorts/7isqUzPAm9w"><span class="sv-t">Sleep and diet give me enough dopamine, I don&#x27;t need more</span><span class="sv-z">睡眠和饮食给我的多巴胺已经够了。</span><span class="sv-m"><span class="tg">优先级</span><span>3.2 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/MZOAsT4LnY8"><span class="sv-t">Go to BED</span><span class="sv-z">去睡觉。</span><span class="sv-m"><span class="tg">就寝</span><span>18.7 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/JEz2l2mS3qY"><span class="sv-t">Bedtime is the most important appointment of the day</span><span class="sv-z">就寝时间是一天中最重要的约会。</span><span class="sv-m"><span class="tg">就寝</span><span>22.3 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/-fxgV_8z01A"><span class="sv-t">Best thing you can do for yourself: sleep. Be on time.</span><span class="sv-z">你能为自己做的最好的事：睡觉，准时。</span><span class="sv-m"><span class="tg">就寝</span><span>24.9 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/WW0P3K1NBOM"><span class="sv-t">Sleep is your #1 highest priority meeting today.</span><span class="sv-z">睡眠是你今天优先级最高的会议。</span><span class="sv-m"><span class="tg">就寝</span><span>4.3 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/g2Y2jqtjMgQ"><span class="sv-t">Your day doesn’t begin when you wake up, it begins the night before.</span><span class="sv-z">你的一天不是从醒来开始，而是从前一晚开始。</span><span class="sv-m"><span class="tg">就寝</span><span>23.2 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/-nQNV3l-8b4"><span class="sv-t">irregular sleep is just as bad as getting less sleep</span><span class="sv-z">不规律的睡眠和睡得少一样糟。</span><span class="sv-m"><span class="tg">就寝</span><span>30.6 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/mYuaPaqCtPY"><span class="sv-t">A few things you can do to improve sleep consistency</span><span class="sv-z">几件能提高睡眠规律性的事。</span><span class="sv-m"><span class="tg">就寝</span><span>5.2 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/bBimEeh7H4U"><span class="sv-t">If you&#x27;re reading this, it&#x27;s time to stop scrolling and go to bed</span><span class="sv-z">如果你在看这条，该停止刷屏去睡了。</span><span class="sv-m"><span class="tg">就寝</span><span>5.8 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/EPBFuzkABBo"><span class="sv-t">You trying the impossible? Go to sleep.</span><span class="sv-z">在尝试不可能的事？去睡觉。</span><span class="sv-m"><span class="tg">就寝</span><span>21.9 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/AkqBKEM7pis"><span class="sv-t">Whatever is keeping you up is not worth it</span><span class="sv-z">不管是什么让你熬着，都不值得。</span><span class="sv-m"><span class="tg">就寝</span><span>83.6 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/rWPliecdEYw"><span class="sv-t">Build the future, go to bed on time.</span><span class="sv-z">建设未来，按时睡觉。</span><span class="sv-m"><span class="tg">就寝</span><span>3.4 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/I2kwWLLpYzs"><span class="sv-t">POV: me at 8PM</span><span class="sv-z">晚上 8 点的我。</span><span class="sv-m"><span class="tg">就寝</span><span>18.9 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/k1vGZLkX8sA"><span class="sv-t">when you have a rave at 7 but bedtime at 8</span><span class="sv-z">当派对 7 点开始，而你 8 点就寝。</span><span class="sv-m"><span class="tg">就寝</span><span>10.3 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/5zWLa8reT9I"><span class="sv-t">How much would you pay to avoid a bad night’s sleep?</span><span class="sv-z">为了避免一个糟糕的夜晚，你愿意付多少钱？</span><span class="sv-m"><span class="tg">就寝</span><span>7.8 万次播放</span></span></a>
+<a class="sv" data-tag="就寝" href="https://www.youtube.com/shorts/adZxlWQHmbo"><span class="sv-t">Something to watch with family and friends on Jan 1. Tell them I said hi, and to go to bed on time</span><span class="sv-z">1 月 1 日和家人朋友一起看；告诉他们按时睡觉。</span><span class="sv-m"><span class="tg">就寝</span><span>7.7 万次播放</span></span></a>
+<a class="sv" data-tag="心率" href="https://www.youtube.com/shorts/syn8EPxLfJE"><span class="sv-t">lowering your resting heart rate before bed is the most effective thing you can do for your health</span><span class="sv-z">降低睡前静息心率，是你能为健康做的最有效的事。</span><span class="sv-m"><span class="tg">心率</span><span>110 万次播放</span></span></a>
+<a class="sv" data-tag="心率" href="https://www.youtube.com/shorts/KR8HInDZmww"><span class="sv-t">Resting heart rate before bed is the single most important health marker you can optimize for.</span><span class="sv-z">睡前静息心率是你能优化的最重要的单一健康指标。</span><span class="sv-m"><span class="tg">心率</span><span>54.5 万次播放</span></span></a>
+<a class="sv" data-tag="心率" href="https://www.youtube.com/shorts/dKqHjzgClR0"><span class="sv-t">lower your heart rate before sleep</span><span class="sv-z">降低睡前心率。</span><span class="sv-m"><span class="tg">心率</span><span>79.5 万次播放</span></span></a>
+<a class="sv" data-tag="心率" href="https://www.youtube.com/shorts/Gat7QVxoYm8"><span class="sv-t">Lower your resting heart rate to improve your sleep</span><span class="sv-z">降低静息心率来改善睡眠。</span><span class="sv-m"><span class="tg">心率</span><span>30.7 万次播放</span></span></a>
+<a class="sv" data-tag="心率" href="https://www.youtube.com/shorts/ES4JcAHEP48"><span class="sv-t">Avoid high intensity exercise 4 hours before sleep.</span><span class="sv-z">睡前 4 小时内避免高强度运动。</span><span class="sv-m"><span class="tg">心率</span><span>24.5 万次播放</span></span></a>
+<a class="sv" data-tag="心率" href="https://www.youtube.com/shorts/PTFD6JRlgng"><span class="sv-t">My best sleep happens when I finish eating each day at 11 am.</span><span class="sv-z">每天 11 点吃完最后一餐时，我睡得最好。</span><span class="sv-m"><span class="tg">心率</span><span>42.2 万次播放</span></span></a>
+<a class="sv" data-tag="心率" href="https://www.youtube.com/shorts/bN1Ns9cNvkw"><span class="sv-t">why I eat my last meal at 11am</span><span class="sv-z">我为什么 11 点吃最后一餐。</span><span class="sv-m"><span class="tg">心率</span><span>140 万次播放</span></span></a>
+<a class="sv" data-tag="心率" href="https://www.youtube.com/shorts/ayv97C_ExQc"><span class="sv-t">I prioritized relaxation over hustle culture and my HRV (Heart Rate Variability) has doubled.</span><span class="sv-z">我把放松置于奋斗文化之上，HRV 翻了一倍。</span><span class="sv-m"><span class="tg">心率</span><span>3 万次播放</span></span></a>
+<a class="sv" data-tag="心率" href="https://www.youtube.com/shorts/BSo81AJoX50"><span class="sv-t">This HRV (Heart Rate Variability) device can help your body get into chill mode.</span><span class="sv-z">这个 HRV 设备能帮身体进入放松模式。</span><span class="sv-m"><span class="tg">心率</span><span>17.4 万次播放</span></span></a>
+<a class="sv" data-tag="晚间" href="https://www.youtube.com/shorts/X5x3aNNAwGI"><span class="sv-t">Screens off 60 min before bed</span><span class="sv-z">睡前 60 分钟关屏幕。</span><span class="sv-m"><span class="tg">晚间</span><span>130 万次播放</span></span></a>
+<a class="sv" data-tag="晚间" href="https://www.youtube.com/shorts/csr_ejJ-X6I"><span class="sv-t">nighttime mode is activated</span><span class="sv-z">夜间模式已开启。</span><span class="sv-m"><span class="tg">晚间</span><span>21.6 万次播放</span></span></a>
+<a class="sv" data-tag="晚间" href="https://www.youtube.com/shorts/CVCuylH3DoY"><span class="sv-t">Blue-light blocking glasses are a game changer</span><span class="sv-z">防蓝光眼镜改变了游戏。</span><span class="sv-m"><span class="tg">晚间</span><span>5.4 万次播放</span></span></a>
+<a class="sv" data-tag="晚间" href="https://www.youtube.com/shorts/S9lAMKH4gAA"><span class="sv-t">Consume caffeine earlier in the day or risk it negatively affecting your sleep</span><span class="sv-z">咖啡因早点喝，否则会伤睡眠。</span><span class="sv-m"><span class="tg">晚间</span><span>23.6 万次播放</span></span></a>
+<a class="sv" data-tag="晚间" href="https://www.youtube.com/shorts/9v0HriBLhlQ"><span class="sv-t">if you drink coffee watch this</span><span class="sv-z">如果你喝咖啡，看这个。</span><span class="sv-m"><span class="tg">晚间</span><span>78.1 万次播放</span></span></a>
+<a class="sv" data-tag="晚间" href="https://www.youtube.com/shorts/xgtQG-i7Qow"><span class="sv-t">good news for coffee drinkers</span><span class="sv-z">给咖啡爱好者的好消息。</span><span class="sv-m"><span class="tg">晚间</span><span>54.6 万次播放</span></span></a>
+<a class="sv" data-tag="晚间" href="https://www.youtube.com/shorts/hM2-hPfhlnk"><span class="sv-t">@Jay Shetty and I discuss drinking coffee</span><span class="sv-z">和 Jay Shetty 聊咖啡。</span><span class="sv-m"><span class="tg">晚间</span><span>190 万次播放</span></span></a>
+<a class="sv" data-tag="晚间" href="https://www.youtube.com/shorts/DNZzh-QxGSk"><span class="sv-t">Blueprint does not forbid alcohol</span><span class="sv-z">Blueprint 并不禁酒。</span><span class="sv-m"><span class="tg">晚间</span><span>9.2 万次播放</span></span></a>
+<a class="sv" data-tag="晚间" href="https://www.youtube.com/shorts/5NMN3dEElkI"><span class="sv-t">let me read you a bedtime story</span><span class="sv-z">给你读一个睡前故事。</span><span class="sv-m"><span class="tg">晚间</span><span>52.6 万次播放</span></span></a>
+<a class="sv" data-tag="晚间" href="https://www.youtube.com/shorts/2za73iwrts4"><span class="sv-t">Evening Bryan, you&#x27;re fired.</span><span class="sv-z">Evening Bryan，你被解雇了。</span><span class="sv-m"><span class="tg">晚间</span><span>10.8 万次播放</span></span></a>
+<a class="sv" data-tag="晚间" href="https://www.youtube.com/shorts/VG9OtR2AcIE"><span class="sv-t">Your skin is the largest organ in your body. Here’s how I look after mine every night before bed.</span><span class="sv-z">睡前我怎样护理皮肤。</span><span class="sv-m"><span class="tg">晚间</span><span>120 万次播放</span></span></a>
+<a class="sv" data-tag="卧室" href="https://www.youtube.com/shorts/i9mVlUz0BhQ"><span class="sv-t">I’m proud of my boring bedroom</span><span class="sv-z">我为我无聊的卧室感到自豪。</span><span class="sv-m"><span class="tg">卧室</span><span>110 万次播放</span></span></a>
+<a class="sv" data-tag="卧室" href="https://www.youtube.com/shorts/J-hLjbQW27A"><span class="sv-t">My bedroom is for sleep only</span><span class="sv-z">我的卧室只用来睡觉。</span><span class="sv-m"><span class="tg">卧室</span><span>12.9 万次播放</span></span></a>
+<a class="sv" data-tag="卧室" href="https://www.youtube.com/shorts/0tgRtB_11Ug"><span class="sv-t">Sleep hygiene. The only thing that happens in my bedroom: sleep.</span><span class="sv-z">睡眠卫生：卧室里只发生一件事。</span><span class="sv-m"><span class="tg">卧室</span><span>24.6 万次播放</span></span></a>
+<a class="sv" data-tag="卧室" href="https://www.youtube.com/shorts/PZesQOIWkeU"><span class="sv-t">Sleep rules for the house.</span><span class="sv-z">家里的睡眠规则。</span><span class="sv-m"><span class="tg">卧室</span><span>24.5 万次播放</span></span></a>
+<a class="sv" data-tag="卧室" href="https://www.youtube.com/shorts/Mh9PdgIihj0"><span class="sv-t">Sleep posture was a new concept for me too.</span><span class="sv-z">睡姿对我来说也是个新概念。</span><span class="sv-m"><span class="tg">卧室</span><span>56.8 万次播放</span></span></a>
+<a class="sv" data-tag="卧室" href="https://www.youtube.com/shorts/HkPcNE0EEP8"><span class="sv-t">sponsored by @Eight Sleep. We developed a machine learning model together and it just released today</span><span class="sv-z">Eight Sleep 赞助：我们一起做的机器学习模型上线了。</span><span class="sv-m"><span class="tg">卧室</span><span>22.5 万次播放</span></span></a>
+<a class="sv" data-tag="卧室" href="https://www.youtube.com/shorts/OCGVC9HX6Zo"><span class="sv-t">Theta Wave therapy improved my sleep for 10 days</span><span class="sv-z">Theta 波疗法让我连续 10 天睡得更好。</span><span class="sv-m"><span class="tg">卧室</span><span>23.7 万次播放</span></span></a>
+<a class="sv" data-tag="卧室" href="https://www.youtube.com/shorts/LJ171330zJY"><span class="sv-t">body like when sleep</span><span class="sv-z">睡觉时的身体。</span><span class="sv-m"><span class="tg">卧室</span><span>76.2 万次播放</span></span></a>
+<a class="sv" data-tag="被打破" href="https://www.youtube.com/shorts/VsaukH9Xyyg"><span class="sv-t">bro wrecked my sleep score</span><span class="sv-z">哥们毁了我的睡眠分。</span><span class="sv-m"><span class="tg">被打破</span><span>75.8 万次播放</span></span></a>
+<a class="sv" data-tag="被打破" href="https://www.youtube.com/shorts/dGFF89fNo7U"><span class="sv-t">I broke protocol for one night only</span><span class="sv-z">我破例了，只此一晚。</span><span class="sv-m"><span class="tg">被打破</span><span>56.6 万次播放</span></span></a>
+<a class="sv" data-tag="被打破" href="https://www.youtube.com/shorts/eUh1ch5Mb3Y"><span class="sv-t">tips for reducing jet lag</span><span class="sv-z">减少时差的几个办法。</span><span class="sv-m"><span class="tg">被打破</span><span>44.3 万次播放</span></span></a>
+<a class="sv" data-tag="被打破" href="https://www.youtube.com/shorts/evitcEYx774"><span class="sv-t">Maintaining health during 10 days on the road</span><span class="sv-z">在路上 10 天怎么保持健康。</span><span class="sv-m"><span class="tg">被打破</span><span>100 万次播放</span></span></a>
+<a class="sv" data-tag="被打破" href="https://www.youtube.com/shorts/ljULB2sowwU"><span class="sv-t">I am kind of ridiculous  😂 . People ask me how I travel.. this is Blueprint Lite</span><span class="sv-z">有人问我怎么出差：这是 Blueprint 精简版。</span><span class="sv-m"><span class="tg">被打破</span><span>35.5 万次播放</span></span></a>
+<a class="sv" data-tag="意志力" href="https://www.youtube.com/shorts/SRgSzJa1K_M"><span class="sv-t">Why did I fire Evening Bryan? I was marching towards an early death.</span><span class="sv-z">我为什么解雇 Evening Bryan：我正走向早死。</span><span class="sv-m"><span class="tg">意志力</span><span>7 万次播放</span></span></a>
+<a class="sv" data-tag="意志力" href="https://www.youtube.com/shorts/sbYG-zlGv0k"><span class="sv-t">What is your version of Evening Bryan?</span><span class="sv-z">你的 Evening Bryan 是谁？</span><span class="sv-m"><span class="tg">意志力</span><span>4.9 万次播放</span></span></a>
+<a class="sv" data-tag="意志力" href="https://www.youtube.com/shorts/udk5ZxWnvGs"><span class="sv-t">Who&#x27;s your version of Evening Bryan? Accelerating aging and disease is a form of violence</span><span class="sv-z">你的 Evening Bryan 是谁？加速衰老和疾病是一种暴力。</span><span class="sv-m"><span class="tg">意志力</span><span>3.9 万次播放</span></span></a>
+<a class="sv" data-tag="意志力" href="https://www.youtube.com/shorts/ooHpW2YAORU"><span class="sv-t">Those brownies...no Evening Bryan, you&#x27;re fired.</span><span class="sv-z">那些布朗尼……不，Evening Bryan，你被解雇了。</span><span class="sv-m"><span class="tg">意志力</span><span>7.4 万次播放</span></span></a>
+<a class="sv" data-tag="意志力" href="https://www.youtube.com/shorts/Ciu52SJMsg4"><span class="sv-t">Firing Evening Bryan, who occupied me from 5-10pm daily, was the spark that started Blueprint.</span><span class="sv-z">解雇 Evening Bryan 是 Blueprint 的起点。</span><span class="sv-m"><span class="tg">意志力</span><span>1.2 万次播放</span></span></a>
+<a class="sv" data-tag="意志力" href="https://www.youtube.com/shorts/V_vy-bR8Tw8"><span class="sv-t">How to stop yourself from falling apart? Identify the worst version of yourself and stop #blueprint</span><span class="sv-z">怎么阻止自己崩溃？找出最糟的那个你，然后叫停。</span><span class="sv-m"><span class="tg">意志力</span><span>4.9 万次播放</span></span></a>
+<a class="sv" data-tag="意志力" href="https://www.youtube.com/shorts/EL0wmso2dYs"><span class="sv-t">Every day is a BATTLE between your best self and worst self - what is the score? #blueprint #health</span><span class="sv-z">每天都是最好的你和最坏的你之间的战斗。</span><span class="sv-m"><span class="tg">意志力</span><span>11.6 万次播放</span></span></a>
+<a class="sv" data-tag="意志力" href="https://www.youtube.com/shorts/t_1mqGUPZes"><span class="sv-t">Blueprint is about building systems so you don&#x27;t have to think</span><span class="sv-z">Blueprint 是在搭系统，让你不必思考。</span><span class="sv-m"><span class="tg">意志力</span><span>16.5 万次播放</span></span></a>
+<a class="sv" data-tag="意志力" href="https://www.youtube.com/shorts/0RSu1ML66ns"><span class="sv-t">Even with near perfect daily discipline, my mind remains a rascal.</span><span class="sv-z">即便每天近乎完美地自律，我的大脑仍是个捣蛋鬼。</span><span class="sv-m"><span class="tg">意志力</span><span>70.8 万次播放</span></span></a>
+<a class="sv" data-tag="意志力" href="https://www.youtube.com/shorts/p4uowUG1jFo"><span class="sv-t">Our minds are the source of most, if not all, of our problems. #blueprint #mindset #biohacking</span><span class="sv-z">我们的大脑是我们大部分问题的来源。</span><span class="sv-m"><span class="tg">意志力</span><span>4.6 万次播放</span></span></a>
+<a class="sv" data-tag="早晨" href="https://www.youtube.com/shorts/RJxxA5Zvz0E"><span class="sv-t">POV you wake up as bryan johnson</span><span class="sv-z">以 Bryan Johnson 的身份醒来。</span><span class="sv-m"><span class="tg">早晨</span><span>310 万次播放</span></span></a>
+<a class="sv" data-tag="早晨" href="https://www.youtube.com/shorts/tiXegwVFoNU"><span class="sv-t">how i start my day</span><span class="sv-z">我怎么开始一天。</span><span class="sv-m"><span class="tg">早晨</span><span>190 万次播放</span></span></a>
+<a class="sv" data-tag="早晨" href="https://www.youtube.com/shorts/vaSFR39SQNg"><span class="sv-t">Two things that everyone needs to start their day strong.</span><span class="sv-z">每个人开启一天都需要的两件事。</span><span class="sv-m"><span class="tg">早晨</span><span>88.1 万次播放</span></span></a>
+<a class="sv" data-tag="早晨" href="https://www.youtube.com/shorts/y9mY2ZirHFI"><span class="sv-t">My Morning Routine pt. 2 - I run 3 degrees cooler than normal.</span><span class="sv-z">晨间流程 2：我的体温比常人低 3 度。</span><span class="sv-m"><span class="tg">早晨</span><span>120 万次播放</span></span></a>
+<a class="sv" data-tag="体系" href="https://www.youtube.com/shorts/OA9CcxRGyvc"><span class="sv-t">master these five habits</span><span class="sv-z">掌握这五个习惯。</span><span class="sv-m"><span class="tg">体系</span><span>140 万次播放</span></span></a>
+<a class="sv" data-tag="体系" href="https://www.youtube.com/shorts/_L-pjxsd2HU"><span class="sv-t">everything i&#x27;ve learned</span><span class="sv-z">我学到的一切。</span><span class="sv-m"><span class="tg">体系</span><span>170 万次播放</span></span></a>
+<a class="sv" data-tag="体系" href="https://www.youtube.com/shorts/OTzzrIlSaxw"><span class="sv-t">Every calorie has to fight for its life.</span><span class="sv-z">每一卡热量都得为自己的存在而战。</span><span class="sv-m"><span class="tg">体系</span><span>240 万次播放</span></span></a>
+<a class="sv" data-tag="体系" href="https://www.youtube.com/shorts/axTfiU614sI"><span class="sv-t">What would your organs order to eat if they could speak?</span><span class="sv-z">如果器官会说话，它们会点什么吃？</span><span class="sv-m"><span class="tg">体系</span><span>1300 万次播放</span></span></a>
+<a class="sv" data-tag="体系" href="https://www.youtube.com/shorts/5ZGw0IDPw7c"><span class="sv-t">Trust the person&#x27;s health data, not their opinions.</span><span class="sv-z">相信一个人的健康数据，而不是他的观点。</span><span class="sv-m"><span class="tg">体系</span><span>670 万次播放</span></span></a>
+<a class="sv" data-tag="体系" href="https://www.youtube.com/shorts/iT_TtlHkObA"><span class="sv-t">Gurus preach truth; I publish data.</span><span class="sv-z">大师宣讲真理；我公开数据。</span><span class="sv-m"><span class="tg">体系</span><span>78.1 万次播放</span></span></a>
+<a class="sv" data-tag="体系" href="https://www.youtube.com/shorts/1iIvmt6CJZ4"><span class="sv-t">Smoking one cigarette costs you 11 minutes of life</span><span class="sv-z">抽一支烟花掉你 11 分钟寿命。</span><span class="sv-m"><span class="tg">体系</span><span>100 万次播放</span></span></a>
+<a class="sv" data-tag="体系" href="https://www.youtube.com/shorts/gPOEPacvVE8"><span class="sv-t">There is such a thing as too much exercise</span><span class="sv-z">运动也可能过量。</span><span class="sv-m"><span class="tg">体系</span><span>280 万次播放</span></span></a>
+<a class="sv" data-tag="体系" href="https://www.youtube.com/shorts/c-57qYoRC70"><span class="sv-t">10 air squats every 45 min</span><span class="sv-z">每 45 分钟做 10 个徒手深蹲。</span><span class="sv-m"><span class="tg">体系</span><span>89.4 万次播放</span></span></a>
+<a class="sv" data-tag="体系" href="https://www.youtube.com/shorts/oq0zfL4zC-I"><span class="sv-t">Hustle culture is dead. My message to entrepreneurs: take care of your health. @Jesse James West</span><span class="sv-z">奋斗文化已死：给创业者的话。</span><span class="sv-m"><span class="tg">体系</span><span>110 万次播放</span></span></a>
+<a class="sv" data-tag="体系" href="https://www.youtube.com/shorts/HSg4hlDxtFY"><span class="sv-t">Blueprint isn&#x27;t just for the rich. You can get majority of the benefits by doing the basics for free</span><span class="sv-z">Blueprint 不只属于富人：基础的那部分免费，收益占大头。</span><span class="sv-m"><span class="tg">体系</span><span>4.9 万次播放</span></span></a>
+<a class="sv" data-tag="体系" href="https://www.youtube.com/shorts/YNsT7uQIzX8"><span class="sv-t">The Blueprint protocol is constantly evolving based on new results.</span><span class="sv-z">Blueprint 协议会根据新结果不断演进。</span><span class="sv-m"><span class="tg">体系</span><span>110 万次播放</span></span></a>
+<a class="sv" data-tag="体系" href="https://www.youtube.com/shorts/f_psvA8tirQ"><span class="sv-t">My pace of aging is 0.76. This means I get October, November, and December for free</span><span class="sv-z">我的衰老速度是 0.76：相当于每年白送我三个月。</span><span class="sv-m"><span class="tg">体系</span><span>110 万次播放</span></span></a>
+</div>
+    <p class="src" style="margin-top:12px">列表来自频道 Shorts 页（2026-11 抓取），播放量为当时数值。完整频道：<a href="https://www.youtube.com/@BryanJohnson/shorts">youtube.com/@BryanJohnson/shorts</a></p>
+  </div>
+</section>
+
+<!-- 17 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="videos" data-t="长视频与播客">
+  <div class="sec-h"><div class="sec-n">17</div><div><div class="sec-tag">LONG FORM</div><h2><span class="zh">长视频与播客</span></h2><p class="sec-sub">本文引用最多的几期，按“先看哪个”排序。时长较长的播客适合整段听。</p></div></div>
+  <div class="wide">
+    <div class="vids">
+      <a class="vd" href="https://www.youtube.com/watch?v=LPzRwzivklA"><b>My Advanced Guide To Better Sleep</b><span>最完整的一期睡眠专题：职业睡眠者、睡前心率、十条习惯、分床睡、睡眠与抑郁。本文的主干。</span><i>播客 · 2025-07-03 · 约 55 分钟</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=Wk9p3dhMYdk"><b>How I FIXED My Terrible Sleep – 10 Habits</b><span>十条习惯的视频原版，含 Sleep Bryan 和酒精让深睡少 80% 的说法。</span><i>视频 · 2024-03-23 · 340 万播放</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=3kAiPSEnrHI"><b>Why You're Always Tired</b><span>六个毁掉睡眠的习惯：吃太晚、没有放松流程、刺激物太晚、晚间光线、卧室温度、噪音。几百次末餐时间实验出自这里。</span><i>视频 · 2024-10-16 · 250 万播放</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=lKM9OB6qHCE"><b>Evening Exercise, Poor Sleep, and Resting Heart Rate</b><span>晚间运动为什么伤睡眠（WHOOP 430 万夜数据），以及“如果只能看一个指标”。</span><i>播客 · 2025-05-08</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=Z7veiyN4LqU"><b>My Evening Routine – Top 1% Sleep Ranking</b><span>2023 年版的完整晚间流程，含 HRV 训练、口腔护理和他对技术的看法。</span><i>视频 · 2023-05-18 · 230 万播放</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=XSaDL4EO0-g"><b>My 2025 Longevity Protocol | FULL DAY</b><span>“每一天从上床开始”：一天的完整流程，结尾讲睡前心率。</span><i>视频 · 2025-01-08 · 130 万播放</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=lO0JivvpbDM"><b>Jet Lag, Poor Sleep, and Melatonin</b><span>欧洲 11 天“压力测试”、意志力归零、每季度最多一次国际旅行的经验规则。</span><i>播客 · 2025-07-18</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=8_iIB7_fYCg"><b>Creatine, Sleep Trackers, and AI Doctors</b><span>引用 Karpathy 的睡眠追踪记录；可穿戴设备怎么用。</span><i>播客 · 2025-04-18</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=VGY_XMXMSZc"><b>8 Steps to Reclaim Your Life</b><span>2026 年的“入门总纲”，第二步就是“终点即起点：你的早晨从前一晚开始”。</span><i>视频 · 2026-02-28 · 210 万播放</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=uq1Vzi-52dA"><b>How To Live Longer Than 99% Of Humanity</b><span>三大幂律的视频版：“Systems far exceed willpower.”</span><i>视频 · 2024-11-06 · 120 万播放</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=kGBCu59hIGI"><b>How I Unf*cked My Life</b><span>解雇 Evening Bryan 的动画版自述。</span><i>视频 · 2023-11-30</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=hkS1Eww5jTc"><b>Watch These 39 Minutes If You Want To Live To 200+</b><span>演讲，含“Evening Bryan 的力量和睡了多少成正比”那段。</span><i>演讲 · 2024-04-05</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=1FhwVPsNyjY"><b>I Paid Strangers to Sleep Properly</b><span>50 美元换 7 天准时上床：用损失厌恶改变就寝行为。</span><i>视频 · 2023-12-20</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=cjKA95519SI"><b>Change These Phone Settings NOW</b><span>手机如何“温水煮青蛙”般毁掉睡眠，以及具体设置。</span><i>视频 · 2025-09-26 · 98 万播放</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=tv875KnuuMg"><b>What Stress, Burnout, And Hustle Culture Do To Your Body</b><span>压力、成瘾和缺觉如何互相“勒紧”；把健康当作新信仰。</span><i>播客 · 2025-07-31</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=iRL65uwnuV8"><b>This Algorithm Could Save Your Life</b><span>Blueprint、自主自我与 Zeroism 的三分钟版。</span><i>视频 · 2024-09-15</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=MizVGCELs9Q"><b>I Made Myself Older By Mistake</b><span>停用雷帕霉素的来龙去脉。</span><i>视频 · 2025-03-31 · 87 万播放</i></a>
+      <a class="vd" href="https://www.youtube.com/watch?v=BQxgow0gShI"><b>Zeroism – Full Audiobook</b><span>他的世界观长文本，有声书。另见 <a href="https://www.youtube.com/watch?v=CNjail1mOOk" style="color:inherit">Dialogues</a> 与 <a href="https://www.youtube.com/watch?v=r_gBDVPikQc" style="color:inherit">We the People</a>。</span><i>有声书 · 2024</i></a>
+    </div>
+    <p class="src">他的播客 RSS：<a href="https://feeds.megaphone.fm/bryanjohnsonpodcast">feeds.megaphone.fm/bryanjohnsonpodcast</a>（20 期，2025-06 至 2025-09，此后主要以视频形式发布在 YouTube）。</p>
+  </div>
+</section>
+
+<!-- 18 ─────────────────────────────────────────────────────────── -->
+<section class="sec" id="sources" data-t="来源与方法">
+  <div class="sec-h"><div class="sec-n">18</div><div><div class="sec-tag">METHOD</div><h2><span class="zh">来源与方法</span></h2><p class="sec-sub">这份整理用了哪些材料、怎么处理的、哪里有缺口。</p></div></div>
+  <div class="wide">
+    <div class="inv">
+      <div><div class="v-k">Blueprint 博客</div><div class="v-n">99<small>篇</small></div><div class="v-d">blueprint.bryanjohnson.com 全部 news 文章；其中约 15 篇专讲睡眠、心率、温度、时差</div></div>
+      <div><div class="v-k">视频转写</div><div class="v-n">129<small>份</small></div><div class="v-d">长视频、播客与有声书的字幕全文（经 Rosetta 归档）；另用 Whisper 本地转写了播客音频作交叉核对</div></div>
+      <div><div class="v-k">Shorts 标题</div><div class="v-n">896<small>条</small></div><div class="v-d">频道全部短视频的标题与播放量；另有 139 条长视频清单</div></div>
+      <div><div class="v-k">随笔</div><div class="v-n">89<small>篇</small></div><div class="v-d">bryanjohnson.com 79 个文章地址（2016–2023，部分仅为 Medium 转链）+ Medium Future Literacy 10 篇</div></div>
+      <div><div class="v-k">X 帖子</div><div class="v-n">36<small>条</small></div><div class="v-d">经检索定位后逐条抓取原文，包括 2024-08 的十条睡眠线程</div></div>
+      <div><div class="v-k">Protocol</div><div class="v-n">1<small>份</small></div><div class="v-d">protocol.bryanjohnson.com 全文（2026 版），含睡眠、运动、营养、日程与处方</div></div>
+    </div>
+  </div>
+  <div class="body">
+    <h3><span class="h-k">How</span>处理原则</h3>
+    <ul>
+      <li><strong>只整理，不评估。</strong>按你的要求，这里不对他的说法做循证核验；他引用的研究数字、他的设备读数和“第 99.x 百分位”之类的说法都原样转述，并尽量标注是自述。</li>
+      <li><strong>原话优先。</strong>引文保留英文原文，中文为我的翻译。视频与播客引文来自自动字幕，我只删去了“um / uh / like”等口头填充词和重复词，没有改动意思；带时间戳的链接可以直接跳到原处核对。</li>
+      <li><strong>区分作者。</strong>Blueprint 博客有些文章由团队成员（Vanessa Gibbs、Kate Tolo）执笔，播客里也常有团队医生 Mike Mallin 发言。引用时注明了是谁说的；拿不准说话人的地方，写作“节目中”。</li>
+      <li><strong>时间线。</strong>同一条建议在不同年份的数字常有出入（例如末餐提前 2 / 4 / 6 小时、室温 60–67°F / 65–70°F、咖啡因“中午前”/“睡前 8–10 小时”），文中尽量列出年份而不是强行统一。</li>
+    </ul>
+    <h3><span class="h-k">Gaps</span>缺口：收集过程中拿不到的东西</h3>
+    <ul>
+      <li><strong>Shorts 的口播内容。</strong>YouTube 对云端服务器要求登录验证，拿不到短视频的字幕，所以短视频库只基于标题。好在他的短视频大多是长视频和博客的切片，核心内容在本文其他部分都有原文。若你想要完整的短视频文字稿，最可行的办法是在你自己的电脑上用 yt-dlp 加浏览器 cookie 批量下载字幕。</li>
+      <li><strong>X 的长帖。</strong>X 的公开接口对超过 280 字的“长帖”只返回开头，因此 2025–2026 年的几条长帖（如 2025-11-22 讲睡眠时身体发生什么的那条）只引用了开头，链接可以看全文。</li>
+      <li><strong>访谈。</strong>他上过的外部节目（Diary of a CEO、Jay Shetty、Lex Fridman 等）没有逐期整理，只在必要时提及；它们的内容与他自己频道上的说法高度重叠。</li>
+      <li><strong>书。</strong>他的书只通过频道上的有声书和书中被他反复讲述的段落（如 Evening Bryan）间接引用。</li>
+    </ul>
+    <h3><span class="h-k">Primary pages</span>主要原始页面</h3>
+    <ol class="reflist">
+      <li><a href="https://protocol.bryanjohnson.com/">Bryan Johnson, <em>Blueprint Protocol</em> (protocol.bryanjohnson.com, 2026)</a></li>
+      <li><a href="https://blueprint.bryanjohnson.com/blogs/news/how-i-fixed-my-terrible-sleep">How I fixed my terrible sleep (2024-04-08)</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/10-habits-for-sleep">10 Habits for Sleep (2026-02-16)</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/100-sleep-score">How to achieve a 100% sleep score (2025-03-11)</a></li>
+      <li><a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-lower-your-heart-rate-before-sleep">How to lower your heart rate before sleep (2026-04-03)</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-get-more-restorative-sleep">How to get more restorative sleep (2026-04-20)</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/how-did-you-sleep-last-night">How did you sleep last night? (2025-01-03)</a></li>
+      <li><a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-evening-routine">Bryan Johnson’s Evening Routine (2026-06-01)</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/what-is-the-ideal-sleep-temperature">What is the ideal sleep temperature? (2026-08-17)</a></li>
+      <li><a href="https://blueprint.bryanjohnson.com/blogs/news/the-three-power-laws-of-health">The Three Power Laws of Health (2025-04-04)</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/how-to-beat-jet-lag">How to beat jet lag (2026-02-23)</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/daylight-saving-time">Daylight Saving Time (2026-03-01)</a> · <a href="https://blueprint.bryanjohnson.com/blogs/news/when-blueprint-goes-wrong">When Blueprint goes wrong (2024-12-03)</a></li>
+      <li><a href="https://www.bryanjohnson.com/articles/sleep-is-the-new-coffee">Sleep is the new coffee (2018-12-06)</a> · <a href="https://www.bryanjohnson.com/articles/i-fired-myself">I fired myself (2020-08-06)</a> · <a href="https://medium.com/future-literacy/project-blueprint-360eaf1d8ea2">Project Blueprint (2021-10-13)</a> · <a href="https://medium.com/future-literacy/the-power-law-of-good-behavior-586bd2a05aeb">The power law of good behavior (2022-11-17)</a></li>
+      <li>X 线程：<a href="https://x.com/bryan_johnson/status/1824078073018581129">10 habits that fixed my terrible sleep (2024-08-15)</a> · <a href="https://x.com/bryan_johnson/status/1917267517338443930">The 5 power laws (2025-04-29)</a> · <a href="https://x.com/bryan_johnson/status/1992328219304079799">What happens in the body on a good night (2025-11-22)</a></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div>职业睡眠者 · Bryan Johnson 观点整理 · 2026-11 · 未公开列出的页面，请勿转发给搜索引擎</div>
+  <div>同系列：<a href="/huberman/">光的剂量（Huberman）</a> · <a href="/peter-attia/">边际十年操作手册（Attia）</a> · <a href="/eric-topol/">健康的复利（Topol）</a></div>
+  <div>本页内容整理自公开资料，不构成医疗建议。—— 以及，按他的说法：Remember to go to bed on time.</div>
+</footer>
+
+<script>
+(function(){
+  var secs=Array.prototype.slice.call(document.querySelectorAll('main section.sec'));
+  var drop=document.getElementById('mon-drop'), sec=document.getElementById('mon-sec'),
+      bar=document.getElementById('mon-bar'), menu=document.getElementById('mon-menu');
+  // build dropdown from the contents grid so the two never disagree
+  var cols=document.querySelectorAll('.contents .c-col');
+  Array.prototype.forEach.call(cols,function(c){
+    var h=c.querySelector('.c-h'); if(h){var g=document.createElement('div');g.className='grp';g.textContent=h.textContent;drop.appendChild(g);}
+    Array.prototype.forEach.call(c.querySelectorAll('a'),function(a){drop.appendChild(a.cloneNode(true));});
+  });
+  var t=false;
+  function paint(){
+    t=false;
+    var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+    if(bar) bar.style.width=(max>0?Math.min(100,d.scrollTop/max*100):0)+'%';
+    var k=-1;
+    for(var i=0;i<secs.length;i++){ if(secs[i].getBoundingClientRect().top<120) k=i; }
+    if(sec){
+      if(k>-1){ var s=secs[k], n=s.querySelector('.sec-n'), h=s.querySelector('h2');
+        sec.textContent='§'+(n?n.textContent:'')+'  '+(h?h.textContent:''); }
+      else sec.textContent='';
+    }
+  }
+  addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(paint);}},{passive:true});
+  addEventListener('resize',paint);
+  if(menu){
+    menu.addEventListener('click',function(e){ if(e.target.closest('a')) menu.removeAttribute('open'); });
+    document.addEventListener('click',function(e){ if(menu.open && !menu.contains(e.target)) menu.removeAttribute('open'); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape' && menu.open){ menu.removeAttribute('open'); menu.querySelector('summary').focus(); } });
+  }
+  paint();
+
+  // shorts filter
+  var ctl=document.getElementById('lib-ctl'), cards=document.querySelectorAll('#lib .sv');
+  if(ctl){
+    ctl.addEventListener('click',function(e){
+      var b=e.target.closest('.chip'); if(!b) return;
+      var f=b.getAttribute('data-f');
+      Array.prototype.forEach.call(ctl.querySelectorAll('.chip'),function(c){c.setAttribute('aria-pressed',c===b?'true':'false');});
+      Array.prototype.forEach.call(cards,function(c){c.classList.toggle('hide',f!=='all'&&c.getAttribute('data-tag')!==f);});
+    });
+  }
+})();
+</script>
+</body>
+</html>
