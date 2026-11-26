@@ -1,0 +1,1122 @@
+---
+title: "身体的时刻表"
+permalink: /satchin-panda/
+listed: false
+---
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="description" content="Satchin Panda 的昼夜节律思想汇编：光、进食时间、睡眠、运动与昼夜医学。根据他 2013–2026 年的播客文字稿、演讲、两本书、约两百篇论文摘要和 Salk 新闻稿整理，附逐条出处。">
+<meta name="color-scheme" content="light dark">
+<title>身体的时刻表</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+SC:wght@600;800&display=swap">
+<style>
+/* ══════════════════════════════════════════════════════════════════════
+   身体的时刻表 · TIMETABLE
+   Aesthetic: a station timetable printed on almanac paper. Times sit in
+   a mono column, entries read like departures. Two inks carry Panda's
+   own dichotomy: SOL (day — light, eating, activity) and NOX (night —
+   darkness, fasting, repair). Everything else is ink on paper.
+   Radius family: 4px. Rules, not cards, carry hierarchy.
+   ══════════════════════════════════════════════════════════════════════ */
+:root{
+  --paper:#F4EFE4;
+  --paper-2:#EDE6D7;
+  --surface:#FAF7F0;
+  --ink:#1C1A16;
+  --ink-2:#3E3A32;
+  --muted:#6F695C;
+  --faint:#9A9383;
+  --rule:#D9D0BE;
+  --rule-2:#C4B9A3;
+  --sol:#B8661A;          /* day ink */
+  --sol-soft:#F1DFC4;
+  --sol-wash:#F7EBD8;
+  --nox:#2B3A7A;          /* night ink */
+  --nox-soft:#D9DDF0;
+  --nox-wash:#E8EAF5;
+  --warn:#9C2F25;
+  --warn-wash:#F5E2DD;
+  --ok:#2F6B45;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --display:"Fraunces","Noto Serif SC","Songti SC",serif;
+  --cjk-head:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Segoe UI",sans-serif;
+  --r:4px;
+  /* dial */
+  --d-dark:#1F2546; --d-dawn:#D99A4E; --d-day:#F2C46B; --d-dusk:#C9824A; --d-dim:#6B5A6E;
+  --e-eat:#C7742A; --e-fast:#C9CEE6; --z-sleep:#2B3A7A; --z-wake:#E9E2D2;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111219; --paper-2:#171925; --surface:#181A24;
+    --ink:#ECE7DC; --ink-2:#CFC8B9; --muted:#9C9586; --faint:#6E6A60;
+    --rule:#2A2D3B; --rule-2:#3A3E50;
+    --sol:#E9A253; --sol-soft:#3A2C1C; --sol-wash:#241D16;
+    --nox:#9DA9F5; --nox-soft:#262C4C; --nox-wash:#1A1E33;
+    --warn:#EF8B7C; --warn-wash:#2F1C1A; --ok:#7CC593;
+    --d-dark:#0B0E20; --d-dim:#4A3F52; --e-fast:#2A3050; --z-sleep:#3A4AA0; --z-wake:#2A2C38;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111219; --paper-2:#171925; --surface:#181A24;
+  --ink:#ECE7DC; --ink-2:#CFC8B9; --muted:#9C9586; --faint:#6E6A60;
+  --rule:#2A2D3B; --rule-2:#3A3E50;
+  --sol:#E9A253; --sol-soft:#3A2C1C; --sol-wash:#241D16;
+  --nox:#9DA9F5; --nox-soft:#262C4C; --nox-wash:#1A1E33;
+  --warn:#EF8B7C; --warn-wash:#2F1C1A; --ok:#7CC593;
+  --d-dark:#0B0E20; --d-dim:#4A3F52; --e-fast:#2A3050; --z-sleep:#3A4AA0; --z-wake:#2A2C38;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.85;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration-color:var(--rule-2);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--sol)}
+b,strong{font-weight:650}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--sol),var(--nox));z-index:20}
+.shell{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ── masthead ─────────────────────────────────────────────────────── */
+.masthead{border-bottom:2px solid var(--ink);padding:44px 0 30px;background:
+  repeating-linear-gradient(0deg,transparent 0 31px,var(--rule) 31px 32px) bottom/100% 0 no-repeat}
+.kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 18px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.kicker .dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(90deg,var(--sol) 50%,var(--nox) 50%);display:inline-block}
+.mast-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:40px;align-items:center}
+h1{font-family:var(--cjk-head);font-weight:800;font-size:clamp(44px,7.4vw,86px);line-height:1.02;margin:0 0 6px;letter-spacing:.01em}
+.h1-sub{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(18px,2.2vw,23px);color:var(--muted);margin:0 0 22px}
+.deck{font-size:18px;line-height:1.85;color:var(--ink-2);margin:0 0 14px;max-width:40em}
+.deck b{color:var(--ink)}
+.mmeta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule-2);margin-top:22px}
+.mmeta div{padding:10px 12px 10px 0}
+.mmeta div+div{padding-left:12px;border-left:1px solid var(--rule)}
+.mmeta .k{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mmeta .v{display:block;font-family:var(--display);font-size:20px;font-weight:600;line-height:1.3}
+.dialwrap{position:relative}
+.dial{width:100%;max-width:440px;height:auto;display:block;margin:0 auto}
+.dial .d-dark{fill:var(--d-dark)} .dial .d-dawn{fill:var(--d-dawn)} .dial .d-day{fill:var(--d-day)} .dial .d-dusk{fill:var(--d-dusk)} .dial .d-dim{fill:var(--d-dim)}
+.dial .e-eat{fill:var(--e-eat)} .dial .e-fast{fill:var(--e-fast)}
+.dial .z-sleep{fill:var(--z-sleep)} .dial .z-wake{fill:var(--z-wake)}
+.dial .hl-prep{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-dasharray:4 3}
+.dial .hl-move{fill:none;stroke:var(--sol);stroke-width:2.4}
+.dial .tk{stroke:var(--ink-2);stroke-width:1}
+.dial .hr{font-family:var(--mono);font-size:13px;fill:var(--muted)}
+.dial .ct{font-family:var(--cjk-head);font-weight:800;fill:var(--ink)}
+.dial .cs{font-family:var(--mono);font-size:11px;fill:var(--muted);letter-spacing:.06em}
+.legend{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;font-size:13.5px;line-height:1.5;color:var(--ink-2)}
+.legend li{display:flex;gap:8px;align-items:flex-start}
+.legend i{flex:0 0 auto;width:12px;height:12px;margin-top:4px;border-radius:2px;display:inline-block}
+.legend .dash{border:1.4px dashed var(--ink);background:none}
+.legend .mv{border:2.4px solid var(--sol);background:none}
+
+/* ── layout ───────────────────────────────────────────────────────── */
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:56px;padding-top:36px}
+.rail{position:sticky;top:18px;align-self:start;max-height:calc(100vh - 36px);overflow:auto;padding-bottom:20px;scrollbar-width:thin}
+.rail-t{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--ink)}
+.toc{list-style:none;margin:0;padding:0;font-size:13.5px;line-height:1.45}
+.toc li{margin:0}
+.toc a{display:grid;grid-template-columns:28px 1fr;gap:4px;padding:5px 0;text-decoration:none;color:var(--muted);border-bottom:1px dotted var(--rule)}
+.toc a .n{font-family:var(--mono);font-size:11px;padding-top:2px;color:var(--faint)}
+.toc a:hover{color:var(--ink)}
+.toc a.on{color:var(--ink);font-weight:650}
+.toc a.on .n{color:var(--sol)}
+.mob{display:none;margin:18px 0 0;border:1px solid var(--rule-2);border-radius:var(--r);background:var(--surface)}
+.mob summary{cursor:pointer;padding:10px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.mob .toc{padding:0 14px 10px}
+main{min-width:0;max-width:760px}
+
+/* ── sections ─────────────────────────────────────────────────────── */
+section{padding:12px 0 34px;border-top:1px solid var(--rule-2);scroll-margin-top:16px}
+section:first-child{border-top:0}
+.shead{display:flex;align-items:baseline;gap:14px;margin:18px 0 6px}
+.shead .no{font-family:var(--mono);font-size:12px;color:var(--sol);letter-spacing:.06em;flex:0 0 auto}
+.shead .tag{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+h2{font-family:var(--cjk-head);font-weight:800;font-size:clamp(26px,3.6vw,34px);line-height:1.3;margin:0 0 14px;letter-spacing:.01em}
+h3{font-family:var(--cjk-head);font-weight:600;font-size:21px;line-height:1.45;margin:30px 0 8px}
+h4{font-size:16px;font-weight:700;margin:20px 0 4px}
+p{margin:0 0 14px}
+.lede{font-size:19px;line-height:1.8;color:var(--ink-2)}
+main ul,main ol{padding-left:1.3em;margin:0 0 16px}
+main li{margin:0 0 6px}
+.c{display:inline-block;font-family:var(--mono);font-size:11.5px;line-height:1.2;white-space:nowrap;color:var(--muted);text-decoration:none;border:1px solid var(--rule-2);border-radius:3px;padding:2px 5px;margin-left:3px;vertical-align:1px;background:var(--surface)}
+.c:hover{color:var(--sol);border-color:var(--sol)}
+.en{font-family:var(--display);font-style:italic}
+.mono{font-family:var(--mono);font-size:.9em}
+
+/* quotes */
+.q{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--sol)}
+.q.nx{border-left-color:var(--nox)}
+.q p{font-family:var(--display);font-size:20px;line-height:1.55;margin:0 0 6px;color:var(--ink)}
+.q p.zh{font-family:var(--sans);font-size:15.5px;line-height:1.7;color:var(--ink-2)}
+.q footer{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+/* callouts */
+.box{margin:22px 0;padding:16px 18px;border:1px solid var(--rule-2);border-radius:var(--r);background:var(--surface)}
+.box.sol{background:var(--sol-wash);border-color:var(--sol-soft)}
+.box.nox{background:var(--nox-wash);border-color:var(--nox-soft)}
+.box.warn{background:var(--warn-wash);border-color:transparent}
+.box .bt{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.box p:last-child,.box ul:last-child{margin-bottom:0}
+
+/* timetable rows */
+.tt{border-top:2px solid var(--ink);margin:20px 0 24px}
+.tt .row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.tt .t{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--ink);padding-top:2px}
+.tt .t small{display:block;font-weight:400;font-size:11px;color:var(--muted);letter-spacing:.04em}
+.tt .row.sol .t{color:var(--sol)} .tt .row.nox .t{color:var(--nox)}
+.tt .w b{display:block;font-size:16.5px;margin-bottom:2px}
+.tt .w p{margin:0;font-size:15.5px;color:var(--ink-2);line-height:1.75}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;margin:16px 0 22px;font-size:14.5px;line-height:1.6}
+.tbl th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:500;border-bottom:2px solid var(--ink);padding:6px 10px 6px 0}
+.tbl td{border-bottom:1px solid var(--rule);padding:9px 10px 9px 0;vertical-align:top}
+.tbl td.num{font-family:var(--mono);white-space:nowrap}
+.tbl tr.hl td{background:var(--sol-wash)}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tscroll .tbl{min-width:560px}
+
+/* evidence tags */
+.ev{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;padding:1px 6px;border-radius:3px;vertical-align:2px;white-space:nowrap}
+.ev.h{background:var(--nox-soft);color:var(--nox)}
+.ev.a{background:var(--paper-2);color:var(--muted)}
+.ev.o{background:var(--sol-soft);color:var(--sol)}
+.ev.x{background:var(--warn-wash);color:var(--warn)}
+
+/* timeline */
+.tl{list-style:none;padding:0;margin:18px 0 22px;border-left:2px solid var(--ink)}
+.tl li{position:relative;padding:0 0 14px 22px;margin:0}
+.tl li::before{content:"";position:absolute;left:-6px;top:9px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--sol)}
+.tl li.nx::before{border-color:var(--nox)}
+.tl .y{font-family:var(--mono);font-size:13px;font-weight:600;margin-right:8px}
+.tl p{margin:2px 0 0;font-size:15.5px;color:var(--ink-2)}
+
+/* myth / fix */
+.mf{border-top:2px solid var(--ink);margin:18px 0}
+.mf .it{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:18px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.mf .m{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--warn);text-decoration-thickness:1.5px}
+.mf .m::before{content:"流行说法";display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--warn);text-decoration:none}
+.mf .f{color:var(--ink-2);font-size:15.5px}
+.mf .f::before{content:"Panda 的说法";display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ok)}
+.mf .m,.mf .f{line-height:1.7}
+
+/* grid of rules */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+.rule-n{font-family:var(--display);font-weight:800;font-size:40px;line-height:1;color:var(--sol);margin:10px 0 4px}
+.rule-n.nx{color:var(--nox)}
+
+/* quote wall */
+.qw{columns:2;column-gap:28px;margin:18px 0}
+.qw blockquote{break-inside:avoid;margin:0 0 18px;padding:12px 0 0;border-top:1px solid var(--rule-2)}
+.qw blockquote p{font-family:var(--display);font-size:17px;line-height:1.55;margin:0 0 4px}
+.qw blockquote .zh{font-family:var(--sans);font-size:14px;color:var(--ink-2);line-height:1.65;margin:0 0 6px}
+.qw cite{font-style:normal;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+
+/* sources */
+.srcs{font-size:14px;line-height:1.6}
+.srcs h3{font-size:17px;margin-top:22px}
+.srcs ol{padding-left:0;list-style:none;margin:0}
+.srcs li{padding:7px 0;border-bottom:1px dotted var(--rule);scroll-margin-top:20px}
+.srcs li:target{background:var(--sol-wash)}
+.srcs .k{font-family:var(--mono);font-size:11px;color:var(--sol);margin-right:6px}
+.srcs a{word-break:break-word}
+.note{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+footer.end{border-top:2px solid var(--ink);margin-top:40px;padding:20px 0 60px;font-size:13px;color:var(--muted)}
+
+/* ── responsive ───────────────────────────────────────────────────── */
+@media (max-width:1020px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:0;padding-top:12px}
+  .rail{display:none}
+  .mob{display:block}
+  main{max-width:none}
+}
+@media (max-width:820px){
+  .mast-grid{grid-template-columns:minmax(0,1fr);gap:22px}
+  .dialwrap{max-width:420px;margin:0 auto;width:100%}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .shell{padding:0 16px}
+  .masthead{padding-top:30px}
+  .mmeta{grid-template-columns:1fr 1fr}
+  .mmeta div:nth-child(3){padding-left:0;border-left:0}
+  .mmeta div:nth-child(n+3){border-top:1px solid var(--rule)}
+  .grid2{grid-template-columns:minmax(0,1fr)}
+  .qw{columns:1}
+  .mf .it{grid-template-columns:minmax(0,1fr);gap:6px}
+  .tt .row{grid-template-columns:72px minmax(0,1fr);gap:10px}
+  .legend{grid-template-columns:minmax(0,1fr)}
+  .q p{font-size:18px}
+  .lede{font-size:17.5px}
+}
+@media print{ .rail,.mob,#prog{display:none} .layout{display:block} body{background:#fff} }
+</style>
+</head>
+<body>
+<div id="prog" aria-hidden="true"></div>
+<header class="masthead">
+  <div class="shell">
+    <p class="kicker"><span class="dot"></span>Satchin Panda<span>/</span>昼夜节律与进食时间<span>/</span>思想汇编</p>
+    <div class="mast-grid">
+      <div>
+        <h1>身体的时刻表</h1>
+        <p class="h1-sub">“Our body has its own internal timetable.”</p>
+        <p class="deck">Huberman 讲光，Attia 讲长寿的工程，Topol 讲证据。Panda 讲的是另一件事：<b>同一件好事，在错的时间做，效果会变差，甚至变成坏事</b>。身体里几乎每个器官、每个细胞都有一张预先写好的时刻表，光负责给大脑的钟对时，<b>吃第一口东西负责给身体其余部分对时</b>。</p>
+        <p class="deck">这份汇编把他十几年里的公开说法——播客、演讲、两本书、论文、Salk 新闻稿——按主题拆开，尽量保留他的原话，并逐条标出处。它是“Panda 怎么说”的摘要，不是独立的循证审查。</p>
+      </div>
+      <div class="dialwrap">
+        <svg class="dial" viewBox="-22 -22 444 444" role="img" aria-label="Panda 推荐的一天，以 06:30 起床、22:30 就寝为例：外圈是光照（白天明亮、傍晚调暗、夜里黑暗），中圈是进食窗口 08:30 到 18:30，内圈是睡眠 22:30 到 06:30；虚线标出起床后两小时的早晨准备期和睡前三小时的傍晚准备期，橙色描边标出下午晚些时候的运动时段。">
+<path class="d-dark" d="M132.6,37.4 A176,176 0 0 1 374.5,223.0 L348.7,219.6 A150,150 0 0 0 142.6,61.4 Z"/>
+<path class="d-dawn" d="M374.5,223.0 A176,176 0 0 1 370.0,245.6 L344.9,238.8 A150,150 0 0 0 348.7,219.6 Z"/>
+<path class="d-day" d="M370.0,245.6 A176,176 0 0 1 30.0,245.6 L55.1,238.8 A150,150 0 0 0 344.9,238.8 Z"/>
+<path class="d-dusk" d="M30.0,245.6 A176,176 0 0 1 37.4,132.6 L61.4,142.6 A150,150 0 0 0 55.1,238.8 Z"/>
+<path class="d-dim" d="M37.4,132.6 A176,176 0 0 1 132.6,37.4 L142.6,61.4 A150,150 0 0 0 61.4,142.6 Z"/>
+<path class="e-eat" d="M314.2,287.7 A144,144 0 0 1 57.2,181.2 L83.0,184.6 A118,118 0 0 0 293.6,271.8 Z"/>
+<path class="e-fast" d="M57.2,181.2 A144,144 0 1 1 314.2,287.7 L293.6,271.8 A118,118 0 1 0 83.0,184.6 Z"/>
+<path class="z-sleep" d="M157.1,96.5 A112,112 0 0 1 311.0,214.6 L285.3,211.2 A86,86 0 0 0 167.1,120.5 Z"/>
+<path class="z-wake" d="M311.0,214.6 A112,112 0 1 1 157.1,96.5 L167.1,120.5 A86,86 0 1 0 285.3,211.2 Z"/>
+<path class="hl-prep" d="M344.8,219.1 A146,146 0 0 1 315.8,288.9 L292.0,270.6 A116,116 0 0 0 315.0,215.1 Z"/>
+<path class="hl-prep" d="M65.1,144.1 A146,146 0 0 1 144.1,65.1 L155.6,92.8 A116,116 0 0 0 92.8,155.6 Z"/>
+<path class="hl-move" d="M103.0,256.0 A112,112 0 0 1 88.0,200.0 L114.0,200.0 A86,86 0 0 0 125.5,243.0 Z"/>
+<line class="tk" x1="200.0" y1="22.0" x2="200.0" y2="10.0"/>
+<text class="hr" x="200.0" y="6.0" text-anchor="middle">00</text>
+<line class="tk" x1="246.1" y1="28.1" x2="247.6" y2="22.3"/>
+<line class="tk" x1="289.0" y1="45.8" x2="292.0" y2="40.7"/>
+<line class="tk" x1="325.9" y1="74.1" x2="330.1" y2="69.9"/>
+<text class="hr" x="340.0" y="64.0" text-anchor="middle">03</text>
+<line class="tk" x1="354.2" y1="111.0" x2="359.3" y2="108.0"/>
+<line class="tk" x1="371.9" y1="153.9" x2="377.7" y2="152.4"/>
+<line class="tk" x1="378.0" y1="200.0" x2="390.0" y2="200.0"/>
+<text class="hr" x="398.0" y="204.0" text-anchor="middle">06</text>
+<line class="tk" x1="371.9" y1="246.1" x2="377.7" y2="247.6"/>
+<line class="tk" x1="354.2" y1="289.0" x2="359.3" y2="292.0"/>
+<line class="tk" x1="325.9" y1="325.9" x2="330.1" y2="330.1"/>
+<text class="hr" x="340.0" y="344.0" text-anchor="middle">09</text>
+<line class="tk" x1="289.0" y1="354.2" x2="292.0" y2="359.3"/>
+<line class="tk" x1="246.1" y1="371.9" x2="247.6" y2="377.7"/>
+<line class="tk" x1="200.0" y1="378.0" x2="200.0" y2="390.0"/>
+<text class="hr" x="200.0" y="402.0" text-anchor="middle">12</text>
+<line class="tk" x1="153.9" y1="371.9" x2="152.4" y2="377.7"/>
+<line class="tk" x1="111.0" y1="354.2" x2="108.0" y2="359.3"/>
+<line class="tk" x1="74.1" y1="325.9" x2="69.9" y2="330.1"/>
+<text class="hr" x="60.0" y="344.0" text-anchor="middle">15</text>
+<line class="tk" x1="45.8" y1="289.0" x2="40.7" y2="292.0"/>
+<line class="tk" x1="28.1" y1="246.1" x2="22.3" y2="247.6"/>
+<line class="tk" x1="22.0" y1="200.0" x2="10.0" y2="200.0"/>
+<text class="hr" x="2.0" y="204.0" text-anchor="middle">18</text>
+<line class="tk" x1="28.1" y1="153.9" x2="22.3" y2="152.4"/>
+<line class="tk" x1="45.8" y1="111.0" x2="40.7" y2="108.0"/>
+<line class="tk" x1="74.1" y1="74.1" x2="69.9" y2="69.9"/>
+<text class="hr" x="60.0" y="64.0" text-anchor="middle">21</text>
+<line class="tk" x1="111.0" y1="45.8" x2="108.0" y2="40.7"/>
+<line class="tk" x1="153.9" y1="28.1" x2="152.4" y2="22.3"/>
+          <text class="ct" x="200" y="194" text-anchor="middle" font-size="26">一天</text>
+          <text class="cs" x="200" y="216" text-anchor="middle">06:30 起 · 22:30 睡</text>
+        </svg>
+        <ul class="legend">
+          <li><i style="background:var(--d-day)"></i>外圈 · 光：白天至少 1 小时户外日光</li>
+          <li><i style="background:var(--d-dim)"></i>外圈 · 睡前 2–3 小时调暗（&lt;40 lux）</li>
+          <li><i style="background:var(--e-eat)"></i>中圈 · 进食窗口 8–10 小时</li>
+          <li><i style="background:var(--z-sleep)"></i>内圈 · 在床 8 小时</li>
+          <li><i class="dash"></i>早晨准备（醒后 1–2 小时不进食）/ 傍晚准备（睡前 3 小时不进食）</li>
+          <li><i class="mv"></i>运动：下午晚些时候</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mmeta">
+      <div><span class="k">核心发现</span><span class="v">进食时间也是授时信号</span></div>
+      <div><span class="k">招牌干预</span><span class="v">限时进食 TRE</span></div>
+      <div><span class="k">他的口号</span><span class="v">我们都是倒班工人</span></div>
+      <div><span class="k">材料跨度</span><span class="v">2002–2026</span></div>
+    </div>
+    <details class="mob"><summary>目录</summary><ul class="toc" id="toc-m"></ul></details>
+  </div>
+</header>
+
+<div class="shell layout">
+<nav class="rail" aria-label="目录"><p class="rail-t">目录 · Contents</p><ul class="toc" id="toc"></ul></nav>
+<main>
+
+<section id="who-is">
+  <div class="shead"><span class="no">01</span><span class="tag">Contribution</span></div>
+  <h2>他到底贡献了什么</h2>
+  <p class="lede">说 Panda 最大的贡献是“昼夜节律”，方向对，但需要收窄一点：昼夜节律这门学科不是他开创的。分子时钟的发现拿了 2017 年诺贝尔奖（Hall、Rosbash、Young），视网膜里感光的 melanopsin 也是别人先发现的。<b>Panda 真正独有的贡献，是把“什么时候吃”变成了一个和“吃什么、吃多少”并列的变量</b>，并且一路从小鼠做到了人。</p>
+
+  <p>把他的工作拆开，大致是四层，每一层都在前一层上加了一块：</p>
+
+  <div class="tt">
+    <div class="row nox"><div class="t">2002<small>光</small></div><div class="w"><b>证明 melanopsin 是生物钟的“光表”</b><p>敲除 melanopsin 的小鼠，视觉完好，但光对生物钟的重置明显减弱；再同时去掉视杆和视锥，非成像的光反应（对时、瞳孔收缩等）就完全消失。2005 年又证明 melanopsin 本身就是感光色素。这解释了为什么<b>有些盲人仍能正常倒时差</b>，也是后来所有“早上看日光”建议的生物学底座。<a class="c" href="#r-p02">Science 2002</a><a class="c" href="#r-p03">Science 2003</a><a class="c" href="#r-p05">Science 2005</a></p></div></div>
+    <div class="row nox"><div class="t">2002<small>基因</small></div><div class="w"><b>时钟控制着代谢的关键通路</b><p>最早的一批小鼠全转录组节律研究之一：肝脏里约 10% 的基因有昼夜节律，而且集中在代谢的限速步骤上。这是他后来那句话的起点——昼夜节律就是代谢。<a class="c" href="#r-p02c">Cell 2002</a></p></div></div>
+    <div class="row sol"><div class="t">2009–12<small>进食</small></div><div class="w"><b>吃饭的时间本身就能给身体对时，并且决定胖不胖</b><p>2009 年他的实验室显示肝脏基因的节律很大一部分由进食时间驱动；2012 年的 Hatori 实验成了整个领域的原点：两组小鼠吃同样多的高脂饲料，一组随时可吃，一组只能在 8 小时内吃——后者不胖、不得脂肪肝、胰岛素不飙升、炎症更低、运动协调更好。<b>热量相同，时间不同，结局不同。</b><a class="c" href="#r-p09">PNAS 2009</a><a class="c" href="#r-p12">Cell Metab 2012</a></p></div></div>
+    <div class="row sol"><div class="t">2015–26<small>人</small></div><div class="w"><b>先测量人到底怎么吃，再在人身上试</b><p>2015 年用自己做的手机应用 myCircadianClock 拍照记录饮食，发现一半人一天的进食跨度超过 14 小时 45 分钟。之后与 UCSD 的心脏科医生 Pam Taub 等人做了代谢综合征、消防员、肥胖、POTS、癌症疲劳等一系列人体试验。<a class="c" href="#r-p15">Cell Metab 2015</a><a class="c" href="#r-p20">Cell Metab 2020</a><a class="c" href="#r-p22">Cell Metab 2022</a><a class="c" href="#r-p24">Ann Intern Med 2024</a><a class="c" href="#r-p26a">Obesity 2026</a></p></div></div>
+  </div>
+
+  <p>在这四层之外，他还做了两件影响面很大的事：一是把“限时进食”（time-restricted eating，TRE）这个概念推到大众层面——今天大家口中的“间歇性断食”，很大一部分其实指的是他定义的 TRE；二是不断推动<b>昼夜医学</b>（circadian medicine）：药物、手术、疫苗都有最佳时间。<a class="c" href="#r-hub">Huberman 2023</a><a class="c" href="#r-mm26">Metabolic Mind 2026</a></p>
+
+  <div class="box">
+    <p class="bt">和你已有的三位的关系</p>
+    <p><a href="/huberman/">《光的剂量》</a>里讲的 melanopsin 机制、Huberman 讲限时进食时引用的小鼠实验，源头很多就在 Panda 实验室；Huberman 2023 年那期长访谈也是 Panda 本人上的。<a href="/peter-attia/">Attia</a> 的结论是“热量和蛋白质匹配时，限时进食本身几乎没有额外收益”，<a href="/eric-topol/">Topol</a> 的结论是“一卡路里就是一卡路里”、限时进食是“更容易做到的少吃方式”——这正是 Panda 一直在回应的那个问题（见第 <a href="#critics">11</a> 节）。把四份放在一起读，分歧点会很清楚。</p>
+  </div>
+
+  <h3>简历与时间线</h3>
+  <ul class="tl">
+    <li><span class="y">1971</span>生于印度奥里萨邦。本科读农业大学的植物学方向，之后去美国 Scripps 研究所读博（2001 年毕业），博士阶段研究植物的生物钟。<a class="c" href="#r-wiki">Wikipedia</a></li>
+    <li><span class="y">2001–04</span>在诺华基因组研究所（GNF）做博士后，期间完成 melanopsin 和小鼠节律转录组的工作。</li>
+    <li><span class="y">2004</span>加入 Salk 研究所，2016 年升为正教授；后为 Rita and Richard Atkinson Chair 讲席，UCSD 昼夜生物学中心创始执行成员，Pew 学者，AAAS Fellow（2023），Clarivate 高被引学者。<a class="c" href="#r-salk-aaas">Salk</a></li>
+    <li class="nx"><span class="y">2018</span>出版《The Circadian Code》。<a class="c" href="#r-cc">书</a></li>
+    <li class="nx"><span class="y">2021</span>出版《The Circadian Diabetes Code》。<a class="c" href="#r-cdc">书</a></li>
+    <li><span class="y">2025</span>团队入选 XPRIZE Healthspan 半决赛（40 支队伍之一），用“光 · 运动 · 进食时间 · 睡眠”四件事做逆龄干预。<a class="c" href="#r-xprize">Salk</a><a class="c" href="#r-dhru26">Dhru 2026</a></li>
+    <li class="nx"><span class="y">2026</span>Science 报道：一名研究助理 3 月提出工作场所不当行为投诉，Salk 委托独立调查后，Panda 于 8 月 13 日起离开 Salk。他否认相关指控；Salk 未公开调查结论。他在 Salk 的个人主页已下线。详见第 <a href="#caveats">18</a> 节。<a class="c" href="#r-sci26">Science 2026</a></li>
+  </ul>
+</section>
+
+<section id="model">
+  <div class="shead"><span class="no">02</span><span class="tag">Worldview</span></div>
+  <h2>他的世界观：身体是一张时刻表</h2>
+  <p class="lede">几乎所有 Panda 的具体建议，都能从下面六个判断推出来。先把这六条读懂，后面的规则就不需要死记。</p>
+
+  <h3>一、几乎每个基因都在按点上下班</h3>
+  <p>他最常用的比喻是“时刻表”：就像我们白天从一节课赶到下一节课，身体里也有一张预先写好的日程，而且每天重复。<a class="c" href="#r-mm26">Metabolic Mind 2026</a> 他实验室 2018 年在狒狒身上采了 64 个组织（包括 22 个脑区），每两小时一次连续 24 小时，结果<b>多达 81.7% 的蛋白编码基因在至少一个组织里有日节律</b>；而 FDA 认定为药物靶点的基因里，有 82.2% 也在某个组织里有节律。<a class="c" href="#r-p18">Science 2018</a></p>
+  <div class="q nx"><p>“There is a predetermined timetable for every cell, every organ to do certain things at certain times.”</p><p class="zh">每个细胞、每个器官，在什么时候做什么事，都有一张事先定好的时刻表。</p><footer>— Huberman Lab, 2023</footer></div>
+  <p>这张时刻表管的不只是睡觉。他在 2026 年的说法是：这些节律同时在优化免疫（抵抗感染）、代谢（防肥胖和糖尿病）、大脑（降低抑郁和精神疾病风险）、以及 DNA 修复（降低癌症风险）。<a class="c" href="#r-mm26">Metabolic Mind 2026</a></p>
+
+  <h3>二、“昼夜节律就是代谢”</h3>
+  <p>他反复转述 Salk 同事 Ron Evans 的一句话：<span class="en">circadian is metabolism, and metabolism is circadian</span>。演化上我们之所以需要一个钟，就是为了有一段时间找食物、吃东西，另一段时间禁食、修复；所以几乎所有代谢调节器都必须跟着这个节律走——比如脂肪氧化就应该和进食反相。<a class="c" href="#r-hub">Huberman 2023</a></p>
+
+  <h3>三、两个对时信号：第一缕亮光，第一口食物</h3>
+  <p>大脑里的主时钟（视交叉上核，SCN）主要听光的。但 2000 年前后瑞士的 Ueli Schibler 发现，把夜行的小鼠改成白天喂食，肝脏的钟会跟着食物走，而不是跟着光走；Panda 实验室 2009 年重复并扩展了这个结果，后来发现<b>SCN 以外的大部分脑区也跟着进食时间走</b>。<a class="c" href="#r-hub">Huberman 2023</a><a class="c" href="#r-p09">PNAS 2009</a></p>
+  <div class="q"><p>“The first sight of bright light and the first bite of food. Those two determine how our body clocks work.”</p><p class="zh">第一眼亮光，和第一口食物——这两件事决定了身体里的钟怎么走。</p><footer>— FoundMyFitness #25, 2016</footer></div>
+  <p>2018 年他换了个说法：醒来后可以喝水，但第一口有热量的东西，就像第一缕光同步大脑一样，告诉身体其余的钟“一天开始了”，<b>“厨房开张了”</b>。<a class="c" href="#r-bowes">Live Long 2018</a></p>
+
+  <h3>四、时钟的价值在于“预判”</h3>
+  <p>钟的作用不是计时，而是提前准备：醒来前血压、心率、呼吸会先升；该吃饭的时间点，从唾液、胃酸、消化酶到肝脏代谢，“整个村子”都在等着食物到来。每天吃饭时间乱跳，就像让整个村子白等或者措手不及。<a class="c" href="#r-hub">Huberman 2023</a></p>
+  <div class="q"><p>“Healthy food at the wrong time can be crap or junk.”</p><p class="zh">在错误时间吃下去的健康食物，也可能变成垃圾。</p><footer>— Huberman Lab, 2023（讲夜里肠道蠕动变慢、第二天“食物宿醉”）</footer></div>
+  <p>同一个逻辑解释了夏令时：钟拨快一小时那天，心脏病、中风入院和车祸都会上升——身体还没“准备好”，就被闹钟拽起来干活。<a class="c" href="#r-hub">Huberman 2023</a><a class="c" href="#r-mm26">Metabolic Mind 2026</a></p>
+
+  <h3>五、时钟会被拖着走，但很慢</h3>
+  <p>他的经验法则：<b>授时信号每变一小时，内部时钟大约要一天才追上</b>。洛杉矶飞纽约跨三个时区，平均要三天。熬夜两小时、或比平时早起两小时，同理：当天加上之后两天，身体都在追。<a class="c" href="#r-hub">Huberman 2023</a> 所以一周熬一次夜，等于一年里有一半时间身体都“不在点上”——这就是下一节“我们都是倒班工人”的来源。</p>
+
+  <h3>六、健康是“韧性”，不只是体重</h3>
+  <p>他一再提醒：我们习惯把健康等同于体重，但胃酸反流、情绪、低密度脂蛋白偏高，这些都和作息有关，而且瘦的人也会有。<a class="c" href="#r-hub">Huberman 2023</a> 他对健康的日常定义很朴素：</p>
+  <div class="q nx"><p>“Can I maintain my performance today, and can I come back to full performance tomorrow?”</p><p class="zh">今天能不能保持状态？明天能不能回到满状态？——这才是我们每天真正在乎的，而不是能不能活到 150 岁。</p><footer>— Buck Institute podcast, 2024</footer></div>
+  <p>同一期里他说，人类建造了一个“以人为中心”的世界，却没有考虑昼夜节律，于是今天“几乎每个人一生中都会经历几年慢性的节律紊乱”，它会降低韧性、诱发旧病、拖慢康复。<a class="c" href="#r-buck">Buck 2024</a></p>
+</section>
+
+<section id="shift">
+  <div class="shead"><span class="no">03</span><span class="tag">We are all shift workers</span></div>
+  <h2>我们都是倒班工人</h2>
+  <p class="lede">这是《The Circadian Code》第一章的标题，也是他每次上节目几乎都会讲的一句话。它的意思不是“倒班有害”，而是：<b>倒班的生理代价，大部分人都在以较小剂量、不自知地支付</b>。</p>
+  <div class="q"><p>“The truth is, we are all shift workers.”</p><footer>— The Circadian Code, Chapter 1</footer></div>
+
+  <h3>他给“倒班”的定义</h3>
+  <p>没有全球统一定义，他采用欧洲一些国家劳动法规的口径：<b>在习惯睡眠时段（大约晚上 10 点到早上 5 点）里，有两小时或以上是醒着并在做事的</b>（不是躺着发愁，而是在工作、学习或活动）。不需要每天这样——一周一次、一年五十周，就足以像倒班工人那样扰乱生理、代谢、行为和大脑。<a class="c" href="#r-hub">Huberman 2023</a></p>
+
+  <h3>到底有多少人</h3>
+  <ul>
+    <li><b>持证的倒班工人</b>：护士、医生、消防员、面包师、卡车司机、服务业——大约每五个在职成年人里一个。</li>
+    <li><b>没被统计的</b>：熬夜赶作业的学生、每年约 150–160 万的美国新手妈妈（“母亲比倒班工人更糟，因为不知道孩子夜里什么时候醒、醒几次，而且母职没有周末”）、外卖和网约车司机。</li>
+    <li>加起来，他估计<b>任何时刻大约一半的成年人</b>在过倒班式的生活。<a class="c" href="#r-hub">Huberman 2023</a></li>
+  </ul>
+  <p>书里给的证据：慕尼黑的 Till Roenneberg 调查了五万多人，约 87% 的成年人有“社交时差”——周末比工作日晚睡至少两小时；Panda 实验室监测了近 200 名大学生的作息，<b>只有一个人每天（包括周末）在同一时间（误差半小时内）上床</b>，只有另一个人每周至少两晚在午夜前睡觉。孕妇和带婴儿的职场妈妈，作息模式和夜里会被呼叫叫醒好几次的消防员最像。<a class="c" href="#r-cc">The Circadian Code</a></p>
+
+  <h3>代价</h3>
+  <ul>
+    <li>健康人只要按倒班的方式过五个晚上（每晚睡四五个小时），血糖读数就会接近糖尿病前期。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li>倒班者的胃肠病、肥胖、糖尿病、心血管病都更多；在职消防员的第一大死因不是火灾或事故，而是心脏病。2007 年国际癌症研究机构把涉及昼夜节律紊乱的倒班工作列为“可能致癌”。<a class="c" href="#r-cc">The Circadian Code</a></li>
+    <li>“倒班的大脑做不出理性决定”：一个夜班的认知影响可以持续一周；人更容易在本该让胃休息修复的深夜吃高热量食物，或者靠酒精、安眠药入睡——这些习惯在不需要熬夜后还会留下。<a class="c" href="#r-cc">The Circadian Code</a></li>
+    <li>家人是“二手倒班者”：他引用的 2013 年分析显示，倒班者的孩子认知和行为问题更多、肥胖更常见。他自己的例子是：女儿还是婴儿时，太太到周五会“真的病倒”，要整个周末才缓过来。<a class="c" href="#r-cc">The Circadian Code</a></li>
+  </ul>
+
+  <h3>他最不满意的一点：倒班者被排除在研究之外</h3>
+  <p>clinicaltrials.gov 上登记的试验超过 40 万项，涉及倒班者的不到 1000 项，其中大部分是研究“倒班者哪里出了问题”；真正以改善他们健康为目的的，他估计不到 50 项。原因很实际：药物试验怕他们“太乱”，睡眠干预没法让他们夜里睡觉，营养研究要求的门诊随访他们来不了。<a class="c" href="#r-hub">Huberman 2023</a> 这就是他后来专门找消防员做试验的原因（见第 <a href="#evidence">10</a> 节）。</p>
+  <div class="q nx"><p>“Doctors and researchers are always thinking about the magic pill that can cure or reduce disease. Our study showed that shift workers with high blood pressure, blood sugar, or cholesterol can benefit from a simple lifestyle intervention called time-restricted eating.”</p><p class="zh">医生和研究者总在想能治病的神奇药丸。我们的研究显示，血压、血糖或胆固醇偏高的倒班者，可以从一个简单的生活方式干预——限时进食——中获益。</p><footer>— Salk 新闻稿，消防员试验，2022</footer></div>
+</section>
+
+<section id="light">
+  <div class="shead"><span class="no">04</span><span class="tag">Light · the brain clock</span></div>
+  <h2>光：给大脑的钟对时</h2>
+  <p class="lede">在光这件事上，Panda 和 Huberman 的建议高度一致——这并不意外，因为 Huberman 讲的机制很大一部分来自 Panda 那一代 melanopsin 研究。Panda 的独特之处是他<b>总在给出具体的 lux 数字</b>，并且把“白天要够亮”和“晚上要够暗”放在同等位置。</p>
+
+  <h3>melanopsin：一个“很烂”的感光器</h3>
+  <div class="q nx"><p>“It's a very lousy photoreceptor. So that means you need a lot of light.”</p><p class="zh">它是个很烂的感光器，所以需要大量的光——可能要接近 1000 lux 才能完全激活。</p><footer>— FoundMyFitness #25, 2016</footer></div>
+  <p>他强调 melanopsin 的两个特性：<b>阈值高</b>（大约 1000 lux 才能充分激活），以及<b>会累积</b>——它“记得”你之前受了多少光，关灯后还能持续活跃几秒，所以需要连续好几分钟的亮光才能完整发挥作用。<a class="c" href="#r-fmf1">FMF 2016</a> 2019 年他实验室的一项环路研究进一步说明了为什么：半夜起来开灯几秒喝口水通常还能睡回去，但如果听到动静、开着灯在屋里走了半小时，就有足够的光信号到达主时钟，“叫醒”整个大脑。<a class="c" href="#r-salk-bright">Salk 2019</a></p>
+  <p>2019 年他的团队在人类视网膜上发现了三类不同的 ipRGC（含 melanopsin 的视网膜神经节细胞），它们对光的反应各不相同；他由此提到，未来可以设计更好的室内照明、帮助老年人和失智者改善昼夜同步和情绪。<a class="c" href="#r-p19">Science 2019</a></p>
+
+  <h3>你的眼睛会骗你</h3>
+  <p>视觉系统会自动适应：刚走进摄影棚觉得“好亮”，几秒后就觉得“是不是该再补点光”。<b>人的主观感受无法判断实际照度</b>，就像手机相机自动曝光，你永远看不到过曝或欠曝。<a class="c" href="#r-dhru26">Dhru 2026</a> 他实验室给人戴光传感器测量，即使在阳光充足的圣地亚哥和洛杉矶，<b>超过 70% 的成年人（包括 UCLA、UCSD 的学生）每天连一小时日光都晒不到</b>。<a class="c" href="#r-dhru26">Dhru 2026</a></p>
+
+  <h3>他常用的照度参照</h3>
+  <div class="tscroll"><table class="tbl">
+    <thead><tr><th>场景</th><th>大约照度</th><th>他用它说明什么</th></tr></thead>
+    <tbody>
+      <tr><td>晴天户外，看天空（不看太阳）</td><td class="num">100,000–200,000 lux</td><td>户外的量级和室内完全不同<a class="c" href="#r-fmf3">FMF 2021</a></td></tr>
+      <tr><td>阴天户外（他常举伦敦）</td><td class="num">5,000–10,000 lux</td><td>“不用站在太阳底下”；阴天也够<a class="c" href="#r-dk">Doctor's Kitchen</a></td></tr>
+      <tr><td>车里平视、无直射</td><td class="num">5,000–10,000 lux</td><td>和阴天户外相当<a class="c" href="#r-fmf3">FMF 2021</a></td></tr>
+      <tr class="hl"><td>大窗边吃早餐，阳光不直射眼睛</td><td class="num">约 1,000 lux</td><td>早上坐半小时到一小时“就够给褪黑素踩一脚刹车”<a class="c" href="#r-fmf3">FMF 2021</a></td></tr>
+      <tr><td>晚上的药店、超市</td><td class="num">约 1,000 lux</td><td>晚上这就“太亮了”；伦敦阴天比它亮 5–10 倍<a class="c" href="#r-lnl">L&amp;L #130</a></td></tr>
+      <tr><td>一般室内、办公室</td><td class="num">100–500 lux</td><td>我们 90% 以上时间待在室内，白天光照严重不足<a class="c" href="#r-fmf1">FMF 2016</a></td></tr>
+      <tr class="hl"><td>老式英国住宅的晚间照明</td><td class="num">&lt;40 lux</td><td>睡前 2–3 小时的目标亮度<a class="c" href="#r-dk">Doctor's Kitchen</a></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>白天：至少一小时</h3>
+  <p>他的建议这些年有个明显的“加码”：2022 年说<b>每天至少 30 分钟户外</b>，需要的是“至少 1,000 lux、持续 30 分钟到一小时”<a class="c" href="#r-dk">Doctor's Kitchen</a>；到 2025–26 年的 XPRIZE 方案和访谈里，标准变成<b>每天至少一小时日光</b>，下雪或太热出不去，就坐在户外遮阳棚下或晴天的大窗边。<a class="c" href="#r-dhru26">Dhru 2026</a><a class="c" href="#r-op26">Optimal Protein 2026</a></p>
+  <div class="q"><p>“It is the natural antidepressant that's plentiful, free, outdoor. You just have to step outside.”</p><p class="zh">日光是天然的抗抑郁药，充足、免费、在户外——你只需要走出门。</p><footer>— The Doctor's Kitchen #153, 2022</footer></div>
+  <p>他列的白天光照的三个作用：一是抗抑郁；二是提高警觉和执行功能；三是一个“有点奇怪”的效应——<b>白天受光越多，夜里分泌的褪黑素越多</b>。<a class="c" href="#r-dhru26">Dhru 2026</a> 他也提到，给轻度认知障碍和阿尔茨海默病人用模拟日光的室内照明，白天的躁动减少、睡眠改善。<a class="c" href="#r-dhru26">Dhru 2026</a></p>
+
+  <h3>晚上：睡前 2–3 小时调暗</h3>
+  <p>睡前两到三小时避免亮光，因为亮光会压制褪黑素，推迟或打乱睡眠；目标是 40 lux 以下。<a class="c" href="#r-dk">Doctor's Kitchen</a> 他 2018 年就提到，越来越多的论文显示亮度高的 iPad 或手机也能扰乱这个节律。<a class="c" href="#r-bowes">Live Long 2018</a> 在 XPRIZE 方案里，傍晚准备期除了不进食、不做剧烈运动、不开亮灯，他们还给受试者<b>经过实验室测试的滤蓝光眼镜</b>。<a class="c" href="#r-dhru26">Dhru 2026</a></p>
+  <div class="box nox">
+    <p class="bt">和 Huberman 的细微差别</p>
+    <p>Huberman 的核心工具是“体温最低点”和早晚的低角度日光；Panda 很少讲这些，他用的是更粗但更好执行的规则：<b>白天累计够亮、晚上累计够暗</b>，再加上吃饭时间。两人在“夜里越暗越好”“白天户外光远胜室内光”这两点上完全一致。</p>
+  </div>
+
+  <h3>对光的敏感度因人而异</h3>
+  <p>他倾向认为，所谓“夜猫子”里有相当一部分人不是基因决定，而是<b>对光更敏感</b>：同一屋檐下同样的灯光，有人能熬到很晚，有人早早就困；用瞳孔收缩测量，人和人的 ipRGC 敏感度可以相差约一个数量级。青春期后的青少年对光尤其敏感。<a class="c" href="#r-hub">Huberman 2023</a> 他实验室 2023 年在大学生身上发现，<b>白天的光照量是睡眠和昼夜相位季节性变化的强预测因子</b>。<a class="c" href="#r-p23j">J Pineal Res 2023</a></p>
+
+  <h3>光的远景：用药物调 melanopsin</h3>
+  <p>因为 melanopsin 的信号通路和视杆视锥不同，他早在 2005 年就设想：理论上可以只调节生物钟而不影响视力——“根据你向东飞还是向西飞，吃一片 melanopsin 激动剂或拮抗剂”来治时差、季节性抑郁和倒班问题。他和灵北（Lundbeck）合作花了近十年找到阻断 melanopsin 的分子（opsinamides），在小鼠上减弱了对强光的瞳孔反应，设想用于偏头痛的畏光。<a class="c" href="#r-salk-fly">Salk 2005</a><a class="c" href="#r-salk-migraine">Salk 2013</a> 目前这些都还停留在动物阶段。</p>
+</section>
+
+<section id="eat">
+  <div class="shead"><span class="no">05</span><span class="tag">Food · the body clock</span></div>
+  <h2>吃：给身体的钟对时</h2>
+  <p class="lede">这是 Panda 的主场。核心主张只有一句：<b>把一天所有的热量——固体和液体——放进一个每天固定的窗口里吃完</b>。窗口外是禁食，身体用这段时间修复、燃脂、整理肠道。</p>
+
+  <h3>先把名词分清</h3>
+  <p>他很在意术语。<b>间歇性断食</b>（intermittent fasting）原本是一个伞形词，指一周或一个月里有一两天刻意减少热量的方案：隔日断食、5:2、Valter Longo 的周期性断食。<b>限时进食</b>（time-restricted feeding/eating，TRF/TRE）是他实验室的概念：<b>热量不减，只限定时间</b>。早期小鼠实验用的是“8 小时进食、16 小时禁食”，后来大众把 TRE 也叫成了间歇性断食。<a class="c" href="#r-hub">Huberman 2023</a> 他还参与了 2024 年《Cell Metabolism》上的禁食术语国际共识。<a class="c" href="#r-p24c">Cell Metab 2024</a></p>
+  <div class="q"><p>“Confine all your energy intake from solid and liquid food combined within a consistent window of eight to 12 hours, because that's something that's doable.”</p><p class="zh">把所有来自固体和液体的能量，放进一个每天一致的 8 到 12 小时窗口里——因为这是做得到的。</p><footer>— Huberman Lab, 2023</footer></div>
+  <p>这里有三个关键词：<b>所有热量</b>（包括加奶加糖的咖啡、果汁、酒）、<b>一致</b>（每天差不多同一时间开始和结束）、<b>做得到</b>（他反对极端短窗口，见下一节）。</p>
+
+  <h3>为什么时间本身会起作用</h3>
+  <p>他给过的机制解释，按层次大致如下（多数来自小鼠）：</p>
+  <ul>
+    <li><b>代谢开关被拉开</b>：小鼠禁食 12–14 小时后，呼吸交换率降到 0.7 左右，基本在烧脂肪；而只要吃下 100–200 毫克饲料（不到一天食量的 5%），就立刻切回烧糖模式。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li><b>全身基因表达被重排</b>：2023 年他实验室在 22 个器官和脑区里每两小时取样，发现限时喂食让<b>近 80% 的基因</b>在至少一个组织里改变了表达量或节律，并形成“禁食时一波、进食后一波”的双峰。<a class="c" href="#r-p23">Cell Metab 2023</a></li>
+    <li><b>肠道菌群跟着进食节律变</b>：菌群也有昼夜起伏，限时进食让它更“健康”地波动；小鼠会多排出一些脂肪和糖，胆固醇转胆汁酸的代谢改变，棕色脂肪更活跃。<a class="c" href="#r-p14m">Cell Metab 2014</a><a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li><b>给夜间的修复留出时间</b>：夜里肠道蠕动变慢，肠道细胞在修复；胃把最后一顿完全消化吸收还要大约五个小时。<a class="c" href="#r-zoe">ZOE 2024</a></li>
+    <li><b>褪黑素和胰岛素“打架”</b>：褪黑素抑制胰岛素分泌。2009 年四篇遗传学论文同时发现，褪黑素受体基因的变异与空腹血糖升高、2 型糖尿病有关。所以褪黑素还高的时候吃东西——刚醒来或深夜——血糖处理更差。<a class="c" href="#r-fmf3">FMF 2021</a><a class="c" href="#r-fit26">FITBOOK 2026</a></li>
+  </ul>
+  <div class="q nx"><p>“Our bodies actually process sugars and fats very differently depending on the time of day.”</p><p class="zh">我们的身体在一天的不同时间处理糖和脂肪的方式确实非常不同。</p><footer>— Salk 新闻稿，TIMET 试验，2024</footer></div>
+
+  <h3>出发点：大多数人吃得太“长”</h3>
+  <p>这是他整个人体研究的起点。2015 年用 myCircadianClock 拍照记录（打开、拍、存，三次点击；连半块饼干、一杯水都拍），156 名非倒班成年人记录三周：</p>
+  <ul>
+    <li>每天进食次数中位数是 <b>7 次</b>，最多的一成人是 12 次——不是“一日三餐”。</li>
+    <li><b>一半人的进食跨度超过 14 小时 45 分钟</b>；只有约 10% 的人在 12 小时以内吃完。他由此常说“近 90% 的成年人吃饭超过 12 小时”。</li>
+    <li>约 35% 的热量在下午 6 点以后摄入；工作日和周末的进食时间差，相当于每周跨时区飞一趟——他叫它<b>“代谢时差”</b>（metabolic jetlag）。</li>
+    <li>反直觉的发现：自己做晚饭的人更可能吃得晚。<a class="c" href="#r-p15">Cell Metab 2015</a><a class="c" href="#r-hub">Huberman 2023</a></li>
+  </ul>
+  <p>2026 年他们用同一个应用分析了两万多人、250 多万条记录：95% 的饮食所在的时间窗口，最低一成人是 10 小时 54 分，最高一成人超过 16 小时。<a class="c" href="#r-p26n">Nat Metab 2026</a></p>
+  <div class="q"><p>“For many of us, the day begins with a cup of coffee first thing in the morning and ends with a bedtime snack 14 or 15 hours later.”</p><p class="zh">对我们很多人来说，一天从睁眼的一杯咖啡开始，以十四五个小时后的睡前零食结束。</p><footer>— Salk 新闻稿，2018</footer></div>
+
+  <h3>质量、数量、时间，三个都算</h3>
+  <p>他从不说“只要时间对，吃什么都行”。原话是：<span class="en">“when it comes to nutrition, quality, quantity and timing, all these three matter.”</span><a class="c" href="#r-hub">Huberman 2023</a> 但他也有一个务实的出发点：很多人<b>负担不起或接触不到</b>健康饮食，那么在不改食物的前提下只调时间，能不能也有好处？2014 年的小鼠实验显示，即使吃普通饲料、体重不变，限时进食也改变了身体成分；而对多种致胖饮食，8–12 小时的限时喂食都能预防甚至逆转肥胖和糖尿病。<a class="c" href="#r-p14">Cell Metab 2014</a><a class="c" href="#r-salk-midnight">Salk 2014</a></p>
+</section>
+
+<section id="window">
+  <div class="shead"><span class="no">06</span><span class="tag">How long a window</span></div>
+  <h2>窗口该多长：他自己的说法在变</h2>
+  <p class="lede">这是最容易被误读的地方。网络上流行的 16:8 并不是 Panda 的默认建议；而他自己的推荐，十几年里也确实从“宽”慢慢收紧了。</p>
+
+  <div class="tt">
+    <div class="row sol"><div class="t">2012<small>小鼠</small></div><div class="w"><b>8 小时</b><p>Hatori 实验用的是 8 小时进食。2014 年比较 9、12、15 小时：<b>好处随禁食时长递增</b>，12 小时仍有效。<a class="c" href="#r-p14">Cell Metab 2014</a></p></div></div>
+    <div class="row sol"><div class="t">2017<small>本人</small></div><div class="w"><b>“最多 12 小时，常常 10 小时”</b><p>他说自己坚持“最多 12 小时”时就感觉更好、更有精力、睡得好、身体更轻；通常 12 小时，很多时候尽量 10 小时。<a class="c" href="#r-fmf2">FMF 2017</a></p></div></div>
+    <div class="row sol"><div class="t">2021–23<small>底线</small></div><div class="w"><b>人人可做的 12 小时；8–10 小时作为起点</b><p>“12 小时是从 5 岁到 100 岁都能做的。”同时：“8 到 10 小时可能是开始的理想位置”；体力活动多的人可以放宽到 12 小时。<a class="c" href="#r-hub">Huberman 2023</a><a class="c" href="#r-zoe">ZOE 2024</a></p></div></div>
+    <div class="row sol"><div class="t">2022<small>规则</small></div><div class="w"><b>“8、9、10，最多 12，不要超过 12”</b><p>他给大众的六条规则之一。<a class="c" href="#r-dk">Doctor's Kitchen</a></p></div></div>
+    <div class="row sol"><div class="t">2026<small>更新</small></div><div class="w"><b>8–10 小时，后面接更长的禁食</b><p>德国 FITBOOK 问他是否改变了看法（以前推荐 12–14 小时禁食），他说几项新研究显示，<b>约 8–10 小时的进食窗口、后接更长的禁食期</b>，总体上更有益——有些人减了重，有些人血糖、胆固醇或血压改善。<a class="c" href="#r-fit26">FITBOOK 2026</a> 对吃了 16 小时的人，他的建议是先回到 10 小时，“10 小时是个好的起点”。<a class="c" href="#r-op26">Optimal Protein 2026</a></p></div></div>
+  </div>
+
+  <h3>为什么不推荐更短</h3>
+  <p>4–6 小时窗口、一天一顿（OMAD）他都不推荐给普通人，理由有三层：</p>
+  <ol>
+    <li><b>很难长期坚持。</b>研究里能做到，日常生活很难。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li><b>窗口太短会不知不觉少吃，活动量大的人会掉进能量缺口。</b>运动医学里叫“相对能量不足”（RED-S）：他说近 40% 的运动员（尤其田径）不自知地处于这种状态，女性会停经，骨量流失、易应力性骨折，下丘脑–垂体–性腺轴和肾上腺轴被打乱，还伴随抑郁、焦虑甚至类似双相的症状。<a class="c" href="#r-hub">Huberman 2023</a> 他实验室为此专门建立了 RED-S 小鼠模型和多器官图谱。<a class="c" href="#r-p24r">Cell Metab 2024</a></li>
+    <li><b>短窗口的好处在小鼠里并不明显更大。</b>他常引用 Takahashi 实验室 2022 年的长寿实验：限热量的小鼠在夜里（它们的活动期）吃，无论 2 小时还是 12 小时内吃完，寿命延长一样多。<a class="c" href="#r-hub">Huberman 2023</a></li>
+  </ol>
+  <div class="q"><p>“The recipe for health is not ‘eat less food, do more exercise.’”</p><p class="zh">健康的配方不是“少吃、多动”。</p><footer>— Salk 新闻稿，RED-S 图谱，2024</footer></div>
+  <p>有些女性写信说“开始你的限时进食后出了很多问题”，他追问下去，往往发现她们同时只吃沙拉、拼命加纤维、每天还跑 5 英里——三者叠加，出现的是 RED-S 样症状。所以当运动量和饮食质量都在提升时，他认为 12 小时是更稳妥的点。<a class="c" href="#r-hub">Huberman 2023</a></p>
+
+  <h3>那个“+35%”的小鼠寿命实验</h3>
+  <p>他非常看重 Takahashi 实验室 2022 年的《Science》论文，用它说明“时间”独立于“热量”：同样减少热量，</p>
+  <div class="tscroll"><table class="tbl">
+    <thead><tr><th>限热量小鼠怎么吃</th><th>寿命变化（对比随意吃）</th></tr></thead>
+    <tbody>
+      <tr><td>少量多次，昼夜都吃（自动喂食器，每 90 分钟一次）</td><td class="num">约 +10%</td></tr>
+      <tr><td>集中在白天吃（小鼠的“错误时间”）</td><td class="num">约 +20%</td></tr>
+      <tr class="hl"><td>集中在夜里吃（小鼠的“正确时间”），2 小时或 12 小时内</td><td class="num">约 +35%</td></tr>
+    </tbody>
+  </table></div>
+  <p>他特别指出：各组的体重和身体成分没有差别，而已知的长寿生物标志物（类似糖化血红蛋白、血糖、胆固醇）<b>都预测不了</b>谁活得更久——说明我们还缺少能捕捉“时间效应”的指标。<a class="c" href="#r-hub">Huberman 2023</a></p>
+</section>
+
+<section id="edges">
+  <div class="shead"><span class="no">07</span><span class="tag">First bite · last bite</span></div>
+  <h2>窗口的两端：第一口与最后一口</h2>
+  <p class="lede">窗口的长度只是一半，另一半是它放在哪里。他的规则可以概括为：<b>醒来后别急着吃，睡前留足空档，每天尽量在同样的时间开始和结束</b>。</p>
+
+  <h3>第一口：醒来后等 1–2 小时</h3>
+  <p>理由是激素还没切换完：夜间激素褪黑素还在下降、没回到基线；白天激素皮质醇正在冲高（醒后约一小时达峰）；消化系统还没进入“白天状态”。<a class="c" href="#r-dk">Doctor's Kitchen</a><a class="c" href="#r-dhru26">Dhru 2026</a> 2024 年的 TIMET 试验把它写进了方案：窗口至少在醒后 1 小时开始；2026 年 TREAD 试验的参与者通常在醒后约 2.5 小时吃早餐（6–7 点起，8:30–9 点吃）。<a class="c" href="#r-salk-timet">Salk 2024</a><a class="c" href="#r-op26">Optimal Protein 2026</a></p>
+
+  <h3>咖啡算不算</h3>
+  <p>他在这个问题上的说法有过演变，值得原样记录：</p>
+  <ul>
+    <li><b>2017</b>：数据“很模糊”。乳腺癌研究里那 13 小时的夜间禁食是把黑咖啡和茶算在禁食里的；所以他们倾向保守——<b>能放进进食窗口里喝最好</b>，做不到就算了。<a class="c" href="#r-fmf2">FMF 2017</a></li>
+    <li><b>2018 / 2021</b>：黑咖啡本身会重置时钟——引用的研究显示<b>一杯咖啡对生物钟的作用相当于一到两小时的亮光</b>；但他们研究里窗口外喝黑咖啡的人太少，还不足以统计出差别。<a class="c" href="#r-bowes">Live Long 2018</a><a class="c" href="#r-fmf3">FMF 2021</a></li>
+    <li><b>2023</b>：对有胃酸反流、焦虑或惊恐发作的人，空腹咖啡是明确的诱因；他自己是<b>先吃早餐再喝咖啡</b>。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li><b>2026</b>：醒来喝黑咖啡可以接受；很多人其实是靠它排便——那不妨试试一杯温水。他自己“爱喝早上的拿铁”。<a class="c" href="#r-op26">Optimal Protein 2026</a></li>
+  </ul>
+  <div class="box sol">
+    <p class="bt">一个历史小故事（他很爱讲）</p>
+    <p>据他转述历史学家 Cemal Kafadar 的研究：16 世纪中叶伊斯坦布尔的咖啡馆最早是<b>晚上</b>社交、谈政治的地方，苏菲派在夜里喝咖啡唱歌跳舞；后来虔诚的穆斯林发现醒来喝咖啡能撑过清晨第一次礼拜，咖啡才变成早晨饮料。可土耳其咖啡太浓，引起胃灼热，人们开始先吃点东西垫胃——<b>“早餐”在那里是作为咖啡的缓冲出现的</b>。<a class="c" href="#r-hub">Huberman 2023</a></p>
+  </div>
+
+  <h3>最后一口：睡前至少 2–3 小时</h3>
+  <p>这条规则一直在收紧：早期说“至少两小时”，2022 年说两到三小时，到 2024 年以后的试验方案里统一成了<b>睡前至少 3 小时</b>。理由是褪黑素大约在入睡前三小时开始上升；夜里胰岛素工作效率低，晚吃的东西让血糖长时间偏高；肠道蠕动在最后一餐几小时后变慢，夜里吃的东西消化不完，第二天早上像“食物宿醉”。<a class="c" href="#r-fmf3">FMF 2021</a><a class="c" href="#r-dk">Doctor's Kitchen</a><a class="c" href="#r-op26">Optimal Protein 2026</a><a class="c" href="#r-fit26">FITBOOK 2026</a></p>
+  <p>他还提到一个副作用：<b>窗口早点结束，酒自然就喝得少</b>。消防员试验里，限时进食组的饮酒量显著下降。很多倒班者“用咖啡开始一天、用酒精结束一天”，而普通人其实也差不多。<a class="c" href="#r-hub">Huberman 2023</a><a class="c" href="#r-fmf3">FMF 2021</a></p>
+  <div class="q nx"><p>“What we do between sunset and bedtime affects most of our health.”</p><p class="zh">日落到上床之间做什么，影响了我们大部分的健康。</p><footer>— Huberman Lab, 2023</footer></div>
+  <p>他对这句话有一个人类学解释：人类学会控制火之后，才有了和白天完全不同的“傍晚”——围着篝火聊文化、谈政治、唱歌跳舞、做媒，哲学和科学都从“炉边谈话”开始。今天的炉火换成了微波炉、电视和社交媒体，但那段属于“自我”的时间仍在晚上。所以<b>大多数人觉得晚上 6 点停止进食很难，是因为这种冲动刻在了我们的文化甚至基因里</b>。<a class="c" href="#r-hub">Huberman 2023</a></p>
+
+  <h3>一致性：差一点没关系，乱跳不行</h3>
+  <ul>
+    <li><b>为什么要一致</b>：如果你每天 8 点吃早餐，某天改成 10 点，身体的钟会想“明天也许在 8 到 10 点之间”，于是 9 点就准备好；第二天你又 8 点吃，它还没准备好。要利用钟的预判，就得规律。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li><b>挪一小时问题不大</b>：小鼠实验里每周把窗口调整半小时到一小时，好处仍在。<a class="c" href="#r-fmf2">FMF 2017</a></li>
+    <li><b>周末放开可以容忍</b>：小鼠工作日 8–10 小时、周末随便吃（甚至吃一整夜），仍然大部分受到保护；他据此推测人一周破例一到两次大概可以承受。<a class="c" href="#r-p14">Cell Metab 2014</a><a class="c" href="#r-fmf2">FMF 2017</a></li>
+    <li><b>但大幅前后挪动是“代谢时差”</b>：把早餐或晚餐时间前后挪三四个小时，短期内可能看不出变化，但长期后果未知。<a class="c" href="#r-hub">Huberman 2023</a></li>
+  </ul>
+
+  <h3>刚开始会饿</h3>
+  <p>他的经验：新手一开始会饿，<b>富含纤维、蛋白质或稍多一点脂肪的食物</b>能帮助撑过更长的空腹时间，而且慢慢会适应；顺带的结果是远离了单糖和高升糖食物，饮食质量也提高了。<a class="c" href="#r-fmf2">FMF 2017</a></p>
+
+  <h3>宏量营养素的时间</h3>
+  <p>他承认这方面没有系统研究，只有回顾性数据。他提到一项日本研究：早上吃更多蛋白质的女性更长寿；而晚上吃蛋白质会刺激胃酸分泌，容易引起胃灼热。<a class="c" href="#r-fit26">FITBOOK 2026</a> 对于“早上先吃碳水还是先吃脂肪”，2023 年他明确说小鼠研究才刚开始，“我不应该评论好坏”。<a class="c" href="#r-hub">Huberman 2023</a></p>
+</section>
+
+<section id="sleep">
+  <div class="shead"><span class="no">08</span><span class="tag">Sleep</span></div>
+  <h2>睡眠：一天从前一晚开始</h2>
+  <p class="lede">在他所有版本的“规则清单”里，排第一的从来不是吃，而是睡。<b>“我们的一天其实从前一晚开始”</b>——几点上床，决定了第二天的表现。<a class="c" href="#r-buck">Buck 2024</a><a class="c" href="#r-dk">Doctor's Kitchen</a></p>
+
+  <h3>在床 8 小时</h3>
+  <p>他的规则是<b>固定时间上床，在日程里给床留出 8 小时</b>，这样才能睡够 7 到 7.5 小时的恢复性睡眠。流行病学研究里，每晚睡 6.5–7.5 小时的成年人疾病更少、寿命略长；儿童到青少年需要 8–9 小时或更多，幼儿 9–10 小时。<a class="c" href="#r-buck">Buck 2024</a><a class="c" href="#r-lnl">L&amp;L #130</a> 睡眠期间发生的事包括突触可塑性、学习记忆、清除脑内废物；最后几小时的生长激素峰值负责修复肠道黏膜、皮肤等上皮组织。<a class="c" href="#r-buck">Buck 2024</a><a class="c" href="#r-dk">Doctor's Kitchen</a></p>
+  <div class="q nx"><p>“If you're sleeping less than seven hours, you already have a problem with circadian rhythm disruption.”</p><p class="zh">如果你每晚睡不到七小时，你已经有昼夜节律紊乱的问题了。</p><footer>— Longevity &amp; Lifestyle #130</footer></div>
+
+  <h3>“夜猫子”多半是被灯和咖啡造出来的</h3>
+  <p>他自己就是例子：本科时从不在午夜前睡，读博时很少在凌晨 2 点前睡，“完全可以说自己是夜猫子”；直到女儿出生，要哄睡、要调暗灯、要安静，他才发现自己其实可以 10 到 11 点之间入睡。<a class="c" href="#r-hub">Huberman 2023</a> 他引用的证据：</p>
+  <ul>
+    <li>Horacio de la Iglesia 在没有电的阿根廷 Toba/Qom 社区追踪了数百人，几乎所有人都在日出前后醒来，标准差“非常窄”，没看到明显的夜猫子。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li>Ken Wright 把一群自称夜猫子的研究生带去露营：光少、白天徒步多，结果所有人都在晚上 9 点到 10 点半之间睡着。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li>真正由基因决定的极端例子存在，例如家族性睡眠时相提前（PER2 突变，Ptáček 和 Fu 发现），但很少见。<a class="c" href="#r-hub">Huberman 2023</a></li>
+  </ul>
+  <p>所以他对“夜猫子”的第一建议是先找原因：傍晚、下午的咖啡、茶、巧克力，晚上的亮光，然后才谈基因。<a class="c" href="#r-fmf3">FMF 2021</a> 他也提醒：不管早睡型还是晚睡型，<b>更重要的是总共睡几个小时</b>。<a class="c" href="#r-fmf3">FMF 2021</a></p>
+
+  <h3>熬夜后为什么睡不好</h3>
+  <p>如果傍晚没受强光，褪黑素会按时上升，身体做好了入睡准备；你硬撑到午夜，前三四个小时可能睡得很好，但之后褪黑素开始下降，体温和心率也开始往“醒”的方向变，而累积的睡眠债又在把你按在床上——<b>节律和睡眠债互相拉扯，后半夜的睡眠就没有恢复性</b>。很多人以为“我天生就这么睡”，直到某次露营才发现自己错过了什么。<a class="c" href="#r-hub">Huberman 2023</a></p>
+
+  <h3>年龄：从自动驾驶到手动挡卡车</h3>
+  <div class="q"><p>“When you are younger, it's almost like your body runs on its self-driving mode. In middle age, it switches to the automatic mode. And as we get older, it's almost like a manual driving truck.”</p><p class="zh">年轻时身体像自动驾驶，中年变成自动挡，年纪大了就像一辆手动挡卡车——每个杆都得自己操心。</p><footer>— Buck Institute podcast, 2024</footer></div>
+  <p>随着年龄增长，唤醒阈值降低：一点噪音、体温略高、起夜，都可能醒来而且很难再睡。年轻人熬一夜，第二天睡意足以让他睡到中午（青少年周末睡到下午一两点就是这个原因）；但老年人的大脑似乎“忘了”记账，不再能感知欠了多少觉、需要补多少——他认为这是衰老生物学的一个基本问题。<a class="c" href="#r-buck">Buck 2024</a></p>
+
+  <h3>褪黑素补充剂：他的保留意见</h3>
+  <ul>
+    <li>近几年用量上升了 40%–60%，很多人把它当作副作用更小的安眠药。</li>
+    <li>吃下去的褪黑素 70%–90% 在一小时内被肝肾分解；临床研究显示它主要缩短入睡时间，维持睡眠的效果不如前者。</li>
+    <li>体内的褪黑素在习惯入睡前约两小时开始上升，入睡后一小时左右达峰、整夜维持，醒后下降，约两小时后到最低；药片则是服后 15–30 分钟陡升再慢慢降。</li>
+    <li>二十年前药店里常见 1 毫克，如今几乎只有 3–5 毫克；大剂量可能让褪黑素在<b>醒后两三个小时仍然偏高</b>——而褪黑素会抑制胰岛素分泌，这时吃早餐对血糖不利。他强调这些都还缺系统研究。<a class="c" href="#r-fmf3">FMF 2021</a></li>
+  </ul>
+  <p>他在 2018 年就说过同一个逻辑：什么时候吃褪黑素，和什么时候吃饭、什么时候受光、什么时候睡觉，要放在一起考虑。<a class="c" href="#r-bowes">Live Long 2018</a></p>
+
+  <h3>夏令时：支持永久标准时间</h3>
+  <p>他认为当地钟表的正午应尽量接近太阳最高点，因此<b>永久采用标准时间</b>是答案；来回切换已经做了一百多年“实验”，每次往前拨一小时的那天，心梗、中风入院和车祸都会上升。<a class="c" href="#r-mm26">Metabolic Mind 2026</a></p>
+</section>
+
+<section id="move">
+  <div class="shead"><span class="no">09</span><span class="tag">Exercise timing</span></div>
+  <h2>运动：下午晚些时候</h2>
+  <p class="lede">他总是先说“运动就是药”，然后才讲时间：<b>下午晚些时候到傍晚早些时候</b>，是他推荐的运动时段。<a class="c" href="#r-dk">Doctor's Kitchen</a></p>
+  <ul>
+    <li><b>身体准备得更好</b>：这个时段肌张力、关节灵活性更好，受伤风险更低；他常说更多世界纪录是在下午晚些、傍晚早些被打破的——“你也可以在下午打破自己的个人纪录”。<a class="c" href="#r-dk">Doctor's Kitchen</a><a class="c" href="#r-fmf3">FMF 2021</a></li>
+    <li><b>演化解释</b>：狩猎采集者和农民要在天黑前跑回安全的地方过夜，所以肌张力在下午晚些时候达峰。<a class="c" href="#r-buck">Buck 2024</a><a class="c" href="#r-lef">LEF 2019</a></li>
+    <li><b>代谢病人收益更大</b>：他说已有二十多项临床试验显示，对有代谢病的人，同样的运动放在下午晚些时候，比放在早上更能改善血糖和血压；在健康人身上这还没那么确定，因为他们这些指标本来就正常。<a class="c" href="#r-dhru26">Dhru 2026</a><a class="c" href="#r-lnl">L&amp;L #130</a></li>
+    <li><b>“傍晚精神好”的误读</b>：很多早上八九点就要上班的人，上午其实是睡眠不足在硬撑、靠咖啡续命，到下午睡眠压力消退才觉得精神来了——这不是他们的生物钟偏晚，而是缺觉。<a class="c" href="#r-lnl">L&amp;L #130</a></li>
+  </ul>
+  <p>他给的边界条件：睡前三小时内不做剧烈运动（XPRIZE 方案的“傍晚准备”）；以及运动量大、吃得又少的人要警惕 RED-S（见第 <a href="#window">06</a> 节）。<a class="c" href="#r-dhru26">Dhru 2026</a> 他实验室参与的、2026 年发表在《Cell》上的长期运动多组学图谱，是这条线上最新的基础研究。<a class="c" href="#r-p26c">Cell 2026</a></p>
+  <div class="box">
+    <p class="bt">关于早上</p>
+    <p>他并不反对早上动。他强调的是早上身体的另一件大事：<b>皮质醇在醒后一小时内冲到全天最高</b>，“不管你下午工作压力多大，都比不上醒来时那一波”。<a class="c" href="#r-dhru26">Dhru 2026</a> 这也是他建议醒后先别急着吃东西的理由之一。</p>
+  </div>
+</section>
+
+<section id="evidence">
+  <div class="shead"><span class="no">10</span><span class="tag">Evidence ladder</span></div>
+  <h2>证据：从小鼠到人</h2>
+  <p class="lede">Panda 的论证路径很清楚：先在小鼠、果蝇里证明“时间”是独立变量，再测量人到底怎么吃，最后在越来越“难”的人群里做试验——代谢综合征、24 小时倒班的消防员、正在吃药的病人。下面按他自己引用的顺序整理。</p>
+
+  <div class="box">
+    <p class="bt">这条路走得并不顺</p>
+    <p>2012 年的结果连他自己都意外，实验让三个博士后各重复了一遍。可之后他想转向人体研究，<b>前后被拒了 12、13 份基金申请</b>：评审认为这没有公共卫生意义，“因为人类一天吃三顿正餐，都在 10 到 12 小时以内”，而且“没有创新——你只是提议改一下吃饭时间”。他去找人类一天吃三顿的客观证据，发现根本没有；营养学在这一点上仍在用 1970 年代的“24 小时回忆法”，“几乎是史前的”。于是才有了 2015 年那个拍照记录的应用。<a class="c" href="#r-chrono30">CHRONO:MEDICINE 2025</a></p>
+  </div>
+
+  <h3>动物</h3>
+  <div class="tscroll"><table class="tbl">
+    <thead><tr><th>年份</th><th>模型</th><th>发现</th></tr></thead>
+    <tbody>
+      <tr><td class="num">2012</td><td>小鼠，高脂饲料</td><td>8 小时限时喂食，热量相同，防住了肥胖、高胰岛素、脂肪肝和炎症，运动协调更好。<a class="c" href="#r-p12">Cell Metab</a></td></tr>
+      <tr><td class="num">2014</td><td>小鼠，多种致胖饮食</td><td>9、12、15 小时都有效，禁食越长越好；周末放开仍受保护；对已经肥胖和患糖尿病的小鼠能稳定甚至逆转病情。<a class="c" href="#r-p14">Cell Metab</a></td></tr>
+      <tr><td class="num">2014</td><td>小鼠肠道菌群</td><td>饮食和进食模式决定菌群的昼夜波动；限时喂食恢复了部分节律。<a class="c" href="#r-p14m">Cell Metab</a></td></tr>
+      <tr><td class="num">2015</td><td>果蝇</td><td>12 小时限时喂食延缓了与年龄相关的心脏功能下降，睡眠更好。<a class="c" href="#r-p15f">Science</a></td></tr>
+      <tr><td class="num">2018</td><td>狒狒，64 个组织</td><td>最多 81.7% 的蛋白编码基因有日节律；高峰集中在黎明和黄昏，入夜早期有一段“静默期”。<a class="c" href="#r-p18">Science</a></td></tr>
+      <tr><td class="num">2019</td><td>没有生物钟的基因敲除小鼠</td><td>限时喂食（暗期 10 小时）仍能防止肥胖和代谢综合征——说明进食–禁食节律本身就能部分替代坏掉的钟。<a class="c" href="#r-p19c">Cell Metab</a></td></tr>
+      <tr><td class="num">2021</td><td>小鼠，雌雄、老少</td><td>好处取决于年龄和性别，但雌雄老少都有多重获益；他说除了代谢，还提高了对感染和胰岛素抵抗的抵抗力。<a class="c" href="#r-p21s">Cell Rep</a><a class="c" href="#r-salk-sex">Salk</a></td></tr>
+      <tr><td class="num">2023</td><td>小鼠，22 个组织</td><td>近 80% 的基因在至少一个组织里改变了表达或节律，包括脑内数千个基因。<a class="c" href="#r-p23">Cell Metab</a></td></tr>
+      <tr><td class="num">2024</td><td>小鼠 RED-S 模型</td><td>高活动量、低摄入，复现体重下降、作息紊乱、低血糖等，提供多器官转录组图谱。<a class="c" href="#r-p24r">Cell Metab</a></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>人</h3>
+  <div class="tscroll"><table class="tbl">
+    <thead><tr><th>年份 · 研究</th><th>人群</th><th>做法</th><th>结果</th></tr></thead>
+    <tbody>
+      <tr><td class="num">2015<br>myCircadianClock</td><td>超重、进食 &gt;14 小时的 8 人</td><td>10–11 小时，16 周</td><td>体重下降、精力更好、睡眠改善，一年后仍维持。<span class="ev a">小样本</span><a class="c" href="#r-p15">Cell Metab</a></td></tr>
+      <tr><td class="num">2020<br>代谢综合征</td><td>19 人，多数在服他汀或降压药</td><td>自选 10 小时，12 周，单臂</td><td>体重约 −3%，腰围、体脂、血压、致动脉粥样硬化血脂下降；可以叠加在药物之上。<span class="ev a">无对照</span><a class="c" href="#r-p20">Cell Metab</a></td></tr>
+      <tr><td class="num">2021<br>瑞士社区试验</td><td>社区成年人</td><td>12 小时 vs 瑞士标准饮食建议</td><td>两组体重下降相近（都不大）；建议组少吃了超加工食品，12 小时组饮食质量没变。Panda 本人在访谈中如实转述了这个“打平”。<span class="ev o">中性</span><a class="c" href="#r-p21sw">Nutrients</a><a class="c" href="#r-hub">Huberman 2023</a></td></tr>
+      <tr class="hl"><td class="num">2022<br>Healthy Heroes</td><td>圣地亚哥 137 名 24 小时轮班消防员（9% 女性）</td><td>全部地中海饮食；一半人自选 10 小时，12 周</td><td>窗口从 14.1 小时缩到 11.1 小时，可行、无不良反应、生活质量改善；VLDL 颗粒变小；基线风险高的人糖化血红蛋白和舒张压下降。体重两组无差。<span class="ev h">RCT</span><a class="c" href="#r-p22">Cell Metab</a></td></tr>
+      <tr class="hl"><td class="num">2024<br>TIMET</td><td>108 名代谢综合征成人，平均 59 岁，基线进食 14.2 小时，可服药</td><td>个性化 8–10 小时（醒后 ≥1 小时开始、睡前 ≥3 小时结束），3 个月</td><td>糖化血红蛋白 −0.10%（相对标准治疗），无严重不良事件；作者称“适度”改善血糖调节。<span class="ev h">RCT</span><a class="c" href="#r-p24">Ann Intern Med</a></td></tr>
+      <tr><td class="num">2025<br>POTS</td><td>20 名体位性心动过速综合征患者</td><td>8–10 小时，12 周，单臂</td><td>站立心率增幅平均减少 11 次/分，症状和生活质量改善，线粒体 ATP 产生增加。他说近一半人不再符合 POTS 诊断。<span class="ev a">无对照</span><a class="c" href="#r-p25p">Sci Rep</a><a class="c" href="#r-fit26">FITBOOK 2026</a></td></tr>
+      <tr><td class="num">2025<br>癌症相关疲劳</td><td>30 名癌症幸存者（多数血液肿瘤）</td><td>营养师指导的限时进食 vs 对照，12 周</td><td>疲劳改善达到临床意义（效应量 0.70），但 p=0.11。<span class="ev o">试点</span><a class="c" href="#r-p25c">Support Care Cancer</a></td></tr>
+      <tr class="hl"><td class="num">2026<br>TREAD</td><td>61 名肥胖、无糖尿病、基线进食 ≥14 小时的成人</td><td>10 小时 vs 标准饮食咨询，12 周</td><td>体重 −4.6% vs −1.7%（差 2.9 公斤），主要是脂肪；腹部脂肪组织里促炎基因下调。他说没有明显的肌肉流失，减掉的主要是腹部脂肪。<span class="ev h">RCT</span><a class="c" href="#r-p26a">Obesity</a><a class="c" href="#r-op26">Optimal Protein 2026</a></td></tr>
+    </tbody>
+  </table></div>
+  <p>还有几条在进行或刚起步的线：双相障碍的限时进食试验（对比地中海饮食）、2 型糖尿病一年期试验、肾病小鼠、以及 XPRIZE 方案（17 名 55 岁以上心血管代谢病患者，60 天，全部坚持完成，参与者自述精力更好、睡得更好、更有力气）。<a class="c" href="#r-p24b">BMC Psychiatry</a><a class="c" href="#r-dhru26">Dhru 2026</a></p>
+
+  <h3>他从这些试验里得出的几条“读法”</h3>
+  <ul>
+    <li><b>谁的窗口原本越长，收益越大。</b>他的人体试验几乎都要求基线进食 ≥12 或 ≥14 小时。<a class="c" href="#r-p22n">NEJM 2022</a></li>
+    <li><b>不只看体重。</b>消防员试验里体重没差，但血脂颗粒、血压、血糖改善了；他认为把健康等同于体重会漏掉这些。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li><b>能叠加在药物上。</b>2020、2024、2026 年的试验里很多人在吃他汀、降压药、二甲双胍甚至 GLP-1，限时进食仍有额外收益。<a class="c" href="#r-op26">Optimal Protein 2026</a></li>
+    <li><b>别把消防员的结果外推到夜班护士。</b>消防员夜里有机会睡（出完警就关灯躺下），而夜班护士和长途司机整夜醒着，睡眠压力完全不同；要先去现场了解他们的工作日程，再设计方案。<a class="c" href="#r-hub">Huberman 2023</a></li>
+  </ul>
+</section>
+
+<section id="critics">
+  <div class="shead"><span class="no">11</span><span class="tag">Critiques &amp; replies</span></div>
+  <h2>批评，以及他的回应</h2>
+  <p class="lede">限时进食受到过三次比较大的公众冲击，Panda 对每一次都有书面或口头回应。这里只记录他的立场，不替他裁决。</p>
+
+  <h3>一、“限时进食没有比少吃更好”（NEJM 2022）</h3>
+  <p>中国的一项一年期试验：139 名肥胖者都减 25% 热量，一组额外限定 8 小时窗口。结果体重 −8.0 vs −6.3 公斤，差 1.8 公斤，不显著。媒体标题变成“科学家发现限时进食没有好处”。<a class="c" href="#r-liu22">Liu NEJM 2022</a></p>
+  <p>Panda 在同期《NEJM》社论和《Cell Reports Medicine》评论里的回应：</p>
+  <ul>
+    <li>受试者基线窗口已经只有约 10 小时 23 分，<b>实际只缩短了约 2 小时</b>——“这么小的缩短很少显示出健康益处”。</li>
+    <li>他们年轻（平均 32 岁）、除了 BMI 外代谢指标都正常，几乎没有改善空间。</li>
+    <li>研究没有“只限时”的组，也没有标准照护组，所以不能外推到“只做限时进食”的人。</li>
+    <li>样本量并不足以检验两组差异；95% 置信区间并不排除多达 4 公斤的差别。</li>
+    <li>这项研究对 25% 限热量的监督强度空前（七万多天的食物照片），这种资源投入本身很难推广。</li>
+  </ul>
+  <p>他还拿阿司匹林作比：美国预防工作组说阿司匹林不推荐用于一级预防，媒体写成“阿司匹林没用”，结果一些本该终身服用的二级预防病人停了药。<a class="c" href="#r-p22c">Cell Rep Med 2022</a><a class="c" href="#r-p22n">NEJM 2022</a> 在 Huberman 节目里他的说法更直白：“只差两个小时”。<a class="c" href="#r-hub">Huberman 2023</a></p>
+
+  <h3>二、“8 小时进食与心血管死亡风险高 91% 相关”（AHA 2024）</h3>
+  <p>2024 年美国心脏协会会议上一份未经同行评审的摘要，用 NHANES 的两天饮食回忆推算进食窗口，媒体广泛报道。Panda 的回应：他和同事给作者写了信，称之为<b>误用流行病学数据的“教科书式例子”</b>——“这项研究本质上基于问卷和受试者的记忆”。<a class="c" href="#r-fit26">FITBOOK 2026</a> 他实验室的 Emily Manoogian 牵头了一封三十多位研究者联署的公开回应，2025 年又在期刊上发表《短期 24 小时饮食回忆无法支持死亡率结论》。<a class="c" href="#r-p25r">Diabetes Metab Syndr 2025</a> 这与他对营养流行病学的一贯批评一致：靠记忆的“昨天吃了什么”，记不住时间。<a class="c" href="#r-chrono30">CHRONO:MEDICINE 2025</a></p>
+
+  <h3>三、“好处只是因为少吃了”</h3>
+  <p>这是最核心、也最持久的批评，Attia 和 Topol 的指南里都是这个结论。他的回应有三层：</p>
+  <ol>
+    <li><b>在小鼠里，热量可以被严格控制</b>：同热量下时间仍然决定结局（2012、2014、2019），而 Takahashi 的长寿实验显示同样的限热量，在正确时间吃比在错误时间吃多活一大截。<a class="c" href="#r-p12">Cell Metab 2012</a><a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li><b>在人身上，他承认会无意中少吃</b>：“在社区人群中，限时进食会不经意地带来一些热量限制，但即使体重稳定的人也观察到了心血管代谢获益。”<a class="c" href="#r-p22c">Cell Rep Med 2022</a></li>
+    <li><b>可推广性本身就是价值</b>：25% 的限热量需要高强度支持、难以长期维持；限时进食的卖点是低成本、可持续，所以真正需要回答的问题是它在临床结局上的效应量、怎么帮人坚持、长期能否维持、投入产出比如何。<a class="c" href="#r-p22c">Cell Rep Med 2022</a></li>
+  </ol>
+  <div class="box warn">
+    <p class="bt">值得一起记住的</p>
+    <p>他自己引用的人体数据里也有“打平”的结果：瑞士 12 小时试验和标准饮食建议效果相当；TIMET 的主要血糖指标改善只有 0.1 个百分点；癌症疲劳试验没有达到统计显著。他的人体试验大多为期 12 周、样本几十到一百多人。这是理解他的主张时需要的背景。</p>
+  </div>
+</section>
+
+<section id="people">
+  <div class="shead"><span class="no">12</span><span class="tag">Different people</span></div>
+  <h2>不同的人：倒班者、女性、孩子、老人、糖尿病、运动员</h2>
+  <p class="lede">他反复强调“12 小时人人可做”，但对 8–10 小时及更短的窗口，他会按人群加限定条件。</p>
+
+  <h3>倒班者</h3>
+  <p>消防员试验给出的做法：<b>不管当天是否值班，都按同一个自选的 10 小时窗口吃</b>；他们大多选择早上 8 点到 11 点之间开始，不跳过任何一餐，一周能做到五天左右。<a class="c" href="#r-hub">Huberman 2023</a> 他认为倒班本身未必是最大的问题，<b>真正打乱代谢的是换班和周末切回正常作息</b>。<a class="c" href="#r-salk-clock">Salk 2009</a> 夜班的另一个问题是光：白天在暗室里睡、冬天几乎见不到日光、室内很少超过 1,000 lux，等于一直活在“昏暗的冬天”，管理光照对他们的效率和健康影响很大。<a class="c" href="#r-fmf1">FMF 2016</a> 但他也提醒，消防员的结果不能直接套到整夜醒着的护士或卡车司机身上。<a class="c" href="#r-hub">Huberman 2023</a></p>
+
+  <h3>女性</h3>
+  <ul>
+    <li><b>孕期、哺乳期</b>：出于医学风险考虑，他不建议孕妇和哺乳期女性尝试限时进食；但“常识上”从 16–17 小时的进食跨度回到 12–14 小时，可能仍有好处，10 小时则可能太严。<a class="c" href="#r-fmf3">FMF 2021</a></li>
+    <li><b>月经周期</b>：月经周期是一种长于 24 小时的“亚日节律”。倒班、频繁跨时区会让周期变短、变长或不规律，人和动物研究都显示节律紊乱会影响受孕和维持妊娠；反过来，规律的昼夜节律与更规律的周期相关。<a class="c" href="#r-estima">BETTER! 2025</a></li>
+    <li><b>中年与更年期</b>：雌激素和孕酮在保护女性免于体重增加、2 型糖尿病和脂肪肝；激素下降后，女性的代谢风险“变得像男性一样”。同时 40–55 岁往往是压力最大的阶段：接送孩子参加晚间活动、晚饭推迟到夜里，照顾年迈父母，工作责任最重，伴侣打鼾、宠物进卧室打断睡眠——同样健康的饮食，吃的时间变晚了，就不再有原来的效果。<a class="c" href="#r-estima">BETTER! 2025</a></li>
+    <li><b>年龄带来的作息前移</b>：随着激素下降，男女都会变得更早醒、更早困；他说越来越多的研究显示，这不一定是褪黑素分泌减少造成的。<a class="c" href="#r-estima">BETTER! 2025</a></li>
+    <li><b>运动女性</b>：窗口过短加高运动量，会把人推向 RED-S；停经“常见但不正常”。<a class="c" href="#r-hub">Huberman 2023</a><a class="c" href="#r-dhru26">Dhru 2026</a></li>
+  </ul>
+
+  <h3>孩子与青少年</h3>
+  <ul>
+    <li>新生儿没有 24 小时的作息节律，8 到 12 周后才开始有整段睡眠，之后才逐渐和昼夜对齐。<a class="c" href="#r-fmf1">FMF 2016</a></li>
+    <li>孩子天然就接近 12 小时窗口：睡 9–10 小时，睡前一两小时吃完晚饭、洗澡、讲故事，醒来也不会立刻吃——“把儿科的各种建议放在一起，12 小时就是合理的”。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li>他不建议孩子做更短的窗口；他的“12 小时人人可做”是从 5 岁算起的。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li>青少年需要大约 9 小时睡眠，近 90% 的美国高中生长期睡眠不足；他特别批评疫情后普遍改成<b>“午夜交作业”</b>的截止时间，以及把大学课排到晚上 7 点到 9 点半——学生下课后才吃饭、学习、社交，大学一年级的“新生 15 磅”可能与此有关。<a class="c" href="#r-hub">Huberman 2023</a> 他实验室参与的西雅图研究发现，推迟高中上课时间后学生睡得更多、成绩更好。<a class="c" href="#r-p18s">Sci Adv 2018</a></li>
+  </ul>
+
+  <h3>老年人</h3>
+  <ul>
+    <li>睡眠变浅、恢复睡眠债的能力下降（见第 <a href="#sleep">08</a> 节“手动挡卡车”）。<a class="c" href="#r-buck">Buck 2024</a></li>
+    <li>需要更多蛋白质来对抗肌少症的人，能否在 6–8 小时里吃够、吸收够，是他认为必须个体化的问题；容易低血糖的人窗口也要放宽。<a class="c" href="#r-buck">Buck 2024</a></li>
+    <li>他认为人人都该做抗阻训练；骨密度主要在青少年到 30 岁之间累积，之后很难再提高。<a class="c" href="#r-op26">Optimal Protein 2026</a></li>
+    <li>2008 年他在小鼠里选择性去掉含 melanopsin 的视网膜细胞后，小鼠视力正常，生物钟却对光“失明”。他当时推测：“很多老人可能失去了这个光传感器而没有失去视力，结果是很难在对的时间入睡。”2019 年在人类视网膜上找到三类这种细胞后，他提出可以据此为老人和失智者设计室内照明。<a class="c" href="#r-salk-mrgc">Salk 2008</a><a class="c" href="#r-p19">Science 2019</a></li>
+  </ul>
+
+  <h3>糖尿病前期与 2 型糖尿病</h3>
+  <p>这是他第二本书的主题，也是他试验最集中的人群（见第 <a href="#evidence">10</a>、<a href="#disease">13</a> 节）。他的限定条件：<b>1 型糖尿病不建议自行尝试</b>；正在用胰岛素或可能引起低血糖的降糖药的人，需要医生调整方案。<a class="c" href="#r-fmf3">FMF 2021</a><a class="c" href="#r-cdc">The Circadian Diabetes Code</a></p>
+
+  <h3>运动员</h3>
+  <p>传统建议是“为了合成代谢，最好 24 小时不停地吃”，有的运动员甚至被要求半夜或睡前进食，结果常见腹胀、类肠易激综合征、胃酸反流；改为 12 小时内吃完后，这些问题改善了。<a class="c" href="#r-op26">Optimal Protein 2026</a> 但他同时警告运动员要警惕 RED-S：问题不在“少吃多练”的意志力，而在能量不足。<a class="c" href="#r-p24r">Cell Metab 2024</a></p>
+</section>
+
+<section id="disease">
+  <div class="shead"><span class="no">13</span><span class="tag">Disease lens</span></div>
+  <h2>疾病视角：同一张时刻表，不同的器官</h2>
+  <p class="lede">他看疾病的方式是：几乎所有慢性病都在倒班者身上更多见，而倒班的本质是时刻表被打乱；所以同一个“对时”的工具——光、吃饭时间、睡眠——会在很多器官上同时起作用。下面按器官整理他说过的东西。</p>
+
+  <h3>心脏与血管</h3>
+  <ul>
+    <li>果蝇实验：12 小时限时喂食延缓了衰老带来的心功能下降，心律失常更少；这是他最早的“心脏”证据。<a class="c" href="#r-p15f">Science 2015</a></li>
+    <li>夏令时往前拨的那天心梗增加：心脏在“没准备好”的时候被要求加班。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li>消防员的第一大死因是心脏病；限时进食降低了高风险者的舒张压和糖化血红蛋白，改善了致动脉粥样硬化的脂蛋白颗粒。Panda 口头说过，血压下降的幅度“看起来像在吃一种降压药”，但论文里没有这样声称。<a class="c" href="#r-hub">Huberman 2023</a><a class="c" href="#r-p22">Cell Metab 2022</a></li>
+    <li>2026 年他参与撰写了美国心脏协会的科学声明，主张在心血管和肾脏研究中把“一天中的时间”当作生物学变量——临床上人是在清醒、进食状态下做检查，而实验室里的小鼠常在它们的休息期被测量。<a class="c" href="#r-aha26">AHA 2026</a></li>
+  </ul>
+
+  <h3>血糖与糖尿病</h3>
+  <p>《The Circadian Diabetes Code》的核心说法是：<b>“减重不只取决于吃什么，什么时候吃同样重要”</b>，而同一套方法也能优化监控血糖的每一个细胞。他把确诊糖尿病前期比作“体温超过 38 摄氏度”——一个身体失衡的信号。<a class="c" href="#r-cdc">The Circadian Diabetes Code</a></p>
+  <div class="box sol">
+    <p class="bt">他母亲的故事（书的开篇）</p>
+    <p>他母亲是素食者，蔬果吃得比推荐量还多，每天傍晚散步，每周因宗教原因禁食一天，晚饭在 8 点前吃完——但血糖仍在逐年爬升，接近糖尿病。Panda 注意到她每周有两三次去亲戚家时，晚上 9 点左右会喝一杯加糖加奶的茶。她笑他，医生也不认为这点夜宵是原因。后来她来美国和他同住几个月，采用了他的规则：<b>晚上 6 点后不进食，早上 9 点左右吃早餐</b>，窗口 9 小时。<a class="c" href="#r-cdc">The Circadian Diabetes Code</a></p>
+    <p>他自己因为是南亚人，属于糖尿病和心脏病高风险人群，写书时已经在“大多数日子里把进食固定在 10 小时窗口内”八年。<a class="c" href="#r-cdc">The Circadian Diabetes Code</a></p>
+  </div>
+  <ul>
+    <li>已在吃二甲双胍或 GLP-1 但糖化血红蛋白仍在 7% 以上的人，可以不改药、在药物之上加限时进食。<a class="c" href="#r-dhru26">Dhru 2026</a></li>
+    <li>他对 GLP-1 时代的担心是肌肉：快速减重时可能有 20%–30% 的体重来自肌肉，而“少吃再跑马拉松”的极端做法会适得其反。<a class="c" href="#r-dhru26">Dhru 2026</a></li>
+    <li>他对“血糖峰值恐惧”保持距离：胰岛素的存在就是为了缓冲峰值，“并不是每个峰值都坏”；长期极低碳水让胰岛细胞“放假”，长期后果并不清楚。<a class="c" href="#r-hub">Huberman 2023</a></li>
+  </ul>
+
+  <h3>大脑：失智、抑郁、双相</h3>
+  <p>他在 2026 年把认知衰退的早期信号拆成三件事：<b>抑郁</b>（失去兴趣、自我封闭）、<b>睡眠紊乱</b>（在人和动物模型里都早于失智出现多年）、以及<b>代谢紊乱</b>（有人把失智称为“3 型糖尿病”，高血糖和血脂异常可能减少大脑的营养和血流）。三者都和昼夜节律有关，所以白天的光和规律的作息是他的第一建议。<a class="c" href="#r-dhru26">Dhru 2026</a> 他实验室 2026 年的预印本发现，阿尔茨海默病模型小鼠的昼夜系统受损独立于β淀粉样蛋白沉积。<a class="c" href="#r-p26ad">bioRxiv 2026</a></p>
+  <ul>
+    <li>他的团队在做限时进食对双相障碍的试验，包括与地中海饮食的随机对照。<a class="c" href="#r-p24b">BMC Psychiatry 2024</a></li>
+    <li>对多日的长时间禁食影响抑郁，他持开放但保留的态度：只有零星个案，需要系统研究。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li>RED-S 的症状之一是抑郁、焦虑，他认为运动员中的一部分心理问题可能被错当成了比赛压力。<a class="c" href="#r-hub">Huberman 2023</a></li>
+  </ul>
+
+  <h3>癌症</h3>
+  <ul>
+    <li>倒班被国际癌症研究机构列为可能致癌因素；消防员同时暴露于致癌烟雾，很难把癌症单独归因于节律紊乱。<a class="c" href="#r-cc">The Circadian Code</a><a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li>限时喂食的小鼠，植入的肿瘤长得更慢；他引用 Ruth Patterson 团队的数据：夜间禁食时间更长（13 小时以上）的乳腺癌患者复发风险更低。<a class="c" href="#r-fmf2">FMF 2017</a></li>
+    <li>他实验室 2018 年发现，激活时钟蛋白 REV-ERB 的药物对多种癌细胞是致命的，而正常细胞基本不受影响：“不管癌症从哪里、怎么开始，所有癌细胞都需要更多营养和更多回收的材料。”<a class="c" href="#r-p18n">Nature 2018</a><a class="c" href="#r-salk-cancer">Salk 2018</a></li>
+    <li>时差的一个具体风险：从伦敦飞到加州立刻去海滩晒太阳，皮肤细胞可能还按伦敦时间在分裂，对紫外线损伤更脆弱。<a class="c" href="#r-zoe">ZOE 2024</a></li>
+    <li>免疫治疗的给药时间：见下一节。他 2024 年的综述系统梳理了昼夜节律在癌症预防、预后和生存者照护中的作用。<a class="c" href="#r-p24t">Trends Cancer 2024</a></li>
+  </ul>
+
+  <h3>肠道</h3>
+  <ul>
+    <li>夜里肠道蠕动变慢、消化液减少，晚吃的东西会留到早上——“食物宿醉”。胃酸反流、胃灼热的人尤其要避免晚吃和空腹咖啡。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li>“我们发现有白天的细菌，也有夜里的细菌。”没有足够的禁食间隔，两类细菌全天都在；进食有清楚的节律，才有健康的“分工”。<a class="c" href="#r-fit26">FITBOOK 2026</a></li>
+    <li>过去说菌群就是“有益菌”和“有害菌”；他的说法是不同时间需要不同的菌，<b>益生菌在什么时间吃，可能也会影响它的效果</b>。<a class="c" href="#r-salk-gut">Salk 2014</a></li>
+    <li>2022 年他们发现限时喂食还改变回肠菌群和转录组的日节律，肠道的反应因段而异。<a class="c" href="#r-p22i">Cell Rep 2022</a></li>
+  </ul>
+
+  <h3>免疫与自主神经</h3>
+  <ul>
+    <li>他说限时喂食在小鼠里不仅改善代谢，还提高了对感染的抵抗力。<a class="c" href="#r-salk-sex">Salk 2021</a></li>
+    <li>POTS（体位性心动过速综合征，常见于新冠后）试点里，限时进食改善了站立心率和症状；他的解释是“限制进食时间可以影响自主神经系统”，让血压调节更好。<a class="c" href="#r-p25p">Sci Rep 2025</a><a class="c" href="#r-fit26">FITBOOK 2026</a></li>
+  </ul>
+</section>
+
+<section id="medicine">
+  <div class="shead"><span class="no">14</span><span class="tag">Circadian medicine</span></div>
+  <h2>昼夜医学：药物、疫苗和手术的时间</h2>
+  <p class="lede">问他“医学最常犯的错是什么”，他的回答是：<b>几乎每种药、每个医疗操作都有最佳时间</b>——疫苗、绝大多数 FDA 批准药物、甚至手术。<a class="c" href="#r-mm26">Metabolic Mind 2026</a></p>
+
+  <h3>依据</h3>
+  <p>狒狒图谱里，FDA 认定为药物靶点的基因有 82.2% 在至少一个组织里有日节律（他口头常说“将近 85%”）。<a class="c" href="#r-p18">Science 2018</a> 他和同事 2018 年用一个三段式框架概括这个领域：<b>训练时钟</b>（用光、进食、运动让节律更强）、<b>给药物对时</b>（在最有效、副作用最小的时间给药）、<b>用药物调时钟</b>（直接作用于时钟蛋白，如 REV-ERB 激动剂、柑橘提取物川陈皮素）。<a class="c" href="#r-p18t">Trends Pharmacol Sci 2018</a><a class="c" href="#r-buck">Buck 2024</a></p>
+
+  <h3>他举过的例子</h3>
+  <ul>
+    <li><b>癌症免疫治疗</b>：他说已有二十五项以上临床研究显示，同一种免疫治疗在一天较早时输注，总生存和无进展生存都更好，晚于下午三四点则较差；免疫治疗的有效率通常约 20%（五个人里一个），按时给药在一些研究里接近“五个里两个”，风险比约 0.46–0.65。难点在于所有人都想要上午的号——他的设想是用光和限时进食把病人的生物钟往前调，让下午的预约对应到他的“生物学上午”。<a class="c" href="#r-dhru26">Dhru 2026</a></li>
+    <li><b>疫苗</b>：前几天睡得好、早上接种，效果好于睡眠不足后或下午接种——这是不需要改变接种点开放时间、只需个人调整的“草根”干预。<a class="c" href="#r-chrono31">CHRONO:MEDICINE 2025</a></li>
+    <li><b>止痛药</b>：某些关节痛药物在傍晚或睡前服用，对第二天早上的疼痛控制更好。<a class="c" href="#r-chrono31">CHRONO:MEDICINE 2025</a></li>
+    <li><b>二甲双胍和雷帕霉素</b>：他提出一个假设——小鼠长寿实验里这两种药的效果，可能部分是因为“模拟了禁食状态”，而随意进食的老龄小鼠恰恰在本该禁食的白天偷吃；Katja Lamia 的实验显示二甲双胍的降糖效果随给药时间变化很大。所以“晚上吃的二甲双胍是否更早触发禁食状态”值得研究。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li><b>现有的长寿药物</b>都应在一天中不同时间测试效果。<a class="c" href="#r-buck">Buck 2024</a></li>
+  </ul>
+
+  <h3>他也承认的阻力</h3>
+  <ul>
+    <li>药物时间学“不是我的领域”；最好的论文其实上世纪就有了（化疗）。<a class="c" href="#r-chrono31">CHRONO:MEDICINE 2025</a></li>
+    <li>药厂在往长效药走——GLP-1 一周一针——于是“什么时候吃都一样”的说法和昼夜生物学家的主张相冲突。</li>
+    <li>很多心脏科医生不相信降压药的服用时间有长期影响，甚至有声明说没有影响；“心脏科医生不认同，你就改变不了用药时间”。</li>
+    <li>要在真实生活中证明给药时间有效，门槛很高，而且最终还要回答投入产出比的问题。<a class="c" href="#r-chrono31">CHRONO:MEDICINE 2025</a></li>
+  </ul>
+  <p>他们 2026 年分析了 myCircadianClock 里 26,069 名成人、二十多万次服药记录：大多数药物类别呈“早上为主”或“晚上为主”两种模式，补充剂则有早上、随餐、睡前等四种；但每一类药都有相当比例的服用偏离主要时段好几个小时。他们由此提出“<b>时间依从性</b>”应当成为服药依从性的一个维度。<a class="c" href="#r-p26m">Nutrients 2026</a></p>
+
+  <h3>对自己领域的批评</h3>
+  <p>他对昼夜节律学界也有不客气的话：这个领域早年为了证明节律“真实存在”，执着于“在恒定条件下也能维持”的定义，结果<b>“忘了昼夜节律存在于没有恒定条件的真实世界”</b>。小鼠连续禁食 24 小时，肝脏里超过 60% 的基因节律就消失了——难道这些都不算昼夜节律？节律的意义在于“可塑性加稳健性”：“我们有时差（jet lag），但不会被卡住（jet stuck）。”<a class="c" href="#r-chrono31">CHRONO:MEDICINE 2025</a></p>
+  <div class="q"><p>“Circadian rhythm is the ultimate integrative science of lifestyle.”</p><p class="zh">营养学家很少谈睡眠和运动，睡眠科学家很少谈营养，健身教练只谈组数和次数；而昼夜节律决定了我们什么时候该睡、该动、该吃——它是生活方式的终极整合科学。</p><footer>— CHRONO:MEDICINE E31, 2025（大意整理）</footer></div>
+  <p>他认为真正的挑战是：我们建造的整个人造世界——建筑、照明、工作和上学时间、文化——都没有考虑昼夜节律，现在要“一块砖一块砖地”重新设计。<a class="c" href="#r-chrono31">CHRONO:MEDICINE 2025</a></p>
+</section>
+
+<section id="day">
+  <div class="shead"><span class="no">15</span><span class="tag">Putting it together</span></div>
+  <h2>一张可以照着过的时刻表</h2>
+  <p class="lede">他不同年份给过几个版本的规则清单：2022 年的“六条”，2024 年 Buck 播客里的同一套，2025–26 年 XPRIZE 方案的“四个基础：光、运动、进食时间、睡眠”。它们几乎一致。下面把它们合成一张时刻表，以 06:30 起床、22:30 上床为例；<b>所有时间都应按你自己的上床时间平移</b>。</p>
+  <div class="q nx"><p>“It's tied to your bedtime ... and then subtract three hours. That may be the last call for meal.”</p><p class="zh">它跟你的上床时间绑定：用你每晚的上床时间减去三小时，那就是最后一次点餐。午夜睡的人也许可以八九点吃晚饭；十点睡的人就不行。</p><footer>— Optimal Protein Podcast, 2026</footer></div>
+
+  <div class="tt">
+    <div class="row nox"><div class="t">22:30<small>前一晚</small></div><div class="w"><b>上床。在床 8 小时</b><p>“一天从前一晚开始”。固定上床时间，保证 7–7.5 小时睡眠。<a class="c" href="#r-dk">Doctor's Kitchen</a><a class="c" href="#r-buck">Buck 2024</a></p></div></div>
+    <div class="row sol"><div class="t">06:30<small>醒</small></div><div class="w"><b>醒来。可以喝水；先别吃</b><p>褪黑素还在下降、皮质醇正在冲顶，消化系统还没准备好。至少等 1 小时，最好 2 小时。黑咖啡他已不再严格反对，但有胃酸反流或焦虑的人别空腹喝。<a class="c" href="#r-op26">Optimal Protein 2026</a><a class="c" href="#r-hub">Huberman 2023</a></p></div></div>
+    <div class="row sol"><div class="t">07:00<small>光</small></div><div class="w"><b>出门，或坐到大窗边</b><p>早上半小时到一小时、至少 1,000 lux。全天累计至少 1 小时户外日光；阴天也够。<a class="c" href="#r-fmf3">FMF 2021</a><a class="c" href="#r-dhru26">Dhru 2026</a></p></div></div>
+    <div class="row sol"><div class="t">08:30<small>开窗</small></div><div class="w"><b>第一口。每天尽量同一时间</b><p>“厨房开张”。早餐时间固定，比早餐吃什么更容易被忽略。<a class="c" href="#r-dk">Doctor's Kitchen</a></p></div></div>
+    <div class="row"><div class="t">08:30–<br>18:30</div><div class="w"><b>在 8–10 小时内吃完所有热量</b><p>不超过 12 小时。饮食质量照样重要：他在 XPRIZE 方案里配的是地中海饮食、约 9 小时窗口。新手饿的话，多一点纤维、蛋白质、健康脂肪。<a class="c" href="#r-dhru26">Dhru 2026</a><a class="c" href="#r-fmf2">FMF 2017</a></p></div></div>
+    <div class="row sol"><div class="t">16:00–<br>18:00</div><div class="w"><b>运动</b><p>下午晚些时候最好：肌张力、柔韧性更好，对血糖和血压的改善更明显。人人都该做些抗阻训练。<a class="c" href="#r-dk">Doctor's Kitchen</a><a class="c" href="#r-op26">Optimal Protein 2026</a></p></div></div>
+    <div class="row nox"><div class="t">18:30<small>关窗</small></div><div class="w"><b>最后一口</b><p>上床时间减 3 小时。之后只有水。顺带少喝了酒。<a class="c" href="#r-op26">Optimal Protein 2026</a></p></div></div>
+    <div class="row nox"><div class="t">19:30–<br>22:30</div><div class="w"><b>傍晚准备：不吃、不剧烈运动、不开亮灯</b><p>室内调到 40 lux 以下，避免亮屏；XPRIZE 方案里还发了滤蓝光眼镜。“你的傍晚决定了余下的一天。”<a class="c" href="#r-dk">Doctor's Kitchen</a><a class="c" href="#r-dhru26">Dhru 2026</a></p></div></div>
+  </div>
+
+  <h3>如果只能先改一件事</h3>
+  <p>他的答案很一致：<b>先把窗口的终点固定下来</b>——用上床时间倒推三小时，停止进食；再把开始时间往醒后推一两个小时。对一个“早 6 点加糖咖啡、晚 10 点睡前小酒”的 16 小时进食者，先回到 10 小时。<a class="c" href="#r-op26">Optimal Protein 2026</a> 体重可能不怎么变，但他希望你先看睡眠、精力、胃酸反流和情绪这些“当天就能感觉到”的东西——这也是 XPRIZE 方案里 17 个人全部坚持下来的原因：“我们精力更好、睡得更好、已经觉得更有力气。”<a class="c" href="#r-dhru26">Dhru 2026</a></p>
+  <p>他们有两个应用：研究用的 <b>myCircadianClock</b>（拍照记录饮食，需要研究编码），以及面向大众、把这些规则压缩成五六个时间要点的 <b>Ontime Health</b>，其中有一个“昼夜挑战”。<a class="c" href="#r-hub">Huberman 2023</a><a class="c" href="#r-dhru26">Dhru 2026</a></p>
+</section>
+
+<section id="self">
+  <div class="shead"><span class="no">16</span><span class="tag">His own day</span></div>
+  <h2>他自己怎么过</h2>
+  <p>他在不同访谈里零散透露过自己的作息，拼起来是一条相当稳定的线：</p>
+  <ul class="tl">
+    <li><span class="y">本科–博士</span>午夜前从不睡，读博时常到凌晨 2 点；午饭后会睡 45 分钟到一小时。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li><span class="y">女儿出生后</span>为了哄睡调暗灯光、不再晚上喝咖啡喝酒，发现自己 10 到 11 点就能睡着，“我其实不是夜猫子”。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li><span class="y">2017</span>大约早上 7–8 点开始吃，下午 5–6 点停；“最多 12 小时，常常 10 小时”。<a class="c" href="#r-fmf2">FMF 2017</a></li>
+    <li><span class="y">2018</span>和太太一起好好吃早餐；晚饭在 6 点前和放学回来的女儿一起吃，“这样晚上有足够的时间社交，而不用想着食物”。<a class="c" href="#r-bowes">Live Long 2018</a></li>
+    <li><span class="y">2021</span>写《The Circadian Diabetes Code》时，已在“大多数日子”把进食限制在固定的 10 小时内八年，减掉了一些多余体重。<a class="c" href="#r-cdc">The Circadian Diabetes Code</a></li>
+    <li><span class="y">2023</span>5:30–6:00 起床，8 点吃第一口，6 点停，约 10 小时；<b>先吃早餐、再喝咖啡</b>；不吃二甲双胍或小檗碱。<a class="c" href="#r-hub">Huberman 2023</a></li>
+    <li><span class="y">2026</span>“我爱喝早上的拿铁”。<a class="c" href="#r-op26">Optimal Protein 2026</a></li>
+  </ul>
+  <p>值得注意的是：他是一个<b>吃早餐的人</b>。他推的不是“不吃早餐的 16:8”，而是“早一点开始、更早结束”的窗口；他说如果你真是吃早餐的人，就把晚饭提前。<a class="c" href="#r-bowes">Live Long 2018</a></p>
+</section>
+
+<section id="myths">
+  <div class="shead"><span class="no">17</span><span class="tag">Corrections</span></div>
+  <h2>他纠正过的十个说法</h2>
+  <div class="mf">
+    <div class="it"><div class="m">“一卡路里就是一卡路里，什么时候吃无所谓。”</div><div class="f">在热量严格相同的小鼠里，进食时间决定了胖不胖、病不病，甚至活多久；“在错误时间吃的健康食物，也可能变成垃圾”。<a class="c" href="#r-p12">Cell Metab 2012</a><a class="c" href="#r-hub">Huberman 2023</a></div></div>
+    <div class="it"><div class="m">“人一天吃三顿，都在 12 小时以内。”</div><div class="f">拍照记录显示中位数一天吃 7 次，一半人的进食跨度超过 14 小时 45 分，只有约一成人在 12 小时以内。<a class="c" href="#r-p15">Cell Metab 2015</a></div></div>
+    <div class="it"><div class="m">“间歇性断食就是 16:8，越短越好。”</div><div class="f">他的默认是 8–10 小时，人人可做的底线是 12 小时；4–6 小时和一天一顿不推荐给普通人，尤其是运动量大的女性（RED-S）。<a class="c" href="#r-hub">Huberman 2023</a></div></div>
+    <div class="it"><div class="m">“早餐是一天中最重要的一餐 / 不吃早餐最健康。”</div><div class="f">两种说法他都不完全同意：醒来后等一两个小时再吃，然后在固定时间吃第一口；他本人吃早餐，宁可把晚饭提前。<a class="c" href="#r-dk">Doctor's Kitchen</a><a class="c" href="#r-bowes">Live Long 2018</a></div></div>
+    <div class="it"><div class="m">“晚上吃和早上吃一样，只要总量对。”</div><div class="f">褪黑素上升后胰腺也在“睡觉”，胰岛素分泌和作用变差，晚吃的东西更容易变成脂肪；所以上床前 3 小时停止进食。<a class="c" href="#r-op26">Optimal Protein 2026</a></div></div>
+    <div class="it"><div class="m">“我是夜猫子，这是基因。”</div><div class="f">极少数人是；大多数“夜猫子”去掉晚上的灯光和咖啡（比如露营）就会在 9–10 点半睡着。<a class="c" href="#r-hub">Huberman 2023</a></div></div>
+    <div class="it"><div class="m">“褪黑素是温和无害的助眠剂。”</div><div class="f">它主要帮助入睡；常见的 3–5 毫克剂量可能让褪黑素在醒后数小时仍偏高，而这时吃早餐对血糖不利；系统研究还很缺。<a class="c" href="#r-fmf3">FMF 2021</a></div></div>
+    <div class="it"><div class="m">“室内灯开着就够亮了，我能感觉到亮不亮。”</div><div class="f">视觉会自动适应，主观感受不可靠；室内通常 100–500 lux，阴天户外是它的 10 到 100 倍。<a class="c" href="#r-dhru26">Dhru 2026</a><a class="c" href="#r-fmf3">FMF 2021</a></div></div>
+    <div class="it"><div class="m">“女运动员停经很常见，正常。”</div><div class="f">“常见不等于正常。”它是能量相对不足的信号，伴随骨量流失和情绪问题。<a class="c" href="#r-hub">Huberman 2023</a><a class="c" href="#r-dhru26">Dhru 2026</a></div></div>
+    <div class="it"><div class="m">“健康就是体重正常。”</div><div class="f">胃酸反流、焦虑抑郁、高 LDL 都和作息有关，瘦人也会有；消防员试验里体重没变，血脂、血压、血糖却改善了。<a class="c" href="#r-hub">Huberman 2023</a></div></div>
+  </div>
+</section>
+
+<section id="caveats">
+  <div class="shead"><span class="no">18</span><span class="tag">Limits &amp; controversy</span></div>
+  <h2>边界与争议</h2>
+  <p class="lede">这份汇编按你的要求做的是摘要，不是循证审查。但有几件事不写清楚，读的时候容易把“Panda 说”当成“已经证实”。</p>
+
+  <h3>关于证据本身</h3>
+  <ul>
+    <li><b>最强的证据在动物身上。</b>“热量相同、时间不同、结局不同”这个核心命题，是在小鼠和果蝇里严格证明的；人体试验大多 12 周、几十到一百多人，效应量从“明显”（消防员的血压、TREAD 的体重）到“适度”（TIMET 的 HbA1c −0.1%）不等，也有和对照打平的。</li>
+    <li><b>播客里的说法有时比论文走得远。</b>例如消防员血压下降“像在吃降压药”、POTS 试验“近一半人被认为治愈”、“将近 85% 的 FDA 药物”——论文本身更克制（分别是：未作此类声称；平均站立心率增幅降低 11 次/分；82.2% 的药物靶点基因有节律）。本页尽量把两种说法都标出来。</li>
+    <li><b>他的建议也在演变</b>：窗口从“最多 12 小时”收紧到“8–10 小时”；最后一口从“睡前 2 小时”变成“3 小时”；咖啡从“最好放进窗口”变成“黑咖啡可以”。引用他时最好带上年份。</li>
+    <li><b>利益相关</b>：他写了两本面向大众的书，团队推出了消费级应用 Ontime Health。这些不改变论文数据，但值得知道。</li>
+    <li><b>转写说明</b>：部分 2025–2026 年访谈没有官方文字稿，本页根据音频自动转写整理；这类引语以意译为主，个别英文原句可能与原音有细小出入。</li>
+  </ul>
+
+  <h3>离开 Salk</h3>
+  <p>2026 年 7 月，《Science》报道：Salk 的一名女性研究助理于 2026 年 3 月通过内部渠道提出“工作场所不当行为”投诉，Panda 随后被停职，Salk 委托了独立调查；Panda 将于 2026 年 8 月 13 日起辞职，结束在 Salk 的 22 年。<b>Panda 否认这些指控</b>，在《Science》公开的邮件中说他“深切致力于为研究团队和整个研究所维护安全、尊重和专业的环境”。Salk 确认进行了调查，但没有公开指控的性质、调查结论或处理结果；投诉人此前已自愿离职。《Science》还援引一位知情人士称，Salk 此前曾就另一起针对他的性骚扰指控进行过调查并采取过纪律处分，Salk 未予证实。部分在职和前员工担心，不公开调查就让他辞职，可能使他转到其他机构而无人知情。<a class="c" href="#r-sci26">Science 2026</a><a class="c" href="#r-wiki">Wikipedia</a><a class="c" href="#r-news26">其他报道</a></p>
+  <p class="note">这里只记录可核实的报道内容，不对指控做判断。它不改变已发表研究的数据，但意味着他今后的机构归属、实验室和正在进行的试验（包括 XPRIZE 项目）的去向目前不明；他在 Salk 网站上的个人页面已经下线。</p>
+</section>
+
+<section id="quotes">
+  <div class="shead"><span class="no">19</span><span class="tag">In his words</span></div>
+  <h2>原话摘录</h2>
+  <div class="qw">
+    <blockquote><p>“The truth is, we are all shift workers.”</p><p class="zh">事实是，我们都是倒班工人。</p><cite>The Circadian Code, 2018</cite></blockquote>
+    <blockquote><p>“The first sight of bright light and the first bite of food. Those two determine how our body clocks work.”</p><p class="zh">第一眼亮光和第一口食物，决定了身体里的钟怎么走。</p><cite>FoundMyFitness, 2016</cite></blockquote>
+    <blockquote><p>“Healthy food at the wrong time can be crap or junk.”</p><p class="zh">错误时间吃的健康食物，也可能是垃圾。</p><cite>Huberman Lab, 2023</cite></blockquote>
+    <blockquote><p>“What we do between sunset and bedtime affects most of our health.”</p><p class="zh">日落到上床之间做什么，影响了我们大部分的健康。</p><cite>Huberman Lab, 2023</cite></blockquote>
+    <blockquote><p>“Your day actually starts the night before when you go to bed.”</p><p class="zh">你的一天其实从前一晚上床时就开始了。</p><cite>The Doctor's Kitchen, 2022</cite></blockquote>
+    <blockquote><p>“Your evening decides rest of the day.”</p><p class="zh">你的傍晚决定了余下的一天。</p><cite>The Doctor's Kitchen, 2022</cite></blockquote>
+    <blockquote><p>“12 hours is something that I say anyone from a 5-year-old to 100-year-old can do.”</p><p class="zh">12 小时，是从 5 岁到 100 岁的人都能做到的。</p><cite>Huberman Lab, 2023</cite></blockquote>
+    <blockquote><p>“It's not only what you eat that makes a difference ... it's equally important to make good decisions about when you eat.”</p><p class="zh">不只是吃什么有影响，什么时候吃同样重要。</p><cite>The Circadian Diabetes Code, 2021</cite></blockquote>
+    <blockquote><p>“The recipe for health is not ‘eat less food, do more exercise.’”</p><p class="zh">健康的配方不是“少吃、多动”。</p><cite>Salk, 2024</cite></blockquote>
+    <blockquote><p>“A brain on shift work cannot make rational decisions.”</p><p class="zh">倒班的大脑做不出理性决定。</p><cite>The Circadian Code, 2018</cite></blockquote>
+    <blockquote><p>“We have become mostly an indoor species, and we are removed from the natural cycle of daylight during the day and near-complete darkness at night.”</p><p class="zh">我们已经基本成了室内物种，脱离了白天有日光、夜里近乎全黑的自然循环。</p><cite>Salk, 2019</cite></blockquote>
+    <blockquote><p>“Many of us may have one or more disease-causing defective genes that make us feel helpless and destined to be sick. The finding that a good lifestyle can beat the bad effects of defective genes opens new hope to stay healthy.”</p><p class="zh">很多人带着致病的缺陷基因，觉得自己注定要生病。好的生活方式能压过坏基因的影响，这带来了新的希望。</p><cite>Salk, 2018（无生物钟小鼠的限时喂食实验）</cite></blockquote>
+    <blockquote><p>“Being common is not normal.”</p><p class="zh">常见不等于正常。</p><cite>Dhru Purohit Show, 2026</cite></blockquote>
+    <blockquote><p>“Jet lag — we lag, but then we don't get jet stuck.”</p><p class="zh">时差是“滞后”，但我们不会被“卡住”。</p><cite>CHRONO:MEDICINE, 2025</cite></blockquote>
+    <blockquote><p>“We are always living in the dark age of science.”</p><p class="zh">我们永远生活在科学的黑暗时代——十年前你认为最对的东西，现在已经变了。（他说这句话来自 Scripps 的 Paul Schimmel）</p><cite>Huberman Lab, 2023</cite></blockquote>
+    <blockquote><p>“In time-restricted eating, we are re-engaging the body's natural wisdom and harnessing its daily rhythms to restore metabolism and improve health.”</p><p class="zh">限时进食是在重新调动身体本来的智慧，借助它的日节律来修复代谢、改善健康。</p><cite>Salk, 2024</cite></blockquote>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="shead"><span class="no">20</span><span class="tag">Sources</span></div>
+  <h2>来源</h2>
+  <div class="srcs">
+  <p class="note">收集范围：iTunes 检索到的约一百条 Panda 相关播客条目（去掉重名、有声书朗读和他作为主持人的节目后约七十期），其中有官方或第三方完整文字稿的直接读取，2025–2026 年的重点访谈用 Whisper 从音频转写；Europe PMC 检索到他署名的 206 篇论文的摘要，其中约 45 篇开放获取全文；两本书的出版社官方节选；Salk 研究所 30 篇提到他的新闻稿；以及关于他 2026 年离职的新闻报道。下表只列正文实际引用的来源。</p>
+
+  <h3>访谈与演讲</h3>
+  <ol>
+    <li id="r-hub"><span class="k">HUB</span>Huberman Lab：“Dr. Satchin Panda: Intermittent Fasting to Improve Health, Cognition &amp; Longevity”，2023-03-13，<a href="https://www.hubermanlab.com/episode/dr-satchin-panda-intermittent-fasting-to-improve-health-cognition-and-longevity">官方页面（含完整文字稿）</a>。</li>
+    <li id="r-fmf1"><span class="k">FMF1</span>FoundMyFitness #25（Rhonda Patrick）：Time-Restricted Feeding and Its Effects on Obesity, Muscle Mass &amp; Heart Health，2016-07，<a href="https://www.foundmyfitness.com/episodes/satchin-panda">文字稿与时间线</a>。</li>
+    <li id="r-fmf2"><span class="k">FMF2</span>FoundMyFitness #39：Practical Implementation of Time-Restricted Eating &amp; Shift Work Strategies，2017-10，<a href="https://www.foundmyfitness.com/episodes/satchin-round-2">官方页面</a>；<a href="https://singjupost.com/dr-satchin-panda-on-practical-implementation-of-time-restricted-eating-shift-work-strategies-transcript/?singlepage=1">文字稿</a>。</li>
+    <li id="r-fmf3"><span class="k">FMF3</span>FoundMyFitness #65：Circadian Insights into Exercise Timing, Melatonin Biology, and Peak Cognition，2021-07，<a href="https://www.foundmyfitness.com/episodes/satchin-panda-3">文字稿</a>。</li>
+    <li id="r-bowes"><span class="k">BOWES</span>Live Long and Master Aging（Peter Bowes）：Embracing the circadian rhythm for better health，2018-09-24，<a href="https://podcasts.apple.com/us/podcast/satchin-panda-embracing-the-circadian-rhythm-for/id1211124529?i=1000420389906">音频</a>（自动转写）。</li>
+    <li id="r-lef"><span class="k">LEF</span>Life Extension Magazine：Author Interview — The Circadian Code，2019-01，<a href="https://www.lifeextension.com/magazine/2019/1/author-interview">原文</a>。</li>
+    <li id="r-salk25"><span class="k">SALK25</span>Salk “Where Cures Begin” Episode 025：Satchin Panda，2021-03-17，<a href="https://www.salk.edu/salk-talk-podcast/episode-025-where-cures-begin-satchin-panda/">文字稿</a>。</li>
+    <li id="r-dk"><span class="k">DK</span>The Doctor's Kitchen #153（Rupy Aujla）：Time Restricted Eating (TRE) with Professor Satchin Panda，2022-06-08，<a href="https://www.thedoctorskitchen.com/podcasts/153-time-restricted-eating-tre-with-professor-satchin-panda-phd">文字稿</a>。</li>
+    <li id="r-lnl"><span class="k">L&amp;L</span>Longevity &amp; Lifestyle（Claudia von Boeselager）Podcast #130：Satchin Panda，<a href="https://longevity-and-lifestyle.com/podcast-130-satchin-panda">文字稿</a>。</li>
+    <li id="r-buck"><span class="k">BUCK</span>Buck Institute “We're not getting any younger… yet”：The Age of Circadian Disruption，2024-04-17，<a href="https://www.buckinstitute.org/podcasts/the-age-of-circadian-disruption/">文字稿</a>。</li>
+    <li id="r-zoe"><span class="k">ZOE</span>ZOE Science &amp; Nutrition：Fix your body clock to improve long term health，2024-06-20，<a href="https://zoe.com/learn/transcript-prof-satchin-panda">文字稿</a>。</li>
+    <li id="r-chrono30"><span class="k">CM30</span>CHRONO:MEDICINE E30：The rise of time-restricted eating（EBRS 2025 Spotlight），2025-07-16，<a href="https://podcasts.apple.com/us/podcast/e30-the-rise-of-time-restricted-eating-with/id1610616470?i=1000717584893">音频</a>（自动转写）。</li>
+    <li id="r-chrono31"><span class="k">CM31</span>CHRONO:MEDICINE E31：Timing medicines &amp; lighting the future，2025-08-17，<a href="https://podcasts.apple.com/us/podcast/e31-timing-medicines-lighting-the-future-with/id1610616470?i=1000722325514">音频</a>（自动转写）。</li>
+    <li id="r-dhru26"><span class="k">DHRU26</span>Dhru Purohit Show：The Cancer &amp; Dementia Link Nobody Warned You About…，2026-02-25，<a href="https://podcasts.apple.com/us/podcast/the-cancer-dementia-link-nobody-warned-you-about-and/id1381257272?i=1000751370584">音频</a>（自动转写）。</li>
+    <li id="r-fit26"><span class="k">FIT26</span>FITBOOK（Nuno Alves）：Chronobiologist Satchin Panda: “This Eating Window Appears to Be the Healthiest”，2026-03-18，<a href="https://www.fitbook-magazine.com/nutrition/chronobiologist-satchin-panda-this-eating-window-appears-to-be-the-healthiest">原文</a>（德文原稿的英译）。</li>
+    <li id="r-op26"><span class="k">OP26</span>Optimal Protein Podcast（Vanessa Spina）：NEW STUDY: Dr. Satchin Panda on How IF/TRE Changes Your Fat Cells，2026-10-26，<a href="https://podcasts.apple.com/us/podcast/new-study-dr-satchin-panda-on-how-if-tre-changes-your/id1344681226?i=1000798110641">音频</a>（自动转写）。</li>
+    <li id="r-mm26"><span class="k">MM26</span>Metabolic Mind（Bret Scher）：Dr. Satchin Panda on How Your Body Clock Shapes Metabolic Health，2026-10-27，<a href="https://podcasts.apple.com/us/podcast/dr-satchin-panda-on-how-your-body-clock-shapes-metabolic/id1678826858?i=1000798345030">音频</a>（自动转写）。</li>
+    <li id="r-estima"><span class="k">EST25</span>BETTER!（Stephanie Estima）：Could Adjusting When You Eat &amp; Sleep Improve Digestion, Energy &amp; Menopause Symptoms?，2025-06-30，<a href="https://podcasts.apple.com/us/podcast/could-adjusting-when-you-eat-sleep-improve-digestion/id1479074542?i=1000715093671">音频</a>（自动转写）。</li>
+<!--MORE-PODCASTS-->
+  </ol>
+
+  <h3>书</h3>
+  <ol>
+    <li id="r-cc"><span class="k">CC</span>Satchin Panda. <i>The Circadian Code: Lose Weight, Supercharge Your Energy, and Transform Your Health from Morning to Midnight</i>. Rodale, 2018. 第 1 章“We Are All Shift Workers”见<a href="https://www.penguinrandomhouse.com/books/592260/the-circadian-code-by-satchin-panda-phd/9780593135907/">出版社官方节选</a>。</li>
+    <li id="r-cdc"><span class="k">CDC</span>Satchin Panda. <i>The Circadian Diabetes Code: Discover the Right Time to Eat, Sleep, and Exercise to Prevent and Reverse Prediabetes and Diabetes</i>. Rodale, 2021. 引言见<a href="https://www.penguinrandomhouse.com/books/652967/the-circadian-diabetes-code-by-satchin-panda-phd/9780593231883">出版社官方节选</a>。</li>
+  </ol>
+
+  <h3>论文（按年份）</h3>
+  <ol>
+<li id="r-p02"><span class="k">P02</span>Panda S 等. <a href="https://doi.org/10.1126/science.1076848">Melanopsin (Opn4) requirement for normal light-induced circadian phase shifting</a>. <i>Science</i> 2002. PMID 12481141</li>
+<li id="r-p02c"><span class="k">P02C</span>Panda S 等. <a href="https://doi.org/10.1016/s0092-8674(02)00722-5">Coordinated transcription of key pathways in the mouse by the circadian clock</a>. <i>Cell</i> 2002. PMID 12015981</li>
+<li id="r-p03"><span class="k">P03</span>Panda S 等. <a href="https://doi.org/10.1126/science.1086179">Melanopsin is required for non-image-forming photic responses in blind mice</a>. <i>Science</i> 2003. PMID 12829787</li>
+<li id="r-p05"><span class="k">P05</span>Panda S 等. <a href="https://doi.org/10.1126/science.1105121">Illumination of the melanopsin signaling pathway</a>. <i>Science</i> 2005. PMID 15681390</li>
+<li id="r-p09"><span class="k">P09</span>Vollmers C 等. <a href="https://doi.org/10.1073/pnas.0909591106">Time of feeding and the intrinsic circadian clock drive rhythms in hepatic gene expression</a>. <i>Proc Natl Acad Sci U S A</i> 2009. PMID 19940241</li>
+<li id="r-p12"><span class="k">P12</span>Hatori M 等. <a href="https://doi.org/10.1016/j.cmet.2012.04.019">Time-restricted feeding without reducing caloric intake prevents metabolic diseases in mice fed a high-fat diet</a>. <i>Cell Metab</i> 2012. PMID 22608008</li>
+<li id="r-p14"><span class="k">P14</span>Chaix A 等. <a href="https://doi.org/10.1016/j.cmet.2014.11.001">Time-restricted feeding is a preventative and therapeutic intervention against diverse nutritional challenges</a>. <i>Cell Metab</i> 2014. PMID 25470547</li>
+<li id="r-p14m"><span class="k">P14M</span>Zarrinpar A 等. <a href="https://doi.org/10.1016/j.cmet.2014.11.008">Diet and feeding pattern affect the diurnal dynamics of the gut microbiome</a>. <i>Cell Metab</i> 2014. PMID 25470548</li>
+<li id="r-p15"><span class="k">P15</span>Gill S, Panda S. <a href="https://doi.org/10.1016/j.cmet.2015.09.005">A Smartphone App Reveals Erratic Diurnal Eating Patterns in Humans that Can Be Modulated for Health Benefits</a>. <i>Cell Metab</i> 2015. PMID 26411343</li>
+<li id="r-p15f"><span class="k">P15F</span>Gill S 等. <a href="https://doi.org/10.1126/science.1256682">Time-restricted feeding attenuates age-related cardiac decline in Drosophila</a>. <i>Science</i> 2015. PMID 25766238</li>
+<li id="r-p18"><span class="k">P18</span>Mure LS 等. <a href="https://doi.org/10.1126/science.aao0318">Diurnal transcriptome atlas of a primate across major neural and peripheral tissues</a>. <i>Science</i> 2018. PMID 29439024</li>
+<li id="r-p18n"><span class="k">P18N</span>Sulli G 等. <a href="https://doi.org/10.1038/nature25170">Pharmacological activation of REV-ERBs is lethal in cancer and oncogene-induced senescence</a>. <i>Nature</i> 2018. PMID 29320480</li>
+<li id="r-p18t"><span class="k">P18T</span>Sulli G 等. <a href="https://doi.org/10.1016/j.tips.2018.07.003">Training the Circadian Clock, Clocking the Drugs, and Drugging the Clock to Prevent, Manage, and Treat Chronic Diseases</a>. <i>Trends Pharmacol Sci</i> 2018. PMID 30060890</li>
+<li id="r-p19c"><span class="k">P19C</span>Chaix A 等. <a href="https://doi.org/10.1016/j.cmet.2018.08.004">Time-Restricted Feeding Prevents Obesity and Metabolic Syndrome in Mice Lacking a Circadian Clock</a>. <i>Cell Metab</i> 2019. PMID 30174302</li>
+<li id="r-p19"><span class="k">P19</span>Mure LS 等. <a href="https://doi.org/10.1126/science.aaz0898">Functional diversity of human intrinsically photosensitive retinal ganglion cells</a>. <i>Science</i> 2019. PMID 31806815</li>
+<li id="r-p20"><span class="k">P20</span>Wilkinson MJ 等. <a href="https://doi.org/10.1016/j.cmet.2019.11.004">Ten-Hour Time-Restricted Eating Reduces Weight, Blood Pressure, and Atherogenic Lipids in Patients with Metabolic Syndrome</a>. <i>Cell Metab</i> 2020. PMID 31813824</li>
+<li id="r-p21s"><span class="k">P21S</span>Chaix A 等. <a href="https://doi.org/10.1016/j.celrep.2021.109543">Sex- and age-dependent outcomes of 9-hour time-restricted feeding of a Western high-fat high-sucrose diet in C57BL/6J mice</a>. <i>Cell Rep</i> 2021. PMID 34407415</li>
+<li id="r-p21sw"><span class="k">P21SW</span>Phillips NE 等. <a href="https://doi.org/10.3390/nu13031042">The Effects of Time-Restricted Eating versus Standard Dietary Advice on Weight, Metabolic Health and the Consumption of Processed Food: A Pragmatic Randomised Controlled Trial in Community-Based Adults</a>. <i>Nutrients</i> 2021. PMID 33807102</li>
+<li id="r-p22c"><span class="k">P22C</span>Taub PR, Panda S. <a href="https://doi.org/10.1016/j.xcrm.2022.100665">Time for better time-restricted eating trials to lessen the burden of metabolic diseases</a>. <i>Cell Rep Med</i> 2022. PMID 35732151</li>
+<li id="r-p22n"><span class="k">P22N</span>Laferrère B, Panda S. <a href="https://doi.org/10.1056/nejme2202821">Calorie and Time Restriction in Weight Loss</a>. <i>N Engl J Med</i> 2022. PMID 35443112</li>
+<li id="r-p22i"><span class="k">P22I</span>Dantas Machado AC 等. <a href="https://doi.org/10.1016/j.celrep.2022.111008">Diet and feeding pattern modulate diurnal dynamics of the ileal microbiome and transcriptome</a>. <i>Cell Rep</i> 2022. PMID 35793637</li>
+<li id="r-p22"><span class="k">P22</span>Manoogian ENC 等. <a href="https://doi.org/10.1016/j.cmet.2022.08.018">Feasibility of time-restricted eating and impacts on cardiometabolic health in 24-h shift workers: The Healthy Heroes randomized control trial</a>. <i>Cell Metab</i> 2022. PMID 36198291</li>
+<li id="r-p23"><span class="k">P23</span>Deota S 等. <a href="https://doi.org/10.1016/j.cmet.2022.12.006">Diurnal transcriptome landscape of a multi-tissue response to time-restricted feeding in mammals</a>. <i>Cell Metab</i> 2023. PMID 36599299</li>
+<li id="r-p23j"><span class="k">P23J</span>Dunster GP 等. <a href="https://doi.org/10.1111/jpi.12843">Daytime light exposure is a strong predictor of seasonal variation in sleep and circadian timing of university students</a>. <i>J Pineal Res</i> 2023. PMID 36404490</li>
+<li id="r-p24c"><span class="k">P24C</span>Koppold DA 等. <a href="https://doi.org/10.1016/j.cmet.2024.06.013">International consensus on fasting terminology</a>. <i>Cell Metab</i> 2024. PMID 39059384</li>
+<li id="r-p24t"><span class="k">P24T</span>Zhu X 等. <a href="https://doi.org/10.1016/j.trecan.2023.11.002">Learning from circadian rhythm to transform cancer prevention, prognosis, and survivorship care</a>. <i>Trends Cancer</i> 2024. PMID 38001006</li>
+<li id="r-p24r"><span class="k">P24R</span>van Rosmalen L 等. <a href="https://doi.org/10.1016/j.cmet.2024.08.001">Multi-organ transcriptome atlas of a mouse model of relative energy deficiency in sport</a>. <i>Cell Metab</i> 2024. PMID 39232281</li>
+<li id="r-p24"><span class="k">P24</span>Manoogian ENC 等. <a href="https://doi.org/10.7326/m24-0859">Time-Restricted Eating in Adults With Metabolic Syndrome : A Randomized Controlled Trial</a>. <i>Ann Intern Med</i> 2024. PMID 39348690</li>
+<li id="r-p24b"><span class="k">P24B</span>Johnson SL 等. <a href="https://doi.org/10.1186/s12888-024-05790-4">A randomized controlled trial to compare the effects of time-restricted eating versus Mediterranean diet on symptoms and quality of life in bipolar disorder</a>. <i>BMC Psychiatry</i> 2024. PMID 38762486</li>
+<li id="r-p25p"><span class="k">P25P</span>Dzotsi M 等. <a href="https://doi.org/10.1038/s41598-025-16836-2">Time-restricted eating improves quality of life, heart rate, and mitochondrial function in patients with postural orthostatic tachycardia syndrome. An open-label pilot study</a>. <i>Sci Rep</i> 2025. PMID 41038948</li>
+<li id="r-p25c"><span class="k">P25C</span>Kleckner AS 等. <a href="https://doi.org/10.1007/s00520-025-09394-w">Time-restricted eating to address persistent cancer-related fatigue among cancer survivors: a randomized controlled trial</a>. <i>Support Care Cancer</i> 2025. PMID 40186671</li>
+<li id="r-p25r"><span class="k">P25R</span>Manoogian ENC 等. <a href="https://doi.org/10.1016/j.dsx.2025.103316">Short-term 24h dietary recalls from observational studies cannot support claims on mortality</a>. <i>Diabetes Metab Syndr</i> 2025. PMID 41218440</li>
+<li id="r-p26a"><span class="k">P26A</span>Wilkinson MJ 等. <a href="https://doi.org/10.1002/oby.70228">Time-Restricted Eating Promotes Weight Loss and Favorable Changes in Adipose in Obesity: The TREAD Randomized Control Trial</a>. <i>Obesity (Silver Spring)</i> 2026. PMID 42229885</li>
+<li id="r-p26n"><span class="k">P26N</span>Tran T 等. <a href="https://doi.org/10.1038/s42255-026-01504-0">The diversity and consistency of what and when people eat</a>. <i>Nat Metab</i> 2026. PMID 42026200</li>
+<li id="r-p26m"><span class="k">P26M</span>Tran T 等. <a href="https://doi.org/10.3390/nu18193291">Daily Patterns in the Timing of Medication and Supplement Intake</a>. <i>Nutrients</i> 2026. PMID 42884742</li>
+<li id="r-p26c"><span class="k">P26C</span>Maier G 等. <a href="https://doi.org/10.1016/j.cell.2026.09.044">Multi-omics atlas of chronic exercise</a>. <i>Cell</i> 2026. PMID 42880284</li>
+<li id="r-aha26"><span class="k">AHA26</span>Pollock DM 等. <a href="https://doi.org/10.1161/atv.0000000000000198">Time of Day as a Biological Variable in Cardiovascular and Kidney Disease Research: A Scientific Statement From the American Heart Association</a>. <i>Arterioscler Thromb Vasc Biol</i> 2026. PMID 42619612</li>
+<li id="r-p26ad"><span class="k">P26AD</span>Calligaro H 等. <a href="https://doi.org/10.64898/2026.08.25.744599">The circadian system is affected by Alzheimer’s disease independently from amyloid beta deposits</a>. <i>bioRxiv</i> 2026（预印本）.</li>
+    <li id="r-p18s"><span class="k">P18S</span>Dunster GP 等. <a href="https://doi.org/10.1126/sciadv.aau6200">Sleepmore in Seattle: Later school start times are associated with more sleep and better performance in high school students</a>. <i>Sci Adv</i> 2018. PMID 30547089</li>
+    <li id="r-liu22"><span class="k">LIU22</span>Liu D 等. <a href="https://doi.org/10.1056/NEJMoa2114833">Calorie Restriction with or without Time-Restricted Eating in Weight Loss</a>. <i>N Engl J Med</i> 2022.（非 Panda 论文，他所回应的试验）</li>
+  </ol>
+
+  <h3>Salk 研究所新闻稿</h3>
+  <ol>
+    <li id="r-salk-fly"><span class="k">SALK05</span><a href="https://www.salk.edu/news-release/human-biological-clock-sensor-uses-fly-eye-technology/">Human biological clock sensor uses fly eye ‘technology’</a>，2005-01。</li>
+    <li id="r-salk-migraine"><span class="k">SALK13</span><a href="https://www.salk.edu/news-release/drug-blocks-light-sensors-in-eye-that-may-trigger-migraine-attacks/">Drug blocks light sensors in eye that may trigger migraine attacks</a>，2013-08。</li>
+    <li id="r-salk-mrgc"><span class="k">SALK08</span><a href="https://www.salk.edu/news-release/perfect-vision-but-blind-to-light/">Perfect vision but blind to light</a>，2008-06。</li>
+    <li id="r-salk-clock"><span class="k">SALK09</span><a href="https://www.salk.edu/news-release/feeding-the-clock/">Feeding the clock</a>，2009-11。</li>
+    <li id="r-salk-gut"><span class="k">SALK14G</span><a href="https://www.salk.edu/news-release/in-a-healthy-gut-microbes-wax-and-wane-throughout-the-day/">In a healthy gut, microbes wax and wane throughout the day</a>，2014-12。</li>
+    <li id="r-salk-midnight"><span class="k">SALK14M</span><a href="https://www.salk.edu/news-release/another-case-against-the-midnight-snack/">Another case against the midnight snack</a>，2014-12。</li>
+    <li id="r-salk-cancer"><span class="k">SALK18C</span><a href="https://www.salk.edu/news-release/salk-scientists-curb-growth-cancer-cells-blocking-access-key-nutrients/">Salk scientists curb growth of cancer cells by blocking access to key nutrients</a>，2018-01。</li>
+    <li id="r-salk-bright"><span class="k">SALK19</span><a href="https://www.salk.edu/news-release/novel-technique-helps-explain-why-bright-light-keeps-us-awake/">Novel technique helps explain why bright light keeps us awake</a>，2019-10。</li>
+    <li id="r-salk-sex"><span class="k">SALK21</span><a href="https://www.salk.edu/news-release/benefits-of-time-restricted-eating-depend-on-age-and-sex/">Benefits of time-restricted eating depend on age and sex</a>，2021-08。</li>
+    <li id="r-salk-aaas"><span class="k">SALK23</span><a href="https://www.salk.edu/news-release/salk-professor-satchin-panda-named-2023-aaas-fellow/">Salk Professor Satchin Panda named 2023 AAAS Fellow</a>，2024-04；另见<a href="https://www.salk.edu/news-release/salk-professors-satchin-panda-and-tatyana-sharpee-honored-with-endowed-chairs/">讲席教授公告</a>。</li>
+    <li id="r-salk-timet"><span class="k">SALK24</span><a href="https://www.salk.edu/news-release/one-in-three-americans-has-a-dysfunctional-metabolism-but-intermittent-fasting-could-help/">One in three Americans has a dysfunctional metabolism, but intermittent fasting could help</a>，2024-09-30。</li>
+    <li id="r-xprize"><span class="k">SALK25X</span><a href="https://www.salk.edu/news-release/salk-institute-scientists-named-semifinalists-in-xprize-healthspan-competition/">Salk Institute scientists named semifinalists in XPRIZE Healthspan competition</a>，2025-05-12。</li>
+  </ol>
+  <p class="note">正文中其余 Salk 引语出自：<a href="https://www.salk.edu/news-release/time-restricted-eating-improves-health-of-firefighters/">消防员试验（2022）</a>、<a href="https://www.salk.edu/news-release/eating-in-10-hour-window-can-override-disease-causing-genetic-defects-nurture-health/">无生物钟小鼠（2018）</a>、<a href="https://www.salk.edu/news-release/three-types-of-cells-help-the-brain-tell-day-from-night/">人类 ipRGC 三类细胞（2019）</a>、<a href="https://www.salk.edu/news-release/fuel-level-low-energy-deficits-harm-athletes-health-new-research-tool-reveals-how/">RED-S 图谱（2024）</a>。</p>
+
+  <h3>关于 2026 年离职</h3>
+  <ol>
+    <li id="r-sci26"><span class="k">SCI26</span>Science News：<a href="https://www.science.org/content/article/prominent-salk-institute-biologist-resign-following-sexual-misconduct-investigation">Prominent Salk Institute biologist to resign following sexual misconduct investigation</a>，2026-07。</li>
+    <li id="r-wiki"><span class="k">WIKI</span>Wikipedia：<a href="https://en.wikipedia.org/wiki/Satchidananda_Panda">Satchidananda Panda</a>（生平与离职段落，读取于 2026-11）。</li>
+    <li id="r-news26"><span class="k">NEWS</span>转述 Science 报道的二手来源：<a href="https://americantribune.com/salk-institute-biologist-satchin-panda-resigns-after-22-years-amid-sexual-misconduct-investigation/">American Tribune</a>、<a href="https://thefederal.com/category/news/indian-origin-scientist-quits-salk-institute-sexual-misconduct-allegations-250997">The Federal</a>。</li>
+  </ol>
+  </div>
+</section>
+
+</main>
+</div>
+
+<footer class="end">
+  <div class="shell">
+    <p>本页是对 Satchin Panda 公开观点的整理与翻译，不构成医疗建议。孕期和哺乳期、1 型糖尿病、进食障碍史、容易低血糖或正在用降糖药的人，按他本人的说法都不应自行尝试限时进食，或需要在医生指导下进行。</p>
+    <p>同系列：<a href="/huberman/">光的剂量（Huberman）</a> · <a href="/peter-attia/">边际十年操作手册（Attia）</a> · <a href="/eric-topol/">健康的复利（Topol）</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var secs=[].slice.call(document.querySelectorAll('main section'));
+  function build(ul){
+    secs.forEach(function(s){
+      var h=s.querySelector('h2'), n=s.querySelector('.shead .no');
+      if(!h) return;
+      var li=document.createElement('li'), a=document.createElement('a');
+      a.href='#'+s.id; a.dataset.target=s.id;
+      var sp=document.createElement('span'); sp.className='n'; sp.textContent=n?n.textContent:'';
+      a.appendChild(sp); a.appendChild(document.createTextNode(h.textContent));
+      li.appendChild(a); ul.appendChild(li);
+    });
+  }
+  var t1=document.getElementById('toc'), t2=document.getElementById('toc-m');
+  if(t1) build(t1); if(t2) build(t2);
+  var links=[].slice.call(document.querySelectorAll('#toc a'));
+  if('IntersectionObserver' in window){
+    var vis={};
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ vis[e.target.id]=e.isIntersecting; });
+      var cur=null;
+      for(var i=0;i<secs.length;i++){ if(vis[secs[i].id]){ cur=secs[i].id; break; } }
+      links.forEach(function(a){
+        var on=a.dataset.target===cur; a.classList.toggle('on',on);
+        if(on){ var rail=a.closest('.rail'); if(rail){ var r=a.getBoundingClientRect(), rr=rail.getBoundingClientRect();
+          if(r.top<rr.top+10||r.bottom>rr.bottom-10) a.scrollIntoView({block:'nearest'}); } }
+      });
+    },{rootMargin:'-8% 0px -70% 0px',threshold:0});
+    secs.forEach(function(s){ io.observe(s); });
+  }
+  var m=document.querySelector('.mob');
+  if(m) m.addEventListener('click',function(e){ if(e.target.closest('a')) m.removeAttribute('open'); });
+  var bar=document.getElementById('prog'), tk=false;
+  function paint(){ var d=document.documentElement, mx=d.scrollHeight-d.clientHeight; if(bar) bar.style.width=(mx>0?Math.min(100,d.scrollTop/mx*100):0)+'%'; }
+  addEventListener('scroll',function(){ if(!tk){ tk=true; requestAnimationFrame(function(){ tk=false; paint(); }); } },{passive:true});
+  paint();
+})();
+</script>
+</body>
+</html>
